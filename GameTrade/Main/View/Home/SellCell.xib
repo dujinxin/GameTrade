@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="i65-ae-2Sf" customClass="SellCell" customModule="GameTrade" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="341" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="341" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7T1-am-axB">
+                        <rect key="frame" x="0.0" y="0.0" width="341" height="100"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量：2000QB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAT-dm-4Bi">
+                                <rect key="frame" x="16" y="16" width="84" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3UN-qT-GBe">
+                                <rect key="frame" x="294" y="16" width="31" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20000RMB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KkA-Nw-xiK">
+                                <rect key="frame" x="221.5" y="48.5" width="103.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-mini-wechat" translatesAutoresizingMaskIntoConstraints="NO" id="TSZ-VR-9vs">
+                                <rect key="frame" x="16" y="50.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Ep9-gh-9nK"/>
+                                    <constraint firstAttribute="width" secondItem="TSZ-VR-9vs" secondAttribute="height" id="OlY-xl-NRz"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bAT-dm-4Bi" firstAttribute="top" secondItem="7T1-am-axB" secondAttribute="top" constant="16" id="EtF-9s-VIa"/>
+                            <constraint firstItem="TSZ-VR-9vs" firstAttribute="leading" secondItem="bAT-dm-4Bi" secondAttribute="leading" id="LAY-AL-3WT"/>
+                            <constraint firstItem="KkA-Nw-xiK" firstAttribute="centerY" secondItem="TSZ-VR-9vs" secondAttribute="centerY" id="MHp-pu-cnF"/>
+                            <constraint firstItem="KkA-Nw-xiK" firstAttribute="trailing" secondItem="3UN-qT-GBe" secondAttribute="trailing" id="US7-S5-ycA"/>
+                            <constraint firstItem="3UN-qT-GBe" firstAttribute="top" secondItem="bAT-dm-4Bi" secondAttribute="top" id="bcS-Lz-t7L"/>
+                            <constraint firstItem="bAT-dm-4Bi" firstAttribute="leading" secondItem="7T1-am-axB" secondAttribute="leading" constant="16" id="goq-3g-3pf"/>
+                            <constraint firstItem="TSZ-VR-9vs" firstAttribute="width" secondItem="TSZ-VR-9vs" secondAttribute="height" id="kh6-PW-2fc"/>
+                            <constraint firstAttribute="trailing" secondItem="3UN-qT-GBe" secondAttribute="trailing" constant="16" id="rhs-WN-b39"/>
+                            <constraint firstItem="TSZ-VR-9vs" firstAttribute="top" secondItem="bAT-dm-4Bi" secondAttribute="bottom" constant="20" id="yHD-3N-W6e"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="7T1-am-axB" secondAttribute="trailing" id="Flo-dc-9tr"/>
+                <constraint firstItem="7T1-am-axB" firstAttribute="top" secondItem="i65-ae-2Sf" secondAttribute="top" id="G6u-80-hYb"/>
+                <constraint firstItem="7T1-am-axB" firstAttribute="leading" secondItem="i65-ae-2Sf" secondAttribute="leading" id="Y4O-1P-AYq"/>
+                <constraint firstAttribute="bottom" secondItem="7T1-am-axB" secondAttribute="bottom" id="px8-wU-COY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="8xR-Q6-LNm"/>
+            <size key="customSize" width="341" height="100"/>
+            <connections>
+                <outlet property="mainContentView" destination="7T1-am-axB" id="Mf6-yC-3jO"/>
+                <outlet property="numberLabel" destination="bAT-dm-4Bi" id="HQ3-wc-kQ0"/>
+                <outlet property="payImageView" destination="TSZ-VR-9vs" id="JzS-MQ-YDg"/>
+                <outlet property="timeLabel" destination="3UN-qT-GBe" id="8TA-dL-YuK"/>
+                <outlet property="valueLabel" destination="KkA-Nw-xiK" id="rHf-68-PnG"/>
+            </connections>
+            <point key="canvasLocation" x="292" y="24.287856071964018"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="icon-mini-wechat" width="15" height="15"/>
+    </resources>
+</document>

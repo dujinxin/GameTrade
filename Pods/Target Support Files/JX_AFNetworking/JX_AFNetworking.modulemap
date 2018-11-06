@@ -1,0 +1,6 @@
+framework module JX_AFNetworking {
+  umbrella header "JX_AFNetworking-umbrella.h"
+
+  export *
+  module * { export * }
+}

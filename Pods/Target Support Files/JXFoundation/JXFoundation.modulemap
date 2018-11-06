@@ -1,0 +1,6 @@
+framework module JXFoundation {
+  umbrella header "JXFoundation-umbrella.h"
+
+  export *
+  module * { export * }
+}

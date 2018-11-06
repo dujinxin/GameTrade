@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="161" id="GwO-ou-nO5" customClass="PaperDetailTopCell" customModule="Star" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="334" height="161"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GwO-ou-nO5" id="Y5u-29-o21">
+                <rect key="frame" x="0.0" y="0.0" width="334" height="160.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wSI-0e-XAD">
+                        <rect key="frame" x="0.0" y="0.0" width="334" height="160.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvp-QW-ThP">
+                                <rect key="frame" x="0.0" y="128.5" width="334" height="32"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018年03期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ISC-V0-IiQ">
+                                        <rect key="frame" x="18" y="10" width="78" height="12"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.59215686270000001" green="0.61960784310000006" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下载：10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6e-in-oGI">
+                                        <rect key="frame" x="258" y="8" width="58" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.1176470588" green="0.38431372549999998" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="z6e-in-oGI" firstAttribute="centerY" secondItem="ISC-V0-IiQ" secondAttribute="centerY" id="10y-1a-y1Z"/>
+                                    <constraint firstAttribute="height" constant="32" id="GEw-MC-Q5n"/>
+                                    <constraint firstItem="ISC-V0-IiQ" firstAttribute="top" secondItem="Jvp-QW-ThP" secondAttribute="top" constant="10" id="Uuc-18-7C7"/>
+                                    <constraint firstItem="ISC-V0-IiQ" firstAttribute="leading" secondItem="Jvp-QW-ThP" secondAttribute="leading" constant="18" id="akO-fb-G6S"/>
+                                    <constraint firstItem="z6e-in-oGI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ISC-V0-IiQ" secondAttribute="trailing" constant="10" id="glc-Aa-ziu"/>
+                                    <constraint firstAttribute="trailing" secondItem="z6e-in-oGI" secondAttribute="trailing" constant="18" id="w0Z-BK-nBT"/>
+                                    <constraint firstAttribute="bottom" secondItem="ISC-V0-IiQ" secondAttribute="bottom" constant="10" id="xOO-Sa-aLS"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1990～1992年中国恶性肿瘤三年抽样调查的意义及评恶 性肿瘤三年抽样调查的意义及评价" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFN-Ig-JHg">
+                                <rect key="frame" x="18" y="10" width="298" height="108.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" red="0.23137254900000001" green="0.26274509800000001" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lFN-Ig-JHg" firstAttribute="top" secondItem="wSI-0e-XAD" secondAttribute="top" constant="10" id="3E3-yn-eDa"/>
+                            <constraint firstAttribute="bottom" secondItem="Jvp-QW-ThP" secondAttribute="bottom" id="9eu-GB-Rd5"/>
+                            <constraint firstItem="Jvp-QW-ThP" firstAttribute="top" secondItem="lFN-Ig-JHg" secondAttribute="bottom" constant="10" id="Eub-Ix-uVg"/>
+                            <constraint firstItem="Jvp-QW-ThP" firstAttribute="leading" secondItem="wSI-0e-XAD" secondAttribute="leading" id="H1d-N5-Toh"/>
+                            <constraint firstItem="lFN-Ig-JHg" firstAttribute="leading" secondItem="wSI-0e-XAD" secondAttribute="leading" constant="18" id="RXN-m0-qVy"/>
+                            <constraint firstAttribute="trailing" secondItem="Jvp-QW-ThP" secondAttribute="trailing" id="uJT-9I-BGN"/>
+                            <constraint firstAttribute="trailing" secondItem="lFN-Ig-JHg" secondAttribute="trailing" constant="18" id="z5M-DI-Q2x"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wSI-0e-XAD" firstAttribute="leading" secondItem="Y5u-29-o21" secondAttribute="leading" id="MCS-qW-76g"/>
+                    <constraint firstAttribute="trailing" secondItem="wSI-0e-XAD" secondAttribute="trailing" id="iMI-W3-tft"/>
+                    <constraint firstAttribute="bottom" secondItem="wSI-0e-XAD" secondAttribute="bottom" id="rAm-pd-8fQ"/>
+                    <constraint firstItem="wSI-0e-XAD" firstAttribute="top" secondItem="Y5u-29-o21" secondAttribute="top" id="sIy-Ph-MCq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="sourceView" destination="ISC-V0-IiQ" id="5b4-8w-VKb"/>
+                <outlet property="titleView" destination="lFN-Ig-JHg" id="9WN-j3-hWg"/>
+                <outlet property="tradeView" destination="z6e-in-oGI" id="CsS-nR-2SX"/>
+            </connections>
+            <point key="canvasLocation" x="-20" y="118.5"/>
+        </tableViewCell>
+    </objects>
+</document>

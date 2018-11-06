@@ -1,0 +1,6 @@
+framework module JXFMDBHelper {
+  umbrella header "JXFMDBHelper-umbrella.h"
+
+  export *
+  module * { export * }
+}

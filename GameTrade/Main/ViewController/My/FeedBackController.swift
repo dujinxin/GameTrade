@@ -1,0 +1,223 @@
+//
+//  FeedBackController.swift
+//  GameTrade
+//
+//  Created by 杜进新 on 2018/10/20.
+//  Copyright © 2018年 dujinxin. All rights reserved.
+//
+
+import UIKit
+import TZImagePickerController
+
+class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var textField: JXPlaceHolderTextView!
+    @IBOutlet weak var uploadImageView: JXUploadImageView!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+    
+    
+    var completion : ((Dictionary<String,Any>)->())?
+    
+    var imageDataArray = Array<Data>()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.title = "提交反馈"
+        
+        //self.textField.backgroundColor = UIColor.clear
+        
+        self.backView.backgroundColor = UIColor.rgbColor(rgbValue: 0x393948)
+        self.backView.layer.cornerRadius = 4
+        
+        self.textField.placeHolderText = "填写您的问题"
+        self.textField.textColor = JXTextColor
+        self.textField.delegate = self
+       
+        self.uploadImageView.leadingTrailingMargin = 0
+        self.uploadImageView.topMargin = 15
+        self.uploadImageView.bottomMargin = 15
+        
+        self.uploadImageView.updateConstraintsIfNeeded()
+        
+        
+        //self.uploadImageView.leftImageView.backgroundColor = UIColor.red
+        //self.uploadImageView.leftImageView.image = UIImage(named: "img-upload")
+        self.uploadImageView.imageTitle = "img-upload"
+        self.uploadImageView.style = .edit
+        self.uploadImageView.backgroundColor = UIColor.clear
+        
+        self.uploadImageView.selectImagesBlock = { index in
+            
+            let alert = UIAlertController(title: "图片选择", message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "从相册中选择（最多三张）", style: .destructive, handler: { (alertAction) in
+                self.selectAlbumImage()
+            }))
+            alert.addAction(UIAlertAction(title: "拍照", style: .destructive, handler: { (alertAction) in
+                self.takePhotoImage()
+            }))
+            alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (alertAction) in
+                //
+            }))
+            self.present(alert, animated: true, completion: {
+                //
+            })
+        }
+        self.uploadImageView.deleteImagesBlock = { index in
+            //
+            self.imageDataArray.remove(at: index)
+        }
+        
+        self.submitButton.isEnabled = false
+        self.submitButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
+        self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+        
+        self.submitButton.layer.cornerRadius = 2
+        self.submitButton.layer.shadowOpacity = 1
+        self.submitButton.layer.shadowRadius = 10
+        self.submitButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+        self.submitButton.layer.shadowColor = JX10101aShadowColor.cgColor
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(placeHolderTextChange(nofiy:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+    }
+    override func updateViewConstraints() {
+        
+        self.topConstraint.constant = kNavStatusHeight + 24
+        self.bottomConstraint.constant = kBottomMaginHeight + 20
+        
+        super.updateViewConstraints()
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        self.removeObserver(self, forKeyPath: "text")
+    }
+    @IBAction func submit() {
+        print("send")
+        self.showMBProgressHUD()
+        for i in 0..<self.imageDataArray.count {
+            let _ = FileManager.insert(data: self.imageDataArray[i], toFile: "photo\(i + 1).jpg")
+        }
+        let vm = FeedBackVM()
+        vm.feedBack(param: ["content":self.textField.text!]) { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
+            ViewManager.showNotice(msg)
+            for i in 0..<self.imageDataArray.count {
+                let _ = FileManager.delete(fromFile: "photo\(i + 1).jpg")
+            }
+            if isSuc {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    func selectAlbumImage() {
+        
+        var imageArray = self.uploadImageView.imageArray ?? Array<Any>()
+        
+        
+        let imagePickerVC = TZImagePickerController.init(maxImagesCount: 3 - (self.uploadImageView.imageArray?.count)!, delegate: self)
+        imagePickerVC?.allowTakePicture = false
+        imagePickerVC?.allowPickingImage = true
+        imagePickerVC?.allowPickingOriginalPhoto = true
+        imagePickerVC?.sortAscendingByModificationDate = true
+        
+        imagePickerVC?.didFinishPickingPhotosHandle = { (images, assets, isSelectOriginalPhoto) -> () in
+            
+            if let images = images {
+                images.forEach({ (image) in
+                    imageArray.append(image)
+                })
+                self.uploadImageView.imageArray = imageArray
+            }
+            
+            for asset in assets! {
+                
+                PHImageManager.default().requestImageData(for: asset as! PHAsset, options: nil, resultHandler: { (data, uti, orientation, dict) in
+                    
+                    guard let data = data else{
+                        return
+                    }
+                    //成功后才加入。。。待完善    请求失败时与外部的image数组不同步
+                    self.imageDataArray.append(data)
+                    
+                    if data.count > 5 * 1024 * 1024 {
+                        print("图片大于5M")
+                    }
+                })
+            }
+        }
+        self.present(imagePickerVC!, animated: true, completion: nil)
+    }
+    func takePhotoImage() {
+        let vc = UIImagePickerController.init()
+        vc.delegate = self
+        vc.sourceType = .camera
+        self.present(vc, animated: true, completion: nil)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        let newImage = UIImage.image(originalImage: image, to: UIScreen.main.bounds.width)
+        
+        if let im = newImage {
+            self.uploadImageView.imageArray?.append(im)
+            
+            if let data = UIImageJPEGRepresentation(im, 0.01){
+                self.imageDataArray.append(data)
+            }
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension FeedBackController : UITextViewDelegate,UITextFieldDelegate{
+    
+    //MARK:UITextViewDelegate
+    func textViewDidChange(_ textView: UITextView) {
+        
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        //限制字数不可以限制回车，删除键，所以要优先响应，然后再限制
+        //删除键
+        if text == "" {
+            return true
+        }
+        //return键 收键盘
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        //限制输入字符数
+        if let string = textView.text, string.count >= 200 {
+            textView.text = String(string.prefix(upTo: string.index(string.startIndex, offsetBy: 200)))
+            //textView.text = string.substring(to: string.index(string.startIndex, offsetBy: 500))
+            ViewManager.showNotice("字符个数不能大于\(200)")
+            return false
+        }
+        return true
+    }
+    
+    /// 添加通知，是为了确保用户修改值时placeHolder正常显示
+    @objc func placeHolderTextChange(nofiy:Notification) {
+        
+        if self.textField.text.isEmpty == true {
+            self.submitButton.isEnabled = false
+            self.submitButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
+            self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+        }else{
+            self.submitButton.isEnabled = true
+            self.submitButton.setTitleColor(JXTextColor, for: .normal)
+            self.submitButton.backgroundColor = JXOrangeColor
+        }
+    }
+}
