@@ -60,17 +60,13 @@ class BankListController: JXTableViewController {
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
         
         self.tableView?.estimatedRowHeight = 44
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
+        self.tableView?.rowHeight = 44//UITableViewAutomaticDimension
         self.tableView?.separatorStyle = .singleLine
         self.tableView?.separatorColor = JXSeparatorColor
         self.tableView?.separatorInset = UIEdgeInsetsMake(0, 24, 0, 0)
      
         self.tableView?.register(UINib(nibName: "BankCell", bundle: nil), forCellReuseIdentifier: labelCellIdentifier)
-        
-//        self.button.frame = CGRect(x: 30, y: 0, width: kScreenWidth - 30 * 2, height: 44)
-//        let footer = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 44))
-//        footer.addSubview(self.button)
-//        self.tableView?.tableFooterView = footer
+    
         
         self.tableView?.tableHeaderView = self.searchVC.searchBar
         
@@ -87,42 +83,65 @@ class BankListController: JXTableViewController {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return self.vm.bankIndexList.count
+        if self.searchVC.isActive {
+            return 1
+        } else {
+            return self.vm.bankIndexList.count
+        }
     }
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return self.vm.bankIndexList[section]
-//    }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let contentView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 40))
-        contentView.backgroundColor = UIColor.rgbColor(rgbValue: 0x24242f)
-        
-        let label = UILabel(frame: CGRect(x: 24, y: 0, width: 100, height: 40))
-        label.textColor = JXTextColor
-        label.text = self.vm.bankIndexList[section]
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textAlignment = .left
-        contentView.addSubview(label)
-        
-        return contentView
+        if self.searchVC.isActive {
+            return UIView()
+        } else {
+            let contentView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 40))
+            contentView.backgroundColor = UIColor.rgbColor(rgbValue: 0x24242f)
+            
+            let label = UILabel(frame: CGRect(x: 24, y: 0, width: 100, height: 40))
+            label.textColor = JXTextColor
+            label.text = self.vm.bankIndexList[section]
+            label.font = UIFont.systemFont(ofSize: 14)
+            label.textAlignment = .left
+            contentView.addSubview(label)
+            
+            return contentView
+        }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        if self.searchVC.isActive {
+            return 0.01
+        } else {
+            return 40
+        }
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        let key = self.vm.bankIndexList[section]
-        let arr = self.vm.bankFormatDictionary[key]
-        return arr?.count ?? 0
+        if self.searchVC.isActive {
+            
+            return self.vm.searchResultEntity.list.count
+        } else {
+            let key = self.vm.bankIndexList[section]
+            let arr = self.vm.bankFormatDictionary[key]
+            return arr?.count ?? 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: labelCellIdentifier, for: indexPath) as! BankCell
-        let key = self.vm.bankIndexList[indexPath.section]
-        let arr = self.vm.bankFormatDictionary[key]
-        let entity = arr?[indexPath.row]
-        cell.nameLabel.text = entity?.name
-        cell.infoLabel.text = entity?.pinyin
+        
+        if self.searchVC.isActive {
+            let entity = self.vm.searchResultEntity.list[indexPath.row]
+            cell.nameLabel.text = entity.name
+            cell.infoLabel.text = entity.pinyin
+        } else {
+            
+            let key = self.vm.bankIndexList[indexPath.section]
+            let arr = self.vm.bankFormatDictionary[key]
+            let entity = arr?[indexPath.row]
+            cell.nameLabel.text = entity?.name
+            cell.infoLabel.text = entity?.pinyin
+        }
         
         return cell
     }
@@ -130,15 +149,27 @@ class BankListController: JXTableViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let key = self.vm.bankIndexList[indexPath.section]
-        
-        if
-            let arr = self.vm.bankFormatDictionary[key],
-            let block = selectBlock {
-            let entity = arr[indexPath.row]
-            block(entity)
+        if self.searchVC.isActive {
+            
+            let entity = self.vm.searchResultEntity.list[indexPath.row]
+            
+            if let block = selectBlock {
+                block(entity)
+            }
+            self.searchVC.dismiss(animated: false, completion: nil)
+        } else {
+            let key = self.vm.bankIndexList[indexPath.section]
+            
+            if
+                let arr = self.vm.bankFormatDictionary[key],
+                let block = selectBlock {
+                let entity = arr[indexPath.row]
+                block(entity)
+            }
         }
-        self.dismiss(animated: true) {}
+        
+        self.dismiss(animated: true, completion: nil)
+        print("T##items: Any...##Any")
     }
     
     @objc func close() {
@@ -147,6 +178,20 @@ class BankListController: JXTableViewController {
 }
 extension BankListController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+        if self.vm.searchResultEntity.list.count > 0 {
+            self.vm.searchResultEntity.list.removeAll()
+        }
+        if let text = searchController.searchBar.text {
+            for entity in self.vm.bankListEntity.list {
+                if
+                    let str = entity.pinyin,
+                    let range = str.lowercased().range(of: text.lowercased()), range.isEmpty == false {
+                    
+                    self.vm.searchResultEntity.list.append(entity)
+                    
+                }
+            }
+        }
+        self.tableView?.reloadData()
     }
 }

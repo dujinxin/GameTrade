@@ -106,13 +106,16 @@ class NetPayController: BaseViewController {
         self.showMBProgressHUD()
         self.vm.editPay(id: id, type: type, account: account, name: userName) { (_, msg, isSuc) in
             self.hideMBProgressHUD()
-            ViewManager.showNotice(msg)
+            
             let _ = UIImage.delete(name: "userImage.jpg")
             if isSuc {
                 if let block = self.backBlock {
                     block()
                 }
+                ViewManager.showImageNotice("设置成功")
                 self.navigationController?.popViewController(animated: true)
+            } else {
+                ViewManager.showNotice(msg)
             }
         }
     }

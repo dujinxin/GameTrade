@@ -18,15 +18,21 @@ class TradeEntity: BaseModel {
     @objc var type : Int = 0 //1:买币，2:卖币，3:支付，4:收款，5:转账，6:手续费，当type为6时不可查看详情
     @objc var amount : Int = 0
     @objc var bizId : String?
-    @objc var recordType : String?
-    @objc var remark : String?
+    //@objc var remark : String?
+    @objc var createTime : String?
+    @objc var webName : String?
+    
 }
 class TradeDetailEntity: BaseModel {
     @objc var account : String?
-    @objc var goodsName : String?
     @objc var price : Double = 0
     @objc var amount : Double = 0
-    @objc var recordType : Int = 0
-    @objc var type : String?
+   
+    @objc var type : Int = 0
+    @objc var typeName : String?
     @objc var createTime : String?
+    @objc var webName : String?
+    @objc var orderNumber : String?
+    @objc var qrCode : String?
+    
 }

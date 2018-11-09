@@ -24,10 +24,18 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
+    @IBOutlet weak var codeButton: UIButton!
+    
+    @IBOutlet weak var bankNameLabel: UILabel!
+    @IBOutlet weak var codeLeftLabel: UILabel!
+    @IBOutlet weak var codeWidthConstraint: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var remarkLabel: UILabel!
     
     @IBOutlet weak var cancelLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
-    @IBOutlet weak var remarkLabel: UILabel!
+    
     
     @IBOutlet weak var shopView: UIView!
     @IBOutlet weak var shopImageView: UIImageView!
@@ -35,6 +43,7 @@ class OrderBuyingDetailCell: UITableViewCell {
     
     @IBOutlet weak var shopLevelButton: UIButton!
     
+    var showCodeBlock : (()->())?
     var cancelBlock : (()->())?
     var payBlock : (()->())?
     var timeOutBlock : (()->())?
@@ -89,7 +98,7 @@ class OrderBuyingDetailCell: UITableViewCell {
                 self.orderStatusLabel.text = "待付款"
                 self.orderInfoLabel.text = "您已成功下单，请尽快付款"
             } else if entity?.orderStatus == 2 {
-                self.orderStatusLabel.text = "待确认付款"
+                self.orderStatusLabel.text = "待卖家确认"
             } else if entity?.orderStatus == 3 {
                 self.orderStatusLabel.text = "已完成"
             } else {
@@ -106,9 +115,15 @@ class OrderBuyingDetailCell: UITableViewCell {
                 self.payNameLabel.text = "支付宝"
             } else if entity?.payType == 2 {
                 self.payNameLabel.text = "微信"
-            } else {
+            } else if entity?.payType == 3 {
                 self.payNameLabel.text = "银行卡"
+                
+                self.codeLeftLabel.text = "开户行"
+                self.bankNameLabel.text = entity?.bank
+                self.codeWidthConstraint.constant = 0.01
+                self.codeButton.isHidden = true
             }
+            
             
             self.userNameLabel.text = entity?.name
             self.accoundLabel.text = entity?.account

@@ -138,6 +138,7 @@ class TransferViewController: BaseViewController {
             gradientLayer.startPoint = CGPoint(x: 0, y: 0)
             gradientLayer.endPoint = CGPoint(x: 0, y: 1)
             gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            gradientLayer.cornerRadius = 5
             backgroundView.layer.insertSublayer(gradientLayer, at: 0)
             
             

@@ -44,3 +44,9 @@ class MerchantOrderEntity: BaseModel {
     @objc var payType : Int = 1
   
 }
+class SellInfoEntity: BaseModel {
+    @objc var balance : Double = 0
+    @objc var saleRate : Double = 0
+    
+    @objc var list = Array<PayEntity>()
+}

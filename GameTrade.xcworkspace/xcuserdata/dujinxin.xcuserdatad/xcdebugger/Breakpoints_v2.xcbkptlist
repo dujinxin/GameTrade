@@ -25,30 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GameTrade/Tool/JXNetwork/JXRequest.swift"
-            timestampString = "563101524.781333"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "requestSuccess(responseData:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "GameTrade/Main/ViewController/Wallet/property/TransferViewController.swift"
-            timestampString = "563022132.862648"
+            timestampString = "563448058.9160039"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "709"
-            endingLineNumber = "709"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "710"
+            endingLineNumber = "710"
+            landmarkName = "confirmTransfer()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameTrade/Main/ViewController/Wallet/property/TransferViewController.swift"
-            timestampString = "563022132.862754"
+            timestampString = "563448058.916199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "400"
-            endingLineNumber = "400"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "401"
+            endingLineNumber = "401"
+            landmarkName = "customViewInit(number:address:gas:remark:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,12 +73,12 @@
                   symbolName = "GameTrade.TransferViewController.customViewInit(number: Swift.String, address: Swift.String, gas: Swift.String, remark: Swift.String) -&gt; __C.UIView"
                   moduleName = "GameTrade"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dujinxin/Desktop/GameTrade/GameTrade/Main/ViewController/Wallet/property/TransferViewController.swift"
-                  timestampString = "563101373.223949"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/ViewController/Wallet/property/TransferViewController.swift"
+                  timestampString = "563441778.796495"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "400"
-                  endingLineNumber = "400"
+                  startingLineNumber = "401"
+                  endingLineNumber = "401"
                   offsetFromSymbolStart = "4969">
                </Location>
                <Location
@@ -104,12 +88,12 @@
                   symbolName = "closure #3 (Swift.String, Swift.Bool) -&gt; () in GameTrade.TransferViewController.customViewInit(number: Swift.String, address: Swift.String, gas: Swift.String, remark: Swift.String) -&gt; __C.UIView"
                   moduleName = "GameTrade"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dujinxin/Desktop/GameTrade/GameTrade/Main/ViewController/Wallet/property/TransferViewController.swift"
-                  timestampString = "563101373.2268699"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/ViewController/Wallet/property/TransferViewController.swift"
+                  timestampString = "563441778.79905"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "402"
-                  endingLineNumber = "402"
+                  startingLineNumber = "403"
+                  endingLineNumber = "403"
                   offsetFromSymbolStart = "46">
                </Location>
             </Locations>
@@ -138,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameTrade/Main/ViewModel/PayVM.swift"
-            timestampString = "563018134.400288"
+            timestampString = "563448058.916376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "customConstruct()"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameTrade/Main/ViewModel/PayVM.swift"
-            timestampString = "563018134.400344"
+            timestampString = "563448058.9164619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "editPay(id:type:account:name:completion:)"
             landmarkType = "7">
             <Locations>
@@ -169,12 +153,12 @@
                   symbolName = "default argument 0 of GameTrade.WeChatOrAliVM.editPay(id: Swift.String, type: Swift.Int, account: Swift.String, name: Swift.String, completion: (Swift.Optional&lt;Any&gt;, Swift.String, Swift.Bool) -&gt; ()) -&gt; ()"
                   moduleName = "GameTrade"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dujinxin/Desktop/GameTrade/GameTrade/Main/ViewModel/PayVM.swift"
-                  timestampString = "563101373.239747"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/ViewModel/PayVM.swift"
+                  timestampString = "563441778.813557"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
                   offsetFromSymbolStart = "4">
                </Location>
                <Location
@@ -184,12 +168,12 @@
                   symbolName = "GameTrade.WeChatOrAliVM.editPay(id: Swift.String, type: Swift.Int, account: Swift.String, name: Swift.String, completion: (Swift.Optional&lt;Any&gt;, Swift.String, Swift.Bool) -&gt; ()) -&gt; ()"
                   moduleName = "GameTrade"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dujinxin/Desktop/GameTrade/GameTrade/Main/ViewModel/PayVM.swift"
-                  timestampString = "563101373.241598"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/ViewModel/PayVM.swift"
+                  timestampString = "563441778.815751"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "152"
-                  endingLineNumber = "152"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
                   offsetFromSymbolStart = "87">
                </Location>
             </Locations>
@@ -202,27 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameTrade/Main/ViewModel/PayVM.swift"
-            timestampString = "563018134.400389"
+            timestampString = "563448058.916538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "customConstruct()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GameTrade/Main/ViewModel/PayVM.swift"
-            timestampString = "563018134.400432"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "customConstruct()"
             landmarkType = "7">
             <Locations>
@@ -233,12 +201,12 @@
                   symbolName = "GameTrade.WeChatOrAliVM.customConstruct() -&gt; Swift.Optional&lt;Swift.Optional&lt;(__C.AFMultipartFormData) -&gt; ()&gt;&gt;"
                   moduleName = "GameTrade"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dujinxin/Desktop/GameTrade/GameTrade/Main/ViewModel/PayVM.swift"
-                  timestampString = "563101373.24993"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/ViewModel/PayVM.swift"
+                  timestampString = "563441778.821798"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "159"
-                  endingLineNumber = "159"
+                  startingLineNumber = "162"
+                  endingLineNumber = "162"
                   offsetFromSymbolStart = "70">
                </Location>
                <Location
@@ -248,12 +216,12 @@
                   symbolName = "closure #1 (__C.AFMultipartFormData) -&gt; () in GameTrade.WeChatOrAliVM.customConstruct() -&gt; Swift.Optional&lt;Swift.Optional&lt;(__C.AFMultipartFormData) -&gt; ()&gt;&gt;"
                   moduleName = "GameTrade"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dujinxin/Desktop/GameTrade/GameTrade/Main/ViewModel/PayVM.swift"
-                  timestampString = "563101373.251712"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/ViewModel/PayVM.swift"
+                  timestampString = "563441778.823999"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "160"
-                  endingLineNumber = "160"
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
@@ -266,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameTrade/Main/ViewController/My/NetPayController.swift"
-            timestampString = "563018134.400489"
+            timestampString = "563448058.916618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "107"
@@ -281,8 +249,8 @@
                   symbolName = "GameTrade.NetPayController.submit() -&gt; ()"
                   moduleName = "GameTrade"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dujinxin/Desktop/GameTrade/GameTrade/Main/ViewController/My/NetPayController.swift"
-                  timestampString = "563101373.256328"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/ViewController/My/NetPayController.swift"
+                  timestampString = "563441778.8288701"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
@@ -296,8 +264,8 @@
                   symbolName = "closure #1 (Swift.Optional&lt;Any&gt;, Swift.String, Swift.Bool) -&gt; () in GameTrade.NetPayController.submit() -&gt; ()"
                   moduleName = "GameTrade"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/dujinxin/Desktop/GameTrade/GameTrade/Main/ViewController/My/NetPayController.swift"
-                  timestampString = "563101373.258015"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/ViewController/My/NetPayController.swift"
+                  timestampString = "563441778.830945"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "108"
@@ -313,13 +281,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GameTrade/Main/View/Home/HomeReusableView.swift"
-            timestampString = "563170125.889438"
+            filePath = "GameTrade/Main/ViewController/ScanViewController.swift"
+            timestampString = "563448058.916688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "scanTap(tap:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -329,13 +297,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GameTrade/Tool/CommonManager/CountDown.swift"
-            timestampString = "563183920.0827121"
+            filePath = "GameTrade/Main/ViewController/My/BankListController.swift"
+            timestampString = "563448058.91677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "countDown()"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -345,13 +313,157 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "GameTrade/Tool/CommonManager/CountDown.swift"
-            timestampString = "563183920.0828331"
+            filePath = "GameTrade/Main/ViewController/My/BankListController.swift"
+            timestampString = "563448058.916845"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "countDown()"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameTrade/Main/ViewController/My/BankListController.swift"
+            timestampString = "563448058.916908"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "updateSearchResults(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameTrade/Main/ViewController/My/BankListController.swift"
+            timestampString = "563448058.91697"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameTrade/Main/View/Order/OrderSelledDetailCell.swift"
+            timestampString = "563448058.917038"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GameTrade.OrderSelledDetailCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; GameTrade.OrderSelledDetailCell"
+                  moduleName = "GameTrade"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/View/Order/OrderSelledDetailCell.swift"
+                  timestampString = "563441778.854812"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "1536">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GameTrade.OrderSelledDetailCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GameTrade.OrderSelledDetailCell&gt;"
+                  moduleName = "GameTrade"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dujinxin/github/project/GameTrade/GameTrade/Main/View/Order/OrderSelledDetailCell.swift"
+                  timestampString = "563441778.856815"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "1507">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameTrade/Main/View/Order/OrderSelledDetailCell.swift"
+            timestampString = "563448058.917109"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "entity"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameTrade/Main/ViewController/Home/PutUpViewController.swift"
+            timestampString = "563448058.917179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "678"
+            endingLineNumber = "678"
+            landmarkName = "textChange(notify:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameTrade/Main/ViewController/Home/SellCollectionController.swift"
+            timestampString = "563448058.917244"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "sell()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GameTrade/Main/ViewModel/SellVM.swift"
+            timestampString = "563448058.9173191"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "sellInfo(completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

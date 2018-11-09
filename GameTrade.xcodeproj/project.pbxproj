@@ -118,7 +118,7 @@
 		352D122D215E159D0053AD70 /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114F215E159C0053AD70 /* CommenModel.swift */; };
 		352D122E215E159D0053AD70 /* BuyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1150215E159C0053AD70 /* BuyModel.swift */; };
 		352D122F215E159D0053AD70 /* PaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1151215E159C0053AD70 /* PaperModel.swift */; };
-		352D1230215E159D0053AD70 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1152215E159C0053AD70 /* TaskModel.swift */; };
+		352D1230215E159D0053AD70 /* PayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1152215E159C0053AD70 /* PayModel.swift */; };
 		352D1231215E159D0053AD70 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1153215E159C0053AD70 /* ArticleModel.swift */; };
 		352D1232215E159D0053AD70 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1154215E159C0053AD70 /* UserModel.swift */; };
 		352D1233215E159D0053AD70 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1155215E159C0053AD70 /* HomeModel.swift */; };
@@ -213,6 +213,10 @@
 		3595B2B521906C7B00494929 /* OrderSelledDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2B321906C7B00494929 /* OrderSelledDetailCell.swift */; };
 		3595B2B621906C7B00494929 /* OrderSelledDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3595B2B421906C7B00494929 /* OrderSelledDetailCell.xib */; };
 		3595B2B82191412100494929 /* OrderDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2B72191412100494929 /* OrderDetailController.swift */; };
+		3595B2BA21918CAA00494929 /* JXNoticeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2B921918CAA00494929 /* JXNoticeImageView.swift */; };
+		3595B2BC21957FDC00494929 /* NewSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2BB21957FDC00494929 /* NewSellController.swift */; };
+		3595B2BF219580DC00494929 /* SellTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2BD219580DC00494929 /* SellTableCell.swift */; };
+		3595B2C0219580DC00494929 /* SellTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3595B2BE219580DC00494929 /* SellTableCell.xib */; };
 		35ABF9E2218C2AFB00ECD3C9 /* ConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E1218C2AFB00ECD3C9 /* ConfirmController.swift */; };
 		35ABF9E4218C480300ECD3C9 /* OrderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E3218C480300ECD3C9 /* OrderVM.swift */; };
 		35ABF9E6218C483F00ECD3C9 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E5218C483F00ECD3C9 /* OrderModel.swift */; };
@@ -348,7 +352,7 @@
 		352D114F215E159C0053AD70 /* CommenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommenModel.swift; sourceTree = "<group>"; };
 		352D1150215E159C0053AD70 /* BuyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyModel.swift; sourceTree = "<group>"; };
 		352D1151215E159C0053AD70 /* PaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperModel.swift; sourceTree = "<group>"; };
-		352D1152215E159C0053AD70 /* TaskModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		352D1152215E159C0053AD70 /* PayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayModel.swift; sourceTree = "<group>"; };
 		352D1153215E159C0053AD70 /* ArticleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		352D1154215E159C0053AD70 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		352D1155215E159C0053AD70 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
@@ -444,6 +448,10 @@
 		3595B2B321906C7B00494929 /* OrderSelledDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSelledDetailCell.swift; sourceTree = "<group>"; };
 		3595B2B421906C7B00494929 /* OrderSelledDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderSelledDetailCell.xib; sourceTree = "<group>"; };
 		3595B2B72191412100494929 /* OrderDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailController.swift; sourceTree = "<group>"; };
+		3595B2B921918CAA00494929 /* JXNoticeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXNoticeImageView.swift; sourceTree = "<group>"; };
+		3595B2BB21957FDC00494929 /* NewSellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSellController.swift; sourceTree = "<group>"; };
+		3595B2BD219580DC00494929 /* SellTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellTableCell.swift; sourceTree = "<group>"; };
+		3595B2BE219580DC00494929 /* SellTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellTableCell.xib; sourceTree = "<group>"; };
 		35ABF9E1218C2AFB00ECD3C9 /* ConfirmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmController.swift; sourceTree = "<group>"; };
 		35ABF9E3218C480300ECD3C9 /* OrderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderVM.swift; sourceTree = "<group>"; };
 		35ABF9E5218C483F00ECD3C9 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
@@ -746,7 +754,7 @@
 				35ABF9FB218DC10900ECD3C9 /* SellModel.swift */,
 				35ABF9E5218C483F00ECD3C9 /* OrderModel.swift */,
 				352D1151215E159C0053AD70 /* PaperModel.swift */,
-				352D1152215E159C0053AD70 /* TaskModel.swift */,
+				352D1152215E159C0053AD70 /* PayModel.swift */,
 				352D1153215E159C0053AD70 /* ArticleModel.swift */,
 				352D1154215E159C0053AD70 /* UserModel.swift */,
 				352D1155215E159C0053AD70 /* HomeModel.swift */,
@@ -794,6 +802,8 @@
 				35018B152175BB9C009F061C /* MerchantCell.xib */,
 				35018B1C2175CCA5009F061C /* SellCell.swift */,
 				35018B1D2175CCA5009F061C /* SellCell.xib */,
+				3595B2BD219580DC00494929 /* SellTableCell.swift */,
+				3595B2BE219580DC00494929 /* SellTableCell.xib */,
 				35018B2E2177303B009F061C /* MerchantReusableView.swift */,
 				35018B2F2177303B009F061C /* MerchantReusableView.xib */,
 				3512759A2188763D0057C927 /* MerchantSubCell.swift */,
@@ -813,6 +823,7 @@
 				352D1167215E159C0053AD70 /* JXSelectView.swift */,
 				352D1168215E159C0053AD70 /* JXActionView.swift */,
 				352D1169215E159C0053AD70 /* JXNoticeView.swift */,
+				3595B2B921918CAA00494929 /* JXNoticeImageView.swift */,
 				352D116A215E159C0053AD70 /* JXTopBarView.swift */,
 				352D116B215E159C0053AD70 /* JXHorizontalView.swift */,
 				352D116C215E159C0053AD70 /* JXInputTextView.swift */,
@@ -915,6 +926,7 @@
 				35018B182175C129009F061C /* BuyCollectionController.swift */,
 				351275962188053B0057C927 /* BuySubController.swift */,
 				3595B297218F0C3100494929 /* NewBuyController.swift */,
+				3595B2BB21957FDC00494929 /* NewSellController.swift */,
 				35018B1A2175CC8A009F061C /* SellCollectionController.swift */,
 				35018B3221773BA1009F061C /* MerchantViewController.swift */,
 				35018B202175DCF5009F061C /* PutUpViewController.swift */,
@@ -1159,6 +1171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3595B2AE21906C5300494929 /* OrderBuyedDetailCell.xib in Resources */,
+				3595B2C0219580DC00494929 /* SellTableCell.xib in Resources */,
 				352D123C215E159D0053AD70 /* HomeReusableView.xib in Resources */,
 				3512758B218710EB0057C927 /* LabelCell.xib in Resources */,
 				352D1263215E159D0053AD70 /* ArticleCell.xib in Resources */,
@@ -1303,12 +1316,14 @@
 				352D11D1215E159C0053AD70 /* JXCollectionViewController.swift in Sources */,
 				352D121B215E159D0053AD70 /* Encryption.swift in Sources */,
 				35018B1B2175CC8A009F061C /* SellCollectionController.swift in Sources */,
+				3595B2BF219580DC00494929 /* SellTableCell.swift in Sources */,
 				35018B4D217B1EB6009F061C /* HelpFeedBackController.swift in Sources */,
 				352D120C215E159D0053AD70 /* UIColor+Extension.swift in Sources */,
 				352D10AF215E14FA0053AD70 /* ViewController.swift in Sources */,
 				352D125D215E159D0053AD70 /* PropertyViewCell.swift in Sources */,
 				352D1216215E159D0053AD70 /* JXNetworkError.swift in Sources */,
 				352D128A215E159D0053AD70 /* ExportPKViewController.swift in Sources */,
+				3595B2BC21957FDC00494929 /* NewSellController.swift in Sources */,
 				352D1293215E159D0053AD70 /* ChainInfoController.swift in Sources */,
 				35ABF9E2218C2AFB00ECD3C9 /* ConfirmController.swift in Sources */,
 				352D11E4215E159C0053AD70 /* RegisterViewController.swift in Sources */,
@@ -1349,7 +1364,7 @@
 				352D125E215E159D0053AD70 /* ArticleCell.swift in Sources */,
 				352D1294215E159D0053AD70 /* PaperDetailController.swift in Sources */,
 				352D125A215E159D0053AD70 /* JXActionCell.swift in Sources */,
-				352D1230215E159D0053AD70 /* TaskModel.swift in Sources */,
+				352D1230215E159D0053AD70 /* PayModel.swift in Sources */,
 				352D1225215E159D0053AD70 /* MyVM.swift in Sources */,
 				352D1252215E159D0053AD70 /* ImageTitleCell.swift in Sources */,
 				352D1231215E159D0053AD70 /* ArticleModel.swift in Sources */,
@@ -1393,6 +1408,7 @@
 				352D124B215E159D0053AD70 /* MyCell.swift in Sources */,
 				35018B302177303B009F061C /* MerchantReusableView.swift in Sources */,
 				352D1235215E159D0053AD70 /* PaperDetailTopCell.swift in Sources */,
+				3595B2BA21918CAA00494929 /* JXNoticeImageView.swift in Sources */,
 				352D126F215E159D0053AD70 /* PersonInfoViewController.swift in Sources */,
 				35ABF9E4218C480300ECD3C9 /* OrderVM.swift in Sources */,
 				352D120E215E159D0053AD70 /* UIImage+Extension.swift in Sources */,

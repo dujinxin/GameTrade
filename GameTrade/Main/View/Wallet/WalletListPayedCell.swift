@@ -21,11 +21,14 @@ class WalletListPayedCell: UITableViewCell {
     
     var entity : TradeEntity? {
         didSet {
-            self.MerchantNameLabel.text = entity?.remark
-            self.methodLabel.text = entity?.recordType
-            //self.timeLabel.text =
-            //self.numberLabel.text = entity?.amount
-            //self.valueLabel.text =
+            //1:买币，2:卖币，3:支付，4:收款，5:转账，6:手续费，当type为6时不可查看详情
+            self.MerchantNameLabel.text = entity?.webName
+            self.statusLabel.text = ""
+            self.methodLabel.text = "支付"
+            self.numberLabel.text = "\(entity?.amount ?? 0) \(configuration_coinName)"
+            self.timeLabel.text = entity?.createTime
+            
+            self.valueLabel.text = "=\(fabs(Double(entity?.amount ?? 0)) * configuration_coinPrice) \(configuration_valueType)"
         }
     }
     override func awakeFromNib() {
@@ -38,8 +41,8 @@ class WalletListPayedCell: UITableViewCell {
         self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
         self.mainContentView.layer.cornerRadius = 4
         
-        self.valueLabel.alpha = 0.5
-        self.timeLabel.alpha = 0.5
+        self.valueLabel.textColor = JXText50Color
+        self.timeLabel.textColor = JXText50Color
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

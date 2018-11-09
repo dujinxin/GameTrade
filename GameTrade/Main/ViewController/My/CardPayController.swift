@@ -82,12 +82,15 @@ class CardPayController: BaseViewController {
         self.showMBProgressHUD()
         self.vm.editPay(id: id, type: 3, bank: bankName, account: number, name: userName) { (_, msg, isSuc) in
             self.hideMBProgressHUD()
-            ViewManager.showNotice(msg)
+            
             if isSuc {
                 if let block = self.backBlock {
                     block()
                 }
+                ViewManager.showImageNotice("设置成功")
                 self.navigationController?.popViewController(animated: true)
+            } else {
+                ViewManager.showNotice(msg)
             }
         }
     }

@@ -89,65 +89,34 @@ extension WalletRecordListController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let entity = self.vm.tradeListEntity.listArray[indexPath.row]
         //1:买币，2:卖币，3:支付，4:收款，5:转账，6:手续费，当type为6时不可查看详情
-//        if entity.type == 1 {
-//
-//        } else if entity.type == 1 {
-//
-//        } else if entity.type == 1 {
-//
-//        } else if entity.type == 1 {
-//
-//        } else if entity.type == 5 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierNormal, for: indexPath) as! WalletListTransferCell
-//            //        let entity = self.vm.tradeListEntity.listArray[indexPath.row]
-//            //        cell.entity = entity
-//            return cell
-//        } else {
-//
-//        }
-        if indexPath.row == 0 {
+        if entity.type == 3 {
             let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiered, for: indexPath) as! WalletListPayedCell
-            //        let entity = self.vm.tradeListEntity.listArray[indexPath.row]
-            //        cell.entity = entity
-            
             cell.entity = entity
             return cell
-        } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiering, for: indexPath) as! WalletListPayingCell
-            //        let entity = self.vm.tradeListEntity.listArray[indexPath.row]
-            //        cell.entity = entity
-            return cell
-        } else if indexPath.row == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiered, for: indexPath) as! WalletListPayedCell
-            //        let entity = self.vm.tradeListEntity.listArray[indexPath.row]
-            //        cell.entity = entity
-            return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifiered, for: indexPath) as! WalletListPayedCell
-            //        let entity = self.vm.tradeListEntity.listArray[indexPath.row]
-            //        cell.entity = entity
+            let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierNormal, for: indexPath) as! WalletListTransferCell
+            cell.entity = entity
             return cell
         }
-        
-        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         let entity = self.vm.tradeListEntity.listArray[indexPath.row]
+        
         let vc = WalletRecordDetailController()
         vc.hidesBottomBarWhenPushed = true
-        vc.tradeEntity = entity
-        if indexPath.row == 0 {
-            vc.type = .paying
-        } else if indexPath.row == 1 {
-            vc.type = .payed
-        } else if indexPath.row == 2 {
-            vc.type = .transfer
+        //vc.tradeEntity = entity
+        vc.type = entity.type
+        vc.bizId = entity.bizId ?? ""
+        //1:买币，2:卖币，3:支付，4:收款，5:转账，6:手续费，当type为6时不可查看详情
+        if entity.type == 6 {
+            return
+        } else if ( entity.type == 4 || entity.type == 5 ){
+            vc.pageType = .transfer
         } else {
-            vc.type = .payed
+            vc.pageType = .payed
         }
-
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

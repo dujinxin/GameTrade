@@ -267,7 +267,7 @@ class ConfirmController: UIViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: kScreenWidth - 80 - 24, y: 10, width: 80, height: 40)
             //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            button.setTitle("忘记密码？", for: .normal)
+            button1.setTitle("忘记密码？", for: .normal)
             
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.setTitleColor(JXOrangeColor, for: .normal)

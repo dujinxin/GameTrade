@@ -113,15 +113,6 @@ class OrderVM: BaseViewModel {
         }
     }
     
-    //卖单取消
-    func sellCancel(id: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
-        
-        JXRequest.request(url: ApiString.sellCancel.rawValue, param: ["id": id], success: { (data, msg) in
-            completion(data, msg, true)
-            
-        }) { (msg, code) in
-            completion(nil, msg, false)
-        }
-    }
+    
     
 }

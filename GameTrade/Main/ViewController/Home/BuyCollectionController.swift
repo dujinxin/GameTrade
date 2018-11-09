@@ -134,9 +134,6 @@ class BuyCollectionController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
-    }
     deinit {
         
     }
@@ -360,8 +357,9 @@ class BuyCollectionController: BaseViewController {
         rightButton.contentHorizontalAlignment = .right
         leftContentView.addSubview(rightButton)
         
-        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight, y: leftLabel4.jxTop + 15.5, width: 20, height: 20))
-        arrow.backgroundColor = JXTextColor
+        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight, y: leftLabel4.jxTop + 8.5, width: 20, height: 34))
+        arrow.backgroundColor = JXRedColor
+        arrow.image = UIImage(named: "arrowRight")
         leftContentView.addSubview(arrow)
         
         
@@ -425,18 +423,6 @@ class BuyCollectionController: BaseViewController {
             view.addSubview(button)
             
             
-            let button1 = UIButton()
-            button1.frame = CGRect(x: kScreenWidth - 80 - 24, y: 10, width: 80, height: 40)
-            //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            button.setTitle("忘记密码？", for: .normal)
-            
-            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
-            button1.contentVerticalAlignment = .center
-            button1.contentHorizontalAlignment = .right
-            //button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
-            contentView.addSubview(button1)
-            
             return view
         }()
         rightContentView.addSubview(topBarView1)
@@ -456,8 +442,9 @@ class BuyCollectionController: BaseViewController {
         button1.contentHorizontalAlignment = .left
         rightContentView.addSubview(button1)
         
-        let arrow1 = UIImageView(frame: CGRect(x: button1.jxRight, y: button1.jxTop + 15.5, width: 20, height: 20))
-        arrow1.backgroundColor = JXTextColor
+        let arrow1 = UIImageView(frame: CGRect(x: button1.jxRight, y: button1.jxTop + 8.5, width: 20, height: 34))
+        //arrow1.backgroundColor = JXTextColor
+        arrow1.image = UIImage(named: "arrowRight")
         rightContentView.addSubview(arrow1)
         
         let rightLine1 = UIView()
@@ -480,8 +467,9 @@ class BuyCollectionController: BaseViewController {
         button2.contentHorizontalAlignment = .left
         rightContentView.addSubview(button2)
         
-        let arrow2 = UIImageView(frame: CGRect(x: button1.jxRight, y: button2.jxTop + 15.5, width: 20, height: 20))
-        arrow2.backgroundColor = JXTextColor
+        let arrow2 = UIImageView(frame: CGRect(x: button1.jxRight, y: button2.jxTop + 8.5, width: 20, height: 34))
+        //arrow2.backgroundColor = JXTextColor
+        arrow2.image = UIImage(named: "arrowRight")
         rightContentView.addSubview(arrow2)
         
         let rightLine2 = UIView()
@@ -504,8 +492,9 @@ class BuyCollectionController: BaseViewController {
         button3.contentHorizontalAlignment = .left
         rightContentView.addSubview(button3)
         
-        let arrow3 = UIImageView(frame: CGRect(x: button1.jxRight, y: button3.jxTop + 15.5, width: 20, height: 20))
-        arrow3.backgroundColor = JXTextColor
+        let arrow3 = UIImageView(frame: CGRect(x: button1.jxRight, y: button3.jxTop + 8.5, width: 20, height: 34))
+        //arrow3.backgroundColor = JXTextColor
+        arrow3.image = UIImage(named: "arrowRight")
         rightContentView.addSubview(arrow3)
         
         let rightLine3 = UIView()

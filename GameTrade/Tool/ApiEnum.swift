@@ -26,6 +26,8 @@ enum ApiString : String {
     case homeInfo =                  "/planA/home/homeInfo"                //首页
     case homeNotice =                "/planA/common/notice"                //公告
     
+    case scanPay =                   "/planA/order/scanPay"                //扫码支付
+    
     case buyList =                   "/planA/agent/adList"                 //买单列表
     case buyQuick =                  "/planA/order/fastBuy"                //快捷购买
     case buyNormal =                 "/planA/order/adBuy"                  //普通购买
@@ -34,6 +36,7 @@ enum ApiString : String {
     
     //用户
     case sellList =                  "/planA/ad/list"                      //卖单列表
+    case sellInfo =                  "/planA/ad/accountInfo"               //余额，收款账户查询
     case sellCreate =                "/planA/ad/create"                    //卖单创建
     
     case transferCoin =              "/planA/wallet/transfer"              //发币
@@ -45,7 +48,7 @@ enum ApiString : String {
     
     case buyCancel =                 "/planA/order/cancel"                 //买单取消
     case buyConfirm =                "/planA/order/payConfirm"             //买单付款确认
-    case sellCancel =                "/planA/ad/delete"                    //卖单取消
+    case sellDelete =                "/planA/ad/delete"                    //卖单取消
     case sellConfirm =               "/planA/order/receiptConfirm"         //卖单付款确认
     
     case tradeList =                 "/planA/wallet/recordList"            //交易列表

@@ -180,12 +180,15 @@ class ForgotViewController: BaseViewController {
         
         self.vm.resetPsd(mobile: userTextField.text!, password: passwordTextField.text ?? "", mobileCode: codeTextField.text!) { (_, msg, isSuccess) in
             self.hideMBProgressHUD()
-            ViewManager.showNotice(msg)
+            
             if isSuccess {
+                ViewManager.showImageNotice(msg)
                 UserManager.manager.removeAccound()
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
                 let login = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
                 self.navigationController?.pushViewController(login, animated: true)
+            } else {
+                ViewManager.showNotice(msg)
             }
         }
         

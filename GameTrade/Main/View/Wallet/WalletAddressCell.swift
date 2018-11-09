@@ -12,18 +12,29 @@ class WalletAddressCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var codeImageView: UIImageView!
+    
+    var showCodeImage : (()->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.clear
         self.nameLabel.textColor = JXText50Color
         self.addressLabel.textColor = JXTextColor
+        
+        self.codeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCode)))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    @objc func showCode(tap: UITapGestureRecognizer) {
+        if let block = showCodeImage {
+            block()
+        }
     }
     
 }

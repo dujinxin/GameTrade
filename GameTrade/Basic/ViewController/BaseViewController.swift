@@ -22,6 +22,7 @@ class BaseViewController: UIViewController {
         navigationBar.barTintColor = UIColor.clear//导航条颜色,透明色不起作用
         navigationBar.isTranslucent = true
         navigationBar.barStyle = .blackTranslucent
+        //navigationBar.barStyle = .default
         navigationBar.tintColor = UIColor.white //item图片文字颜色
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)]//标题设置
         navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
@@ -78,6 +79,9 @@ class BaseViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     func isCustomNavigationBarUsed() -> Bool{
         return true
     }
@@ -120,7 +124,6 @@ extension BaseViewController {
 }
 
 extension BaseViewController {
-    
     
 }
 

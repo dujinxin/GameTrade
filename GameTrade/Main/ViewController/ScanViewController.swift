@@ -31,6 +31,16 @@ class ScanViewController: BaseViewController {
     var type = 0 //地址  1 付款
     
     
+    var id : String?
+    var webNanme : String?
+    var orderId : String?
+    var amount : String?
+    var expireTime : String?
+    var sign : String?
+    
+    var vm = HomeVM()
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -38,7 +48,9 @@ class ScanViewController: BaseViewController {
         super.viewWillDisappear(animated)
     }
     override func viewDidLoad() {
-        super.viewDidLoad()
+        //super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isHidden = true
 
         self.backButton.tintColor = UIColor.white
         self.scanImageView.tintColor = UIColor.blue
@@ -50,14 +62,7 @@ class ScanViewController: BaseViewController {
 //        self.controlButton.setImage(#imageLiteral(resourceName: "off"), for: .normal)
 //        self.controlButton.setImage(#imageLiteral(resourceName: "on"), for: .selected)
         
-        if self.type == 1 {
-            self.statusBottomView.customView = self.customViewInit(number: "text", address: "address", gas: "gas", remark: "无")
-            self.statusBottomView.show(inView: self.view)
-            
-            return
-        }
-        
-        
+
         guard
             let device = AVCaptureDevice.default(for: .video),   //创建摄像设备
             let input = try? AVCaptureDeviceInput(device: device)//创建输入流
@@ -110,8 +115,8 @@ class ScanViewController: BaseViewController {
         return CGRect(x: x, y: y, width: width, height: height)
     }
     @IBAction func backEvent(_ sender: Any) {
-        //self.dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+        //self.navigationController?.popViewController(animated: true)
     }
     @IBAction func switchButton(_ sender: UIButton) {
         guard
@@ -182,7 +187,7 @@ class ScanViewController: BaseViewController {
             let label = UILabel()
             label.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
             //label.center = view.center
-            label.text = "确认转账"
+            label.text = "确认付款"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
             label.textColor = JXFfffffColor
@@ -209,7 +214,7 @@ class ScanViewController: BaseViewController {
         
         let nameLabel = UILabel()
         nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: width, height: 30)
-        nameLabel.text = "\(number) \(configuration_coinName)"
+        nameLabel.text = "\(self.amount ?? "0") \(configuration_coinName)"
         nameLabel.textColor = JXFfffffColor
         nameLabel.font = UIFont.systemFont(ofSize: 25)
         nameLabel.textAlignment = .center
@@ -227,7 +232,7 @@ class ScanViewController: BaseViewController {
         
         let rightLabel1 = UILabel()
         rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 51)
-        if let num = Double(number) {
+        if let numStr = self.amount, let num = Double(numStr) {
             rightLabel1.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
         } else {
             rightLabel1.text = "\(0) \(configuration_valueType)"
@@ -246,7 +251,7 @@ class ScanViewController: BaseViewController {
         //2
         let leftLabel2 = UILabel()
         leftLabel2.frame = CGRect(x: 24, y: line1.jxBottom, width: 65, height: 51)
-        leftLabel2.text = "交易单价"
+        leftLabel2.text = "收款商户"
         leftLabel2.textColor = JXText50Color
         leftLabel2.font = UIFont.systemFont(ofSize: 13)
         leftLabel2.textAlignment = .left
@@ -254,7 +259,7 @@ class ScanViewController: BaseViewController {
         
         let rightLabel2 = UILabel()
         rightLabel2.frame = CGRect(x: leftLabel2.jxRight, y: leftLabel2.jxTop, width: kScreenWidth - 48 - leftLabel2.jxWidth, height: 51)
-        rightLabel2.text = "\(configuration_coinPrice) \(configuration_valueType)"
+        rightLabel2.text = self.webNanme //"\(configuration_coinPrice) \(configuration_valueType)"
         rightLabel2.textColor = JXTextColor
         rightLabel2.font = UIFont.systemFont(ofSize: 14)
         rightLabel2.textAlignment = .right
@@ -269,7 +274,7 @@ class ScanViewController: BaseViewController {
         //3
         let leftLabel3 = UILabel()
         leftLabel3.frame = CGRect(x: 24, y: line2.jxBottom , width: 65, height: 51)
-        leftLabel3.text = "交易数量"
+        leftLabel3.text = "订单号"
         leftLabel3.textColor = JXText50Color
         leftLabel3.font = UIFont.systemFont(ofSize: 13)
         leftLabel3.textAlignment = .left
@@ -277,7 +282,7 @@ class ScanViewController: BaseViewController {
         
         let rightLabel3 = UILabel()
         rightLabel3.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth, height: 51)
-        rightLabel3.text = number
+        rightLabel3.text = self.orderId ?? "0"
         rightLabel3.textColor = JXTextColor
         rightLabel3.font = UIFont.systemFont(ofSize: 14)
         rightLabel3.textAlignment = .right
@@ -289,50 +294,50 @@ class ScanViewController: BaseViewController {
         leftContentView.addSubview(line3)
         
         
-        //4
-        let leftLabel4 = UILabel()
-        leftLabel4.frame = CGRect(x: 24, y: line3.jxBottom, width: 65, height: 51)
-        leftLabel4.text = "支付方式"
-        leftLabel4.textColor = JXText50Color
-        leftLabel4.font = UIFont.systemFont(ofSize: 13)
-        leftLabel4.textAlignment = .left
-        leftContentView.addSubview(leftLabel4)
-        
-        //        let rightLabel4 = UILabel()
-        //        rightLabel4.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth, height: 51)
-        //        rightLabel4.text = remark
-        //        rightLabel4.textColor = JXTextColor
-        //        rightLabel4.font = UIFont.systemFont(ofSize: 14)
-        //        rightLabel4.textAlignment = .right
-        //        leftContentView.addSubview(rightLabel4)
-        
-        
-        
-        self.rightButton = UIButton()
-        rightButton.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth - 20, height: 51)
-        rightButton.setTitle(self.payName, for: .normal)
-        rightButton.setTitleColor(JXTextColor, for: .normal)
-        rightButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        rightButton.addTarget(self, action: #selector(selectPay), for: .touchUpInside)
-        rightButton.contentHorizontalAlignment = .right
-        leftContentView.addSubview(rightButton)
-        
-        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight, y: leftLabel4.jxTop + 15.5, width: 20, height: 20))
-        arrow.backgroundColor = JXTextColor
-        leftContentView.addSubview(arrow)
-        
-        
-        let line4 = UIView()
-        line4.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel4.jxBottom, width: width, height: 1)
-        line4.backgroundColor = JXSeparatorColor
-        leftContentView.addSubview(line4)
+//        //4
+//        let leftLabel4 = UILabel()
+//        leftLabel4.frame = CGRect(x: 24, y: line3.jxBottom, width: 65, height: 51)
+//        leftLabel4.text = "支付方式"
+//        leftLabel4.textColor = JXText50Color
+//        leftLabel4.font = UIFont.systemFont(ofSize: 13)
+//        leftLabel4.textAlignment = .left
+//        leftContentView.addSubview(leftLabel4)
+//
+//        //        let rightLabel4 = UILabel()
+//        //        rightLabel4.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth, height: 51)
+//        //        rightLabel4.text = remark
+//        //        rightLabel4.textColor = JXTextColor
+//        //        rightLabel4.font = UIFont.systemFont(ofSize: 14)
+//        //        rightLabel4.textAlignment = .right
+//        //        leftContentView.addSubview(rightLabel4)
+//
+//
+//
+//        self.rightButton = UIButton()
+//        rightButton.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth - 20, height: 51)
+//        rightButton.setTitle(self.payName, for: .normal)
+//        rightButton.setTitleColor(JXTextColor, for: .normal)
+//        rightButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+//        rightButton.addTarget(self, action: #selector(selectPay), for: .touchUpInside)
+//        rightButton.contentHorizontalAlignment = .right
+//        leftContentView.addSubview(rightButton)
+//
+//        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight, y: leftLabel4.jxTop + 15.5, width: 20, height: 20))
+//        arrow.backgroundColor = JXTextColor
+//        leftContentView.addSubview(arrow)
+//
+//
+//        let line4 = UIView()
+//        line4.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel4.jxBottom, width: width, height: 1)
+//        line4.backgroundColor = JXSeparatorColor
+//        leftContentView.addSubview(line4)
         
         
         
         
         let button = UIButton()
-        button.frame = CGRect(x: nameLabel.jxLeft, y: line4.jxBottom + 30, width: width, height: 44)
-        button.setTitle("下单", for: .normal)
+        button.frame = CGRect(x: nameLabel.jxLeft, y: line3.jxBottom + 30, width: width, height: 44)
+        button.setTitle("立即付款", for: .normal)
         button.setTitleColor(JXFfffffColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
@@ -413,19 +418,30 @@ class ScanViewController: BaseViewController {
             
             if isFinish {
                 self.closeStatus()
-                print("12345678")
-//                self.vm.transfer(address: self.addressTextField.text!, amount: Int(self.numberTextField.text!) ?? 0, safePassword: text, remarks: self.remarkTextField.text!, completion: { (_, msg, isSuc) in
-//                    if isSuc {
-//                        let storyboard = UIStoryboard(name: "Wallet", bundle: nil)
-//                        let vc = storyboard.instantiateViewController(withIdentifier: "transferSuccess") as! TransferSuccessController
-//                        vc.address = self.addressTextField.text
-//                        vc.number = self.numberTextField.text
-//                        vc.hidesBottomBarWhenPushed = true
-//                        self.navigationController?.pushViewController(vc, animated: true)
-//                    } else {
-//                        ViewManager.showNotice(msg)
-//                    }
-//                })
+                //self.perform(#selector(goToDetail), with: nil, afterDelay: 0.5)
+                self.showMBProgressHUD()
+            
+                DispatchQueue.global().asyncAfter(deadline: .now() + 0.5, execute: {
+                    print("12345678")
+                    guard let numStr = self.amount, let num = Int(numStr) else { return }
+                    self.vm.scanPay(id: self.id ?? "", orderId: self.orderId ?? "", amount: num, expireTime: self.expireTime ?? "", sign: self.sign ?? "", safePassword: text, completion: { (_, msg, isSuc) in
+                        self.hideMBProgressHUD()
+                        if isSuc {
+                            let vc = WalletRecordDetailController()
+                            vc.hidesBottomBarWhenPushed = true
+                            //vc.tradeEntity = entity
+                            vc.type = 3
+                            vc.bizId = self.vm.bizId
+                            //1:买币，2:卖币，3:支付，4:收款，5:转账，6:手续费，当type为6时不可查看详情
+                            vc.pageType = .payed
+                            self.navigationController?.pushViewController(vc, animated: true)
+                        } else {
+                            ViewManager.showNotice(msg)
+                        }
+                    })
+                })
+                
+                
             }
         }
         rightContentView.addSubview(topBarView1)
@@ -448,6 +464,8 @@ class ScanViewController: BaseViewController {
         
     }
     @objc func backTo() {
+        self.view.endEditing(true)
+        
         UIView.animate(withDuration: 0.3, delay: 0, options: .transitionFlipFromLeft, animations: {
             self.statusBottomView.frame.origin.x = 0
         }, completion: nil)
@@ -484,6 +502,7 @@ class ScanViewController: BaseViewController {
     }
     @objc func closeStatus() {
         self.statusBottomView.dismiss()
+        self.session.startRunning()
     }
 }
 extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
@@ -497,13 +516,20 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
             }
             session.stopRunning()
             
-            if self.validate(code: codeStr) == false {
-                ViewManager.showNotice("无效地址")
+            if self.type == 1 {
+                print(codeStr)
+                
+                self.handleCode(codeStr)
             } else {
-                if let block = callBlock {
-                    block(codeStr)
+                if self.validate(code: codeStr) == false {
+                    ViewManager.showNotice("无效地址")
+                } else {
+                    if let block = callBlock {
+                        block(codeStr)
+                    }
                 }
             }
+            
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -515,5 +541,40 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
             return false
         }
         return true
+    }
+    
+    func handleCode(_ str: String) {
+        
+        if str.hasPrefix(configuration_coinName) == true {
+            let result = str.components(separatedBy: "scan_pay?")
+            if result.count > 1 {
+                let paramStr = result[1]
+                let data = paramStr.components(separatedBy: "&")
+                data.forEach { (value) in
+                    let keyValues = value.components(separatedBy: "=")
+                    if value.hasPrefix("webName"), keyValues.count > 1 {
+                        self.webNanme = keyValues[1]
+                    }
+                    if value.hasPrefix("id"), keyValues.count > 1 {
+                        self.id = keyValues[1]
+                    }
+                    if value.hasPrefix("orderId"), keyValues.count > 1 {
+                        self.orderId = keyValues[1]
+                    }
+                    if value.hasPrefix("expireTime"), keyValues.count > 1 {
+                        self.expireTime = keyValues[1]
+                    }
+                    if value.hasPrefix("amount"), keyValues.count > 1 {
+                        self.amount = keyValues[1]
+                    }
+                    if value.hasPrefix("sign"), keyValues.count > 1 {
+                        self.sign = keyValues[1]
+                    }
+                }
+            }
+        }
+        
+        self.statusBottomView.customView = self.customViewInit(number: "text", address: "address", gas: "gas", remark: "无")
+        self.statusBottomView.show(inView: self.view)
     }
 }

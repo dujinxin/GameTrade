@@ -17,38 +17,11 @@ class MainViewController: JXCollectionViewController {
     var isIpe : Bool = true
     var additionArray : Array = ["发币","收币","钱包记录"]
     var defaultArray: Array = [["image":"icon-big-shop","title":"我要买"],["image":"icon-big-sale","title":"我要卖"],["image":"icon-big-help","title":"帮助信息"]]
-    
-    func setClearNavigationBar(title:String,leftItem:UIView? = nil,rightItem:UIView? = nil) -> UIView {
-        
-        let navigiationBar = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kNavStatusHeight))
-        let backgroudView = UIView(frame: navigiationBar.bounds)
-        
-        let titleView = UILabel(frame: CGRect(x: 80, y: kStatusBarHeight, width: kScreenWidth - 160, height: 44))
-        titleView.text = title
-        titleView.textColor = UIColor.white
-        titleView.textAlignment = .center
-        titleView.font = UIFont.systemFont(ofSize: 20)
-        
-        
-        navigiationBar.addSubview(backgroudView)
-        navigiationBar.addSubview(titleView)
-        
-        
-        if let left = leftItem {
-            navigiationBar.addSubview(left)
-            left.frame = CGRect(x: 10, y: kStatusBarHeight + 7, width: 30, height: 30)
-        }
-        if let right = rightItem {
-            right.frame = CGRect(x: kScreenWidth - 10 - 30, y: kStatusBarHeight + 7, width: 30, height: 30)
-            navigiationBar.addSubview(right)
-        }
-        return navigiationBar
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.customNavigationBar.removeFromSuperview()
-        self.customNavigationBar.alpha = 0
+        self.customNavigationBar.removeFromSuperview()
+        //self.customNavigationBar.alpha = 0
  
         self.collectionView?.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kTabBarHeight)
         // Register cell classes
@@ -64,8 +37,12 @@ class MainViewController: JXCollectionViewController {
         layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 400)
         
         self.collectionView?.collectionViewLayout = layout
-        self.collectionView?.bounces = false
+        //self.collectionView?.bounces = false
         
+        self.collectionView?.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.requestData()
+        })
+        self.collectionView?.mj_header.beginRefreshing()
         //每次进入都刷新，则不用监听登录状态
         //NotificationCenter.default.addObserver(self, selector: #selector(loginStatus(notify:)), name: NSNotification.Name(rawValue: NotificationLoginStatus), object: nil)
         
@@ -73,8 +50,6 @@ class MainViewController: JXCollectionViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationController?.isNavigationBarHidden = true
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
         
         if !UserManager.manager.isLogin {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
@@ -94,12 +69,10 @@ class MainViewController: JXCollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
-    }
     deinit {
         
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        switch segue.identifier {
 //        case "invite":
@@ -135,6 +108,7 @@ class MainViewController: JXCollectionViewController {
     override func requestData() {
         self.homeVM = HomeVM()
         self.homeVM.home { (_, msg, isSuc) in
+            self.collectionView?.mj_header.endRefreshing()
             if isSuc {
                 
             } else {
@@ -173,12 +147,12 @@ extension MainViewController {
             reusableView.noticeLabel.text = self.homeVM.homeEntity.notice.title
             reusableView.scanBlock = {
                 if UserManager.manager.isLogin {
-                    self.performSegue(withIdentifier: "scan", sender: nil)
-//                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
-//                    let login = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
-//                    let loginVC = UINavigationController.init(rootViewController: login)
-//
-//                    self.navigationController?.present(loginVC, animated: false, completion: nil)
+                    //self.performSegue(withIdentifier: "scan", sender: nil)
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let login = storyboard.instantiateViewController(withIdentifier: "ScanVC") as! ScanViewController
+                    let loginVC = JXNavigationController(rootViewController: login)
+                    login.type = 1
+                    self.navigationController?.present(loginVC, animated: false, completion: nil)
                 }
             }
             reusableView.noticeBlock = {
@@ -218,6 +192,7 @@ extension MainViewController {
         } else if indexPath.item == 1 {
             self.performSegue(withIdentifier: "sell", sender: nil)
         } else if indexPath.item == 2 {
+            ViewManager.showImageNotice("设置成功")
             if !UserManager.manager.isLogin {
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
                 let login = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController

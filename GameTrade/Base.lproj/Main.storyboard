@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Lfe-pt-gYs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Lfe-pt-gYs">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="4622" y="-559"/>
         </scene>
-        <!--Sell Collection Controller-->
+        <!--New Sell Controller-->
         <scene sceneID="LkU-nk-XMs">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="qeC-Ci-owb" customClass="SellCollectionController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="qeC-Ci-owb" customClass="NewSellController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b5d-Ik-Vuj"/>
                         <viewControllerLayoutGuide type="bottom" id="dVn-4N-49P"/>
@@ -42,7 +42,7 @@
                     </view>
                     <connections>
                         <segue destination="YLX-Xy-bVt" kind="show" identifier="putUp1" id="p74-KZ-hYA"/>
-                        <segue destination="5Ew-cu-81l" kind="presentation" identifier="putUp" id="1S9-dH-Js0"/>
+                        <segue destination="5Ew-cu-81l" kind="show" identifier="putUp" id="1S9-dH-Js0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qb7-e1-Tvv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -362,7 +362,7 @@
         <!--Put Up View Controller-->
         <scene sceneID="Oes-cb-dO8">
             <objects>
-                <viewController storyboardIdentifier="RegisterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Ew-cu-81l" customClass="PutUpViewController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Ew-cu-81l" customClass="PutUpViewController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ARi-iq-Yzl"/>
                         <viewControllerLayoutGuide type="bottom" id="O1C-os-Bb1"/>
@@ -617,13 +617,13 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wB9-ec-S9t">
                                                 <rect key="frame" x="0.0" y="388" width="375" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX1-ff-S0t">
-                                                        <rect key="frame" x="308" y="16.666666666666686" width="43" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX1-ff-S0t">
+                                                        <rect key="frame" x="288" y="16.666666666666686" width="43" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiJ-qk-q55">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收款方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiJ-qk-q55">
                                                         <rect key="frame" x="24" y="17.333333333333314" width="80" height="15.666666666666664"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="ah7-8A-sJX"/>
@@ -639,14 +639,23 @@
                                                             <constraint firstAttribute="height" constant="1" id="eh4-qt-JTx"/>
                                                         </constraints>
                                                     </view>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="67O-uV-DRv">
+                                                        <rect key="frame" x="342.66666666666669" y="18" width="8.3333333333333144" height="14"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="8.5" id="8EW-O8-h4a"/>
+                                                            <constraint firstAttribute="height" constant="14" id="Yi6-PV-ZQs"/>
+                                                        </constraints>
+                                                    </imageView>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="67O-uV-DRv" firstAttribute="centerY" secondItem="wB9-ec-S9t" secondAttribute="centerY" id="2fK-6A-fVV"/>
                                                     <constraint firstAttribute="trailing" secondItem="hhV-cj-z24" secondAttribute="trailing" id="4Ga-3c-gQs"/>
                                                     <constraint firstAttribute="bottom" secondItem="hhV-cj-z24" secondAttribute="bottom" id="4PL-Ck-GZd"/>
                                                     <constraint firstItem="ZX1-ff-S0t" firstAttribute="centerY" secondItem="wB9-ec-S9t" secondAttribute="centerY" id="EPS-Mz-gBM"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ZX1-ff-S0t" secondAttribute="trailing" constant="24" id="GV3-i3-OJP"/>
                                                     <constraint firstItem="wiJ-qk-q55" firstAttribute="centerY" secondItem="wB9-ec-S9t" secondAttribute="centerY" id="HQC-yL-eqy"/>
                                                     <constraint firstItem="wiJ-qk-q55" firstAttribute="leading" secondItem="wB9-ec-S9t" secondAttribute="leading" constant="24" id="Iux-qQ-XjX"/>
+                                                    <constraint firstItem="67O-uV-DRv" firstAttribute="leading" secondItem="ZX1-ff-S0t" secondAttribute="trailing" constant="11.5" id="Tw5-79-bke"/>
+                                                    <constraint firstAttribute="trailing" secondItem="67O-uV-DRv" secondAttribute="trailing" constant="24" id="ftu-wp-hwQ"/>
                                                     <constraint firstAttribute="height" constant="50" id="jWx-Mw-Phc"/>
                                                     <constraint firstItem="hhV-cj-z24" firstAttribute="leading" secondItem="wB9-ec-S9t" secondAttribute="leading" constant="24" id="pfT-ft-7df"/>
                                                 </constraints>
@@ -681,7 +690,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="RIJ-yf-S3A" firstAttribute="top" secondItem="IyN-UY-kE5" secondAttribute="top" id="0cO-sb-M0L"/>
+                                    <constraint firstItem="RIJ-yf-S3A" firstAttribute="top" secondItem="IyN-UY-kE5" secondAttribute="top" id="4Gg-hi-R0H"/>
                                     <constraint firstItem="RIJ-yf-S3A" firstAttribute="centerX" secondItem="IyN-UY-kE5" secondAttribute="centerX" id="BCS-Zr-Bf5"/>
                                     <constraint firstItem="RIJ-yf-S3A" firstAttribute="centerY" secondItem="IyN-UY-kE5" secondAttribute="centerY" id="Cpt-9x-EcG"/>
                                     <constraint firstAttribute="trailing" secondItem="RIJ-yf-S3A" secondAttribute="trailing" id="ncq-x4-Noi"/>
@@ -703,6 +712,7 @@
                         <outlet property="mainScrollView" destination="IyN-UY-kE5" id="jh4-qt-dq6"/>
                         <outlet property="payNameLabel" destination="ZX1-ff-S0t" id="5iv-mE-nTv"/>
                         <outlet property="payNameLeftLabel" destination="wiJ-qk-q55" id="d60-11-EJ0"/>
+                        <outlet property="paySelectView" destination="wB9-ec-S9t" id="huG-xG-avO"/>
                         <outlet property="payTotalLabel" destination="ZXv-PQ-JcI" id="lPf-MR-joj"/>
                         <outlet property="payTotalLeftLabel" destination="w0z-4n-ADA" id="KPl-CA-xpu"/>
                         <outlet property="priseLabel" destination="YG3-9m-cUN" id="Cyi-BY-nHe"/>
@@ -725,6 +735,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowRight" width="14" height="23"/>
         <image name="icon-back" width="24" height="24"/>
         <image name="off" width="28" height="27"/>
         <image name="tab1_normal" width="24" height="24"/>

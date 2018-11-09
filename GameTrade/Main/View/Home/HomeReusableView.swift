@@ -31,6 +31,7 @@ class HomeReusableView: UICollectionReusableView {
     
     @IBOutlet weak var itemContentView: UIView!
 
+    @IBOutlet weak var scanIconBackView: UIView!
     @IBOutlet weak var scanIconButton: UIButton!
     @IBOutlet weak var scanArrow: UIButton!
     
@@ -82,7 +83,8 @@ class HomeReusableView: UICollectionReusableView {
         gradientLayer.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         gradientLayer.cornerRadius = 5
         
-        self.scanIconButton.layer.insertSublayer(gradientLayer, at: 0)
+        self.scanIconBackView.layer.insertSublayer(gradientLayer, at: 0)
+        
         self.scanIconButton.tintColor = UIColor.black
         self.scanIconButton.setImage(UIImage(named: "scanIcon")?.withRenderingMode(.alwaysTemplate), for: .normal)
         

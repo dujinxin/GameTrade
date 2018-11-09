@@ -22,8 +22,15 @@ class OrderSellingDetailCell: UITableViewCell {
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
+    @IBOutlet weak var codeButton: UIButton!
+    
+    @IBOutlet weak var bankNameLabel: UILabel!
+    @IBOutlet weak var codeLeftLabel: UILabel!
+    @IBOutlet weak var codeWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var remarkLabel: UILabel!
+    
+    
     @IBOutlet weak var cancelLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
     
@@ -44,9 +51,10 @@ class OrderSellingDetailCell: UITableViewCell {
         self.cancelLabel.layer.borderWidth = 1
         self.cancelLabel.textColor = JXOrangeColor
         
-        self.cancelLabel.isUserInteractionEnabled = true
-        self.cancelLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelTap(tap:))))
+        //self.cancelLabel.isUserInteractionEnabled = true
+        //self.cancelLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelTap(tap:))))
         self.payButton.addTarget(self, action: #selector(payTap(tap:)), for: .touchUpInside)
+        self.payButton.setTitle("确认已收款", for: .normal)
         
     }
     deinit {
@@ -58,8 +66,8 @@ class OrderSellingDetailCell: UITableViewCell {
             if entity?.orderStatus == 1 {
                 self.orderStatusLabel.text = "待付款"
             } else if entity?.orderStatus == 2 {
-                self.orderStatusLabel.text = "待确认付款"
-                self.orderInfoLabel.text = "您的挂卖单已经被买家付款，请确认付款并转币"
+                self.orderStatusLabel.text = "待卖家确认"
+                self.orderInfoLabel.text = "买家已付款，请确认已收到付款"
             } else if entity?.orderStatus == 3 {
                 self.orderStatusLabel.text = "已完成"
             } else {
@@ -75,13 +83,17 @@ class OrderSellingDetailCell: UITableViewCell {
                 self.payNameLabel.text = "支付宝"
             } else if entity?.payType == 2 {
                 self.payNameLabel.text = "微信"
-            } else {
+            }  else if entity?.payType == 3 {
                 self.payNameLabel.text = "银行卡"
+                
+                self.codeLeftLabel.text = "开户行"
+                self.bankNameLabel.text = entity?.bank
+                self.codeWidthConstraint.constant = 0.01
+                self.codeButton.isHidden = true
             }
             self.userNameLabel.text = entity?.name
             self.accoundLabel.text = entity?.account
             self.remarkLabel.text = "无"
-            
             
             var timeInter = 0
             
@@ -165,6 +177,6 @@ class OrderSellingDetailCell: UITableViewCell {
         if str.isEmpty {
             return ""
         }
-        return "取消订单\n(\(str))"
+        return "\(str)"
     }
 }

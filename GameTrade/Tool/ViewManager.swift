@@ -29,5 +29,12 @@ class ViewManager : NSObject{
         let noticeView = JXNoticeView.init(text: notice)
         noticeView.show()
     }
+    class func showImageNotice(_ notice:String) {
+        if notice.isEmpty{
+            return
+        }
+        let noticeView = JXNoticeImageView.init(text: notice)
+        noticeView.show()
+    }
     
 }

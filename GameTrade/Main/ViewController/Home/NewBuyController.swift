@@ -143,9 +143,6 @@ class NewBuyController: JXCollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
-    }
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -195,7 +192,7 @@ class NewBuyController: JXCollectionViewController {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
         selectView.backgroundColor = JXOrangeColor
         selectView.isBackViewUserInteractionEnabled = false
-        //selectView.customView = self.customViewInit(number: self.number, address: "address", gas: "gas", remark: "无备注")
+        
         return selectView
     }()
     
@@ -226,7 +223,7 @@ class NewBuyController: JXCollectionViewController {
             let label = UILabel()
             label.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
             //label.center = view.center
-            label.text = "确认转账"
+            label.text = "确认购买"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
             label.textColor = JXFfffffColor
@@ -361,8 +358,9 @@ class NewBuyController: JXCollectionViewController {
         rightButton.contentHorizontalAlignment = .right
         leftContentView.addSubview(rightButton)
         
-        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight, y: leftLabel4.jxTop + 15.5, width: 20, height: 20))
-        arrow.backgroundColor = JXTextColor
+        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight + 11.5, y: leftLabel4.jxTop + 18.5, width: 8.5, height: 14))
+        //arrow.backgroundColor = JXTextColor
+        arrow.image = UIImage(named: "arrowRight")
         leftContentView.addSubview(arrow)
         
         
@@ -424,19 +422,7 @@ class NewBuyController: JXCollectionViewController {
             button.contentHorizontalAlignment = .center
             button.addTarget(self, action: #selector(backTo), for: .touchUpInside)
             view.addSubview(button)
-            
-            
-            let button1 = UIButton()
-            button1.frame = CGRect(x: kScreenWidth - 80 - 24, y: 10, width: 80, height: 40)
-            //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            button.setTitle("忘记密码？", for: .normal)
-            
-            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
-            button1.contentVerticalAlignment = .center
-            button1.contentHorizontalAlignment = .right
-            //button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
-            contentView.addSubview(button1)
+
             
             return view
         }()
@@ -457,8 +443,9 @@ class NewBuyController: JXCollectionViewController {
         button1.contentHorizontalAlignment = .left
         rightContentView.addSubview(button1)
         
-        let arrow1 = UIImageView(frame: CGRect(x: button1.jxRight, y: button1.jxTop + 15.5, width: 20, height: 20))
-        arrow1.backgroundColor = JXTextColor
+        let arrow1 = UIImageView(frame: CGRect(x: button1.jxRight + 11.5, y: button1.jxTop + 18.5, width: 8.5, height: 14))
+        //arrow1.backgroundColor = JXTextColor
+        arrow1.image = UIImage(named: "arrowRight")
         rightContentView.addSubview(arrow1)
         
         let rightLine1 = UIView()
@@ -481,8 +468,9 @@ class NewBuyController: JXCollectionViewController {
         button2.contentHorizontalAlignment = .left
         rightContentView.addSubview(button2)
         
-        let arrow2 = UIImageView(frame: CGRect(x: button1.jxRight, y: button2.jxTop + 15.5, width: 20, height: 20))
-        arrow2.backgroundColor = JXTextColor
+        let arrow2 = UIImageView(frame: CGRect(x: button1.jxRight + 11.5, y: button2.jxTop + 18.5, width: 8.5, height: 14))
+        //arrow2.backgroundColor = JXTextColor
+        arrow2.image = UIImage(named: "arrowRight")
         rightContentView.addSubview(arrow2)
         
         let rightLine2 = UIView()
@@ -505,8 +493,9 @@ class NewBuyController: JXCollectionViewController {
         button3.contentHorizontalAlignment = .left
         rightContentView.addSubview(button3)
         
-        let arrow3 = UIImageView(frame: CGRect(x: button1.jxRight, y: button3.jxTop + 15.5, width: 20, height: 20))
-        arrow3.backgroundColor = JXTextColor
+        let arrow3 = UIImageView(frame: CGRect(x: button1.jxRight + 11.5, y: button3.jxTop + 18.5, width: 8.5, height: 14))
+        //arrow3.backgroundColor = JXTextColor
+        arrow3.image = UIImage(named: "arrowRight")
         rightContentView.addSubview(arrow3)
         
         let rightLine3 = UIView()
@@ -582,7 +571,6 @@ class NewBuyController: JXCollectionViewController {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
         selectView.backgroundColor = JXOrangeColor
         selectView.isBackViewUserInteractionEnabled = false
-        //selectView.customView = self.customViewInit(number: self.number, address: "address", gas: "gas", remark: "无备注")
         
         self.setKeyBoardObserver()
         return selectView
@@ -618,7 +606,7 @@ class NewBuyController: JXCollectionViewController {
             let label = UILabel()
             label.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
             //label.center = view.center
-            label.text = "确认转账"
+            label.text = "确认购买"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
             label.textColor = JXFfffffColor
@@ -665,15 +653,7 @@ class NewBuyController: JXCollectionViewController {
             return nameLabel
         }()
         self.textField1 = textField
-        
-//        let nameLabel = UILabel()
-//        nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: width, height: 30)
-//        nameLabel.text = "\(number) \(configuration_coinName)"
-//        nameLabel.textColor = JXFfffffColor
-//        nameLabel.font = UIFont.systemFont(ofSize: 25)
-//        nameLabel.textAlignment = .center
-//
-//        leftContentView.addSubview(nameLabel)
+
         
         //1
         let leftLabel1 = UILabel()
@@ -803,7 +783,7 @@ class NewBuyController: JXCollectionViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: kScreenWidth - 80 - 24, y: 10, width: 80, height: 40)
             //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            button.setTitle("忘记密码？", for: .normal)
+            button1.setTitle("忘记密码？", for: .normal)
             
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.setTitleColor(JXOrangeColor, for: .normal)
@@ -970,12 +950,16 @@ extension NewBuyController {
         let entity = self.vm.buyListEntity.listArray[indexPath.item]
         cell.entity = entity
         cell.merchantBlock = {
+            self.view.endEditing(true)
+            
             let vc = MerchantViewController()
             vc.id = entity.agentId
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         }
         cell.buyBlock = {
+            self.view.endEditing(true)
+            
             self.buyEntity = entity
             self.statusBottomView1.customView = self.customViewInit1(number: "\(entity.limitMax)", address: "address", gas: "gas", remark: "无")
             self.statusBottomView1.show()

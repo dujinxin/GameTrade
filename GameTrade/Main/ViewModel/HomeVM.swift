@@ -63,4 +63,24 @@ class HomeVM: BaseViewModel {
             completion(nil, msg, false)
         }
     }
+    
+    //扫码支付
+    var bizId : String = ""
+    
+    func scanPay(id: String, orderId: String, amount: Int, expireTime: String, sign: String, safePassword: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
+        
+        JXRequest.request(url: ApiString.scanPay.rawValue, param: ["id": id, "orderId": orderId,"amount": amount, "expireTime": expireTime, "sign": sign, "safePassword": safePassword], success: { (data, msg) in
+            guard
+                let dict = data as? Dictionary<String, Any>,
+                let id = dict["bizId"] as? String
+                else{
+                    completion(nil, self.message, false)
+                    return
+            }
+            self.bizId = id
+            completion(data, msg, true)
+        }) { (msg, code) in
+            completion(nil, msg, false)
+        }
+    }
 }

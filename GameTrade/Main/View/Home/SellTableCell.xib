@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="106" id="KGk-i7-Jjw" customClass="SellTableCell" customModule="GameTrade" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oPF-uN-qJl">
+                        <rect key="frame" x="24" y="8" width="272" height="84.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数量：2000QB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSr-6Y-0Ne">
+                                <rect key="frame" x="16" y="16" width="84" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybS-ja-caT">
+                                <rect key="frame" x="225" y="16" width="31" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20000RMB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ue0-DK-iwT">
+                                <rect key="frame" x="152.5" y="48.5" width="103.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-mini-wechat" translatesAutoresizingMaskIntoConstraints="NO" id="YZj-kg-xdx">
+                                <rect key="frame" x="16" y="50.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YZj-kg-xdx" secondAttribute="height" id="ZeM-2v-5Ih"/>
+                                    <constraint firstAttribute="height" constant="20" id="p67-OV-TA5"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.28235294119999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ybS-ja-caT" secondAttribute="trailing" constant="16" id="4rr-KX-XBA"/>
+                            <constraint firstItem="Ue0-DK-iwT" firstAttribute="trailing" secondItem="ybS-ja-caT" secondAttribute="trailing" id="5Up-y8-Wij"/>
+                            <constraint firstItem="ybS-ja-caT" firstAttribute="top" secondItem="tSr-6Y-0Ne" secondAttribute="top" id="Bis-6G-BT8"/>
+                            <constraint firstItem="YZj-kg-xdx" firstAttribute="top" secondItem="tSr-6Y-0Ne" secondAttribute="bottom" constant="20" id="FAE-VA-ZAp"/>
+                            <constraint firstItem="YZj-kg-xdx" firstAttribute="leading" secondItem="tSr-6Y-0Ne" secondAttribute="leading" id="Fua-qF-Uhl"/>
+                            <constraint firstItem="Ue0-DK-iwT" firstAttribute="centerY" secondItem="YZj-kg-xdx" secondAttribute="centerY" id="dnn-9c-ZKb"/>
+                            <constraint firstItem="YZj-kg-xdx" firstAttribute="width" secondItem="YZj-kg-xdx" secondAttribute="height" id="fSg-DI-o9m"/>
+                            <constraint firstItem="tSr-6Y-0Ne" firstAttribute="top" secondItem="oPF-uN-qJl" secondAttribute="top" constant="16" id="pYn-je-vsx"/>
+                            <constraint firstItem="tSr-6Y-0Ne" firstAttribute="leading" secondItem="oPF-uN-qJl" secondAttribute="leading" constant="16" id="tiB-Eu-V1z"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="oPF-uN-qJl" secondAttribute="trailing" constant="24" id="DRv-eg-TFd"/>
+                    <constraint firstItem="oPF-uN-qJl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="KhD-nq-da3"/>
+                    <constraint firstAttribute="bottom" secondItem="oPF-uN-qJl" secondAttribute="bottom" constant="8" id="hlR-JD-RMT"/>
+                    <constraint firstItem="oPF-uN-qJl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="lfm-H8-eKU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mainContentView" destination="oPF-uN-qJl" id="HNo-aA-eAE"/>
+                <outlet property="numberLabel" destination="tSr-6Y-0Ne" id="nqY-2w-LQv"/>
+                <outlet property="payImageView" destination="YZj-kg-xdx" id="oNg-wv-JBb"/>
+                <outlet property="timeLabel" destination="ybS-ja-caT" id="l8k-Bj-hav"/>
+                <outlet property="valueLabel" destination="Ue0-DK-iwT" id="Ksc-iA-Pgm"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="157.42128935532236"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon-mini-wechat" width="15" height="15"/>
+    </resources>
+</document>

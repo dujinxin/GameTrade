@@ -12,12 +12,16 @@ import AFNetworking
 class PayVM: BaseViewModel {
     
     var payListEntity : PayListEntity?
+    var customListEntity : PayCustomListEntity?
     
     var bankListEntity = BankListEntity()
+    
     var bankFormatDictionary = Dictionary<String, Array<BankEntity>>()
     var bankIndexList = Array<String>()
     
-    func payList(completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
+    var searchResultEntity = BankListEntity()
+    
+    func payCustomList(completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         JXRequest.request(url: ApiString.payList.rawValue, param: Dictionary(), success: { (data, msg) in
 
             guard
@@ -26,20 +30,7 @@ class PayVM: BaseViewModel {
                     completion(nil, self.message, false)
                     return
             }
-            self.payListEntity = PayListEntity()
-            
-            
-//            for i in 1..<4 {
-//                let entity = PayEntity()
-//                entity.type = i
-//                if entity.type == 1 {
-//                    self.payListEntity.list["ali"] = entity
-//                } else if entity.type == 2 {
-//                    self.payListEntity.list["weChat"] = entity
-//                } else {
-//                    self.payListEntity.list["card"] = entity
-//                }
-//            }
+            self.customListEntity = PayCustomListEntity()
             
             for dict in arr{
                 let entity = PayEntity()
@@ -48,11 +39,11 @@ class PayVM: BaseViewModel {
                 entity.isEmpty = 0
                 
                 if entity.type == 1 {
-                    self.payListEntity?.list["ali"] = entity
+                    self.customListEntity?.list["ali"] = entity
                 } else if entity.type == 2 {
-                    self.payListEntity?.list["weChat"] = entity
+                    self.customListEntity?.list["weChat"] = entity
                 } else {
-                    self.payListEntity?.list["card"] = entity
+                    self.customListEntity?.list["card"] = entity
                 }
                     
                 //self.payListEntity.list.append(entity)
@@ -64,6 +55,7 @@ class PayVM: BaseViewModel {
             completion(nil, msg, false)
         }
     }
+    
 
     func bankList(completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         JXRequest.request(url: ApiString.bankList.rawValue, param: Dictionary(), success: { (data, msg) in
@@ -75,13 +67,13 @@ class PayVM: BaseViewModel {
                     return
             }
             self.makeBankToGroup(arr: arr)
-//            self.bankListEntity.list.removeAll()
-//            for dict in arr{
-//
-//                let entity = BankEntity()
-//                entity.setValuesForKeys(dict)
-//                self.bankListEntity.list.append(entity)
-//            }
+            
+            self.bankListEntity.list.removeAll()
+            for dict in arr{
+                let entity = BankEntity()
+                entity.setValuesForKeys(dict)
+                self.bankListEntity.list.append(entity)
+            }
             
             completion(data, msg, true)
             
@@ -92,6 +84,8 @@ class PayVM: BaseViewModel {
     
   
     func makeBankToGroup(arr : Array<Dictionary<String, Any>>) {
+        var commonArr = Array<BankEntity>()
+        
         // 遍历citys数组中的所有城市
         for dict in arr {
             
@@ -110,6 +104,10 @@ class PayVM: BaseViewModel {
             let entity = BankEntity()
             entity.setValuesForKeys(dict)
             
+            if entity.isCommon == 1 {
+                commonArr.append(entity)
+            }
+            
             if var subArr = bankFormatDictionary[key] {
                 subArr.append(entity)
                 bankFormatDictionary[key] = subArr
@@ -120,6 +118,11 @@ class PayVM: BaseViewModel {
     
         //拿到所有的key将它排序, 作为每个组的标题
         bankIndexList = bankFormatDictionary.keys.sorted()
+        
+        if commonArr.count > 0 {
+            bankFormatDictionary["常用银行"] = commonArr
+            bankIndexList.insert("常用银行", at: 0)
+        }
     }
     
     

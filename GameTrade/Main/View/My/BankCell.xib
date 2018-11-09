@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="64" id="GK2-KM-2UA" userLabel="BankCell" customClass="BankCell" customModule="GameTrade" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="GK2-KM-2UA" userLabel="BankCell" customClass="BankCell" customModule="GameTrade" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GK2-KM-2UA" id="AHF-jU-Mas">
@@ -19,23 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的资产" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EB8-H6-mdO">
-                        <rect key="frame" x="24" y="0.0" width="257" height="44.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="44" id="av3-eI-8Cx"/>
-                        </constraints>
+                        <rect key="frame" x="24" y="0.0" width="257" height="43.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbR-cV-H2R" userLabel="line">
-                        <rect key="frame" x="24" y="43.5" width="351" height="1"/>
-                        <color key="backgroundColor" red="0.27450980390000002" green="0.28235294119999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="UMs-G4-Fvt"/>
-                        </constraints>
-                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u75-fn-Lz6">
-                        <rect key="frame" x="291" y="22.5" width="60" height="0.0"/>
+                        <rect key="frame" x="291" y="22" width="60" height="0.0"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="NMD-nf-LAY"/>
                         </constraints>
@@ -43,27 +33,34 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbR-cV-H2R" userLabel="line">
+                        <rect key="frame" x="24" y="42.5" width="351" height="1"/>
+                        <color key="backgroundColor" red="0.27450980390000002" green="0.28235294119999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Xo0-XX-F7L"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="EB8-H6-mdO" firstAttribute="top" secondItem="AHF-jU-Mas" secondAttribute="top" id="6ut-wU-nzA"/>
-                    <constraint firstItem="ZbR-cV-H2R" firstAttribute="top" secondItem="EB8-H6-mdO" secondAttribute="bottom" constant="-1" id="AsD-so-QxL"/>
+                    <constraint firstAttribute="bottom" secondItem="EB8-H6-mdO" secondAttribute="bottom" id="DqF-SU-28L"/>
                     <constraint firstItem="EB8-H6-mdO" firstAttribute="leading" secondItem="AHF-jU-Mas" secondAttribute="leading" constant="24" id="Fgk-tJ-6DY"/>
-                    <constraint firstItem="ZbR-cV-H2R" firstAttribute="leading" secondItem="AHF-jU-Mas" secondAttribute="leading" constant="24" id="GBt-q8-ZXt"/>
+                    <constraint firstAttribute="trailing" secondItem="ZbR-cV-H2R" secondAttribute="trailing" id="H5h-8A-MEJ"/>
                     <constraint firstItem="u75-fn-Lz6" firstAttribute="centerY" secondItem="EB8-H6-mdO" secondAttribute="centerY" id="JZh-dj-vHr"/>
                     <constraint firstAttribute="trailing" secondItem="u75-fn-Lz6" secondAttribute="trailing" constant="24" id="NM1-fx-lZr"/>
-                    <constraint firstAttribute="bottom" secondItem="ZbR-cV-H2R" secondAttribute="bottom" id="WtF-C7-Eel"/>
+                    <constraint firstItem="ZbR-cV-H2R" firstAttribute="leading" secondItem="EB8-H6-mdO" secondAttribute="leading" id="Rsw-Aj-qpi"/>
                     <constraint firstItem="u75-fn-Lz6" firstAttribute="leading" secondItem="EB8-H6-mdO" secondAttribute="trailing" constant="10" id="cBW-MB-3KG"/>
-                    <constraint firstAttribute="trailing" secondItem="ZbR-cV-H2R" secondAttribute="trailing" id="eQu-eC-Egu"/>
-                    <constraint firstItem="EB8-H6-mdO" firstAttribute="centerY" secondItem="AHF-jU-Mas" secondAttribute="centerY" id="iA0-In-2Xc"/>
+                    <constraint firstItem="ZbR-cV-H2R" firstAttribute="top" secondItem="EB8-H6-mdO" secondAttribute="bottom" constant="-1" id="qOn-B5-49l"/>
+                    <constraint firstAttribute="bottom" secondItem="ZbR-cV-H2R" secondAttribute="bottom" id="uCw-xP-YZK"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="infoLabel" destination="u75-fn-Lz6" id="m5E-YK-LQf"/>
+                <outlet property="infoLabel" destination="u75-fn-Lz6" id="LXk-PU-RdO"/>
                 <outlet property="lineView" destination="ZbR-cV-H2R" id="cUR-Bp-d9F"/>
                 <outlet property="nameLabel" destination="EB8-H6-mdO" id="7FS-eh-jc2"/>
             </connections>
-            <point key="canvasLocation" x="130" y="23"/>
+            <point key="canvasLocation" x="128.80000000000001" y="22.488755622188908"/>
         </tableViewCell>
     </objects>
 </document>

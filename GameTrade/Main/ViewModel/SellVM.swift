@@ -17,9 +17,9 @@ class SellVM: BaseViewModel {
     }()
     var id : String = ""
     
-    //交易详情
-    lazy var tradeDetailEntity: BuyListEntity = {
-        let entity = BuyListEntity()
+    //个人账户余额，收款账户
+    lazy var sellInfoEntity: SellInfoEntity = {
+        let entity = SellInfoEntity()
         return entity
     }()
     var detailList = Array<CustomDetailEntity>()
@@ -69,12 +69,54 @@ class SellVM: BaseViewModel {
             completion(nil, msg, false)
         }
     }
+    func sellInfo(completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
+        JXRequest.request(url: ApiString.sellInfo.rawValue, param: Dictionary(), success: { (data, msg) in
+            
+            guard
+                let dict = data as? Dictionary<String, Any>
+                else{
+                    completion(nil, self.message, false)
+                    return
+            }
+            self.sellInfoEntity.setValuesForKeys(dict)
+            
+            if let list = dict["accounts"] as? Array<Dictionary<String, Any>> {
+                for dict in list{
+                    let entity = PayEntity()
+                    entity.setValuesForKeys(dict)
+                    self.sellInfoEntity.list.append(entity)
+                }
+            }
+            
+//            if let balance = dict["balance"] as? Double {
+//                self.sellInfoEntity.balance = balance
+//            }
+//            if let saleRate = dict["saleRate"] as? String, let rate = Double(saleRate){
+//                self.sellInfoEntity.saleRate = rate
+//            }
+            
+            completion(data, msg, true)
+            
+        }) { (msg, code) in
+            completion(nil, msg, false)
+        }
+    }
     //挂卖单 商家
     func sellCreate(payType: Int, amount: Int, safePassword: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
         JXRequest.request(url: ApiString.sellCreate.rawValue, param: ["payType": payType, "amount": amount, "safePassword": safePassword], success: { (data, msg) in
             
             completion(data, msg, true)
+        }) { (msg, code) in
+            completion(nil, msg, false)
+        }
+    }
+    //卖单删除
+    func sellDelete(id: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
+        
+        JXRequest.request(url: ApiString.sellDelete.rawValue, param: ["id": id], success: { (data, msg) in
+            completion(data, msg, true)
+            
         }) { (msg, code) in
             completion(nil, msg, false)
         }

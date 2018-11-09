@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PayListEntity: BaseModel {
+class PayCustomListEntity: BaseModel {
     @objc var list = Dictionary<String, PayEntity>()
     
     override init() {
@@ -24,6 +24,9 @@ class PayListEntity: BaseModel {
             }
         }
     }
+}
+class PayListEntity: BaseModel {
+    @objc var list = Array<PayEntity>()
 }
 class PayEntity: BaseModel {
     

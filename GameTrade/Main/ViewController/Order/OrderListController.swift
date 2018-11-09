@@ -55,9 +55,6 @@ class OrderListController: JXTableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .default
-    }
     deinit {
         
     }
@@ -110,6 +107,16 @@ extension OrderListController {
             cell.entity = entity
             if type == "购买" {
                 cell.buyButton.setTitle(countDown?.countDown(indexPath: indexPath), for: .normal)
+            }
+            cell.buyBlock = {
+                //let entity = self.vm.orderListEntity.listArray[indexPath.row]
+                let vc = OrderDetailController()
+                vc.id = entity.id
+                vc.hidesBottomBarWhenPushed = true
+                vc.backBlock = {
+                    self.tableView?.mj_header.beginRefreshing()
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             
             return cell

@@ -77,7 +77,8 @@ class ReceiptViewController: BaseViewController {
     @IBAction func copyAddress(_ sender: Any) {
         let pals = UIPasteboard.general
         pals.string = self.addressLabel.text
-        ViewManager.showNotice("复制成功")
+        //ViewManager.showNotice("复制成功")
+        ViewManager.showImageNotice("已复制")
         
         //self.gradientLayer.removeFromSuperlayer()
         self.confirmButton.backgroundColor = UIColor.lightGray

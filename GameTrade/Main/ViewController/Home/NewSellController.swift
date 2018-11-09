@@ -1,17 +1,16 @@
 //
-//  SellCollectionController.swift
+//  NewSellController.swift
 //  GameTrade
 //
-//  Created by 杜进新 on 2018/10/16.
+//  Created by 杜进新 on 2018/11/9.
 //  Copyright © 2018年 dujinxin. All rights reserved.
 //
 
 import UIKit
 
 private let reuseIdentifier = "reuseIdentifier"
-private let reuseIndentifierHeader = "reuseIndentifierHeader"
 
-class SellCollectionController: JXCollectionViewController {
+class NewSellController: JXTableViewController {
     
     var vm = SellVM()
     var payVM = PayVM()
@@ -23,29 +22,22 @@ class SellCollectionController: JXCollectionViewController {
         self.title = "我要卖"
         self.customNavigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(sell))
         
-        self.collectionView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
-        // Register cell classes
-        self.collectionView?.register(UINib.init(nibName: "SellCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
         
+        self.tableView?.register(UINib(nibName: "SellTableCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        self.tableView?.estimatedRowHeight = 101
+        self.tableView?.rowHeight = 101//UITableViewAutomaticDimension
+        self.tableView?.separatorStyle = .none
         
-        let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize.init(width: kScreenWidth - 48, height: 85)
-        
-        layout.sectionInset = UIEdgeInsetsMake(8, 24, 8, 24)
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 0
-     
-        self.collectionView?.collectionViewLayout = layout
-        
-        self.collectionView?.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+        self.tableView?.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.page = 1
-            self.request(page: 1)
+            self.request(page: self.page)
         })
-//        self.collectionView?.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+//        self.tableView?.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
 //            self.page += 1
 //            self.request(page: self.page)
 //        })
-        self.collectionView?.mj_header.beginRefreshing()
+        
+        self.tableView?.mj_header.beginRefreshing()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -67,11 +59,19 @@ class SellCollectionController: JXCollectionViewController {
             if let vc = segue.destination as? PutUpViewController, let entity = sender as? SellInfoEntity {
                 vc.sellInfoEntity = entity
                 vc.backBlock = {
-                    self.collectionView?.mj_header.beginRefreshing()
+                    self.tableView?.mj_header.beginRefreshing()
                 }
             }
         default:
             print("123456")
+        }
+    }
+    @objc func loginStatus(notify:Notification) {
+        print(notify)
+        
+        if let isSuccess = notify.object as? Bool,
+            isSuccess == true{
+            self.tableView?.mj_header.beginRefreshing()
         }
     }
     @objc func sell() {
@@ -88,20 +88,13 @@ class SellCollectionController: JXCollectionViewController {
             }
         }
     }
-    @objc func loginStatus(notify:Notification) {
-        print(notify)
-        
-        if let isSuccess = notify.object as? Bool,
-            isSuccess == true{
-            self.collectionView?.mj_header.beginRefreshing()
-        }
-    }
     override func request(page: Int) {
+    
         self.vm.sellList{ (_, msg, isSuc) in
             self.hideMBProgressHUD()
-            self.collectionView?.mj_header.endRefreshing()
+            self.tableView?.mj_header.endRefreshing()
             //self.collectionView?.mj_footer.endRefreshing()
-            self.collectionView?.reloadData()
+            self.tableView?.reloadData()
         }
     }
     
@@ -200,25 +193,64 @@ class SellCollectionController: JXCollectionViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
-extension SellCollectionController {
-    // MARK: UICollectionViewDataSource
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
+extension NewSellController {
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  self.vm.sellListEntity.listArray.count
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SellCell
-        let entity = self.vm.sellListEntity.listArray[indexPath.item]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SellTableCell
+        
+        let entity = self.vm.sellListEntity.listArray[indexPath.row]
         cell.entity = entity
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+//        let entity = self.vm.orderListEntity.listArray[indexPath.row]
+//        let vc = OrderDetailController()
+//        vc.id = entity.id
+//        vc.hidesBottomBarWhenPushed = true
+//        vc.backBlock = {
+//            self.tableView?.mj_header.beginRefreshing()
+//        }
+//        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除！"
+    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         
+        let style : UITableViewCellEditingStyle = .delete
+        return style
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //default,destructive默认红色，normal默认灰色，可以通过backgroundColor 修改背景颜色，backgroundEffect 添加模糊效果
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { (action, indexPath) in
+            print("删除")
+            
+            let entity = self.vm.sellListEntity.listArray[indexPath.row]
+            
+            self.vm.sellDelete(id: entity.id ?? "", completion: { (_, msg, isSuc) in
+                if isSuc {
+                    self.vm.sellListEntity.listArray.remove(at: indexPath.row)
+                    tableView.beginUpdates()
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                    tableView.endUpdates()
+                    //self.requestData()
+                } else {
+                    ViewManager.showNotice(msg)
+                }
+            })
+
+        }
+        
+        deleteAction.backgroundColor = JXRedColor
+       
+        return [deleteAction]
     }
 }

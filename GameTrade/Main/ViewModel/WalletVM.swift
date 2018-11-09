@@ -60,7 +60,7 @@ class WalletVM: BaseViewModel {
             completion(nil, msg, false)
         }
     }
-    //订单记录列表
+    //交易详情
     func tradeDetail(type: Int, bizId: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
         JXRequest.request(url: ApiString.tradeDetail.rawValue, param: ["type": type, "bizId": bizId], success: { (data, msg) in

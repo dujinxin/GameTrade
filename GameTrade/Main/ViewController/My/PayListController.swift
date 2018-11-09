@@ -18,7 +18,7 @@ class PayListController: JXTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "智慧"
+        self.title = "收款方式"
         
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
         
@@ -36,7 +36,7 @@ class PayListController: JXTableViewController {
         // Dispose of any resources that can be recreated.
     }
     override func requestData() {
-        self.vm.payList { (_, msg, isSuc) in
+        self.vm.payCustomList { (_, msg, isSuc) in
             self.tableView?.reloadData()
         }
     }
@@ -59,7 +59,7 @@ class PayListController: JXTableViewController {
         
         
         if indexPath.row == 0 {
-            if let entity = self.vm.payListEntity?.list["ali"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["ali"], entity.isEmpty == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: normalCellIdentifier, for: indexPath) as! PayNormalCell
             
                 cell.selectionStyle = .none
@@ -79,7 +79,7 @@ class PayListController: JXTableViewController {
             }
             
         } else if indexPath.row == 1{
-            if let entity = self.vm.payListEntity?.list["weChat"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["weChat"], entity.isEmpty == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: normalCellIdentifier, for: indexPath) as! PayNormalCell
                 
                 cell.selectionStyle = .none
@@ -94,7 +94,7 @@ class PayListController: JXTableViewController {
                 return cell
             }
         } else {
-            if let entity = self.vm.payListEntity?.list["card"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["card"], entity.isEmpty == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: normalCellIdentifier, for: indexPath) as! PayNormalCell
                 
                 cell.payImageView.image = UIImage(named: dict["image"]!)
@@ -113,16 +113,16 @@ class PayListController: JXTableViewController {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if indexPath.row == 0 {
             
-            if let entity = self.vm.payListEntity?.list["ali"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["ali"], entity.isEmpty == 0 {
                 return true
             }
             
         } else if indexPath.row == 1 {
-            if let entity = self.vm.payListEntity?.list["weChat"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["weChat"], entity.isEmpty == 0 {
                 return true
             }
         } else {
-            if let entity = self.vm.payListEntity?.list["card"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["card"], entity.isEmpty == 0 {
                 return true
             }
         }
@@ -148,7 +148,7 @@ class PayListController: JXTableViewController {
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 self.requestData()
             }
-            if let entity = self.vm.payListEntity?.list["ali"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["ali"], entity.isEmpty == 0 {
                 vc.entity = entity
                 vc.isEdit = true
             } else {
@@ -166,7 +166,7 @@ class PayListController: JXTableViewController {
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 self.requestData()
             }
-            if let entity = self.vm.payListEntity?.list["weChat"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["weChat"], entity.isEmpty == 0 {
                 vc.entity = entity
                 vc.isEdit = true
             } else {
@@ -182,7 +182,7 @@ class PayListController: JXTableViewController {
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 self.requestData()
             }
-            if let entity = self.vm.payListEntity?.list["card"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["card"], entity.isEmpty == 0 {
                 vc.entity = entity
                 vc.isEdit = true
             } else {
@@ -205,15 +205,15 @@ class PayListController: JXTableViewController {
             var en = PayEntity()
             
             if indexPath.row == 0 {
-                if let entity = self.vm.payListEntity?.list["ali"]{
+                if let entity = self.vm.customListEntity?.list["ali"]{
                     en = entity
                 }
             } else if indexPath.row == 1 {
-                if let entity = self.vm.payListEntity?.list["weChat"]{
+                if let entity = self.vm.customListEntity?.list["weChat"]{
                     en = entity
                 }
             } else  {
-                if let entity = self.vm.payListEntity?.list["card"]{
+                if let entity = self.vm.customListEntity?.list["card"]{
                     en = entity
                 }
             }
@@ -247,7 +247,7 @@ class PayListController: JXTableViewController {
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 self.requestData()
             }
-            if let entity = self.vm.payListEntity?.list["ali"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["ali"], entity.isEmpty == 0 {
                 vc.entity = entity
                 vc.isEdit = true
             } else {
@@ -264,7 +264,7 @@ class PayListController: JXTableViewController {
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 self.requestData()
             }
-            if let entity = self.vm.payListEntity?.list["weChat"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["weChat"], entity.isEmpty == 0 {
                 vc.entity = entity
                 vc.isEdit = true
             } else {
@@ -280,7 +280,7 @@ class PayListController: JXTableViewController {
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 self.requestData()
             }
-            if let entity = self.vm.payListEntity?.list["card"], entity.isEmpty == 0 {
+            if let entity = self.vm.customListEntity?.list["card"], entity.isEmpty == 0 {
                 vc.entity = entity
                 vc.isEdit = true
             } else {

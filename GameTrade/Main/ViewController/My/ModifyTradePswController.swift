@@ -75,6 +75,10 @@ class ModifyTradePswController: BaseViewController {
             }
         }
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
+    }
     @IBAction func fetchCode(_ sender: Any) {
         
         //不是修改密码获取验证码
@@ -120,18 +124,24 @@ class ModifyTradePswController: BaseViewController {
             }
         } else if self.type == 1 {
             self.vm.modifyTradePsd(code: self.code, password: psd) { (_, msg, isSuc) in
-                ViewManager.showNotice(msg)
+                
                 if isSuc {
+                    ViewManager.showImageNotice("设置成功")
                     //self.navigationController?.popToRootViewController(animated: true)
                     self.navigationController?.popViewController(animated: true)
+                } else {
+                    ViewManager.showNotice(msg)
                 }
             }
         } else {
             self.vm.tradePsdInit(password: psd) { (_, msg, isSuc) in
-                ViewManager.showNotice(msg)
+                
                 if isSuc {
+                    ViewManager.showImageNotice(msg)
                     UserManager.manager.userEntity.user.safePwdInit = 1
                     self.navigationController?.popViewController(animated: true)
+                } else {
+                    ViewManager.showNotice(msg)
                 }
             }
         }

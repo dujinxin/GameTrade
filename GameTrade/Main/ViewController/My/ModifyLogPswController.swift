@@ -104,6 +104,7 @@ class ModifyLogPswController: BaseViewController {
         self.vm.modifyLogPsd(code: codeTextField.text!, password: passwordTextField.text!) { (data, msg, isSuc) in
             self.hideMBProgressHUD()
             if isSuc {
+                ViewManager.showImageNotice(msg)
                 self.navigationController?.popToRootViewController(animated: false)
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLoginStatus), object: false)
             }else{

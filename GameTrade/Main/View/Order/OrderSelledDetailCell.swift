@@ -19,9 +19,15 @@ class OrderSelledDetailCell: UITableViewCell {
     
     @IBOutlet weak var valueLabel: UILabel!
     
+    
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
+    @IBOutlet weak var codeButton: UIButton!
+    
+    @IBOutlet weak var bankNameLabel: UILabel!
+    @IBOutlet weak var codeLeftLabel: UILabel!
+    @IBOutlet weak var codeWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var remarkLabel: UILabel!
     
@@ -32,6 +38,7 @@ class OrderSelledDetailCell: UITableViewCell {
         self.backgroundColor = UIColor.clear
     }
     var entity: OrderDetailEntity? {
+        
         didSet{
             //付款状态，1：待付款，2：待确认付款，3：已完成，4：未付款取消，5：财务判断取消,6：超时系统自动取消
             if entity?.orderStatus == 1 {
@@ -43,7 +50,13 @@ class OrderSelledDetailCell: UITableViewCell {
                 self.orderInfoLabel.text = "您的挂卖单已确认付款并转币"
             } else {
                 self.orderStatusLabel.text = "已关闭"
-                self.orderInfoLabel.text = "您的挂卖单已关闭"
+                if entity?.orderStatus == 4 {
+                    self.orderInfoLabel.text = "本次交易已关闭"
+                } else if entity?.orderStatus == 5 {
+                    self.orderInfoLabel.text = "卖家未收到付款，交易已强制关闭"
+                } else {
+                    self.orderInfoLabel.text = "本次交易已关闭"
+                }
             }
             self.orderNumberLabel.text = "订单号：\(entity?.orderNum ?? "")"
             
@@ -56,13 +69,17 @@ class OrderSelledDetailCell: UITableViewCell {
                 self.payNameLabel.text = "支付宝"
             } else if entity?.payType == 2 {
                 self.payNameLabel.text = "微信"
-            } else {
+            } else if entity?.payType == 3 {
                 self.payNameLabel.text = "银行卡"
+                
+                self.codeLeftLabel.text = "开户行"
+                self.bankNameLabel.text = entity?.bank
+                self.codeWidthConstraint.constant = 0.01
+                self.codeButton.isHidden = true
             }
             self.userNameLabel.text = entity?.name
             self.accoundLabel.text = entity?.account
             //self.remarkLabel.text = entity.
-            
             
         }
     }

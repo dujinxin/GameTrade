@@ -37,8 +37,6 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
         if !UserManager.manager.isLogin {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let login = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
@@ -50,7 +48,6 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

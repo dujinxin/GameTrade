@@ -25,15 +25,28 @@ class OrderedListCell: UITableViewCell {
             self.numberLabel.text = "数量：\(entity?.coinCounts ?? 0)\(configuration_coinName)"
             self.valueLabel.text = "\(entity?.payAmount ?? 0)\(configuration_valueType)"
             //付款状态，1：待付款，2：待确认付款，3：已完成，4：未付款取消，5：财务判断取消,6：超时系统自动取消
+//            if entity?.orderStatus == 1 {
+//                self.statusLabel.text = "待付款"
+//            } else if entity?.orderStatus == 2 {
+//                self.statusLabel.text = "待确认付款"
+//            } else
             if entity?.orderStatus == 3 {
                 self.statusLabel.text = "已完成"
-            }else {
+            } else {
                 self.statusLabel.text = "已关闭"
             }
             if let type = entity?.orderType, type == "购买" {
                 self.MerchantNameLabel.textColor = JXRedColor
+                if entity?.orderStatus == 1 {
+                    self.statusLabel.text = "待付款"
+                } else if entity?.orderStatus == 2 {
+                    self.statusLabel.text = "待卖家确认"
+                }
             } else {
                 self.MerchantNameLabel.textColor = JXGreenColor
+                if entity?.orderStatus == 2 {
+                    self.statusLabel.text = "待卖家确认"
+                }
             }
         }
     }
