@@ -38,6 +38,7 @@ enum ApiString : String {
     case sellList =                  "/planA/ad/list"                      //卖单列表
     case sellInfo =                  "/planA/ad/accountInfo"               //余额，收款账户查询
     case sellCreate =                "/planA/ad/create"                    //卖单创建
+    case sellDelete =                "/planA/ad/delete"                    //卖单删除
     
     case transferCoin =              "/planA/wallet/transfer"              //发币
     
@@ -46,9 +47,11 @@ enum ApiString : String {
     case orderList =                 "/planA/order/list"                   //订单列表
     case orderDetail =               "/planA/order/detail"                 //订单详情
     
+    case getChatID =                 "/planA/common/getServiceId"          //获取会话ID
+    
     case buyCancel =                 "/planA/order/cancel"                 //买单取消
     case buyConfirm =                "/planA/order/payConfirm"             //买单付款确认
-    case sellDelete =                "/planA/ad/delete"                    //卖单取消
+    
     case sellConfirm =               "/planA/order/receiptConfirm"         //卖单付款确认
     
     case tradeList =                 "/planA/wallet/recordList"            //交易列表

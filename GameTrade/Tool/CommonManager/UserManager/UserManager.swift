@@ -14,8 +14,16 @@ class UserEntity: BaseModel {
     
     @objc var authStatus : Int = 3 //用户认证状态，1未认证，2已认证，3已活体认证（人脸识别）
     @objc var planA_sid : String = ""//
+    
+    @objc var id : String?
+    @objc var safePwdInit : Int = 0 //是否设置资金密码
+    @objc var nickname : String?
+    @objc var mobile : String?
+    @objc var headImg : String?
+    
     @objc var user = AccountEntity()
     @objc var property = PropertyEntity()
+    
 }
 
 class UserManager : NSObject{
@@ -56,13 +64,14 @@ class UserManager : NSObject{
     /// - Parameter dict: 用户信息字典
     /// - Returns: 保存结果
     func saveAccound(dict:Dictionary<String, Any>) -> Bool {
-        let entity = UserEntity()
-        entity.setValuesForKeys(dict)
-        self.userEntity.authStatus = entity.authStatus
-        self.userEntity.planA_sid = entity.planA_sid
-
-//        self.userEntity = UserEntity()
-//        self.userEntity.setValuesForKeys(dict)
+//        let entity = UserEntity()
+//        entity.setValuesForKeys(dict)
+//
+        self.userDict = dict
+        self.userEntity.setValuesForKeys(dict)
+        
+//        self.userEntity.authStatus = entity.authStatus
+//        self.userEntity.planA_sid = entity.planA_sid
         
         guard let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
             else {

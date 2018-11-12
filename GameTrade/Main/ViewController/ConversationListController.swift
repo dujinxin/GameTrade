@@ -1,24 +1,19 @@
 //
-//  ExportPKViewController.swift
-//  EthWallet
+//  ConversationListController.swift
+//  GameTrade
 //
-//  Created by 杜进新 on 2018/6/22.
+//  Created by 杜进新 on 2018/11/10.
 //  Copyright © 2018年 dujinxin. All rights reserved.
 //
 
 import UIKit
 
-class ExportPKViewController: UIViewController {
+class ConversationListController: JXTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -27,7 +22,7 @@ class ExportPKViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
+        // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
     */

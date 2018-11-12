@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BigInt
 
 class TradeListEntity: BaseModel {
     @objc var total : Int = 0
