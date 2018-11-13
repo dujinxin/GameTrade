@@ -14,8 +14,14 @@ target 'GameTrade' do
   pod 'SDWebImage'     #4.4.1
   pod 'MJRefresh'      #3.1.15.3
 
-  pod 'web3swift'
 
   pod 'TZImagePickerController'
+
+  #chat
+  pod 'ChatCamp'
+  pod 'Fabric'
+  pod 'Crashlytics'
+  pod 'Alamofire'
+  pod 'DKImagePickerController'
 
 end

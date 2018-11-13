@@ -357,6 +357,7 @@
             <connections>
                 <outlet property="accoundLabel" destination="Nle-Zh-UBr" id="XQr-Pg-lIn"/>
                 <outlet property="bankNameLabel" destination="mKf-0S-Txn" id="pgv-FU-acr"/>
+                <outlet property="chatButton" destination="htY-gl-uxH" id="zHn-6P-UTR"/>
                 <outlet property="codeButton" destination="5Dg-5N-ks2" id="UXr-Q2-BZB"/>
                 <outlet property="codeLeftLabel" destination="mTw-r2-eRD" id="t3H-Be-d9T"/>
                 <outlet property="codeWidthConstraint" destination="ZgN-P5-DHF" id="Ku6-fS-Zwf"/>

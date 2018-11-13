@@ -43,6 +43,7 @@ class OrderBuyingDetailCell: UITableViewCell {
     
     @IBOutlet weak var shopLevelButton: UIButton!
     
+    var chatBlock : (()->())?
     var showCodeBlock : (()->())?
     var cancelBlock : (()->())?
     var payBlock : (()->())?
@@ -56,6 +57,8 @@ class OrderBuyingDetailCell: UITableViewCell {
         // Initialization code
         
         self.backgroundColor = UIColor.clear
+        
+        self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         
         self.cancelLabel.backgroundColor = UIColor.clear
         self.cancelLabel.layer.borderColor = JXOrangeColor.cgColor
@@ -160,6 +163,11 @@ class OrderBuyingDetailCell: UITableViewCell {
                     }
                 }
             }
+        }
+    }
+    @objc func chat() {
+        if let block = self.chatBlock {
+            block()
         }
     }
     @objc func cancelTap(tap:UITapGestureRecognizer) {

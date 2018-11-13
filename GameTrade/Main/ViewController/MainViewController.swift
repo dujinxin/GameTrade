@@ -17,6 +17,8 @@ class MainViewController: JXCollectionViewController {
     var isIpe : Bool = true
     var additionArray : Array = ["发币","收币","钱包记录"]
     var defaultArray: Array = [["image":"icon-big-shop","title":"我要买"],["image":"icon-big-sale","title":"我要卖"],["image":"icon-big-help","title":"帮助信息"]]
+    
+    var noticeView : JXSelectView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +122,104 @@ class MainViewController: JXCollectionViewController {
     }
 }
 extension MainViewController {
+    func showNoticeView() {
+        let width : CGFloat = kScreenWidth - 40 * 2
+        let height : CGFloat = 300
+        
+        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
+        self.noticeView?.position = .middle
+        self.noticeView?.customView = {
+            
+            let contentView = UIView()
+            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
+            
+            let backgroundView = UIView()
+            backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            contentView.addSubview(backgroundView)
+            
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            gradientLayer.cornerRadius = 5
+            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            
+            
+            
+            let label = UILabel()
+            label.frame = CGRect(x: 0, y: 0, width: width, height: 100)
+            //label.center = view.center
+            label.text = "提示"
+            label.textAlignment = .center
+            label.font = UIFont.boldSystemFont(ofSize: 16)
+            label.textColor = JXTextColor
+            backgroundView.addSubview(label)
+            
+            
+            
+            let nameLabel = UILabel()
+            nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 30)
+            nameLabel.text = "您还未设置资金密码"
+            nameLabel.textColor = JXTextColor
+            nameLabel.font = UIFont.systemFont(ofSize: 16)
+            nameLabel.textAlignment = .center
+            
+            backgroundView.addSubview(nameLabel)
+            nameLabel.center.y = backgroundView.center.y
+            
+            
+            let margin : CGFloat = 16
+            let space : CGFloat = 24
+            let buttonWidth : CGFloat = (width - 24 - 16 * 2) / 2
+            let buttonHeight : CGFloat = 44
+            
+            let button1 = UIButton()
+            button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
+            button1.setTitle("稍后再说", for: .normal)
+            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
+            backgroundView.addSubview(button1)
+            
+            
+            let button = UIButton()
+            button.frame = CGRect(x: button1.jxRight + space, y: button1.jxTop, width: buttonWidth, height: buttonHeight)
+            button.setTitle("立即设置", for: .normal)
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button.addTarget(self, action: #selector(setPsd), for: .touchUpInside)
+            backgroundView.addSubview(button)
+            
+            
+            button.layer.cornerRadius = 2
+            button.layer.shadowOpacity = 1
+            button.layer.shadowRadius = 10
+            button.layer.shadowOffset = CGSize(width: 0, height: 10)
+            button.layer.shadowColor = JX10101aShadowColor.cgColor
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.backgroundColor = JXOrangeColor
+            
+            return contentView
+        }()
+        
+        self.noticeView?.show()
+    }
+    @objc func hideNoticeView() {
+        self.noticeView?.dismiss()
+    }
+    @objc func setPsd() {
+        self.hideNoticeView()
+        
+        let storyboard = UIStoryboard(name: "My", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "modifyTradePsw") as! ModifyTradePswController
+        vc.hidesBottomBarWhenPushed = true
+        vc.type = 2
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+extension MainViewController {
     // MARK: UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -146,13 +246,16 @@ extension MainViewController {
             reusableView.entity = self.homeVM.homeEntity.property
             reusableView.noticeLabel.text = self.homeVM.homeEntity.notice.title
             reusableView.scanBlock = {
-                if UserManager.manager.isLogin {
+                if UserManager.manager.userEntity.user.safePwdInit != 0 {
                     //self.performSegue(withIdentifier: "scan", sender: nil)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let login = storyboard.instantiateViewController(withIdentifier: "ScanVC") as! ScanViewController
                     let loginVC = JXNavigationController(rootViewController: login)
                     login.type = 1
                     self.navigationController?.present(loginVC, animated: false, completion: nil)
+                    
+                } else {
+                    self.showNoticeView()
                 }
             }
             reusableView.noticeBlock = {

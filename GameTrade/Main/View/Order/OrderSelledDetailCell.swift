@@ -13,6 +13,7 @@ class OrderSelledDetailCell: UITableViewCell {
     @IBOutlet weak var orderStatusLabel: UILabel!
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var orderInfoLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -31,11 +32,15 @@ class OrderSelledDetailCell: UITableViewCell {
     
     @IBOutlet weak var remarkLabel: UILabel!
     
+    var chatBlock : (()->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         self.backgroundColor = UIColor.clear
+        
+        self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
     }
     var entity: OrderDetailEntity? {
         
@@ -81,6 +86,11 @@ class OrderSelledDetailCell: UITableViewCell {
             self.accoundLabel.text = entity?.account
             //self.remarkLabel.text = entity.
             
+        }
+    }
+    @objc func chat() {
+        if let block = self.chatBlock {
+            block()
         }
     }
 }

@@ -81,6 +81,36 @@ class OrderVM: BaseViewModel {
         }
     }
     
+    
+    var serviceId : String?
+    var financeId : String?
+ 
+    //订单详情 获取客服ID  type:1找客服聊天用，2找财务申诉用
+    func getChatID(agentId: String, type: Int, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
+        
+        JXRequest.request(url: ApiString.getChatID.rawValue, param: ["agentId": agentId, "type": type], success: { (data, msg) in
+            
+            guard
+                let dict = data as? Dictionary<String, Any>
+                else{
+                    completion(nil, self.message, false)
+                    return
+            }
+            if let id = dict["serviceId"] as? String {
+                if type == 1 {
+                    self.serviceId = id
+                } else {
+                    self.financeId = id
+                }
+            }
+            
+            completion(data, msg, true)
+            
+        }) { (msg, code) in
+            completion(nil, msg, false)
+        }
+    }
+    
     //买单取消
     func buyCancel(id: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         

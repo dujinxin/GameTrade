@@ -13,6 +13,7 @@ class OrderSellingDetailCell: UITableViewCell {
     @IBOutlet weak var orderStatusLabel: UILabel!
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var orderInfoLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -37,6 +38,7 @@ class OrderSellingDetailCell: UITableViewCell {
     var cancelBlock : (()->())?
     var payBlock : (()->())?
     var timeOutBlock : (()->())?
+    var chatBlock : (()->())?
     
     var timer : DispatchSourceTimer?
     
@@ -45,6 +47,8 @@ class OrderSellingDetailCell: UITableViewCell {
         // Initialization code
         
         self.backgroundColor = UIColor.clear
+        
+        self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         
         self.cancelLabel.backgroundColor = UIColor.clear
         self.cancelLabel.layer.borderColor = JXOrangeColor.cgColor
@@ -115,6 +119,11 @@ class OrderSellingDetailCell: UITableViewCell {
                 }
             }
             
+        }
+    }
+    @objc func chat() {
+        if let block = self.chatBlock {
+            block()
         }
     }
     @objc func cancelTap(tap:UITapGestureRecognizer) {

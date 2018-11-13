@@ -196,10 +196,10 @@
             </objects>
             <point key="canvasLocation" x="3022" y="873"/>
         </scene>
-        <!--View Controller-->
+        <!--Conversation List Controller-->
         <scene sceneID="sIu-AS-nfn">
             <objects>
-                <viewController id="UnX-8V-p5j" sceneMemberID="viewController">
+                <viewController id="UnX-8V-p5j" customClass="ConversationListController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jx6-Ok-Fyc"/>
                         <viewControllerLayoutGuide type="bottom" id="54M-tI-M7B"/>
@@ -343,7 +343,7 @@
         <!--聊聊-->
         <scene sceneID="mIs-iW-Fqn">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZJZ-V0-hdx" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZJZ-V0-hdx" customClass="JXNavigationController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="聊聊" image="tab3_normal" selectedImage="tab3_selected" id="uC9-Rg-Vd3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dgR-a6-q7o">

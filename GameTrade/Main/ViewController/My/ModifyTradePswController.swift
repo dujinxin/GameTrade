@@ -38,15 +38,20 @@ class ModifyTradePswController: BaseViewController {
             self.noticeEnglishLabel.text = "Change fund password"
             self.noticeLabel.text = "我们已发送验证码到你的\(UserManager.manager.userEntity.user.mobile ?? "注册手机号上")"
             
-            CommonManager.countDown(timeOut: 60, process: { (currentTime) in
-                self.fetchButton.isEnabled = false
-                UIView.beginAnimations(nil, context: nil)
-                self.fetchButton.setTitle(String(format: "%d秒后重发", currentTime), for: .normal)
-                UIView.commitAnimations()
-            }) {
-                self.fetchButton.setTitle("重发验证码", for: .normal)
-                self.fetchButton.setTitleColor(JXOrangeColor, for: .normal)
-                self.fetchButton.isEnabled = true
+            self.vm.sendMobileCode(type: 2) { (_, msg, isSuc) in
+                self.hideMBProgressHUD()
+                
+                CommonManager.countDown(timeOut: 60, process: { (currentTime) in
+                    UIView.beginAnimations(nil, context: nil)
+                    self.fetchButton.setTitleColor(JXTextColor, for: .normal)
+                    self.fetchButton.setTitle(String(format: "%d秒后重发", currentTime), for: .normal)
+                    UIView.commitAnimations()
+                    self.fetchButton.isEnabled = false
+                }) {
+                    self.fetchButton.setTitle("重发验证码", for: .normal)
+                    self.fetchButton.setTitleColor(JXOrangeColor, for: .normal)
+                    self.fetchButton.isEnabled = true
+                }
             }
         }
         

@@ -128,8 +128,8 @@ class PayVM: BaseViewModel {
     
     //添加修改支付方式
     
-    func editPay(id: String = "", type: Int, bank: String, account: String, name: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-        JXRequest.request(url: ApiString.editPayStyle.rawValue, param: ["id": id, "type": type, "bank": bank, "account": account, "name": name], success: { (data, message) in
+    func editPay(id: String = "", type: Int, bank: String, account: String, name: String, safePassword: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
+        JXRequest.request(url: ApiString.editPayStyle.rawValue, param: ["id": id, "type": type, "bank": bank, "account": account, "name": name, "safePassword": safePassword], success: { (data, message) in
             completion(nil,message,true)
         }) { (message, code) in
             completion(nil,message,false)
@@ -137,8 +137,8 @@ class PayVM: BaseViewModel {
     }
     //删除支付方式
     
-    func deletePay(id: String, payType: Int, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-        JXRequest.request(url: ApiString.deletePayStyle.rawValue, param: ["id": id, "payType": payType], success: { (data, message) in
+    func deletePay(id: String, payType: Int, safePassword: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
+        JXRequest.request(url: ApiString.deletePayStyle.rawValue, param: ["id": id, "payType": payType, "safePassword": safePassword], success: { (data, message) in
             completion(nil,message,true)
         }) { (message, code) in
             completion(nil,message,false)
@@ -151,8 +151,8 @@ class WeChatOrAliVM: JXRequest {
     var imageArray : Array<String> = ["userImage"]
 
     //添加或修改支付方式
-    func editPay(id: String = "", type: Int, account: String, name: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-        WeChatOrAliVM.request(url: ApiString.editPayStyle.rawValue, param: ["id": id, "type": type, "account": account, "name": name], success: { (data, message) in
+    func editPay(id: String = "", type: Int, account: String, name: String, safePassword: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
+        WeChatOrAliVM.request(url: ApiString.editPayStyle.rawValue, param: ["id": id, "type": type, "account": account, "name": name, "safePassword": safePassword], success: { (data, message) in
             completion(nil,message,true)
         }) { (message, code) in
             completion(nil,message,false)

@@ -8,6 +8,9 @@
 
 import UIKit
 
+import ChatCamp
+
+
 private let reuseIndentifierHeaderBuying = "reuseIndentifierHeaderBuying"
 private let reuseIndentifierHeaderBuyed = "reuseIndentifierHeaderBuyed"
 private let reuseIndentifierHeaderSelling = "reuseIndentifierHeaderSelling"
@@ -27,6 +30,8 @@ class OrderDetailController: JXTableViewController {
         
         self.title = "订单详情"
         
+        self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(backToRoot))
+        
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
         // Register cell classes
         self.tableView?.register(UINib(nibName: "OrderBuyingDetailCell", bundle: nil), forCellReuseIdentifier: reuseIndentifierHeaderBuying)
@@ -35,6 +40,12 @@ class OrderDetailController: JXTableViewController {
         self.tableView?.register(UINib(nibName: "OrderSelledDetailCell", bundle: nil), forCellReuseIdentifier: reuseIndentifierHeaderSelled)
 
         self.requestData()
+        
+        self.vm.orderDetail(id: self.id ?? "") { (_, msg, isSuc) in
+            self.tableView?.reloadData()
+            
+            self.resetNaviagationItem()
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
@@ -65,11 +76,16 @@ class OrderDetailController: JXTableViewController {
     }
     func resetNaviagationItem() {
         //订单状态 1：待付款，2：待确认付款，3：已完成，4：未付款取消，5：财务判断取消,6：超时系统自动取消
-        if self.vm.orderDetailEntity.orderStatus == 2 {
-            self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(backToRoot))
-            self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(title: "申诉", fontSize: 14, imageName: "", target: self, action: #selector(backToRoot))
-            
+        if self.vm.orderDetailEntity.orderType == "购买" {
+            if self.vm.orderDetailEntity.orderStatus != 1 {
+                self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(title: "申诉", fontSize: 14, imageName: "", target: self, action: #selector(connectFinance))
+            }
+        } else {
+            if self.vm.orderDetailEntity.orderStatus != 2 {
+                self.customNavigationItem.rightBarButtonItem = UIBarButtonItem(title: "申诉", fontSize: 14, imageName: "", target: self, action: #selector(connectFinance))
+            }
         }
+        
     }
     @objc func backToRoot() {
         self.navigationController?.popToRootViewController(animated: true)
@@ -341,14 +357,13 @@ extension OrderDetailController {
                 cell.entity = self.vm.orderDetailEntity
                 self.timer = cell.timer
                 cell.codeButton.addTarget(self, action: #selector(showNoticeView2), for: .touchUpInside)
+                cell.chatBlock = {
+                    self.connectService()
+                }
                 cell.cancelBlock = {
                     
                     self.vm.buyCancel(id: self.vm.orderDetailEntity.id, completion: { (_, msg, isSuc) in
                         if isSuc {
-//                            if let block = self.backBlock {
-//                                block()
-//                            }
-//                            self.navigationController?.popToRootViewController(animated: true)
                             self.requestData()
                         } else {
                             ViewManager.showNotice(msg)
@@ -369,6 +384,9 @@ extension OrderDetailController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: reuseIndentifierHeaderBuyed, for: indexPath) as! OrderBuyedDetailCell
                 cell.entity = self.vm.orderDetailEntity
                 cell.codeButton.addTarget(self, action: #selector(showNoticeView2), for: .touchUpInside)
+                cell.chatBlock = {
+                    self.connectService()
+                }
                 return cell
             }
         } else {
@@ -399,12 +417,84 @@ extension OrderDetailController {
                         }
                     })
                 }
+                cell.chatBlock = {
+                    if let chatID = self.vm.serviceId {
+                        self.createChat(id: chatID)
+                    } else {
+                        self.vm.getChatID(agentId: self.vm.orderDetailEntity.salerId ?? "", type: 1, completion: { (_, msg, isSuc) in
+                            
+                            if isSuc {
+                                self.createChat(id: self.vm.serviceId)
+                            } else {
+                                ViewManager.showNotice(msg)
+                            }
+                        })
+                    }
+                }
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: reuseIndentifierHeaderSelled, for: indexPath) as! OrderSelledDetailCell
                 cell.entity = self.vm.orderDetailEntity
                 cell.codeButton.addTarget(self, action: #selector(showNoticeView2), for: .touchUpInside)
+                cell.chatBlock = {
+                    self.connectService()
+                }
                 return cell
+            }
+        }
+    }
+}
+extension OrderDetailController {
+    @objc func connectFinance() {
+        if let chatID = self.vm.financeId {
+            self.createChat(id: chatID)
+        } else {
+            self.vm.getChatID(agentId: "suibian", type: 2, completion: { (_, msg, isSuc) in
+                
+                if isSuc {
+                    self.createChat(id: self.vm.financeId)
+                } else {
+                    ViewManager.showNotice(msg)
+                }
+            })
+        }
+    }
+    func connectService() {
+        if let chatID = self.vm.serviceId {
+            self.createChat(id: chatID)
+        } else {
+            var agentId = ""
+            if self.vm.orderDetailEntity.orderType == "购买" {
+                agentId = self.vm.orderDetailEntity.salerId ?? ""
+            } else {
+                agentId = self.vm.orderDetailEntity.buyerId ?? ""
+            }
+            self.vm.getChatID(agentId: agentId, type: 1, completion: { (_, msg, isSuc) in
+                
+                if isSuc {
+                    self.createChat(id: self.vm.serviceId)
+                } else {
+                    ViewManager.showNotice(msg)
+                }
+            })
+        }
+    }
+    func createChat(id: String?) {
+        
+        guard let chatID = id else { return }
+        
+        let userID = CCPClient.getCurrentUser().getId()
+        let username = CCPClient.getCurrentUser().getDisplayName()
+        
+        let sender = Sender(id: userID, displayName: username!)
+        
+        CCPGroupChannel.create(name: self.vm.orderDetailEntity.agentName ?? "", userIds: [userID, chatID], isDistinct: true) { groupChannel, error in
+            print("jxnotice =============  ",groupChannel,"\n",error)
+            if error == nil {
+                let chatViewController = ChatViewController(channel: groupChannel!, sender: sender)
+                self.navigationController?.pushViewController(chatViewController, animated: true)
+            } else {
+                self.showAlert(title: "Error!", message: "Some error occured, please try again.", actionText: "OK")
             }
         }
     }

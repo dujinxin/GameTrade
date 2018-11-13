@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,11 +18,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVm-ZT-BHK">
                     <rect key="frame" x="0.0" y="0.0" width="415" height="231"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0CQ-ET-fqH">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="0CQ-ET-fqH">
                             <rect key="frame" x="173.5" y="13" width="68" height="68"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="68" id="0K8-tL-J0I"/>
                                 <constraint firstAttribute="width" constant="68" id="L39-yC-RKx"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="identify" translatesAutoresizingMaskIntoConstraints="NO" id="yMw-bs-Yfb">
+                            <rect key="frame" x="219.5" y="72" width="22" height="9"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="9" id="JP5-mM-Nge"/>
+                                <constraint firstAttribute="width" secondItem="yMw-bs-Yfb" secondAttribute="height" multiplier="22:9" id="fwu-Xx-9m5"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DaR-Te-NDi">
@@ -70,7 +77,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Awa-Rg-iuN">
                             <rect key="frame" x="0.0" y="169" width="104" height="62"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f5B-dW-Efq">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-certification" translatesAutoresizingMaskIntoConstraints="NO" id="f5B-dW-Efq">
                                     <rect key="frame" x="17" y="23" width="16" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="16" id="1ef-6F-T7f"/>
@@ -95,7 +102,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y5v-D3-nIK">
                             <rect key="frame" x="104" y="169" width="103.5" height="62"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W5Z-YU-t3g">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-certification" translatesAutoresizingMaskIntoConstraints="NO" id="W5Z-YU-t3g">
                                     <rect key="frame" x="17" y="23" width="16" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="16" id="J0l-3f-u3W"/>
@@ -119,7 +126,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvG-iq-rls">
                             <rect key="frame" x="207.5" y="169" width="104" height="62"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hSq-Fi-tJ1">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-certification" translatesAutoresizingMaskIntoConstraints="NO" id="hSq-Fi-tJ1">
                                     <rect key="frame" x="17" y="23" width="16" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="16" id="SC4-Hg-fxn"/>
@@ -143,7 +150,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="isn-LP-bUo">
                             <rect key="frame" x="311.5" y="169" width="103.5" height="62"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GEy-4d-YtO">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-certification" translatesAutoresizingMaskIntoConstraints="NO" id="GEy-4d-YtO">
                                     <rect key="frame" x="17" y="23" width="16" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="16" id="uSM-J0-dS7"/>
@@ -174,8 +181,10 @@
                         <constraint firstItem="p7i-s1-B5x" firstAttribute="centerX" secondItem="JVm-ZT-BHK" secondAttribute="centerX" constant="30" id="8Xu-aY-Xaw"/>
                         <constraint firstItem="isn-LP-bUo" firstAttribute="width" secondItem="Awa-Rg-iuN" secondAttribute="width" id="Cit-j2-tVW"/>
                         <constraint firstItem="PXL-BQ-3QH" firstAttribute="centerY" secondItem="Kvx-bI-6qe" secondAttribute="centerY" id="D5g-Ju-gb3"/>
+                        <constraint firstItem="yMw-bs-Yfb" firstAttribute="bottom" secondItem="0CQ-ET-fqH" secondAttribute="bottom" id="F2I-gY-xVb"/>
                         <constraint firstItem="qvG-iq-rls" firstAttribute="leading" secondItem="Y5v-D3-nIK" secondAttribute="trailing" id="LEq-h2-ng0"/>
                         <constraint firstItem="0CQ-ET-fqH" firstAttribute="top" secondItem="JVm-ZT-BHK" secondAttribute="top" constant="13" id="LKG-XN-fML"/>
+                        <constraint firstItem="yMw-bs-Yfb" firstAttribute="trailing" secondItem="0CQ-ET-fqH" secondAttribute="trailing" id="MzB-Ij-kkj"/>
                         <constraint firstItem="Y5v-D3-nIK" firstAttribute="height" secondItem="Awa-Rg-iuN" secondAttribute="height" id="NXZ-TQ-cZL"/>
                         <constraint firstItem="p7i-s1-B5x" firstAttribute="top" secondItem="S0f-jj-tyD" secondAttribute="top" id="QE9-mI-sZW"/>
                         <constraint firstItem="Kvx-bI-6qe" firstAttribute="top" secondItem="S0f-jj-tyD" secondAttribute="bottom" constant="4" id="TqM-LH-nj8"/>
@@ -212,7 +221,12 @@
                 <outlet property="numberLabel" destination="Kvx-bI-6qe" id="np6-YN-aQk"/>
                 <outlet property="percentLabel" destination="PXL-BQ-3QH" id="EMh-jZ-ZyS"/>
             </connections>
-            <point key="canvasLocation" x="-132" y="48.575712143928037"/>
+            <point key="canvasLocation" x="-132" y="48.125937031484263"/>
         </collectionReusableView>
     </objects>
+    <resources>
+        <image name="defaultImage" width="68" height="68"/>
+        <image name="icon-certification" width="15" height="15"/>
+        <image name="identify" width="22" height="9"/>
+    </resources>
 </document>

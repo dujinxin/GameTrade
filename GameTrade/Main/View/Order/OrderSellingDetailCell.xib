@@ -420,6 +420,7 @@
                 <outlet property="accoundLabel" destination="Z5D-DM-UXm" id="sSm-SR-anh"/>
                 <outlet property="bankNameLabel" destination="oBd-EY-2Gb" id="dz6-qy-LfO"/>
                 <outlet property="cancelLabel" destination="SG2-3h-ObQ" id="pq4-q1-mku"/>
+                <outlet property="chatButton" destination="qje-Ys-cWM" id="TRq-DX-KhT"/>
                 <outlet property="codeButton" destination="E0y-C8-nSa" id="RVF-Ko-yzH"/>
                 <outlet property="codeContentView" destination="7bv-0s-udQ" id="2Yp-yE-KCo"/>
                 <outlet property="codeHeightConstraint" destination="k2Z-9k-q0Z" id="Ezl-Js-Jjs"/>

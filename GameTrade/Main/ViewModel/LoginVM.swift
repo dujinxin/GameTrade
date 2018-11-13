@@ -36,12 +36,18 @@ class LoginVM: JXRequest {
     func register(mobile: String, password: String, mobileCode: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
         JXRequest.request(url: ApiString.register.rawValue, param: ["method": "register", "mobile": mobile, "password": password ,"mobileValidateCode": mobileCode], success: { (data, message) in
             guard
-                let dict = data as? Dictionary<String, Any>
+                var dict = data as? Dictionary<String, Any>
                 else{
                     completion(nil,message,false)
                     return
             }
-            let _ = UserManager.manager.saveAccound(dict: dict)
+            
+            if let baseInfo = dict["baseInfo"] as? Dictionary<String, Any> {
+                baseInfo.forEach({ (key,value) in
+                    dict[key] = value
+                })
+                let _ = UserManager.manager.saveAccound(dict: dict)
+            }
             completion(nil,message,true)
         }) { (message, code) in
             completion(nil,message,false)
@@ -102,13 +108,18 @@ class LoginVM: JXRequest {
         
         JXRequest.request(url: ApiString.login.rawValue, param: ["username": userName, "password": password], success: { (data, message) in
             guard
-                let dict = data as? Dictionary<String, Any>
+                var dict = data as? Dictionary<String, Any>
                 else{
                     completion(nil,message,false)
                     return
             }
             print(dict)
-            let _ = UserManager.manager.saveAccound(dict: dict)
+            if let baseInfo = dict["baseInfo"] as? Dictionary<String, Any> {
+                baseInfo.forEach({ (key,value) in
+                    dict[key] = value
+                })
+                let _ = UserManager.manager.saveAccound(dict: dict)
+            }
             completion(nil,message,true)
         }) { (message, code) in
             completion(nil,message,false)

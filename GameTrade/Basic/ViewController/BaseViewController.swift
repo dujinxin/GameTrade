@@ -9,7 +9,7 @@
 import UIKit
 import MBProgressHUD
 
-class BaseViewController: UIViewController {
+open class BaseViewController: UIViewController {
     
     var backBlock : (()->())?
     
@@ -34,7 +34,7 @@ class BaseViewController: UIViewController {
     }()
     
     //重写title的setter方法
-    override var title: String?{
+    override open var title: String?{
         didSet {
             customNavigationItem.title = title
         }
@@ -56,7 +56,7 @@ class BaseViewController: UIViewController {
     //var isCustomNavigationBarUsed = false
     
 
-    override func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = JXFfffffColor
@@ -75,22 +75,22 @@ class BaseViewController: UIViewController {
         self.isCustomNavigationBarUsed() ? setCustomNavigationBar() : navigationBarConfig()
     }
 
-    override func didReceiveMemoryWarning() {
+    override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    func isCustomNavigationBarUsed() -> Bool{
+    open func isCustomNavigationBarUsed() -> Bool{
         return true
     }
     /// request data
-    @objc func requestData() {}
+    @objc open func requestData() {}
     //MARK: - base view set
-    func setUpMainView() {}
+    open func setUpMainView() {}
     /// add default view eg:no data,no network,no login
-    func setUpDefaultView() {
+    open func setUpDefaultView() {
         defaultView.frame = view.bounds
         view.addSubview(defaultView)
         defaultView.info = defaultInfo
@@ -128,7 +128,7 @@ extension BaseViewController {
 }
 
 extension BaseViewController {
-    func showMBProgressHUD() {
+    open func showMBProgressHUD() {
         let _ = MBProgressHUD.showAdded(to: self.view, animated: true)
 //        hud.backgroundView.color = UIColor.black
 //        hud.contentColor = UIColor.black
@@ -136,7 +136,7 @@ extension BaseViewController {
 //        hud.label.text = "加载中..."
         
     }
-    func hideMBProgressHUD() {
+    open func hideMBProgressHUD() {
         MBProgressHUD.hide(for: self.view, animated: true)
     }
 }

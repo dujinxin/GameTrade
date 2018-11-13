@@ -16,6 +16,19 @@ class PayListController: JXTableViewController {
     var vm = PayVM()
     var defaultArray: Array = [["image":"icon-ali","title":"支付宝"],["image":"icon-wechat","title":"微信"],["image":"icon-card","title":"银行卡"]]
     
+ 
+    var psdTextView : PasswordTextView!
+    lazy var statusBottomView: JXSelectView = {
+        let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
+        selectView.isBackViewUserInteractionEnabled = false
+       
+        return selectView
+    }()
+    
+    var id: String = ""
+    var payType: Int = 1
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "收款方式"
@@ -194,14 +207,7 @@ class PayListController: JXTableViewController {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //default,destructive默认红色，normal默认灰色，可以通过backgroundColor 修改背景颜色，backgroundEffect 添加模糊效果
         let deleteAction = UITableViewRowAction(style: .destructive, title: "删除") { (action, indexPath) in
-            print("删除")
-            //            let model = self.dataArray[indexPath.row] as! DBUserModel
-            //            if JXBaseDB.default.deleteData(condition: ["id = \(model.id)"]) == true{
-            //                self.dataArray.remove(at: indexPath.row)
-            //                tableView.beginUpdates()
-            //                tableView.deleteRows(at: [indexPath], with: .automatic)
-            //                tableView.endUpdates()
-            //            }
+            
             var en = PayEntity()
             
             if indexPath.row == 0 {
@@ -217,12 +223,15 @@ class PayListController: JXTableViewController {
                     en = entity
                 }
             }
+            self.id = en.id ?? ""
+            self.payType = indexPath.row + 1
             
-            self.vm.deletePay(id: en.id ?? "", payType: (indexPath.row + 1), completion: { (_, msg, isSuc) in
-                if isSuc {
-                    self.requestData()
-                }
-            })
+//            self.showInputView()
+        
+            
+            self.statusBottomView.customView = self.customViewInit()
+            self.statusBottomView.show(inView: self.view)
+            self.psdTextView.textField.becomeFirstResponder()
         }
         let markAction = UITableViewRowAction(style: .default, title: "编辑") { (action, indexPath) in
             print("编辑")
@@ -288,5 +297,123 @@ class PayListController: JXTableViewController {
             }
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+}
+extension PayListController {
+    func customViewInit() -> UIView {
+        
+        let width : CGFloat = kScreenWidth - 48
+        
+        let contentView = UIView()
+        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 442)
+        
+        let gradientLayer = CAGradientLayer.init()
+        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+        gradientLayer.locations = [0]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 442 + kBottomMaginHeight)
+        contentView.layer.insertSublayer(gradientLayer, at: 0)
+ 
+        
+        
+        let topBarView1 = { () -> UIView in
+            let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 60))
+            
+            let label = UILabel()
+            label.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
+            //label.center = view.center
+            label.text = "输入资金密码"
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: 18)
+            label.textColor = JXFfffffColor
+            view.addSubview(label)
+            //label.sizeToFit()
+            
+            let button = UIButton()
+            button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
+            //button.center = CGPoint(x: 30, y: view.jxCenterY)
+            //button.setTitle("×", for: .normal)
+            button.tintColor = JXFfffffColor
+            button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+            button.setTitleColor(JX333333Color, for: .normal)
+            button.contentVerticalAlignment = .center
+            button.contentHorizontalAlignment = .center
+            button.addTarget(self, action: #selector(closeStatus), for: .touchUpInside)
+            view.addSubview(button)
+            
+            
+            let button1 = UIButton()
+            button1.frame = CGRect(x: kScreenWidth - 80 - 24, y: 10, width: 80, height: 40)
+            //button.center = CGPoint(x: 30, y: view.jxCenterY)
+            button1.setTitle("忘记密码？", for: .normal)
+            
+            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.contentVerticalAlignment = .center
+            button1.contentHorizontalAlignment = .right
+            button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
+            view.addSubview(button1)
+            
+            return view
+        }()
+        contentView.addSubview(topBarView1)
+        
+        
+        self.psdTextView = PasswordTextView(frame: CGRect(x: (kScreenWidth - 176) / 2, y: topBarView1.jxBottom, width: 176, height: 60))
+        //psdTextView.textField.delegate = self
+        psdTextView.backgroundColor = UIColor.white //要先设置颜色，再设置透明，不然不起作用，还有绘制的问题，待研究
+        contentView.addSubview(psdTextView)
+        
+        psdTextView.backgroundColor = UIColor.clear
+        psdTextView.limit = 4
+        psdTextView.bottomLineColor = JXSeparatorColor
+        psdTextView.textColor = JXFfffffColor
+        psdTextView.font = UIFont.systemFont(ofSize: 42)
+        psdTextView.completionBlock = { (text,isFinish) -> () in
+            
+            if isFinish {
+                self.closeStatus()
+                self.confirm(psd: text)
+            }
+        }
+        
+        return contentView
+    }
+    @objc func forgotPsd() {
+        let storyboard = UIStoryboard(name: "My", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "modifyTradePsw") as! ModifyTradePswController
+        vc.hidesBottomBarWhenPushed = true
+        vc.type = 0
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @objc func closeStatus() {
+        self.statusBottomView.dismiss()
+    }
+    
+    func confirm(psd: String) {
+        self.showMBProgressHUD()
+        self.vm.deletePay(id: self.id, payType: self.payType, safePassword: psd, completion: { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
+            if isSuc {
+                self.requestData()
+            } else {
+                ViewManager.showNotice(msg)
+            }
+        })
+    }
+    
+    func showInputView() {
+        let inputTextView = JXNumInputTextView(frame: CGRect(x: 0, y: self.view.frame.height, width: view.bounds.width, height: 60), completion:nil)
+        inputTextView.sendBlock = { (_,object) in
+            
+        }
+        inputTextView.cancelBlock = { (_,_) in
+            
+        }
+        inputTextView.limitWords = 4
+        inputTextView.useTopBar = true
+        inputTextView.show()
     }
 }

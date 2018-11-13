@@ -8,6 +8,8 @@
 
 import UIKit
 
+import ChatCamp
+
 class TabBarViewController: UITabBarController {
 
     
@@ -80,6 +82,38 @@ class TabBarViewController: UITabBarController {
         if let isSuccess = notify.object as? Bool,
             isSuccess == true{
             
+            guard let userID = UserManager.manager.userEntity.id else { return }
+            //登录聊天
+            CCPClient.connect(uid: userID) { [unowned self] (user, error) in
+                DispatchQueue.main.async {
+                    //self.activityIndicator.stopAnimating()
+                    
+                    if error != nil {
+                        let alertController = UIAlertController(title: "Error In Login", message: "An error occurred while logging you in.", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Retry", style: .default, handler: { (action) in
+                            alertController.dismiss(animated: true, completion: nil)
+                        })
+                        alertController.addAction(okAction)
+                        self.present(alertController, animated: true, completion: nil)
+                        
+                        return
+                    } else {
+                        UserDefaults.standard.setUserID(userID: userID)
+                        if let deviceToken = UserDefaults.standard.deviceToken() {
+                            CCPClient.updateUserPushToken(token: deviceToken) { (_,_) in
+                                print("update device token on the server.")
+                            }
+                        }
+                        CCPClient.updateDisplayNameOnServer(displayName: UserManager.manager.userEntity.nickname ?? "昵称") { (user, error) in
+                            if error == nil {
+                                UserDefaults.standard.setUsername(username: UserManager.manager.userEntity.nickname ?? "昵称")
+                            }
+                        }
+                        //WindowManager.shared.showHomeWithAnimation()
+                    }
+                }
+            }
+            
         }else{
             UserManager.manager.removeAccound()
             
@@ -99,6 +133,25 @@ class TabBarViewController: UITabBarController {
             }
             
             //self.navigationController?.pushViewController(vc, animated: true)
+            
+            //退出聊天
+            if let token = UserDefaults.standard.deviceToken() {
+                CCPClient.deleteUserPushToken(token, completionHandler: { (error) in
+                    if error == nil {
+                        UserDefaults.standard.setUserID(userID: nil)
+                        UserDefaults.standard.setUsername(username: nil)
+                        CCPClient.disconnect() { (error) in
+                            //WindowManager.shared.showLoginWithAnimation()
+                        }
+                    } else {
+                        //self.showAlert(title: "Error", message: "Error while deleting push token on server. Please try again.", actionText: "OK")
+                    }
+                })
+            } else {
+                CCPClient.disconnect() { (error) in
+                    //WindowManager.shared.showLoginWithAnimation()
+                }
+            }
         }
     }
     @objc func tabBarStatus(notify:Notification) {

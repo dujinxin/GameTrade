@@ -13,6 +13,7 @@ class OrderBuyedDetailCell: UITableViewCell {
     @IBOutlet weak var orderStatusLabel: UILabel!
     @IBOutlet weak var orderNumberLabel: UILabel!
     @IBOutlet weak var orderInfoLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -35,11 +36,15 @@ class OrderBuyedDetailCell: UITableViewCell {
     
     @IBOutlet weak var shopLevelButton: UIButton!
     
+    var chatBlock : (()->())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         self.backgroundColor = UIColor.clear
+        
+        self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         
         self.shopView.layer.shadowOffset = CGSize(width: 0, height: 13)
         self.shopView.layer.shadowOpacity = 1
@@ -113,6 +118,12 @@ class OrderBuyedDetailCell: UITableViewCell {
             }
             self.shopNameLabel.text = entity?.agentName
             
+        }
+    }
+    
+    @objc func chat() {
+        if let block = self.chatBlock {
+            block()
         }
     }
 }

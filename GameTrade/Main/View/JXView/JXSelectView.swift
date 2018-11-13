@@ -255,12 +255,10 @@ class JXSelectView: UIView {
         self.show(inView: self.bgWindow)
     }
     
-    func show(inView view:UIView? ,animate:Bool = true) {
+    func show(inView view:UIView? ,animate: Bool = true) {
         
         self.addSubview(self.contentView!)
         self.resetFrame(height: selectViewHeight)
-        print(self.frame)
-        print(self.contentView?.frame)
         
         let superView : UIView
         
