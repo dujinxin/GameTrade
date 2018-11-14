@@ -27,7 +27,7 @@ class MerchantReusableView: UICollectionReusableView {
             if
                 let str = entity?.headImg,
                 let url = URL(string: str) {
-                self.MerchantImageView.sd_setImage(with: url, completed: nil)
+                self.MerchantImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
             }
             self.MerchantNameLabel.text = entity?.nickname
             let percent = String(format: "%.1f%%", Double(entity?.tradeSuccCounts ?? 0) / Double(entity?.tradeCounts ?? 1) * 100)

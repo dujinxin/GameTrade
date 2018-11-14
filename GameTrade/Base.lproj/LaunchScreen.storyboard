@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_0" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,35 +18,23 @@
                         <viewControllerLayoutGuide type="bottom" id="m3K-lF-Sih"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RlL-G4-dhV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="Epo-94-0Bk">
-                                        <rect key="frame" x="40" y="172" width="241" height="262"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Scz-pe-xrG">
-                                        <rect key="frame" x="133" y="432" width="55" height="66"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="englishInfo" translatesAutoresizingMaskIntoConstraints="NO" id="ZpA-da-fCE">
-                                        <rect key="frame" x="64.5" y="524" width="192" height="10"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chineseInfo" translatesAutoresizingMaskIntoConstraints="NO" id="kru-L9-H22">
-                                        <rect key="frame" x="111" y="505" width="99" height="12"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img-bulingbuling" translatesAutoresizingMaskIntoConstraints="NO" id="ZpA-da-fCE">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Epo-94-0Bk" firstAttribute="top" secondItem="RlL-G4-dhV" secondAttribute="top" constant="172" id="9Zd-xq-ANO"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZpA-da-fCE" secondAttribute="trailing" id="6M1-ME-W2F"/>
                                     <constraint firstItem="ZpA-da-fCE" firstAttribute="centerX" secondItem="RlL-G4-dhV" secondAttribute="centerX" id="K3b-E7-C3v"/>
-                                    <constraint firstItem="Scz-pe-xrG" firstAttribute="centerX" secondItem="RlL-G4-dhV" secondAttribute="centerX" id="QYG-vc-bTC"/>
-                                    <constraint firstItem="kru-L9-H22" firstAttribute="top" secondItem="Scz-pe-xrG" secondAttribute="bottom" constant="7" id="UQT-hx-cHM"/>
-                                    <constraint firstItem="ZpA-da-fCE" firstAttribute="top" secondItem="kru-L9-H22" secondAttribute="bottom" constant="7" id="iUV-Wg-U3C"/>
-                                    <constraint firstItem="Epo-94-0Bk" firstAttribute="centerX" secondItem="RlL-G4-dhV" secondAttribute="centerX" id="wc8-Q5-mIt"/>
-                                    <constraint firstItem="kru-L9-H22" firstAttribute="centerX" secondItem="RlL-G4-dhV" secondAttribute="centerX" id="xvQ-7T-4gJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZpA-da-fCE" secondAttribute="bottom" constant="34" id="y18-2g-ERj"/>
+                                    <constraint firstItem="ZpA-da-fCE" firstAttribute="leading" secondItem="RlL-G4-dhV" secondAttribute="leading" id="c17-Ty-X4i"/>
+                                    <constraint firstItem="ZpA-da-fCE" firstAttribute="top" secondItem="RlL-G4-dhV" secondAttribute="top" id="uif-0f-NRe"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZpA-da-fCE" secondAttribute="bottom" id="y18-2g-ERj"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -65,9 +53,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chineseInfo" width="99" height="12"/>
-        <image name="englishInfo" width="192" height="10"/>
-        <image name="launchImage" width="241" height="262"/>
-        <image name="launchLogo" width="55" height="66"/>
+        <image name="img-bulingbuling" width="375" height="812"/>
     </resources>
 </document>

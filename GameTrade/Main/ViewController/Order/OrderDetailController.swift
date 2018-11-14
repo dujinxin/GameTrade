@@ -281,67 +281,6 @@ class OrderDetailController: JXTableViewController {
     @objc func confirm1() {
         self.hideNoticeView1()
     }
-    
-    //MARK: selectView2
-    @objc func showNoticeView2() {
-        let width : CGFloat = kScreenWidth - 24 * 2
-        let height : CGFloat = width + 12
-        
-        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
-        self.noticeView?.position = .middle
-        self.noticeView?.customView = {
-            
-            let contentView = UIView()
-            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
-            
-            let backgroundView = UIView()
-            backgroundView.frame = CGRect(x: 24, y: 0, width: width, height: height)
-            contentView.addSubview(backgroundView)
-            
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-            
-            
-            let margin : CGFloat = 16
-            let space : CGFloat = 24
-            let buttonWidth : CGFloat = (width - 16 * 2)
-            let buttonHeight : CGFloat = 44
-            
-            
-            let button = UIButton()
-            button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
-            //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
-            button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
-            button.contentVerticalAlignment = .center
-            button.contentHorizontalAlignment = .center
-            button.addTarget(self, action: #selector(hideNoticeView2), for: .touchUpInside)
-            backgroundView.addSubview(button)
-            
-            
-            let imageView = UIImageView(frame: CGRect(x: 48, y: button.jxBottom + 10, width: width - 48 * 2, height: width - 48 * 2))
-            if let str = self.vm.orderDetailEntity.qrcodeImg {
-                imageView.sd_setImage(with: URL(string: str), completed: nil)
-            }
-            backgroundView.addSubview(imageView)
-            
-            return contentView
-        }()
-        
-        self.noticeView?.show()
-    }
-    @objc func hideNoticeView2() {
-        self.noticeView?.dismiss()
-    }
 }
 extension OrderDetailController {
     
@@ -359,6 +298,11 @@ extension OrderDetailController {
                 cell.codeButton.addTarget(self, action: #selector(showNoticeView2), for: .touchUpInside)
                 cell.chatBlock = {
                     self.connectService()
+                }
+                cell.copyBlock = {
+                    let pals = UIPasteboard.general
+                    pals.string = self.vm.orderDetailEntity.account
+                    ViewManager.showImageNotice("已复制")
                 }
                 cell.cancelBlock = {
                     
@@ -387,6 +331,11 @@ extension OrderDetailController {
                 cell.chatBlock = {
                     self.connectService()
                 }
+                cell.copyBlock = {
+                    let pals = UIPasteboard.general
+                    pals.string = self.vm.orderDetailEntity.account
+                    ViewManager.showImageNotice("已复制")
+                }
                 return cell
             }
         } else {
@@ -395,22 +344,13 @@ extension OrderDetailController {
                 cell.entity = self.vm.orderDetailEntity
                 cell.codeButton.addTarget(self, action: #selector(showNoticeView2), for: .touchUpInside)
                 self.timer = cell.timer
-                cell.cancelBlock = {
-                    
-                }
                 cell.timeOutBlock = {
-                    
-                    print("timeOutBlock")
                     self.requestData()
                 }
                 cell.payBlock = {
                     //确认
                     self.vm.sellConfirm(id: self.vm.orderDetailEntity.id, completion: { (_, msg, isSuc) in
                         if isSuc {
-//                            if let block = self.backBlock {
-//                                block()
-//                            }
-//                            self.navigationController?.popToRootViewController(animated: true)
                             self.requestData()
                         } else {
                             ViewManager.showNotice(msg)
@@ -431,6 +371,11 @@ extension OrderDetailController {
                         })
                     }
                 }
+                cell.copyBlock = {
+                    let pals = UIPasteboard.general
+                    pals.string = self.vm.orderDetailEntity.account
+                    ViewManager.showImageNotice("已复制")
+                }
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: reuseIndentifierHeaderSelled, for: indexPath) as! OrderSelledDetailCell
@@ -439,11 +384,17 @@ extension OrderDetailController {
                 cell.chatBlock = {
                     self.connectService()
                 }
+                cell.copyBlock = {
+                    let pals = UIPasteboard.general
+                    pals.string = self.vm.orderDetailEntity.account
+                    ViewManager.showImageNotice("已复制")
+                }
                 return cell
             }
         }
     }
 }
+//MARK: chat
 extension OrderDetailController {
     @objc func connectFinance() {
         if let chatID = self.vm.financeId {
@@ -489,13 +440,104 @@ extension OrderDetailController {
         let sender = Sender(id: userID, displayName: username!)
         
         CCPGroupChannel.create(name: self.vm.orderDetailEntity.agentName ?? "", userIds: [userID, chatID], isDistinct: true) { groupChannel, error in
-            print("jxnotice =============  ",groupChannel,"\n",error)
             if error == nil {
                 let chatViewController = ChatViewController(channel: groupChannel!, sender: sender)
                 self.navigationController?.pushViewController(chatViewController, animated: true)
             } else {
                 self.showAlert(title: "Error!", message: "Some error occured, please try again.", actionText: "OK")
             }
+        }
+    }
+}
+//MARK: show codeImage
+extension OrderDetailController {
+    
+    @objc func showNoticeView2() {
+        let width : CGFloat = kScreenWidth - 24 * 2
+        let height : CGFloat = width + 12
+        
+        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
+        self.noticeView?.position = .middle
+        self.noticeView?.presentModelStyle = .none
+        self.noticeView?.isBackViewUserInteractionEnabled = false
+        self.noticeView?.customView = {
+            
+            let contentView = UIView()
+            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
+            
+            let backgroundView = UIView()
+            backgroundView.frame = CGRect(x: 24, y: 0, width: width, height: height)
+            contentView.addSubview(backgroundView)
+            
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            gradientLayer.cornerRadius = 5
+            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            
+            
+//            let margin : CGFloat = 16
+//            let space : CGFloat = 24
+//            let buttonWidth : CGFloat = (width - 16 * 2)
+//            let buttonHeight : CGFloat = 44
+            
+            
+            let button = UIButton()
+            button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
+            //button.center = CGPoint(x: 30, y: view.jxCenterY)
+            //button.setTitle("×", for: .normal)
+            button.tintColor = JXFfffffColor
+            button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+            button.setTitleColor(JX333333Color, for: .normal)
+            button.contentVerticalAlignment = .center
+            button.contentHorizontalAlignment = .center
+            button.addTarget(self, action: #selector(hideNoticeView2), for: .touchUpInside)
+            backgroundView.addSubview(button)
+            
+            
+            let imageView = UIImageView(frame: CGRect(x: 48, y: button.jxBottom + 10, width: width - 48 * 2, height: width - 48 * 2))
+            if let str = self.vm.orderDetailEntity.qrcodeImg {
+                imageView.sd_setImage(with: URL(string: str), completed: nil)
+            }
+            imageView.isUserInteractionEnabled = true
+            imageView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPress)))
+            backgroundView.addSubview(imageView)
+            
+            return contentView
+        }()
+        self.noticeView?.show()
+    }
+    
+    @objc func hideNoticeView2() {
+        self.noticeView?.dismiss()
+    }
+    @objc func longPress(long: UILongPressGestureRecognizer) {
+   
+        if let v = long.view as? UIImageView, let image = v.image {
+            self.hideNoticeView2()
+            
+            let alert = UIAlertController(title: nil, message: "保存到相册", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "是", style: .default, handler: { (action) in
+                UIImageWriteToSavedPhotosAlbum(image, self, #selector(self.imageSavedToPhotosAlbum(image:didFinishSavingWithError:contextInfo:)), nil)
+            }))
+            alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (action) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+    }
+    @objc func imageSavedToPhotosAlbum(image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer?) {
+        
+//didFinishSavingWithError error:Error?,contextInfo:AnyObject?
+        if let error = error {
+            ViewManager.showNotice(error.localizedDescription)
+        } else {
+            ViewManager.showImageNotice("添加成功")
         }
     }
 }

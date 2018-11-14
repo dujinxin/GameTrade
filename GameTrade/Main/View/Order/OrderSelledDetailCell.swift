@@ -33,6 +33,7 @@ class OrderSelledDetailCell: UITableViewCell {
     @IBOutlet weak var remarkLabel: UILabel!
     
     var chatBlock : (()->())?
+    var copyBlock : (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -90,6 +91,11 @@ class OrderSelledDetailCell: UITableViewCell {
     }
     @objc func chat() {
         if let block = self.chatBlock {
+            block()
+        }
+    }
+    @IBAction func copyAccount(_ sender: Any) {
+        if let block = self.copyBlock {
             block()
         }
     }

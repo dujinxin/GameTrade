@@ -193,7 +193,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nle-Zh-UBr">
-                                                <rect key="frame" x="270" y="14" width="33" height="16"/>
+                                                <rect key="frame" x="244" y="14" width="33" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -205,15 +205,28 @@
                                                     <constraint firstAttribute="height" constant="0.5" id="hjt-GW-9tz"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdP-Nc-xwo">
+                                                <rect key="frame" x="277" y="7" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="P3M-pL-F34"/>
+                                                    <constraint firstAttribute="width" secondItem="SdP-Nc-xwo" secondAttribute="height" multiplier="1:1" id="hy4-FT-3hF"/>
+                                                </constraints>
+                                                <state key="normal" image="icon-copy"/>
+                                                <connections>
+                                                    <action selector="copyAccount:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uFe-RO-H6R"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="1mI-NK-Pmn"/>
                                             <constraint firstItem="Dwc-Gs-LVQ" firstAttribute="centerY" secondItem="v5t-BV-gnU" secondAttribute="centerY" id="8bw-V9-yiW"/>
                                             <constraint firstAttribute="bottom" secondItem="wDx-AH-OLv" secondAttribute="bottom" id="EUL-5F-uqO"/>
                                             <constraint firstAttribute="trailing" secondItem="wDx-AH-OLv" secondAttribute="trailing" id="EwU-om-aIE"/>
-                                            <constraint firstAttribute="trailing" secondItem="Nle-Zh-UBr" secondAttribute="trailing" constant="24" id="GX6-ZX-phM"/>
+                                            <constraint firstItem="SdP-Nc-xwo" firstAttribute="leading" secondItem="Nle-Zh-UBr" secondAttribute="trailing" id="HzU-vE-woN"/>
+                                            <constraint firstAttribute="trailing" secondItem="SdP-Nc-xwo" secondAttribute="trailing" constant="20" id="Ozg-hr-prd"/>
                                             <constraint firstItem="Dwc-Gs-LVQ" firstAttribute="leading" secondItem="v5t-BV-gnU" secondAttribute="leading" constant="24" id="SFS-eg-cHp"/>
                                             <constraint firstItem="Nle-Zh-UBr" firstAttribute="centerY" secondItem="Dwc-Gs-LVQ" secondAttribute="centerY" id="Whw-g1-2ro"/>
+                                            <constraint firstItem="SdP-Nc-xwo" firstAttribute="centerY" secondItem="v5t-BV-gnU" secondAttribute="centerY" id="gIt-tl-dDi"/>
                                             <constraint firstItem="wDx-AH-OLv" firstAttribute="leading" secondItem="v5t-BV-gnU" secondAttribute="leading" id="wN4-cg-alL"/>
                                         </constraints>
                                     </view>
@@ -227,7 +240,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dg-5N-ks2">
-                                                <rect key="frame" x="273" y="7" width="30" height="30"/>
+                                                <rect key="frame" x="277" y="7" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="5Dg-5N-ks2" secondAttribute="height" multiplier="1:1" id="Mgu-pE-S8o"/>
                                                     <constraint firstAttribute="width" constant="30" id="ZgN-P5-DHF"/>
@@ -242,7 +255,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKf-0S-Txn">
-                                                <rect key="frame" x="273" y="22" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="277" y="22" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -258,7 +271,7 @@
                                             <constraint firstItem="5Dg-5N-ks2" firstAttribute="leading" secondItem="mKf-0S-Txn" secondAttribute="trailing" id="PFx-Io-uoR"/>
                                             <constraint firstAttribute="height" constant="44" id="SJ6-w8-w9y"/>
                                             <constraint firstItem="Z9e-Gw-uJQ" firstAttribute="leading" secondItem="NP2-rA-hyC" secondAttribute="leading" id="XLR-JT-B3K"/>
-                                            <constraint firstAttribute="trailing" secondItem="5Dg-5N-ks2" secondAttribute="trailing" constant="24" id="fbl-SK-2Ba"/>
+                                            <constraint firstAttribute="trailing" secondItem="5Dg-5N-ks2" secondAttribute="trailing" constant="20" id="fbl-SK-2Ba"/>
                                             <constraint firstItem="mTw-r2-eRD" firstAttribute="centerY" secondItem="NP2-rA-hyC" secondAttribute="centerY" id="qCi-pQ-A9V"/>
                                         </constraints>
                                     </view>
@@ -371,10 +384,11 @@
                 <outlet property="userNameLabel" destination="buF-jt-75b" id="oy2-9B-j82"/>
                 <outlet property="valueLabel" destination="9YY-t4-0hu" id="5wB-GC-gIe"/>
             </connections>
-            <point key="canvasLocation" x="-15" y="102"/>
+            <point key="canvasLocation" x="-15.199999999999999" y="101.64917541229386"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="icon-copy" width="24" height="24"/>
         <image name="icon-qc" width="24" height="24"/>
         <image name="icon-talktalk" width="26" height="26"/>
     </resources>

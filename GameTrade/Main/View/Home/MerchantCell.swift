@@ -29,7 +29,7 @@ class MerchantCell: UICollectionViewCell {
             if
                 let str = entity?.agentEntity.headImg,
                 let url = URL(string: str) {
-                self.MerchantImageView.sd_setImage(with: url, completed: nil)
+                self.MerchantImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
             }
             self.MerchantNameLabel.text = entity?.agentEntity.nickname
             let percent = NSString(format: "%.1f%%", Double(entity?.agentEntity.tradeSuccCounts ?? 0) / Double(entity?.agentEntity.tradeCounts ?? 1) * 100)

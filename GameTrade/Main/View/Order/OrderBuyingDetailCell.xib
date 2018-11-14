@@ -201,7 +201,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RvT-k2-y3Q">
-                                                <rect key="frame" x="218" y="14" width="33" height="16"/>
+                                                <rect key="frame" x="192" y="14" width="33" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -213,13 +213,26 @@
                                                     <constraint firstAttribute="height" constant="0.5" id="J2S-54-as1"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwV-9t-opN">
+                                                <rect key="frame" x="225" y="7" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="wzn-tD-dVo"/>
+                                                </constraints>
+                                                <state key="normal" image="icon-copy"/>
+                                                <connections>
+                                                    <action selector="copyAccount:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Akm-vr-aZL"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="BFi-aR-sgu" firstAttribute="leading" secondItem="miL-8T-TkI" secondAttribute="leading" constant="24" id="0tQ-4T-41H"/>
+                                            <constraint firstItem="wwV-9t-opN" firstAttribute="width" secondItem="wwV-9t-opN" secondAttribute="height" multiplier="1:1" id="1Y4-yn-B74"/>
+                                            <constraint firstAttribute="trailing" secondItem="wwV-9t-opN" secondAttribute="trailing" constant="20" id="6ZE-KS-2PT"/>
                                             <constraint firstAttribute="trailing" secondItem="hNA-Cv-yla" secondAttribute="trailing" id="EwF-Lq-RSq"/>
                                             <constraint firstItem="hNA-Cv-yla" firstAttribute="leading" secondItem="miL-8T-TkI" secondAttribute="leading" id="JTg-xi-i4p"/>
-                                            <constraint firstAttribute="trailing" secondItem="RvT-k2-y3Q" secondAttribute="trailing" constant="24" id="beo-Dc-jF4"/>
+                                            <constraint firstItem="wwV-9t-opN" firstAttribute="centerY" secondItem="miL-8T-TkI" secondAttribute="centerY" id="UGu-eI-HGv"/>
                                             <constraint firstAttribute="bottom" secondItem="hNA-Cv-yla" secondAttribute="bottom" id="bfI-kV-CvK"/>
+                                            <constraint firstItem="wwV-9t-opN" firstAttribute="leading" secondItem="RvT-k2-y3Q" secondAttribute="trailing" id="cR0-3G-tKH"/>
                                             <constraint firstItem="RvT-k2-y3Q" firstAttribute="centerY" secondItem="BFi-aR-sgu" secondAttribute="centerY" id="hcW-sD-gSJ"/>
                                             <constraint firstItem="BFi-aR-sgu" firstAttribute="centerY" secondItem="miL-8T-TkI" secondAttribute="centerY" id="m5l-PH-uwz"/>
                                             <constraint firstAttribute="height" constant="44" id="swy-b4-jbp"/>
@@ -235,7 +248,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33a-S4-wRe">
-                                                <rect key="frame" x="221" y="7" width="30" height="30"/>
+                                                <rect key="frame" x="225" y="7" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="33a-S4-wRe" secondAttribute="height" multiplier="1:1" id="2f7-rw-0jm"/>
                                                     <constraint firstAttribute="width" constant="30" id="EyW-sS-kPc"/>
@@ -250,7 +263,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sS-b7-lG5">
-                                                <rect key="frame" x="221" y="22" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="225" y="22" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -264,7 +277,7 @@
                                             <constraint firstItem="2Ed-Ri-m5X" firstAttribute="leading" secondItem="fVB-9s-9TI" secondAttribute="leading" id="LGq-pB-ITI"/>
                                             <constraint firstItem="4sS-b7-lG5" firstAttribute="centerY" secondItem="fVB-9s-9TI" secondAttribute="centerY" id="Ots-K8-gvT"/>
                                             <constraint firstItem="wi7-zx-Ewa" firstAttribute="centerY" secondItem="fVB-9s-9TI" secondAttribute="centerY" id="Tv9-kV-c5g"/>
-                                            <constraint firstAttribute="trailing" secondItem="33a-S4-wRe" secondAttribute="trailing" constant="24" id="fRU-GM-4Em"/>
+                                            <constraint firstAttribute="trailing" secondItem="33a-S4-wRe" secondAttribute="trailing" constant="20" id="fRU-GM-4Em"/>
                                             <constraint firstAttribute="trailing" secondItem="2Ed-Ri-m5X" secondAttribute="trailing" id="gCs-Nt-K1s"/>
                                             <constraint firstItem="33a-S4-wRe" firstAttribute="centerY" secondItem="fVB-9s-9TI" secondAttribute="centerY" id="jIv-wU-bc9"/>
                                         </constraints>
@@ -489,6 +502,7 @@
     </objects>
     <resources>
         <image name="defaultImage" width="68" height="68"/>
+        <image name="icon-copy" width="24" height="24"/>
         <image name="icon-qc" width="24" height="24"/>
         <image name="icon-talktalk" width="26" height="26"/>
         <image name="identify" width="22" height="9"/>

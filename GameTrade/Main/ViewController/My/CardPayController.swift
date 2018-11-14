@@ -61,6 +61,12 @@ class CardPayController: BaseViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         
+        
+        let bar = JXKeyboardToolBar(frame: CGRect(), views: [nameTextField,cardTextField]) { (view, value) in
+            print(view,value)
+        }
+        self.view.addSubview(bar)
+        
     }
     override func updateViewConstraints() {
         super.updateViewConstraints()

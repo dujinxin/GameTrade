@@ -39,6 +39,7 @@ class OrderSellingDetailCell: UITableViewCell {
     var payBlock : (()->())?
     var timeOutBlock : (()->())?
     var chatBlock : (()->())?
+    var copyBlock : (()->())?
     
     var timer : DispatchSourceTimer?
     
@@ -133,6 +134,11 @@ class OrderSellingDetailCell: UITableViewCell {
     }
     @objc func payTap(tap:UITapGestureRecognizer) {
         if let block = self.payBlock {
+            block()
+        }
+    }
+    @IBAction func copyAccount(_ sender: Any) {
+        if let block = self.copyBlock {
             block()
         }
     }

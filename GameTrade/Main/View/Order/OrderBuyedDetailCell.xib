@@ -193,7 +193,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4F-dC-rBI">
-                                                <rect key="frame" x="270" y="14" width="33" height="16"/>
+                                                <rect key="frame" x="244" y="14" width="33" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -205,16 +205,29 @@
                                                     <constraint firstAttribute="height" constant="0.5" id="eaE-vY-vhx"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jZ-0W-bbk">
+                                                <rect key="frame" x="277" y="7" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="30" id="rZx-V2-u2C"/>
+                                                </constraints>
+                                                <state key="normal" image="icon-copy"/>
+                                                <connections>
+                                                    <action selector="copyAccount:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="d4a-fD-Ij2"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="0jZ-0W-bbk" firstAttribute="centerY" secondItem="uZR-1e-eGa" secondAttribute="centerY" id="6mb-SM-hhe"/>
                                             <constraint firstAttribute="trailing" secondItem="hKu-6A-mWB" secondAttribute="trailing" id="7H9-1E-YEs"/>
                                             <constraint firstItem="hKu-6A-mWB" firstAttribute="leading" secondItem="uZR-1e-eGa" secondAttribute="leading" id="CVU-Yf-KeU"/>
                                             <constraint firstAttribute="height" constant="44" id="KfL-pf-qHw"/>
-                                            <constraint firstAttribute="trailing" secondItem="f4F-dC-rBI" secondAttribute="trailing" constant="24" id="My6-58-ql1"/>
+                                            <constraint firstItem="0jZ-0W-bbk" firstAttribute="leading" secondItem="f4F-dC-rBI" secondAttribute="trailing" id="Pw8-Oo-xQh"/>
                                             <constraint firstAttribute="bottom" secondItem="hKu-6A-mWB" secondAttribute="bottom" id="RLs-Oi-FMJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="0jZ-0W-bbk" secondAttribute="trailing" constant="20" id="T1y-XN-q6V"/>
                                             <constraint firstItem="f4F-dC-rBI" firstAttribute="centerY" secondItem="8mA-iO-04H" secondAttribute="centerY" id="bJE-bu-LO6"/>
                                             <constraint firstItem="8mA-iO-04H" firstAttribute="centerY" secondItem="uZR-1e-eGa" secondAttribute="centerY" id="lcx-jd-wzG"/>
                                             <constraint firstItem="8mA-iO-04H" firstAttribute="leading" secondItem="uZR-1e-eGa" secondAttribute="leading" constant="24" id="nTJ-Ng-nbD"/>
+                                            <constraint firstItem="0jZ-0W-bbk" firstAttribute="width" secondItem="0jZ-0W-bbk" secondAttribute="height" multiplier="1:1" id="xMu-Zu-vhL"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXu-yj-SO7">
@@ -227,7 +240,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ura-vW-S1t">
-                                                <rect key="frame" x="273" y="7" width="30" height="30"/>
+                                                <rect key="frame" x="277" y="7" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ura-vW-S1t" secondAttribute="height" id="XEJ-ox-2ja"/>
                                                     <constraint firstAttribute="width" constant="30" id="pWc-Ov-Bvd"/>
@@ -242,7 +255,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJR-3R-1t0">
-                                                <rect key="frame" x="273" y="22" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="277" y="22" width="0.0" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -255,7 +268,7 @@
                                             <constraint firstItem="bmO-23-fbU" firstAttribute="leading" secondItem="tXu-yj-SO7" secondAttribute="leading" constant="24" id="WeV-5l-GfW"/>
                                             <constraint firstItem="SJR-3R-1t0" firstAttribute="centerY" secondItem="tXu-yj-SO7" secondAttribute="centerY" id="b5R-oW-zgh"/>
                                             <constraint firstItem="3Br-nI-MTd" firstAttribute="leading" secondItem="tXu-yj-SO7" secondAttribute="leading" id="eFv-BR-XCf"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ura-vW-S1t" secondAttribute="trailing" constant="24" id="h2P-8v-A6j"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ura-vW-S1t" secondAttribute="trailing" constant="20" id="h2P-8v-A6j"/>
                                             <constraint firstItem="Ura-vW-S1t" firstAttribute="leading" secondItem="SJR-3R-1t0" secondAttribute="trailing" id="nY5-GN-Eyf"/>
                                             <constraint firstItem="bmO-23-fbU" firstAttribute="centerY" secondItem="tXu-yj-SO7" secondAttribute="centerY" id="nw4-KY-HOI"/>
                                             <constraint firstAttribute="bottom" secondItem="3Br-nI-MTd" secondAttribute="bottom" id="rvt-Q3-yef"/>
@@ -427,6 +440,7 @@
     </objects>
     <resources>
         <image name="defaultImage" width="68" height="68"/>
+        <image name="icon-copy" width="24" height="24"/>
         <image name="icon-qc" width="24" height="24"/>
         <image name="icon-talktalk" width="26" height="26"/>
         <image name="identify" width="22" height="9"/>

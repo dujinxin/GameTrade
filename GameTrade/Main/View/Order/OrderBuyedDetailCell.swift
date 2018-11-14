@@ -34,9 +34,8 @@ class OrderBuyedDetailCell: UITableViewCell {
     @IBOutlet weak var shopImageView: UIImageView!
     @IBOutlet weak var shopNameLabel: UILabel!
     
-    @IBOutlet weak var shopLevelButton: UIButton!
-    
     var chatBlock : (()->())?
+    var copyBlock : (()->())?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -114,7 +113,7 @@ class OrderBuyedDetailCell: UITableViewCell {
             if
                 let str = entity?.agentHeadImg,
                 let url = URL(string: str) {
-                self.shopImageView.sd_setImage(with: url, completed: nil)
+                self.shopImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
             }
             self.shopNameLabel.text = entity?.agentName
             
@@ -126,4 +125,10 @@ class OrderBuyedDetailCell: UITableViewCell {
             block()
         }
     }
+    @IBAction func copyAccount(_ sender: Any) {
+        if let block = self.copyBlock {
+            block()
+        }
+    }
+    
 }

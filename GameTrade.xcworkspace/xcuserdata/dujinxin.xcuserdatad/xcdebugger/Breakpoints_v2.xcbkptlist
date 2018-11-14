@@ -378,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameTrade/Main/ViewController/Home/SellCollectionController.swift"
-            timestampString = "563448058.917244"
+            timestampString = "563875331.034349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
@@ -570,27 +570,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GameTrade/Main/ViewController/Order/OrderDetailController.swift"
-            timestampString = "563806387.827657"
+            timestampString = "563875331.0352809"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "482"
-            endingLineNumber = "482"
-            landmarkName = "createChat(id:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "GameTrade/Main/ViewController/Order/OrderDetailController.swift"
-            timestampString = "563806387.82772"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
             landmarkName = "createChat(id:)"
             landmarkType = "7">
          </BreakpointContent>

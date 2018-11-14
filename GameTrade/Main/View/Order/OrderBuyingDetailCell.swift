@@ -48,6 +48,7 @@ class OrderBuyingDetailCell: UITableViewCell {
     var cancelBlock : (()->())?
     var payBlock : (()->())?
     var timeOutBlock : (()->())?
+    var copyBlock : (()->())?
     
     var timer : DispatchSourceTimer?
     
@@ -135,7 +136,7 @@ class OrderBuyingDetailCell: UITableViewCell {
             if
                 let str = entity?.agentHeadImg,
                 let url = URL(string: str) {
-                self.shopImageView.sd_setImage(with: url, completed: nil)
+                self.shopImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
             }
             self.shopNameLabel.text = entity?.agentName
             
@@ -179,6 +180,11 @@ class OrderBuyingDetailCell: UITableViewCell {
     @objc func payTap(tap:UITapGestureRecognizer) {
         self.cancel()
         if let block = self.payBlock {
+            block()
+        }
+    }
+    @IBAction func copyAccount(_ sender: Any) {
+        if let block = self.copyBlock {
             block()
         }
     }

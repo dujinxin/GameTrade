@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum JXSelectViewPresentModelStyle : Int {
+    case none      =  0
+    case translucent
+}
+
 enum JXSelectViewStyle : Int {
     case list
     case pick
@@ -34,6 +39,7 @@ class JXSelectView: UIView {
     private var selectViewTop : CGFloat = 0
     var selectRow : Int = -1
     
+    var presentModelStyle : JXSelectViewPresentModelStyle = .translucent
     var style : JXSelectViewStyle = .list
     var position : JXSelectViewShowPosition = .bottom
     var customView : UIView? {
@@ -92,7 +98,12 @@ class JXSelectView: UIView {
         }
     }
     var isShowed : Bool = false
-    var isBackViewUserInteractionEnabled : Bool = true //背景视图是否响应点击事件
+    var isBackViewUserInteractionEnabled : Bool = true {
+        didSet{
+            self.tapControl.isEnabled = isBackViewUserInteractionEnabled
+        }
+    }//背景视图是否响应点击事件
+    
     
     var topBarView: UIView = {
         let view = UIView()
@@ -151,16 +162,22 @@ class JXSelectView: UIView {
         let view = UIView()
         view.frame = UIScreen.main.bounds
         view.backgroundColor = UIColor.black
-        view.alpha = 0
+        view.alpha = 0.01
         
         if isBackViewUserInteractionEnabled == true {
             let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapClick))
             view.addGestureRecognizer(tap)
         }
-        
         return view
     }()
-    
+    private lazy var tapControl : UIControl = {
+        let control = UIControl()
+        control.frame = UIScreen.main.bounds
+        control.backgroundColor = UIColor.black
+        control.alpha = 0.0
+        control.addTarget(self, action: #selector(tapClick), for: .touchUpInside)
+        return control
+    }()
     
     init(frame: CGRect, style: JXSelectViewStyle) {
         super.init(frame: frame)
@@ -282,13 +299,15 @@ class JXSelectView: UIView {
             self.center = center
         }
         
-        superView.addSubview(self.bgView)
+        superView.addSubview(self.tapControl)
         superView.addSubview(self)
         superView.isHidden = false
         
         if animate {
             UIView.animate(withDuration: animateDuration, delay: 0.0, options: .curveEaseIn, animations: {
-                self.bgView.alpha = 0.5
+                if self.presentModelStyle == .translucent {
+                    self.tapControl.alpha = 0.5
+                }
                 if self.position == .top{
                     var frame = self.frame
                     frame.origin.y = 0.0
@@ -319,7 +338,7 @@ class JXSelectView: UIView {
         }
         if animate {
             UIView.animate(withDuration: animateDuration, delay: 0.0, options: .curveEaseOut, animations: {
-                self.bgView.alpha = 0.0
+                self.tapControl.alpha = 0.0
                 if self.position == .top {
                     var frame = self.frame
                     frame.origin.y = 0.0 - self.frame.height
@@ -341,6 +360,7 @@ class JXSelectView: UIView {
     
     fileprivate func clearInfo() {
         self.isShowed = false
+        tapControl.removeFromSuperview()
         bgView.removeFromSuperview()
         self.removeFromSuperview()
         bgWindow.isHidden = true
