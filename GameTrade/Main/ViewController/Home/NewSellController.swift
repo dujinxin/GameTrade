@@ -59,6 +59,7 @@ class NewSellController: JXTableViewController {
             if let vc = segue.destination as? PutUpViewController, let entity = sender as? SellInfoEntity {
                 vc.sellInfoEntity = entity
                 vc.backBlock = {
+                    ViewManager.showImageNotice("挂单成功")
                     self.tableView?.mj_header.beginRefreshing()
                 }
             }

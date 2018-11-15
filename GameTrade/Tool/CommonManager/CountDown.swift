@@ -64,15 +64,16 @@ class CountDown: NSObject {
                             var num = entity.expireTime
                             num -= 1
                             entity.expireTime = num
-                            if num % 30 == 0 {
-                                entity.orderStatus = 6
-                            }
-//                            if num == 0 {
+//                            //测试用
+//                            if num % 30 == 0 {
 //                                entity.orderStatus = 6
 //                            }
+                            if num == 0 {
+                                entity.orderStatus = 6
+                            }
                             if let index = arr.index(of: entity) {
                                 arr[index] = entity
-                                print(entity.expireTime)
+                                //print(entity.expireTime)
                             }
                         }
                     }
@@ -98,19 +99,20 @@ class CountDown: NSObject {
                         
                         if let type = entity?.orderType, type == "购买"{
                             if timeNum >= 0 {
-                                if timeNum % 30 == 0 {
-                                    //entity.orderStatus = 6
-                                    if let block = self.completionBlock {
-                                        let indexPath = IndexPath(row: cell.tag, section: 0)
-                                        block(indexPath)
-                                    }
-                                }
-//                                if timeNum == 0 {
+                                //测试用
+//                                if timeNum % 30 == 0 {
+//                                    //entity.orderStatus = 6
 //                                    if let block = self.completionBlock {
 //                                        let indexPath = IndexPath(row: cell.tag, section: 0)
 //                                        block(indexPath)
 //                                    }
 //                                }
+                                if timeNum == 0 {
+                                    if let block = self.completionBlock {
+                                        let indexPath = IndexPath(row: cell.tag, section: 0)
+                                        block(indexPath)
+                                    }
+                                }
                                 let str = self.getCountDownFormatStr(timeInterval: timeNum)
                                 button.setTitle(self.getCountDownCustomStr(str: str), for: .normal)
                                 

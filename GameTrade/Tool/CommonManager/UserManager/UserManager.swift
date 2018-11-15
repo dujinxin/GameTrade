@@ -18,6 +18,7 @@ class UserEntity: BaseModel {
     @objc var id : String?
     @objc var safePwdInit : Int = 0 //是否设置资金密码
     @objc var nickname : String?
+    @objc var realName : String = ""
     @objc var mobile : String?
     @objc var headImg : String?
     

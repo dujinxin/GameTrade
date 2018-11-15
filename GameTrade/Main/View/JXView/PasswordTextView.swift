@@ -56,10 +56,13 @@ class PasswordTextView: JXSecretTextView {
             let point = UIImage(named: "yuan")
             //point?.draw(in: CGRect(x: x, y: y, width: w, height: h))
             
-            let index1 = self.text.index(self.text.startIndex, offsetBy: i)
-            let index2 = self.text.index(self.text.startIndex, offsetBy: i + 1)
-            let sub = self.text[index1..<index2]
-            let subStr = String(sub) as NSString
+            //密文输入
+            let subStr : NSString = "＊"
+            //明文输入
+//            let index1 = self.text.index(self.text.startIndex, offsetBy: i)
+//            let index2 = self.text.index(self.text.startIndex, offsetBy: i + 1)
+//            let sub = self.text[index1..<index2]
+//            let subStr = String(sub) as NSString
             let para = NSMutableParagraphStyle()
             para.alignment = NSTextAlignment.center
             para.minimumLineHeight = 0

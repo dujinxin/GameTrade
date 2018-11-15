@@ -44,6 +44,5 @@ class OrderDetailEntity: OrderEntity {
     @objc var orderCipher : String?
     @objc var bank : String?
     @objc var agentHeadImg : String?
-    
 }
 

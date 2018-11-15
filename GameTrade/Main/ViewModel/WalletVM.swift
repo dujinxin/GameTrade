@@ -20,7 +20,6 @@ class WalletVM: BaseViewModel {
         let entity = TradeDetailEntity()
         return entity
     }()
-    var detailList = Array<CustomDetailEntity>()
     
     //交易列表
     func tradeList(pageSize: Int = 10, pageNo: Int, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{

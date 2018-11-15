@@ -18,8 +18,20 @@ class JXUploadImageView: UIView {
     var leadingTrailingMargin : CGFloat = 20
     var topMargin : CGFloat = 20
     var bottomMargin : CGFloat = 20
-    var imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
-    var buttonSize = CGSize(width: 30, height: 30)
+    var imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0) {
+        didSet{
+            self.leftImageView.imageEdgeInsets = imageEdgeInsets
+            self.centerImageView.imageEdgeInsets = imageEdgeInsets
+            self.rightImageView.imageEdgeInsets = imageEdgeInsets
+        }
+    }
+    var buttonSize = CGSize(width: 30, height: 30) {
+        didSet{
+            self.leftImageView.buttonSize = buttonSize
+            self.centerImageView.buttonSize = buttonSize
+            self.rightImageView.buttonSize = buttonSize
+        }
+    }
     
     private var spaceWidth : CGFloat = 0
     private var addImage: UIImage?
@@ -27,13 +39,22 @@ class JXUploadImageView: UIView {
     var imageTitle: String? = "img-upload" {
         didSet{
             self.addImage = UIImage(named: imageTitle ?? "")
+            
+            self.leftImageView.defaultImage = imageTitle
+            self.centerImageView.defaultImage = imageTitle
+            self.rightImageView.defaultImage = imageTitle
+        }
+    }
+    var deleteImage: String? = "icon-delete" {
+        didSet{
+            self.leftImageView.deleteImage = deleteImage
+            self.centerImageView.deleteImage = deleteImage
+            self.rightImageView.deleteImage = deleteImage
         }
     }
     
     lazy var leftImageView: UploadImageView = {
         let view = UploadImageView(frame: CGRect())
-        view.buttonSize = buttonSize
-        view.imageEdgeInsets = imageEdgeInsets
         view.tag = 0
         
         view.deleteButton.tag = view.tag
@@ -45,8 +66,6 @@ class JXUploadImageView: UIView {
     }()
     lazy var centerImageView: UploadImageView = {
         let view = UploadImageView(frame: CGRect())
-        view.buttonSize = buttonSize
-        view.imageEdgeInsets = imageEdgeInsets
         view.tag = 1
         
         view.deleteButton.tag = view.tag
@@ -58,8 +77,6 @@ class JXUploadImageView: UIView {
     }()
     lazy var rightImageView: UploadImageView = {
         let view = UploadImageView(frame: CGRect())
-        view.buttonSize = buttonSize
-        view.imageEdgeInsets = imageEdgeInsets
         view.tag = 2
         
         view.deleteButton.tag = view.tag
@@ -77,6 +94,10 @@ class JXUploadImageView: UIView {
             } else {
                 self.leftImageView.isHidden = false
                 self.leftImageView.imageView.image = addImage
+                
+                self.leftImageView.style = style
+                self.centerImageView.style = style
+                self.rightImageView.style = style
             }
         }
     }
@@ -168,44 +189,41 @@ class JXUploadImageView: UIView {
             if array.isEmpty == true {
                 return
             }
-            leftImageView.setImageInfo(isHidden: false, style: style, image: array.first)
+            leftImageView.setImageInfo(isHidden: false, image: array.first)
             switch array.count {
             case 1:
                 ()
             case 2:
-                centerImageView.setImageInfo(isHidden: false, style: style, image: array[1])
+                centerImageView.setImageInfo(isHidden: false, image: array[1])
             default:
-                centerImageView.setImageInfo(isHidden: false, style: style, image: array[1])
-                rightImageView.setImageInfo(isHidden: false, style: style, image: array[2])
+                centerImageView.setImageInfo(isHidden: false, image: array[1])
+                rightImageView.setImageInfo(isHidden: false, image: array[2])
             }
         } else {
             switch array.count {
             case 0:
-                leftImageView.setImageInfo(isHidden: false, style: style, image: imageTitle)
-                
+                leftImageView.setImageInfo(isHidden: false, image: nil)
             case 1:
-                leftImageView.setImageInfo(isHidden: false, style: style, image: array.first)
-                centerImageView.setImageInfo(isHidden: false, style: style, image: imageTitle)
-                
+                leftImageView.setImageInfo(isHidden: false, image: array.first)
+                centerImageView.setImageInfo(isHidden: false, image: nil)
             case 2:
-                leftImageView.setImageInfo(isHidden: false, style: style, image: array.first)
-                centerImageView.setImageInfo(isHidden: false, style: style, image: array[1])
-                rightImageView.setImageInfo(isHidden: false, style: style, image: imageTitle)
+                leftImageView.setImageInfo(isHidden: false, image: array.first)
+                centerImageView.setImageInfo(isHidden: false, image: array[1])
+                rightImageView.setImageInfo(isHidden: false, image: nil)
                 
             default:
-                leftImageView.setImageInfo(isHidden: false, style: style, image: array.first)
-                centerImageView.setImageInfo(isHidden: false, style: style, image: array[1])
-                rightImageView.setImageInfo(isHidden: false, style: style, image: array[2])
+                leftImageView.setImageInfo(isHidden: false,image: array.first)
+                centerImageView.setImageInfo(isHidden: false, image: array[1])
+                rightImageView.setImageInfo(isHidden: false, image: array[2])
                 
             }
         }
     }
     private func clearSubViews(){
         self.subviews.forEach { (view) in
-            if view is UIImageView{
-                let v = view as! UIImageView
-                v.image = nil
-                v.isHidden = true
+            if view is UploadImageView{
+                let v = view as! UploadImageView
+                v.clearSubViews()
             }
         }
     }
@@ -241,7 +259,14 @@ class UploadImageView : UIView {
     
     var imageEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
     var buttonSize = CGSize(width: 30, height: 30)
+    var defaultImage : String?
+    var deleteImage : String? {
+        didSet{
+            self.deleteButton.setImage(UIImage(named:deleteImage ?? ""), for: .normal)
+        }
+    }
     
+    var style: Style = .normal
     lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: CGRect())
         imageView.tag = 0
@@ -251,7 +276,7 @@ class UploadImageView : UIView {
     
     lazy var deleteButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named:"popover_btn_close"), for: .normal)
+        button.setImage(UIImage(named:"icon-delete"), for: .normal)
         button.isHidden = true
         
         return button
@@ -277,17 +302,22 @@ class UploadImageView : UIView {
         self.imageView.frame = CGRect(x: imageEdgeInsets.left, y: imageEdgeInsets.top, width: frame.size.width - imageEdgeInsets.left - imageEdgeInsets.right, height: frame.size.height - imageEdgeInsets.top - imageEdgeInsets.bottom)
         self.deleteButton.frame = CGRect(x: frame.size.width - buttonSize.width, y: 0, width: buttonSize.width, height: buttonSize.height)
     }
-    
-    func setImageInfo(isHidden: Bool, style: Style = .normal, image: Any?) {
+    func clearSubViews() {
+        self.subviews.forEach { (view) in
+            if view is UIImageView{
+                let v = view as! UIImageView
+                v.image = nil
+            }
+        }
+    }
+    func setImageInfo(isHidden: Bool, image: Any?) {
         self.isHidden = isHidden
-        
         ///有图片，并且只有在编辑状态下才显示删除按钮
-        if let image = image{
+        if let image = image {
             self.imageView.jx_setImage(obj: image)
-            self.deleteButton.isHidden = (style == .normal)
-            
+            self.deleteButton.isHidden = (self.style == .normal)
         } else {
-            self.imageView.jx_setImage(obj: image)
+            self.imageView.jx_setImage(obj: defaultImage)
             self.deleteButton.isHidden = true
         }
         

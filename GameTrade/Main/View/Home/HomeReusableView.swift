@@ -15,7 +15,6 @@ class HomeReusableView: UICollectionReusableView {
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightButton: UIButton!
-    @IBOutlet weak var redPoint: UIView!
     
     @IBOutlet weak var totalNumLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
@@ -51,9 +50,9 @@ class HomeReusableView: UICollectionReusableView {
             self.useNumLabel.text = "\(entity?.balance ?? 0)"
             self.limitNumLabel.text = "\(entity?.blockedBalance ?? 0)"
             
-            self.totalPriceLabel.text = "\((entity?.totalCounts ?? 0) * configuration_coinPrice)\(configuration_valueType)"
-            self.usePriceLabel.text = "\((entity?.balance ?? 0) * configuration_coinPrice)\(configuration_valueType)"
-            self.limitPriceLabel.text = "\((entity?.blockedBalance ?? 0) * configuration_coinPrice)\(configuration_valueType)"
+            self.totalPriceLabel.text = "=\((entity?.totalCounts ?? 0) * configuration_coinPrice)\(configuration_valueType)"
+            self.usePriceLabel.text = "=\((entity?.balance ?? 0) * configuration_coinPrice)\(configuration_valueType)"
+            self.limitPriceLabel.text = "=\((entity?.blockedBalance ?? 0) * configuration_coinPrice)\(configuration_valueType)"
         }
     }
     
@@ -64,8 +63,6 @@ class HomeReusableView: UICollectionReusableView {
         self.topConstraint.constant = kStatusBarHeight + 7
         
         self.rightButton.backgroundColor = UIColor.clear
-        self.redPoint.backgroundColor = UIColor.red
-        self.redPoint.layer.cornerRadius = 5.0
         
         
         self.infoContentView.layer.shadowOffset = CGSize(width: 0, height: 10)

@@ -38,8 +38,9 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
         self.textField.delegate = self
        
         self.uploadImageView.leadingTrailingMargin = 0
-        self.uploadImageView.topMargin = 15
+        self.uploadImageView.topMargin = 0
         self.uploadImageView.bottomMargin = 15
+        self.uploadImageView.imageEdgeInsets = UIEdgeInsetsMake(15, 0, 0, 15)
         
         self.uploadImageView.updateConstraintsIfNeeded()
         
@@ -47,6 +48,7 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
         //self.uploadImageView.leftImageView.backgroundColor = UIColor.red
         //self.uploadImageView.leftImageView.image = UIImage(named: "img-upload")
         self.uploadImageView.imageTitle = "img-upload"
+        self.uploadImageView.deleteImage = "icon-delete"
         self.uploadImageView.style = .edit
         self.uploadImageView.backgroundColor = UIColor.clear
         

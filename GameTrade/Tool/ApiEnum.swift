@@ -80,8 +80,10 @@ enum ApiString : String {
     case myIdentity  =               "/planA/user/identityInfo"            //我的实名信息
     case modifyNickName  =           "/planA/user/updateNickname"          //修改昵称
     case modifyAvatar  =             "/planA/user/updateHeadImg"           //修改头像
+    case addName  =                  "/planA/user/updateRealName"          //添加实名
     case payList  =                  "/planA/depositAccounts/list"         //支付方式列表
     case bankList  =                 "/planA/depositAccounts/bankList"     //银行列表
+    case validateTradePassword  =    "/planA/depositAccounts/validateSafePassword" //验证资金密码
     case editPayStyle  =             "/planA/depositAccounts/save"         //添加、修改支付方式
     case deletePayStyle  =           "/planA/depositAccounts/delete"       //删除支付方式
     

@@ -57,7 +57,6 @@
 		351275A9218AD7350057C927 /* BankListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275A8218AD7350057C927 /* BankListController.swift */; };
 		351275AC218AECA90057C927 /* BankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275AA218AECA90057C927 /* BankCell.swift */; };
 		351275AD218AECA90057C927 /* BankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275AB218AECA90057C927 /* BankCell.xib */; };
-		351275AF218AF2630057C927 /* SearchListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275AE218AF2630057C927 /* SearchListController.swift */; };
 		351275B1218C0A5E0057C927 /* BuyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275B0218C0A5E0057C927 /* BuyVM.swift */; };
 		351275B3218C28D70057C927 /* ConfirmListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275B2218C28D70057C927 /* ConfirmListController.swift */; };
 		352D10AD215E14FA0053AD70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10AC215E14FA0053AD70 /* AppDelegate.swift */; };
@@ -376,6 +375,7 @@
 		35FE2930219AECE100CAFB27 /* bubble_full_tail_v1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE291E219AECE100CAFB27 /* bubble_full_tail_v1@2x.png */; };
 		35FE2932219AEFBE00CAFB27 /* JXNumInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE2931219AEFBE00CAFB27 /* JXNumInputTextView.swift */; };
 		35FE2934219C00A100CAFB27 /* JXKeyboardToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE2933219C00A000CAFB27 /* JXKeyboardToolBar.swift */; };
+		35FE2939219D814900CAFB27 /* NameSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE2938219D814900CAFB27 /* NameSetController.swift */; };
 		9FB06831D3506AB34C40D8CC /* Pods_GameTrade.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8D23ACC8D0B27E96889A42D /* Pods_GameTrade.framework */; };
 /* End PBXBuildFile section */
 
@@ -430,7 +430,6 @@
 		351275A8218AD7350057C927 /* BankListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankListController.swift; sourceTree = "<group>"; };
 		351275AA218AECA90057C927 /* BankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankCell.swift; sourceTree = "<group>"; };
 		351275AB218AECA90057C927 /* BankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankCell.xib; sourceTree = "<group>"; };
-		351275AE218AF2630057C927 /* SearchListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListController.swift; sourceTree = "<group>"; };
 		351275B0218C0A5E0057C927 /* BuyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyVM.swift; sourceTree = "<group>"; };
 		351275B2218C28D70057C927 /* ConfirmListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmListController.swift; sourceTree = "<group>"; };
 		352D10A9215E14FA0053AD70 /* GameTrade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -533,7 +532,7 @@
 		352D118C215E159C0053AD70 /* BottomInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView.swift; sourceTree = "<group>"; };
 		352D118D215E159C0053AD70 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		352D118E215E159C0053AD70 /* ArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
-		352D1191215E159C0053AD70 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpViewController.swift; path = ../Home/HelpViewController.swift; sourceTree = "<group>"; };
+		352D1191215E159C0053AD70 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		352D1194215E159C0053AD70 /* SmartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartViewController.swift; sourceTree = "<group>"; };
 		352D1195215E159C0053AD70 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		352D1196215E159C0053AD70 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
@@ -755,6 +754,7 @@
 		35FE291E219AECE100CAFB27 /* bubble_full_tail_v1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble_full_tail_v1@2x.png"; sourceTree = "<group>"; };
 		35FE2931219AEFBE00CAFB27 /* JXNumInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXNumInputTextView.swift; sourceTree = "<group>"; };
 		35FE2933219C00A000CAFB27 /* JXKeyboardToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXKeyboardToolBar.swift; sourceTree = "<group>"; };
+		35FE2938219D814900CAFB27 /* NameSetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameSetController.swift; sourceTree = "<group>"; };
 		67EEEA838231B60CC6202CFC /* Pods-GameTrade.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameTrade.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GameTrade/Pods-GameTrade.debug.xcconfig"; sourceTree = "<group>"; };
 		C8D23ACC8D0B27E96889A42D /* Pods_GameTrade.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameTrade.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91BC9E4D94DF372E985DDB3 /* Pods-GameTrade.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameTrade.release.xcconfig"; path = "Pods/Target Support Files/Pods-GameTrade/Pods-GameTrade.release.xcconfig"; sourceTree = "<group>"; };
@@ -1225,23 +1225,15 @@
 		352D1198215E159C0053AD70 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				35FE2937219D808600CAFB27 /* help */,
+				35FE2936219D805800CAFB27 /* security */,
+				35FE2935219D803600CAFB27 /* pay */,
 				352D1199215E159C0053AD70 /* PropertyViewController.swift */,
 				352D119A215E159C0053AD70 /* MyWalletViewController.swift */,
 				352D11A3215E159C0053AD70 /* ModifyImageController.swift */,
 				352D119D215E159C0053AD70 /* PersonInfoViewController.swift */,
 				352D11A0215E159C0053AD70 /* AccountViewController.swift */,
 				352D11A1215E159C0053AD70 /* AboutUsViewController.swift */,
-				35018B402178393D009F061C /* PayListController.swift */,
-				35018B422179BF1D009F061C /* SecurityCenterController.swift */,
-				35018B4C217B1EB6009F061C /* HelpFeedBackController.swift */,
-				352D1191215E159C0053AD70 /* HelpViewController.swift */,
-				35018B442179EC44009F061C /* NetPayController.swift */,
-				35018B462179EC56009F061C /* CardPayController.swift */,
-				351275A8218AD7350057C927 /* BankListController.swift */,
-				351275AE218AF2630057C927 /* SearchListController.swift */,
-				35018B4A217B1AFD009F061C /* ModifyLogPswController.swift */,
-				35B8541A218300470036AD6A /* ModifyTradePswController.swift */,
-				35018B4E217B20F5009F061C /* FeedBackController.swift */,
 				352D11C2215E159C0053AD70 /* SettingViewController.swift */,
 				35018B48217AFFB6009F061C /* My.storyboard */,
 			);
@@ -1667,6 +1659,38 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		35FE2935219D803600CAFB27 /* pay */ = {
+			isa = PBXGroup;
+			children = (
+				35018B402178393D009F061C /* PayListController.swift */,
+				35018B442179EC44009F061C /* NetPayController.swift */,
+				35018B462179EC56009F061C /* CardPayController.swift */,
+				351275A8218AD7350057C927 /* BankListController.swift */,
+				35FE2938219D814900CAFB27 /* NameSetController.swift */,
+			);
+			path = pay;
+			sourceTree = "<group>";
+		};
+		35FE2936219D805800CAFB27 /* security */ = {
+			isa = PBXGroup;
+			children = (
+				35018B422179BF1D009F061C /* SecurityCenterController.swift */,
+				35018B4A217B1AFD009F061C /* ModifyLogPswController.swift */,
+				35B8541A218300470036AD6A /* ModifyTradePswController.swift */,
+			);
+			path = security;
+			sourceTree = "<group>";
+		};
+		35FE2937219D808600CAFB27 /* help */ = {
+			isa = PBXGroup;
+			children = (
+				35018B4C217B1EB6009F061C /* HelpFeedBackController.swift */,
+				352D1191215E159C0053AD70 /* HelpViewController.swift */,
+				35018B4E217B20F5009F061C /* FeedBackController.swift */,
+			);
+			path = help;
+			sourceTree = "<group>";
+		};
 		3EE9947BF986AD43F9CC9EA7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2005,6 +2029,7 @@
 				35FE28992199A0FC00CAFB27 /* UICollectionView+Extensions.swift in Sources */,
 				352D122D215E159D0053AD70 /* CommenModel.swift in Sources */,
 				35FE28832199A0FC00CAFB27 /* DBManager.swift in Sources */,
+				35FE2939219D814900CAFB27 /* NameSetController.swift in Sources */,
 				3512759C2188763D0057C927 /* MerchantSubCell.swift in Sources */,
 				352D1213215E159D0053AD70 /* NotificationEnum.swift in Sources */,
 				35FE28902199A0FC00CAFB27 /* MessageData.swift in Sources */,
@@ -2178,7 +2203,6 @@
 				35FE28A02199A0FC00CAFB27 /* MessagesViewController+Delegate.swift in Sources */,
 				35FE28D82199A0FC00CAFB27 /* String+ChatCamp.swift in Sources */,
 				352D1248215E159D0053AD70 /* SmartCell.swift in Sources */,
-				351275AF218AF2630057C927 /* SearchListController.swift in Sources */,
 				352D1244215E159D0053AD70 /* JXTopBarView.swift in Sources */,
 				352D1262215E159D0053AD70 /* CommentCell.swift in Sources */,
 				352D1268215E159D0053AD70 /* MainViewController.swift in Sources */,
@@ -2339,7 +2363,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Y9MA8YW5MV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2354,7 +2378,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = GameTradeDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2366,8 +2390,8 @@
 			baseConfigurationReference = F91BC9E4D94DF372E985DDB3 /* Pods-GameTrade.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = Y9MA8YW5MV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2382,7 +2406,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = GameTradeDisHoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

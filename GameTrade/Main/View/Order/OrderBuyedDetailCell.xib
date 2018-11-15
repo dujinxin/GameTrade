@@ -310,35 +310,41 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-Ku-Ekj" userLabel="shopView">
-                                        <rect key="frame" x="24" y="244" width="279" height="78"/>
+                                        <rect key="frame" x="0.0" y="244" width="327" height="78"/>
                                         <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="merchantBG" translatesAutoresizingMaskIntoConstraints="NO" id="Xp7-MY-b2K">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="78"/>
+                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商家名字" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxQ-Xy-gzj">
-                                                <rect key="frame" x="79" y="24" width="49.5" height="14.5"/>
+                                                <rect key="frame" x="103" y="24" width="49.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="cqd-rP-662">
-                                                <rect key="frame" x="24" y="19" width="40" height="40"/>
+                                                <rect key="frame" x="48" y="19" width="40" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="cqd-rP-662" secondAttribute="height" id="3yP-AX-kdx"/>
                                                     <constraint firstAttribute="height" constant="40" id="wyX-ar-kbv"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="identify" translatesAutoresizingMaskIntoConstraints="NO" id="z1m-Zs-DDn">
-                                                <rect key="frame" x="79" y="45" width="22" height="9"/>
+                                                <rect key="frame" x="103" y="45" width="22" height="9"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="z1m-Zs-DDn" secondAttribute="height" multiplier="22:9" id="Hs1-bA-g5n"/>
                                                     <constraint firstAttribute="height" constant="9" id="WY0-vd-9Ve"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="mxQ-Xy-gzj" firstAttribute="leading" secondItem="cqd-rP-662" secondAttribute="trailing" constant="15" id="3MU-MJ-RQv"/>
+                                            <constraint firstItem="Xp7-MY-b2K" firstAttribute="leading" secondItem="kF9-Ku-Ekj" secondAttribute="leading" id="3rC-Qo-4mt"/>
                                             <constraint firstAttribute="height" constant="78" id="6XY-EP-cbS"/>
+                                            <constraint firstItem="Xp7-MY-b2K" firstAttribute="top" secondItem="kF9-Ku-Ekj" secondAttribute="top" id="Dgg-7C-7tE"/>
                                             <constraint firstItem="cqd-rP-662" firstAttribute="centerY" secondItem="kF9-Ku-Ekj" secondAttribute="centerY" id="N58-5l-EZa"/>
-                                            <constraint firstItem="cqd-rP-662" firstAttribute="leading" secondItem="kF9-Ku-Ekj" secondAttribute="leading" constant="24" id="Rgl-Zr-Sre"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xp7-MY-b2K" secondAttribute="trailing" id="RPI-jn-CS4"/>
+                                            <constraint firstItem="cqd-rP-662" firstAttribute="leading" secondItem="kF9-Ku-Ekj" secondAttribute="leading" constant="48" id="Rgl-Zr-Sre"/>
+                                            <constraint firstAttribute="bottom" secondItem="Xp7-MY-b2K" secondAttribute="bottom" id="RnT-rA-f7b"/>
                                             <constraint firstItem="z1m-Zs-DDn" firstAttribute="leading" secondItem="mxQ-Xy-gzj" secondAttribute="leading" id="SuN-Oq-NED"/>
                                             <constraint firstItem="mxQ-Xy-gzj" firstAttribute="top" secondItem="cqd-rP-662" secondAttribute="top" constant="5" id="oK3-37-eiZ"/>
                                             <constraint firstItem="z1m-Zs-DDn" firstAttribute="bottom" secondItem="cqd-rP-662" secondAttribute="bottom" constant="-5" id="oaJ-4M-z2L"/>
@@ -354,10 +360,10 @@
                                     <constraint firstAttribute="trailing" secondItem="akl-sA-X45" secondAttribute="trailing" id="IM3-ZF-rk5"/>
                                     <constraint firstItem="4WN-FM-NDc" firstAttribute="top" secondItem="akl-sA-X45" secondAttribute="bottom" id="InP-Jx-wrH"/>
                                     <constraint firstItem="akl-sA-X45" firstAttribute="top" secondItem="02q-Gr-yYU" secondAttribute="top" id="Is6-PM-kX6"/>
-                                    <constraint firstAttribute="trailing" secondItem="kF9-Ku-Ekj" secondAttribute="trailing" constant="24" id="LdC-97-IrE"/>
+                                    <constraint firstAttribute="trailing" secondItem="kF9-Ku-Ekj" secondAttribute="trailing" id="LdC-97-IrE"/>
                                     <constraint firstAttribute="height" constant="348" id="PpU-KS-K9Q"/>
                                     <constraint firstItem="4WN-FM-NDc" firstAttribute="leading" secondItem="akl-sA-X45" secondAttribute="leading" id="Qkm-0Q-8tR"/>
-                                    <constraint firstItem="kF9-Ku-Ekj" firstAttribute="leading" secondItem="02q-Gr-yYU" secondAttribute="leading" constant="24" id="Tfp-im-nPv"/>
+                                    <constraint firstItem="kF9-Ku-Ekj" firstAttribute="leading" secondItem="02q-Gr-yYU" secondAttribute="leading" id="Tfp-im-nPv"/>
                                     <constraint firstItem="tXu-yj-SO7" firstAttribute="top" secondItem="uZR-1e-eGa" secondAttribute="bottom" id="U6X-y6-POO"/>
                                     <constraint firstItem="YrL-Us-Ovh" firstAttribute="leading" secondItem="akl-sA-X45" secondAttribute="leading" id="Xlp-3h-eRG"/>
                                     <constraint firstItem="tXu-yj-SO7" firstAttribute="leading" secondItem="akl-sA-X45" secondAttribute="leading" id="aG8-bA-bK1"/>
@@ -444,5 +450,6 @@
         <image name="icon-qc" width="24" height="24"/>
         <image name="icon-talktalk" width="26" height="26"/>
         <image name="identify" width="22" height="9"/>
+        <image name="merchantBG" width="327" height="78"/>
     </resources>
 </document>

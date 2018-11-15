@@ -78,7 +78,7 @@ class TransferViewController: BaseViewController {
         
         self.requestData()
         
-        self.addressTextField.text = "0xf3bbce303e2532f8b072ca15e0fe6cd7823228c1"
+        //self.addressTextField.text = "0xf3bbce303e2532f8b072ca15e0fe6cd7823228c1"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -397,7 +397,7 @@ class TransferViewController: BaseViewController {
         psdTextView.limit = 4
         psdTextView.bottomLineColor = JXSeparatorColor
         psdTextView.textColor = JXFfffffColor
-        psdTextView.font = UIFont.systemFont(ofSize: 42)
+        psdTextView.font = UIFont.systemFont(ofSize: 21)
         psdTextView.completionBlock = { (text,isFinish) -> () in
             
             if isFinish {
@@ -604,7 +604,7 @@ class TransferViewController: BaseViewController {
         psdTextView.limit = 4
         psdTextView.bottomLineColor = JXSeparatorColor
         psdTextView.textColor = JXFfffffColor
-        psdTextView.font = UIFont.systemFont(ofSize: 42)
+        psdTextView.font = UIFont.systemFont(ofSize: 21)
         psdTextView.completionBlock = { (text,isFinish) -> () in
             
             if isFinish {

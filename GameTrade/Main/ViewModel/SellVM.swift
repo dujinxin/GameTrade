@@ -22,8 +22,6 @@ class SellVM: BaseViewModel {
         let entity = SellInfoEntity()
         return entity
     }()
-    var detailList = Array<CustomDetailEntity>()
-    
     
     //币商详情
     lazy var merchantEntity: MerchantEntity = {

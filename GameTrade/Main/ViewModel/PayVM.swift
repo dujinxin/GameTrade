@@ -21,6 +21,19 @@ class PayVM: BaseViewModel {
     
     var searchResultEntity = BankListEntity()
     
+    //添加实名
+    func addName(_ name: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
+        JXRequest.request(url: ApiString.addName.rawValue, param: ["realName": name], success: { (data, message) in
+            
+            var dict = UserManager.manager.userDict
+            dict["realName"] = name
+            let _ = UserManager.manager.saveAccound(dict: dict)
+            
+            completion(nil,message,true)
+        }) { (message, code) in
+            completion(nil,message,false)
+        }
+    }
     func payCustomList(completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         JXRequest.request(url: ApiString.payList.rawValue, param: Dictionary(), success: { (data, msg) in
 
@@ -124,10 +137,27 @@ class PayVM: BaseViewModel {
             bankIndexList.insert("常用银行", at: 0)
         }
     }
-    
-    
+    //验证资金密码
+    func validateTradePassword(_ safePassword: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
+        JXRequest.request(url: ApiString.validateTradePassword.rawValue, param: [ "safePassword": safePassword], success: { (data, message) in
+            guard
+                let dict = data as? Dictionary<String, Any>,
+                let isTrue = dict["validate"] as? Int
+                else{
+                    completion(nil, self.message, false)
+                    return
+            }
+            if isTrue != 0 {
+                completion(nil,message,true)
+            } else {
+                completion(nil,message,false)
+            }
+            
+        }) { (message, code) in
+            completion(nil,message,false)
+        }
+    }
     //添加修改支付方式
-    
     func editPay(id: String = "", type: Int, bank: String, account: String, name: String, safePassword: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
         JXRequest.request(url: ApiString.editPayStyle.rawValue, param: ["id": id, "type": type, "bank": bank, "account": account, "name": name, "safePassword": safePassword], success: { (data, message) in
             completion(nil,message,true)
@@ -136,7 +166,6 @@ class PayVM: BaseViewModel {
         }
     }
     //删除支付方式
-    
     func deletePay(id: String, payType: Int, safePassword: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
         JXRequest.request(url: ApiString.deletePayStyle.rawValue, param: ["id": id, "payType": payType, "safePassword": safePassword], success: { (data, message) in
             completion(nil,message,true)

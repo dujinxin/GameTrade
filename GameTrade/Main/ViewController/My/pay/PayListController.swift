@@ -25,9 +25,14 @@ class PayListController: JXTableViewController {
         return selectView
     }()
     
+    var isFirstEnter : Int = 0
+    
+    var type : Int = 0 // 0添加，1编辑，2删除
+    var currentIndexPath : IndexPath?
+    var psdText : String = ""
+    
     var id: String = ""
     var payType: Int = 1
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +48,14 @@ class PayListController: JXTableViewController {
     
         self.requestData()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isFirstEnter != 0 {
+            if let controllers = self.navigationController?.viewControllers, controllers.count > 1{
+                self.navigationController?.viewControllers.remove(at: 1)
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,8 +80,6 @@ class PayListController: JXTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let dict = self.defaultArray[indexPath.item]
-        
-        
         
         if indexPath.row == 0 {
             if let entity = self.vm.customListEntity?.list["ali"], entity.isEmpty == 0 {
@@ -152,57 +162,11 @@ class PayListController: JXTableViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.row == 0 {
-            let storyboard = UIStoryboard(name: "My", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "netPay") as! NetPayController
-            vc.hidesBottomBarWhenPushed = true
-            vc.type = 1
-            vc.backBlock = {
-                //tableView.reloadRows(at: [indexPath], with: .automatic)
-                self.requestData()
-            }
-            if let entity = self.vm.customListEntity?.list["ali"], entity.isEmpty == 0 {
-                vc.entity = entity
-                vc.isEdit = true
-            } else {
-                vc.isEdit = false
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            
-            
-        } else if indexPath.row == 1 {
-            let storyboard = UIStoryboard(name: "My", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "netPay") as! NetPayController
-            vc.hidesBottomBarWhenPushed = true
-            vc.type = 2
-            vc.backBlock = {
-                //tableView.reloadRows(at: [indexPath], with: .automatic)
-                self.requestData()
-            }
-            if let entity = self.vm.customListEntity?.list["weChat"], entity.isEmpty == 0 {
-                vc.entity = entity
-                vc.isEdit = true
-            } else {
-                vc.isEdit = false
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            let storyboard = UIStoryboard(name: "My", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "cardPay") as! CardPayController
-            
-            vc.hidesBottomBarWhenPushed = true
-            vc.backBlock = {
-                //tableView.reloadRows(at: [indexPath], with: .automatic)
-                self.requestData()
-            }
-            if let entity = self.vm.customListEntity?.list["card"], entity.isEmpty == 0 {
-                vc.entity = entity
-                vc.isEdit = true
-            } else {
-                vc.isEdit = false
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        self.currentIndexPath = indexPath
+        self.type = 0
+        self.statusBottomView.customView = self.customViewInit()
+        self.statusBottomView.show(inView: self.view)
+        self.psdTextView.textField.becomeFirstResponder()
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //default,destructive默认红色，normal默认灰色，可以通过backgroundColor 修改背景颜色，backgroundEffect 添加模糊效果
@@ -228,14 +192,20 @@ class PayListController: JXTableViewController {
             
 //            self.showInputView()
         
-            
+            self.currentIndexPath = indexPath
+            self.type = 2
             self.statusBottomView.customView = self.customViewInit()
             self.statusBottomView.show(inView: self.view)
             self.psdTextView.textField.becomeFirstResponder()
         }
         let markAction = UITableViewRowAction(style: .default, title: "编辑") { (action, indexPath) in
             print("编辑")
-            self.editActionsForRowAt(indexPath: indexPath)
+            
+            self.currentIndexPath = indexPath
+            self.type = 1
+            self.statusBottomView.customView = self.customViewInit()
+            self.statusBottomView.show(inView: self.view)
+            self.psdTextView.textField.becomeFirstResponder()
         }
         let cancelAction = UITableViewRowAction(style: .normal, title: "取消") { (action, indexPath) in
             //
@@ -252,6 +222,7 @@ class PayListController: JXTableViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "netPay") as! NetPayController
             vc.hidesBottomBarWhenPushed = true
             vc.type = 1
+            vc.psdText = self.psdText
             vc.backBlock = {
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 self.requestData()
@@ -269,6 +240,7 @@ class PayListController: JXTableViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "netPay") as! NetPayController
             vc.hidesBottomBarWhenPushed = true
             vc.type = 2
+            vc.psdText = self.psdText
             vc.backBlock = {
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 self.requestData()
@@ -283,8 +255,8 @@ class PayListController: JXTableViewController {
         } else {
             let storyboard = UIStoryboard(name: "My", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "cardPay") as! CardPayController
-            
             vc.hidesBottomBarWhenPushed = true
+            vc.psdText = self.psdText
             vc.backBlock = {
                 //tableView.reloadRows(at: [indexPath], with: .automatic)
                 self.requestData()
@@ -370,7 +342,7 @@ extension PayListController {
         psdTextView.limit = 4
         psdTextView.bottomLineColor = JXSeparatorColor
         psdTextView.textColor = JXFfffffColor
-        psdTextView.font = UIFont.systemFont(ofSize: 42)
+        psdTextView.font = UIFont.systemFont(ofSize: 21)
         psdTextView.completionBlock = { (text,isFinish) -> () in
             
             if isFinish {
@@ -393,15 +365,29 @@ extension PayListController {
     }
     
     func confirm(psd: String) {
-        self.showMBProgressHUD()
-        self.vm.deletePay(id: self.id, payType: self.payType, safePassword: psd, completion: { (_, msg, isSuc) in
-            self.hideMBProgressHUD()
-            if isSuc {
-                self.requestData()
-            } else {
-                ViewManager.showNotice(msg)
+        //删除
+        if self.type == 2 {
+            self.showMBProgressHUD()
+            self.vm.deletePay(id: self.id, payType: self.payType, safePassword: psd, completion: { (_, msg, isSuc) in
+                self.hideMBProgressHUD()
+                if isSuc {
+                    self.requestData()
+                } else {
+                    ViewManager.showNotice(msg)
+                }
+            })
+        } else {
+            self.showMBProgressHUD()
+            self.vm.validateTradePassword(psd) { (_, msg, isSuc) in
+                self.hideMBProgressHUD()
+                if isSuc == true, let indexPath = self.currentIndexPath{
+                    self.psdText = psd
+                    self.editActionsForRowAt(indexPath: indexPath)
+                } else {
+                    ViewManager.showNotice(msg)
+                }
             }
-        })
+        }
     }
     
     func showInputView() {

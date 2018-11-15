@@ -39,17 +39,9 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=13243RMB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lN5-U3-Wkp">
                                     <rect key="frame" x="140" y="131.5" width="69.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" red="1" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5l-wB-pku" userLabel="redPoint">
-                                    <rect key="frame" x="332" y="51" width="10" height="10"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="10" id="asF-FM-Ter"/>
-                                        <constraint firstAttribute="height" constant="10" id="cTD-JD-CVA"/>
-                                    </constraints>
-                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaC-XX-1vB">
                                     <rect key="frame" x="312" y="51" width="30" height="30"/>
                                     <color key="backgroundColor" red="0.87058823529999996" green="0.10980392160000001" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,9 +57,7 @@
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="n5l-wB-pku" firstAttribute="trailing" secondItem="XaC-XX-1vB" secondAttribute="trailing" id="4Va-xW-WLf"/>
                                 <constraint firstItem="lN5-U3-Wkp" firstAttribute="top" secondItem="RVX-Ic-i8a" secondAttribute="bottom" constant="8" id="KdM-iP-C5u"/>
-                                <constraint firstItem="n5l-wB-pku" firstAttribute="top" secondItem="XaC-XX-1vB" secondAttribute="top" id="Nhh-K9-e0M"/>
                                 <constraint firstItem="RVX-Ic-i8a" firstAttribute="centerX" secondItem="9GL-rU-qGc" secondAttribute="centerX" id="Ovx-SN-eaQ"/>
                                 <constraint firstItem="lN5-U3-Wkp" firstAttribute="centerX" secondItem="9GL-rU-qGc" secondAttribute="centerX" id="WRa-zZ-sOW"/>
                                 <constraint firstItem="9Gr-3Y-OBZ" firstAttribute="centerX" secondItem="9GL-rU-qGc" secondAttribute="centerX" id="aC3-Jx-sZr"/>
@@ -95,7 +85,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=12243RMB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q62-oa-0qz">
                                     <rect key="frame" x="60.5" y="84.5" width="53.5" height="11"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" red="1" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -128,7 +118,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="=12243RMB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Apm-vF-Iuw">
                                     <rect key="frame" x="60.5" y="84.5" width="53.5" height="11"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="textColor" red="1" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -255,7 +245,6 @@
                 <outlet property="limitNumLabel" destination="2Ik-bZ-3Vs" id="k0Z-qS-yTN"/>
                 <outlet property="limitPriceLabel" destination="Apm-vF-Iuw" id="Oin-sJ-yLR"/>
                 <outlet property="noticeLabel" destination="BM2-JO-c92" id="ke6-IH-0ru"/>
-                <outlet property="redPoint" destination="n5l-wB-pku" id="ZWT-GQ-fhX"/>
                 <outlet property="rightButton" destination="XaC-XX-1vB" id="MY4-aR-qSl"/>
                 <outlet property="scanArrow" destination="ajO-0L-ean" id="dJ4-o9-fhR"/>
                 <outlet property="scanIconBackView" destination="6lS-ZI-mgy" id="FoR-dk-QpB"/>

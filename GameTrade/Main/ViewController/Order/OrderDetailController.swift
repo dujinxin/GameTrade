@@ -93,194 +93,6 @@ class OrderDetailController: JXTableViewController {
     @objc func appeal() {
         print("shengshu")
     }
-    //MARK: selectView
-    func showNoticeView() {
-        let width : CGFloat = kScreenWidth - 40 * 2
-        let height : CGFloat = 300
-        
-        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
-        self.noticeView?.position = .middle
-        self.noticeView?.customView = {
-            
-            let contentView = UIView()
-            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
-            
-            let backgroundView = UIView()
-            backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
-            contentView.addSubview(backgroundView)
-            
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-            
-            
-            
-            let label = UILabel()
-            label.frame = CGRect(x: 0, y: 0, width: width, height: 100)
-            //label.center = view.center
-            label.text = "注意"
-            label.textAlignment = .center
-            label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
-            backgroundView.addSubview(label)
-            
-            
-            
-            let nameLabel = UILabel()
-            nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
-            nameLabel.text = "请确认您已向卖家付款\n「恶意点击将直接冻结账户」"
-            nameLabel.textColor = JXTextColor
-            nameLabel.font = UIFont.systemFont(ofSize: 16)
-            nameLabel.textAlignment = .center
-            nameLabel.numberOfLines = 0
-            
-            backgroundView.addSubview(nameLabel)
-            nameLabel.center.y = backgroundView.center.y
-            
-            
-            let margin : CGFloat = 16
-            let space : CGFloat = 24
-            let buttonWidth : CGFloat = (width - 24 - 16 * 2) / 2
-            let buttonHeight : CGFloat = 44
-            
-            let button1 = UIButton()
-            button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
-            button1.setTitle("点错了", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
-            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
-            backgroundView.addSubview(button1)
-            
-            
-            let button = UIButton()
-            button.frame = CGRect(x: button1.jxRight + space, y: button1.jxTop, width: buttonWidth, height: buttonHeight)
-            button.setTitle("确认付款", for: .normal)
-            button.setTitleColor(JXFfffffColor, for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
-            backgroundView.addSubview(button)
-            
-            
-            button.layer.cornerRadius = 2
-            button.layer.shadowOpacity = 1
-            button.layer.shadowRadius = 10
-            button.layer.shadowOffset = CGSize(width: 0, height: 10)
-            button.layer.shadowColor = JX10101aShadowColor.cgColor
-            button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
-            
-            return contentView
-        }()
-        
-        self.noticeView?.show()
-    }
-    @objc func hideNoticeView() {
-        self.noticeView?.dismiss()
-    }
-    @objc func confirm() {
-        self.hideNoticeView()
-        
-        //确认
-        self.vm.buyConfirm(id: self.vm.orderDetailEntity.id, completion: { (_, msg, isSuc) in
-            if isSuc {
-                
-                self.requestData()
-                
-                //self.showNoticeView1()
-            } else {
-                ViewManager.showNotice(msg)
-            }
-        })
-    }
-    //MARK: selectView1
-    func showNoticeView1() {
-        let width : CGFloat = kScreenWidth - 40 * 2
-        let height : CGFloat = 300
-        
-        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
-        self.noticeView?.position = .middle
-        self.noticeView?.customView = {
-            
-            let contentView = UIView()
-            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
-            
-            let backgroundView = UIView()
-            backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
-            contentView.addSubview(backgroundView)
-            
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-            
-            
-            
-            let label = UILabel()
-            label.frame = CGRect(x: 0, y: 0, width: width, height: 100)
-            //label.center = view.center
-            label.text = "注意"
-            label.textAlignment = .center
-            label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
-            backgroundView.addSubview(label)
-            
-            
-            
-            let nameLabel = UILabel()
-            nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
-            nameLabel.text = "购买的资产已到账\n您可以到首页查询"
-            nameLabel.textColor = JXTextColor
-            nameLabel.font = UIFont.systemFont(ofSize: 16)
-            nameLabel.textAlignment = .center
-            nameLabel.numberOfLines = 0
-            
-            backgroundView.addSubview(nameLabel)
-            nameLabel.center.y = backgroundView.center.y
-            
-            
-            let margin : CGFloat = 16
-            let space : CGFloat = 24
-            let buttonWidth : CGFloat = (width - 16 * 2)
-            let buttonHeight : CGFloat = 44
-            
-            
-            let button = UIButton()
-            button.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
-            button.setTitle("确认", for: .normal)
-            button.setTitleColor(JXFfffffColor, for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button.addTarget(self, action: #selector(confirm1), for: .touchUpInside)
-            backgroundView.addSubview(button)
-            
-            
-            button.layer.cornerRadius = 2
-            button.layer.shadowOpacity = 1
-            button.layer.shadowRadius = 10
-            button.layer.shadowOffset = CGSize(width: 0, height: 10)
-            button.layer.shadowColor = JX10101aShadowColor.cgColor
-            button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
-            
-            return contentView
-        }()
-        
-        self.noticeView?.show()
-    }
-    @objc func hideNoticeView1() {
-        self.noticeView?.dismiss()
-    }
-    @objc func confirm1() {
-        self.hideNoticeView1()
-    }
 }
 extension OrderDetailController {
     
@@ -305,23 +117,13 @@ extension OrderDetailController {
                     ViewManager.showImageNotice("已复制")
                 }
                 cell.cancelBlock = {
-                    
-                    self.vm.buyCancel(id: self.vm.orderDetailEntity.id, completion: { (_, msg, isSuc) in
-                        if isSuc {
-                            self.requestData()
-                        } else {
-                            ViewManager.showNotice(msg)
-                        }
-                    })
+                    self.showNoticeView1()
                 }
                 cell.timeOutBlock = {
-                    
-                    print("timeOutBlock")
                     self.requestData()
                 }
                 cell.payBlock = {
                     self.showNoticeView()
-                    
                 }
                 return cell
             } else {
@@ -454,11 +256,14 @@ extension OrderDetailController {
     
     @objc func showNoticeView2() {
         let width : CGFloat = kScreenWidth - 24 * 2
-        let height : CGFloat = width + 12
+        let imageWidth = width - 28 * 2
+        let imageHeight = imageWidth * (self.vm.codeImageSize.height / self.vm.codeImageSize.width)
+        
+        let height : CGFloat = imageHeight + 24 + 90
         
         self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
         self.noticeView?.position = .middle
-        self.noticeView?.presentModelStyle = .none
+        //self.noticeView?.presentModelStyle = .none
         self.noticeView?.isBackViewUserInteractionEnabled = false
         self.noticeView?.customView = {
             
@@ -474,32 +279,12 @@ extension OrderDetailController {
             gradientLayer.locations = [0]
             gradientLayer.startPoint = CGPoint(x: 0, y: 0)
             gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: imageHeight + 24 + 60)
             gradientLayer.cornerRadius = 5
             backgroundView.layer.insertSublayer(gradientLayer, at: 0)
             
             
-//            let margin : CGFloat = 16
-//            let space : CGFloat = 24
-//            let buttonWidth : CGFloat = (width - 16 * 2)
-//            let buttonHeight : CGFloat = 44
-            
-            
-            let button = UIButton()
-            button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
-            //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
-            button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
-            button.contentVerticalAlignment = .center
-            button.contentHorizontalAlignment = .center
-            button.addTarget(self, action: #selector(hideNoticeView2), for: .touchUpInside)
-            backgroundView.addSubview(button)
-            
-            
-            let imageView = UIImageView(frame: CGRect(x: 48, y: button.jxBottom + 10, width: width - 48 * 2, height: width - 48 * 2))
+            let imageView = UIImageView(frame: CGRect(x: 28, y: 24, width: imageWidth, height: imageHeight))
             if let str = self.vm.orderDetailEntity.qrcodeImg {
                 imageView.sd_setImage(with: URL(string: str), completed: nil)
             }
@@ -507,18 +292,34 @@ extension OrderDetailController {
             imageView.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(longPress)))
             backgroundView.addSubview(imageView)
             
+            let button = UIButton()
+            button.frame = CGRect(x: 0, y: imageView.jxBottom + 30, width: 60, height: 60)
+            button.backgroundColor = UIColor.rgbColor(rgbValue: 0x22222c)
+            //button.setTitle("×", for: .normal)
+            button.tintColor = JXFfffffColor
+            button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            //button.setBackgroundImage(UIImage(named: "close-big"), for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+            button.setTitleColor(JX333333Color, for: .normal)
+            button.contentVerticalAlignment = .center
+            button.contentHorizontalAlignment = .center
+            button.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
+            backgroundView.addSubview(button)
+            button.center.x = imageView.center.x
+            button.layer.cornerRadius = 30
+            button.layer.borderColor = UIColor.rgbColor(rgbValue: 0x0A0A0E).cgColor
+            button.layer.borderWidth = 2.5
+            
+            
             return contentView
         }()
         self.noticeView?.show()
     }
     
-    @objc func hideNoticeView2() {
-        self.noticeView?.dismiss()
-    }
     @objc func longPress(long: UILongPressGestureRecognizer) {
    
         if let v = long.view as? UIImageView, let image = v.image {
-            self.hideNoticeView2()
+            self.hideNoticeView()
             
             let alert = UIAlertController(title: nil, message: "保存到相册", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "是", style: .default, handler: { (action) in
@@ -539,5 +340,297 @@ extension OrderDetailController {
         } else {
             ViewManager.showImageNotice("添加成功")
         }
+    }
+}
+//MARK: confirm order notice
+extension OrderDetailController {
+    func showNoticeView() {
+        let width : CGFloat = kScreenWidth - 40 * 2
+        let height : CGFloat = 300
+        
+        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
+        self.noticeView?.position = .middle
+        self.noticeView?.customView = {
+            
+            let contentView = UIView()
+            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
+            
+            let backgroundView = UIView()
+            backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            contentView.addSubview(backgroundView)
+            
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            gradientLayer.cornerRadius = 5
+            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            
+            
+            
+            let label = UILabel()
+            label.frame = CGRect(x: 0, y: 0, width: width, height: 100)
+            //label.center = view.center
+            label.text = "注意"
+            label.textAlignment = .center
+            label.font = UIFont.boldSystemFont(ofSize: 16)
+            label.textColor = JXTextColor
+            backgroundView.addSubview(label)
+            
+            
+            
+            let nameLabel = UILabel()
+            nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
+            nameLabel.text = "请确认您已向卖家付款\n「恶意点击将直接冻结账户」"
+            nameLabel.textColor = JXTextColor
+            nameLabel.font = UIFont.systemFont(ofSize: 16)
+            nameLabel.textAlignment = .center
+            nameLabel.numberOfLines = 0
+            
+            backgroundView.addSubview(nameLabel)
+            nameLabel.center.y = backgroundView.center.y
+            
+            
+            let margin : CGFloat = 16
+            let space : CGFloat = 24
+            let buttonWidth : CGFloat = (width - 24 - 16 * 2) / 2
+            let buttonHeight : CGFloat = 44
+            
+            let button1 = UIButton()
+            button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
+            button1.setTitle("点错了", for: .normal)
+            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
+            backgroundView.addSubview(button1)
+            
+            
+            let button = UIButton()
+            button.frame = CGRect(x: button1.jxRight + space, y: button1.jxTop, width: buttonWidth, height: buttonHeight)
+            button.setTitle("确认付款", for: .normal)
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
+            backgroundView.addSubview(button)
+            
+            
+            button.layer.cornerRadius = 2
+            button.layer.shadowOpacity = 1
+            button.layer.shadowRadius = 10
+            button.layer.shadowOffset = CGSize(width: 0, height: 10)
+            button.layer.shadowColor = JX10101aShadowColor.cgColor
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.backgroundColor = JXOrangeColor
+            
+            return contentView
+        }()
+        
+        self.noticeView?.show()
+    }
+    @objc func hideNoticeView() {
+        self.noticeView?.dismiss()
+    }
+    @objc func confirm() {
+        self.hideNoticeView()
+        
+        //确认
+        self.vm.buyConfirm(id: self.vm.orderDetailEntity.id, completion: { (_, msg, isSuc) in
+            if isSuc {
+                self.requestData()
+            } else {
+                ViewManager.showNotice(msg)
+            }
+        })
+    }
+}
+//MARK: cancel order notice
+extension OrderDetailController {
+    func showNoticeView1() {
+        let width : CGFloat = kScreenWidth - 40 * 2
+        let height : CGFloat = 300
+        
+        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
+        self.noticeView?.position = .middle
+        self.noticeView?.customView = {
+            
+            let contentView = UIView()
+            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
+            
+            let backgroundView = UIView()
+            backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            contentView.addSubview(backgroundView)
+            
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            gradientLayer.cornerRadius = 5
+            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            
+            
+            
+            let label = UILabel()
+            label.frame = CGRect(x: 0, y: 0, width: width, height: 100)
+            //label.center = view.center
+            label.text = "注意"
+            label.textAlignment = .center
+            label.font = UIFont.boldSystemFont(ofSize: 16)
+            label.textColor = JXTextColor
+            backgroundView.addSubview(label)
+            
+            
+            
+            let nameLabel = UILabel()
+            nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
+            nameLabel.text = "如果您已向卖家付款\n请千万不要取消交易"
+            nameLabel.textColor = JXTextColor
+            nameLabel.font = UIFont.systemFont(ofSize: 16)
+            nameLabel.textAlignment = .center
+            nameLabel.numberOfLines = 0
+            
+            backgroundView.addSubview(nameLabel)
+            nameLabel.center.y = backgroundView.center.y - 20
+            
+            
+            let infoLabel = UILabel()
+            infoLabel.frame = CGRect(x: 24, y: nameLabel.jxBottom, width: width - 24 * 2, height: 40)
+            infoLabel.text = "取消规则：买家当日只能取消3次交易"
+            infoLabel.textColor = JXRedColor
+            infoLabel.font = UIFont.systemFont(ofSize: 12)
+            infoLabel.textAlignment = .center
+            infoLabel.numberOfLines = 0
+            backgroundView.addSubview(infoLabel)
+        
+            
+            let margin : CGFloat = 16
+            let space : CGFloat = 24
+            let buttonWidth : CGFloat = (width - 24 - 16 * 2) / 2
+            let buttonHeight : CGFloat = 44
+            
+            let button1 = UIButton()
+            button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
+            button1.setTitle("点错了", for: .normal)
+            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
+            backgroundView.addSubview(button1)
+            
+            
+            let button = UIButton()
+            button.frame = CGRect(x: button1.jxRight + space, y: button1.jxTop, width: buttonWidth, height: buttonHeight)
+            button.setTitle("取消交易", for: .normal)
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button.addTarget(self, action: #selector(cancelTrade), for: .touchUpInside)
+            backgroundView.addSubview(button)
+            
+            
+            button.layer.cornerRadius = 2
+            button.layer.shadowOpacity = 1
+            button.layer.shadowRadius = 10
+            button.layer.shadowOffset = CGSize(width: 0, height: 10)
+            button.layer.shadowColor = JX10101aShadowColor.cgColor
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.backgroundColor = JXOrangeColor
+            
+            return contentView
+        }()
+        
+        self.noticeView?.show()
+    }
+    @objc func cancelTrade() {
+        self.hideNoticeView()
+        
+        self.showMBProgressHUD()
+        self.vm.buyCancel(id: self.vm.orderDetailEntity.id, completion: { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
+            if isSuc {
+                self.requestData()
+            } else {
+                ViewManager.showNotice(msg)
+            }
+        })
+    }
+    //暂时不用
+    func showNoticeView3() {
+        let width : CGFloat = kScreenWidth - 40 * 2
+        let height : CGFloat = 300
+        
+        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
+        self.noticeView?.position = .middle
+        self.noticeView?.customView = {
+            
+            let contentView = UIView()
+            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
+            
+            let backgroundView = UIView()
+            backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            contentView.addSubview(backgroundView)
+            
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            gradientLayer.cornerRadius = 5
+            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            
+            
+            
+            let label = UILabel()
+            label.frame = CGRect(x: 0, y: 0, width: width, height: 100)
+            //label.center = view.center
+            label.text = "注意"
+            label.textAlignment = .center
+            label.font = UIFont.boldSystemFont(ofSize: 16)
+            label.textColor = JXTextColor
+            backgroundView.addSubview(label)
+            
+            
+            
+            let nameLabel = UILabel()
+            nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
+            nameLabel.text = "购买的资产已到账\n您可以到首页查询"
+            nameLabel.textColor = JXTextColor
+            nameLabel.font = UIFont.systemFont(ofSize: 16)
+            nameLabel.textAlignment = .center
+            nameLabel.numberOfLines = 0
+            
+            backgroundView.addSubview(nameLabel)
+            nameLabel.center.y = backgroundView.center.y
+            
+            
+            let margin : CGFloat = 16
+            let space : CGFloat = 24
+            let buttonWidth : CGFloat = (width - 16 * 2)
+            let buttonHeight : CGFloat = 44
+            
+            
+            let button = UIButton()
+            button.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
+            button.setTitle("确认", for: .normal)
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
+            backgroundView.addSubview(button)
+            
+            
+            button.layer.cornerRadius = 2
+            button.layer.shadowOpacity = 1
+            button.layer.shadowRadius = 10
+            button.layer.shadowOffset = CGSize(width: 0, height: 10)
+            button.layer.shadowColor = JX10101aShadowColor.cgColor
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.backgroundColor = JXOrangeColor
+            
+            return contentView
+        }()
+        
+        self.noticeView?.show()
     }
 }

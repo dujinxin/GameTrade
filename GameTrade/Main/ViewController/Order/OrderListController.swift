@@ -127,19 +127,6 @@ extension OrderListController {
             cell.entity = entity
             return cell
         }
-//        if entity.orderStatus == 1 || entity.orderStatus == 2 {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifiering", for: indexPath) as! OrderingListCell
-//            cell.tag = indexPath.row
-//            cell.entity = entity
-//            cell.buyButton.setTitle(countDown?.countDown(indexPath: indexPath), for: .normal)
-//            return cell
-//        } else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifiered", for: indexPath) as! OrderedListCell
-//            cell.tag = indexPath.row
-//            let entity = self.vm.orderListEntity.listArray[indexPath.row]
-//            cell.entity = entity
-//            return cell
-//        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

@@ -433,8 +433,8 @@
                                                             <constraint firstAttribute="height" constant="1" id="x8u-fA-6tl"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43U-rq-0du">
-                                                        <rect key="frame" x="114" y="16.666666666666657" width="237" height="17"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="43U-rq-0du">
+                                                        <rect key="frame" x="114" y="0.0" width="237" height="49"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -444,13 +444,14 @@
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="43U-rq-0du" firstAttribute="top" secondItem="0T6-v5-4xc" secondAttribute="top" id="1bv-FI-v9c"/>
                                                     <constraint firstAttribute="trailing" secondItem="uKz-LE-mMw" secondAttribute="trailing" id="4ca-qK-dv0"/>
                                                     <constraint firstItem="uKz-LE-mMw" firstAttribute="leading" secondItem="0T6-v5-4xc" secondAttribute="leading" constant="24" id="6fK-q4-PdK"/>
                                                     <constraint firstItem="WgA-kD-dmM" firstAttribute="leading" secondItem="0T6-v5-4xc" secondAttribute="leading" constant="24" id="BLe-7Y-TJz"/>
                                                     <constraint firstItem="WgA-kD-dmM" firstAttribute="centerY" secondItem="0T6-v5-4xc" secondAttribute="centerY" id="HKk-QQ-fMG"/>
                                                     <constraint firstItem="43U-rq-0du" firstAttribute="leading" secondItem="WgA-kD-dmM" secondAttribute="trailing" constant="10" id="I27-bG-KdF"/>
-                                                    <constraint firstItem="43U-rq-0du" firstAttribute="centerY" secondItem="0T6-v5-4xc" secondAttribute="centerY" id="TpB-Bh-4LX"/>
                                                     <constraint firstAttribute="trailing" secondItem="43U-rq-0du" secondAttribute="trailing" constant="24" id="UqP-07-WOC"/>
+                                                    <constraint firstItem="uKz-LE-mMw" firstAttribute="top" secondItem="43U-rq-0du" secondAttribute="bottom" id="fhy-hu-r3r"/>
                                                     <constraint firstAttribute="height" constant="50" id="h4V-Ib-YeJ"/>
                                                     <constraint firstAttribute="bottom" secondItem="uKz-LE-mMw" secondAttribute="bottom" id="rG5-cX-plj"/>
                                                 </constraints>

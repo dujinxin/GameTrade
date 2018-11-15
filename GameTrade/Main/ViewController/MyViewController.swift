@@ -213,9 +213,16 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
         if indexPath.row == 1 {
             //performSegue(withIdentifier: "property", sender: nil)
             if UserManager.manager.userEntity.user.safePwdInit != 0 {
-                let vc = PayListController()
-                vc.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(vc, animated: true)
+                if UserManager.manager.userEntity.realName.isEmpty == false {
+                    let vc = PayListController()
+                    vc.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    let storyboard = UIStoryboard(name: "My", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "nameSet") as! NameSetController
+                    vc.hidesBottomBarWhenPushed = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             } else {
                 self.showNoticeView()
             }
@@ -250,6 +257,7 @@ extension MyViewController : UITextFieldDelegate {
         return true
     }
 }
+//MARK: trade psd notice
 extension MyViewController {
     func showNoticeView() {
         let width : CGFloat = kScreenWidth - 40 * 2
@@ -348,3 +356,4 @@ extension MyViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+

@@ -25,6 +25,8 @@ class ConversationListController: JXTableViewController {
         
         self.title = "聊聊"
         
+        self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kTabBarHeight - kNavStatusHeight)
+        self.tableView?.rowHeight = 92
         self.tableView?.register(UINib(nibName: String(describing: ChatTableViewCell.self), bundle: Bundle(for: ChatTableViewCell.self)), forCellReuseIdentifier: ChatTableViewCell.string())
         
         do {
@@ -43,8 +45,7 @@ class ConversationListController: JXTableViewController {
         
         groupChannelsQuery = CCPGroupChannel.createGroupChannelListQuery()
         loadChannelsFromLocalStorage()
-        
-        
+    
     }
     
     open override func viewWillAppear(_ animated: Bool) {

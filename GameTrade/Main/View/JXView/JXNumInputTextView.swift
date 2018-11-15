@@ -118,7 +118,7 @@ class JXNumInputTextView: JXView {
         psdTextView.limit = 4
         psdTextView.bottomLineColor = JXSeparatorColor
         psdTextView.textColor = JXFfffffColor
-        psdTextView.font = UIFont.systemFont(ofSize: 42)
+        psdTextView.font = UIFont.systemFont(ofSize: 21)
         psdTextView.completionBlock = { (text,isFinish) -> () in
             
 //            if isFinish {

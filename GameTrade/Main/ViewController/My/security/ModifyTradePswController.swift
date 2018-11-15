@@ -61,7 +61,7 @@ class ModifyTradePswController: BaseViewController {
         self.psdView.limit = 4
         self.psdView.bottomLineColor = JXSeparatorColor
         self.psdView.textColor = JXFfffffColor
-        self.psdView.font = UIFont.systemFont(ofSize: 42)
+        self.psdView.font = UIFont.systemFont(ofSize: 21)
         self.psdView.backgroundColor = UIColor.clear
         self.psdView.completionBlock = {(psd, isFinish) in
             print(psd)

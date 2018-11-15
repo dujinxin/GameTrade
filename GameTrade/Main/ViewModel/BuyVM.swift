@@ -22,7 +22,6 @@ class BuyVM: BaseViewModel {
         let entity = BuyListEntity()
         return entity
     }()
-    var detailList = Array<CustomDetailEntity>()
     
     //交易记录列表  0全部 1支付宝，2微信，3银行卡
     func buyList(payType: Int, pageSize: Int = 10, pageNo: Int, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{

@@ -15,6 +15,9 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var orderInfoLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     
+    @IBOutlet weak var infoBackImageView: UIImageView!
+    
+    
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var discountLabel: UILabel!
@@ -41,8 +44,6 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var shopImageView: UIImageView!
     @IBOutlet weak var shopNameLabel: UILabel!
     
-    @IBOutlet weak var shopLevelButton: UIButton!
-    
     var chatBlock : (()->())?
     var showCodeBlock : (()->())?
     var cancelBlock : (()->())?
@@ -58,6 +59,8 @@ class OrderBuyingDetailCell: UITableViewCell {
         // Initialization code
         
         self.backgroundColor = UIColor.clear
+        
+        //self.infoBackImageView.image = UIImage(named: "Combined Shape")?.resizableImage(withCapInsets: UIEdgeInsetsMake(80, 20, 20, 20), resizingMode: .stretch)
         
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         

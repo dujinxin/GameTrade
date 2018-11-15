@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class OrderVM: BaseViewModel {
 
@@ -22,8 +23,7 @@ class OrderVM: BaseViewModel {
         let entity = OrderDetailEntity()
         return entity
     }()
-    var detailList = Array<CustomDetailEntity>()
-    
+    var codeImageSize : CGSize = CGSize(width: 300, height: 300)
     //订单记录列表
     func orderList(pageSize: Int = 10, pageNo: Int, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
@@ -73,12 +73,24 @@ class OrderVM: BaseViewModel {
                     completion(nil, self.message, false)
                     return
             }
-            self.orderDetailEntity.setValuesForKeys(dict)
-            completion(data, msg, true)
+            //self.orderDetailEntity.setValuesForKeys(dict)
+            self.cacheImage(dict: dict, completion: completion)
             
+            //completion(data, msg, true)
         }) { (msg, code) in
             completion(nil, msg, false)
         }
+    }
+    func cacheImage(dict: Dictionary<String, Any>, completion: @escaping ((_ data: Any?, _ msg: String,_ isSuccess: Bool)->())) {
+        self.orderDetailEntity.setValuesForKeys(dict)
+        
+        if let imageUrl = self.orderDetailEntity.qrcodeImg {
+            SDWebImageDownloader.shared().downloadImage(with: URL(string: imageUrl), options: [], progress: nil) { (image, data, error, isTure) in
+                print(image)
+                self.codeImageSize = image?.size ?? CGSize()
+            }
+        }
+        completion(dict, "msg", true)
     }
     
     
