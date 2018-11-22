@@ -52,12 +52,20 @@ class PutUpViewController: BaseViewController {
     
     var sellTotal = "0 \(configuration_valueType)"
     var sellRealTotal = "0 \(configuration_valueType)"
-    var serviceTotal = "0 \(configuration_valueType)"
+    var serviceTotal = "0 \(configuration_coinName)"
     
     var sellInfoEntity : SellInfoEntity?
     var payName = "请选择"
     var payType = 0
-    
+
+    //select view
+    lazy var statusBottomView: JXSelectView = {
+        let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
+        selectView.backgroundColor = JXOrangeColor
+        selectView.isBackViewUserInteractionEnabled = false
+        return selectView
+    }()
+    var psdTextView : PasswordTextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,12 +81,15 @@ class PutUpViewController: BaseViewController {
         self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Close"), style: .plain, target: self, action: #selector(close))
         
         self.useLeftLabel.textColor = JXText50Color
-        self.sellLeftLabel.textColor = JXText50Color
+        self.sellLeftLabel.textColor = JXTextColor
         self.priseLeftLabel.textColor = JXText50Color
         self.totalLeftLabel.textColor = JXText50Color
         self.payTotalLeftLabel.textColor = JXText50Color
         self.serviceLeftLabel.textColor = JXText50Color
         self.payNameLeftLabel.textColor = JXText50Color
+        self.sellTextField.tintColor = JXOrangeColor
+        
+        self.payTotalLabel.textColor = JXRedColor
         
         
         self.useLabel.text = "\(self.sellInfoEntity?.balance ?? 0)"
@@ -88,7 +99,7 @@ class PutUpViewController: BaseViewController {
         self.serviceLabel.text = self.serviceTotal
         self.payTotalLabel.text = self.sellRealTotal
         self.payNameLabel.text = self.payName
-        self.sellTextField.attributedPlaceholder = NSAttributedString(string: "请输入卖出数量", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+        self.sellTextField.attributedPlaceholder = NSAttributedString(string: "请输入卖出数量", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
         
         self.paySelectView.isUserInteractionEnabled = true
         self.paySelectView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectPay)))
@@ -102,6 +113,17 @@ class PutUpViewController: BaseViewController {
         self.submitButton.layer.shadowColor = JX10101aShadowColor.cgColor
         
         self.submitButton.addTarget(self, action: #selector(addOrder), for: .touchUpInside)
+        
+        
+        let bar = JXKeyboardToolBar(frame: CGRect(), views: [sellTextField])
+        bar.showBlock = { (view, value) in
+            print(view,value)
+        }
+        
+        bar.tintColor = JXTextColor
+        bar.toolBar.barTintColor = JXBackColor
+        bar.backgroundColor = JXBackColor
+        self.view.addSubview(bar)
         
     }
 
@@ -118,37 +140,33 @@ class PutUpViewController: BaseViewController {
         }
     }
     @objc func close() {
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     @objc func addOrder() {
         print("T##items: Any...##Any")
         
-        guard let num = self.sellTextField.text, num.isEmpty == false else {
+        guard let numStr = self.sellTextField.text, numStr.isEmpty == false else {
             ViewManager.showNotice("请输入要挂出币数量")
             return
         }
+        guard let num = Int(numStr), num >= 10 else {
+            ViewManager.showNotice("最低挂卖数量为10")
+            return
+        }
         if self.payType == 0 {
-            ViewManager.showNotice("请选择支付方式")
+            ViewManager.showNotice("请选择收款方式")
             return
         }
         self.view.endEditing(true)
-        if UserManager.manager.userEntity.user.safePwdInit != 0 {
-            self.statusBottomView.customView = self.customViewInit(number: num, address: "address", remark: "无")
-            self.statusBottomView.show(inView: self.view)
-            
-        } else {
-            self.showNoticeView()
-        }
+        
+        self.statusBottomView.customView = self.customViewInit(number: num, address: "address", remark: "无")
+        self.statusBottomView.show(inView: self.view)
     }
-    //MARK: 挂单
-    lazy var statusBottomView: JXSelectView = {
-        let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
-        selectView.isBackViewUserInteractionEnabled = false
-        return selectView
-    }()
-    var psdTextView : PasswordTextView!
-    func customViewInit(number: String, address: String, remark: String) -> UIView {
+}
+//MARK: 挂单
+extension PutUpViewController {
+    func customViewInit(number: Int, address: String, remark: String) -> UIView {
         
         let width : CGFloat = kScreenWidth - 48
         
@@ -259,8 +277,8 @@ class PutUpViewController: BaseViewController {
                         if let block = self.backBlock {
                             block()
                         }
-                        self.navigationController?.popViewController(animated: true)
-                        //self.dismiss(animated: true, completion: nil)
+                        //self.navigationController?.popViewController(animated: true)
+                        self.dismiss(animated: true, completion: nil)
                     } else {
                         ViewManager.showNotice(msg)
                     }
@@ -288,12 +306,7 @@ class PutUpViewController: BaseViewController {
         
         let rightLabel1 = UILabel()
         rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 51)
-        if let num = Double(number) {
-            rightLabel1.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
-        } else {
-            rightLabel1.text = "\(0) \(configuration_valueType)"
-        }
-        
+        rightLabel1.text = "\(Double(number) * configuration_coinPrice) \(configuration_valueType)"
         rightLabel1.textColor = JXRedColor
         rightLabel1.font = UIFont.systemFont(ofSize: 14)
         rightLabel1.textAlignment = .right
@@ -315,14 +328,7 @@ class PutUpViewController: BaseViewController {
         
         let rightLabel2 = UILabel()
         rightLabel2.frame = CGRect(x: leftLabel2.jxRight, y: leftLabel2.jxTop, width: kScreenWidth - 48 - leftLabel2.jxWidth, height: 51)
-        if let num = Double(number) {
-            rightLabel1.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
-            rightLabel2.text = String(format:"%.2f",num * configuration_coinPrice * (self.sellInfoEntity?.saleRate ?? 0)) + " \(configuration_valueType)"
-        } else {
-            rightLabel1.text = "\(0) \(configuration_valueType)"
-            rightLabel2.text = "\(0) \(configuration_valueType)"
-        }
-        
+        rightLabel2.text = String(format:"%.2f",Double(number) * (self.sellInfoEntity?.saleRate ?? 0)) + " \(configuration_coinName)"
         rightLabel2.textColor = JXTextColor
         rightLabel2.font = UIFont.systemFont(ofSize: 14)
         rightLabel2.textAlignment = .right
@@ -352,9 +358,9 @@ class PutUpViewController: BaseViewController {
         rightButton.contentHorizontalAlignment = .right
         contentView.addSubview(rightButton)
         
-//        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight, y: leftLabel3.jxTop + 15.5, width: 20, height: 20))
-//        arrow.backgroundColor = JXTextColor
-//        contentView.addSubview(arrow)
+        //        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight, y: leftLabel3.jxTop + 15.5, width: 20, height: 20))
+        //        arrow.backgroundColor = JXTextColor
+        //        contentView.addSubview(arrow)
         
         
         let line3 = UIView()
@@ -385,7 +391,8 @@ class PutUpViewController: BaseViewController {
         //3
         let infoLabel = UILabel()
         infoLabel.frame = CGRect(x: 24, y: button.jxBottom + 14, width: width, height: 20)
-        infoLabel.text = "确认挂单将收取2%币手续费"
+        let percent = String(format: "%.1f%%", Double((self.sellInfoEntity?.saleRate ?? 0)) * 100)
+        infoLabel.text = "挂单交易成功将收取\(percent)币手续费"
         infoLabel.textColor = JXText50Color
         infoLabel.font = UIFont.systemFont(ofSize: 13)
         infoLabel.textAlignment = .center
@@ -420,119 +427,17 @@ class PutUpViewController: BaseViewController {
         vc.type = 0
         self.navigationController?.pushViewController(vc, animated: true)
     }
+}
+//MARK: select pay
+extension PutUpViewController {
     
-    var noticeView : JXSelectView?
-    
-    func showNoticeView() {
-        let width : CGFloat = kScreenWidth - 40 * 2
-        let height : CGFloat = 300
-        
-        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
-        self.noticeView?.position = .middle
-        self.noticeView?.customView = {
-            
-            let contentView = UIView()
-            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
-            
-            let backgroundView = UIView()
-            backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
-            contentView.addSubview(backgroundView)
-            
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
-            
-            
-            
-            let label = UILabel()
-            label.frame = CGRect(x: 0, y: 0, width: width, height: 100)
-            //label.center = view.center
-            label.text = "提示"
-            label.textAlignment = .center
-            label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
-            backgroundView.addSubview(label)
-            
-            
-            
-            let nameLabel = UILabel()
-            nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 30)
-            nameLabel.text = "您还未设置资金密码"
-            nameLabel.textColor = JXTextColor
-            nameLabel.font = UIFont.systemFont(ofSize: 16)
-            nameLabel.textAlignment = .center
-            
-            backgroundView.addSubview(nameLabel)
-            nameLabel.center.y = backgroundView.center.y
-            
-            
-            let margin : CGFloat = 16
-            let space : CGFloat = 24
-            let buttonWidth : CGFloat = (width - 24 - 16 * 2) / 2
-            let buttonHeight : CGFloat = 44
-            
-            let button1 = UIButton()
-            button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
-            button1.setTitle("稍后再说", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
-            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
-            backgroundView.addSubview(button1)
-            
-            
-            let button = UIButton()
-            button.frame = CGRect(x: button1.jxRight + space, y: button1.jxTop, width: buttonWidth, height: buttonHeight)
-            button.setTitle("立即设置", for: .normal)
-            button.setTitleColor(JXFfffffColor, for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button.addTarget(self, action: #selector(setPsd), for: .touchUpInside)
-            backgroundView.addSubview(button)
-            
-            
-            button.layer.cornerRadius = 2
-            button.layer.shadowOpacity = 1
-            button.layer.shadowRadius = 10
-            button.layer.shadowOffset = CGSize(width: 0, height: 10)
-            button.layer.shadowColor = JX10101aShadowColor.cgColor
-            button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
-            
-            return contentView
-        }()
-        
-        self.noticeView?.show()
-    }
-    @objc func hideNoticeView() {
-        self.noticeView?.dismiss()
-    }
-    @objc func setPsd() {
-        self.hideNoticeView()
-        
-        let storyboard = UIStoryboard(name: "My", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "modifyTradePsw") as! ModifyTradePswController
-        vc.hidesBottomBarWhenPushed = true
-        vc.type = 2
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    //MARK: select pay
     @objc func selectPay() {
         
         self.view.endEditing(true)
-       
+        
         self.statusBottomView.customView = self.customViewInit1(list: self.sellInfoEntity?.list ?? [])
         self.statusBottomView.show(inView: self.view)
     }
-    lazy var statusBottomView1: JXSelectView = {
-        let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
-        selectView.isBackViewUserInteractionEnabled = false
-        return selectView
-    }()
     func customViewInit1(list: Array<PayEntity>) -> UIView {
         
         let width : CGFloat = kScreenWidth - 48
@@ -548,7 +453,7 @@ class PutUpViewController: BaseViewController {
         gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 442 + kBottomMaginHeight)
         contentView.layer.insertSublayer(gradientLayer, at: 0)
         
-
+        
         let rightContentView = UIView()
         rightContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 442 + kBottomMaginHeight)
         contentView.addSubview(rightContentView)
@@ -655,7 +560,6 @@ class PutUpViewController: BaseViewController {
         self.closeStatus1()
     }
 }
-
 extension PutUpViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
@@ -676,14 +580,14 @@ extension PutUpViewController: UITextFieldDelegate{
                 //手续费的代扣由后台来扣
                 self.useLabel.text = "\((self.sellInfoEntity?.balance ?? 0) - numDouble)"
                 self.sellTotal = "\(configuration_coinPrice * numDouble) \(configuration_valueType)"
-                self.serviceTotal = String(format:"%.2f",numDouble * (self.sellInfoEntity?.saleRate ?? 0)) + " \(configuration_valueType)"
+                self.serviceTotal = String(format:"%.2f",numDouble * (self.sellInfoEntity?.saleRate ?? 0)) + " \(configuration_coinName)"
                 self.sellRealTotal = String(format:"%.2f",numDouble * (configuration_coinPrice - (self.sellInfoEntity?.saleRate ?? 0))) + " \(configuration_valueType)"
             } else {
                 //self.useNum = "\(UserManager.manager.userEntity.property.balance)"
                 self.useLabel.text = "\(self.sellInfoEntity?.balance ?? 0)"
                 self.sellTotal = "\(0) \(configuration_valueType)"
                 self.sellRealTotal = "\(0) \(configuration_valueType)"
-                self.serviceTotal = "\(0) \(configuration_valueType)"
+                self.serviceTotal = "\(0) \(configuration_coinName)"
             }
             
             //self.useLabel.text = self.useNum

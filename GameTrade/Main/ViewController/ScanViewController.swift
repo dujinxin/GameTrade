@@ -12,6 +12,7 @@ import AVFoundation
 class ScanViewController: BaseViewController {
     
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var photoButton: UIButton!
     @IBOutlet weak var controlButton: UIButton!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
@@ -28,7 +29,7 @@ class ScanViewController: BaseViewController {
     
     var callBlock : ((_ address: String?)->())?
     
-    var type = 0 //地址  1 付款
+    var type = 0 //0 地址  1 付款
     
     
     var id : String?
@@ -59,10 +60,9 @@ class ScanViewController: BaseViewController {
         self.rightView.alpha = 0.5
         self.bottomView.alpha = 0.5
         
-//        self.controlButton.setImage(#imageLiteral(resourceName: "off"), for: .normal)
-//        self.controlButton.setImage(#imageLiteral(resourceName: "on"), for: .selected)
+        self.controlButton.setImage(#imageLiteral(resourceName: "off"), for: .normal)
+        self.controlButton.setImage(#imageLiteral(resourceName: "on"), for: .selected)
         
-
         guard
             let device = AVCaptureDevice.default(for: .video),   //创建摄像设备
             let input = try? AVCaptureDeviceInput(device: device)//创建输入流
@@ -118,6 +118,21 @@ class ScanViewController: BaseViewController {
         self.dismiss(animated: true, completion: nil)
         //self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func selectPhoto(_ sender: Any) {
+        self.session.stopRunning()
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.title = "选择照片"
+        //        imagePicker.navigationBar.barTintColor = UIColor.blue
+        imagePicker.navigationBar.tintColor = UIColor.black
+        //print(self.imagePicker?.navigationItem.rightBarButtonItem!)
+        
+        imagePicker.delegate = self
+//        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
     @IBAction func switchButton(_ sender: UIButton) {
         guard
             let device = AVCaptureDevice.default(for: .video),
@@ -259,7 +274,7 @@ class ScanViewController: BaseViewController {
         
         let rightLabel2 = UILabel()
         rightLabel2.frame = CGRect(x: leftLabel2.jxRight, y: leftLabel2.jxTop, width: kScreenWidth - 48 - leftLabel2.jxWidth, height: 51)
-        rightLabel2.text = self.webNanme //"\(configuration_coinPrice) \(configuration_valueType)"
+        rightLabel2.text = self.vm.webName // self.webNanme //"\(configuration_coinPrice) \(configuration_valueType)"
         rightLabel2.textColor = JXTextColor
         rightLabel2.font = UIFont.systemFont(ofSize: 14)
         rightLabel2.textAlignment = .right
@@ -515,22 +530,8 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
                 return
             }
             session.stopRunning()
-            
-            if self.type == 1 {
-                print(codeStr)
-                
-                self.handleCode(codeStr)
-            } else {
-                if self.validate(code: codeStr) == false {
-                    ViewManager.showNotice("无效地址")
-                } else {
-                    if let block = callBlock {
-                        block(codeStr)
-                    }
-                }
-            }
-            
-            self.navigationController?.popViewController(animated: true)
+            print(codeStr)
+            self.handleCode(codeStr)
         }
     }
     func validate(code: String) -> Bool {
@@ -545,36 +546,104 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
     
     func handleCode(_ str: String) {
         
-        if str.hasPrefix(configuration_coinName) == true {
-            let result = str.components(separatedBy: "scan_pay?")
-            if result.count > 1 {
-                let paramStr = result[1]
-                let data = paramStr.components(separatedBy: "&")
-                data.forEach { (value) in
-                    let keyValues = value.components(separatedBy: "=")
-                    if value.hasPrefix("webName"), keyValues.count > 1 {
-                        self.webNanme = keyValues[1]
-                    }
-                    if value.hasPrefix("id"), keyValues.count > 1 {
-                        self.id = keyValues[1]
-                    }
-                    if value.hasPrefix("orderId"), keyValues.count > 1 {
-                        self.orderId = keyValues[1]
-                    }
-                    if value.hasPrefix("expireTime"), keyValues.count > 1 {
-                        self.expireTime = keyValues[1]
-                    }
-                    if value.hasPrefix("amount"), keyValues.count > 1 {
-                        self.amount = keyValues[1]
-                    }
-                    if value.hasPrefix("sign"), keyValues.count > 1 {
-                        self.sign = keyValues[1]
+        if self.type == 0 {
+            if self.validate(code: str) == false {
+                ViewManager.showNotice("无效地址")
+            } else {
+                if let block = callBlock {
+                    block(str)
+                }
+            }
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            
+            if str.hasPrefix(configuration_coinName) == true {
+                let result = str.components(separatedBy: "scan_pay?")
+                if result.count > 1 {
+                    let paramStr = result[1]
+                    let data = paramStr.components(separatedBy: "&")
+                    data.forEach { (value) in
+                        let keyValues = value.components(separatedBy: "=")
+                        if value.hasPrefix("webName"), keyValues.count > 1 {
+                            self.webNanme = keyValues[1]
+                        }
+                        if value.hasPrefix("id"), keyValues.count > 1 {
+                            self.id = keyValues[1]
+                        }
+                        if value.hasPrefix("orderId"), keyValues.count > 1 {
+                            self.orderId = keyValues[1]
+                        }
+                        if value.hasPrefix("expireTime"), keyValues.count > 1 {
+                            self.expireTime = keyValues[1]
+                        }
+                        if value.hasPrefix("amount"), keyValues.count > 1 {
+                            self.amount = keyValues[1]
+                        }
+                        if value.hasPrefix("sign"), keyValues.count > 1 {
+                            self.sign = keyValues[1]
+                        }
                     }
                 }
             }
+            guard let numStr = self.amount, let num = Int(numStr) else { return }
+            self.vm.scanPayGetName(id: self.id ?? "", orderId: self.orderId ?? "", amount: num, expireTime: self.expireTime ?? "", sign: self.sign ?? "") { (_, msg, isSuc) in
+                if isSuc {
+                    self.statusBottomView.customView = self.customViewInit(number: "text", address: "address", gas: "gas", remark: "无")
+                    self.statusBottomView.show(inView: self.view)
+                } else {
+                    ViewManager.showNotice(msg)
+                    self.session.startRunning()
+                }
+            }
+            
         }
+    }
+}
+extension ScanViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    //    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    //        let button = UIButton()
+    //        button.frame = CGRect(x: 0, y: 0, width: 44, height: 30)
+    //        button.setTitle("取消", for: .normal)
+    //        button.setTitleColor(UIColor.darkGray, for: .normal)
+    //        let item = UIBarButtonItem.init(customView: button)
+    //
+    //        viewController.navigationItem.rightBarButtonItem = item//UIBarButtonItem.init(title: "取消", style: .plain, target: self, action: #selector(hideImagePickerViewContorller))
+    //    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+        self.session.startRunning()
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        self.session.stopRunning()
         
-        self.statusBottomView.customView = self.customViewInit(number: "text", address: "address", gas: "gas", remark: "无")
-        self.statusBottomView.show(inView: self.view)
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        if mediaType == "public.image" {
+            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage, let ciImage = CIImage(image: image) else {
+                return
+            }
+            //UIImage.image(originalImage: image, to: view.bounds.width)
+//            self.userImageView.image = image
+//            isSelected = true
+            
+            // 2.从选中的图片中读取二维码数据
+            // 2.1创建一个探测器
+            // CIDetectorTypeFace -- 探测器还可以搞人脸识别
+            guard let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyLow]) else { return }
+            // 2.2利用探测器探测数据
+            let results = detector.features(in: ciImage)
+            // 2.3取出探测到的数据
+            for result in results {
+                guard
+                    let feature = result as? CIQRCodeFeature,
+                    let codeStr = feature.messageString
+                    else {
+                        return
+                }
+                print(codeStr)
+                self.handleCode(codeStr)
+            }
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 }

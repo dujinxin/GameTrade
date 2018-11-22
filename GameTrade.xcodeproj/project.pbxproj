@@ -59,6 +59,11 @@
 		351275AD218AECA90057C927 /* BankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275AB218AECA90057C927 /* BankCell.xib */; };
 		351275B1218C0A5E0057C927 /* BuyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275B0218C0A5E0057C927 /* BuyVM.swift */; };
 		351275B3218C28D70057C927 /* ConfirmListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275B2218C28D70057C927 /* ConfirmListController.swift */; };
+		351B53D621A2EDC700F9725C /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D521A2EDC700F9725C /* SettingVM.swift */; };
+		351B53D821A2EF1700F9725C /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D721A2EF1700F9725C /* SettingModel.swift */; };
+		351B53DB21A4030B00F9725C /* ChatReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D921A4030B00F9725C /* ChatReusableView.swift */; };
+		351B53DC21A4030B00F9725C /* ChatReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351B53DA21A4030B00F9725C /* ChatReusableView.xib */; };
+		351B53DE21A40FC300F9725C /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53DD21A40FC300F9725C /* OrderView.swift */; };
 		352D10AD215E14FA0053AD70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10AC215E14FA0053AD70 /* AppDelegate.swift */; };
 		352D10B2215E14FA0053AD70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D10B0215E14FA0053AD70 /* Main.storyboard */; };
 		352D10B4215E14FD0053AD70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 352D10B3215E14FD0053AD70 /* Assets.xcassets */; };
@@ -432,6 +437,11 @@
 		351275AB218AECA90057C927 /* BankCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankCell.xib; sourceTree = "<group>"; };
 		351275B0218C0A5E0057C927 /* BuyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyVM.swift; sourceTree = "<group>"; };
 		351275B2218C28D70057C927 /* ConfirmListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmListController.swift; sourceTree = "<group>"; };
+		351B53D521A2EDC700F9725C /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
+		351B53D721A2EF1700F9725C /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		351B53D921A4030B00F9725C /* ChatReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatReusableView.swift; sourceTree = "<group>"; };
+		351B53DA21A4030B00F9725C /* ChatReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatReusableView.xib; sourceTree = "<group>"; };
+		351B53DD21A40FC300F9725C /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		352D10A9215E14FA0053AD70 /* GameTrade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		352D10AC215E14FA0053AD70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		352D10B1215E14FA0053AD70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1020,6 +1030,7 @@
 				352D1145215E159C0053AD70 /* PayVM.swift */,
 				35ABF9F7218C7AD600ECD3C9 /* WalletVM.swift */,
 				352D1146215E159C0053AD70 /* MyVM.swift */,
+				351B53D521A2EDC700F9725C /* SettingVM.swift */,
 				352D1148215E159C0053AD70 /* LoginVM.swift */,
 				352D1149215E159C0053AD70 /* PaperVM.swift */,
 				35ABF9E3218C480300ECD3C9 /* OrderVM.swift */,
@@ -1043,6 +1054,7 @@
 				352D1154215E159C0053AD70 /* UserModel.swift */,
 				352D1155215E159C0053AD70 /* HomeModel.swift */,
 				352D1156215E159C0053AD70 /* MyModel.swift */,
+				351B53D721A2EF1700F9725C /* SettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1550,6 +1562,9 @@
 				35FE281D2199A0FB00CAFB27 /* MessageFooterView.swift */,
 				35FE281E2199A0FB00CAFB27 /* MessageHeaderView.swift */,
 				35FE281F2199A0FB00CAFB27 /* MessageDateHeaderView.swift */,
+				351B53D921A4030B00F9725C /* ChatReusableView.swift */,
+				351B53DD21A40FC300F9725C /* OrderView.swift */,
+				351B53DA21A4030B00F9725C /* ChatReusableView.xib */,
 			);
 			path = "Headers & Footers";
 			sourceTree = "<group>";
@@ -1779,6 +1794,7 @@
 				3512758B218710EB0057C927 /* LabelCell.xib in Resources */,
 				35FE28682199A0FC00CAFB27 /* chat_send_button.png in Resources */,
 				35FE285C2199A0FB00CAFB27 /* attachment@2x.png in Resources */,
+				351B53DC21A4030B00F9725C /* ChatReusableView.xib in Resources */,
 				352D1263215E159D0053AD70 /* ArticleCell.xib in Resources */,
 				35FE28752199A0FC00CAFB27 /* chat_send_button@2x.png in Resources */,
 				35FE285D2199A0FB00CAFB27 /* stop_recording.png in Resources */,
@@ -1978,6 +1994,7 @@
 				35FE28852199A0FC00CAFB27 /* MessageIntermediateLayoutAttributes.swift in Sources */,
 				35B8541D218305AC0036AD6A /* JXSecretTextView.swift in Sources */,
 				352D1267215E159D0053AD70 /* SmartViewController.swift in Sources */,
+				351B53D621A2EDC700F9725C /* SettingVM.swift in Sources */,
 				35FE28DC2199A0FC00CAFB27 /* ChatTableViewCell.swift in Sources */,
 				352D1218215E159D0053AD70 /* JXNetworkManager.swift in Sources */,
 				35B8543021843DB40036AD6A /* OrderedListCell.swift in Sources */,
@@ -2017,6 +2034,7 @@
 				351275A72189C32C0057C927 /* JXUploadImageView.swift in Sources */,
 				352D1232215E159D0053AD70 /* UserModel.swift in Sources */,
 				352D10AD215E14FA0053AD70 /* AppDelegate.swift in Sources */,
+				351B53D821A2EF1700F9725C /* SettingModel.swift in Sources */,
 				35018B4F217B20F5009F061C /* FeedBackController.swift in Sources */,
 				35FE28B92199A0FC00CAFB27 /* MessagesCollectionView.swift in Sources */,
 				35FE289A2199A0FC00CAFB27 /* MessageKit+Availability.swift in Sources */,
@@ -2156,6 +2174,7 @@
 				35FE288E2199A0FC00CAFB27 /* Avatar.swift in Sources */,
 				35FE28A72199A0FC00CAFB27 /* TextMessageCell.swift in Sources */,
 				35FE28A92199A0FC00CAFB27 /* CustomMessageContentView.swift in Sources */,
+				351B53DB21A4030B00F9725C /* ChatReusableView.swift in Sources */,
 				352D122F215E159D0053AD70 /* PaperModel.swift in Sources */,
 				35FE28BA2199A0FC00CAFB27 /* PlayButtonView.swift in Sources */,
 				352D1234215E159D0053AD70 /* MyModel.swift in Sources */,
@@ -2168,6 +2187,7 @@
 				3595B2A42190224F00494929 /* CountDown.swift in Sources */,
 				35FE28952199A0FC00CAFB27 /* UIColor+Extensions.swift in Sources */,
 				35FE28DF2199A0FC00CAFB27 /* LoadingDots.swift in Sources */,
+				351B53DE21A40FC300F9725C /* OrderView.swift in Sources */,
 				352D1264215E159D0053AD70 /* HelpViewController.swift in Sources */,
 				35FE28D52199A0FC00CAFB27 /* UIStoryboard+ChatCamp.swift in Sources */,
 				35FE28922199A0FC00CAFB27 /* NSConstraintLayoutSet.swift in Sources */,
@@ -2406,7 +2426,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = GameTradeDisHoc;
+				PROVISIONING_PROFILE_SPECIFIER = TradeMentHocDis;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

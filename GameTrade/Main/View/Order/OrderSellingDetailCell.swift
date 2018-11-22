@@ -15,11 +15,12 @@ class OrderSellingDetailCell: UITableViewCell {
     @IBOutlet weak var orderInfoLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     
+    @IBOutlet weak var tradeView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
-    
     @IBOutlet weak var valueLabel: UILabel!
     
+    @IBOutlet weak var listView: UIView!
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
@@ -29,11 +30,10 @@ class OrderSellingDetailCell: UITableViewCell {
     @IBOutlet weak var codeLeftLabel: UILabel!
     @IBOutlet weak var codeWidthConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var remarkLabel: UILabel!
-    
-    
     @IBOutlet weak var cancelLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
+    
+    @IBOutlet weak var noticeLabel: UILabel!
     
     var cancelBlock : (()->())?
     var payBlock : (()->())?
@@ -49,17 +49,34 @@ class OrderSellingDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
+        self.orderNumberLabel.textColor = JXText50Color
+        self.orderInfoLabel.textColor = JXText50Color
+        
+        self.tradeView.layer.cornerRadius = 4
+        self.listView.layer.cornerRadius = 4
+        
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         
         self.cancelLabel.backgroundColor = UIColor.clear
         self.cancelLabel.layer.borderColor = JXOrangeColor.cgColor
         self.cancelLabel.layer.borderWidth = 1
+        self.cancelLabel.layer.cornerRadius = 2
         self.cancelLabel.textColor = JXOrangeColor
+        
+        
+        self.payButton.backgroundColor = JXOrangeColor
+        self.payButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+        self.payButton.layer.shadowOpacity = 1
+        self.payButton.layer.shadowRadius = 10
+        self.payButton.layer.shadowColor = JX10101aShadowColor.cgColor
+        self.payButton.layer.cornerRadius = 2
         
         //self.cancelLabel.isUserInteractionEnabled = true
         //self.cancelLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelTap(tap:))))
         self.payButton.addTarget(self, action: #selector(payTap(tap:)), for: .touchUpInside)
         self.payButton.setTitle("确认已收款", for: .normal)
+        
+        self.noticeLabel.textColor = JXText50Color
         
     }
     deinit {
@@ -81,8 +98,8 @@ class OrderSellingDetailCell: UITableViewCell {
             self.orderNumberLabel.text = "订单号：\(entity?.orderNum ?? "")"
             
             self.priceLabel.text = "交易单价：\(entity?.coinPrice ?? 0) \(configuration_valueType)"
-            self.totalLabel.text = "交易数量：\(entity?.coinCounts ?? 0)\(configuration_coinName)"
-            self.valueLabel.text = "\(entity?.payAmount ?? 0)\(configuration_valueType)"
+            self.totalLabel.text = "交易数量：\(entity?.coinCounts ?? 0) \(configuration_coinName)"
+            self.valueLabel.text = "\(entity?.payAmount ?? 0) \(configuration_valueType)"
             
             if entity?.payType == 1 {
                 self.payNameLabel.text = "支付宝"
@@ -98,7 +115,7 @@ class OrderSellingDetailCell: UITableViewCell {
             }
             self.userNameLabel.text = entity?.name
             self.accoundLabel.text = entity?.account
-            self.remarkLabel.text = "无"
+
             
             var timeInter = 0
             

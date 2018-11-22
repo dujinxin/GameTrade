@@ -36,6 +36,7 @@ class OrderVM: BaseViewModel {
                     completion(nil, self.message, false)
                     return
             }
+            self.orderListEntity.total = total
             if total > 0 {
                 guard
                     let list = dict["data"] as? Array<Dictionary<String, Any>>
@@ -46,7 +47,6 @@ class OrderVM: BaseViewModel {
                 if pageNo == 1 {
                     self.orderListEntity.listArray.removeAll()
                 }
-                self.orderListEntity.total = total
                 for i in 0..<list.count{
                     let dict = list[i]
                     let entity = OrderEntity()
@@ -54,6 +54,8 @@ class OrderVM: BaseViewModel {
                     
                     self.orderListEntity.listArray.append(entity)
                 }
+            } else {
+                self.orderListEntity.listArray.removeAll()
             }
             
             completion(data, msg, true)

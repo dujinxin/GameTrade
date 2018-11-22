@@ -28,7 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阿杜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWy-bc-ck5">
-                        <rect key="frame" x="76" y="76" width="29" height="18"/>
+                        <rect key="frame" x="76" y="76" width="227" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="By4-U9-J9m"/>
                         </constraints>
@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="567762782@qq.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhO-F6-J5u">
-                        <rect key="frame" x="76" y="109" width="136" height="16.5"/>
+                        <rect key="frame" x="76" y="109" width="227" height="16.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.40784313729999999" green="0.40784313729999999" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -45,6 +45,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq9-V0-M2y">
                         <rect key="frame" x="313" y="58" width="30" height="30"/>
                         <constraints>
+                            <constraint firstAttribute="width" secondItem="Qq9-V0-M2y" secondAttribute="height" multiplier="1:1" id="kRF-pk-N0O"/>
                             <constraint firstAttribute="height" constant="30" id="q8v-cr-QMn"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -72,6 +73,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="GhO-F6-J5u" secondAttribute="bottom" constant="20" id="1Az-jt-zBg"/>
+                    <constraint firstItem="GhO-F6-J5u" firstAttribute="trailing" secondItem="UWy-bc-ck5" secondAttribute="trailing" id="4zq-Vi-7Sm"/>
                     <constraint firstItem="GhO-F6-J5u" firstAttribute="top" secondItem="UWy-bc-ck5" secondAttribute="bottom" constant="15" id="51X-7H-qGO"/>
                     <constraint firstItem="rra-AE-fEd" firstAttribute="centerY" secondItem="RNS-2U-3xW" secondAttribute="centerY" id="7Lt-W0-3Vv"/>
                     <constraint firstItem="GhO-F6-J5u" firstAttribute="leading" secondItem="rra-AE-fEd" secondAttribute="leading" id="HdJ-sx-Hfd"/>
@@ -84,6 +86,7 @@
                     <constraint firstAttribute="trailing" secondItem="Leo-zX-R0H" secondAttribute="trailing" id="Vhu-1s-SdS"/>
                     <constraint firstItem="Qq9-V0-M2y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ViI-41-OyT"/>
                     <constraint firstItem="UWy-bc-ck5" firstAttribute="top" secondItem="rra-AE-fEd" secondAttribute="bottom" constant="24" id="WcB-qf-m70"/>
+                    <constraint firstItem="Qq9-V0-M2y" firstAttribute="leading" secondItem="UWy-bc-ck5" secondAttribute="trailing" constant="10" id="gDa-2h-izr"/>
                     <constraint firstItem="RNS-2U-3xW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="y2n-Tm-njb"/>
                 </constraints>
             </tableViewCellContentView>

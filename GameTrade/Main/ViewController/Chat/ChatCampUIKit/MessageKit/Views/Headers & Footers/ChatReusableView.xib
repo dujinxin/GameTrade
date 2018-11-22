@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="ChatReusableView" customModule="GameTrade" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="322" height="122"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6t-O6-83a">
+                    <rect key="frame" x="24" y="0.0" width="274" height="122"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MkJ-g9-dw3">
+                            <rect key="frame" x="16" y="16" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="MkJ-g9-dw3" secondAttribute="height" id="U7j-gB-js0"/>
+                                <constraint firstAttribute="width" constant="40" id="Vlu-hh-Qs8"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kae-qE-FNd">
+                            <rect key="frame" x="229" y="27.5" width="29" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruy-1h-z6s">
+                            <rect key="frame" x="72" y="27.5" width="29" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZn-zB-QyD">
+                            <rect key="frame" x="16" y="74" width="29" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="状态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zol-PX-6Ie">
+                            <rect key="frame" x="229" y="74" width="29" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="1" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="zol-PX-6Ie" secondAttribute="trailing" constant="16" id="01p-P0-WFp"/>
+                        <constraint firstItem="zol-PX-6Ie" firstAttribute="centerY" secondItem="ZZn-zB-QyD" secondAttribute="centerY" id="Gtn-zw-b4A"/>
+                        <constraint firstAttribute="trailing" secondItem="kae-qE-FNd" secondAttribute="trailing" constant="16" id="NnB-8N-kgY"/>
+                        <constraint firstItem="ruy-1h-z6s" firstAttribute="centerY" secondItem="MkJ-g9-dw3" secondAttribute="centerY" id="UKs-8a-Dpw"/>
+                        <constraint firstItem="ZZn-zB-QyD" firstAttribute="top" secondItem="MkJ-g9-dw3" secondAttribute="bottom" constant="18" id="V67-39-zal"/>
+                        <constraint firstItem="kae-qE-FNd" firstAttribute="centerY" secondItem="MkJ-g9-dw3" secondAttribute="centerY" id="aev-dR-5Zq"/>
+                        <constraint firstItem="MkJ-g9-dw3" firstAttribute="top" secondItem="K6t-O6-83a" secondAttribute="top" constant="16" id="cYz-jY-BdF"/>
+                        <constraint firstItem="ruy-1h-z6s" firstAttribute="leading" secondItem="MkJ-g9-dw3" secondAttribute="trailing" constant="16" id="chL-EY-yGu"/>
+                        <constraint firstItem="ZZn-zB-QyD" firstAttribute="leading" secondItem="MkJ-g9-dw3" secondAttribute="leading" id="hs2-5h-YNy"/>
+                        <constraint firstItem="MkJ-g9-dw3" firstAttribute="leading" secondItem="K6t-O6-83a" secondAttribute="leading" constant="16" id="lPs-4O-nDI"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="K6t-O6-83a" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="2b5-Ee-UpF"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="K6t-O6-83a" secondAttribute="trailing" constant="24" id="Jvw-Hr-yO3"/>
+                <constraint firstItem="K6t-O6-83a" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" constant="24" id="iy3-or-23m"/>
+                <constraint firstAttribute="bottom" secondItem="K6t-O6-83a" secondAttribute="bottom" id="xhK-uA-wbf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <connections>
+                <outlet property="mainView" destination="K6t-O6-83a" id="2Fm-mG-k2z"/>
+                <outlet property="merchatImageView" destination="MkJ-g9-dw3" id="w6B-Rw-VS2"/>
+                <outlet property="merchatNameLabel" destination="ruy-1h-z6s" id="ykk-ar-RfV"/>
+                <outlet property="statusLabel" destination="zol-PX-6Ie" id="Mfv-Z0-2VM"/>
+                <outlet property="timeLabel" destination="kae-qE-FNd" id="tzy-YD-zt8"/>
+                <outlet property="worthLabel" destination="ZZn-zB-QyD" id="Avr-Wg-kzz"/>
+            </connections>
+            <point key="canvasLocation" x="139.19999999999999" y="159.22038980509745"/>
+        </collectionReusableView>
+    </objects>
+</document>

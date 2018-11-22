@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-private let additionalBottomHeight : CGFloat = (deviceModel == .iPhoneX) ? 34 : 0
+private let additionalBottomHeight : CGFloat = UIScreen.main.isIphoneX ? 34 : 0
 private let bottomInputViewHeight : CGFloat = 60 + additionalBottomHeight
 
 class ArticleDetailsController: BaseViewController,UITableViewDelegate,UITableViewDataSource,JXInputTextViewDelegate,UIScrollViewDelegate {

@@ -8,6 +8,8 @@
 
 import Foundation
 
+import ChatCamp
+
 private let userPath = NSHomeDirectory() + "/Documents/userAccound.json"
 
 class UserEntity: BaseModel {
@@ -65,15 +67,10 @@ class UserManager : NSObject{
     /// - Parameter dict: 用户信息字典
     /// - Returns: 保存结果
     func saveAccound(dict:Dictionary<String, Any>) -> Bool {
-//        let entity = UserEntity()
-//        entity.setValuesForKeys(dict)
-//
+
         self.userDict = dict
         self.userEntity.setValuesForKeys(dict)
-        
-//        self.userEntity.authStatus = entity.authStatus
-//        self.userEntity.planA_sid = entity.planA_sid
-        
+
         guard let data = try? JSONSerialization.data(withJSONObject: dict, options: [])
             else {
                 return false
@@ -90,5 +87,31 @@ class UserManager : NSObject{
         let fileManager = FileManager.default
         try? fileManager.removeItem(atPath: userPath)
     }
+    
+}
+extension UserManager {
+    func updateNickName(_ nickName: String) {
+        var dict = self.userDict
+        dict["nickname"] = nickName
+        let _ = self.saveAccound(dict: dict)
+        
+        CCPClient.updateDisplayNameOnServer(displayName: UserManager.manager.userEntity.nickname ?? "昵称") { (user, error) in
+            if error == nil {
+                UserDefaults.standard.setUsername(username: UserManager.manager.userEntity.nickname ?? "昵称")
+            }
+        }
+    }
+    func updateAvatar(_ avatar: String) {
+        var dict = self.userDict
+        dict["headImg"] = avatar
+        let _ = self.saveAccound(dict: dict)
+        
+        CCPClient.updateAvatarUrlOnServer(avatarUrl: UserManager.manager.userEntity.headImg ?? "") { user, error in
+            if error == nil {
+                //Avatar Url has been updated.
+            }
+        }
+    }
+    
     
 }

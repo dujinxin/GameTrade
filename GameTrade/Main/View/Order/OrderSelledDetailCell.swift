@@ -15,12 +15,12 @@ class OrderSelledDetailCell: UITableViewCell {
     @IBOutlet weak var orderInfoLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     
+    @IBOutlet weak var tradeView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
-    
     @IBOutlet weak var valueLabel: UILabel!
     
-    
+    @IBOutlet weak var listView: UIView!
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
@@ -29,8 +29,8 @@ class OrderSelledDetailCell: UITableViewCell {
     @IBOutlet weak var bankNameLabel: UILabel!
     @IBOutlet weak var codeLeftLabel: UILabel!
     @IBOutlet weak var codeWidthConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var remarkLabel: UILabel!
+  
+    @IBOutlet weak var noticeLabel: UILabel!
     
     var chatBlock : (()->())?
     var copyBlock : (()->())?
@@ -41,7 +41,15 @@ class OrderSelledDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
+        self.orderNumberLabel.textColor = JXText50Color
+        self.orderInfoLabel.textColor = JXText50Color
+        
+        self.tradeView.layer.cornerRadius = 4
+        self.listView.layer.cornerRadius = 4
+
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
+        
+        self.noticeLabel.textColor = JXText50Color
     }
     var entity: OrderDetailEntity? {
         
@@ -52,9 +60,11 @@ class OrderSelledDetailCell: UITableViewCell {
             } else if entity?.orderStatus == 2 {
                 self.orderStatusLabel.text = "待确认付款"
             } else if entity?.orderStatus == 3 {
+                self.chatButton.isHidden = true
                 self.orderStatusLabel.text = "已完成"
                 self.orderInfoLabel.text = "您的挂卖单已确认付款并转币"
             } else {
+                self.chatButton.isHidden = true
                 self.orderStatusLabel.text = "已关闭"
                 if entity?.orderStatus == 4 {
                     self.orderInfoLabel.text = "本次交易已关闭"
@@ -68,8 +78,8 @@ class OrderSelledDetailCell: UITableViewCell {
             
             
             self.priceLabel.text = "交易单价：\(entity?.coinPrice ?? 0) \(configuration_valueType)"
-            self.totalLabel.text = "交易数量：\(entity?.coinCounts ?? 0)\(configuration_coinName)"
-            self.valueLabel.text = "\(entity?.payAmount ?? 0)\(configuration_valueType)"
+            self.totalLabel.text = "交易数量：\(entity?.coinCounts ?? 0) \(configuration_coinName)"
+            self.valueLabel.text = "\(entity?.payAmount ?? 0) \(configuration_valueType)"
             
             if entity?.payType == 1 {
                 self.payNameLabel.text = "支付宝"
@@ -85,7 +95,6 @@ class OrderSelledDetailCell: UITableViewCell {
             }
             self.userNameLabel.text = entity?.name
             self.accoundLabel.text = entity?.account
-            //self.remarkLabel.text = entity.
             
         }
     }

@@ -30,7 +30,7 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
         
         //self.textField.backgroundColor = UIColor.clear
         
-        self.backView.backgroundColor = UIColor.rgbColor(rgbValue: 0x393948)
+        self.backView.backgroundColor = JXBackColor
         self.backView.layer.cornerRadius = 4
         
         self.textField.placeHolderText = "填写您的问题"

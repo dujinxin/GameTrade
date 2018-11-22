@@ -15,10 +15,13 @@ class OrderBuyedDetailCell: UITableViewCell {
     @IBOutlet weak var orderInfoLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     
+    @IBOutlet weak var tradeView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
+    @IBOutlet weak var listView: UIView!
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
@@ -32,7 +35,10 @@ class OrderBuyedDetailCell: UITableViewCell {
     
     @IBOutlet weak var shopView: UIView!
     @IBOutlet weak var shopImageView: UIImageView!
+    @IBOutlet weak var shopLabel: UILabel!
     @IBOutlet weak var shopNameLabel: UILabel!
+    
+    @IBOutlet weak var noticeLabel: UILabel!
     
     var chatBlock : (()->())?
     var copyBlock : (()->())?
@@ -43,24 +49,43 @@ class OrderBuyedDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
+        self.orderNumberLabel.textColor = JXText50Color
+        self.orderInfoLabel.textColor = JXText50Color
+        
+        self.tradeView.layer.cornerRadius = 4
+        self.listView.layer.cornerRadius = 4
+        
+        self.shopLabel.layer.cornerRadius = 20
+        self.shopLabel.layer.masksToBounds = true
+        
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         
-        self.shopView.layer.shadowOffset = CGSize(width: 0, height: 13)
-        self.shopView.layer.shadowOpacity = 1
-        self.shopView.layer.shadowRadius = 52
-        self.shopView.layer.shadowColor = JX10101aShadowColor.cgColor
-        self.shopView.layer.cornerRadius = 4
+        
+        self.noticeLabel.textColor = JXText50Color
+        
+//        self.tradeView.layer.shadowOffset = CGSize(width: 0, height: 10)
+//        self.tradeView.layer.shadowOpacity = 1
+//        self.tradeView.layer.shadowRadius = 40
+//        self.tradeView.layer.shadowColor = JX10101aShadowColor.cgColor
+//        self.tradeView.layer.cornerRadius = 4
+//
+//        self.listView.layer.shadowOffset = CGSize(width: 0, height: 10)
+//        self.listView.layer.shadowOpacity = 1
+//        self.listView.layer.shadowRadius = 40
+//        self.listView.layer.shadowColor = JX10101aShadowColor.cgColor
+//        self.listView.layer.cornerRadius = 4
         
         
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x2E2F47).cgColor,UIColor.rgbColor(rgbValue: 0x191A2C).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 48 * 2, height: self.shopView.jxHeight)
-        //gradientLayer.cornerRadius = 5
+//        let gradientLayer = CAGradientLayer.init()
+//        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x2E2F47).cgColor,UIColor.rgbColor(rgbValue: 0x191A2C).cgColor]
+//        gradientLayer.locations = [0]
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+//        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+//        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 48 * 2, height: self.shopView.jxHeight)
+//        //gradientLayer.cornerRadius = 5
+//
+//        self.shopView.layer.insertSublayer(gradientLayer, at: 0)
         
-        self.shopView.layer.insertSublayer(gradientLayer, at: 0)
     }
     override func updateConstraints() {
         super.updateConstraints()
@@ -77,7 +102,9 @@ class OrderBuyedDetailCell: UITableViewCell {
             } else if entity?.orderStatus == 3 {
                 self.orderStatusLabel.text = "已完成"
                 self.orderInfoLabel.text = "您已成功完成本次交易"
+                self.chatButton.isHidden = true
             } else {
+                self.chatButton.isHidden = true
                 self.orderStatusLabel.text = "已关闭"
                 if entity?.orderStatus == 4 {
                     self.orderInfoLabel.text = "本次交易已关闭"
@@ -92,7 +119,8 @@ class OrderBuyedDetailCell: UITableViewCell {
             
             self.priceLabel.text = "交易单价：\(entity?.coinPrice ?? 0) \(configuration_valueType)"
             self.totalLabel.text = "交易数量：\(entity?.coinCounts ?? 0) \(configuration_coinName)"
-            self.valueLabel.text = "\(entity?.payAmount ?? 0)\(configuration_valueType)"
+            self.discountLabel.text = "优惠红包：-\(entity?.discount ?? 0) \(configuration_valueType)"
+            self.valueLabel.text = "\(entity?.payAmount ?? 0) \(configuration_valueType)"
             
             if entity?.payType == 1 {
                 self.payNameLabel.text = "支付宝"
@@ -108,13 +136,14 @@ class OrderBuyedDetailCell: UITableViewCell {
             }
             self.userNameLabel.text = entity?.name
             self.accoundLabel.text = entity?.account
-            //self.remarkLabel.text = entity.
+            self.remarkLabel.text = entity?.orderCipher
             
-            if
-                let str = entity?.agentHeadImg,
-                let url = URL(string: str) {
-                self.shopImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
-            }
+//            if
+//                let str = entity?.agentHeadImg,
+//                let url = URL(string: str) {
+//                self.shopImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
+//            }
+            self.shopLabel.text = String(entity?.agentName?.prefix(1) ?? "")
             self.shopNameLabel.text = entity?.agentName
             
         }

@@ -13,12 +13,25 @@ enum Model:String {
     case iPhone8
     case iPhone8p
     case iPhoneX
+    case iPhoneXR
+    case iPhoneXM
 }
 
 extension UIScreen {
     
+    var isIphoneX : Bool {
+        get{
+            if self.modelSize == .iPhoneX || self.modelSize == .iPhoneXR || self.modelSize == .iPhoneXM {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+    
     var modelSize: Model {
         get{
+            
             guard let mode = self.currentMode
                 else {
                     return .iPhoneSE
@@ -32,8 +45,12 @@ extension UIScreen {
                 return .iPhone8p
             case CGSize(width: 1125.0, height: 2436.0):
                 return .iPhoneX
+            case CGSize(width: 828.0, height: 1792.0):
+                return .iPhoneXR
+            case CGSize(width: 1242.0, height: 2688.0):
+                return .iPhoneXM
             default:
-                return .iPhoneSE
+                return .iPhoneX
             }
         }
     }

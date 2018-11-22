@@ -17,10 +17,10 @@ class ModifyTradePswController: BaseViewController {
     @IBOutlet weak var psdView: PasswordTextView!
     
     let vm = MyVM()
-    var mobile : String?
     
-    var type = 0 //0修改资金密码输入验证码 1修改资金密码设置密码 2自己密码初始化
+    var type = 0  //0修改资金密码 第一步 输入验证码 1修改资金密码 第二步 设置密码 2资金密码初始化 第一步 3资金密码初始化 第二步 确认
     var code = "" //修改资金密码，设置新密码，需要把校验成功后的验证码。type = 1时使用
+    var psd : String = "" //资金密码初始化，需要把第一次的密码带入到第二次校验。type = 3时使用
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,11 @@ class ModifyTradePswController: BaseViewController {
             self.noticeLargeLabel.text = "设置资金密码"
             self.noticeEnglishLabel.text = "Set fund password"
             self.noticeLabel.text = "设置四位数字新密码"
-        } else {
+        } else if type == 3 {
+            self.noticeLargeLabel.text = "设置资金密码"
+            self.noticeEnglishLabel.text = "Set fund password"
+            self.noticeLabel.text = "重复四位数字新密码"
+        }  else {
             self.noticeLargeLabel.text = "修改资金密码"
             self.noticeEnglishLabel.text = "Change fund password"
             self.noticeLabel.text = "我们已发送验证码到你的\(UserManager.manager.userEntity.user.mobile ?? "注册手机号上")"
@@ -64,7 +68,6 @@ class ModifyTradePswController: BaseViewController {
         self.psdView.font = UIFont.systemFont(ofSize: 21)
         self.psdView.backgroundColor = UIColor.clear
         self.psdView.completionBlock = {(psd, isFinish) in
-            print(psd)
             if isFinish {
                 self.submit(psd)
             }
@@ -75,8 +78,13 @@ class ModifyTradePswController: BaseViewController {
         self.navigationController?.isNavigationBarHidden = true
         
         if let controllers = self.navigationController?.viewControllers {
-            if controllers.count > 1 && self.type == 1{
-                self.navigationController?.viewControllers.remove(at: controllers.count - 2)
+            if controllers.count > 1 {
+                print(controllers)
+                if self.type == 1 {
+                    self.navigationController?.viewControllers.remove(at: controllers.count - 2)
+                } else if self.type == 3 {
+                    self.navigationController?.viewControllers.remove(at: controllers.count - 2)
+                }
             }
         }
     }
@@ -138,7 +146,19 @@ class ModifyTradePswController: BaseViewController {
                     ViewManager.showNotice(msg)
                 }
             }
-        } else {
+        } else if self.type == 2 {
+            let storyboard = UIStoryboard(name: "My", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "modifyTradePsw") as! ModifyTradePswController
+            vc.hidesBottomBarWhenPushed = true
+            vc.type = 3
+            vc.psd = psd
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else if self.type == 3 {
+            if self.psd != psd {
+                self.psdView.clearText()
+                ViewManager.showNotice("两次输入密码不一致，请重新输入！")
+                return
+            }
             self.vm.tradePsdInit(password: psd) { (_, msg, isSuc) in
                 
                 if isSuc {

@@ -17,6 +17,7 @@ class OrderListEntity: BaseModel {
 }
 
 class OrderEntity: BaseModel {
+    
     @objc var id : String = ""
     @objc var salerId : String?
     @objc var buyerId : String?
@@ -28,10 +29,12 @@ class OrderEntity: BaseModel {
     @objc var orderStatus : Int = 0 //付款状态，1：待付款，2：待确认付款，3：已完成，4：未付款取消，5：财务判断取消,6：超时系统自动取消
     @objc var orderType : String?
     @objc var createTime : String?
+    @objc var payTime : String?
     @objc var expireTime : Int = -1 //过期时间计时（秒），当orderStatus为1时才有此字段,买单
     @objc var receiveExpireTime : Int = -1 //过期时间计时（秒），当orderStatus为2时才有此字段，卖单
     
-    
+   
+    @objc var isBuy : Int = 0
 }
 class OrderDetailEntity: OrderEntity {
     @objc var orderNum : String?
@@ -40,7 +43,6 @@ class OrderDetailEntity: OrderEntity {
     @objc var discount : Double = 0
     @objc var name : String?
     @objc var qrcodeImg : String?
-    @objc var payTime : String?
     @objc var orderCipher : String?
     @objc var bank : String?
     @objc var agentHeadImg : String?

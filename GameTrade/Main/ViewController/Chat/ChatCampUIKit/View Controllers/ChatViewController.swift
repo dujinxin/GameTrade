@@ -35,6 +35,14 @@ public class ChatViewController: MessagesViewController {
     var audioRecorder: AVAudioRecorder!
     let progressView = UIProgressView()
     
+    
+    lazy var orderView: OrderView = {
+        let v = OrderView()
+        return v
+    }()
+    var vm = OrderVM()
+    var timer : DispatchSourceTimer?
+    
     public init(channel: CCPGroupChannel, sender: Sender) {
         self.channel = channel
         self.sender = sender
@@ -62,7 +70,12 @@ public class ChatViewController: MessagesViewController {
         let y = self.isCustomNavigationBarUsed() ? kNavStatusHeight : 0
         let height = self.isCustomNavigationBarUsed() ? (view.bounds.height - kNavStatusHeight - kTabBarHeight) : view.bounds.height
         
-        self.messagesCollectionView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: height - kTabBarHeight)
+        self.orderView.frame = CGRect(x: 0, y: y, width: view.bounds.width, height: 109 + 24)
+        self.view.addSubview(self.orderView)
+        
+        //不起作用，在父类约束设置
+        self.messagesCollectionView.frame = CGRect(x: 0, y: (y + 109), width: view.bounds.width, height: height - kTabBarHeight - 109)
+        
         
         //setupNavigationItems()
         setupMessageInputBar()
@@ -90,6 +103,14 @@ public class ChatViewController: MessagesViewController {
         }
         
         loadMessages(count: messageCount)
+        
+        if self.channel.getMetadata().count > 0, let orderId = self.channel.getMetadata()["orderId"], orderId.isEmpty == false {
+            self.vm.orderDetail(id: orderId) { (_, msg, isSuc) in
+                if isSuc {
+                    self.orderView.entity = self.vm.orderDetailEntity
+                }
+            }
+        }
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -107,14 +128,18 @@ public class ChatViewController: MessagesViewController {
             }
         }
     }
-    
-    
+
     override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         CCPClient.removeChannelDelegate(identifier: ChatViewController.string())
         CCPClient.removeConnectionDelegate(identifier: ChatViewController.string())
         currentChannelId = ""
+        
+        if let timer = self.timer {
+            print("cancel...")
+            timer.cancel()
+        }
     }
 //    public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 //        self.view.endEditing(true)
@@ -1004,6 +1029,11 @@ extension ChatViewController: MessagesDataSource {
         
         return dataSource.isFromCurrentSender(message: message) ? .messageTrailing(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15)) : .messageLeading(.zero)
     }
+//    public func messageHeaderView(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageHeaderView {
+//        let reusableView = messagesCollectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ChatReusableView.reuseIdentifier(), for: indexPath) as! ChatReusableView
+//
+//        return reusableView
+//    }
 }
 
 // MARK:- MessagesLayoutDelegate
@@ -1043,6 +1073,9 @@ extension ChatViewController: MessagesLayoutDelegate {
             return view.bounds.width / 2
         }
     }
+//    public func headerViewSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+//        return CGSize(width: kScreenWidth, height: 109)
+//    }
 }
 
 // MARK:- MessagesDisplayDelegate
@@ -1154,3 +1187,26 @@ extension ChatViewController: MessagesDisplayDelegate {
     }
 }
 
+// MARK:- Custom methods
+extension ChatViewController {
+    func sendMessage(_ text: String) {
+        if channel.getParticipants().count == 2 && participant?.isParticipantBlockedByMe() ?? false {
+            self.presentUserBlockedAlert()
+        } else {
+            channel.stopTyping()
+            let text = "你好，我的订单号是\(text)。"
+            channel.sendMessage(text: text) { [weak self] (message, error) in
+                
+                if error != nil {
+                    DispatchQueue.main.async {
+                        self?.showAlert(title: "Unable to Send Message", message: "An error occurred while sending the message.", actionText: "Ok")
+                        
+                    }
+                } else if let _ = message {
+                    self?.channel.markAsRead()
+                    self?.lastReadSent = NSDate().timeIntervalSince1970 * 1000
+                }
+            }
+        }
+    }
+}

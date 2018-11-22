@@ -56,9 +56,14 @@ class CardPayController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         
         
-        let bar = JXKeyboardToolBar(frame: CGRect(), views: [cardTextField]) { (view, value) in
+        let bar = JXKeyboardToolBar(frame: CGRect(), views: [cardTextField])
+        bar.showBlock = { (view, value) in
             print(view,value)
         }
+        
+        bar.tintColor = JXTextColor
+        bar.toolBar.barTintColor = JXBackColor
+        bar.backgroundColor = JXBackColor
         self.view.addSubview(bar)
         
     }

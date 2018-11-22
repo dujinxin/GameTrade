@@ -18,6 +18,8 @@ class ModifyLogPswController: BaseViewController {
     @IBOutlet weak var confirmButton: UIButton!
     
     var vm = MyVM()
+    var isCounting: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -65,6 +67,10 @@ class ModifyLogPswController: BaseViewController {
         self.confirmButton.layer.shadowColor = JX10101aShadowColor.cgColor
         
         
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        
+        self.updateButtonStatus()
+        
         self.showMBProgressHUD()
         self.vm.sendMobileCode(type: 1) { (_, msg, isSuc) in
             self.hideMBProgressHUD()
@@ -74,10 +80,16 @@ class ModifyLogPswController: BaseViewController {
                     UIView.beginAnimations(nil, context: nil)
                     self.codeButton.setTitle(String(format: "%d", currentTime), for: .normal)
                     UIView.commitAnimations()
+                    self.isCounting = true
                     self.codeButton.isEnabled = false
+                    self.codeButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+                    self.codeButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
                 }) {
+                    self.isCounting = false
                     self.codeButton.setTitle("获取验证码", for: .normal)
                     self.codeButton.isEnabled = true
+                    self.codeButton.backgroundColor = JXOrangeColor
+                    self.codeButton.setTitleColor(JXTextColor, for: .normal)
                 }
             }
         }
@@ -86,6 +98,32 @@ class ModifyLogPswController: BaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func fetchCode(_ sender: Any) {
+        
+        self.showMBProgressHUD()
+        self.vm.sendMobileCode(type: 1) { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
+            ViewManager.showNotice(msg)
+            if isSuc {
+                CommonManager.countDown(timeOut: 60, process: { (currentTime) in
+                    UIView.beginAnimations(nil, context: nil)
+                    self.codeButton.setTitle(String(format: "%d", currentTime), for: .normal)
+                    UIView.commitAnimations()
+                    self.isCounting = true
+                    self.codeButton.isEnabled = false
+                    self.codeButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+                    self.codeButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
+                }) {
+                    self.isCounting = false
+                    self.codeButton.setTitle("获取验证码", for: .normal)
+                    self.codeButton.isEnabled = true
+                    self.codeButton.backgroundColor = JXOrangeColor
+                    self.codeButton.setTitleColor(JXTextColor, for: .normal)
+                }
+            }
+        }
     }
     @IBAction func confirm(_ sender: Any) {
         guard String.validate(codeTextField.text, type: .code4, emptyMsg: "验证码未填写", formatMsg: "验证码填写错误") == true else { return }
@@ -156,5 +194,29 @@ extension ModifyLogPswController : UITextFieldDelegate{
             }
         }
         return true
+    }
+    @objc func textChange(notify: NSNotification) {
+        
+        if notify.object is UITextField {
+            self.updateButtonStatus()
+        }
+    }
+    func updateButtonStatus() {
+        //登录按钮
+        if
+            let password = self.passwordTextField.text, password.isEmpty == false,
+            let card = self.codeTextField.text, card.isEmpty == false{
+            
+            self.confirmButton.isEnabled = true
+            self.confirmButton.backgroundColor = JXOrangeColor
+            self.confirmButton.setTitleColor(JXTextColor, for: .normal)
+            
+        } else {
+            
+            self.confirmButton.isEnabled = false
+            self.confirmButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.confirmButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
+            
+        }
     }
 }

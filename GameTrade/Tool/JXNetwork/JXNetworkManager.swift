@@ -79,9 +79,9 @@ class JXNetworkManager: NSObject {
         if UserManager.manager.isLogin == true {
             afmanager.requestSerializer.setValue("planA_sid=\(UserManager.manager.userEntity.planA_sid)", forHTTPHeaderField: "Cookie")
         }else{
-            afmanager.requestSerializer.setValue("", forHTTPHeaderField: "planA_sid")
+            afmanager.requestSerializer.setValue("", forHTTPHeaderField: "Cookie")
         }
-        //print(afmanager.requestSerializer.httpRequestHeaders)
+        print(afmanager.requestSerializer.httpRequestHeaders)
         
         if let customUrlRequest = request.buildCustomUrlRequest() {
             request.sessionTask = afmanager.dataTask(with: customUrlRequest, uploadProgress: nil, downloadProgress: nil, completionHandler: { (response, responseData, error) in

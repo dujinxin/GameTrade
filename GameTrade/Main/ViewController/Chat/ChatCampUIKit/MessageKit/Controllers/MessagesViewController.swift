@@ -153,7 +153,7 @@ open class MessagesViewController: BaseViewController {
 //            NSLayoutConstraint.activate([top, bottom, trailing, leading])
 //        }
         
-        let top = messagesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: kNavStatusHeight)
+        let top = messagesCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: kNavStatusHeight + 109 + 24)
         let bottom = messagesCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -kTabBarHeight)
         if #available(iOS 11.0, *) {
             let leading = messagesCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)

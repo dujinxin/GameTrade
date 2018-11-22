@@ -58,6 +58,9 @@ open class TextMessageCell: MessageCollectionViewCell {
     open override func setupSubviews() {
         super.setupSubviews()
         messageContainerView.addSubview(messageLabel)
+        
+        messageLabel.textColor = JXTextColor
+        messageLabel.font = UIFont.systemFont(ofSize: 16)
     }
 
     open override func configure(with message: MessageType, at indexPath: IndexPath, and messagesCollectionView: MessagesCollectionView) {
@@ -86,6 +89,8 @@ open class TextMessageCell: MessageCollectionViewCell {
             }
             // Needs to be set after the attributedText because it takes precedence
             messageLabel.textColor = textColor
+            messageLabel.textColor = JXTextColor
+            messageLabel.font = UIFont.systemFont(ofSize: 16)
         }
     }
     
@@ -93,4 +98,5 @@ open class TextMessageCell: MessageCollectionViewCell {
     open override func cellContentView(canHandle touchPoint: CGPoint) -> Bool {
         return messageLabel.handleGesture(touchPoint)
     }
+    
 }

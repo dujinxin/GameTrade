@@ -21,26 +21,13 @@ class BankListController: JXTableViewController {
 //        vc.hidesNavigationBarDuringPresentation = true
         vc.dimsBackgroundDuringPresentation = false
         
-        vc.searchBar.backgroundColor = UIColor.rgbColor(rgbValue: 0x393948)
-        vc.searchBar.backgroundImage = UIImage.imageWithColor(UIColor.rgbColor(rgbValue: 0x393948))
-        vc.searchBar.setSearchFieldBackgroundImage(UIImage.imageWithColor(UIColor.rgbColor(rgbValue: 0x393948), size: CGSize(width: kScreenWidth, height: 44)), for: .normal)
+        vc.searchBar.backgroundColor = JXBackColor
+        vc.searchBar.backgroundImage = UIImage.imageWithColor(JXBackColor)
+        vc.searchBar.setSearchFieldBackgroundImage(UIImage.imageWithColor(JXBackColor, size: CGSize(width: kScreenWidth, height: 44)), for: .normal)
         
         vc.searchBar.tintColor = JXOrangeColor
         vc.searchBar.placeholder = "开户银行"
         vc.searchBar.showsCancelButton = false
-        if #available(iOS 11.0, *) {
-//            let searchFieldBackgroudView = vc.searchBar.subviews.first
-//            searchFieldBackgroudView?.backgroundColor = UIColor.rgbColor(rgbValue: 0x393948)
-//            print(vc.searchBar.subviews)
-//            for view in vc.searchBar.subviews {
-//                view.backgroundColor = UIColor.rgbColor(rgbValue: 0x393948)
-//                for v in view.subviews {
-//                    v.backgroundColor = UIColor.rgbColor(rgbValue: 0x393948)
-//                }
-//            }
-        } else {
-            
-        }
         vc.searchBar.isTranslucent = true
         
         let searchField = vc.searchBar.value(forKey: "searchField") as? UITextField

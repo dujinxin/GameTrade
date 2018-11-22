@@ -14,13 +14,12 @@ class HelpFeedBackController: JXTableViewController {
         super.viewDidLoad()
         self.title = "帮助与反馈"
         
-        self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
-        
-        //self.tableView?.separatorStyle = .none
-        self.tableView?.estimatedRowHeight = 44
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
-        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
-        
+        self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight  + 48, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - 48)
+        self.tableView?.separatorStyle = .none
+        //self.tableView?.estimatedRowHeight = 44
+        self.tableView?.rowHeight = 64//UITableViewAutomaticDimension
+        //self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
+        self.tableView?.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,17 +39,18 @@ class HelpFeedBackController: JXTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
         cell.backgroundColor = UIColor.clear
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
-        cell.textLabel?.textColor = JXTextColor
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+        cell.leftLabel.textColor = JXTextColor
+        cell.leftLabel.font = UIFont.systemFont(ofSize: 14)
         if indexPath.row == 0 {
-            cell.textLabel?.text = "帮助中心"
+            cell.leftLabel.text = "帮助中心"
         } else {
-            cell.textLabel?.text = "提交反馈"
+            cell.leftLabel.text = "提交反馈"
         }
+        
         return cell
     }
     
@@ -58,10 +58,17 @@ class HelpFeedBackController: JXTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.row == 0 {
-            let storyboard = UIStoryboard(name: "My", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "help") as! HelpViewController
+//            let storyboard = UIStoryboard(name: "My", bundle: nil)
+//            let vc = storyboard.instantiateViewController(withIdentifier: "help") as! HelpViewController
+//            vc.hidesBottomBarWhenPushed = true
+//            self.navigationController?.pushViewController(vc, animated: true)
+            
+            let vc = MyWebViewController()
+            vc.title = "帮助信息"//self.homeVM.homeEntity.notice.title
+            vc.urlStr = "https://cooodingcdn.s3-ap-northeast-1.amazonaws.com/html/static/help.html"
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
+            
             
         }  else {
             let storyboard = UIStoryboard(name: "My", bundle: nil)

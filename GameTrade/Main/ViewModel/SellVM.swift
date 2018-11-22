@@ -77,7 +77,7 @@ class SellVM: BaseViewModel {
                     return
             }
             self.sellInfoEntity.setValuesForKeys(dict)
-            
+            self.sellInfoEntity.list.removeAll()
             if let list = dict["accounts"] as? Array<Dictionary<String, Any>> {
                 for dict in list{
                     let entity = PayEntity()

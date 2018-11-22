@@ -23,6 +23,7 @@ class BuyVM: BaseViewModel {
         return entity
     }()
     
+    
     //交易记录列表  0全部 1支付宝，2微信，3银行卡
     func buyList(payType: Int, pageSize: Int = 10, pageNo: Int, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
@@ -63,6 +64,27 @@ class BuyVM: BaseViewModel {
             completion(nil, msg, false)
         }
     }
+    //MARK:快捷购买
+    //获取当前数量支持的支付方式
+    var buyPayTypeEntity = BuyPayTypeEntity()
+    func getQuickPayType(amount: Int, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
+        
+        JXRequest.request(url: ApiString.getQuickPayType.rawValue, param: ["amount": amount], success: { (data, msg) in
+            
+            guard
+                let array = data as? Array<Int>
+                else{
+                    completion(nil, self.message, false)
+                    return
+            }
+            self.buyPayTypeEntity.listArray.removeAll()
+            self.buyPayTypeEntity.listArray += array
+            completion(data, msg, true)
+            
+        }) { (msg, code) in
+            completion(nil, msg, false)
+        }
+    }
     //快捷购买
     func buyQuick(payType: Int, amount: Int, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
@@ -83,7 +105,7 @@ class BuyVM: BaseViewModel {
             completion(nil, msg, false)
         }
     }
-    //普通购买
+    //MARK:普通购买
     func buyNormal(tradeSaleId: String, amount: Int, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
         JXRequest.request(url: ApiString.buyNormal.rawValue, param: ["tradeSaleId": tradeSaleId, "amount": amount], success: { (data, msg) in

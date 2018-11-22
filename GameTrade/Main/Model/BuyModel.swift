@@ -13,7 +13,9 @@ class BuyListEntity: BaseModel {
     @objc var total : Int = 0
     @objc var listArray = Array<BuyEntity>()
 }
-
+class BuyPayTypeEntity: BaseModel {
+    var listArray = Array<Int>()
+}
 class BuyEntity: BaseModel {
     @objc var id : String?
     @objc var agentId : String?

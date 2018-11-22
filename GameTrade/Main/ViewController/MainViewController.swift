@@ -19,11 +19,41 @@ class MainViewController: JXCollectionViewController {
     var defaultArray: Array = [["image":"icon-big-shop","title":"我要买"],["image":"icon-big-sale","title":"我要卖"],["image":"icon-big-help","title":"帮助信息"]]
     
     var noticeView : JXSelectView?
+    
+    lazy var statusBottomView: JXSelectView = {
+        let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
+        selectView.backgroundColor = JXOrangeColor
+        selectView.isBackViewUserInteractionEnabled = false
+        
+        return selectView
+    }()
+    
+    var vm = BuyVM()
+    var payName = "支付宝"
+    var payType = 1
+    var amount: Int = 0
+    var buttonArray = Array<UIButton>()
+    var textField : UITextField?
+    
+    lazy var keyboard: JXKeyboardToolBar = {
+        let bar = JXKeyboardToolBar(frame: CGRect())
+        bar.showBlock = { (view, value) in
+            print(view,value)
+        }
+        bar.closeBlock = {
+            self.textField?.text = ""
+        }
+        bar.tintColor = JXTextColor
+        bar.toolBar.barTintColor = JXBackColor
+        bar.backgroundColor = JXBackColor
+        return bar
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.customNavigationBar.removeFromSuperview()
         //self.customNavigationBar.alpha = 0
+        self.view.addSubview(self.keyboard)
  
         self.collectionView?.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kTabBarHeight)
         // Register cell classes
@@ -36,31 +66,30 @@ class MainViewController: JXCollectionViewController {
         layout.sectionInset = UIEdgeInsetsMake(0.5, 0, 0, 0)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 400)
-        
+        //layout.headerReferenceSize = CGSize(width: kScreenWidth, height: (400 - 80 + (122 + 160 - 50 * kPercent)))
+        layout.headerReferenceSize = CGSize(width: kScreenWidth, height: (400 - 80 + (122 + 160 + 50 * kPercent)))
         self.collectionView?.collectionViewLayout = layout
-        //self.collectionView?.bounces = false
+      
         
         self.collectionView?.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.requestData()
         })
-        self.collectionView?.mj_header.beginRefreshing()
+        //self.collectionView?.mj_header.beginRefreshing()
         //每次进入都刷新，则不用监听登录状态
         //NotificationCenter.default.addObserver(self, selector: #selector(loginStatus(notify:)), name: NSNotification.Name(rawValue: NotificationLoginStatus), object: nil)
-        
-        
+    
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if !UserManager.manager.isLogin {
+        if UserManager.manager.isLogin {
+            self.requestData()
+        } else {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
             let login = storyboard.instantiateViewController(withIdentifier: "LoginVC") as! LoginViewController
             let loginVC = UINavigationController.init(rootViewController: login)
-
+            
             self.navigationController?.present(loginVC, animated: false, completion: nil)
-        }else{
-            self.showAuth()
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -118,9 +147,9 @@ class MainViewController: JXCollectionViewController {
             }
             self.collectionView?.reloadData()
         }
-        
     }
 }
+//MARK: Trade password notice
 extension MainViewController {
     func showNoticeView() {
         let width : CGFloat = kScreenWidth - 40 * 2
@@ -218,16 +247,224 @@ extension MainViewController {
         vc.type = 2
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
 }
+//MARK: SelectView - quick buy
 extension MainViewController {
-    // MARK: UICollectionViewDataSource
+    
+    func customViewInit(number: String) -> UIView {
+        
+        let width : CGFloat = kScreenWidth - 48
+        
+        let contentView = UIView()
+        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362)
+        
+        let gradientLayer = CAGradientLayer.init()
+        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+        gradientLayer.locations = [0]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362 + kBottomMaginHeight)
+        contentView.layer.insertSublayer(gradientLayer, at: 0)
+        
+        let leftContentView = UIView()
+        leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362 + kBottomMaginHeight)
+        contentView.addSubview(leftContentView)
+        
+        //左侧视图
+        
+        let topBarView = { () -> UIView in
+            let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 60))
+            
+            let label = UILabel()
+            label.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
+            //label.center = view.center
+            label.text = "确认购买"
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: 18)
+            label.textColor = JXFfffffColor
+            view.addSubview(label)
+            //label.sizeToFit()
+            
+            let button = UIButton()
+            button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
+            //button.center = CGPoint(x: 30, y: view.jxCenterY)
+            //button.setTitle("×", for: .normal)
+            button.tintColor = JXFfffffColor
+            button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
+            button.setTitleColor(JX333333Color, for: .normal)
+            button.contentVerticalAlignment = .center
+            button.contentHorizontalAlignment = .center
+            button.addTarget(self, action: #selector(closeStatus), for: .touchUpInside)
+            view.addSubview(button)
+            
+            return view
+        }()
+        leftContentView.addSubview(topBarView)
+        
+        
+        let nameLabel = UILabel()
+        nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: width, height: 30)
+        
+        if let num = Double(number) {
+            nameLabel.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
+        }
+        nameLabel.textColor = JXTextColor
+        nameLabel.font = UIFont.systemFont(ofSize: 25)
+        nameLabel.textAlignment = .center
+        
+        leftContentView.addSubview(nameLabel)
+        
+        //3
+        let leftLabel3 = UILabel()
+        leftLabel3.frame = CGRect(x: 24, y: nameLabel.jxBottom + 31, width: 65, height: 51)
+        leftLabel3.text = "交易数量"
+        leftLabel3.textColor = JXText50Color
+        leftLabel3.font = UIFont.systemFont(ofSize: 13)
+        leftLabel3.textAlignment = .left
+        leftContentView.addSubview(leftLabel3)
+        
+        let rightLabel3 = UILabel()
+        rightLabel3.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth, height: 51)
+        rightLabel3.text = number + " \(configuration_coinName)"
+        rightLabel3.textColor = JXRedColor
+        rightLabel3.font = UIFont.systemFont(ofSize: 14)
+        rightLabel3.textAlignment = .right
+        leftContentView.addSubview(rightLabel3)
+        
+        let line3 = UIView()
+        line3.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel3.jxBottom, width: width, height: 1)
+        line3.backgroundColor = JXSeparatorColor
+        leftContentView.addSubview(line3)
+        
+        
+        //4
+        let leftLabel4 = UILabel()
+        leftLabel4.frame = CGRect(x: 24, y: line3.jxBottom, width: 65, height: 51)
+        leftLabel4.text = "支付方式"
+        leftLabel4.textColor = JXText50Color
+        leftLabel4.font = UIFont.systemFont(ofSize: 13)
+        leftLabel4.textAlignment = .left
+        leftContentView.addSubview(leftLabel4)
+        
+     
+        let view = UIView(frame: CGRect(x: 24, y: leftLabel4.jxBottom , width: width, height: 32))
+        leftContentView.addSubview(view)
+        
+        self.buttonArray.removeAll()
+        
+        let buttonSpace: CGFloat = 24
+        let buttonWidth = (width - buttonSpace * 2) / 3
+        let buttonHeight: CGFloat = 32
+        
+        for i in 0..<self.vm.buyPayTypeEntity.listArray.count{
+            let type = self.vm.buyPayTypeEntity.listArray[i]
+            
+            let button = UIButton()
+            button.frame = CGRect(x: (buttonWidth + buttonSpace) * CGFloat(i), y: 0, width: buttonWidth, height: buttonHeight)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            button.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
+            button.contentHorizontalAlignment = .center
+            button.layer.cornerRadius = 2
+            button.layer.borderWidth = 1
+            
+            view.addSubview(button)
+            
+            button.tag = type
+            
+            if type == 1 {
+                button.setTitle("支付宝", for: .normal)
+            } else if type == 2 {
+                button.setTitle("微信", for: .normal)
+            } else {
+                button.setTitle("银行卡", for: .normal)
+            }
+            button.setTitleColor(JXPlaceHolerColor, for: .normal)
+            button.setTitleColor(JXOrangeColor, for: .selected)
+            if i == 0 {
+                button.isSelected = true
+                button.layer.borderColor = JXOrangeColor.cgColor
+                
+                self.payName = button.currentTitle ?? ""
+                self.payType = type
+            } else {
+                button.layer.borderColor = JXPlaceHolerColor.cgColor
+            }
+            buttonArray.append(button)
+        }
+        
+        
+        
+        let button = UIButton()
+        button.frame = CGRect(x: nameLabel.jxLeft, y: view.jxBottom + 30, width: width, height: 44)
+        button.setTitle("下单", for: .normal)
+        button.setTitleColor(JXFfffffColor, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
+        leftContentView.addSubview(button)
+        
+        
+        button.layer.cornerRadius = 2
+        button.layer.shadowOpacity = 1
+        button.layer.shadowRadius = 10
+        button.layer.shadowOffset = CGSize(width: 0, height: 10)
+        button.layer.shadowColor = JX10101aShadowColor.cgColor
+        button.setTitleColor(JXFfffffColor, for: .normal)
+        button.backgroundColor = JXOrangeColor
+        
+        
+        
+        return contentView
+    }
+    @objc func confirm() {
+        print("confirm")
+//        guard let text = self.textField.text, text.isEmpty == false else{
+//            return
+//        }
+        self.closeStatus()
+        self.showMBProgressHUD()
+        self.vm.buyQuick(payType: self.payType, amount: self.amount, completion: { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
+            if isSuc {
+                let vc = OrderDetailController()
+                vc.id = self.vm.id
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                ViewManager.showNotice(msg)
+            }
+        })
+    }
+    @objc func closeStatus() {
+        self.statusBottomView.dismiss()
+    }
+    @objc func payClick(button: UIButton) {
+        
+        self.buttonArray.forEach { (btn) in
+            if button.tag == btn.tag {
+                btn.isSelected = true
+                btn.layer.borderColor = JXOrangeColor.cgColor
+                self.payName = btn.currentTitle ?? ""
+                self.payType = btn.tag
+            } else {
+                btn.isSelected = false
+                btn.layer.borderColor = JXPlaceHolerColor.cgColor
+            }
+        }
+    }
+}
+//MARK: UICollectionViewDataSource & UICollectionViewDelegate
+extension MainViewController {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.defaultArray.count
+        return 0
+        //return self.defaultArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -242,9 +479,43 @@ extension MainViewController {
         
         let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIndentifierHeader, for: indexPath) as! HomeReusableView
         if kind == UICollectionElementKindSectionHeader {
-           
-            reusableView.entity = self.homeVM.homeEntity.property
-            reusableView.noticeLabel.text = self.homeVM.homeEntity.notice.title
+            
+            reusableView.propertyEntity = self.homeVM.homeEntity.property
+            reusableView.noticeEntity = self.homeVM.homeEntity.notice
+            
+            reusableView.totalWidthConstraint.constant = self.homeVM.totalWidth
+            reusableView.useWidthConstraint.constant = self.homeVM.useWidth
+            reusableView.limitWidthConstraint.constant = self.homeVM.limitWidth
+            if self.keyboard.views.isEmpty == true {
+                self.keyboard.views = [reusableView.textField]
+                self.textField = reusableView.textField
+            }
+            reusableView.quickBuyBlock = {
+    
+                guard let text = reusableView.textField.text, text.isEmpty == false else{
+                    ViewManager.showNotice("请先输入购买数量")
+                    return
+                }
+                guard let num = Int(text), num > 10 else{
+                    ViewManager.showNotice("暂无该挂单金额，请重新输入")
+                    return
+                }
+                reusableView.textField.resignFirstResponder()
+                
+                self.showMBProgressHUD()
+                self.vm.getQuickPayType(amount: num, completion: { (_, msg, isSuc) in
+                    self.hideMBProgressHUD()
+                    if isSuc{
+                        self.amount = num
+                        reusableView.textField.text = ""
+                        self.statusBottomView.customView = self.customViewInit(number: text)
+                        self.statusBottomView.show()
+                    } else {
+                        reusableView.textField.text = ""
+                        ViewManager.showNotice("暂无该挂单金额，请重新输入")
+                    }
+                })
+            }
             reusableView.scanBlock = {
                 if UserManager.manager.userEntity.user.safePwdInit != 0 {
                     //self.performSegue(withIdentifier: "scan", sender: nil)
@@ -252,7 +523,7 @@ extension MainViewController {
                     let login = storyboard.instantiateViewController(withIdentifier: "ScanVC") as! ScanViewController
                     let loginVC = JXNavigationController(rootViewController: login)
                     login.type = 1
-                    self.navigationController?.present(loginVC, animated: false, completion: nil)
+                    self.navigationController?.present(loginVC, animated: true, completion: nil)
                     
                 } else {
                     self.showNoticeView()
@@ -260,7 +531,7 @@ extension MainViewController {
             }
             reusableView.noticeBlock = {
                 let vc = MyWebViewController()
-                vc.title = self.homeVM.homeEntity.notice.title
+                vc.title = "资讯"//self.homeVM.homeEntity.notice.title
                 vc.urlStr = self.homeVM.homeEntity.notice.url
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -284,6 +555,22 @@ extension MainViewController {
 //                sel.layer.shadowOpacity = 1
 //
 //                sel.show()
+            }
+            reusableView.buyBlock = {
+                let vc = NewBuyController()
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            reusableView.sellBlock = {
+                self.performSegue(withIdentifier: "sell", sender: nil)
+            }
+            reusableView.helpBlock = {
+                let vc = MyWebViewController()
+                vc.title = "帮助信息"//self.homeVM.homeEntity.notice.title
+                vc.urlStr = "https://cooodingcdn.s3-ap-northeast-1.amazonaws.com/html/static/help.html"
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+                
             }
         }
         
@@ -323,6 +610,7 @@ extension MainViewController {
     }
     
 }
+// MARK: JXDropListViewDelegate & JXDropListViewDataSource
 extension MainViewController : JXDropListViewDelegate,JXDropListViewDataSource {
     func dropListView(listView: JXDropListView, didSelectRowAt row: Int, inSection section: Int) {
         print(row)

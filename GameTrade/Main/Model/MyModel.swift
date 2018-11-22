@@ -17,6 +17,7 @@ class IndentifyInfoEntity: BaseModel {
 
 class ProfileInfoEntity: BaseModel {
     @objc var nickname : String?
+    @objc var realName : String?
     @objc var safePwdInit : Int = 0 //安全密码是否初始化,false未初始化，true已初始化
     @objc var headImg : String?
     @objc var mobile : String?

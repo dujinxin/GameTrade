@@ -25,7 +25,7 @@ class PayListController: JXTableViewController {
         return selectView
     }()
     
-    var isFirstEnter : Int = 0
+    var isFirstEnter : Bool = false
     
     var type : Int = 0 // 0添加，1编辑，2删除
     var currentIndexPath : IndexPath?
@@ -41,7 +41,7 @@ class PayListController: JXTableViewController {
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
         
         //self.tableView?.separatorStyle = .none
-        self.tableView?.estimatedRowHeight = 44
+        self.tableView?.estimatedRowHeight = 88
         self.tableView?.rowHeight = UITableViewAutomaticDimension
         self.tableView?.register(UINib(nibName: "PayNormalCell", bundle: nil), forCellReuseIdentifier: normalCellIdentifier)
         self.tableView?.register(UINib(nibName: "PayEmptyCell", bundle: nil), forCellReuseIdentifier: emptyCellIdentifier)
@@ -50,9 +50,11 @@ class PayListController: JXTableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if isFirstEnter != 0 {
-            if let controllers = self.navigationController?.viewControllers, controllers.count > 1{
-                self.navigationController?.viewControllers.remove(at: 1)
+        if isFirstEnter {
+            isFirstEnter = false
+            if let controllers = self.navigationController?.viewControllers, controllers.count > 2 {
+                print(controllers)
+                self.navigationController?.viewControllers.remove(at: controllers.count - 2)
             }
         }
     }
@@ -88,7 +90,7 @@ class PayListController: JXTableViewController {
                 cell.selectionStyle = .none
                 cell.payImageView.image = UIImage(named: dict["image"]!)
                 cell.payNameLabel.text = dict["title"]
-                
+                cell.entity = entity
                 cell.editBlock = {
                     cell.setEditing(true, animated: true)
                 }
@@ -108,6 +110,7 @@ class PayListController: JXTableViewController {
                 cell.selectionStyle = .none
                 cell.payImageView.image = UIImage(named: dict["image"]!)
                 cell.payNameLabel.text = dict["title"]
+                cell.entity = entity
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: emptyCellIdentifier, for: indexPath) as! PayEmptyCell

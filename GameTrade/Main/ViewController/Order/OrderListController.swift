@@ -17,6 +17,25 @@ class OrderListController: JXTableViewController {
     
     var countDown : CountDown?
     
+    @IBOutlet weak var emptyView: UIView! {
+        didSet{
+            emptyView.isHidden = true
+        }
+    }
+    @IBOutlet weak var goShopButton: UIButton! {
+        didSet{
+            goShopButton.setTitleColor(JXTextColor, for: .normal)
+            goShopButton.backgroundColor = JXOrangeColor
+            
+            goShopButton.layer.cornerRadius = 2
+            goShopButton.layer.shadowOpacity = 1
+            goShopButton.layer.shadowRadius = 10
+            goShopButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+            goShopButton.layer.shadowColor = JX10101aShadowColor.cgColor
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -68,6 +87,12 @@ class OrderListController: JXTableViewController {
 //            print("123456")
 //        }
     }
+    
+    @IBAction func goShop(_ sender: Any) {
+        let vc = NewBuyController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     @objc func loginStatus(notify:Notification) {
         print(notify)
         
@@ -80,8 +105,18 @@ class OrderListController: JXTableViewController {
         
         self.vm.orderList(pageNo: page) { (_, msg, isSuc) in
             self.tableView?.mj_header.endRefreshing()
+            self.tableView?.mj_footer.endRefreshing()
             if isSuc {
-
+                if self.vm.orderListEntity.listArray.count == 0 {
+                    self.emptyView.isHidden = false
+                    self.tableView?.isHidden = true
+                } else {
+                    self.emptyView.isHidden = true
+//                    self.emptyView.subviews.forEach({ (v) in
+//                        v.isHidden = true
+//                    })
+                    self.tableView?.isHidden = false
+                }
                 self.tableView?.reloadData()
                 self.countDown = CountDown(tableView: self.tableView!, data: self.vm.orderListEntity.listArray)
                 self.countDown?.completionBlock = { indexPath in

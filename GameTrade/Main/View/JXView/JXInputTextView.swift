@@ -39,7 +39,7 @@ private let inputViewWidth : CGFloat = UIScreen.main.bounds.width - 2 * inputVie
 
 private let keyWindowWidth : CGFloat = UIScreen.main.bounds.width
 private let keyWindowHeight : CGFloat = UIScreen.main.bounds.height
-private let additionalBottomHeight : CGFloat = (deviceModel == .iPhoneX) ? 34 : 0
+private let additionalBottomHeight : CGFloat = UIScreen.main.isIphoneX ? 34 : 0
 
 class JXInputTextView: JXView {
     

@@ -18,13 +18,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVm-ZT-BHK">
                     <rect key="frame" x="0.0" y="0.0" width="415" height="231"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="0CQ-ET-fqH">
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="0CQ-ET-fqH">
                             <rect key="frame" x="173.5" y="13" width="68" height="68"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="68" id="0K8-tL-J0I"/>
                                 <constraint firstAttribute="width" constant="68" id="L39-yC-RKx"/>
                             </constraints>
                         </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abA-Gj-gjr">
+                            <rect key="frame" x="173.5" y="13" width="68" height="68"/>
+                            <color key="backgroundColor" red="0.33333333333333331" green="0.32941176470588235" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                            <color key="textColor" red="0.13333333333333333" green="0.12941176470588234" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="identify" translatesAutoresizingMaskIntoConstraints="NO" id="yMw-bs-Yfb">
                             <rect key="frame" x="219.5" y="72" width="22" height="9"/>
                             <constraints>
@@ -68,6 +75,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500次" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvx-bI-6qe">
                             <rect key="frame" x="164" y="152" width="27" height="17"/>
                             <constraints>
+                                <constraint firstAttribute="width" constant="27" id="1wg-yF-A2E"/>
                                 <constraint firstAttribute="height" constant="17" id="dlL-zT-tGA"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="9"/>
@@ -84,7 +92,7 @@
                                         <constraint firstAttribute="height" constant="16" id="rx1-Ro-zFN"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱认证" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADy-Nv-7iX">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱认证" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADy-Nv-7iX">
                                     <rect key="frame" x="37" y="24" width="49.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,7 +117,7 @@
                                         <constraint firstAttribute="width" constant="16" id="dn8-fw-Drx"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机认证" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOf-az-fyB">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机认证" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOf-az-fyB">
                                     <rect key="frame" x="37" y="24" width="49.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,7 +141,7 @@
                                         <constraint firstAttribute="height" constant="16" id="YCz-Ux-136"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份认证" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOi-co-88l">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份认证" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOi-co-88l">
                                     <rect key="frame" x="37" y="24" width="49.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -157,7 +165,7 @@
                                         <constraint firstAttribute="width" constant="16" id="zDY-eF-NGk"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高级认证" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT2-hS-Glg">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="高级认证" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oT2-hS-Glg">
                                     <rect key="frame" x="37" y="24" width="49.5" height="14.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -178,6 +186,7 @@
                         <constraint firstItem="isn-LP-bUo" firstAttribute="bottom" secondItem="Awa-Rg-iuN" secondAttribute="bottom" id="5sI-uf-UCj"/>
                         <constraint firstItem="qvG-iq-rls" firstAttribute="bottom" secondItem="Awa-Rg-iuN" secondAttribute="bottom" id="6ve-GA-qgT"/>
                         <constraint firstItem="isn-LP-bUo" firstAttribute="leading" secondItem="qvG-iq-rls" secondAttribute="trailing" id="7vi-ee-wzQ"/>
+                        <constraint firstItem="abA-Gj-gjr" firstAttribute="centerY" secondItem="0CQ-ET-fqH" secondAttribute="centerY" id="8GW-tn-up4"/>
                         <constraint firstItem="p7i-s1-B5x" firstAttribute="centerX" secondItem="JVm-ZT-BHK" secondAttribute="centerX" constant="30" id="8Xu-aY-Xaw"/>
                         <constraint firstItem="isn-LP-bUo" firstAttribute="width" secondItem="Awa-Rg-iuN" secondAttribute="width" id="Cit-j2-tVW"/>
                         <constraint firstItem="PXL-BQ-3QH" firstAttribute="centerY" secondItem="Kvx-bI-6qe" secondAttribute="centerY" id="D5g-Ju-gb3"/>
@@ -200,9 +209,12 @@
                         <constraint firstItem="Y5v-D3-nIK" firstAttribute="width" secondItem="Awa-Rg-iuN" secondAttribute="width" id="kAj-7x-jZH"/>
                         <constraint firstItem="Y5v-D3-nIK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Kvx-bI-6qe" secondAttribute="bottom" id="ktD-rY-sxD"/>
                         <constraint firstItem="PXL-BQ-3QH" firstAttribute="centerX" secondItem="p7i-s1-B5x" secondAttribute="centerX" id="sJo-8I-qSQ"/>
+                        <constraint firstItem="abA-Gj-gjr" firstAttribute="height" secondItem="0CQ-ET-fqH" secondAttribute="height" id="sNg-fM-Ffs"/>
                         <constraint firstItem="DaR-Te-NDi" firstAttribute="centerX" secondItem="JVm-ZT-BHK" secondAttribute="centerX" id="th2-sZ-mZh"/>
                         <constraint firstItem="isn-LP-bUo" firstAttribute="height" secondItem="Awa-Rg-iuN" secondAttribute="height" id="toy-sn-quw"/>
                         <constraint firstItem="Y5v-D3-nIK" firstAttribute="bottom" secondItem="Awa-Rg-iuN" secondAttribute="bottom" id="u8O-Ue-HJT"/>
+                        <constraint firstItem="abA-Gj-gjr" firstAttribute="centerX" secondItem="0CQ-ET-fqH" secondAttribute="centerX" id="uPO-Ld-KHF"/>
+                        <constraint firstItem="abA-Gj-gjr" firstAttribute="width" secondItem="0CQ-ET-fqH" secondAttribute="width" id="xgm-n8-VXc"/>
                         <constraint firstItem="qvG-iq-rls" firstAttribute="height" secondItem="Awa-Rg-iuN" secondAttribute="height" id="yIQ-PS-MRv"/>
                         <constraint firstAttribute="bottom" secondItem="Awa-Rg-iuN" secondAttribute="bottom" id="yvv-lk-o31"/>
                     </constraints>
@@ -218,8 +230,12 @@
                 <outlet property="MerchantImageView" destination="0CQ-ET-fqH" id="N1E-qN-S7A"/>
                 <outlet property="MerchantNameLabel" destination="DaR-Te-NDi" id="BOP-lu-8xT"/>
                 <outlet property="mainContentView" destination="JVm-ZT-BHK" id="sNp-TE-9mQ"/>
+                <outlet property="merchantLabel" destination="abA-Gj-gjr" id="kdq-8l-qkW"/>
                 <outlet property="numberLabel" destination="Kvx-bI-6qe" id="np6-YN-aQk"/>
+                <outlet property="numberWidthConstraint" destination="1wg-yF-A2E" id="PnU-ES-y6c"/>
                 <outlet property="percentLabel" destination="PXL-BQ-3QH" id="EMh-jZ-ZyS"/>
+                <outlet property="percentWidthConstraint" destination="Tj1-tZ-Yja" id="8ge-Wq-8r5"/>
+                <outlet property="topConstraint" destination="LKG-XN-fML" id="Rwz-Cy-SBZ"/>
             </connections>
             <point key="canvasLocation" x="-132" y="48.125937031484263"/>
         </collectionReusableView>

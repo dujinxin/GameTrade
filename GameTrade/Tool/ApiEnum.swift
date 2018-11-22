@@ -26,9 +26,11 @@ enum ApiString : String {
     case homeInfo =                  "/planA/home/homeInfo"                //首页
     case homeNotice =                "/planA/common/notice"                //公告
     
+    case scanPayGetName =            "/planA/order/prePay"                 //获取平台名称
     case scanPay =                   "/planA/order/scanPay"                //扫码支付
     
     case buyList =                   "/planA/agent/adList"                 //买单列表
+    case getQuickPayType =           "/planA/order/getFastBuyPayType"      //快捷购买支持的支付方式
     case buyQuick =                  "/planA/order/fastBuy"                //快捷购买
     case buyNormal =                 "/planA/order/adBuy"                  //普通购买
     
@@ -88,6 +90,8 @@ enum ApiString : String {
     case deletePayStyle  =           "/planA/depositAccounts/delete"       //删除支付方式
     
     case feedBack  =                 "/planA/common/suggestSubmit"         //反馈
+    case version  =                  "/planA/common/appVersion"             //版本信息
+    
     
     case modifyLogPsdSendCode =      "/planA/user/updateLoginPwd/sendMobileCode" //修改登录密码发送验证码
     case modifyLogPsd =              "/planA/user/updateLoginPwd/doUpdate" //修改登录密码
@@ -96,6 +100,10 @@ enum ApiString : String {
     case modifyTradePsd =            "/planA/user/updateSafePwd/doUpdate"  //修改资金密码
     
     case tradePsdInit =              "/planA/user/safePwdInit"             //资金密码初始化
+    
+    
+    
+    
     
     case articleList =               "/planA/article/list"                 //文章列表
     case articleDetails  =           "/planA/article/detail"               //文章详情

@@ -17,15 +17,65 @@ class HomeReusableView: UICollectionReusableView {
     @IBOutlet weak var rightButton: UIButton!
     
     @IBOutlet weak var totalNumLabel: UILabel!
-    @IBOutlet weak var totalPriceLabel: UILabel!
+    @IBOutlet weak var totalPriceLabel: UILabel!{
+        didSet{
+            totalPriceLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x272732)
+            totalPriceLabel.layer.cornerRadius = 11.5
+            totalPriceLabel.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var totalWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var useNumLabel: UILabel!
-    @IBOutlet weak var usePriceLabel: UILabel!
+    @IBOutlet weak var usePriceLabel: UILabel!{
+        didSet{
+            usePriceLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x272732)
+            usePriceLabel.layer.cornerRadius = 8.5
+            usePriceLabel.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var useWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var limitNumLabel: UILabel!
-    @IBOutlet weak var limitPriceLabel: UILabel!
+    @IBOutlet weak var limitPriceLabel: UILabel!{
+        didSet{
+            limitPriceLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x272732)
+            limitPriceLabel.layer.cornerRadius = 8.5
+            limitPriceLabel.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var limitWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var noticeLabel: UILabel!
+    
+    
+    @IBOutlet weak var textField: UITextField!{
+        didSet{
+            textField.backgroundColor = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.44)
+            //textField.delegate = self
+            textField.placeholder = "输入购买金额"
+            textField.keyboardType = .numberPad
+            textField.font = UIFont.systemFont(ofSize: 18)
+            textField.textColor = JXTextColor
+            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:UIColor.rgbColor(rgbValue: 0xb3b3cb)])
+        }
+    }
+    @IBOutlet weak var buyButton: UIButton! {
+        didSet{
+            
+            buyButton.setTitle("快捷购买", for: .normal)
+            buyButton.setTitleColor(JXFfffffColor, for: .normal)
+            buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+            buyButton.backgroundColor = JXOrangeColor
+            buyButton.layer.cornerRadius = 2
+            buyButton.layer.shadowOpacity = 1
+            buyButton.layer.shadowRadius = 10
+            buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+            buyButton.layer.shadowColor = JX10101aShadowColor.cgColor
+            buyButton.addTarget(self, action: #selector(quickBuy), for: .touchUpInside)
+        }
+    }
+    
     
     
     @IBOutlet weak var itemContentView: UIView!
@@ -40,28 +90,52 @@ class HomeReusableView: UICollectionReusableView {
     @IBOutlet weak var infoContentView: UIView!
     
     
+    @IBOutlet weak var scanImageView: UIImageView!
+    
+    @IBOutlet weak var buyView: UIView!
+    @IBOutlet weak var sellView: UIView!
+    @IBOutlet weak var helpView: UIView!
+    
+    
     var additionBlock : (()->())?
     var noticeBlock : (()->())?
+    var quickBuyBlock : (()->())?
     var scanBlock : (()->())?
     
-    var entity : PropertyEntity? {
+    var buyBlock : (()->())?
+    var sellBlock : (()->())?
+    var helpBlock : (()->())?
+    
+    var propertyEntity : PropertyEntity? {
         didSet{
-            self.totalNumLabel.text = "\(entity?.totalCounts ?? 0)"
-            self.useNumLabel.text = "\(entity?.balance ?? 0)"
-            self.limitNumLabel.text = "\(entity?.blockedBalance ?? 0)"
+            self.totalNumLabel.text = "\(propertyEntity?.totalCounts ?? 0)"
+            self.useNumLabel.text = "\(propertyEntity?.balance ?? 0)"
+            self.limitNumLabel.text = "\(propertyEntity?.blockedBalance ?? 0)"
             
-            self.totalPriceLabel.text = "=\((entity?.totalCounts ?? 0) * configuration_coinPrice)\(configuration_valueType)"
-            self.usePriceLabel.text = "=\((entity?.balance ?? 0) * configuration_coinPrice)\(configuration_valueType)"
-            self.limitPriceLabel.text = "=\((entity?.blockedBalance ?? 0) * configuration_coinPrice)\(configuration_valueType)"
+            self.totalPriceLabel.text = "=\((propertyEntity?.totalCounts ?? 0) * configuration_coinPrice) \(configuration_valueType)"
+            self.usePriceLabel.text = "=\((propertyEntity?.balance ?? 0) * configuration_coinPrice) \(configuration_valueType)"
+            self.limitPriceLabel.text = "=\((propertyEntity?.blockedBalance ?? 0) * configuration_coinPrice) \(configuration_valueType)"
+            
         }
     }
+    var noticeEntity : NoticeEntity? {
+        didSet{
+            self.noticeLabel.text = noticeEntity?.title
+            if let title = noticeEntity?.title, title.isEmpty == false {
+                self.switchContentView.isHidden = false
+            } else {
+                self.switchContentView.isHidden = true
+            }
+        }
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         self.topConstraint.constant = kStatusBarHeight + 7
-        
+   
         self.rightButton.backgroundColor = UIColor.clear
         
         
@@ -86,8 +160,20 @@ class HomeReusableView: UICollectionReusableView {
         self.scanIconButton.setImage(UIImage(named: "scanIcon")?.withRenderingMode(.alwaysTemplate), for: .normal)
         
         
-        self.switchContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noticeTap(tap:))))
-        self.infoContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scanTap(tap:))))
+//        self.switchContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(noticeTap(tap:))))
+//        self.infoContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(scanTap(tap:))))
+        
+        
+        self.switchContentView.tag = 1
+        self.scanImageView.tag = 2
+        self.buyView.tag = 3
+        self.sellView.tag = 4
+        self.helpView.tag = 5
+        self.switchContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapClick(tap:))))
+        self.scanImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapClick(tap:))))
+        self.buyView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapClick(tap:))))
+        self.sellView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapClick(tap:))))
+        self.helpView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapClick(tap:))))
         
     }
 
@@ -96,106 +182,46 @@ class HomeReusableView: UICollectionReusableView {
             block()
         }
     }
-    @objc func noticeTap(tap: UITapGestureRecognizer) {
-        if let block = self.noticeBlock {
+//    @objc func noticeTap(tap: UITapGestureRecognizer) {
+//        if let block = self.noticeBlock {
+//            block()
+//        }
+//    }
+//    @objc func scanTap(tap: UITapGestureRecognizer) {
+//        if let block = self.scanBlock {
+//            block()
+//        }
+//    }
+    @objc func quickBuy(button: UIButton) {
+        if let block = self.quickBuyBlock {
             block()
         }
     }
-    @objc func scanTap(tap: UITapGestureRecognizer) {
-        if let block = self.scanBlock {
-            block()
+    @objc func tapClick(tap: UITapGestureRecognizer) {
+        guard let v = tap.view else { return }
+        switch v.tag {
+        case 1:
+            if let block = self.noticeBlock {
+                block()
+            }
+        case 2:
+            if let block = self.scanBlock {
+                block()
+            }
+        case 3:
+            if let block = self.buyBlock {
+                block()
+            }
+        case 4:
+            if let block = self.sellBlock {
+                block()
+            }
+        case 5:
+            if let block = self.helpBlock {
+                block()
+            }
+        default:
+            print("")
         }
-    }
-
-    func tapClick(subView:UIView) {
-        
-    }
-}
-class DiamondView: UIView {
-    lazy var contentView: UIView = {
-        let v = UIView()
-        v.backgroundColor = UIColor.clear
-        return v
-    }()
-    lazy var imageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(named: "imgDiamond")
-        iv.isUserInteractionEnabled = true
-        return iv
-    }()
-    lazy var titleView: UILabel = {
-        let label = UILabel()
-        label.textColor = UIColor.white
-        label.font = UIFont.systemFont(ofSize: 12)
-        label.textAlignment = .center
-        label.sizeToFit()
-        return label
-    }()
-
-    var tapBlock : ((_ view:DiamondView)->())?
-    
-    var entity: DiamondEntity? {
-        didSet{
-            self.titleView.text = entity?.diamondNumber
-        }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        addSubview(self.contentView)
-        self.contentView.addSubview(self.imageView)
-        self.contentView.addSubview(self.titleView)
-        
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(tap:))))
-    }
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        let imageHeight : CGFloat = 52 * 167 / 156
-        let labelHeight : CGFloat = 20
-        //水晶+数字 宽高
-        //let crystalViewWidth : CGFloat = 52
-        //let crystalViewHeight = imageHeight + 20
-
-        contentView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-        imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: imageHeight)
-        titleView.frame = CGRect(x: 0, y: imageHeight, width: frame.width, height: labelHeight)
-    }
-    @objc func tap(tap:UITapGestureRecognizer) {
-        if let block = tapBlock {
-            block(self)
-        }
-    }
-    
-    func beginAnimate(time:CFTimeInterval = 0) {
-        
-        let v = self.contentView
-        
-
-        let animation = CAKeyframeAnimation.init(keyPath: "position")
-        let path = CGMutablePath.init()
-        
-        path.move(to: CGPoint(x: v.center.x, y: v.center.y))//设置起始点
-        path.addLine(to: CGPoint(x: v.center.x, y: v.center.y + 5))//终点
-        path.addLine(to: CGPoint(x: v.center.x, y: v.center.y))//终点
-        path.addLine(to: CGPoint(x: v.center.x, y: v.center.y - 5))//终点
-        path.addLine(to: CGPoint(x: v.center.x, y: v.center.y))//终点
-        
-        animation.path = path
-        
-        animation.isRemovedOnCompletion = false
-        animation.repeatCount =  Float.greatestFiniteMagnitude
-        //animation.repeatDuration = 3
-        animation.beginTime = time
-        animation.duration = 5
-        animation.autoreverses = false
-        animation.fillMode = kCAFillModeForwards
-        animation.calculationMode = kCAAnimationPaced
-        
-        v.layer.add(animation, forKey: nil)
     }
 }

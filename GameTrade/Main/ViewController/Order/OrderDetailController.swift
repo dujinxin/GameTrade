@@ -33,6 +33,9 @@ class OrderDetailController: JXTableViewController {
         self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(backToRoot))
         
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
+        self.tableView?.estimatedRowHeight = kScreenHeight - kNavStatusHeight
+        self.tableView?.estimatedSectionHeaderHeight = 0
+        self.tableView?.estimatedSectionFooterHeight = 0
         // Register cell classes
         self.tableView?.register(UINib(nibName: "OrderBuyingDetailCell", bundle: nil), forCellReuseIdentifier: reuseIndentifierHeaderBuying)
         self.tableView?.register(UINib(nibName: "OrderBuyedDetailCell", bundle: nil), forCellReuseIdentifier: reuseIndentifierHeaderBuyed)
@@ -40,17 +43,12 @@ class OrderDetailController: JXTableViewController {
         self.tableView?.register(UINib(nibName: "OrderSelledDetailCell", bundle: nil), forCellReuseIdentifier: reuseIndentifierHeaderSelled)
 
         self.requestData()
-        
-        self.vm.orderDetail(id: self.id ?? "") { (_, msg, isSuc) in
-            self.tableView?.reloadData()
-            
-            self.resetNaviagationItem()
-        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         if let timer = self.timer {
             print("cancel...")
+            timer.suspend()
             timer.cancel()
         }
     }
@@ -70,7 +68,7 @@ class OrderDetailController: JXTableViewController {
         
         self.vm.orderDetail(id: self.id ?? "") { (_, msg, isSuc) in
             self.tableView?.reloadData()
-            
+            self.tableView?.contentOffset = CGPoint(x: 0, y: 0)
             self.resetNaviagationItem()
         }
     }
@@ -243,8 +241,24 @@ extension OrderDetailController {
         
         CCPGroupChannel.create(name: self.vm.orderDetailEntity.agentName ?? "", userIds: [userID, chatID], isDistinct: true) { groupChannel, error in
             if error == nil {
+                //
                 let chatViewController = ChatViewController(channel: groupChannel!, sender: sender)
+            
+                if let meta = groupChannel?.getMetadata(), let orderId = meta["orderId"], orderId == self.vm.orderDetailEntity.id {
+                    //同一个,不做操作
+                } else {
+                    groupChannel?.updateMetadata(metadata: ["orderId": self.vm.orderDetailEntity.id], completionHandler: { (baseChannel, error) in
+                        if let e = error {
+                            print(e.localizedDescription)
+                        } else {
+                            print("-----------",baseChannel?.getMetadata())
+                            chatViewController.sendMessage(self.vm.orderDetailEntity.id)
+                        }
+                    })
+                }
                 self.navigationController?.pushViewController(chatViewController, animated: true)
+                
+                
             } else {
                 self.showAlert(title: "Error!", message: "Some error occured, please try again.", actionText: "OK")
             }

@@ -128,7 +128,6 @@ class LoginVM: JXRequest {
     //退出
     func logout(completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) {
         JXRequest.request(url: ApiString.logout.rawValue, param: Dictionary(), success: { (data, message) in
-            
             completion(data,message,true)
             
         }) { (message, code) in

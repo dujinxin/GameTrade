@@ -29,7 +29,7 @@ private let topBarHeight : CGFloat = 60
 private let pickViewCellHeight : CGFloat = 44
 private let tableViewCellHeight : CGFloat = 44
 private let pickViewHeight : CGFloat = 216
-private let animateDuration : TimeInterval = 0.3
+
 
 class JXSelectView: UIView {
     
@@ -42,6 +42,7 @@ class JXSelectView: UIView {
     var presentModelStyle : JXSelectViewPresentModelStyle = .translucent
     var style : JXSelectViewStyle = .list
     var position : JXSelectViewShowPosition = .bottom
+    var animateDuration : TimeInterval = 0.25
     var customView : UIView? {
         didSet{
             self.style = .custom
@@ -229,7 +230,7 @@ class JXSelectView: UIView {
             h += selectViewTop
         }
         if position == .bottom {
-            if deviceModel == .iPhoneX {
+            if UIScreen.main.isIphoneX {
                 h += kBottomMaginHeight
             }
         }

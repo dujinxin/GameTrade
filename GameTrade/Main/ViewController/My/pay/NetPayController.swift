@@ -56,10 +56,12 @@ class NetPayController: BaseViewController {
         
         if isEdit {
             self.accountTextField.text = self.entity?.account
-            if let str = self.entity?.qrcodeImg {
+            if let str = self.entity?.qrcodeImg, str.hasPrefix("http") {
                 let url = URL(string: str)
                 self.codeImageView.sd_setImage(with: url, completed: nil)
                 self.deleteButton.isHidden = false
+            } else {
+                self.deleteButton.isHidden = true
             }
         } else {
             self.deleteButton.isHidden = true
@@ -108,10 +110,13 @@ class NetPayController: BaseViewController {
             id = entity?.id ?? ""
         }
         
-        if isSelected, let image = self.codeImageView.image{
-            let ss = UIImage.insert(image: image, name: "userImage.jpg")
-            print("sssssssssssssssssssssssssss",ss)
+        guard let image = self.codeImageView.image, isSelected == true else {
+            ViewManager.showNotice("请添加收款二维码")
+            return
         }
+        let ss = UIImage.insert(image: image, name: "userImage.jpg")
+        print("sssssssssssssssssssssssssss",ss)
+        
         self.showMBProgressHUD()
         self.vm.editPay(id: id, type: type, account: account, name: UserManager.manager.userEntity.realName, safePassword: self.psdText) { (_, msg, isSuc) in
             self.hideMBProgressHUD()

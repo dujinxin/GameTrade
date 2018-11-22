@@ -122,8 +122,8 @@ open class MessageInputBar: UIView {
         let textView = InputTextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.messageInputBar = self
-        textView.backgroundColor = UIColor.rgbColor(rgbValue: 0x393948)
-        textView.placeholderTextColor = UIColor.rgbColor(rgbValue: 0x686883)
+        textView.backgroundColor = JXBackColor
+        textView.placeholderTextColor = JXPlaceHolerColor
         textView.textColor = JXTextColor
         return textView
     }()

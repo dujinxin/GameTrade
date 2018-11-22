@@ -111,7 +111,7 @@ class PasswordTextView: JXSecretTextView {
 class LineView: UIView {
     override func draw(_ rect: CGRect) {
 //        let context = UIGraphicsGetCurrentContext()
-//        context?.setStrokeColor(UIColor.rgbColor(rgbValue: 0x464855).cgColor)
+//        context?.setStrokeColor(JXSeparatorColor.cgColor)
 //        context?.setLineWidth(4)
 //        context?.move(to: CGPoint())
 //        context?.addLine(to: CGPoint(x: 0, y: self.frame.size.width))

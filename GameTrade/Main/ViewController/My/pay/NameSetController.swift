@@ -178,7 +178,7 @@ extension NameSetController {
             self.hideMBProgressHUD()
             if isSuc {
                 let payList = PayListController()
-                payList.isFirstEnter = 1
+                payList.isFirstEnter = true
                 self.navigationController?.pushViewController(payList, animated: true)
             } else {
                 ViewManager.showNotice(msg)

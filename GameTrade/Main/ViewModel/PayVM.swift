@@ -117,7 +117,7 @@ class PayVM: BaseViewModel {
             let entity = BankEntity()
             entity.setValuesForKeys(dict)
             
-            if entity.isCommon == 1 {
+            if entity.isCommon == 2 {
                 commonArr.append(entity)
             }
             

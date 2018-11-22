@@ -49,5 +49,5 @@ class BankEntity: BaseModel {
     @objc var id : Int = 0
     @objc var pinyin : String?
     @objc var name : String?
-    @objc var isCommon : Int = 1 //1常用，2非
+    @objc var isCommon : Int = 1 //1非，2常用
 }

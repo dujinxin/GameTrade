@@ -22,12 +22,13 @@ class MyCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.topConstraint.constant = kNavStatusHeight
+        self.topConstraint.constant = 30//kNavStatusHeight
         
-        backView.layer.shadowOffset = CGSize(width: 0, height: 10)
-        backView.layer.shadowColor = JX10101aShadowColor.cgColor
-        backView.layer.shadowOpacity = 1
-        backView.layer.shadowRadius = 40
+        backView.backgroundColor = UIColor.clear
+//        backView.layer.shadowOffset = CGSize(width: 0, height: 10)
+//        backView.layer.shadowColor = JX10101aShadowColor.cgColor
+//        backView.layer.shadowOpacity = 1
+//        backView.layer.shadowRadius = 40
         
         self.userImageView.backgroundColor = JXOrangeColor
         self.userImageView.layer.cornerRadius = 34

@@ -216,7 +216,7 @@ class JXAlertView: UIView {
             h += cancelViewHeight + 10
         }
         //如果为iPhoneX，则把底部的34空间让出来
-//        if deviceModel == .iPhoneX {
+//        if UIScreen.main.isIphoneX {
 //            h += 34
 //        }
         self.frame = CGRect.init(x: (UIScreen.main.bounds.width - alertViewWidth)/2, y: 0, width: alertViewWidth, height:h)

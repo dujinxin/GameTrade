@@ -21,7 +21,7 @@ class CommonManager {
     ///   - timeInterval: 倒计时间间隔(每次调用间隔)
     ///   - process:未完成时的回调
     ///   - completion: 完成回调
-    static func countDown(timeOut:Int,timeInterval:Double = 1,process:@escaping ((_ currentTime:Int)->()),completion:@escaping (()->())) {
+    static func countDown(timeOut: Int, timeInterval: Double = 1, process: @escaping ((_ currentTime: Int)->()), completion: @escaping (()->())) {
         
         var timeOut1 = timeOut
         let queue = DispatchQueue.global(qos: .default)
@@ -51,7 +51,7 @@ class CommonManager {
     ///   - timeInterval: 倒计时间间隔(每次调用间隔)
     ///   - process:未完成时的回调
     ///   - completion: 完成回调
-    static func countDown1(timeOut:Int,timeInterval:Double = 1,process:@escaping ((_ currentTime:Int)->()),completion:@escaping (()->())) -> DispatchSourceTimer{
+    static func countDown1(timeOut: Int, timeInterval: Double = 1, process: @escaping ((_ currentTime: Int)->()), completion: @escaping (()->())) -> DispatchSourceTimer{
         
         var timeOut1 = timeOut
         let queue = DispatchQueue.global(qos: .default)

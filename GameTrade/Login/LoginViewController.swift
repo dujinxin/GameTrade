@@ -11,24 +11,88 @@ import UIKit
 
 class LoginViewController: BaseViewController {
 
-    @IBOutlet weak var loginTitleLabel: UILabel!
-    @IBOutlet weak var loginLittleLabel: UILabel!
+    @IBOutlet weak var loginTitleLabel: UILabel!{
+        didSet{
+            loginTitleLabel.textColor = JXTextColor
+        }
+    }
+    @IBOutlet weak var loginLittleLabel: UILabel!{
+        didSet{
+            loginLittleLabel.textColor = JXText50Color
+        }
+    }
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var contentSize_heightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var userTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var contentView: UIView!{
+        didSet{
+            contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        }
+    }
+    @IBOutlet weak var userTextField: UITextField!{
+        didSet{
+            userTextField.textColor = JXTextColor
+            userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+        }
+    }
+    @IBOutlet weak var passwordTextField: UITextField!{
+        didSet{
+            passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+            passwordTextField.textColor = JXTextColor
+            passwordTextField.rightViewMode = .always
+            passwordTextField.rightView = {() -> UIView in
+                let button = UIButton(type: .custom)
+                button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+                button.setImage(UIImage(named: "icon_eye closed"), for: .normal)
+                button.setImage(UIImage(named: "icon_eye open"), for: .selected)
+                button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
+                button.isSelected = false
+                button.tag = 1
+                return button
+            }()
+        }
+    }
     
     
     
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var forgotButton: UIButton!
-    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton! {
+        didSet{
+            loginButton.setTitleColor(JXTextColor, for: .normal)
+            loginButton.backgroundColor = JXOrangeColor
+            
+            loginButton.layer.cornerRadius = 2
+            loginButton.layer.shadowOpacity = 1
+            loginButton.layer.shadowRadius = 10
+            loginButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+            loginButton.layer.shadowColor = JX10101aShadowColor.cgColor
+        }
+    }
+    @IBOutlet weak var forgotButton: UIButton!{
+        didSet{
+            forgotButton.setTitleColor(JXOrangeColor, for: .normal)
+        }
+    }
+    @IBOutlet weak var registerButton: UIButton!{
+        didSet{
+            registerButton.setTitleColor(JXOrangeColor, for: .normal)
+        }
+    }
     
     @IBOutlet weak var tonConstraints: NSLayoutConstraint!
     @IBOutlet weak var leadingConstraints: NSLayoutConstraint!
     @IBOutlet weak var trailingConstraints: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraints: NSLayoutConstraint!
+    
+    lazy var keyboard: JXKeyboardToolBar = {
+        let k = JXKeyboardToolBar(frame: CGRect(), views: [userTextField,passwordTextField])
+        k.showBlock = { (height, rect) in
+            print(height,rect)
+        }
+        k.tintColor = JXTextColor
+        k.toolBar.barTintColor = JXBackColor
+        k.backgroundColor = JXBackColor
+        k.textFieldDelegate = self
+        return k
+    }()
     
     var vm = LoginVM()
     
@@ -36,53 +100,20 @@ class LoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         if #available(iOS 11.0, *) {
             self.mainScrollView.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
 
-        self.loginTitleLabel.textColor = JXTextColor
-        self.loginLittleLabel.textColor = JXText50Color
-        self.forgotButton.setTitleColor(JXOrangeColor, for: .normal)
-        self.registerButton.setTitleColor(JXOrangeColor, for: .normal)
         
-        self.loginButton.setTitleColor(JXTextColor, for: .normal)
-        self.loginButton.backgroundColor = JXOrangeColor
-        
-        self.loginButton.layer.cornerRadius = 2
-        self.loginButton.layer.shadowOpacity = 1
-        self.loginButton.layer.shadowRadius = 10
-        self.loginButton.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.loginButton.layer.shadowColor = JX10101aShadowColor.cgColor
-        
-        
-        self.userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
-        
-        self.userTextField.textColor = JXTextColor
-        self.passwordTextField.textColor = JXTextColor
-        
-        
-        self.passwordTextField.rightViewMode = .always
-        self.passwordTextField.rightView = {() -> UIView in
-            let button = UIButton(type: .custom)
-            button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            button.setImage(UIImage(named: "icon_eye closed"), for: .normal)
-            button.setImage(UIImage(named: "icon_eye open"), for: .selected)
-            button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
-            button.isSelected = false
-            button.tag = 1
-            return button
-        }()
-        
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+
+        self.updateButtonStatus()
         
-        
-        self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        self.view.addSubview(self.keyboard)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -168,7 +199,7 @@ class LoginViewController: BaseViewController {
         return predicate.evaluate(with: string)
     }
 }
-
+//MARK: 通过keyboardManager来管理之后,代理方法失效，需使用keyboardManager提供的代理方法
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
 //        if textField == userTextField {
@@ -198,8 +229,29 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
-    func textChange(notify:NSNotification) {
+    @objc func textChange(notify: NSNotification) {
         
+        if notify.object is UITextField {
+            self.updateButtonStatus()
+        }
+    }
+    func updateButtonStatus() {
+        //登录按钮
+        if
+            let name = self.userTextField.text, name.isEmpty == false,
+            let password = self.passwordTextField.text, password.isEmpty == false {
+            
+            self.loginButton.isEnabled = true
+            self.loginButton.backgroundColor = JXOrangeColor
+            self.loginButton.setTitleColor(JXTextColor, for: .normal)
+            
+        } else {
+            
+            self.loginButton.isEnabled = false
+            self.loginButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.loginButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
+            
+        }
     }
     @objc func keyboardWillShow(notify:Notification) {
 
@@ -233,5 +285,27 @@ extension LoginViewController: UITextFieldDelegate {
         }) { (finish) in
             
         }
+    }
+}
+extension LoginViewController: JXKeyboardTextFieldDelegate{
+    func keyboardTextFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
+    func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == userTextField {
+            if range.location > 10 {
+                //let s = textField.text! as NSString
+                //let str = s.substring(to: 10)
+                //textField.text = str
+                //ViewManager.showNotice(notice: "字符个数为11位")
+                return false
+            }
+        } else if textField == passwordTextField {
+            if range.location > 19 {
+                return false
+            }
+        }
+        return true
     }
 }

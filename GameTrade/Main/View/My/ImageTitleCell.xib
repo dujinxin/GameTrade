@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,16 +19,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconMoney" translatesAutoresizingMaskIntoConstraints="NO" id="JBu-iO-SIf">
-                        <rect key="frame" x="15" y="17" width="30" height="30"/>
+                        <rect key="frame" x="24" y="17" width="30" height="30"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的资产" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvd-YG-mPK">
-                        <rect key="frame" x="55" y="23.5" width="57.5" height="17"/>
+                        <rect key="frame" x="64" y="23.5" width="57.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RCH-tb-sLw" userLabel="line">
-                        <rect key="frame" x="20" y="62.5" width="321" height="1"/>
+                        <rect key="frame" x="24" y="62.5" width="317" height="1"/>
                         <color key="backgroundColor" red="0.27450980392156865" green="0.28235294117647058" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="y25-dU-Lmp"/>
@@ -43,10 +43,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="RCH-tb-sLw" secondAttribute="trailing" id="AgP-uM-IfL"/>
-                    <constraint firstItem="RCH-tb-sLw" firstAttribute="leading" secondItem="iFl-YP-Prl" secondAttribute="leading" constant="20" id="HSq-ju-pRI"/>
+                    <constraint firstItem="RCH-tb-sLw" firstAttribute="leading" secondItem="iFl-YP-Prl" secondAttribute="leading" constant="24" id="HSq-ju-pRI"/>
                     <constraint firstItem="Mvd-YG-mPK" firstAttribute="centerY" secondItem="JBu-iO-SIf" secondAttribute="centerY" id="JxI-kU-Ais"/>
                     <constraint firstAttribute="trailing" secondItem="6fc-ii-14b" secondAttribute="trailing" constant="15" id="Kzl-ZY-6Za"/>
-                    <constraint firstItem="JBu-iO-SIf" firstAttribute="leading" secondItem="iFl-YP-Prl" secondAttribute="leading" constant="15" id="MEs-1t-CD6"/>
+                    <constraint firstItem="JBu-iO-SIf" firstAttribute="leading" secondItem="iFl-YP-Prl" secondAttribute="leading" constant="24" id="MEs-1t-CD6"/>
                     <constraint firstAttribute="bottom" secondItem="RCH-tb-sLw" secondAttribute="bottom" id="OCF-bD-3JF"/>
                     <constraint firstItem="JBu-iO-SIf" firstAttribute="centerY" secondItem="iFl-YP-Prl" secondAttribute="centerY" id="cRc-IG-jY4"/>
                     <constraint firstItem="6fc-ii-14b" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mvd-YG-mPK" secondAttribute="trailing" constant="10" id="cpA-wj-9zV"/>

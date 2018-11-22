@@ -16,8 +16,23 @@ class NewSellController: JXTableViewController {
     var payVM = PayVM()
     var noticeView : JXSelectView?
     
+    lazy var emptyLabel: UILabel = {
+        let label = UILabel(frame: CGRect())
+        label.textColor = UIColor.rgbColor(rgbValue: 0x8E8E97)
+        label.text = "您当前没有挂卖单信息"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.isHidden = true
+        label.sizeToFit()
+        label.center = self.view.center
+        return label
+    }()
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(self.emptyLabel)
         
         self.title = "我要卖"
         self.customNavigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(sell))
@@ -77,28 +92,63 @@ class NewSellController: JXTableViewController {
     }
     @objc func sell() {
         
-        self.vm.sellInfo { (_, msg, isSuc) in
-            if isSuc {
-                if self.vm.sellInfoEntity.list.count > 0 {
-                    self.performSegue(withIdentifier: "putUp", sender: self.vm.sellInfoEntity)
-                } else {
-                    self.showNoticeView()
+        if UserManager.manager.userEntity.user.safePwdInit != 0 {
+            if UserManager.manager.userEntity.realName.isEmpty == false {
+                self.vm.sellInfo { (_, msg, isSuc) in
+                    if isSuc {
+                        if self.vm.sellInfoEntity.list.count > 0 {
+                            //self.performSegue(withIdentifier: "putUp", sender: self.vm.sellInfoEntity)
+                            
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = storyboard.instantiateViewController(withIdentifier: "putUpVC") as! PutUpViewController
+                            let nvc = JXNavigationController.init(rootViewController: vc)
+                            
+                            vc.sellInfoEntity = self.vm.sellInfoEntity
+                            vc.backBlock = {
+                                ViewManager.showImageNotice("挂单成功")
+                                self.tableView?.mj_header.beginRefreshing()
+                            }
+                            //vc.hidesBottomBarWhenPushed = true
+                            self.present(nvc, animated: true, completion: nil)
+                        } else {
+                            self.showNoticeView()
+                        }
+                    } else {
+                        ViewManager.showNotice(msg)
+                    }
                 }
             } else {
-                ViewManager.showNotice(msg)
+                let storyboard = UIStoryboard(name: "My", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "nameSet") as! NameSetController
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
             }
+            
+        } else {
+            self.showNoticeView1()
         }
     }
     override func request(page: Int) {
     
         self.vm.sellList{ (_, msg, isSuc) in
             self.hideMBProgressHUD()
+            if self.vm.sellListEntity.listArray.count == 0 {
+                self.emptyLabel.isHidden = false
+                self.tableView?.isHidden = true
+            } else {
+                self.emptyLabel.isHidden = true
+                self.tableView?.isHidden = false
+            }
             self.tableView?.mj_header.endRefreshing()
             //self.collectionView?.mj_footer.endRefreshing()
             self.tableView?.reloadData()
+            
+            
         }
     }
-    
+}
+//MARK: receipt type notice
+extension NewSellController {
     func showNoticeView() {
         let width : CGFloat = kScreenWidth - 40 * 2
         let height : CGFloat = 300
@@ -194,6 +244,103 @@ class NewSellController: JXTableViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+//MARK: trade psd notice
+extension NewSellController {
+    
+    func showNoticeView1() {
+        let width : CGFloat = kScreenWidth - 40 * 2
+        let height : CGFloat = 300
+        
+        self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
+        self.noticeView?.position = .middle
+        self.noticeView?.customView = {
+            
+            let contentView = UIView()
+            contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
+            
+            let backgroundView = UIView()
+            backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            contentView.addSubview(backgroundView)
+            
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            gradientLayer.cornerRadius = 5
+            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            
+            
+            
+            let label = UILabel()
+            label.frame = CGRect(x: 0, y: 0, width: width, height: 100)
+            //label.center = view.center
+            label.text = "提示"
+            label.textAlignment = .center
+            label.font = UIFont.boldSystemFont(ofSize: 16)
+            label.textColor = JXTextColor
+            backgroundView.addSubview(label)
+            
+            
+            
+            let nameLabel = UILabel()
+            nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 30)
+            nameLabel.text = "您还未设置资金密码"
+            nameLabel.textColor = JXTextColor
+            nameLabel.font = UIFont.systemFont(ofSize: 16)
+            nameLabel.textAlignment = .center
+            
+            backgroundView.addSubview(nameLabel)
+            nameLabel.center.y = backgroundView.center.y
+            
+            
+            let margin : CGFloat = 16
+            let space : CGFloat = 24
+            let buttonWidth : CGFloat = (width - 24 - 16 * 2) / 2
+            let buttonHeight : CGFloat = 44
+            
+            let button1 = UIButton()
+            button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
+            button1.setTitle("稍后再说", for: .normal)
+            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
+            backgroundView.addSubview(button1)
+            
+            
+            let button = UIButton()
+            button.frame = CGRect(x: button1.jxRight + space, y: button1.jxTop, width: buttonWidth, height: buttonHeight)
+            button.setTitle("立即设置", for: .normal)
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+            button.addTarget(self, action: #selector(setPsd1), for: .touchUpInside)
+            backgroundView.addSubview(button)
+            
+            
+            button.layer.cornerRadius = 2
+            button.layer.shadowOpacity = 1
+            button.layer.shadowRadius = 10
+            button.layer.shadowOffset = CGSize(width: 0, height: 10)
+            button.layer.shadowColor = JX10101aShadowColor.cgColor
+            button.setTitleColor(JXFfffffColor, for: .normal)
+            button.backgroundColor = JXOrangeColor
+            
+            return contentView
+        }()
+        
+        self.noticeView?.show()
+    }
+    @objc func setPsd1() {
+        self.hideNoticeView()
+        
+        let storyboard = UIStoryboard(name: "My", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "modifyTradePsw") as! ModifyTradePswController
+        vc.hidesBottomBarWhenPushed = true
+        vc.type = 2
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
 extension NewSellController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -238,11 +385,12 @@ extension NewSellController {
             
             self.vm.sellDelete(id: entity.id ?? "", completion: { (_, msg, isSuc) in
                 if isSuc {
+                    ViewManager.showImageNotice("删除成功")
                     self.vm.sellListEntity.listArray.remove(at: indexPath.row)
                     tableView.beginUpdates()
                     tableView.deleteRows(at: [indexPath], with: .automatic)
                     tableView.endUpdates()
-                    //self.requestData()
+                    self.request(page: self.page)
                 } else {
                     ViewManager.showNotice(msg)
                 }

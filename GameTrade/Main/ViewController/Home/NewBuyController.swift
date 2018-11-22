@@ -30,23 +30,56 @@ class NewBuyController: JXCollectionViewController {
     var topBar : JXBarView!
     var horizontalView : JXHorizontalView?
     
+    
+    
+    lazy var statusBottomView: JXSelectView = {
+        let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
+        selectView.backgroundColor = JXOrangeColor
+        selectView.isBackViewUserInteractionEnabled = false
+        
+        return selectView
+    }()
+    
+    var payName = "支付宝"
+    var payType = 1
+    var amount: Int = 0
+    var buttonArray = Array<UIButton>()
+    
+    
+    lazy var keyboard: JXKeyboardToolBar = {
+        let bar = JXKeyboardToolBar(frame: CGRect())
+        bar.showBlock = { (view, value) in
+            print(view,value)
+        }
+        bar.closeBlock = {
+            self.textField.text = ""
+        }
+        bar.tintColor = JXTextColor
+        bar.toolBar.barTintColor = JXBackColor
+        bar.backgroundColor = JXBackColor
+        return bar
+    }()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         self.title = "我要买"
         
+        
+        
         //self.view.insertSubview(self.headView, belowSubview: self.customNavigationBar)
         self.view.addSubview(self.headView)
         
         let topView = UIView(frame: CGRect(x: 24, y: 8, width: kScreenWidth - 48, height: 67))
-        topView.backgroundColor = JXSeparatorColor
+        topView.backgroundColor = JXBackColor
         topView.layer.cornerRadius = 4
         topView.layer.shadowOpacity = 1
         topView.layer.shadowRadius = 33
         topView.layer.shadowOffset = CGSize(width: 0, height: 10)
         topView.layer.shadowColor = JX22222cShadowColor.cgColor
         headView.addSubview(topView)
+        
         
         let gradientLayer = CAGradientLayer.init()
         gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x393948).cgColor,UIColor.rgbColor(rgbValue: 0x3c3c4b).cgColor]
@@ -59,15 +92,19 @@ class NewBuyController: JXCollectionViewController {
         self.view.layer.insertSublayer(gradientLayer, at: 0)
         
         
-        self.textField = UITextField(frame: CGRect(x: 16, y: 18, width: topView.jxWidth - 16 * 2 - 12 - 88, height: 32))
+        let textFieldBgView = UIView(frame: CGRect(x: 16, y: 18, width: topView.jxWidth - 16 * 2 - 12 - 88, height: 32))
+        textFieldBgView.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
+        topView.addSubview(textFieldBgView)
+        
+        self.textField = UITextField(frame: CGRect(x: 16, y: 0, width: textFieldBgView.jxWidth - 16 * 2 , height: 32))
         textField.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
         textField.delegate = self
         textField.placeholder = "输入购买金额"
         textField.keyboardType = .numberPad
-        textField.font = UIFont.systemFont(ofSize: 12)
+        textField.font = UIFont.systemFont(ofSize: 13)
         textField.textColor = JXFfffffColor
         textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
-        topView.addSubview(textField)
+        textFieldBgView.addSubview(textField)
         
         let button = UIButton(type: .custom)
         button.frame = CGRect(x: topView.jxWidth - 16 - 88, y: 18, width: 88, height: 32)
@@ -83,6 +120,9 @@ class NewBuyController: JXCollectionViewController {
         button.addTarget(self, action: #selector(buy), for: .touchUpInside)
         
         topView.addSubview(button)
+        
+        self.keyboard.views = [textField]
+        self.view.addSubview(self.keyboard)
         
         topBar = JXBarView.init(frame: CGRect.init(x: 0, y: 83, width: view.bounds.width , height: 44), titles: ["全部","支付宝","微信","银行卡"])
         topBar.delegate = self
@@ -128,7 +168,7 @@ class NewBuyController: JXCollectionViewController {
         })
         self.collectionView?.mj_header.beginRefreshing()
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
         //每次进入都刷新，则不用监听登录状态
         //NotificationCenter.default.addObserver(self, selector: #selector(loginStatus(notify:)), name: NSNotification.Name(rawValue: NotificationLoginStatus), object: nil)
         
@@ -167,36 +207,52 @@ class NewBuyController: JXCollectionViewController {
     @objc func buy() {
         
         guard let text = self.textField.text, text.isEmpty == false else{
-            ViewManager.showNotice("请先输入数量")
+            ViewManager.showNotice("请先输入购买数量")
+            return
+        }
+        guard let num = Int(text), num > 10 else{
+            ViewManager.showNotice("暂无该挂单金额，请重新输入")
             return
         }
         self.textField.resignFirstResponder()
         
-        self.statusBottomView.customView = self.customViewInit(number: text, address: "address", gas: "gas", remark: "无")
-        self.statusBottomView.show()
+        self.showMBProgressHUD()
+        self.vm.getQuickPayType(amount: num, completion: { (_, msg, isSuc) in
+            self.hideMBProgressHUD()
+            if isSuc{
+                self.amount = num
+                self.statusBottomView.customView = self.customViewInit(number: text)
+                self.statusBottomView.show()
+            } else {
+                ViewManager.showNotice("暂无该挂单金额，请重新输入")
+            }
+        })
         
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
     }
+    //MARK: SelectView - normal
     
-    //MARK: SelectView - quick
+    var buyEntity : BuyEntity!
     
-    var payName = "支付宝"
-    var payType = 1
+    var normalTextField: UITextField!
+    var normalNumLabel: UILabel!
+    var normalValueLabel: UILabel!
     
-    var rightButton : UIButton!
-    
-    
-    lazy var statusBottomView: JXSelectView = {
+    lazy var statusBottomView1: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
         selectView.backgroundColor = JXOrangeColor
         selectView.isBackViewUserInteractionEnabled = false
         
+        self.setKeyBoardObserver()
         return selectView
     }()
-    
-    func customViewInit(number: String, address: String, gas: String, remark: String) -> UIView {
+    private func setKeyBoardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    func customViewInit1(number: String, address: String, gas: String, remark: String) -> UIView {
         
         let width : CGFloat = kScreenWidth - 48
         
@@ -240,47 +296,72 @@ class NewBuyController: JXCollectionViewController {
             button.setTitleColor(JX333333Color, for: .normal)
             button.contentVerticalAlignment = .center
             button.contentHorizontalAlignment = .center
-            button.addTarget(self, action: #selector(closeStatus), for: .touchUpInside)
+            button.addTarget(self, action: #selector(closeStatus1), for: .touchUpInside)
             view.addSubview(button)
             
             return view
         }()
         leftContentView.addSubview(topBarView)
         
-        
-        let nameLabel = UILabel()
-        nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: width, height: 30)
-        nameLabel.text = "\(number) \(configuration_coinName)"
-        nameLabel.textColor = JXFfffffColor
-        nameLabel.font = UIFont.systemFont(ofSize: 25)
-        nameLabel.textAlignment = .center
-        
-        leftContentView.addSubview(nameLabel)
+        self.normalTextField = {
+            let textField = UITextField(frame: CGRect(x: 24, y: topBarView.jxBottom + 20, width: width , height: 48))
+            textField.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
+            textField.layer.cornerRadius = 2
+            textField.delegate = self
+            textField.placeholder = "输入购买金额"
+            textField.text = number
+            textField.keyboardType = .numberPad
+            textField.font = UIFont.systemFont(ofSize: 14)
+            textField.textColor = JXFfffffColor
+            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+            
+            
+            textField.leftViewMode = .always
+            textField.leftView = {
+                let nameLabel = UILabel()
+                nameLabel.frame = CGRect(x: 24, y: 20, width: 24, height: 30)
+                return nameLabel
+            }()
+            
+            textField.rightViewMode = .always
+            textField.rightView = {
+                let nameLabel = UILabel()
+                nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: 60, height: 30)
+                nameLabel.text = "\(configuration_coinName)"
+                nameLabel.textColor = JXFfffffColor
+                nameLabel.font = UIFont.systemFont(ofSize: 13)
+                nameLabel.textAlignment = .center
+                
+                return nameLabel
+            }()
+            return textField
+        }()
+        leftContentView.addSubview(self.normalTextField)
         
         //1
         let leftLabel1 = UILabel()
-        leftLabel1.frame = CGRect(x: 24, y: nameLabel.jxBottom + 31, width: 65, height: 51)
-        leftLabel1.text = "交易金额"
+        leftLabel1.frame = CGRect(x: 24, y: self.normalTextField.jxBottom + 16, width: 65, height: 51)
+        leftLabel1.text = "交易数量"
         leftLabel1.textColor = JXText50Color
         leftLabel1.font = UIFont.systemFont(ofSize: 13)
         leftLabel1.textAlignment = .left
         leftContentView.addSubview(leftLabel1)
         
-        let rightLabel1 = UILabel()
-        rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 51)
-        if let num = Double(number) {
-            rightLabel1.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
-        } else {
-            rightLabel1.text = "\(0) \(configuration_valueType)"
-        }
+        self.normalNumLabel = {
+            let rightLabel1 = UILabel()
+            rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 51)
+            rightLabel1.text = number + " \(configuration_coinName)"
+            rightLabel1.textColor = JXTextColor
+            rightLabel1.font = UIFont.systemFont(ofSize: 14)
+            rightLabel1.textAlignment = .right
+            
+            return rightLabel1
+        }()
         
-        rightLabel1.textColor = JXRedColor
-        rightLabel1.font = UIFont.systemFont(ofSize: 14)
-        rightLabel1.textAlignment = .right
-        leftContentView.addSubview(rightLabel1)
+        leftContentView.addSubview(normalNumLabel)
         
         let line1 = UIView()
-        line1.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel1.jxBottom, width: width, height: 1)
+        line1.frame = CGRect(x: leftLabel1.jxLeft, y: leftLabel1.jxBottom, width: width, height: 1)
         line1.backgroundColor = JXSeparatorColor
         leftContentView.addSubview(line1)
         
@@ -302,7 +383,7 @@ class NewBuyController: JXCollectionViewController {
         leftContentView.addSubview(rightLabel2)
         
         let line2 = UIView()
-        line2.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel2.jxBottom, width: width, height: 1)
+        line2.frame = CGRect(x: leftLabel1.jxLeft, y: leftLabel2.jxBottom, width: width, height: 1)
         line2.backgroundColor = JXSeparatorColor
         leftContentView.addSubview(line2)
         
@@ -310,24 +391,33 @@ class NewBuyController: JXCollectionViewController {
         //3
         let leftLabel3 = UILabel()
         leftLabel3.frame = CGRect(x: 24, y: line2.jxBottom , width: 65, height: 51)
-        leftLabel3.text = "交易数量"
+        leftLabel3.text = "交易金额"
         leftLabel3.textColor = JXText50Color
         leftLabel3.font = UIFont.systemFont(ofSize: 13)
         leftLabel3.textAlignment = .left
         leftContentView.addSubview(leftLabel3)
         
-        let rightLabel3 = UILabel()
-        rightLabel3.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth, height: 51)
-        rightLabel3.text = number
-        rightLabel3.textColor = JXTextColor
-        rightLabel3.font = UIFont.systemFont(ofSize: 14)
-        rightLabel3.textAlignment = .right
-        leftContentView.addSubview(rightLabel3)
+        self.normalValueLabel = {
+            let rightLabel3 = UILabel()
+            rightLabel3.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth, height: 51)
+            if let num = Double(number) {
+                rightLabel3.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
+            } else {
+                rightLabel3.text = "\(0) \(configuration_valueType)"
+            }
+            rightLabel3.textColor = JXRedColor
+            rightLabel3.font = UIFont.systemFont(ofSize: 14)
+            rightLabel3.textAlignment = .right
+            
+            return rightLabel3
+        }()
+        leftContentView.addSubview(normalValueLabel)
         
         let line3 = UIView()
-        line3.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel3.jxBottom, width: width, height: 1)
+        line3.frame = CGRect(x: leftLabel1.jxLeft, y: leftLabel3.jxBottom, width: width, height: 1)
         line3.backgroundColor = JXSeparatorColor
         leftContentView.addSubview(line3)
+        
         
         
         //4
@@ -339,45 +429,33 @@ class NewBuyController: JXCollectionViewController {
         leftLabel4.textAlignment = .left
         leftContentView.addSubview(leftLabel4)
         
-        //        let rightLabel4 = UILabel()
-        //        rightLabel4.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth, height: 51)
-        //        rightLabel4.text = remark
-        //        rightLabel4.textColor = JXTextColor
-        //        rightLabel4.font = UIFont.systemFont(ofSize: 14)
-        //        rightLabel4.textAlignment = .right
-        //        leftContentView.addSubview(rightLabel4)
-        
-        
-        
-        self.rightButton = UIButton()
-        rightButton.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth - 20, height: 51)
-        rightButton.setTitle(self.payName, for: .normal)
-        rightButton.setTitleColor(JXTextColor, for: .normal)
-        rightButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        rightButton.addTarget(self, action: #selector(selectPay), for: .touchUpInside)
-        rightButton.contentHorizontalAlignment = .right
-        leftContentView.addSubview(rightButton)
-        
-        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight + 11.5, y: leftLabel4.jxTop + 18.5, width: 8.5, height: 14))
-        //arrow.backgroundColor = JXTextColor
-        arrow.image = UIImage(named: "arrowRight")
-        leftContentView.addSubview(arrow)
+        let rightLabel4 = UILabel()
+        rightLabel4.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth, height: 51)
+        if self.buyEntity.payType == 1 {
+            rightLabel4.text = "支付宝"
+        } else if self.buyEntity.payType == 2 {
+            rightLabel4.text = "微信"
+        } else if self.buyEntity.payType == 3 {
+            rightLabel4.text = "银行卡"
+        }
+        rightLabel4.textColor = JXTextColor
+        rightLabel4.font = UIFont.systemFont(ofSize: 14)
+        rightLabel4.textAlignment = .right
+        leftContentView.addSubview(rightLabel4)
         
         
         let line4 = UIView()
-        line4.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel4.jxBottom, width: width, height: 1)
+        line4.frame = CGRect(x: leftLabel1.jxLeft, y: leftLabel4.jxBottom, width: width, height: 1)
         line4.backgroundColor = JXSeparatorColor
         leftContentView.addSubview(line4)
         
         
-        
-        
         let button = UIButton()
-        button.frame = CGRect(x: nameLabel.jxLeft, y: line4.jxBottom + 30, width: width, height: 44)
+        button.frame = CGRect(x: leftLabel1.jxLeft, y: line4.jxBottom + 30, width: width, height: 44)
         button.setTitle("下单", for: .normal)
         button.setTitleColor(JXFfffffColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
+        button.addTarget(self, action: #selector(confirm1), for: .touchUpInside)
         leftContentView.addSubview(button)
         
         
@@ -389,148 +467,16 @@ class NewBuyController: JXCollectionViewController {
         button.setTitleColor(JXFfffffColor, for: .normal)
         button.backgroundColor = JXOrangeColor
         
-        
-        
-        //右侧视图
-        
-        let rightContentView = UIView()
-        rightContentView.frame = CGRect(x: kScreenWidth, y: 0, width: kScreenWidth, height: 442 + kBottomMaginHeight)
-        contentView.addSubview(rightContentView)
-        
-        let topBarView1 = { () -> UIView in
-            let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 60))
-            
-            let label = UILabel()
-            label.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
-            //label.center = view.center
-            label.text = "选择支付方式"
-            label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 18)
-            label.textColor = JXFfffffColor
-            view.addSubview(label)
-            //label.sizeToFit()
-            
-            let button = UIButton()
-            button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
-            //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
-            button.setImage(UIImage(named: "icon-back")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
-            button.contentVerticalAlignment = .center
-            button.contentHorizontalAlignment = .center
-            button.addTarget(self, action: #selector(backTo), for: .touchUpInside)
-            view.addSubview(button)
-
-            
-            return view
-        }()
-        rightContentView.addSubview(topBarView1)
-        
-        //1
-        let icon1 = UIImageView(frame: CGRect(x: 24, y: topBarView.jxBottom + 20 + 15.5, width: 20, height: 20))
-        icon1.image = UIImage(named: "icon-mini-alipay")
-        rightContentView.addSubview(icon1)
-        
-        let button1 = UIButton()
-        button1.frame = CGRect(x: icon1.jxRight + 5, y: topBarView.jxBottom + 20, width: kScreenWidth - 48 - icon1.jxWidth - 20 - 5, height: 51)
-        button1.setTitle(self.payName, for: .normal)
-        button1.setTitleColor(JXTextColor, for: .normal)
-        button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button1.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
-        button1.tag = 1
-        button1.contentHorizontalAlignment = .left
-        rightContentView.addSubview(button1)
-        
-        let arrow1 = UIImageView(frame: CGRect(x: button1.jxRight + 11.5, y: button1.jxTop + 18.5, width: 8.5, height: 14))
-        //arrow1.backgroundColor = JXTextColor
-        arrow1.image = UIImage(named: "arrowRight")
-        rightContentView.addSubview(arrow1)
-        
-        let rightLine1 = UIView()
-        rightLine1.frame = CGRect(x: icon1.jxLeft, y: button1.jxBottom, width: width, height: 1)
-        rightLine1.backgroundColor = JXSeparatorColor
-        rightContentView.addSubview(rightLine1)
-        
-        //2
-        let icon2 = UIImageView(frame: CGRect(x: 24, y: rightLine1.jxBottom + 15.5, width: 20, height: 20))
-        icon2.image = UIImage(named: "icon-mini-wechat")
-        rightContentView.addSubview(icon2)
-        
-        let button2 = UIButton()
-        button2.frame = CGRect(x: button1.jxLeft, y: rightLine1.jxBottom, width: button1.jxWidth, height: 51)
-        button2.setTitle("微信", for: .normal)
-        button2.setTitleColor(JXTextColor, for: .normal)
-        button2.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button2.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
-        button2.tag = 2
-        button2.contentHorizontalAlignment = .left
-        rightContentView.addSubview(button2)
-        
-        let arrow2 = UIImageView(frame: CGRect(x: button1.jxRight + 11.5, y: button2.jxTop + 18.5, width: 8.5, height: 14))
-        //arrow2.backgroundColor = JXTextColor
-        arrow2.image = UIImage(named: "arrowRight")
-        rightContentView.addSubview(arrow2)
-        
-        let rightLine2 = UIView()
-        rightLine2.frame = CGRect(x: icon1.jxLeft, y: button2.jxBottom, width: width, height: 1)
-        rightLine2.backgroundColor = JXSeparatorColor
-        rightContentView.addSubview(rightLine2)
-        
-        //3
-        let icon3 = UIImageView(frame: CGRect(x: 24, y: rightLine2.jxBottom + 15.5, width: 20, height: 20))
-        icon3.image = UIImage(named: "icon-mini-card")
-        rightContentView.addSubview(icon3)
-        
-        let button3 = UIButton()
-        button3.frame = CGRect(x: button1.jxLeft, y: rightLine2.jxBottom, width: button1.jxWidth, height: 51)
-        button3.setTitle("银行卡", for: .normal)
-        button3.setTitleColor(JXTextColor, for: .normal)
-        button3.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button3.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
-        button3.tag = 3
-        button3.contentHorizontalAlignment = .left
-        rightContentView.addSubview(button3)
-        
-        let arrow3 = UIImageView(frame: CGRect(x: button1.jxRight + 11.5, y: button3.jxTop + 18.5, width: 8.5, height: 14))
-        //arrow3.backgroundColor = JXTextColor
-        arrow3.image = UIImage(named: "arrowRight")
-        rightContentView.addSubview(arrow3)
-        
-        let rightLine3 = UIView()
-        rightLine3.frame = CGRect(x: icon1.jxLeft, y: button3.jxBottom, width: width, height: 1)
-        rightLine3.backgroundColor = JXSeparatorColor
-        rightContentView.addSubview(rightLine3)
-        
-        
         return contentView
     }
-    @objc func selectPay() {
-        //self.closeStatus()
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: .transitionFlipFromRight, animations: {
-            self.statusBottomView.frame.origin.x = -kScreenWidth
-        }) { (isFinish) in
-            if isFinish {
-                //self.psdTextView.textField.becomeFirstResponder()
-            }
-        }
-        
-    }
-    @objc func backTo() {
-        UIView.animate(withDuration: 0.3, delay: 0, options: .transitionFlipFromLeft, animations: {
-            self.statusBottomView.frame.origin.x = 0
-        }, completion: nil)
-    }
-    @objc func confirm() {
+    @objc func confirm1() {
         print("confirm")
-        guard let text = self.textField.text, text.isEmpty == false else{
+        guard let text = self.normalTextField.text, text.isEmpty == false else{
             return
         }
-        self.closeStatus()
+        self.closeStatus1()
         self.showMBProgressHUD()
-        self.vm.buyQuick(payType: self.payType, amount: Int(text) ?? 0, completion: { (_, msg, isSuc) in
+        self.vm.buyNormal(tradeSaleId: self.buyEntity?.id ?? "", amount: Int(text) ?? 0, completion: { (_, msg, isSuc) in
             self.hideMBProgressHUD()
             if isSuc {
                 let vc = OrderDetailController()
@@ -541,61 +487,30 @@ class NewBuyController: JXCollectionViewController {
             }
         })
     }
-    @objc func closeStatus() {
-        self.statusBottomView.dismiss()
+    @objc func closeStatus1() {
+        self.statusBottomView1.dismiss()
     }
-    @objc func payClick(button: UIButton) {
-        if button.tag == 1 {
-            self.payName = "支付宝"
-            self.payType = 1
-        } else if button.tag == 2 {
-            self.payName = "微信"
-            self.payType = 2
-        } else {
-            self.payName = "银行卡"
-            self.payType = 3
-        }
-        self.rightButton.setTitle(self.payName, for: .normal)
-        
-        self.backTo()
-    }
+}
+//MARK: SelectView - quick buy
+extension NewBuyController {
     
-    
-    //MARK: SelectView - normal
-    
-    var buyEntity : BuyEntity?
-    
-    var textField1 : UITextField!
-    
-    lazy var statusBottomView1: JXSelectView = {
-        let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
-        selectView.isBackViewUserInteractionEnabled = false
-        
-        self.setKeyBoardObserver()
-        return selectView
-    }()
-    private func setKeyBoardObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    func customViewInit1(number: String, address: String, gas: String, remark: String) -> UIView {
+    func customViewInit(number: String) -> UIView {
         
         let width : CGFloat = kScreenWidth - 48
         
         let contentView = UIView()
-        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 398)
+        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362)
         
         let gradientLayer = CAGradientLayer.init()
         gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
         gradientLayer.locations = [0]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 398 + kBottomMaginHeight)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362 + kBottomMaginHeight)
         contentView.layer.insertSublayer(gradientLayer, at: 0)
         
         let leftContentView = UIView()
-        leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 398 + kBottomMaginHeight)
+        leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362 + kBottomMaginHeight)
         contentView.addSubview(leftContentView)
         
         //左侧视图
@@ -623,91 +538,29 @@ class NewBuyController: JXCollectionViewController {
             button.setTitleColor(JX333333Color, for: .normal)
             button.contentVerticalAlignment = .center
             button.contentHorizontalAlignment = .center
-            button.addTarget(self, action: #selector(closeStatus1), for: .touchUpInside)
+            button.addTarget(self, action: #selector(closeStatus), for: .touchUpInside)
             view.addSubview(button)
             
             return view
         }()
         leftContentView.addSubview(topBarView)
         
-        let textField = UITextField(frame: CGRect(x: 24, y: topBarView.jxBottom + 20, width: width , height: 48))
-        textField.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
-        textField.delegate = self
-        textField.placeholder = "输入购买金额"
-        textField.text = number
-        textField.keyboardType = .numberPad
-        textField.font = UIFont.systemFont(ofSize: 14)
-        textField.textColor = JXFfffffColor
-        textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
-        leftContentView.addSubview(textField)
         
-        textField.rightViewMode = .always
-        textField.rightView = {
-            let nameLabel = UILabel()
-            nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: 60, height: 30)
-            nameLabel.text = "\(configuration_coinName)"
-            nameLabel.textColor = JXFfffffColor
-            nameLabel.font = UIFont.systemFont(ofSize: 13)
-            nameLabel.textAlignment = .center
-            
-            return nameLabel
-        }()
-        self.textField1 = textField
-
+        let nameLabel = UILabel()
+        nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: width, height: 30)
         
-        //1
-        let leftLabel1 = UILabel()
-        leftLabel1.frame = CGRect(x: 24, y: textField.jxBottom + 16, width: 65, height: 51)
-        leftLabel1.text = "交易金额"
-        leftLabel1.textColor = JXText50Color
-        leftLabel1.font = UIFont.systemFont(ofSize: 13)
-        leftLabel1.textAlignment = .left
-        leftContentView.addSubview(leftLabel1)
-        
-        let rightLabel1 = UILabel()
-        rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 51)
         if let num = Double(number) {
-            rightLabel1.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
-        } else {
-            rightLabel1.text = "\(0) \(configuration_valueType)"
+            nameLabel.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
         }
+        nameLabel.textColor = JXTextColor
+        nameLabel.font = UIFont.systemFont(ofSize: 25)
+        nameLabel.textAlignment = .center
         
-        rightLabel1.textColor = JXRedColor
-        rightLabel1.font = UIFont.systemFont(ofSize: 14)
-        rightLabel1.textAlignment = .right
-        leftContentView.addSubview(rightLabel1)
-        
-        let line1 = UIView()
-        line1.frame = CGRect(x: textField.jxLeft, y: leftLabel1.jxBottom, width: width, height: 1)
-        line1.backgroundColor = JXSeparatorColor
-        leftContentView.addSubview(line1)
-        
-        //2
-        let leftLabel2 = UILabel()
-        leftLabel2.frame = CGRect(x: 24, y: line1.jxBottom, width: 65, height: 51)
-        leftLabel2.text = "交易单价"
-        leftLabel2.textColor = JXText50Color
-        leftLabel2.font = UIFont.systemFont(ofSize: 13)
-        leftLabel2.textAlignment = .left
-        leftContentView.addSubview(leftLabel2)
-        
-        let rightLabel2 = UILabel()
-        rightLabel2.frame = CGRect(x: leftLabel2.jxRight, y: leftLabel2.jxTop, width: kScreenWidth - 48 - leftLabel2.jxWidth, height: 51)
-        rightLabel2.text = "\(configuration_coinPrice) \(configuration_valueType)"
-        rightLabel2.textColor = JXTextColor
-        rightLabel2.font = UIFont.systemFont(ofSize: 14)
-        rightLabel2.textAlignment = .right
-        leftContentView.addSubview(rightLabel2)
-        
-        let line2 = UIView()
-        line2.frame = CGRect(x: textField.jxLeft, y: leftLabel2.jxBottom, width: width, height: 1)
-        line2.backgroundColor = JXSeparatorColor
-        leftContentView.addSubview(line2)
-        
+        leftContentView.addSubview(nameLabel)
         
         //3
         let leftLabel3 = UILabel()
-        leftLabel3.frame = CGRect(x: 24, y: line2.jxBottom , width: 65, height: 51)
+        leftLabel3.frame = CGRect(x: 24, y: nameLabel.jxBottom + 31, width: 65, height: 51)
         leftLabel3.text = "交易数量"
         leftLabel3.textColor = JXText50Color
         leftLabel3.font = UIFont.systemFont(ofSize: 13)
@@ -716,24 +569,81 @@ class NewBuyController: JXCollectionViewController {
         
         let rightLabel3 = UILabel()
         rightLabel3.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth, height: 51)
-        rightLabel3.text = number
-        rightLabel3.textColor = JXTextColor
+        rightLabel3.text = number + " \(configuration_coinName)"
+        rightLabel3.textColor = JXRedColor
         rightLabel3.font = UIFont.systemFont(ofSize: 14)
         rightLabel3.textAlignment = .right
         leftContentView.addSubview(rightLabel3)
         
         let line3 = UIView()
-        line3.frame = CGRect(x: textField.jxLeft, y: leftLabel3.jxBottom, width: width, height: 1)
+        line3.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel3.jxBottom, width: width, height: 1)
         line3.backgroundColor = JXSeparatorColor
         leftContentView.addSubview(line3)
         
         
+        //4
+        let leftLabel4 = UILabel()
+        leftLabel4.frame = CGRect(x: 24, y: line3.jxBottom, width: 65, height: 51)
+        leftLabel4.text = "支付方式"
+        leftLabel4.textColor = JXText50Color
+        leftLabel4.font = UIFont.systemFont(ofSize: 13)
+        leftLabel4.textAlignment = .left
+        leftContentView.addSubview(leftLabel4)
+        
+        
+        let view = UIView(frame: CGRect(x: 24, y: leftLabel4.jxBottom , width: width, height: 32))
+        leftContentView.addSubview(view)
+        
+        self.buttonArray.removeAll()
+        
+        let buttonSpace: CGFloat = 24
+        let buttonWidth = (width - buttonSpace * 2) / 3
+        let buttonHeight: CGFloat = 32
+        
+        for i in 0..<self.vm.buyPayTypeEntity.listArray.count{
+            let type = self.vm.buyPayTypeEntity.listArray[i]
+            
+            let button = UIButton()
+            button.frame = CGRect(x: (buttonWidth + buttonSpace) * CGFloat(i), y: 0, width: buttonWidth, height: buttonHeight)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            button.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
+            button.contentHorizontalAlignment = .center
+            button.layer.cornerRadius = 2
+            button.layer.borderWidth = 1
+            
+            view.addSubview(button)
+            
+            button.tag = type
+            
+            if type == 1 {
+                button.setTitle("支付宝", for: .normal)
+            } else if type == 2 {
+                button.setTitle("微信", for: .normal)
+            } else {
+                button.setTitle("银行卡", for: .normal)
+            }
+            button.setTitleColor(JXPlaceHolerColor, for: .normal)
+            button.setTitleColor(JXOrangeColor, for: .selected)
+            if i == 0 {
+                button.isSelected = true
+                button.layer.borderColor = JXOrangeColor.cgColor
+                
+                self.payName = button.currentTitle ?? ""
+                self.payType = type
+            } else {
+                button.layer.borderColor = JXPlaceHolerColor.cgColor
+            }
+            buttonArray.append(button)
+        }
+        
+        
+        
         let button = UIButton()
-        button.frame = CGRect(x: textField.jxLeft, y: line3.jxBottom + 30, width: width, height: 44)
+        button.frame = CGRect(x: nameLabel.jxLeft, y: view.jxBottom + 30, width: width, height: 44)
         button.setTitle("下单", for: .normal)
         button.setTitleColor(JXFfffffColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.addTarget(self, action: #selector(confirm1), for: .touchUpInside)
+        button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
         leftContentView.addSubview(button)
         
         
@@ -747,153 +657,45 @@ class NewBuyController: JXCollectionViewController {
         
         
         
-        //右侧视图
-        
-        let rightContentView = UIView()
-        rightContentView.frame = CGRect(x: kScreenWidth, y: 0, width: kScreenWidth, height: 398 + kBottomMaginHeight)
-        contentView.addSubview(rightContentView)
-        
-        let topBarView1 = { () -> UIView in
-            let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 60))
-            
-            let label = UILabel()
-            label.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
-            //label.center = view.center
-            label.text = "选择支付方式"
-            label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 18)
-            label.textColor = JXFfffffColor
-            view.addSubview(label)
-            //label.sizeToFit()
-            
-            let button = UIButton()
-            button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
-            //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
-            button.setImage(UIImage(named: "icon-back")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
-            button.contentVerticalAlignment = .center
-            button.contentHorizontalAlignment = .center
-            button.addTarget(self, action: #selector(backTo), for: .touchUpInside)
-            view.addSubview(button)
-            
-            
-            let button1 = UIButton()
-            button1.frame = CGRect(x: kScreenWidth - 80 - 24, y: 10, width: 80, height: 40)
-            //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            button1.setTitle("忘记密码？", for: .normal)
-            
-            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
-            button1.contentVerticalAlignment = .center
-            button1.contentHorizontalAlignment = .right
-            //button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
-            contentView.addSubview(button1)
-            
-            return view
-        }()
-        rightContentView.addSubview(topBarView1)
-        
-        //1
-        let icon1 = UIImageView(frame: CGRect(x: 24, y: topBarView.jxBottom + 20 + 15.5, width: 20, height: 20))
-        icon1.image = UIImage(named: "icon-mini-alipay")
-        rightContentView.addSubview(icon1)
-        
-        let button1 = UIButton()
-        button1.frame = CGRect(x: icon1.jxRight + 5, y: topBarView.jxBottom + 20, width: kScreenWidth - 48 - icon1.jxWidth - 20 - 5, height: 51)
-        button1.setTitle(self.payName, for: .normal)
-        button1.setTitleColor(JXTextColor, for: .normal)
-        button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button1.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
-        button1.tag = 1
-        button1.contentHorizontalAlignment = .left
-        rightContentView.addSubview(button1)
-        
-        let arrow1 = UIImageView(frame: CGRect(x: button1.jxRight, y: button1.jxTop + 15.5, width: 20, height: 20))
-        arrow1.backgroundColor = JXTextColor
-        rightContentView.addSubview(arrow1)
-        
-        let rightLine1 = UIView()
-        rightLine1.frame = CGRect(x: icon1.jxLeft, y: button1.jxBottom, width: width, height: 1)
-        rightLine1.backgroundColor = JXSeparatorColor
-        rightContentView.addSubview(rightLine1)
-        
-        //2
-        let icon2 = UIImageView(frame: CGRect(x: 24, y: rightLine1.jxBottom + 15.5, width: 20, height: 20))
-        icon2.image = UIImage(named: "icon-mini-wechat")
-        rightContentView.addSubview(icon2)
-        
-        let button2 = UIButton()
-        button2.frame = CGRect(x: button1.jxLeft, y: rightLine1.jxBottom, width: button1.jxWidth, height: 51)
-        button2.setTitle("微信", for: .normal)
-        button2.setTitleColor(JXTextColor, for: .normal)
-        button2.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button2.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
-        button2.tag = 2
-        button2.contentHorizontalAlignment = .left
-        rightContentView.addSubview(button2)
-        
-        let arrow2 = UIImageView(frame: CGRect(x: button1.jxRight, y: button2.jxTop + 15.5, width: 20, height: 20))
-        arrow2.backgroundColor = JXTextColor
-        rightContentView.addSubview(arrow2)
-        
-        let rightLine2 = UIView()
-        rightLine2.frame = CGRect(x: icon1.jxLeft, y: button2.jxBottom, width: width, height: 1)
-        rightLine2.backgroundColor = JXSeparatorColor
-        rightContentView.addSubview(rightLine2)
-        
-        //3
-        let icon3 = UIImageView(frame: CGRect(x: 24, y: rightLine2.jxBottom + 15.5, width: 20, height: 20))
-        icon3.image = UIImage(named: "icon-mini-card")
-        rightContentView.addSubview(icon3)
-        
-        let button3 = UIButton()
-        button3.frame = CGRect(x: button1.jxLeft, y: rightLine2.jxBottom, width: button1.jxWidth, height: 51)
-        button3.setTitle("银行卡", for: .normal)
-        button3.setTitleColor(JXTextColor, for: .normal)
-        button3.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button3.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
-        button3.tag = 3
-        button3.contentHorizontalAlignment = .left
-        rightContentView.addSubview(button3)
-        
-        let arrow3 = UIImageView(frame: CGRect(x: button1.jxRight, y: button3.jxTop + 15.5, width: 20, height: 20))
-        arrow3.backgroundColor = JXTextColor
-        rightContentView.addSubview(arrow3)
-        
-        let rightLine3 = UIView()
-        rightLine3.frame = CGRect(x: icon1.jxLeft, y: button3.jxBottom, width: width, height: 1)
-        rightLine3.backgroundColor = JXSeparatorColor
-        rightContentView.addSubview(rightLine3)
-        
-        
         return contentView
     }
-    @objc func confirm1() {
-        print("confirm")
-        guard let text = self.textField1.text, text.isEmpty == false else{
-            return
-        }
-        self.closeStatus1()
+    @objc func confirm() {
+
+        self.closeStatus()
         self.showMBProgressHUD()
-        self.vm.buyNormal(tradeSaleId: self.buyEntity?.id ?? "", amount: Int(text) ?? 0, completion: { (_, msg, isSuc) in
+        self.vm.buyQuick(payType: self.payType, amount: self.amount, completion: { (_, msg, isSuc) in
             self.hideMBProgressHUD()
             if isSuc {
+                self.textField.text = ""
+                self.amount = 0
+                
                 let vc = OrderDetailController()
                 vc.id = self.vm.id
+                vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 ViewManager.showNotice(msg)
             }
         })
     }
-    @objc func closeStatus1() {
-        self.statusBottomView1.dismiss()
+    @objc func closeStatus() {
+        self.statusBottomView.dismiss()
+    }
+    @objc func payClick(button: UIButton) {
+        
+        self.buttonArray.forEach { (btn) in
+            if button.tag == btn.tag {
+                btn.isSelected = true
+                btn.layer.borderColor = JXOrangeColor.cgColor
+                self.payName = btn.currentTitle ?? ""
+                self.payType = btn.tag
+            } else {
+                btn.isSelected = false
+                btn.layer.borderColor = JXPlaceHolerColor.cgColor
+            }
+        }
     }
 }
-
 extension NewBuyController : JXBarViewDelegate {
     
     func jxBarView(barView: JXBarView, didClick index: Int) {
@@ -902,7 +704,7 @@ extension NewBuyController : JXBarViewDelegate {
     }
 }
 
-extension NewBuyController : UITextFieldDelegate {
+extension NewBuyController {
     @objc func keyboardWillShow(notify:Notification) {
         
         guard
@@ -933,6 +735,51 @@ extension NewBuyController : UITextFieldDelegate {
             
         }
     }
+}
+extension NewBuyController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
+    @objc func textChange(notify: NSNotification) {
+        
+        if
+            notify.object is UITextField,
+            let textField = notify.object as? UITextField,
+            textField == self.normalTextField {
+            
+            
+            if
+                let num = textField.text,
+                let numDouble = Double(num){
+                
+                self.normalNumLabel.text = num
+                self.normalValueLabel.text = "-\(configuration_coinPrice * numDouble) \(configuration_valueType)"
+            } else {
+                self.normalNumLabel.text = "0"
+                self.normalValueLabel.text = "-\(configuration_coinPrice * 0) \(configuration_valueType)"
+            }
+        }
+        
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        //删除键
+        if string == "" {
+            return true
+        }
+        //手续费的代扣由后台来扣
+        if
+            textField == self.normalTextField,
+            let num = textField.text,
+            let numDouble = Int(num + string), numDouble > self.buyEntity.limitMax{
+            
+            return false
+            
+        } else {
+            return true
+        }
+    }
+    
 }
 extension NewBuyController {
     // MARK: UICollectionViewDataSource

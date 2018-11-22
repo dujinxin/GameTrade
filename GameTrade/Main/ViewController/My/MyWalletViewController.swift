@@ -31,13 +31,7 @@ class MyWebViewController: JXWkWebViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let leftButton = UIButton()
-//        leftButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-//        leftButton.setImage(UIImage(named: "icon-back"), for: .normal)
-//        leftButton.imageEdgeInsets = UIEdgeInsetsMake(12, 0, 12, 24)
-//        leftButton.addTarget(self, action: #selector(goback), for: .touchUpInside)
-//        self.customNavigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
-        
+        self.webView.backgroundColor = UIColor.clear
         
         self.webView.addObserver(self, forKeyPath: "title", options: .new, context: nil)
         self.webView.addObserver(self, forKeyPath: "URL", options: .new, context: nil)

@@ -20,13 +20,13 @@ class SecurityCenterController: JXTableViewController {
         super.viewDidLoad()
         self.title = "安全中心"
 
-        self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
-        
-        self.tableView?.separatorStyle = .singleLine
+        self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight + 48, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - 48)
+        self.tableView?.separatorStyle = .none
         self.tableView?.separatorColor = JXSeparatorColor
-        self.tableView?.estimatedRowHeight = 44
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
-        self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
+        //self.tableView?.estimatedRowHeight = 50
+        self.tableView?.rowHeight = 64//UITableViewAutomaticDimension
+        //self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
+        self.tableView?.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,16 +49,16 @@ class SecurityCenterController: JXTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier", for: indexPath)
-        cell.selectionStyle = .none
-        cell.accessoryType = .disclosureIndicator
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
         cell.backgroundColor = UIColor.clear
-        cell.textLabel?.textColor = JXTextColor
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
+        cell.leftLabel.textColor = JXTextColor
+        cell.leftLabel.font = UIFont.systemFont(ofSize: 14)
         if indexPath.row == 0 {
-            cell.textLabel?.text = "登录密码"
+            cell.leftLabel.text = "登录密码"
         } else {
-            cell.textLabel?.text = "资金密码"
+            cell.leftLabel.text = "资金密码"
         }
         return cell
     }
@@ -174,7 +174,6 @@ extension SecurityCenterController {
             let storyboard = UIStoryboard(name: "My", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "modifyTradePsw") as! ModifyTradePswController
             vc.hidesBottomBarWhenPushed = true
-            vc.mobile = self.mobile
             vc.type = 0
             self.navigationController?.pushViewController(vc, animated: true)
         }

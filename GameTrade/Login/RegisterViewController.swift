@@ -31,6 +31,7 @@ class RegisterViewController: BaseViewController {
     
     var vm = LoginVM()
     
+    var isCounting: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +89,8 @@ class RegisterViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
+        
+        self.updateButtonStatus()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -154,10 +157,16 @@ class RegisterViewController: BaseViewController {
                     UIView.beginAnimations(nil, context: nil)
                     self.fetchButton.setTitle(String(format: "%d", currentTime), for: .normal)
                     UIView.commitAnimations()
+                    self.isCounting = true
                     self.fetchButton.isEnabled = false
+                    self.fetchButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+                    self.fetchButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
                 }) {
+                    self.isCounting = false
                     self.fetchButton.setTitle("获取验证码", for: .normal)
                     self.fetchButton.isEnabled = true
+                    self.fetchButton.backgroundColor = JXOrangeColor
+                    self.fetchButton.setTitleColor(JXTextColor, for: .normal)
                 }
             }
         }
@@ -224,9 +233,45 @@ extension RegisterViewController: UITextFieldDelegate {
         }
         return true
     }
-    @objc func textChange(notify:NSNotification) {
-        guard let textField = notify.object as? UITextField else {
-            return
+    @objc func textChange(notify: NSNotification) {
+        
+        if notify.object is UITextField {
+            self.updateButtonStatus()
+        }
+    }
+    func updateButtonStatus() {
+        //登录按钮
+        if
+            let name = self.userTextField.text, name.isEmpty == false,
+            let password = self.passwordTextField.text, password.isEmpty == false,
+            let card = self.codeTextField.text, card.isEmpty == false{
+            
+            self.loginButton.isEnabled = true
+            self.loginButton.backgroundColor = JXOrangeColor
+            self.loginButton.setTitleColor(JXTextColor, for: .normal)
+            
+        } else {
+            
+            self.loginButton.isEnabled = false
+            self.loginButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.loginButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
+            
+        }
+        //验证码按钮
+        if
+            let name = self.userTextField.text, name.isEmpty == false,
+            let imageCode = self.imageTextField.text, imageCode.isEmpty == false, self.isCounting == false{
+            
+            self.fetchButton.isEnabled = true
+            self.fetchButton.backgroundColor = JXOrangeColor
+            self.fetchButton.setTitleColor(JXTextColor, for: .normal)
+            
+        } else {
+            
+            self.fetchButton.isEnabled = false
+            self.fetchButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.fetchButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
+            
         }
     }
     @objc func keyboardWillShow(notify:Notification) {

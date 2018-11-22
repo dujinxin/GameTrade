@@ -15,15 +15,13 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var orderInfoLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     
-    @IBOutlet weak var infoBackImageView: UIImageView!
-    
-    
+    @IBOutlet weak var tradeView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var discountLabel: UILabel!
-    
     @IBOutlet weak var valueLabel: UILabel!
     
+    @IBOutlet weak var listView: UIView!
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
@@ -36,13 +34,19 @@ class OrderBuyingDetailCell: UITableViewCell {
     
     @IBOutlet weak var remarkLabel: UILabel!
     
+    
+    @IBOutlet weak var payContentView: UIView!
+    @IBOutlet weak var payLabel: UILabel!
     @IBOutlet weak var cancelLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
     
     
     @IBOutlet weak var shopView: UIView!
     @IBOutlet weak var shopImageView: UIImageView!
+    @IBOutlet weak var shopLabel: UILabel!
     @IBOutlet weak var shopNameLabel: UILabel!
+    
+    @IBOutlet weak var noticeLabel: UILabel!
     
     var chatBlock : (()->())?
     var showCodeBlock : (()->())?
@@ -60,41 +64,63 @@ class OrderBuyingDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
+        self.orderNumberLabel.textColor = JXText50Color
+        self.orderInfoLabel.textColor = JXText50Color
+        
+        self.tradeView.layer.cornerRadius = 4
+        self.listView.layer.cornerRadius = 4
+        
         //self.infoBackImageView.image = UIImage(named: "Combined Shape")?.resizableImage(withCapInsets: UIEdgeInsetsMake(80, 20, 20, 20), resizingMode: .stretch)
         
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         
         self.cancelLabel.backgroundColor = UIColor.clear
+        self.cancelLabel.layer.cornerRadius = 2
         self.cancelLabel.layer.borderColor = JXOrangeColor.cgColor
         self.cancelLabel.layer.borderWidth = 1
         self.cancelLabel.textColor = JXOrangeColor
         
         self.cancelLabel.isUserInteractionEnabled = true
         self.cancelLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelTap(tap:))))
-        self.payButton.addTarget(self, action: #selector(payTap(tap:)), for: .touchUpInside)
+        self.payContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(payTap(tap:))))
+        //self.payButton.addTarget(self, action: #selector(payTap(tap:)), for: .touchUpInside)
+        
+        self.payContentView.backgroundColor = JXOrangeColor
+        self.payContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
+        self.payContentView.layer.shadowOpacity = 1
+        self.payContentView.layer.shadowRadius = 10
+        self.payContentView.layer.shadowColor = JX10101aShadowColor.cgColor
+        self.payContentView.layer.cornerRadius = 2
+        
+        //
+        self.shopLabel.layer.cornerRadius = 20
+        self.shopLabel.layer.masksToBounds = true
         
         
-        self.shopView.layer.shadowOffset = CGSize(width: 0, height: 13)
-        self.shopView.layer.shadowOpacity = 1
-        self.shopView.layer.shadowRadius = 52
-        self.shopView.layer.shadowColor = JX10101aShadowColor.cgColor
-        self.shopView.layer.cornerRadius = 4
+//        self.shopView.layer.shadowOffset = CGSize(width: 0, height: 13)
+//        self.shopView.layer.shadowOpacity = 1
+//        self.shopView.layer.shadowRadius = 52
+//        self.shopView.layer.shadowColor = JX10101aShadowColor.cgColor
+//        self.shopView.layer.cornerRadius = 4
         
         
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x2E2F47).cgColor,UIColor.rgbColor(rgbValue: 0x191A2C).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 48 * 2, height: self.shopView.jxHeight)
-        //gradientLayer.cornerRadius = 5
+//        let gradientLayer = CAGradientLayer.init()
+//        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x2E2F47).cgColor,UIColor.rgbColor(rgbValue: 0x191A2C).cgColor]
+//        gradientLayer.locations = [0]
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+//        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+//        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 48 * 2, height: self.shopView.jxHeight)
+//        //gradientLayer.cornerRadius = 5
+//
+//        self.shopView.layer.insertSublayer(gradientLayer, at: 0)
         
-        self.shopView.layer.insertSublayer(gradientLayer, at: 0)
+        self.noticeLabel.textColor = JXText50Color
         
     }
     
     func cancel() {
         if let timer = self.timer {
+            timer.suspend()
             timer.cancel()
         }
     }
@@ -114,9 +140,9 @@ class OrderBuyingDetailCell: UITableViewCell {
             self.orderNumberLabel.text = "订单号：\(entity?.orderNum ?? "")"
             
             self.priceLabel.text = "交易单价：\(entity?.coinPrice ?? 0) \(configuration_valueType)"
-            self.totalLabel.text = "交易数量：\(entity?.coinCounts ?? 0)\(configuration_coinName)"
-            self.discountLabel.text = "优惠红包：-\(entity?.discount ?? 0)\(configuration_valueType)"
-            self.valueLabel.text = "\(entity?.payAmount ?? 0)\(configuration_valueType)"
+            self.totalLabel.text = "交易数量：\(entity?.coinCounts ?? 0) \(configuration_coinName)"
+            self.discountLabel.text = "优惠红包：-\(entity?.discount ?? 0) \(configuration_valueType)"
+            self.valueLabel.text = "\(entity?.payAmount ?? 0) \(configuration_valueType)"
             
             if entity?.payType == 1 {
                 self.payNameLabel.text = "支付宝"
@@ -134,13 +160,16 @@ class OrderBuyingDetailCell: UITableViewCell {
             
             self.userNameLabel.text = entity?.name
             self.accoundLabel.text = entity?.account
-            //self.remarkLabel.text = entity.
+            self.remarkLabel.text = entity?.orderCipher
             
-            if
-                let str = entity?.agentHeadImg,
-                let url = URL(string: str) {
-                self.shopImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
-            }
+            self.cancelLabel.text = "取消订单"
+            
+//            if
+//                let str = entity?.agentHeadImg,
+//                let url = URL(string: str) {
+//                self.shopImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "defaultImage"), options: [], completed: nil)
+//            }
+            self.shopLabel.text = String(entity?.agentName?.prefix(1) ?? "")
             self.shopNameLabel.text = entity?.agentName
             
             var timeInter = 0
@@ -155,12 +184,10 @@ class OrderBuyingDetailCell: UITableViewCell {
                 self.cancelLabel.isUserInteractionEnabled = true
                 
                 self.timer = CommonManager.countDown1(timeOut: timeInter, process: { (process) in
-                    
-                    print("----",process)
-                    
                     let str = self.getCountDownFormatStr(timeInterval: process)
-                    self.cancelLabel.text = self.getCountDownCustomStr(str: str)
-                    
+//                    self.cancelLabel.text = self.getCountDownCustomStr(str: str)
+                    self.payButton.setTitle(self.getCountDownCustomStr(str: str), for: .normal)
+                    print("订单详情",process)
                 }) {
                     if let block = self.timeOutBlock {
                         block()
@@ -242,6 +269,6 @@ class OrderBuyingDetailCell: UITableViewCell {
         if str.isEmpty {
             return ""
         }
-        return "取消订单\n(\(str))"
+        return "剩\(str)"
     }
 }

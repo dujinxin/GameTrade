@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         routeUser()
         
         
+        
         let downloader = SDWebImageDownloader.shared()
 
         downloader.setValue(UIDevice.current.uuid, forHTTPHeaderField: "deviceId")
@@ -42,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         downloader.setValue(Bundle.main.version, forHTTPHeaderField: "version")
         downloader.setValue(kVersion, forHTTPHeaderField: "appVersion")
         downloader.setValue(configuration_merchantID, forHTTPHeaderField: "mertId")
+        
+        
         return true
     }
 
@@ -128,6 +131,20 @@ extension AppDelegate {
                         if let deviceToken = UserDefaults.standard.deviceToken() {
                             CCPClient.updateUserPushToken(token: deviceToken) { (_,_) in
                                 print("update device token on the server.")
+                            }
+                        }
+                        CCPClient.getTotalUnreadMessageCount { (num, param, error) in
+                            
+                            if let _ = error {
+                                print(error?.localizedDescription)
+                            } else {
+                                print(num,param)
+                                guard let tabVC = UIApplication.shared.keyWindow?.rootViewController as? TabBarViewController else { return }
+                                if let n = num, n > 0 {
+                                    tabVC.unreadMessagePoint(true)
+                                } else {
+                                    tabVC.unreadMessagePoint(false)
+                                }
                             }
                         }
                         //WindowManager.shared.prepareWindow(isLoggedIn: true)
