@@ -89,26 +89,29 @@ class HomeVM: BaseViewModel {
     //扫码支付
     var bizId : String = ""
     var webName : String = ""
+    var amount : Double = 0
     
-    func scanPayGetName(id: String, orderId: String, amount: Int, expireTime: String, sign: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
+    func scanPayGetInfo(sign: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
-        JXRequest.request(url: ApiString.scanPayGetName.rawValue, param: ["id": id, "orderId": orderId,"amount": amount, "expireTime": expireTime, "sign": sign], success: { (data, msg) in
+        JXRequest.request(url: ApiString.scanPayGetInfo.rawValue, param: ["sign": sign], success: { (data, msg) in
             guard
                 let dict = data as? Dictionary<String, Any>,
-                let webName = dict["webName"] as? String
+                let webName = dict["webName"] as? String,
+                let amount = dict["amount"] as? Double
                 else{
                     completion(nil, self.message, false)
                     return
             }
             self.webName = webName
+            self.amount = amount
             completion(data, msg, true)
         }) { (msg, code) in
             completion(nil, msg, false)
         }
     }
-    func scanPay(id: String, orderId: String, amount: Int, expireTime: String, sign: String, safePassword: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
+    func scanPay(sign: String, safePassword: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
-        JXRequest.request(url: ApiString.scanPay.rawValue, param: ["id": id, "orderId": orderId,"amount": amount, "expireTime": expireTime, "sign": sign, "safePassword": safePassword], success: { (data, msg) in
+        JXRequest.request(url: ApiString.scanPay.rawValue, param: ["sign": sign, "safePassword": safePassword], success: { (data, msg) in
             guard
                 let dict = data as? Dictionary<String, Any>,
                 let id = dict["bizId"] as? String

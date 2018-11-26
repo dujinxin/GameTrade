@@ -25,11 +25,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总资产" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gr-3Y-OBZ">
-                                    <rect key="frame" x="160" y="51" width="55.5" height="25"/>
+                                    <rect key="frame" x="169" y="51" width="37" height="25"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="25" id="Dgj-uU-5J2"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -424,6 +424,7 @@
                 <outlet property="helpView" destination="9v3-W5-X5N" id="m4V-m4-PNZ"/>
                 <outlet property="infoContentView" destination="CNB-gD-wVm" id="OU2-of-B2Q"/>
                 <outlet property="itemContentView" destination="mZz-LP-1rW" id="tIN-nM-Jjn"/>
+                <outlet property="limitInfoLabel" destination="6v3-bF-soX" id="nnm-gH-KUu"/>
                 <outlet property="limitNumLabel" destination="2Ik-bZ-3Vs" id="k0Z-qS-yTN"/>
                 <outlet property="limitPriceLabel" destination="Apm-vF-Iuw" id="tXV-0K-sph"/>
                 <outlet property="limitWidthConstraint" destination="LUT-kl-Cco" id="clY-o2-mpc"/>
@@ -438,9 +439,11 @@
                 <outlet property="switchContentView" destination="JpK-e3-qZg" id="lwe-Fm-mok"/>
                 <outlet property="textField" destination="T4I-vI-0qg" id="Ex6-BE-T8A"/>
                 <outlet property="topConstraint" destination="alm-hr-G2t" id="Fed-nK-sDs"/>
+                <outlet property="totalInfoLabel" destination="9Gr-3Y-OBZ" id="JbT-sf-bzW"/>
                 <outlet property="totalNumLabel" destination="RVX-Ic-i8a" id="025-ok-GrF"/>
                 <outlet property="totalPriceLabel" destination="lN5-U3-Wkp" id="njC-I8-Afz"/>
                 <outlet property="totalWidthConstraint" destination="9lu-PV-WJT" id="saO-Vq-mFg"/>
+                <outlet property="useInfoLabel" destination="6wN-Y7-YK6" id="v5M-E6-PM3"/>
                 <outlet property="useNumLabel" destination="Pkq-SB-xHU" id="6ch-qI-Opb"/>
                 <outlet property="usePriceLabel" destination="q62-oa-0qz" id="5Nk-dM-Wha"/>
                 <outlet property="useWidthConstraint" destination="MuZ-LB-WH4" id="geY-NC-dZW"/>

@@ -31,12 +31,6 @@ class ScanViewController: BaseViewController {
     
     var type = 0 //0 地址  1 付款
     
-    
-    var id : String?
-    var webNanme : String?
-    var orderId : String?
-    var amount : String?
-    var expireTime : String?
     var sign : String?
     
     var vm = HomeVM()
@@ -240,7 +234,7 @@ class ScanViewController: BaseViewController {
         
         let nameLabel = UILabel()
         nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: width, height: 30)
-        nameLabel.text = "\(self.amount ?? "0") \(configuration_coinName)"
+        nameLabel.text = "\(self.vm.amount) \(configuration_coinName)"
         nameLabel.textColor = JXFfffffColor
         nameLabel.font = UIFont.systemFont(ofSize: 25)
         nameLabel.textAlignment = .center
@@ -288,8 +282,7 @@ class ScanViewController: BaseViewController {
                 
                 DispatchQueue.global().asyncAfter(deadline: .now() + 0.5, execute: {
                     print("12345678")
-                    guard let numStr = self.amount, let num = Int(numStr) else { return }
-                    self.vm.scanPay(id: self.id ?? "", orderId: self.orderId ?? "", amount: num, expireTime: self.expireTime ?? "", sign: self.sign ?? "", safePassword: text, completion: { (_, msg, isSuc) in
+                    self.vm.scanPay(sign: self.sign ?? "", safePassword: text, completion: { (_, msg, isSuc) in
                         self.hideMBProgressHUD()
                         if isSuc {
                             let vc = WalletRecordDetailController()
@@ -397,45 +390,25 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
         } else {
             
             if str.hasPrefix(configuration_coinName) == true {
-                let result = str.components(separatedBy: "scan_pay?")
+                let result = str.components(separatedBy: "scan_pay/")
                 if result.count > 1 {
-                    let paramStr = result[1]
-                    let data = paramStr.components(separatedBy: "&")
-                    data.forEach { (value) in
-                        let keyValues = value.components(separatedBy: "=")
-                        if value.hasPrefix("webName"), keyValues.count > 1 {
-                            self.webNanme = keyValues[1]
-                        }
-                        if value.hasPrefix("id"), keyValues.count > 1 {
-                            self.id = keyValues[1]
-                        }
-                        if value.hasPrefix("orderId"), keyValues.count > 1 {
-                            self.orderId = keyValues[1]
-                        }
-                        if value.hasPrefix("expireTime"), keyValues.count > 1 {
-                            self.expireTime = keyValues[1]
-                        }
-                        if value.hasPrefix("amount"), keyValues.count > 1 {
-                            self.amount = keyValues[1]
-                        }
-                        if value.hasPrefix("sign"), keyValues.count > 1 {
-                            self.sign = keyValues[1]
+                    self.sign = result[1]
+                    
+                    self.vm.scanPayGetInfo(sign: self.sign ?? "") { (_, msg, isSuc) in
+                        if isSuc {
+                            self.statusBottomView.customView = self.customViewInit(number: "text", address: "address", gas: "gas", remark: "无")
+                            self.statusBottomView.show(inView: self.view)
+                            self.psdTextView.textField.becomeFirstResponder()
+                        } else {
+                            ViewManager.showNotice(msg)
+                            self.session.startRunning()
                         }
                     }
                 }
+            } else {
+                ViewManager.showNotice(str)
+                self.session.startRunning()
             }
-            guard let numStr = self.amount, let num = Int(numStr) else { return }
-            self.vm.scanPayGetName(id: self.id ?? "", orderId: self.orderId ?? "", amount: num, expireTime: self.expireTime ?? "", sign: self.sign ?? "") { (_, msg, isSuc) in
-                if isSuc {
-                    self.statusBottomView.customView = self.customViewInit(number: "text", address: "address", gas: "gas", remark: "无")
-                    self.statusBottomView.show(inView: self.view)
-                    self.psdTextView.textField.becomeFirstResponder()
-                } else {
-                    ViewManager.showNotice(msg)
-                    self.session.startRunning()
-                }
-            }
-            
         }
     }
 }

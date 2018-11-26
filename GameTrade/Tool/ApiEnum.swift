@@ -26,7 +26,7 @@ enum ApiString : String {
     case homeInfo =                  "/planA/home/homeInfo"                //首页
     case homeNotice =                "/planA/common/notice"                //公告
     
-    case scanPayGetName =            "/planA/order/prePay"                 //获取平台名称
+    case scanPayGetInfo =            "/planA/order/prePay"                 //获取支付信息
     case scanPay =                   "/planA/order/scanPay"                //扫码支付
     
     case buyList =                   "/planA/agent/adList"                 //买单列表

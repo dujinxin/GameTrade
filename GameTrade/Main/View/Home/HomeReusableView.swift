@@ -17,6 +17,11 @@ class HomeReusableView: UICollectionReusableView {
     @IBOutlet weak var rightButton: UIButton!
     
     @IBOutlet weak var totalNumLabel: UILabel!
+    @IBOutlet weak var totalInfoLabel: UILabel!{
+        didSet{
+            totalInfoLabel.text = "总\(configuration_coinName)资产"
+        }
+    }
     @IBOutlet weak var totalPriceLabel: UILabel!{
         didSet{
             totalPriceLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x272732)
@@ -27,6 +32,11 @@ class HomeReusableView: UICollectionReusableView {
     @IBOutlet weak var totalWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var useNumLabel: UILabel!
+    @IBOutlet weak var useInfoLabel: UILabel!{
+        didSet{
+            useInfoLabel.text = "可用\(configuration_coinName)资产"
+        }
+    }
     @IBOutlet weak var usePriceLabel: UILabel!{
         didSet{
             usePriceLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x272732)
@@ -37,6 +47,11 @@ class HomeReusableView: UICollectionReusableView {
     @IBOutlet weak var useWidthConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var limitNumLabel: UILabel!
+    @IBOutlet weak var limitInfoLabel: UILabel!{
+        didSet{
+            limitInfoLabel.text = "冻结\(configuration_coinName)资产"
+        }
+    }
     @IBOutlet weak var limitPriceLabel: UILabel!{
         didSet{
             limitPriceLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x272732)
