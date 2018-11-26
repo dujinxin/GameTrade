@@ -31,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setupChatCampSDK()
         
-        setupAppearances()
         initializeNotificationServices()
         CCPClient.addChannelDelegate(channelDelegate: self, identifier: AppDelegate.string())
         routeUser()
@@ -132,16 +131,14 @@ extension AppDelegate {
         
         CCPClient.initApp(appId: "6456046490195324928")
     }
-    
-    fileprivate func setupAppearances() {
-        UINavigationBar.appearance().tintColor = UIColor(red: 63/255, green: 81/255, blue: 180/255, alpha: 1.0)
-    }
-    
     fileprivate func routeUser() {
-        if let userID = UserDefaults.standard.userID() {
-            CCPClient.connect(uid: userID) { (user, error) in
+        if let userID = UserManager.manager.userEntity.id {
+            //登录聊天
+            CCPClient.connect(uid: userID) { [unowned self] (user, error) in
                 DispatchQueue.main.async {
-                    if error == nil {
+                    if error != nil {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationLoginStatus), object: false)
+                    } else {
                         if let deviceToken = UserDefaults.standard.deviceToken() {
                             CCPClient.updateUserPushToken(token: deviceToken) { (_,_) in
                                 print("update device token on the server.")
@@ -161,14 +158,9 @@ extension AppDelegate {
                                 }
                             }
                         }
-                        //WindowManager.shared.prepareWindow(isLoggedIn: true)
-                    } else {
-                        //WindowManager.shared.prepareWindow(isLoggedIn: false)
                     }
                 }
             }
-        } else {
-            //WindowManager.shared.prepareWindow(isLoggedIn: false)
         }
     }
 }

@@ -143,7 +143,7 @@ class OrderView: UIView {
         
         
         self.worthLabel.frame = CGRect(x: 16, y: merchatImageView.jxBottom + 18, width: 200, height: 18)
-        self.statusLabel.frame = CGRect(x: worthLabel.jxRight + 10, y: 0, width: 80, height: 18)
+        self.statusLabel.frame = CGRect(x: worthLabel.jxRight + 10, y: 0, width: mainView.jxWidth - worthLabel.jxRight - 10 - 16, height: 18)
         self.statusLabel.center.y = self.worthLabel.center.y
     }
     func getCountDownFormatStr(timeInterval: Int) -> String {

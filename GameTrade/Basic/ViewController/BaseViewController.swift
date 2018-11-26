@@ -49,7 +49,7 @@ open class BaseViewController: UIViewController {
         return v
     }()
     
-    var defaultInfo : [String:String]?
+    var defaultInfo : [String: String]?
     
     //log state
     var isLogin = false
@@ -60,7 +60,7 @@ open class BaseViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = JXFfffffColor
-        
+
         let gradientLayer = CAGradientLayer.init()
         gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
         gradientLayer.locations = [0]
@@ -69,12 +69,14 @@ open class BaseViewController: UIViewController {
         gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
         self.view.layer.insertSublayer(gradientLayer, at: 0)
         
-        self.setUpMainView()
         //isLogin ? setUpMainView() : setUpDefaultView()
         
         self.isCustomNavigationBarUsed() ? setCustomNavigationBar() : navigationBarConfig()
     }
-
+    override open func loadView() {
+        super.loadView()
+        setUpMainView()
+    }
     override open func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

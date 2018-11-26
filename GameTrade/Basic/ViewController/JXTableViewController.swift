@@ -30,7 +30,6 @@ class JXTableViewController: BaseViewController{
             self.automaticallyAdjustsScrollViewInsets = false
         }
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -59,7 +58,6 @@ class JXTableViewController: BaseViewController{
         
 //        refreshControl = UIRefreshControl()
 //        refreshControl?.addTarget(self, action: #selector(requestData), for: UIControlEvents.valueChanged)
-//        
 //        self.tableView?.addSubview(refreshControl!)
     }
     /// request data

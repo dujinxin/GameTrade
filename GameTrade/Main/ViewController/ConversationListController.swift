@@ -45,7 +45,7 @@ class ConversationListController: JXTableViewController {
         
         groupChannelsQuery = CCPGroupChannel.createGroupChannelListQuery()
         loadChannelsFromLocalStorage()
-    
+
     }
     
     open override func viewWillAppear(_ animated: Bool) {
