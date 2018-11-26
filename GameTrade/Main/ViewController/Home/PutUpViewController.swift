@@ -99,12 +99,12 @@ class PutUpViewController: BaseViewController {
         self.serviceLabel.text = self.serviceTotal
         self.payTotalLabel.text = self.sellRealTotal
         self.payNameLabel.text = self.payName
-        self.sellTextField.attributedPlaceholder = NSAttributedString(string: "请输入卖出数量", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+        self.sellTextField.attributedPlaceholder = NSAttributedString(string: "请输入卖出数量", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         
         self.paySelectView.isUserInteractionEnabled = true
         self.paySelectView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(selectPay)))
             
-        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
         
         self.submitButton.layer.cornerRadius = 2
         self.submitButton.layer.shadowOpacity = 1

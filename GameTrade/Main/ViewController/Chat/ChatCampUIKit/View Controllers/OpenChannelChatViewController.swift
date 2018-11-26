@@ -118,8 +118,8 @@ extension OpenChannelChatViewController: MessagesDataSource {
         dateFormatter.dateFormat = "HH:mm"
         let date = dateFormatter.string(from: message.sentDate)
         let attributedString = NSMutableAttributedString(string: date)
-        attributedString.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 10), range: NSString(string: date).range(of: date))
-        attributedString.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.gray, range: NSString(string: date).range(of: date))
+        attributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 10), range: NSString(string: date).range(of: date))
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.gray, range: NSString(string: date).range(of: date))
         
         return attributedString
     }
@@ -514,7 +514,7 @@ extension OpenChannelChatViewController {
     }
     
     func setupNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     @objc func channelProfileButtonTapped() {
@@ -768,7 +768,7 @@ extension OpenChannelChatViewController {
         recordingSession = AVAudioSession.sharedInstance()
         
         do {
-            try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try recordingSession.setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playAndRecord)), mode: AVAudioSession.Mode.default)
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission() { [unowned self] allowed in
                 DispatchQueue.main.async {
@@ -843,4 +843,9 @@ extension OpenChannelChatViewController: AVAudioRecorderDelegate {
             }
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }

@@ -46,11 +46,11 @@ class JXCollectionViewController: BaseViewController {
         
         
         let layout = UICollectionViewFlowLayout.init()
-        layout.sectionInset = UIEdgeInsetsMake(0.5, 0, 0, 0)
+        layout.sectionInset = UIEdgeInsets.init(top: 0.5, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0.5
         layout.minimumInteritemSpacing = 0.5
         
-        layout.itemSize = UICollectionViewFlowLayoutAutomaticSize
+        layout.itemSize = UICollectionViewFlowLayout.automaticSize
         layout.estimatedItemSize = CGSize(width: kScreenWidth / 3, height: kScreenWidth / 3)
         
 //        layout.headerReferenceSize = CGSize(width: 0, height: 0)

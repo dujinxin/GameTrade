@@ -30,7 +30,7 @@ class JXNavigationController: UINavigationController {
         //self.navigationBar.barStyle = .default      //状态栏 黑色
         self.navigationBar.barTintColor = UIColor.white//导航条颜色
         self.navigationBar.tintColor = UIColor.darkText   //item图片文字颜色
-        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.darkText,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)]//标题设置
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.darkText,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
         
         self.navigationBar.isHidden = false
     }

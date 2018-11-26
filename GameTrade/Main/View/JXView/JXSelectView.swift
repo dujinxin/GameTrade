@@ -114,19 +114,19 @@ class JXSelectView: UIView {
     lazy var cancelButton: UIButton = {
         let btn = UIButton()
         btn.tag = 0
-        btn.setTitle("取消", for: UIControlState.normal)
+        btn.setTitle("取消", for: UIControl.State.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.setTitleColor(JXMainColor, for: .normal)
-        btn.addTarget(self, action: #selector(tapClick), for: UIControlEvents.touchUpInside)
+        btn.addTarget(self, action: #selector(tapClick), for: UIControl.Event.touchUpInside)
         return btn
     }()
     lazy var confirmButton: UIButton = {
         let btn = UIButton()
         btn.tag = 1
-        btn.setTitle("确定", for: UIControlState.normal)
+        btn.setTitle("确定", for: UIControl.State.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         btn.setTitleColor(JXMainColor, for: .normal)
-        btn.addTarget(self, action: #selector(confirmClick(button:)), for: UIControlEvents.touchUpInside)
+        btn.addTarget(self, action: #selector(confirmClick(button:)), for: UIControl.Event.touchUpInside)
         return btn
     }()
    
@@ -153,7 +153,7 @@ class JXSelectView: UIView {
     lazy private var bgWindow : UIWindow = {
         let window = UIWindow()
         window.frame = UIScreen.main.bounds
-        window.windowLevel = UIWindowLevelAlert + 1
+        window.windowLevel = UIWindow.Level.alert + 1
         window.backgroundColor = UIColor.clear
         window.isHidden = false
         return window
@@ -475,7 +475,7 @@ extension JXSelectView : UIPickerViewDelegate, UIPickerViewDataSource{
         if self.dataSource != nil {
             let string = self.dataSource?.jxSelectView(jxSelectView: self, contentForRow: row, InSection: component)
             let attributeString = NSMutableAttributedString.init(string: string!)
-            attributeString.addAttributes([NSAttributedStringKey.font:UIFont.systemFont(ofSize: 13),NSAttributedStringKey.foregroundColor:JXMainColor], range: NSRange.init(location: 0, length: (string?.count)!))
+            attributeString.addAttributes([NSAttributedString.Key.font:UIFont.systemFont(ofSize: 13),NSAttributedString.Key.foregroundColor:JXMainColor], range: NSRange.init(location: 0, length: (string?.count)!))
             print(attributeString)
             return attributeString
         }

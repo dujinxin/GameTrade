@@ -82,9 +82,9 @@ class PutUpTableController: JXTableViewController {
                 cell.selectionStyle = .none
                 cell.textField.delegate = self
                 cell.textField.keyboardType = .numberPad
-                cell.textField.attributedPlaceholder = NSAttributedString(string: "请输入卖出数量", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+                cell.textField.attributedPlaceholder = NSAttributedString(string: "请输入卖出数量", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
                 
-                NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+                NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
                 
                 cell.nameLabel.text = dict["title"]
                 return cell

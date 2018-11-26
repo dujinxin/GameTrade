@@ -152,10 +152,10 @@ class JXNumInputTextView: JXView {
         self.addSubview(self.contentView!)
     }
     private func setKeyBoardObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notify:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notify:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notify:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notify:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     @objc private func tapClick() {
         self.dismiss()
@@ -198,8 +198,8 @@ extension JXNumInputTextView {
         
         guard
             let userInfo = notify.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }
@@ -221,8 +221,8 @@ extension JXNumInputTextView {
         print("notify = ","notify")
         guard
             let userInfo = notify.userInfo,
-            let _ = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }

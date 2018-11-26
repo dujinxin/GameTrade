@@ -33,7 +33,7 @@ class JXHorizontalView: UIView {
             if vc .isKind(of: UINavigationController.self) {
                 assert(false, "can not append UINavigationController")
             }
-            self.parentViewController.addChildViewController(vc)
+            self.parentViewController.addChild(vc)
         }
         
         super.init(frame: frame)
@@ -60,7 +60,7 @@ class JXHorizontalView: UIView {
         flowlayout.scrollDirection = .horizontal
         flowlayout.minimumLineSpacing  = 0.0
         flowlayout.minimumInteritemSpacing = 0.0
-        flowlayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        flowlayout.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         //flowlayout.headerReferenceSize = CGSize.init(width: self.rect.size.width, height: 44)
         
         let collectionView = UICollectionView(frame: CGRect.init(x: 0, y: 0, width: self.rect.width, height: self.rect.height), collectionViewLayout: flowlayout)
@@ -99,7 +99,7 @@ extension JXHorizontalView:UICollectionViewDelegate,UICollectionViewDataSource{
                 let vc = v as! UIViewController
                 vc.view.frame = CGRect.init(x: 0, y: 0, width: collectionView.frame.width, height: collectionView.frame.height)
                 cell.contentView.addSubview(vc.view)
-                vc.didMove(toParentViewController: parentViewController)
+                vc.didMove(toParent: parentViewController)
             }else if(v is UIView){
                 let iv = v as! UIView
                 iv.frame = cell.contentView.bounds

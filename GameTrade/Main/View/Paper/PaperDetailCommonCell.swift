@@ -22,7 +22,7 @@ class PaperDetailCommonCell: UITableViewCell {
                 let data = entity?.content?.data(using: .unicode)
                 let attributeStr = try? NSMutableAttributedString.init(data: data!, options: [NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html], documentAttributes: nil)
                 
-                let attributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgbColor(rgbValue: 0x3b4368)]
+                let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.rgbColor(rgbValue: 0x3b4368)]
                 //entity?.content?.count > attributeStr?.length
                 if let length = attributeStr?.length, length != 0 {
                     attributeStr?.addAttributes(attributes, range: NSRange.init(location: 0, length: length))

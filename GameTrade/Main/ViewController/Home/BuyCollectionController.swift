@@ -66,7 +66,7 @@ class BuyCollectionController: BaseViewController {
         textField.keyboardType = .numberPad
         textField.font = UIFont.systemFont(ofSize: 12)
         textField.textColor = JXFfffffColor
-        textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+        textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         topView.addSubview(textField)
         
         let button = UIButton(type: .custom)
@@ -565,7 +565,7 @@ extension BuyCollectionController : JXBarViewDelegate {
     func jxBarView(barView: JXBarView, didClick index: Int) {
         let indexPath = IndexPath.init(item: index, section: 0)
         //开启动画会影响topBar的点击移动动画
-        self.horizontalView?.containerView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.left, animated: false)
+        self.horizontalView?.containerView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.left, animated: false)
     }
 }
 extension BuyCollectionController : JXHorizontalViewDelegate {

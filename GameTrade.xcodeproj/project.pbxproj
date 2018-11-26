@@ -1757,6 +1757,7 @@
 				TargetAttributes = {
 					352D10A8215E14FA0053AD70 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -2400,7 +2401,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = GameTradeDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2428,7 +2429,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = GameTradeDisHoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

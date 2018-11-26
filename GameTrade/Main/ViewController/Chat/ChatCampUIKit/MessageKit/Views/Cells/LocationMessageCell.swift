@@ -31,7 +31,7 @@ open class LocationMessageCell: MessageCollectionViewCell {
 
     // MARK: - Properties
 
-    open var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    open var activityIndicator = UIActivityIndicatorView(style: .gray)
 
     open var imageView = UIImageView()
     
@@ -68,7 +68,7 @@ open class LocationMessageCell: MessageCollectionViewCell {
 
         activityIndicator.startAnimating()
 
-        let snapshotOptions = MKMapSnapshotOptions()
+        let snapshotOptions = MKMapSnapshotter.Options()
         snapshotOptions.region = MKCoordinateRegion(center: location.coordinate, span: options.span)
         snapshotOptions.showsBuildings = options.showsBuildings
         snapshotOptions.showsPointsOfInterest = options.showsPointsOfInterest

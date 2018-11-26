@@ -35,7 +35,7 @@ class CountDown: NSObject {
     
     override init() {
         super.init()
-        NotificationCenter.default.addObserver(self, selector: #selector(setupLess), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setupLess), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
     init(tableView: UITableView, data: Array<BaseModel>) {
         super.init()
@@ -43,7 +43,7 @@ class CountDown: NSObject {
         self.tableView = tableView
         self.dataArray = data
         
-        NotificationCenter.default.addObserver(self, selector: #selector(setupLess), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setupLess), name: UIApplication.didBecomeActiveNotification, object: nil)
         
         self.countDown()
     }

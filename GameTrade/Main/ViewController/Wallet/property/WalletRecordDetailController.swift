@@ -38,7 +38,7 @@ class WalletRecordDetailController: JXTableViewController {
         
         //self.tableView?.separatorStyle = .none
         self.tableView?.estimatedRowHeight = 50
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
+        self.tableView?.rowHeight = UITableView.automaticDimension
         self.tableView?.register(UINib(nibName: "WalletListPayingCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierNormal)
         self.tableView?.register(UINib(nibName: "WalletDetailPayedCell", bundle: nil), forCellReuseIdentifier: reuseIdentifieringDetailPayed)
         self.tableView?.register(UINib(nibName: "WalletAddressCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierAddress)

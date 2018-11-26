@@ -37,7 +37,7 @@ class ChannelProfileViewController: UIViewController, UITableViewDelegate, UITab
     func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         tableView.tableFooterView = UIView()
     }

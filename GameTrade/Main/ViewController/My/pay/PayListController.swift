@@ -156,19 +156,40 @@ class PayListController: JXTableViewController {
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "删除！"
     }
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         
-        let style : UITableViewCellEditingStyle = .delete
+        let style : UITableViewCell.EditingStyle = .delete
         return style
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        self.currentIndexPath = indexPath
-        self.type = 0
-        self.statusBottomView.customView = self.customViewInit()
-        self.statusBottomView.show(inView: self.view)
-        self.psdTextView.textField.becomeFirstResponder()
+  
+        if indexPath.row == 0 {
+            if let entity = self.vm.customListEntity?.list["ali"], entity.isEmpty != 0 {
+                self.currentIndexPath = indexPath
+                self.type = 0
+                self.statusBottomView.customView = self.customViewInit()
+                self.statusBottomView.show(inView: self.view)
+                self.psdTextView.textField.becomeFirstResponder()
+            }
+            
+        } else if indexPath.row == 1{
+            if let entity = self.vm.customListEntity?.list["weChat"], entity.isEmpty != 0 {
+                self.currentIndexPath = indexPath
+                self.type = 0
+                self.statusBottomView.customView = self.customViewInit()
+                self.statusBottomView.show(inView: self.view)
+                self.psdTextView.textField.becomeFirstResponder()
+            }
+        } else {
+            if let entity = self.vm.customListEntity?.list["card"], entity.isEmpty != 0 {
+                self.currentIndexPath = indexPath
+                self.type = 0
+                self.statusBottomView.customView = self.customViewInit()
+                self.statusBottomView.show(inView: self.view)
+                self.psdTextView.textField.becomeFirstResponder()
+            }
+        }
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         //default,destructive默认红色，normal默认灰色，可以通过backgroundColor 修改背景颜色，backgroundEffect 添加模糊效果

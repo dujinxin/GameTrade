@@ -31,12 +31,12 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var userTextField: UITextField!{
         didSet{
             userTextField.textColor = JXTextColor
-            userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+            userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         }
     }
     @IBOutlet weak var passwordTextField: UITextField!{
         didSet{
-            passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+            passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
             passwordTextField.textColor = JXTextColor
             passwordTextField.rightViewMode = .always
             passwordTextField.rightView = {() -> UIView in
@@ -107,9 +107,9 @@ class LoginViewController: BaseViewController {
         }
 
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         self.updateButtonStatus()
         
@@ -257,8 +257,8 @@ extension LoginViewController: UITextFieldDelegate {
 
         guard
             let userInfo = notify.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }
@@ -275,8 +275,8 @@ extension LoginViewController: UITextFieldDelegate {
         print("notify = ","notify")
         guard
             let userInfo = notify.userInfo,
-            let _ = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }

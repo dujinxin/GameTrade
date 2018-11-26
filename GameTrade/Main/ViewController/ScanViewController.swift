@@ -113,8 +113,8 @@ class ScanViewController: BaseViewController {
         self.topConstraint.constant = kStatusBarHeight + 7
     }
     private func setKeyBoardObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     func getScanCrop(rect: CGRect,readerViewBounds bounds:CGRect) -> CGRect {
         
@@ -332,8 +332,8 @@ extension ScanViewController {
         
         guard
             let userInfo = notify.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }
@@ -347,8 +347,8 @@ extension ScanViewController {
         print("notify = ","notify")
         guard
             let userInfo = notify.userInfo,
-            let _ = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }
@@ -454,12 +454,15 @@ extension ScanViewController: UIImagePickerControllerDelegate, UINavigationContr
         picker.dismiss(animated: true, completion: nil)
         self.session.startRunning()
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         self.session.stopRunning()
         
-        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        let mediaType = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.mediaType)] as! String
         if mediaType == "public.image" {
-            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage, let ciImage = CIImage(image: image) else {
+            guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage, let ciImage = CIImage(image: image) else {
                 return
             }
             //UIImage.image(originalImage: image, to: view.bounds.width)
@@ -486,4 +489,14 @@ extension ScanViewController: UIImagePickerControllerDelegate, UINavigationContr
         }
         picker.dismiss(animated: true, completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

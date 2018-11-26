@@ -30,12 +30,12 @@ class BuySubController: JXCollectionViewController {
         //self.collectionView?.frame = CGRect(x: 0, y: kNavStatusHeight + headViewHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - headViewHeight)
         // Register cell classes
         self.collectionView?.register(UINib.init(nibName: "MerchantCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-        self.collectionView?.register(UINib.init(nibName: "HomeReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
+        self.collectionView?.register(UINib.init(nibName: "HomeReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
         
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize.init(width: kScreenWidth, height: 168)
         
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         //layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 400)

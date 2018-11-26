@@ -112,7 +112,7 @@ class JXDropListView: UIView {
     lazy private var bgWindow : UIWindow = {
         let window = UIWindow()
         window.frame = UIScreen.main.bounds
-        window.windowLevel = UIWindowLevelAlert + 1
+        window.windowLevel = UIWindow.Level.alert + 1
         window.backgroundColor = UIColor.clear
         window.isHidden = false
         return window

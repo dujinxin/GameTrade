@@ -18,7 +18,7 @@ class JXUploadImageView: UIView {
     var leadingTrailingMargin : CGFloat = 20
     var topMargin : CGFloat = 20
     var bottomMargin : CGFloat = 20
-    var imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0) {
+    var imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0) {
         didSet{
             self.leftImageView.imageEdgeInsets = imageEdgeInsets
             self.centerImageView.imageEdgeInsets = imageEdgeInsets
@@ -257,7 +257,7 @@ class JXUploadImageView: UIView {
 
 class UploadImageView : UIView {
     
-    var imageEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
+    var imageEdgeInsets = UIEdgeInsets.init(top: 15, left: 15, bottom: 15, right: 15)
     var buttonSize = CGSize(width: 30, height: 30)
     var defaultImage : String?
     var deleteImage : String? {

@@ -164,7 +164,7 @@ class ArticleDetailsController: BaseViewController,UITableViewDelegate,UITableVi
         
         let leftButton = UIButton()
         leftButton.setImage(UIImage(named: "imgBack"), for: .normal)
-        leftButton.imageEdgeInsets = UIEdgeInsetsMake(5, 9, 5, 9)
+        leftButton.imageEdgeInsets = UIEdgeInsets.init(top: 5, left: 9, bottom: 5, right: 9)
         //leftButton.setTitle("up", for: .normal)
         leftButton.addTarget(self, action: #selector(backTo), for: .touchUpInside)
         
@@ -172,7 +172,7 @@ class ArticleDetailsController: BaseViewController,UITableViewDelegate,UITableVi
         self.view.addSubview(navigationBar!)
         
         //self.tableView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - bottomInputViewHeight)
-        self.tableView.contentInset = UIEdgeInsetsMake(kNavStatusHeight, 0, 0, 0)
+        self.tableView.contentInset = UIEdgeInsets.init(top: kNavStatusHeight, left: 0, bottom: 0, right: 0)
         //self.tableView.addSubview(self.navigationBar!)
         
         if #available(iOS 11.0, *) {
@@ -384,13 +384,13 @@ class ArticleDetailsController: BaseViewController,UITableViewDelegate,UITableVi
             self.titleView?.text = "文章详情"
             self.leftItem?.setImage(UIImage(named: "imgBack")?.withRenderingMode(.alwaysTemplate), for: .normal)
             self.leftItem?.tintColor = UIColor.black
-            self.leftItem?.imageEdgeInsets = UIEdgeInsetsMake(5, 9, 5, 9)
+            self.leftItem?.imageEdgeInsets = UIEdgeInsets.init(top: 5, left: 9, bottom: 5, right: 9)
         }else if yOffset >= kNavStatusHeight{
             //self.customNavigationBar.alpha = 1
             self.backgroundView?.alpha = 0
             self.titleView?.text = ""
             self.leftItem?.setImage(UIImage(named: "iconBackBlackbg"), for: .normal)
-            self.leftItem?.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+            self.leftItem?.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         }else{
             //self.customNavigationBar.alpha = fabs(fabs(yOffset) - kNavStatusHeight) / kNavStatusHeight
             self.backgroundView?.alpha = fabs(fabs(yOffset) - kNavStatusHeight) / kNavStatusHeight

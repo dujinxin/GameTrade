@@ -80,14 +80,14 @@ class JXPlaceHolderTextView: UITextView {
         self.placeHolderView.sizeToFit()
     }
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidChangeNotification, object: nil)
         self.removeObserver(self, forKeyPath: "text")
     }
     func setPlaceHolderView() {
         addSubview(self.placeHolderView)
-        sendSubview(toBack: self.placeHolderView)
+        sendSubviewToBack(self.placeHolderView)
         self.addObserver(self, forKeyPath: "text", options: [.old,.new], context: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(placeHolderTextChange(nofiy:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(placeHolderTextChange(nofiy:)), name: UITextView.textDidChangeNotification, object: nil)
     }
     /// 添加观察者，是为了确保用户设置初始值时placeHolder正常显示
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {

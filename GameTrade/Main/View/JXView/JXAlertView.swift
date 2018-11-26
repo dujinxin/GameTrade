@@ -146,16 +146,16 @@ class JXAlertView: UIView {
     lazy var cancelButton: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = UIColor.white
-        btn.setTitle("取消", for: UIControlState.normal)
-        btn.setTitleColor(JX333333Color, for: UIControlState.normal)
+        btn.setTitle("取消", for: UIControl.State.normal)
+        btn.setTitleColor(JX333333Color, for: UIControl.State.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        btn.addTarget(self, action: #selector(tapClick), for: UIControlEvents.touchUpInside)
+        btn.addTarget(self, action: #selector(tapClick), for: UIControl.Event.touchUpInside)
         return btn
     }()
     lazy private var bgWindow : UIWindow = {
         let window = UIWindow()
         window.frame = UIScreen.main.bounds
-        window.windowLevel = UIWindowLevelAlert + 1
+        window.windowLevel = UIWindow.Level.alert + 1
         window.backgroundColor = UIColor.clear
         window.isHidden = false
         return window
@@ -379,7 +379,7 @@ class listViewCell: UITableViewCell {
         return view
     }()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.separatorView)

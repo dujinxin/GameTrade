@@ -286,7 +286,7 @@ extension UIImage {
     ///   - name: 数据名称
     /// - Returns: 操作结果
     static func insert(image:UIImage,name:String) ->Bool{
-        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
+        guard let data = image.jpegData(compressionQuality: 1.0) else {
             return false
         }
         return FileManager.insert(data: data, toFile: name)
@@ -298,7 +298,7 @@ extension UIImage {
     ///   - name: 数据名称
     /// - Returns: 操作结果
     static func update(image:UIImage,name:String) ->Bool {
-        guard let data = UIImageJPEGRepresentation(image, 1.0) else {
+        guard let data = image.jpegData(compressionQuality: 1.0) else {
             return false
         }
         return FileManager.update(inFile: data, name: name)

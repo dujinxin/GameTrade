@@ -36,7 +36,7 @@ class CardPayController: BaseViewController {
         self.bankNameLabel.font = UIFont.systemFont(ofSize: 14)
         
         self.nameLabel.text = UserManager.manager.userEntity.realName
-        self.cardTextField.attributedPlaceholder = NSAttributedString(string: "请输入银行卡号", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+        self.cardTextField.attributedPlaceholder = NSAttributedString(string: "请输入银行卡号", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
 
         if isEdit {
             self.bankNameLabel.textColor = JXTextColor
@@ -53,7 +53,7 @@ class CardPayController: BaseViewController {
         
         self.updateButtonStatus()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
         
         
         let bar = JXKeyboardToolBar(frame: CGRect(), views: [cardTextField])
@@ -77,7 +77,7 @@ class CardPayController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     deinit {
-        NotificationCenter.default.removeObserver(self, name: Notification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
     }
     @IBAction func submit() {
         

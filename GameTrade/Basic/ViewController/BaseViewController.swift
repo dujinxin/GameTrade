@@ -24,7 +24,7 @@ open class BaseViewController: UIViewController {
         navigationBar.barStyle = .blackTranslucent
         //navigationBar.barStyle = .default
         navigationBar.tintColor = UIColor.white //item图片文字颜色
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)]//标题设置
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
         navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
         return navigationBar
     }()

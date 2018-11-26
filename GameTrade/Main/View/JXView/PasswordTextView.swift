@@ -67,7 +67,7 @@ class PasswordTextView: JXSecretTextView {
             para.alignment = NSTextAlignment.center
             para.minimumLineHeight = 0
             
-            subStr.draw(in: CGRect(x: x, y: y, width: w, height: h), withAttributes: [NSAttributedStringKey.font: self.font,NSAttributedStringKey.foregroundColor:self.textColor,NSAttributedStringKey.paragraphStyle:para])
+            subStr.draw(in: CGRect(x: x, y: y, width: w, height: h), withAttributes: [NSAttributedString.Key.font: self.font,NSAttributedString.Key.foregroundColor:self.textColor,NSAttributedString.Key.paragraphStyle:para])
         }
     }
     override init(frame: CGRect) {
@@ -96,7 +96,7 @@ class PasswordTextView: JXSecretTextView {
         
         shapeLayer.strokeColor = lineColor.cgColor
         shapeLayer.lineWidth = lineWidth
-        shapeLayer.lineJoin = kCALineJoinRound
+        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
         
         shapeLayer.lineDashPattern = [NSNumber(value: lineLength),NSNumber(value: lineSpace)]
         

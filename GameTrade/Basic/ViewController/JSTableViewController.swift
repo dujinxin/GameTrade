@@ -20,7 +20,7 @@ class JSTableViewController: UITableViewController {
         navigationBar.barStyle = .blackTranslucent
         navigationBar.barTintColor = UIColor.orange//导航条颜色
         navigationBar.tintColor = UIColor.white //item图片文字颜色
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.red,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 20)]//标题设置
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.red,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20)]//标题设置
         navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
         return navigationBar
     }()
@@ -51,8 +51,8 @@ class JSTableViewController: UITableViewController {
         
         if #available(iOS 11.0, *) {
             self.tableView?.contentInsetAdjustmentBehavior = .never
-            self.tableView?.contentInset = UIEdgeInsetsMake(kNavStatusHeight, 0, 0, 0)
-            self.tableView?.scrollIndicatorInsets = UIEdgeInsetsMake(kNavStatusHeight, 0, 0, 0)
+            self.tableView?.contentInset = UIEdgeInsets.init(top: kNavStatusHeight, left: 0, bottom: 0, right: 0)
+            self.tableView?.scrollIndicatorInsets = UIEdgeInsets.init(top: kNavStatusHeight, left: 0, bottom: 0, right: 0)
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }

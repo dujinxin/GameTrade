@@ -132,9 +132,9 @@ open class MessagesViewController: BaseViewController {
         messagesCollectionView.register(DocumentMessageCell.self)
         messagesCollectionView.register(AudioMessageCell.self)
 
-        messagesCollectionView.register(MessageFooterView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter)
-        messagesCollectionView.register(MessageHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
-        messagesCollectionView.register(MessageDateHeaderView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader)
+        messagesCollectionView.register(MessageFooterView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
+        messagesCollectionView.register(MessageHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+        messagesCollectionView.register(MessageDateHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
     }
 
     /// Sets the constraints of the `MessagesCollectionView`.

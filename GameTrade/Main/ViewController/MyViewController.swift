@@ -47,7 +47,7 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
         self.tableView.register(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier1")
         self.tableView.register(UINib(nibName: "ImageTitleCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier2")
         self.tableView.estimatedRowHeight = 44
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.isScrollEnabled = false
         self.tableView.separatorStyle = .none
         self.tableView.backgroundColor = UIColor.clear
@@ -447,7 +447,7 @@ extension MyViewController {
             //textField.keyboardType = .numberPad
             textField.font = UIFont.systemFont(ofSize: 12)
             textField.textColor = JXFfffffColor
-            textField.attributedPlaceholder = NSAttributedString(string: "请输入新的用户名", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+            textField.attributedPlaceholder = NSAttributedString(string: "请输入新的用户名", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
             textFieldBgView.addSubview(textField)
             
             //textFieldBgView.center.y = backgroundView.center.y

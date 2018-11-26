@@ -59,9 +59,9 @@ class TransferViewController: BaseViewController {
         
         self.title = "发币"
   
-        self.addressTextField.attributedPlaceholder = NSAttributedString(string: "收款人钱包地址，一般为0x开头的42位字", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
-        self.numberTextField.attributedPlaceholder = NSAttributedString(string: "发币数量", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
-        self.remarkTextField.attributedPlaceholder = NSAttributedString(string: "备注（选填）", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+        self.addressTextField.attributedPlaceholder = NSAttributedString(string: "收款人钱包地址，一般为0x开头的42位字", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        self.numberTextField.attributedPlaceholder = NSAttributedString(string: "发币数量", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        self.remarkTextField.attributedPlaceholder = NSAttributedString(string: "备注（选填）", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         
         self.useLabel.text = "可用：\(UserManager.manager.userEntity.property.balance)"
         self.limitLabel.text = "0/16"
@@ -74,7 +74,7 @@ class TransferViewController: BaseViewController {
         
         self.updateButtonStatus()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
         
         self.requestData()
         

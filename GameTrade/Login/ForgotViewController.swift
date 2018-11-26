@@ -50,7 +50,7 @@ class ForgotViewController: BaseViewController {
         super.viewDidLoad()
         if #available(iOS 11.0, *) {
             self.mainScrollView.contentInsetAdjustmentBehavior = .never
-            self.mainScrollView.scrollIndicatorInsets = UIEdgeInsetsMake(kNavStatusHeight, 0, 0, 0)
+            self.mainScrollView.scrollIndicatorInsets = UIEdgeInsets.init(top: kNavStatusHeight, left: 0, bottom: 0, right: 0)
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
@@ -68,10 +68,10 @@ class ForgotViewController: BaseViewController {
         self.fetchButton.setTitleColor(JXTextColor, for: .normal)
         self.fetchButton.backgroundColor = JXOrangeColor
         
-        self.userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
-        self.imageTextField.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
-        self.codeTextField.attributedPlaceholder = NSAttributedString(string: "4位手机验证码", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入8-20位密码，不能全是数字或字母", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+        self.userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        self.imageTextField.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        self.codeTextField.attributedPlaceholder = NSAttributedString(string: "4位手机验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入8-20位密码，不能全是数字或字母", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         
         self.userTextField.textColor = JXTextColor
         self.imageTextField.textColor = JXTextColor
@@ -91,15 +91,15 @@ class ForgotViewController: BaseViewController {
         }()
         
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
         
         
         let url = URL.init(string: String(format: "%@%@?deviceId=%@&method=resetPwd&random=%d", kBaseUrl,ApiString.getImageCode.rawValue,UIDevice.current.uuid,arc4random_uniform(100000)))
         
         self.lookButton.sd_setImage(with: url, for: .normal, completed: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         self.contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         self.updateButtonStatus()
@@ -320,8 +320,8 @@ extension ForgotViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegate 
         
         guard
             let userInfo = notify.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }
@@ -338,8 +338,8 @@ extension ForgotViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegate 
         print("notify = ","notify")
         guard
             let userInfo = notify.userInfo,
-            let _ = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }

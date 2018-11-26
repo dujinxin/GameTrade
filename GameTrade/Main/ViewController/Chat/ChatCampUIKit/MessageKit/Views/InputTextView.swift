@@ -188,7 +188,7 @@ open class InputTextView: UITextView {
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(InputTextView.redrawTextAttachments),
-                                               name: .UIDeviceOrientationDidChange, object: nil)
+                                               name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     /// Updates the placeholderLabels constraint constants to match the placeholderLabelInsets
@@ -203,7 +203,7 @@ open class InputTextView: UITextView {
     // MARK: - Notification
     
     private func postTextViewDidChangeNotification() {
-        NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
+        NotificationCenter.default.post(name: UITextView.textDidChangeNotification, object: self)
     }
     
     // MARK: - Image Paste Support
@@ -242,9 +242,9 @@ open class InputTextView: UITextView {
         newAttributedStingComponent.append(NSAttributedString(string: "\n"))
         
         // The attributes that should be applied to the new NSAttributedString to match the current attributes
-        let attributes: [NSAttributedStringKey: Any] = [
-            (NSAttributedStringKey.font as NSString) as NSAttributedStringKey: font ?? UIFont.preferredFont(forTextStyle: .body),
-            (NSAttributedStringKey.foregroundColor as NSString) as NSAttributedStringKey: textColor ?? .black
+        let attributes: [NSAttributedString.Key: Any] = [
+            (NSAttributedString.Key.font as NSString) as NSAttributedString.Key: font ?? UIFont.preferredFont(forTextStyle: .body),
+            (NSAttributedString.Key.foregroundColor as NSString) as NSAttributedString.Key: textColor ?? .black
             ]
         newAttributedStingComponent.addAttributes(attributes, range: NSRange(location: 0, length: newAttributedStingComponent.length))
         
@@ -258,7 +258,7 @@ open class InputTextView: UITextView {
         selectedRange = NSRange(location: location, length: 0)
     
         // Broadcast a notification to recievers such as the MessageInputBar which will handle resizing
-        NotificationCenter.default.post(name: .UITextViewTextDidChange, object: self)
+        NotificationCenter.default.post(name: UITextView.textDidChangeNotification, object: self)
     }
     
     /// Returns an NSTextAttachment the provided image that will fit inside the NSTextContainer
@@ -281,7 +281,7 @@ open class InputTextView: UITextView {
         
         var images = [UIImage]()
         let range = NSRange(location: 0, length: attributedText.length)
-        attributedText.enumerateAttribute(NSAttributedStringKey.attachment, in: range, options: [], using: { value, range, _ -> Void in
+        attributedText.enumerateAttribute(NSAttributedString.Key.attachment, in: range, options: [], using: { value, range, _ -> Void in
             
             if let attachment = value as? NSTextAttachment {
                 if let image = attachment.image {
@@ -306,8 +306,8 @@ open class InputTextView: UITextView {
         let range = NSRange(location: 0, length: attributedText.length)
         attributedText.enumerateAttributes(in: range, options: []) { [unowned self] (object, range, _) in
             
-            if object.keys.contains(NSAttributedStringKey.attachment) {
-                if let attachment = object[NSAttributedStringKey.attachment] as? NSTextAttachment {
+            if object.keys.contains(NSAttributedString.Key.attachment) {
+                if let attachment = object[NSAttributedString.Key.attachment] as? NSTextAttachment {
                     if let image = attachment.image {
                         components.append(image)
                     } else if let image = attachment.image(forBounds: attachment.bounds,
@@ -332,7 +332,7 @@ open class InputTextView: UITextView {
         
         guard images.count > 0 else { return }
         let range = NSRange(location: 0, length: attributedText.length)
-        attributedText.enumerateAttribute(NSAttributedStringKey.attachment, in: range, options: [], using: { value, _, _ -> Void in
+        attributedText.enumerateAttribute(NSAttributedString.Key.attachment, in: range, options: [], using: { value, _, _ -> Void in
             if let attachment = value as? NSTextAttachment, let image = attachment.image {
                 
                 // Calculates a new width/height ratio to fit the image in the current frame

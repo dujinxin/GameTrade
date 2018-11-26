@@ -25,7 +25,7 @@ class ModifyImageController: BaseViewController {
         super.viewDidLoad()
 
         self.title = "设置头像"
-        self.customNavigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "提交", style: UIBarButtonItemStyle.plain, target: self, action: #selector(confirm))
+        self.customNavigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "提交", style: UIBarButtonItem.Style.plain, target: self, action: #selector(confirm))
         
         
         self.userImageView.layer.shadowOffset = CGSize(width: 0, height: 13)
@@ -97,7 +97,7 @@ class ModifyImageController: BaseViewController {
         }
     }
     
-    func showImagePickerViewController(_ sourceType:UIImagePickerControllerSourceType) {
+    func showImagePickerViewController(_ sourceType:UIImagePickerController.SourceType) {
         self.imagePicker = UIImagePickerController()
         imagePicker?.title = "选择照片"
 //        imagePicker.navigationBar.barTintColor = UIColor.blue
@@ -127,10 +127,13 @@ extension ModifyImageController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let mediaType = info[UIImagePickerControllerMediaType] as! String
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        let mediaType = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.mediaType)] as! String
         if mediaType == "public.image"{
-            let image = info[UIImagePickerControllerEditedImage] as? UIImage
+            let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage
             //UIImage.image(originalImage: image, to: view.bounds.width)
             self.userImageView.image = image
             isSelected = true
@@ -138,4 +141,14 @@ extension ModifyImageController: UIImagePickerControllerDelegate, UINavigationCo
         }
         picker.dismiss(animated: true, completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

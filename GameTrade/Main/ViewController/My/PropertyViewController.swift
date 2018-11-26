@@ -16,7 +16,7 @@ class PropertyViewController: UIViewController {
         let navigationBar = PropertyNavigationBar(frame:CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kNavStatusHeight))
         navigationBar.barTintColor = UIColor.groupTableViewBackground
         navigationBar.tintColor = UIColor.black
-        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17)]
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]
         return navigationBar
     }()
     lazy var customNavigationItem: UINavigationItem = {
@@ -53,7 +53,7 @@ class PropertyViewController: UIViewController {
         let leftButton = UIButton()
         leftButton.frame = CGRect(x: 0, y: 7, width: 30, height: 30)
         leftButton.setImage(UIImage(named: "imgBack")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        leftButton.imageEdgeInsets = UIEdgeInsetsMake(12, 0, 12, 24)
+        leftButton.imageEdgeInsets = UIEdgeInsets.init(top: 12, left: 0, bottom: 12, right: 24)
         leftButton.tintColor = UIColor.black
         leftButton.addTarget(self, action: #selector(pop), for: .touchUpInside)
         self.customNavigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)

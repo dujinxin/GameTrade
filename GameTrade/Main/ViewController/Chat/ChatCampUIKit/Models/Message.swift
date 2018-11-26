@@ -34,8 +34,8 @@ class Message: NSObject, MessageType {
         messageId = ccpMessage.getId()
         sentDate = Date(timeIntervalSince1970: TimeInterval(exactly: ccpMessage.getInsertedAt())!)
         
-        let errorMessageAttributes: [NSAttributedStringKey: Any] = [
-            (NSAttributedStringKey.font as NSString) as NSAttributedStringKey: UIFont.italicSystemFont(ofSize: 12),
+        let errorMessageAttributes: [NSAttributedString.Key: Any] = [
+            (NSAttributedString.Key.font as NSString) as NSAttributedString.Key: UIFont.italicSystemFont(ofSize: 12),
             ]
         let attributedString = NSMutableAttributedString(string: "can't display the message", attributes: errorMessageAttributes)
         

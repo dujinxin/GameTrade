@@ -59,7 +59,7 @@ class Base64 {
     
     static func imageEncode(_ image:UIImage) -> Data? {
         //UIImageJPEGRepresentation(<#T##image: UIImage##UIImage#>, <#T##compressionQuality: CGFloat##CGFloat#>)
-        guard let data = UIImagePNGRepresentation(image) else {
+        guard let data = image.pngData() else {
             return nil
         }
         return self.dataEncode(data)

@@ -34,7 +34,7 @@ class AccountViewController: JXTableViewController{
         
         self.tableView?.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
         self.tableView?.estimatedRowHeight = 44
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
+        self.tableView?.rowHeight = UITableView.automaticDimension
         self.tableView?.isScrollEnabled = false
         
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: 60 * 3)

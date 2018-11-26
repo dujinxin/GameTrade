@@ -50,7 +50,7 @@ class BankListController: JXTableViewController {
         self.tableView?.rowHeight = 44//UITableViewAutomaticDimension
         self.tableView?.separatorStyle = .singleLine
         self.tableView?.separatorColor = JXSeparatorColor
-        self.tableView?.separatorInset = UIEdgeInsetsMake(0, 24, 0, 0)
+        self.tableView?.separatorInset = UIEdgeInsets.init(top: 0, left: 24, bottom: 0, right: 0)
      
         self.tableView?.register(UINib(nibName: "BankCell", bundle: nil), forCellReuseIdentifier: labelCellIdentifier)
     

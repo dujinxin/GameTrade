@@ -15,7 +15,7 @@ class TabBarViewController: UITabBarController {
     lazy var pointView: UIView = {
         let point = UIView()
         point.backgroundColor = JXRedColor
-        let x = tabBar.bounds.width / CGFloat(childViewControllers.count) * 5 / 2 + 5
+        let x = tabBar.bounds.width / CGFloat(children.count) * 5 / 2 + 5
         point.frame = CGRect(x: x, y: 5, width: 10, height: 10)
         point.layer.cornerRadius = 5
         point.isHidden = true
@@ -32,8 +32,8 @@ class TabBarViewController: UITabBarController {
         tabBar.barTintColor = UIColor.rgbColor(rgbValue: 0x31313f)
         tabBar.isTranslucent = false
         tabBar.tintColor = JXOrangeColor
-        let normalAttributed = [NSAttributedStringKey.foregroundColor:UIColor.rgbColor(rgbValue: 0x8585ae)]
-        let selectedAttributed = [NSAttributedStringKey.foregroundColor:JXOrangeColor]
+        let normalAttributed = [NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0x8585ae)]
+        let selectedAttributed = [NSAttributedString.Key.foregroundColor:JXOrangeColor]
         tabBar.items?.forEach({ (item) in
             item.setTitleTextAttributes(normalAttributed, for: .normal)
             item.setTitleTextAttributes(selectedAttributed, for: .selected)

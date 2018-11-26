@@ -20,7 +20,7 @@ class PersonInfoViewController: JXTableViewController{
         
         self.tableView?.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
         self.tableView?.estimatedRowHeight = 44
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
+        self.tableView?.rowHeight = UITableView.automaticDimension
         
         self.vm.identityInfo { (data, msg, isSuccess) in
             if isSuccess == false {

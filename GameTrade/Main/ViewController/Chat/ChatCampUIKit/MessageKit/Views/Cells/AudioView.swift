@@ -16,7 +16,7 @@ class AudioView: UIView {
     
     func playAudio(_ audioUrl: URL) {
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)), mode: AVAudioSession.Mode.default)
             try AVAudioSession.sharedInstance().setActive(true)
             audioPlayer = try AVAudioPlayer(contentsOf: audioUrl)
             audioPlayer?.delegate = self
@@ -32,4 +32,9 @@ extension AudioView: AVAudioPlayerDelegate {
         audioPlayer = nil
         print("finished playing")
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }

@@ -68,7 +68,7 @@ class HomeReusableView: UICollectionReusableView {
             textField.keyboardType = .numberPad
             textField.font = UIFont.systemFont(ofSize: 18)
             textField.textColor = JXTextColor
-            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18),NSAttributedStringKey.foregroundColor:UIColor.rgbColor(rgbValue: 0xb3b3cb)])
+            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0xb3b3cb)])
             textField.leftViewMode = .always
             textField.leftView = {
                 let v = UIView(frame: CGRect(0, 0, 10, 10))

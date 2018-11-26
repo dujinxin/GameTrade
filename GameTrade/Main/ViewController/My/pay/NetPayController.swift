@@ -59,10 +59,10 @@ class NetPayController: BaseViewController {
         
         if type == 1 {
             self.title = "设置支付宝"
-            self.accountTextField.attributedPlaceholder = NSAttributedString(string: "请输入支付宝账号", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+            self.accountTextField.attributedPlaceholder = NSAttributedString(string: "请输入支付宝账号", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         } else {
             self.title = "设置微信"
-            self.accountTextField.attributedPlaceholder = NSAttributedString(string: "请输入微信账号", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+            self.accountTextField.attributedPlaceholder = NSAttributedString(string: "请输入微信账号", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         }
         
         self.nameLabel.text = UserManager.manager.userEntity.realName
@@ -83,7 +83,7 @@ class NetPayController: BaseViewController {
         
         self.updateButtonStatus()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
     }
 
     
@@ -148,7 +148,7 @@ class NetPayController: BaseViewController {
         }
     }
     
-    func showImagePickerViewController(_ sourceType:UIImagePickerControllerSourceType) {
+    func showImagePickerViewController(_ sourceType:UIImagePickerController.SourceType) {
         self.imagePicker = UIImagePickerController()
         imagePicker?.title = "选择照片"
         //        imagePicker.navigationBar.barTintColor = UIColor.blue
@@ -178,10 +178,13 @@ extension NetPayController: UIImagePickerControllerDelegate, UINavigationControl
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let mediaType = info[UIImagePickerControllerMediaType] as! String
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        let mediaType = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.mediaType)] as! String
         if mediaType == "public.image"{
-            let image = info[UIImagePickerControllerEditedImage] as? UIImage
+            let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage
             //UIImage.image(originalImage: image, to: view.bounds.width)
             self.codeImageView.image = image
             isSelected = true
@@ -215,4 +218,14 @@ extension NetPayController: UITextFieldDelegate {
             self.submitButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

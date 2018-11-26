@@ -40,7 +40,7 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
         self.uploadImageView.leadingTrailingMargin = 0
         self.uploadImageView.topMargin = 0
         self.uploadImageView.bottomMargin = 15
-        self.uploadImageView.imageEdgeInsets = UIEdgeInsetsMake(15, 0, 0, 15)
+        self.uploadImageView.imageEdgeInsets = UIEdgeInsets.init(top: 15, left: 0, bottom: 0, right: 15)
         
         self.uploadImageView.updateConstraintsIfNeeded()
         
@@ -83,7 +83,7 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
         self.submitButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.submitButton.layer.shadowColor = JX10101aShadowColor.cgColor
         
-        NotificationCenter.default.addObserver(self, selector: #selector(placeHolderTextChange(nofiy:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(placeHolderTextChange(nofiy:)), name: UITextView.textDidChangeNotification, object: nil)
     }
     override func updateViewConstraints() {
         
@@ -97,7 +97,7 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
         // Dispose of any resources that can be recreated.
     }
     deinit {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UITextView.textDidChangeNotification, object: nil)
         self.removeObserver(self, forKeyPath: "text")
     }
     @IBAction func submit() {
@@ -165,14 +165,17 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as! UIImage
         let newImage = UIImage.image(originalImage: image, to: UIScreen.main.bounds.width)
         
         if let im = newImage {
             self.uploadImageView.imageArray?.append(im)
             
-            if let data = UIImageJPEGRepresentation(im, 0.01){
+            if let data = im.jpegData(compressionQuality: 0.01){
                 self.imageDataArray.append(data)
             }
         }
@@ -222,4 +225,14 @@ extension FeedBackController : UITextViewDelegate,UITextFieldDelegate{
             self.submitButton.backgroundColor = JXOrangeColor
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

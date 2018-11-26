@@ -37,12 +37,12 @@ class MerchantViewController: JXCollectionViewController {
         self.collectionView?.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
         // Register cell classes
         self.collectionView?.register(UINib.init(nibName: "MerchantSubCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-        self.collectionView?.register(UINib.init(nibName: "MerchantReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
+        self.collectionView?.register(UINib.init(nibName: "MerchantReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
         
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         layout.estimatedItemSize = CGSize(width: kScreenWidth, height: 131)
         
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 231 + kNavStatusHeight)
@@ -116,7 +116,7 @@ extension MerchantViewController {
         
         let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: reuseIndentifierHeader, for: indexPath) as! MerchantReusableView
         reusableView.entity = self.vm.merchantEntity
-        if kind == UICollectionElementKindSectionHeader {
+        if kind == UICollectionView.elementKindSectionHeader {
             
         }
         
@@ -132,8 +132,8 @@ extension MerchantViewController {
 extension MerchantViewController {
     
     private func setKeyBoardObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     func customViewInit1(number: String, address: String, gas: String, remark: String) -> UIView {
         
@@ -194,7 +194,7 @@ extension MerchantViewController {
         textField.keyboardType = .numberPad
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.textColor = JXFfffffColor
-        textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+        textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         leftContentView.addSubview(textField)
         
         textField.rightViewMode = .always
@@ -332,8 +332,8 @@ extension MerchantViewController : UITextFieldDelegate {
         
         guard
             let userInfo = notify.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }
@@ -347,8 +347,8 @@ extension MerchantViewController : UITextFieldDelegate {
         print("notify = ","notify")
         guard
             let userInfo = notify.userInfo,
-            let _ = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }

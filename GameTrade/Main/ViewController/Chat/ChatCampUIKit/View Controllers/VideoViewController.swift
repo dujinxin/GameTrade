@@ -33,7 +33,7 @@ class VideoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: [])
+        try! AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category(rawValue: convertFromAVAudioSessionCategory(AVAudioSession.Category.playback)), mode: AVAudioSession.Mode.default)
         self.view.backgroundColor = UIColor.clear
         player = AVPlayer(url: videoURL)
         playerController = AVPlayerViewController()
@@ -44,7 +44,7 @@ class VideoViewController: UIViewController {
         
         playerController!.showsPlaybackControls = true
         playerController!.player = player!
-        self.addChildViewController(playerController!)
+        self.addChild(playerController!)
         self.view.addSubview(playerController!.view)
         playerController!.view.frame = view.frame
         NotificationCenter.default.addObserver(self, selector: #selector(playerItemDidReachEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.player!.currentItem)
@@ -57,7 +57,12 @@ class VideoViewController: UIViewController {
     
     @objc fileprivate func playerItemDidReachEnd(_ notification: Notification) {
         if self.player != nil {
-            self.player!.seek(to: kCMTimeZero)
+            self.player!.seek(to: CMTime.zero)
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }

@@ -185,7 +185,7 @@ class JXInputTextView: JXView {
             self.contentView = self.textView
             self.addSubview(self.contentView!)
             self.addObserver(self, forKeyPath: "text", options: [.old,.new], context: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(textChange(nofiy:)), name: NSNotification.Name.UITextViewTextDidChange, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(textChange(nofiy:)), name: UITextView.textDidChangeNotification, object: nil)
 //        case .normal:
 //            self.contentView = UIView()
 //            self.addSubview(self.contentView!)
@@ -208,10 +208,10 @@ class JXInputTextView: JXView {
         }
     }
     private func setKeyBoardObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notify:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notify:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(notify:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidHide(notify:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     @objc private func tapClick() {
         self.dismiss()
@@ -253,8 +253,8 @@ extension JXInputTextView {
         
         guard
             let userInfo = notify.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
         else {
             return
         }
@@ -278,8 +278,8 @@ extension JXInputTextView {
         print("notify = ","notify")
         guard
             let userInfo = notify.userInfo,
-            let _ = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }
@@ -409,18 +409,18 @@ extension JXInputTextView : UITextViewDelegate {
 class InputTopView: UIView {
     lazy var cancelButton: UIButton = {
         let btn = UIButton()
-        btn.setTitle("取消", for: UIControlState.normal)
-        btn.setTitleColor(UIColor.rgbColor(from: 160, 160, 160), for: UIControlState.normal)
+        btn.setTitle("取消", for: UIControl.State.normal)
+        btn.setTitleColor(UIColor.rgbColor(from: 160, 160, 160), for: UIControl.State.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        btn.addTarget(self, action: #selector(cnacelClick), for: UIControlEvents.touchUpInside)
+        btn.addTarget(self, action: #selector(cnacelClick), for: UIControl.Event.touchUpInside)
         return btn
     }()
     lazy var confirmButton: UIButton = {
         let btn = UIButton()
-        btn.setTitle("发布", for: UIControlState.normal)
-        btn.setTitleColor(UIColor.rgbColor(from: 160, 160, 160), for: UIControlState.normal)
+        btn.setTitle("发布", for: UIControl.State.normal)
+        btn.setTitleColor(UIColor.rgbColor(from: 160, 160, 160), for: UIControl.State.normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        btn.addTarget(self, action: #selector(confirmClick), for: UIControlEvents.touchUpInside)
+        btn.addTarget(self, action: #selector(confirmClick), for: UIControl.Event.touchUpInside)
         return btn
     }()
     lazy var titleLabel: UILabel = {

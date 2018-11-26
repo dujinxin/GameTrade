@@ -101,7 +101,7 @@ class NewBuyController: JXCollectionViewController {
         textField.keyboardType = .numberPad
         textField.font = UIFont.systemFont(ofSize: 13)
         textField.textColor = JXFfffffColor
-        textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+        textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         textFieldBgView.addSubview(textField)
         
         let button = UIButton(type: .custom)
@@ -141,12 +141,12 @@ class NewBuyController: JXCollectionViewController {
         
         self.collectionView?.frame = CGRect.init(x: 0, y: kNavStatusHeight + headViewHeight, width: view.bounds.width, height: UIScreen.main.bounds.height - kNavStatusHeight - headViewHeight)
         self.collectionView?.register(UINib.init(nibName: "MerchantCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-        self.collectionView?.register(UINib.init(nibName: "HomeReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
+        self.collectionView?.register(UINib.init(nibName: "HomeReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
         
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
         layout.estimatedItemSize = CGSize.init(width: kScreenWidth, height: 168)
         //layout.itemSize = UICollectionViewFlowLayoutAutomaticSize
-        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         self.collectionView?.collectionViewLayout = layout
@@ -162,7 +162,7 @@ class NewBuyController: JXCollectionViewController {
         })
         self.collectionView?.mj_header.beginRefreshing()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -242,8 +242,8 @@ class NewBuyController: JXCollectionViewController {
         return selectView
     }()
     private func setKeyBoardObserver() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     func customViewInit1(number: String, address: String, gas: String, remark: String) -> UIView {
         
@@ -306,7 +306,7 @@ class NewBuyController: JXCollectionViewController {
             textField.keyboardType = .numberPad
             textField.font = UIFont.systemFont(ofSize: 14)
             textField.textColor = JXFfffffColor
-            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:JXPlaceHolerColor])
+            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
             
             
             textField.leftViewMode = .always
@@ -701,8 +701,8 @@ extension NewBuyController {
         
         guard
             let userInfo = notify.userInfo,
-            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let rect = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }
@@ -716,8 +716,8 @@ extension NewBuyController {
         print("notify = ","notify")
         guard
             let userInfo = notify.userInfo,
-            let _ = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
-            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            let _ = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double
             else {
                 return
         }

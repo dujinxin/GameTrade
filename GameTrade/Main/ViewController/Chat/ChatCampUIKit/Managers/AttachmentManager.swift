@@ -171,7 +171,7 @@ extension AttachmentManager {
             return nil
         }
         UIGraphicsEndImageContext()
-        guard let imageData = UIImageJPEGRepresentation(img, compressionQuality)else{
+        guard let imageData = img.jpegData(compressionQuality: compressionQuality)else{
             return nil
         }
         return imageData

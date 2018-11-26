@@ -122,7 +122,7 @@ public class JXActionView: UIView {
     lazy private var bgWindow : UIWindow = {
         let window = UIWindow()
         window.frame = UIScreen.main.bounds
-        window.windowLevel = UIWindowLevelAlert + 1
+        window.windowLevel = UIWindow.Level.alert + 1
         window.backgroundColor = UIColor.clear
         window.isHidden = false
         return window
@@ -378,7 +378,7 @@ class ActionlistViewCell: UITableViewCell {
         return view
     }()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.contentView.addSubview(self.titleLabel)
         self.contentView.addSubview(self.separatorView)

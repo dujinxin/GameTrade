@@ -47,7 +47,7 @@ class CreateChannelViewController: UIViewController {
     func setupTableView() {
         tableView?.register(UINib(nibName: String(describing: ChatTableViewCell.self), bundle: Bundle(for: ChatTableViewCell.self)), forCellReuseIdentifier: ChatTableViewCell.identifier)
         tableView?.estimatedRowHeight = 100
-        tableView?.rowHeight = UITableViewAutomaticDimension
+        tableView?.rowHeight = UITableView.automaticDimension
         tableView?.allowsMultipleSelection = true
         tableView?.dataSource = viewModel
         tableView?.delegate = viewModel

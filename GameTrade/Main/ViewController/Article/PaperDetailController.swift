@@ -34,9 +34,9 @@ class PaperDetailController: JXTableViewController {
         let button = UIButton()
 
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        button.setTitleColor(UIColor.white, for: UIControlState.normal)
-        button.setTitle("交易完整论文", for: UIControlState.normal)
-        button.addTarget(self, action: #selector(clickAction(button:)), for: UIControlEvents.touchUpInside)
+        button.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        button.setTitle("交易完整论文", for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(clickAction(button:)), for: UIControl.Event.touchUpInside)
         
         //颜色渐变
         let gradientLayer = CAGradientLayer.init()
@@ -54,8 +54,8 @@ class PaperDetailController: JXTableViewController {
         let button = UIButton()
         button.isEnabled = false
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.setTitleColor(UIColor.rgbColor(rgbValue: 0x1296db), for: UIControlState.normal)
-        button.setTitle("交易详情将被IPXE区块链记录，首次交易的永久智慧值！", for: UIControlState.normal)
+        button.setTitleColor(UIColor.rgbColor(rgbValue: 0x1296db), for: UIControl.State.normal)
+        button.setTitle("交易详情将被IPXE区块链记录，首次交易的永久智慧值！", for: UIControl.State.normal)
         button.setImage(#imageLiteral(resourceName: "Shape"), for: .normal)
         return button
     }()
@@ -290,14 +290,14 @@ class PaperDetailController: JXTableViewController {
         
         let leftButton = UIButton()
         leftButton.setImage(UIImage(named: "imgBack"), for: .normal)
-        leftButton.imageEdgeInsets = UIEdgeInsetsMake(5, 9, 5, 9)
+        leftButton.imageEdgeInsets = UIEdgeInsets.init(top: 5, left: 9, bottom: 5, right: 9)
         leftButton.addTarget(self, action: #selector(backTo), for: .touchUpInside)
         
         self.navigationBar = self.setClearNavigationBar(title: "论文详情", leftItem: leftButton)
         self.view.addSubview(navigationBar!)
         
         self.tableView?.backgroundColor = UIColor.white
-        self.tableView?.contentInset = UIEdgeInsetsMake(kNavStatusHeight, 0, 0, 0)
+        self.tableView?.contentInset = UIEdgeInsets.init(top: kNavStatusHeight, left: 0, bottom: 0, right: 0)
         self.tableView?.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - (64 + 60 + kBottomMaginHeight))
         self.tableView?.separatorStyle = .none
         self.tableView?.estimatedRowHeight = 44
@@ -366,13 +366,13 @@ class PaperDetailController: JXTableViewController {
             self.titleView?.text = "论文详情"
             self.leftItem?.setImage(UIImage(named: "imgBack")?.withRenderingMode(.alwaysTemplate), for: .normal)
             self.leftItem?.tintColor = UIColor.black
-            self.leftItem?.imageEdgeInsets = UIEdgeInsetsMake(5, 9, 5, 9)
+            self.leftItem?.imageEdgeInsets = UIEdgeInsets.init(top: 5, left: 9, bottom: 5, right: 9)
         }else if yOffset >= kNavStatusHeight{
             //self.customNavigationBar.alpha = 1
             self.backgroundView?.alpha = 0
             self.titleView?.text = ""
             self.leftItem?.setImage(UIImage(named: "iconBackBlackbg"), for: .normal)
-            self.leftItem?.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+            self.leftItem?.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         }else{
             //self.customNavigationBar.alpha = fabs(fabs(yOffset) - kNavStatusHeight) / kNavStatusHeight
             self.backgroundView?.alpha = fabs(fabs(yOffset) - kNavStatusHeight) / kNavStatusHeight
