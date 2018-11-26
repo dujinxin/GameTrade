@@ -105,8 +105,9 @@ class TabBarViewController: UITabBarController {
             self.tabBar.isHidden = false
         }
     }
-    func unreadMessagePoint(_ isShow: Bool) {
-        self.pointView.isHidden = true
+    func isUnreadMessagePoint(hidden: Bool) {
+        print("-------------------\(hidden)--------------------")
+        self.pointView.isHidden = hidden
     }
 
 }

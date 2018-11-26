@@ -61,6 +61,13 @@ open class MediaMessageCell: MessageCollectionViewCell {
         case .video(_, let image):
             imageView.image = image
             playButtonView.isHidden = false
+//        case .text(let txt)
+//            if txt.isEmpty {
+//                let im
+//                imageView.image = image
+//                playButtonView.isHidden = false
+//            }
+//
         default:
             break
         }

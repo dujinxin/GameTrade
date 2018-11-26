@@ -56,12 +56,26 @@ extension MessagesViewController: UICollectionViewDataSource {
         let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
 
         switch message.data {
-        case .text, .attributedText, .emoji:
+        case .text(let txt):
+            if txt.isEmpty == true {
+                let cell = messagesCollectionView.dequeueReusableCell(MediaMessageCell.self, for: indexPath)
+                cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+                return cell
+            } else {
+                let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
+                cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+                //            cell.messageLabel.textColor = JXTextColor
+                //            cell.messageLabel.backgroundColor = UIColor.red
+                //            cell.messageContainerView.backgroundColor = UIColor.yellow
+                
+                
+                return cell
+            }
+            
+        case .attributedText, .emoji:
             let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
-//            cell.messageLabel.textColor = JXTextColor
-//            cell.messageLabel.backgroundColor = UIColor.red
-//            cell.messageContainerView.backgroundColor = UIColor.yellow
+        
             return cell
         case .photo, .video:
             let cell = messagesCollectionView.dequeueReusableCell(MediaMessageCell.self, for: indexPath)

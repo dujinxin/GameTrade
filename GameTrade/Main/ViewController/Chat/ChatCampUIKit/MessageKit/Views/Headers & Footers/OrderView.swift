@@ -15,14 +15,23 @@ class OrderView: UIView {
         v.backgroundColor = JXBackColor
         return v
     }()
-    lazy var merchatImageView: UIImageView = {
-        let v = UIImageView()
+    lazy var merchatImageView: UILabel = {
+//        let v = UIImageView()
+//        v.layer.cornerRadius = 20
+//        v.layer.masksToBounds = true
+//        v.clipsToBounds = true
+//        v.backgroundColor = JXOrangeColor
+        let v = UILabel()
+        v.textColor = UIColor.rgbColor(rgbValue: 0x222133)
+        v.font = UIFont.systemFont(ofSize: 20)
+        v.textAlignment = .center
+        v.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3d)
         v.layer.cornerRadius = 20
         v.layer.masksToBounds = true
-        v.clipsToBounds = true
-        v.backgroundColor = JXOrangeColor
         return v
     }()
+    
+    
     lazy var merchatNameLabel: UILabel = {
         let v = UILabel()
         v.textColor = JXTextColor
@@ -69,6 +78,7 @@ class OrderView: UIView {
                 self.statusLabel.text = "已关闭"
             }
             
+            self.merchatImageView.text = String(entity?.agentName?.prefix(1) ?? "")
             self.merchatNameLabel.text = entity?.agentName
             //self.timeLabel.text = "交易数量：\(entity?.coinCounts ?? 0)\(configuration_coinName)"
             self.worthLabel.text = "交易总额：\(entity?.payAmount ?? 0) \(configuration_valueType)"

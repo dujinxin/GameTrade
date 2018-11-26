@@ -48,7 +48,6 @@ class PutUpTableController: JXTableViewController {
         
         //self.tableView?.separatorStyle = .none
         self.tableView?.estimatedRowHeight = 44
-        self.tableView?.rowHeight = 44//UITableViewAutomaticDimension
         self.tableView?.register(UINib(nibName: "SellTextFieldCell", bundle: nil), forCellReuseIdentifier: textCellIdentifier)
         self.tableView?.register(UINib(nibName: "LabelCell", bundle: nil), forCellReuseIdentifier: labelCellIdentifier)
         

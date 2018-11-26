@@ -64,6 +64,13 @@
                                 <color key="textColor" red="0.4549019608" green="0.49019607840000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mb0-xW-lgi">
+                                <rect key="frame" x="24" y="90.5" width="350" height="1"/>
+                                <color key="backgroundColor" red="0.27450980392156865" green="0.28235294117647058" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="sxm-cJ-hhh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="sr1-3T-Yiz" firstAttribute="leading" secondItem="9ct-Fm-7G0" secondAttribute="trailing" constant="5" id="35j-MR-D6k"/>
@@ -78,10 +85,13 @@
                             <constraint firstItem="lSC-5a-MWR" firstAttribute="centerY" secondItem="glb-Ey-0hk" secondAttribute="centerY" id="GVh-RX-Fay"/>
                             <constraint firstItem="9ct-Fm-7G0" firstAttribute="top" secondItem="rAf-ma-RYb" secondAttribute="top" constant="5" id="TbR-dV-wKA"/>
                             <constraint firstItem="lSC-5a-MWR" firstAttribute="trailing" secondItem="sr1-3T-Yiz" secondAttribute="trailing" id="VRJ-g3-IU1"/>
+                            <constraint firstAttribute="trailing" secondItem="mb0-xW-lgi" secondAttribute="trailing" id="YdL-D7-ts2"/>
                             <constraint firstItem="lSC-5a-MWR" firstAttribute="leading" secondItem="9ct-Fm-7G0" secondAttribute="trailing" constant="72" id="nfT-Qb-DEZ"/>
                             <constraint firstItem="lSC-5a-MWR" firstAttribute="leading" secondItem="glb-Ey-0hk" secondAttribute="trailing" constant="10" id="o5s-hj-hhJ"/>
                             <constraint firstItem="9ct-Fm-7G0" firstAttribute="leading" secondItem="rAf-ma-RYb" secondAttribute="trailing" constant="16" id="rxT-l9-RTc"/>
                             <constraint firstItem="sr1-3T-Yiz" firstAttribute="centerY" secondItem="9ct-Fm-7G0" secondAttribute="centerY" id="yDD-Jx-5sk"/>
+                            <constraint firstAttribute="bottom" secondItem="mb0-xW-lgi" secondAttribute="bottom" id="zL9-Ye-8Ga"/>
+                            <constraint firstItem="mb0-xW-lgi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="zkI-N6-ByW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
                     </view>

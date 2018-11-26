@@ -26,7 +26,7 @@ class ConversationListController: JXTableViewController {
         self.title = "聊聊"
         
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kTabBarHeight - kNavStatusHeight)
-        self.tableView?.rowHeight = 92
+        self.tableView?.estimatedRowHeight = 92
         self.tableView?.register(UINib(nibName: String(describing: ChatTableViewCell.self), bundle: Bundle(for: ChatTableViewCell.self)), forCellReuseIdentifier: ChatTableViewCell.string())
         
         do {
@@ -78,6 +78,11 @@ class ConversationListController: JXTableViewController {
     }
     
     func refreshChannels() {
+        
+        guard let tabVC = UIApplication.shared.keyWindow?.rootViewController as? TabBarViewController else { return }
+        tabVC.isUnreadMessagePoint(hidden: true)
+        
+        
         loadingChannels = true
         let groupChannelsListQuery = CCPGroupChannel.createGroupChannelListQuery()
         groupChannelsListQuery.load { (channels, error) in
@@ -102,6 +107,22 @@ class ConversationListController: JXTableViewController {
                 }
             }
         }
+        
+        //获取未读消息
+    
+//        CCPClient.getTotalUnreadMessageCount { (num, param, error) in
+//            if let e = error {
+//                print(e.localizedDescription)
+//            } else {
+//                print(num,param)
+//                guard let tabVC = UIApplication.shared.keyWindow?.rootViewController as? TabBarViewController else { return }
+//                if let n = num, n > 0 {
+//                    tabVC.isUnreadMessagePoint(hidden: false)
+//                } else {
+//                    tabVC.isUnreadMessagePoint(hidden: true)
+//                }
+//            }
+//        }
     }
 }
 
@@ -152,6 +173,9 @@ extension ConversationListController {
             } else {
                 cell.unreadCountLabel.text = "9+"
             }
+            //未读消息
+            let tabVC = UIApplication.shared.keyWindow?.rootViewController as? TabBarViewController
+            tabVC?.isUnreadMessagePoint(hidden: false)
         } else {
             cell.unreadCountLabel.isHidden = true
         }

@@ -666,7 +666,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Va-3c-vKb">
-                                                <rect key="frame" x="24" y="500" width="327" height="44"/>
+                                                <rect key="frame" x="24" y="538" width="327" height="44"/>
                                                 <color key="backgroundColor" red="1" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="Vqy-DJ-PLv"/>
@@ -677,16 +677,16 @@
                                                 </state>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wB9-ec-S9t">
-                                                <rect key="frame" x="0.0" y="426" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="426" width="375" height="88"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX1-ff-S0t">
-                                                        <rect key="frame" x="288" y="16.666666666666686" width="43" height="17"/>
+                                                        <rect key="frame" x="288" y="35.666666666666686" width="43" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="收款方式" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiJ-qk-q55">
-                                                        <rect key="frame" x="24" y="17.333333333333314" width="80" height="15.666666666666664"/>
+                                                        <rect key="frame" x="24" y="36.333333333333314" width="80" height="15.666666666666664"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="ah7-8A-sJX"/>
                                                         </constraints>
@@ -695,14 +695,14 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhV-cj-z24" userLabel="line">
-                                                        <rect key="frame" x="24" y="49" width="351" height="1"/>
+                                                        <rect key="frame" x="24" y="87" width="351" height="1"/>
                                                         <color key="backgroundColor" red="0.27450980390000002" green="0.28235294119999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="eh4-qt-JTx"/>
                                                         </constraints>
                                                     </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="67O-uV-DRv">
-                                                        <rect key="frame" x="342.66666666666669" y="18" width="8.3333333333333144" height="14"/>
+                                                        <rect key="frame" x="342.66666666666669" y="37" width="8.3333333333333144" height="14"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="8.5" id="8EW-O8-h4a"/>
                                                             <constraint firstAttribute="height" constant="14" id="Yi6-PV-ZQs"/>
@@ -718,7 +718,7 @@
                                                     <constraint firstItem="wiJ-qk-q55" firstAttribute="leading" secondItem="wB9-ec-S9t" secondAttribute="leading" constant="24" id="Iux-qQ-XjX"/>
                                                     <constraint firstItem="67O-uV-DRv" firstAttribute="leading" secondItem="ZX1-ff-S0t" secondAttribute="trailing" constant="11.5" id="Tw5-79-bke"/>
                                                     <constraint firstAttribute="trailing" secondItem="67O-uV-DRv" secondAttribute="trailing" constant="24" id="ftu-wp-hwQ"/>
-                                                    <constraint firstAttribute="height" constant="50" id="jWx-Mw-Phc"/>
+                                                    <constraint firstAttribute="height" constant="88" id="jWx-Mw-Phc"/>
                                                     <constraint firstItem="hhV-cj-z24" firstAttribute="leading" secondItem="wB9-ec-S9t" secondAttribute="leading" constant="24" id="pfT-ft-7df"/>
                                                 </constraints>
                                             </view>

@@ -41,7 +41,7 @@ class MainViewController: JXCollectionViewController {
             print(view,value)
         }
         bar.closeBlock = {
-            self.textField?.text = ""
+            //self.textField?.text = ""
         }
         bar.tintColor = JXTextColor
         bar.toolBar.barTintColor = JXBackColor
@@ -61,7 +61,7 @@ class MainViewController: JXCollectionViewController {
         self.collectionView?.register(UINib.init(nibName: "HomeReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
         
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize.init(width: kScreenWidth / 3, height: kScreenWidth / 3)
+        layout.estimatedItemSize = CGSize(width: kScreenWidth / 3, height: kScreenWidth / 3)
         
         layout.sectionInset = UIEdgeInsetsMake(0.5, 0, 0, 0)
         layout.minimumLineSpacing = 0
@@ -486,10 +486,12 @@ extension MainViewController {
             reusableView.totalWidthConstraint.constant = self.homeVM.totalWidth
             reusableView.useWidthConstraint.constant = self.homeVM.useWidth
             reusableView.limitWidthConstraint.constant = self.homeVM.limitWidth
+            
             if self.keyboard.views.isEmpty == true {
                 self.keyboard.views = [reusableView.textField]
                 self.textField = reusableView.textField
             }
+            self.textField?.text = ""
             reusableView.quickBuyBlock = {
     
                 guard let text = reusableView.textField.text, text.isEmpty == false else{

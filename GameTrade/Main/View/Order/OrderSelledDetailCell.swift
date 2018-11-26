@@ -64,7 +64,7 @@ class OrderSelledDetailCell: UITableViewCell {
                 self.orderStatusLabel.text = "已完成"
                 self.orderInfoLabel.text = "您的挂卖单已确认付款并转币"
             } else {
-                self.chatButton.isHidden = true
+                //self.chatButton.isHidden = true
                 self.orderStatusLabel.text = "已关闭"
                 if entity?.orderStatus == 4 {
                     self.orderInfoLabel.text = "本次交易已关闭"

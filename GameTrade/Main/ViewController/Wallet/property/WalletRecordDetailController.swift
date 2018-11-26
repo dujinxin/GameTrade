@@ -37,7 +37,7 @@ class WalletRecordDetailController: JXTableViewController {
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight)
         
         //self.tableView?.separatorStyle = .none
-        self.tableView?.estimatedRowHeight = 44
+        self.tableView?.estimatedRowHeight = 50
         self.tableView?.rowHeight = UITableViewAutomaticDimension
         self.tableView?.register(UINib(nibName: "WalletListPayingCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierNormal)
         self.tableView?.register(UINib(nibName: "WalletDetailPayedCell", bundle: nil), forCellReuseIdentifier: reuseIdentifieringDetailPayed)
@@ -126,13 +126,13 @@ class WalletRecordDetailController: JXTableViewController {
                     cell.infoLabel.text = "\(self.vm.tradeDetailEntity.price) \(configuration_valueType)"
                 } else {
                     cell.nameLabel.text = "交易数量"
-                    cell.infoLabel.text = "\(self.vm.tradeDetailEntity.amount) \(configuration_coinName)"
+                    cell.infoLabel.text = "\(fabs(Double(self.vm.tradeDetailEntity.amount))) \(configuration_coinName)"
                 }
               
             } else if indexPath.row == 4 {
                 if self.pageType == .transfer {
                     cell.nameLabel.text = "交易数量"
-                    cell.infoLabel.text = "\(self.vm.tradeDetailEntity.amount) \(configuration_coinName)"
+                    cell.infoLabel.text = "\(fabs(Double(self.vm.tradeDetailEntity.amount))) \(configuration_coinName)"
                 } else {
                     cell.nameLabel.text = "创建时间"
                     cell.infoLabel.text = self.vm.tradeDetailEntity.createTime

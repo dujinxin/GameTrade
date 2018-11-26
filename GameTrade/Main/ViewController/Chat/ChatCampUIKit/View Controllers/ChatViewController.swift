@@ -104,7 +104,7 @@ public class ChatViewController: MessagesViewController {
         
         loadMessages(count: messageCount)
         
-        if self.channel.getMetadata().count > 0, let orderId = self.channel.getMetadata()["orderId"], orderId.isEmpty == false {
+        if self.channel.getMetadata().count > 0, let orderId = self.channel.getMetadata()["id"], orderId.isEmpty == false {
             self.vm.orderDetail(id: orderId) { (_, msg, isSuc) in
                 if isSuc {
                     self.orderView.entity = self.vm.orderDetailEntity
@@ -1149,6 +1149,19 @@ extension ChatViewController: MessagesDisplayDelegate {
                 audioView.fillSuperview()
             }
             return .audio(configurationClosure)
+        case .text(let txt):
+            if txt.isEmpty {
+                let configurationClosure = { (containerView: UIImageView) in
+                    let imageMask = UIImageView()
+                    imageMask.image = MessageStyle.bubble.image
+                    imageMask.frame = containerView.bounds
+                    containerView.mask = imageMask
+                    containerView.contentMode = .scaleAspectFill
+                }
+                return .custom(configurationClosure)
+            } else {
+                return .bubble
+            }
         default:
             return .bubble
         }
@@ -1175,16 +1188,31 @@ extension ChatViewController: MessagesDisplayDelegate {
             }
         }
     }
+    
     public func backgroundColor(for message: MessageType, at  indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         
         switch message.data {
+        case .photo(_):
+            return .clear
         case .emoji:
             return .clear
         default:
             guard let dataSource = messagesCollectionView.messagesDataSource else { return .white }
-            return dataSource.isFromCurrentSender(message: message) ? JXOrangeColor : .incomingGray
+            return dataSource.isFromCurrentSender(message: message) ? JXOrangeColor : UIColor.rgbColor(rgbValue: 0xefefef)
         }
     }
+    public func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        switch message.data {
+        case .photo(_):
+            return .clear
+        case .emoji:
+            return .clear
+        default:
+            guard let dataSource = messagesCollectionView.messagesDataSource else { return .white }
+            return dataSource.isFromCurrentSender(message: message) ? JXTextColor : UIColor.rgbColor(rgbValue: 0x4a4a4a)
+        }
+    }
+ 
 }
 
 // MARK:- Custom methods

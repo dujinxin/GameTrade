@@ -63,6 +63,10 @@ class ScanViewController: BaseViewController {
         self.controlButton.setImage(#imageLiteral(resourceName: "off"), for: .normal)
         self.controlButton.setImage(#imageLiteral(resourceName: "on"), for: .selected)
         
+//        self.statusBottomView.customView = self.customViewInit(number: "text", address: "address", gas: "gas", remark: "无")
+//        self.statusBottomView.show(inView: self.view)
+//        self.psdTextView.textField.becomeFirstResponder()
+        
         guard
             let device = AVCaptureDevice.default(for: .video),   //创建摄像设备
             let input = try? AVCaptureDeviceInput(device: device)//创建输入流
@@ -101,9 +105,16 @@ class ScanViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     override func updateViewConstraints() {
         super.updateViewConstraints()
         self.topConstraint.constant = kStatusBarHeight + 7
+    }
+    private func setKeyBoardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     func getScanCrop(rect: CGRect,readerViewBounds bounds:CGRect) -> CGRect {
         
@@ -180,18 +191,18 @@ class ScanViewController: BaseViewController {
         let width : CGFloat = kScreenWidth - 48
         
         let contentView = UIView()
-        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 442)
+        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 562)
         
         let gradientLayer = CAGradientLayer.init()
         gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
         gradientLayer.locations = [0]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 442 + kBottomMaginHeight)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 562 + kBottomMaginHeight)
         contentView.layer.insertSublayer(gradientLayer, at: 0)
         
         let leftContentView = UIView()
-        leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 442 + kBottomMaginHeight)
+        leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 562 + kBottomMaginHeight)
         contentView.addSubview(leftContentView)
         
         //左侧视图
@@ -202,7 +213,7 @@ class ScanViewController: BaseViewController {
             let label = UILabel()
             label.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
             //label.center = view.center
-            label.text = "确认付款"
+            label.text = "请输入资金密码"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
             label.textColor = JXFfffffColor
@@ -238,22 +249,17 @@ class ScanViewController: BaseViewController {
         
         //1
         let leftLabel1 = UILabel()
-        leftLabel1.frame = CGRect(x: 24, y: nameLabel.jxBottom + 31, width: 65, height: 51)
-        leftLabel1.text = "交易金额"
+        leftLabel1.frame = CGRect(x: 24, y: nameLabel.jxBottom + 30, width: 65, height: 50)
+        leftLabel1.text = "收款商户"
         leftLabel1.textColor = JXText50Color
         leftLabel1.font = UIFont.systemFont(ofSize: 13)
         leftLabel1.textAlignment = .left
         leftContentView.addSubview(leftLabel1)
         
         let rightLabel1 = UILabel()
-        rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 51)
-        if let numStr = self.amount, let num = Double(numStr) {
-            rightLabel1.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
-        } else {
-            rightLabel1.text = "\(0) \(configuration_valueType)"
-        }
-        
-        rightLabel1.textColor = JXRedColor
+        rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 50)
+        rightLabel1.text = self.vm.webName
+        rightLabel1.textColor = JXTextColor
         rightLabel1.font = UIFont.systemFont(ofSize: 14)
         rightLabel1.textAlignment = .right
         leftContentView.addSubview(rightLabel1)
@@ -263,166 +269,11 @@ class ScanViewController: BaseViewController {
         line1.backgroundColor = JXSeparatorColor
         leftContentView.addSubview(line1)
         
-        //2
-        let leftLabel2 = UILabel()
-        leftLabel2.frame = CGRect(x: 24, y: line1.jxBottom, width: 65, height: 51)
-        leftLabel2.text = "收款商户"
-        leftLabel2.textColor = JXText50Color
-        leftLabel2.font = UIFont.systemFont(ofSize: 13)
-        leftLabel2.textAlignment = .left
-        leftContentView.addSubview(leftLabel2)
-        
-        let rightLabel2 = UILabel()
-        rightLabel2.frame = CGRect(x: leftLabel2.jxRight, y: leftLabel2.jxTop, width: kScreenWidth - 48 - leftLabel2.jxWidth, height: 51)
-        rightLabel2.text = self.vm.webName // self.webNanme //"\(configuration_coinPrice) \(configuration_valueType)"
-        rightLabel2.textColor = JXTextColor
-        rightLabel2.font = UIFont.systemFont(ofSize: 14)
-        rightLabel2.textAlignment = .right
-        leftContentView.addSubview(rightLabel2)
-        
-        let line2 = UIView()
-        line2.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel2.jxBottom, width: width, height: 1)
-        line2.backgroundColor = JXSeparatorColor
-        leftContentView.addSubview(line2)
-        
-        
-        //3
-        let leftLabel3 = UILabel()
-        leftLabel3.frame = CGRect(x: 24, y: line2.jxBottom , width: 65, height: 51)
-        leftLabel3.text = "订单号"
-        leftLabel3.textColor = JXText50Color
-        leftLabel3.font = UIFont.systemFont(ofSize: 13)
-        leftLabel3.textAlignment = .left
-        leftContentView.addSubview(leftLabel3)
-        
-        let rightLabel3 = UILabel()
-        rightLabel3.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth, height: 51)
-        rightLabel3.text = self.orderId ?? "0"
-        rightLabel3.textColor = JXTextColor
-        rightLabel3.font = UIFont.systemFont(ofSize: 14)
-        rightLabel3.textAlignment = .right
-        leftContentView.addSubview(rightLabel3)
-        
-        let line3 = UIView()
-        line3.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel3.jxBottom, width: width, height: 1)
-        line3.backgroundColor = JXSeparatorColor
-        leftContentView.addSubview(line3)
-        
-        
-//        //4
-//        let leftLabel4 = UILabel()
-//        leftLabel4.frame = CGRect(x: 24, y: line3.jxBottom, width: 65, height: 51)
-//        leftLabel4.text = "支付方式"
-//        leftLabel4.textColor = JXText50Color
-//        leftLabel4.font = UIFont.systemFont(ofSize: 13)
-//        leftLabel4.textAlignment = .left
-//        leftContentView.addSubview(leftLabel4)
-//
-//        //        let rightLabel4 = UILabel()
-//        //        rightLabel4.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth, height: 51)
-//        //        rightLabel4.text = remark
-//        //        rightLabel4.textColor = JXTextColor
-//        //        rightLabel4.font = UIFont.systemFont(ofSize: 14)
-//        //        rightLabel4.textAlignment = .right
-//        //        leftContentView.addSubview(rightLabel4)
-//
-//
-//
-//        self.rightButton = UIButton()
-//        rightButton.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth - 20, height: 51)
-//        rightButton.setTitle(self.payName, for: .normal)
-//        rightButton.setTitleColor(JXTextColor, for: .normal)
-//        rightButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-//        rightButton.addTarget(self, action: #selector(selectPay), for: .touchUpInside)
-//        rightButton.contentHorizontalAlignment = .right
-//        leftContentView.addSubview(rightButton)
-//
-//        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight, y: leftLabel4.jxTop + 15.5, width: 20, height: 20))
-//        arrow.backgroundColor = JXTextColor
-//        leftContentView.addSubview(arrow)
-//
-//
-//        let line4 = UIView()
-//        line4.frame = CGRect(x: nameLabel.jxLeft, y: leftLabel4.jxBottom, width: width, height: 1)
-//        line4.backgroundColor = JXSeparatorColor
-//        leftContentView.addSubview(line4)
-        
-        
-        
-        
-        let button = UIButton()
-        button.frame = CGRect(x: nameLabel.jxLeft, y: line3.jxBottom + 30, width: width, height: 44)
-        button.setTitle("立即付款", for: .normal)
-        button.setTitleColor(JXFfffffColor, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button.addTarget(self, action: #selector(confirm), for: .touchUpInside)
-        leftContentView.addSubview(button)
-        
-        
-        button.layer.cornerRadius = 2
-        button.layer.shadowOpacity = 1
-        button.layer.shadowRadius = 10
-        button.layer.shadowOffset = CGSize(width: 0, height: 10)
-        button.layer.shadowColor = JX10101aShadowColor.cgColor
-        button.setTitleColor(JXFfffffColor, for: .normal)
-        button.backgroundColor = JXOrangeColor
-        
-        
-        
-        //右侧视图
-        
-        let rightContentView = UIView()
-        rightContentView.frame = CGRect(x: kScreenWidth, y: 0, width: kScreenWidth, height: 442 + kBottomMaginHeight)
-        contentView.addSubview(rightContentView)
-        
-        let topBarView1 = { () -> UIView in
-            let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kScreenWidth, height: 60))
-            
-            let label = UILabel()
-            label.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 60)
-            //label.center = view.center
-            label.text = "输入资金密码"
-            label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 18)
-            label.textColor = JXFfffffColor
-            view.addSubview(label)
-            //label.sizeToFit()
-            
-            let button = UIButton()
-            button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
-            //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
-            button.setImage(UIImage(named: "icon-back")?.withRenderingMode(.alwaysTemplate), for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
-            button.contentVerticalAlignment = .center
-            button.contentHorizontalAlignment = .center
-            button.addTarget(self, action: #selector(backTo), for: .touchUpInside)
-            view.addSubview(button)
-            
-            
-            let button1 = UIButton()
-            button1.frame = CGRect(x: kScreenWidth - 80 - 24, y: 10, width: 80, height: 40)
-            //button.center = CGPoint(x: 30, y: view.jxCenterY)
-            button1.setTitle("忘记密码？", for: .normal)
-            
-            button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
-            button1.contentVerticalAlignment = .center
-            button1.contentHorizontalAlignment = .right
-            button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
-            view.addSubview(button1)
-            
-            return view
-        }()
-        rightContentView.addSubview(topBarView1)
-        
-        
-        self.psdTextView = PasswordTextView(frame: CGRect(x: kScreenWidth + (kScreenWidth - 176) / 2, y: topBarView1.jxBottom, width: 176, height: 60))
+
+        self.psdTextView = PasswordTextView(frame: CGRect(x: (kScreenWidth - 176) / 2, y: line1.jxBottom + 30, width: 176, height: 60))
         //psdTextView.textField.delegate = self
         psdTextView.backgroundColor = UIColor.white //要先设置颜色，再设置透明，不然不起作用，还有绘制的问题，待研究
-        contentView.addSubview(psdTextView)
+        leftContentView.addSubview(psdTextView)
         
         psdTextView.backgroundColor = UIColor.clear
         psdTextView.limit = 4
@@ -433,9 +284,8 @@ class ScanViewController: BaseViewController {
             
             if isFinish {
                 self.closeStatus()
-                //self.perform(#selector(goToDetail), with: nil, afterDelay: 0.5)
                 self.showMBProgressHUD()
-            
+                
                 DispatchQueue.global().asyncAfter(deadline: .now() + 0.5, execute: {
                     print("12345678")
                     guard let numStr = self.amount, let num = Int(numStr) else { return }
@@ -459,32 +309,10 @@ class ScanViewController: BaseViewController {
                 
             }
         }
-        rightContentView.addSubview(topBarView1)
-        
-        
-        
-        
+       
         return contentView
     }
-    @objc func selectPay() {
-        //self.closeStatus()
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: .transitionFlipFromRight, animations: {
-            self.statusBottomView.frame.origin.x = -kScreenWidth
-        }) { (isFinish) in
-            if isFinish {
-                //self.psdTextView.textField.becomeFirstResponder()
-            }
-        }
-        
-    }
-    @objc func backTo() {
-        self.view.endEditing(true)
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: .transitionFlipFromLeft, animations: {
-            self.statusBottomView.frame.origin.x = 0
-        }, completion: nil)
-    }
+
     @objc func forgotPsd() {
         print("forgot")
         let storyboard = UIStoryboard(name: "My", bundle: nil)
@@ -493,31 +321,42 @@ class ScanViewController: BaseViewController {
         vc.type = 0
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    @objc func confirm() {
-        print("confirm")
-        
-        UIView.animate(withDuration: 0.3, delay: 0, options: .transitionFlipFromRight, animations: {
-            self.statusBottomView.frame.origin.x = -kScreenWidth
-        }) { (isFinish) in
-            if isFinish {
-                self.psdTextView.textField.becomeFirstResponder()
-            }
-        }
-//        self.showMBProgressHUD()
-//        self.vm.buyQuick(payType: self.payType, amount: Int(text) ?? 0, completion: { (_, msg, isSuc) in
-//            self.hideMBProgressHUD()
-//            if isSuc {
-//                let vc = OrderDetailController()
-//                vc.id = self.vm.id
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            } else {
-//                ViewManager.showNotice(msg)
-//            }
-//        })
-    }
     @objc func closeStatus() {
         self.statusBottomView.dismiss()
         self.session.startRunning()
+    }
+}
+//MARK:UIKeyboardNotification
+extension ScanViewController {
+    @objc func keyboardWillShow(notify:Notification) {
+        
+        guard
+            let userInfo = notify.userInfo,
+            let rect = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            else {
+                return
+        }
+        UIView.animate(withDuration: animationDuration, animations: {
+            self.statusBottomView.frame.origin.y = 300 + rect.height
+        }) { (finish) in
+            //
+        }
+    }
+    @objc func keyboardWillHide(notify:Notification) {
+        print("notify = ","notify")
+        guard
+            let userInfo = notify.userInfo,
+            let _ = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect,
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+            else {
+                return
+        }
+        UIView.animate(withDuration: animationDuration, animations: {
+            
+        }) { (finish) in
+            
+        }
     }
 }
 extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
@@ -590,6 +429,7 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
                 if isSuc {
                     self.statusBottomView.customView = self.customViewInit(number: "text", address: "address", gas: "gas", remark: "无")
                     self.statusBottomView.show(inView: self.view)
+                    self.psdTextView.textField.becomeFirstResponder()
                 } else {
                     ViewManager.showNotice(msg)
                     self.session.startRunning()

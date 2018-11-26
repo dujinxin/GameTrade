@@ -49,8 +49,12 @@ class JXTableViewController: BaseViewController{
         self.tableView?.separatorStyle = .none
         self.tableView?.delegate = self
         self.tableView?.dataSource = self
+        self.tableView?.estimatedSectionHeaderHeight = 0
+        self.tableView?.estimatedSectionFooterHeight = 0
         self.tableView?.estimatedRowHeight = 44
         self.tableView?.rowHeight = UITableViewAutomaticDimension
+        self.tableView?.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.tableView?.sectionFooterHeight = UITableViewAutomaticDimension
         self.view.addSubview(self.tableView!)
         
 //        refreshControl = UIRefreshControl()

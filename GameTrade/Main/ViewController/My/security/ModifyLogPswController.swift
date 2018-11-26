@@ -20,10 +20,24 @@ class ModifyLogPswController: BaseViewController {
     var vm = MyVM()
     var isCounting: Bool = false
     
+    lazy var keyboard: JXKeyboardToolBar = {
+        let k = JXKeyboardToolBar(frame: CGRect(), views: [codeTextField,passwordTextField])
+        k.showBlock = { (height, rect) in
+            print(height,rect)
+        }
+        k.tintColor = JXTextColor
+        k.toolBar.barTintColor = JXBackColor
+        k.backgroundColor = JXBackColor
+        k.textFieldDelegate = self
+        return k
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.view.addSubview(self.keyboard)
         
         self.loginTitleLabel.textColor = JXTextColor
         self.loginLittleLabel.textColor = JXText50Color
@@ -170,7 +184,30 @@ class ModifyLogPswController: BaseViewController {
         return predicate.evaluate(with: string)
     }
 }
-extension ModifyLogPswController : UITextFieldDelegate{
+extension ModifyLogPswController : UITextFieldDelegate,JXKeyboardTextFieldDelegate {
+    func keyboardTextFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == codeTextField {
+            self.passwordTextField.becomeFirstResponder()
+            return false
+        } else {
+            textField.resignFirstResponder()
+            return true
+        }
+    }
+    
+    func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == passwordTextField {
+            if range.location > 19 {
+                return false
+            }
+        } else if textField == codeTextField {
+            if range.location > 3 {
+                return false
+            }
+        }
+        return true
+    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == codeTextField {

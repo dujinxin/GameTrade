@@ -30,19 +30,31 @@ class ForgotViewController: BaseViewController {
     @IBOutlet weak var trailingConstraints: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraints: NSLayoutConstraint!
     
+    
     var vm = LoginVM()
     var isCounting: Bool = false
     
+    lazy var keyboard: JXKeyboardToolBar = {
+        let k = JXKeyboardToolBar(frame: CGRect(), views: [userTextField,imageTextField,codeTextField,passwordTextField])
+        k.showBlock = { (height, rect) in
+            print(height,rect)
+        }
+        k.tintColor = JXTextColor
+        k.toolBar.barTintColor = JXBackColor
+        k.backgroundColor = JXBackColor
+        k.textFieldDelegate = self
+        return k
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         if #available(iOS 11.0, *) {
             self.mainScrollView.contentInsetAdjustmentBehavior = .never
             self.mainScrollView.scrollIndicatorInsets = UIEdgeInsetsMake(kNavStatusHeight, 0, 0, 0)
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
+        self.view.addSubview(self.keyboard)
         
         self.loginTitleLabel.textColor = JXTextColor
         self.loginLittleLabel.textColor = JXText50Color
@@ -210,7 +222,35 @@ class ForgotViewController: BaseViewController {
     }
 }
 
-extension ForgotViewController: UITextFieldDelegate {
+extension ForgotViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegate {
+    func keyboardTextFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == passwordTextField {
+            self.logAction(0)
+            return textField.resignFirstResponder()
+        } else if textField == imageTextField {
+            codeTextField.becomeFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    func keyboardTextField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == userTextField {
+            if range.location > 10 {
+                return false
+            }
+        } else if textField == codeTextField || textField == imageTextField {
+            if range.location > 3 {
+                return false
+            }
+        } else if textField == passwordTextField {
+            if range.location > 19 {
+                return false
+            }
+        }
+        return true
+    }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == passwordTextField {

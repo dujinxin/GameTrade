@@ -42,7 +42,6 @@ class PayListController: JXTableViewController {
         
         //self.tableView?.separatorStyle = .none
         self.tableView?.estimatedRowHeight = 88
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
         self.tableView?.register(UINib(nibName: "PayNormalCell", bundle: nil), forCellReuseIdentifier: normalCellIdentifier)
         self.tableView?.register(UINib(nibName: "PayEmptyCell", bundle: nil), forCellReuseIdentifier: emptyCellIdentifier)
     
@@ -280,14 +279,14 @@ extension PayListController {
         let width : CGFloat = kScreenWidth - 48
         
         let contentView = UIView()
-        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 442)
+        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 402)
         
         let gradientLayer = CAGradientLayer.init()
         gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
         gradientLayer.locations = [0]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 442 + kBottomMaginHeight)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 402 + kBottomMaginHeight)
         contentView.layer.insertSublayer(gradientLayer, at: 0)
  
         

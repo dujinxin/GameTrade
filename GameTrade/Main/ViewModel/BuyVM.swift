@@ -36,6 +36,11 @@ class BuyVM: BaseViewModel {
                     completion(nil, self.message, false)
                     return
             }
+            if pageNo == 1 {
+                self.buyListEntity.listArray.removeAll()
+            }
+            self.buyListEntity.total = total
+            
             if total > 0 {
                 guard
                     let list = dict["data"] as? Array<Dictionary<String, Any>>
@@ -43,10 +48,6 @@ class BuyVM: BaseViewModel {
                         completion(nil, self.message, false)
                         return
                 }
-                if pageNo == 1 {
-                    self.buyListEntity.listArray.removeAll()
-                }
-                self.buyListEntity.total = total
                 for i in 0..<list.count{
                     let dict = list[i]
                     let entity = BuyEntity()

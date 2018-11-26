@@ -40,7 +40,7 @@ class MerchantViewController: JXCollectionViewController {
         self.collectionView?.register(UINib.init(nibName: "MerchantReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
         
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize.init(width: kScreenWidth, height: 131)
+        layout.estimatedItemSize = CGSize(width: kScreenWidth, height: 131)
         
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
         layout.minimumLineSpacing = 0

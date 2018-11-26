@@ -26,7 +26,6 @@ class JXCollectionViewController: BaseViewController {
         
         if #available(iOS 11.0, *) {
             self.collectionView?.contentInsetAdjustmentBehavior = .never
-            self.collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(kNavStatusHeight, 0, 0, 0)
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
@@ -50,32 +49,28 @@ class JXCollectionViewController: BaseViewController {
         layout.sectionInset = UIEdgeInsetsMake(0.5, 0, 0, 0)
         layout.minimumLineSpacing = 0.5
         layout.minimumInteritemSpacing = 0.5
-        //layout.itemSize = CGSize.init(width: width, height: height)
-        //layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 272 + kNavStatusHeight)
         
+        layout.itemSize = UICollectionViewFlowLayoutAutomaticSize
+        layout.estimatedItemSize = CGSize(width: kScreenWidth / 3, height: kScreenWidth / 3)
+        
+//        layout.headerReferenceSize = CGSize(width: 0, height: 0)
+//        layout.headerReferenceSize = UICollectionViewFlowLayoutAutomaticSize
+//        layout.footerReferenceSize = UICollectionViewFlowLayoutAutomaticSize
+    
         self.collectionView = UICollectionView(frame: CGRect(x: 0, y: y, width: view.bounds.width, height: height), collectionViewLayout: layout)
         self.collectionView?.backgroundColor = UIColor.clear
         
         self.collectionView?.delegate = self
         self.collectionView?.dataSource = self
         self.view.addSubview(self.collectionView!)
-        // Register cell classes
-//        self.collectionView?.register(UINib.init(nibName: "TaskCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-//        self.collectionView?.register(UINib.init(nibName: "TaskReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
-        
-//        refreshControl = UIRefreshControl()
-//        refreshControl?.addTarget(self, action: #selector(requestData), for: UIControlEvents.valueChanged)
-//        
-//        self.collectionView?.addSubview(refreshControl!)
+
     }
     /// request data
     ///
     /// - Parameter page: load data for page,
-    func request(page:Int) {
-        
-    }
+    func request(page:Int) {}
 }
-extension JXCollectionViewController : UICollectionViewDelegate,UICollectionViewDataSource{
+extension JXCollectionViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 0
     }
@@ -83,6 +78,4 @@ extension JXCollectionViewController : UICollectionViewDelegate,UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return UICollectionViewCell()
     }
-    
-    
 }

@@ -158,18 +158,7 @@ extension OrderDetailController {
                     })
                 }
                 cell.chatBlock = {
-                    if let chatID = self.vm.serviceId {
-                        self.createChat(id: chatID)
-                    } else {
-                        self.vm.getChatID(agentId: self.vm.orderDetailEntity.salerId ?? "", type: 1, completion: { (_, msg, isSuc) in
-                            
-                            if isSuc {
-                                self.createChat(id: self.vm.serviceId)
-                            } else {
-                                ViewManager.showNotice(msg)
-                            }
-                        })
-                    }
+                    self.connectService()
                 }
                 cell.copyBlock = {
                     let pals = UIPasteboard.general
@@ -211,24 +200,35 @@ extension OrderDetailController {
         }
     }
     func connectService() {
-        if let chatID = self.vm.serviceId {
-            self.createChat(id: chatID)
+      
+        var chatID = ""
+        if self.vm.orderDetailEntity.orderType == "购买" {
+            chatID = self.vm.orderDetailEntity.salerId ?? ""
         } else {
-            var agentId = ""
-            if self.vm.orderDetailEntity.orderType == "购买" {
-                agentId = self.vm.orderDetailEntity.salerId ?? ""
-            } else {
-                agentId = self.vm.orderDetailEntity.buyerId ?? ""
-            }
-            self.vm.getChatID(agentId: agentId, type: 1, completion: { (_, msg, isSuc) in
-                
-                if isSuc {
-                    self.createChat(id: self.vm.serviceId)
-                } else {
-                    ViewManager.showNotice(msg)
-                }
-            })
+            chatID = self.vm.orderDetailEntity.buyerId ?? ""
         }
+        self.createChat(id: chatID)
+        
+        
+        
+//        if let chatID = self.vm.serviceId {
+//            self.createChat(id: chatID)
+//        } else {
+//            var agentId = ""
+//            if self.vm.orderDetailEntity.orderType == "购买" {
+//                agentId = self.vm.orderDetailEntity.salerId ?? ""
+//            } else {
+//                agentId = self.vm.orderDetailEntity.buyerId ?? ""
+//            }
+//            self.vm.getChatID(agentId: agentId, type: 1, completion: { (_, msg, isSuc) in
+//
+//                if isSuc {
+//                    self.createChat(id: self.vm.serviceId)
+//                } else {
+//                    ViewManager.showNotice(msg)
+//                }
+//            })
+//        }
     }
     func createChat(id: String?) {
         
@@ -243,20 +243,22 @@ extension OrderDetailController {
             if error == nil {
                 //
                 let chatViewController = ChatViewController(channel: groupChannel!, sender: sender)
-            
-                if let meta = groupChannel?.getMetadata(), let orderId = meta["orderId"], orderId == self.vm.orderDetailEntity.id {
+                
+                if let meta = groupChannel?.getMetadata(), let orderId = meta["id"], orderId == self.vm.orderDetailEntity.id {
                     //同一个,不做操作
+                    self.navigationController?.pushViewController(chatViewController, animated: true)
                 } else {
-                    groupChannel?.updateMetadata(metadata: ["orderId": self.vm.orderDetailEntity.id], completionHandler: { (baseChannel, error) in
+                    groupChannel?.updateMetadata(metadata: ["id": self.vm.orderDetailEntity.id,"fromId": userID,"first": "1"], completionHandler: { (baseChannel, error) in
                         if let e = error {
                             print(e.localizedDescription)
                         } else {
                             print("-----------",baseChannel?.getMetadata())
                             chatViewController.sendMessage(self.vm.orderDetailEntity.id)
+                            self.navigationController?.pushViewController(chatViewController, animated: true)
                         }
                     })
                 }
-                self.navigationController?.pushViewController(chatViewController, animated: true)
+                
                 
                 
             } else {

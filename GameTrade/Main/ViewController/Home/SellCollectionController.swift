@@ -29,7 +29,7 @@ class SellCollectionController: JXCollectionViewController {
         
         
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize.init(width: kScreenWidth - 48, height: 85)
+        layout.estimatedItemSize = CGSize(width: kScreenWidth - 48, height: 85)
         
         layout.sectionInset = UIEdgeInsetsMake(8, 24, 8, 24)
         layout.minimumLineSpacing = 16

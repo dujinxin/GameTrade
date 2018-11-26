@@ -2426,7 +2426,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = TradeMentHocDis;
+				PROVISIONING_PROFILE_SPECIFIER = GameTradeDisHoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;

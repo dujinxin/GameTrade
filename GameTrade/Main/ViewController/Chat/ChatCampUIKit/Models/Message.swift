@@ -43,7 +43,7 @@ class Message: NSObject, MessageType {
         
         super.init()
         
-        if ccpMessage.getType() == "text" && ccpMessage.getCustomType() != "action_link" {
+        if ccpMessage.getType() == "text" && ccpMessage.getCustomType() != "action_link" && ccpMessage.getText().isEmpty == false {
             data = MessageData.text(ccpMessage.getText())
         } else if ccpMessage.getType() == "attachment" {
             if ccpMessage.getAttachment()!.isImage() {
@@ -165,7 +165,7 @@ class Message: NSObject, MessageType {
             } else {
                 data = MessageData.text(ccpMessage.getAttachment()!.getUrl())
             }
-        } else if ccpMessage.getType() == "text" && ccpMessage.getCustomType() == "action_link" {
+        } else if ccpMessage.getType() == "text" && ccpMessage.getCustomType() == "action_link" && ccpMessage.getText().isEmpty == false {
             let metadata = ccpMessage.getMetadata()
             var imageURL = "http://streaklabs.in/UserImages/FitBit.jpg"
             var name = ""
@@ -220,6 +220,20 @@ class Message: NSObject, MessageType {
                     self.delegate?.messageDidUpdateWithImage(message: self)
                 }
             }.resume()
+        } else if ccpMessage.getType() == "text" && ccpMessage.getCustomType() != "action_link" && ccpMessage.getText().isEmpty == true {
+            if ccpMessage.getMetadata().count > 0, let str = ccpMessage.getMetadata()["url"] {
+                data = MessageData.photo(UIImage(named: "chat_image_placeholder", in: Bundle(for: Message.self), compatibleWith: nil) ?? UIImage())
+                
+                
+                DispatchQueue.global().async {
+                    if let dataURL = URL(string: str), let imageData = try? Data(contentsOf: dataURL) {
+                        DispatchQueue.main.async {
+                            self.data = MessageData.photo(UIImage(data: imageData) ?? UIImage())
+                            self.delegate?.messageDidUpdateWithImage(message: self)
+                        }
+                    }
+                }
+            }
         }
     }
     

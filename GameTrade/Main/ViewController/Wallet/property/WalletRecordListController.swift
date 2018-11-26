@@ -20,11 +20,11 @@ class WalletRecordListController: JXTableViewController {
         
         self.title = "钱包记录"
         
+        self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight, width: view.bounds.width, height: kScreenHeight - kNavStatusHeight)
         self.tableView?.register(UINib(nibName: "WalletListPayingCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifiering")
         self.tableView?.register(UINib(nibName: "WalletListPayedCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifiered")
         self.tableView?.register(UINib(nibName: "WalletListTransferCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierNormal)
         self.tableView?.estimatedRowHeight = 121
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
         self.tableView?.separatorStyle = .none
         
         self.tableView?.mj_header = MJRefreshNormalHeader(refreshingBlock: {

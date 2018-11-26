@@ -49,15 +49,32 @@ class HomeReusableView: UICollectionReusableView {
     @IBOutlet weak var noticeLabel: UILabel!
     
     
+    @IBOutlet weak var quickImageView: UIImageView!{
+        didSet{
+            quickImageView.layer.cornerRadius = 2
+            quickImageView.layer.shadowOpacity = 1
+            quickImageView.layer.shadowRadius = 10
+            quickImageView.layer.shadowOffset = CGSize(width: 0, height: 40)
+            quickImageView.layer.shadowColor = UIColor.rgbColor(rgbValue: 0x10101a, alpha: 0.5).cgColor
+        }
+    }
     @IBOutlet weak var textField: UITextField!{
         didSet{
             textField.backgroundColor = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.44)
             //textField.delegate = self
+            textField.layer.cornerRadius = 2
+            
             textField.placeholder = "输入购买金额"
             textField.keyboardType = .numberPad
             textField.font = UIFont.systemFont(ofSize: 18)
             textField.textColor = JXTextColor
-            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),NSAttributedStringKey.foregroundColor:UIColor.rgbColor(rgbValue: 0xb3b3cb)])
+            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18),NSAttributedStringKey.foregroundColor:UIColor.rgbColor(rgbValue: 0xb3b3cb)])
+            textField.leftViewMode = .always
+            textField.leftView = {
+                let v = UIView(frame: CGRect(0, 0, 10, 10))
+                v.backgroundColor = UIColor.clear
+                return v
+            }()
         }
     }
     @IBOutlet weak var buyButton: UIButton! {
@@ -134,7 +151,7 @@ class HomeReusableView: UICollectionReusableView {
         super.awakeFromNib()
         // Initialization code
         
-        self.topConstraint.constant = kStatusBarHeight + 7
+        self.topConstraint.constant = kStatusBarHeight + 12
    
         self.rightButton.backgroundColor = UIColor.clear
         

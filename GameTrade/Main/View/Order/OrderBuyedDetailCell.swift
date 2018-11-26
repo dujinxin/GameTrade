@@ -104,7 +104,7 @@ class OrderBuyedDetailCell: UITableViewCell {
                 self.orderInfoLabel.text = "您已成功完成本次交易"
                 self.chatButton.isHidden = true
             } else {
-                self.chatButton.isHidden = true
+                //self.chatButton.isHidden = true
                 self.orderStatusLabel.text = "已关闭"
                 if entity?.orderStatus == 4 {
                     self.orderInfoLabel.text = "本次交易已关闭"

@@ -32,8 +32,22 @@ class NetPayController: BaseViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
+    lazy var keyboard: JXKeyboardToolBar = {
+        let k = JXKeyboardToolBar(frame: CGRect(), views: [accountTextField])
+        k.showBlock = { (height, rect) in
+            print(height,rect)
+        }
+        k.tintColor = JXTextColor
+        k.toolBar.barTintColor = JXBackColor
+        k.backgroundColor = JXBackColor
+        //k.textFieldDelegate = self
+        return k
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(self.keyboard)
         
         self.infoLabel.textColor = JXFfffffColor
         self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)

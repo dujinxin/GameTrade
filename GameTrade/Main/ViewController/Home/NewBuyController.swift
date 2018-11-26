@@ -52,7 +52,7 @@ class NewBuyController: JXCollectionViewController {
             print(view,value)
         }
         bar.closeBlock = {
-            self.textField.text = ""
+            //self.textField.text = ""
         }
         bar.tintColor = JXTextColor
         bar.toolBar.barTintColor = JXBackColor
@@ -65,9 +65,7 @@ class NewBuyController: JXCollectionViewController {
         super.viewDidLoad()
         
         self.title = "我要买"
-        
-        
-        
+
         //self.view.insertSubview(self.headView, belowSubview: self.customNavigationBar)
         self.view.addSubview(self.headView)
         
@@ -146,35 +144,30 @@ class NewBuyController: JXCollectionViewController {
         self.collectionView?.register(UINib.init(nibName: "HomeReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIndentifierHeader)
         
         let layout = self.collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize.init(width: kScreenWidth, height: 168)
-        
+        layout.estimatedItemSize = CGSize.init(width: kScreenWidth, height: 168)
+        //layout.itemSize = UICollectionViewFlowLayoutAutomaticSize
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        //layout.headerReferenceSize = CGSize(width: kScreenWidth, height: 400)
-        
         self.collectionView?.collectionViewLayout = layout
         
-        //每次进入都刷新，则不用监听登录状态
-        //NotificationCenter.default.addObserver(self, selector: #selector(loginStatus(notify:)), name: NSNotification.Name(rawValue: NotificationLoginStatus), object: nil)
         
         self.collectionView?.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             self.page = 1
             self.request(page: 1)
         })
-        self.collectionView?.mj_footer = MJRefreshAutoNormalFooter(refreshingBlock: {
+        self.collectionView?.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             self.page += 1
             self.request(page: self.page)
         })
         self.collectionView?.mj_header.beginRefreshing()
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
-        //每次进入都刷新，则不用监听登录状态
-        //NotificationCenter.default.addObserver(self, selector: #selector(loginStatus(notify:)), name: NSNotification.Name(rawValue: NotificationLoginStatus), object: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.textField.text = ""
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -635,9 +628,7 @@ extension NewBuyController {
             }
             buttonArray.append(button)
         }
-        
-        
-        
+       
         let button = UIButton()
         button.frame = CGRect(x: nameLabel.jxLeft, y: view.jxBottom + 30, width: width, height: 44)
         button.setTitle("下单", for: .normal)
@@ -696,6 +687,7 @@ extension NewBuyController {
         }
     }
 }
+//MARK:JXBarViewDelegate
 extension NewBuyController : JXBarViewDelegate {
     
     func jxBarView(barView: JXBarView, didClick index: Int) {
@@ -703,7 +695,7 @@ extension NewBuyController : JXBarViewDelegate {
         self.collectionView?.mj_header.beginRefreshing()
     }
 }
-
+//MARK:UIKeyboardNotification
 extension NewBuyController {
     @objc func keyboardWillShow(notify:Notification) {
         
@@ -736,6 +728,7 @@ extension NewBuyController {
         }
     }
 }
+//MARK:UITextFieldDelegate
 extension NewBuyController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
@@ -781,8 +774,9 @@ extension NewBuyController: UITextFieldDelegate{
     }
     
 }
+//MARK:UICollectionViewDataSource & UICollectionViewDelegate
 extension NewBuyController {
-    // MARK: UICollectionViewDataSource
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1

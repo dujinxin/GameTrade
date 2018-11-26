@@ -41,10 +41,10 @@ class OrderListController: JXTableViewController {
         
         self.title = "订单"
         
+        self.tableView?.frame = CGRect(0, kNavStatusHeight, kScreenWidth, kScreenHeight - kNavStatusHeight - kTabBarHeight)
         self.tableView?.register(UINib(nibName: "OrderingListCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifiering")
         self.tableView?.register(UINib(nibName: "OrderedListCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifiered")
         self.tableView?.estimatedRowHeight = 121
-        self.tableView?.rowHeight = UITableViewAutomaticDimension
         self.tableView?.separatorStyle = .none
         
         self.tableView?.mj_header = MJRefreshNormalHeader(refreshingBlock: {
