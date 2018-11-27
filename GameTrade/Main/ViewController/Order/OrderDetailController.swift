@@ -254,7 +254,7 @@ extension OrderDetailController {
                             print(e.localizedDescription)
                         } else {
                             print("-----------",baseChannel?.getMetadata())
-                            chatViewController.sendMessage(self.vm.orderDetailEntity.id)
+                            chatViewController.sendMessage("你好，我的订单号是\(self.vm.orderDetailEntity.orderNum ?? "")。", orderId: self.vm.orderDetailEntity.id)
                             self.navigationController?.pushViewController(chatViewController, animated: true)
                         }
                     })

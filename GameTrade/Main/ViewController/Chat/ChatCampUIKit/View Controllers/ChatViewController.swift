@@ -1218,13 +1218,13 @@ extension ChatViewController: MessagesDisplayDelegate {
 
 // MARK:- Custom methods
 extension ChatViewController {
-    func sendMessage(_ text: String) {
+    func sendMessage(_ text: String, orderId: String) {
         if channel.getParticipants().count == 2 && participant?.isParticipantBlockedByMe() ?? false {
             self.presentUserBlockedAlert()
         } else {
             channel.stopTyping()
-            let txt = "你好，我的订单号是\(text)。"
-            channel.sendMessage(text: txt) { [weak self] (message, error) in
+            
+            channel.sendMessage(text: text) { [weak self] (message, error) in
                 
                 if error != nil {
                     DispatchQueue.main.async {
@@ -1236,7 +1236,7 @@ extension ChatViewController {
                 }
             }
             
-            self.vm.orderDetail(id: text) { (_, msg, isSuc) in
+            self.vm.orderDetail(id: orderId) { (_, msg, isSuc) in
                 if isSuc {
                     self.orderView.entity = self.vm.orderDetailEntity
                 }
