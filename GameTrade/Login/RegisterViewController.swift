@@ -216,7 +216,7 @@ class RegisterViewController: BaseViewController {
     //[a-zA-Z0-9]{8,20}+$                             8-20位数字或字母
     //^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$    8-20位数字加字母的组合
     func validate(_ string: String) -> Bool {
-        let predicate = NSPredicate(format: "SELF MATCHES %@", "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,16}$")
+        let predicate = NSPredicate(format: "SELF MATCHES %@", "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$")
         return predicate.evaluate(with: string)
     }
 }

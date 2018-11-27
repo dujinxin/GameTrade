@@ -103,8 +103,9 @@ public class ChatViewController: MessagesViewController {
         }
         
         loadMessages(count: messageCount)
-        
+        print("-----------------------------------",self.channel.getMetadata())
         if self.channel.getMetadata().count > 0, let orderId = self.channel.getMetadata()["id"], orderId.isEmpty == false {
+            print("-----------------------------------self.vm.orderDetail.id")
             self.vm.orderDetail(id: orderId) { (_, msg, isSuc) in
                 if isSuc {
                     self.orderView.entity = self.vm.orderDetailEntity
@@ -1222,17 +1223,22 @@ extension ChatViewController {
             self.presentUserBlockedAlert()
         } else {
             channel.stopTyping()
-            let text = "你好，我的订单号是\(text)。"
-            channel.sendMessage(text: text) { [weak self] (message, error) in
+            let txt = "你好，我的订单号是\(text)。"
+            channel.sendMessage(text: txt) { [weak self] (message, error) in
                 
                 if error != nil {
                     DispatchQueue.main.async {
                         self?.showAlert(title: "Unable to Send Message", message: "An error occurred while sending the message.", actionText: "Ok")
-                        
                     }
                 } else if let _ = message {
                     self?.channel.markAsRead()
                     self?.lastReadSent = NSDate().timeIntervalSince1970 * 1000
+                }
+            }
+            
+            self.vm.orderDetail(id: text) { (_, msg, isSuc) in
+                if isSuc {
+                    self.orderView.entity = self.vm.orderDetailEntity
                 }
             }
         }

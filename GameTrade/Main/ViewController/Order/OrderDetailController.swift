@@ -186,18 +186,19 @@ extension OrderDetailController {
 //MARK: chat
 extension OrderDetailController {
     @objc func connectFinance() {
-        if let chatID = self.vm.financeId {
-            self.createChat(id: chatID)
-        } else {
-            self.vm.getChatID(agentId: "suibian", type: 2, completion: { (_, msg, isSuc) in
-                
-                if isSuc {
-                    self.createChat(id: self.vm.financeId)
-                } else {
-                    ViewManager.showNotice(msg)
-                }
-            })
-        }
+//        if let chatID = self.vm.financeId {
+//            self.createChat(id: chatID)
+//        } else {
+//            self.vm.getChatID(agentId: "suibian", type: 2, completion: { (_, msg, isSuc) in
+//
+//                if isSuc {
+//                    self.createChat(id: self.vm.financeId)
+//                } else {
+//                    ViewManager.showNotice(msg)
+//                }
+//            })
+//        }
+        self.connectService()
     }
     func connectService() {
       
