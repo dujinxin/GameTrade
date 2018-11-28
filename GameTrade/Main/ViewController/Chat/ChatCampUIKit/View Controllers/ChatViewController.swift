@@ -1214,6 +1214,15 @@ extension ChatViewController: MessagesDisplayDelegate {
         }
     }
  
+//    public func detectorAttributes(for detector: DetectorType, and message: MessageType, at indexPath: IndexPath) -> [NSAttributedString.Key : Any] {
+//        return [
+//            NSAttributedString.Key.foregroundColor: UIColor.darkText,
+//            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+//            NSAttributedString.Key.underlineColor: UIColor.darkText,
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)
+//        ]
+//    }
+
 }
 
 // MARK:- Custom methods

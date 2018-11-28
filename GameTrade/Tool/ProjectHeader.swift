@@ -43,13 +43,6 @@ let GDAppKey = "73dcd0051605f829b29dccc6a746a676" //操作员
 let BaiduAppKey = "I8aQQsCpBqPeYzuAVuhDiRmbXuWnG4T0"
 
 
-//let kBaseUrl = "http://192.168.1.122:8080"
-let kBaseUrl = "http://app.okshenglian.com"
-
-
-let kHtmlUrl = kBaseUrl + "/smart/wallet#/"
-//let kHtmlUrl = "http://192.168.0.171:8080" + "/#/"
-
 let isShowLog : Bool = true
 let isDebug : Bool = true
 		

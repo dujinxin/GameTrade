@@ -89,7 +89,7 @@ open class TextMessageCell: MessageCollectionViewCell {
             }
             // Needs to be set after the attributedText because it takes precedence
             messageLabel.textColor = textColor
-            messageLabel.font = UIFont.systemFont(ofSize: 16)
+//            messageLabel.font = UIFont.systemFont(ofSize: 16)
         }
     }
     
