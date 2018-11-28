@@ -31,7 +31,7 @@ class MyVM: BaseViewModel {
     //修改登录密码
     func modifyLogPsd(code: String, password: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
         
-        JXRequest.request(url: ApiString.modifyLogPsd.rawValue, param: ["mobileValidateCode": code,"password": password], success: { (data, message) in
+        JXRequest.request(url: ApiString.modifyLogPsd.rawValue, param: ["mobileValidateCode": code,"password": MD5.encode(password)], success: { (data, message) in
             completion(data,message,true)
         }) { (message, code) in
             completion(nil,message,false)
@@ -60,7 +60,7 @@ class MyVM: BaseViewModel {
     //修改资金密码
     func modifyTradePsd(code: String, password: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
         
-        JXRequest.request(url: ApiString.modifyTradePsd.rawValue, param: ["mobileValidateCode": code,"safePassword": password], success: { (data, message) in
+        JXRequest.request(url: ApiString.modifyTradePsd.rawValue, param: ["mobileValidateCode": code,"safePassword": MD5.encode(password)], success: { (data, message) in
             completion(data,message,true)
         }) { (message, code) in
             completion(nil,message,false)
@@ -69,7 +69,7 @@ class MyVM: BaseViewModel {
     //资金密码初始化
     func tradePsdInit(password: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
         
-        JXRequest.request(url: ApiString.tradePsdInit.rawValue, param: ["safePassword": password], success: { (data, message) in
+        JXRequest.request(url: ApiString.tradePsdInit.rawValue, param: ["safePassword": MD5.encode(password)], success: { (data, message) in
             completion(data,message,true)
         }) { (message, code) in
             completion(nil,message,false)

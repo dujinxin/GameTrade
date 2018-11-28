@@ -569,7 +569,7 @@ extension MainViewController {
             reusableView.helpBlock = {
                 let vc = MyWebViewController()
                 vc.title = "帮助信息"//self.homeVM.homeEntity.notice.title
-                vc.urlStr = "https://supremexxx.s3-ap-northeast-1.amazonaws.com/html/static/help.html"
+                vc.urlStr = kHelpUrl
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
                 

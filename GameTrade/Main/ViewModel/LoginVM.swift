@@ -34,7 +34,7 @@ class LoginVM: JXRequest {
     }
     //注册
     func register(mobile: String, password: String, mobileCode: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-        JXRequest.request(url: ApiString.register.rawValue, param: ["method": "register", "mobile": mobile, "password": password ,"mobileValidateCode": mobileCode], success: { (data, message) in
+        JXRequest.request(url: ApiString.register.rawValue, param: ["method": "register", "mobile": mobile, "password": MD5.encode(password) ,"mobileValidateCode": mobileCode], success: { (data, message) in
             guard
                 var dict = data as? Dictionary<String, Any>
                 else{
@@ -55,7 +55,7 @@ class LoginVM: JXRequest {
     }
     //重设密码
     func resetPsd(mobile: String, password: String, mobileCode: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
-        JXRequest.request(url: ApiString.resetPsd.rawValue, param: ["mobile": mobile, "password": password ,"mobileValidateCode": mobileCode], success: { (data, message) in
+        JXRequest.request(url: ApiString.resetPsd.rawValue, param: ["mobile": mobile, "password": MD5.encode(password) ,"mobileValidateCode": mobileCode], success: { (data, message) in
 
             completion(nil,message,true)
         }) { (message, code) in
@@ -106,7 +106,7 @@ class LoginVM: JXRequest {
     //登录
     func login(userName: String, password: String, completion:@escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())){
         
-        JXRequest.request(url: ApiString.login.rawValue, param: ["username": userName, "password": password], success: { (data, message) in
+        JXRequest.request(url: ApiString.login.rawValue, param: ["username": userName, "password": MD5.encode(password)], success: { (data, message) in
             guard
                 var dict = data as? Dictionary<String, Any>
                 else{

@@ -111,7 +111,7 @@ class HomeVM: BaseViewModel {
     }
     func scanPay(sign: String, safePassword: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
-        JXRequest.request(url: ApiString.scanPay.rawValue, param: ["sign": sign, "safePassword": safePassword], success: { (data, msg) in
+        JXRequest.request(url: ApiString.scanPay.rawValue, param: ["sign": sign, "safePassword": MD5.encode(safePassword)], success: { (data, msg) in
             guard
                 let dict = data as? Dictionary<String, Any>,
                 let id = dict["bizId"] as? String

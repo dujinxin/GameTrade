@@ -8,6 +8,20 @@
 
 import UIKit
 
+extension String {
+    var MD5String: String {
+        let cStrl = cString(using: String.Encoding.utf8)
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: 16)
+        CC_MD5(cStrl, CC_LONG(strlen(cStrl!)), buffer)
+        var md5String = ""
+        for idx in 0...15 {
+            let obcStrl = String.init(format: "%02x", buffer[idx])
+            md5String.append(obcStrl)
+        }
+        free(buffer)
+        return md5String
+    }
+}
 //MAKE:MD5加密
 class MD5 {
     static func encode(_ string:String) -> String {
@@ -15,16 +29,33 @@ class MD5 {
         let str = string.cString(using: String.Encoding.utf8)
         let strLen = CUnsignedInt(string.lengthOfBytes(using: String.Encoding.utf8))
         let digestLen = Int(CC_MD5_DIGEST_LENGTH)
-        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
-        CC_MD5(str!, strLen, result)
-        let hash = NSMutableString()
+        let buffer = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
+        CC_MD5(str, strLen, buffer)
+        var hash : String = ""
         for i in 0 ..< digestLen {
-            hash.appendFormat("%02x", result[i])
+            let s = String(format: "%02x", buffer[i])
+            hash.append(s)
         }
-        result.deinitialize()
+        free(buffer)
         
-        return String(format: hash as String)
+        return hash
     }
+//    static func encode(_ string:String) -> String {
+//
+//        let str = string.cString(using: String.Encoding.utf8)
+//        let strLen = CUnsignedInt(string.lengthOfBytes(using: String.Encoding.utf8))
+//        let digestLen = Int(CC_MD5_DIGEST_LENGTH)
+//        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
+//        CC_MD5(str!, strLen, result)
+//        let hash = NSMutableString()
+//        for i in 0 ..< digestLen {
+//            hash.appendFormat("%02x", result[i])
+//        }
+//        result.deinitialize()
+//
+//        return String(format: hash as String)
+//    }
+
 }
 //MAKR:base64加密、解密
 class Base64 {
@@ -44,7 +75,6 @@ class Base64 {
         }
         return decodeString
     }
-    
     static func dataEncode(_ data:Data) -> Data {
         return data.base64EncodedData(options: .lineLength64Characters)
     }
@@ -57,18 +87,18 @@ class Base64 {
         return data
     }
     
-    static func imageEncode(_ image:UIImage) -> Data? {
+    static func imageEncode(_ image: UIImage) -> Data? {
         //UIImageJPEGRepresentation(<#T##image: UIImage##UIImage#>, <#T##compressionQuality: CGFloat##CGFloat#>)
         guard let data = image.pngData() else {
             return nil
         }
         return self.dataEncode(data)
     }
-    static func imageDecode(_ base64Data:Data) -> UIImage? {
+    static func imageDecode(_ base64Data: Data) -> UIImage? {
         
         guard
             let data = self.dataDecode(base64Data),
-            let image = data as? UIImage
+            let image = UIImage(data: data)
         else {
             return nil
         }

@@ -129,7 +129,7 @@ extension AppDelegate {
     fileprivate func setupChatCampSDK() {
         //CCPClient.initApp(appId: "6346990561630613504")
         
-        CCPClient.initApp(appId: "6456046490195324928")
+        CCPClient.initApp(appId: kIM_AppID)
     }
     fileprivate func routeUser() {
         if let userID = UserManager.manager.userEntity.id {
