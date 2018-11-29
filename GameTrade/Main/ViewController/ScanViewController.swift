@@ -400,14 +400,15 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
                             self.statusBottomView.show(inView: self.view)
                             self.psdTextView.textField.becomeFirstResponder()
                         } else {
-                            ViewManager.showNotice(msg)
+                            ViewManager.showNotice("msg")
                             self.session.startRunning()
                         }
                     }
                 }
             } else {
-                ViewManager.showNotice(str)
-                self.session.startRunning()
+                ViewManager.showNotice("不支持该二维码")
+                //self.session.startRunning()
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
