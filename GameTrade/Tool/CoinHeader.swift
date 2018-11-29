@@ -8,6 +8,8 @@
 
 import Foundation
 
+let configuration_valueType = "RMB"
+
 //MARK: 测试
 //let configuration_coinName = "QQP"
 //let configuration_coinPrice : Double = 1.0
@@ -23,21 +25,33 @@ import Foundation
 ////let kHtmlUrl = kBaseUrl + "/smart/wallet#/"
 ////let kHtmlUrl = "http://192.168.0.171:8080" + "/#/"
 
+////MARK: 线上
+//let configuration_coinName = "PTB"
+//let configuration_coinPrice : Double = 1.0
+//let configuration_service : Double = 0.02
+//let configuration_realPrice : Double = configuration_coinPrice - configuration_service
+//let configuration_merchantName = "王涛-测试商户"
+////let configuration_merchantID = "0fe7136968fe44a7929391b695d4de0b" //线上
+//
+////let configuration_merchantID = "bd343bf51ae3449ea33a3c5c78c0b752" //测试
+//
+//let kIM_AppID = "6473367894330699776"
+//
+//let kBaseUrl = "https://apps.coinepay.io"
+//let kHelpUrl = "https://supremexxx.s3-ap-northeast-1.amazonaws.com/html/static/PTB_help.html"
+
+
+
 //MARK: 线上
-let configuration_coinName = "PTB"
+let configuration_coinName = "CSB"
 let configuration_coinPrice : Double = 1.0
 let configuration_service : Double = 0.02
 let configuration_realPrice : Double = configuration_coinPrice - configuration_service
 let configuration_merchantName = "王涛-测试商户"
-//let configuration_merchantID = "0fe7136968fe44a7929391b695d4de0b" //线上
-
-//let configuration_merchantID = "bd343bf51ae3449ea33a3c5c78c0b752" //测试
-let configuration_merchantID = "8413102ec09749b9b743f2e58e2082a2" //老沈测试
+let configuration_merchantID = "8413102ec09749b9b743f2e58e2082a2" //线上
 
 let kIM_AppID = "6473367894330699776"
 
 let kBaseUrl = "https://apps.coinepay.io"
-let kHelpUrl = "https://supremexxx.s3-ap-northeast-1.amazonaws.com/html/static/PTB_help.html"
+let kHelpUrl = "https://supremexxx.s3-ap-northeast-1.amazonaws.com/html/static/CSB_help.html"
 
-
-let configuration_valueType = "RMB"
