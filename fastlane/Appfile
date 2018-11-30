@@ -1,0 +1,8 @@
+app_identifier("com.RichChain.AutoArchive") # The bundle identifier of your app
+apple_id("du@okshenglian.cn") # Your Apple email address
+
+itc_team_id("119427900") # App Store Connect Team ID
+team_id("Y9MA8YW5MV") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile

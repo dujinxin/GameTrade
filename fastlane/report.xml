@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="fastlane.lanes">
+    
+    
+    
+      
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.001384">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="1: Switch to ios package lane" time="0.001023">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: get_info_plist_value" time="0.003074">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: get_info_plist_value" time="0.002856">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="4: gym" time="449.281032">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="5: xcclean" time="2.586269">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="6: slack" time="57.035698">
+        
+      </testcase>
+    
+  </testsuite>
+</testsuites>

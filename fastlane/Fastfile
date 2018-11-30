@@ -1,0 +1,102 @@
+default_platform(:ios)
+
+#声明
+    k_app_name = "ABC"
+    k_workspace = "GameTrade.xcworkspace"
+    k_scheme_name = "GameTrade"
+    k_ipa_time = Time.now.strftime("%Y%m%d_%H%M")
+    k_output_directory = "packages"
+    k_app_info_plist_path = './GameTrade/Info.plist'
+    k_export_method = ""
+    k_env_prefix = ""
+    k_ipa_name = ""
+
+platform :ios do
+
+
+  before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+  end
+
+#  desc "Push a new release build to the App Store"
+#  lane :release do
+#    build_app(workspace: "GameTrade.xcworkspace", scheme: "GameTrade")
+#    upload_to_app_store
+#  end
+
+
+#debug包
+  lane :debug_package do
+    k_env_prefix ="debug_"
+    k_export_method = "development"
+    package(configuration: "Debug")
+  end
+
+#release包
+  lane :release_package do
+    k_env_prefix ="adhoc_"
+    k_export_method = "ad-hoc"
+    package(configuration: "Release")
+
+    pgyer(api_key: "2455364b6a08c261b84cfbe7fff55fba", user_key: "ad18b738e7854bf3c689ecfe71f1b7a5", update_description: "update by fastlane")#蒲公英设置查看key
+  end
+
+#发布包 "Push a new release build to the App Store"
+  lane :appstore_package do
+
+    k_env_prefix ="appstore_"
+    k_export_method = "app-store"
+    package(configuration: "Release")
+
+  end
+
+#打包函数 desc "打包到pgy"
+  
+  lane :package do |options|
+
+    #自动增加build
+    increment_build_number
+
+    #获取version和build版本号
+    k_version = get_info_plist_value(path: "./#{k_scheme_name}/Info.plist", key: "CFBundleShortVersionString")
+    k_build = get_info_plist_value(path: "./#{k_scheme_name}/Info.plist", key: "CFBundleVersion")
+    k_ipa_name = "#{k_env_prefix}" + "#{k_app_name}_"  +  "#{k_ipa_time}_" + "#{k_version}" +"_#{k_build}"+ ".ipa"
+
+
+    gym(
+
+      clean:true, #打包前clean项目
+      workspace: "#{k_workspace}",
+      scheme: "#{k_scheme_name}", #scheme
+      configuration: options[:configuration],#环境 Debug，Release
+      export_method: "#{k_export_method}", #导出方式：app-store，ad-hoc，enterprise，development
+      output_directory: "#{k_output_directory}", #"./ipa",#ipa的存放目录
+      output_name: "#{k_ipa_name}", #输出ipa的文件名为当前的build号
+      silent: true, #隐藏没有必要的信息
+      include_symbols: true,
+      include_bitcode: true,
+
+      export_xcargs: "-allowProvisioningUpdates" #Xcode9 默认不允许访问钥匙串的内容,必须要设置此项才可以,运行过程可能会提示是否允许访问钥匙串,需要输入电脑密码
+    )
+    xcclean(
+      workspace: "#{k_workspace}",
+      scheme: "#{k_scheme_name}"
+    )
+  end
+
+  #执行lane成功后的回调
+  after_all do |lane|
+     slack(
+       message: "Successfully deployed new App Update."
+     )
+  end
+ 
+  # 如果流程发生异常会走这里并终止
+  error do |lane, exception|
+     slack(
+       message: exception.message,
+       success: false
+     )
+  end
+
+end

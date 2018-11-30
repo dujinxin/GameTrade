@@ -46,3 +46,4 @@ let BaiduAppKey = "I8aQQsCpBqPeYzuAVuhDiRmbXuWnG4T0"
 let isShowLog : Bool = true
 let isDebug : Bool = true
 		
+

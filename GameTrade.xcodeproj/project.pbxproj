@@ -2383,8 +2383,9 @@
 			baseConfigurationReference = 67EEEA838231B60CC6202CFC /* Pods-GameTrade.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Y9MA8YW5MV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2397,12 +2398,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.AutoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = GameTradeDev;
+				PROVISIONING_PROFILE_SPECIFIER = GameTradeDisHoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -2413,6 +2415,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Y9MA8YW5MV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2425,12 +2428,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.AutoArchive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Dis;
+				PROVISIONING_PROFILE_SPECIFIER = GameTradeDisHoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
