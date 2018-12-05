@@ -26,7 +26,7 @@ protocol JXKeyboardTextViewDelegate: AnyObject {
 
 class JXKeyboardToolBar: UIView {
     
-    public typealias KeyboardShowBlock = ((_ height: CGFloat, _ rect: CGRect)->())
+    public typealias KeyboardShowBlock = ((_ height: CGFloat, _ currentView: UIView)->())
     public typealias KeyboardCloseBlock = (()->())
     
     public var showBlock: KeyboardShowBlock?
@@ -44,7 +44,6 @@ class JXKeyboardToolBar: UIView {
     }
     public var index: Int = 0
     public var keyBoardHeight: CGFloat = 0
-    public var textViewFrame: CGRect = CGRect()
     public var text: String? {
         didSet {
             //self.textView.text = text
@@ -102,7 +101,7 @@ class JXKeyboardToolBar: UIView {
                 item.title = " ↓ "
                 self.downItem = item
             } else {
-                item.title = "关闭"
+                item.title = "完成"
                 self.closeItem = item
             }
             items.append(item)
@@ -139,7 +138,7 @@ class JXKeyboardToolBar: UIView {
     }
     override public func layoutSubviews() {
         super.layoutSubviews()
-        self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: kScreenWidth - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
+        self.toolBar.frame = CGRect(x: toolEdgeInsets.left, y: toolEdgeInsets.top, width: self.bounds.width - toolEdgeInsets.left - toolEdgeInsets.right, height: topBarHeight - toolEdgeInsets.top - toolEdgeInsets.bottom)
     }
     //MARK:private methods
     
@@ -182,10 +181,8 @@ class JXKeyboardToolBar: UIView {
                 self.index -= 1
                 let v = self.views[self.index]
                 if v is UITextField, let textField = v as? UITextField, textField.isFirstResponder == false {
-                    self.textViewFrame = textField.frame
                     textField.becomeFirstResponder()
                 } else if v is UITextView, let textView = v as? UITextView, textView.isFirstResponder == false {
-                    self.textViewFrame = textView.frame
                     textView.becomeFirstResponder()
                 } else {
                     print("shit!!!")
@@ -194,10 +191,8 @@ class JXKeyboardToolBar: UIView {
                 self.index += 1
                 let v = self.views[self.index]
                 if v is UITextField, let textField = v as? UITextField, textField.isFirstResponder == false {
-                    self.textViewFrame = textField.frame
                     textField.becomeFirstResponder()
                 } else if v is UITextView, let textView = v as? UITextView, textView.isFirstResponder == false {
-                    self.textViewFrame = textView.frame
                     textView.becomeFirstResponder()
                 } else {
                     print("shit!!!")
@@ -245,7 +240,7 @@ class JXKeyboardToolBar: UIView {
         self.index = currentIndex
         self.updateItemState(forIndex: self.index)
         if let block = self.showBlock {
-            block(self.topBarHeight + self.keyboardRect.height, self.textViewFrame)
+            block(self.topBarHeight + self.keyboardRect.height, view)
         }
     }
 }
@@ -262,11 +257,7 @@ extension JXKeyboardToolBar {
         self.animateDuration = animationDuration
         self.keyboardRect = rect
         print(rect)
-        
-        if let block = self.showBlock {
-            block(self.topBarHeight + self.keyboardRect.height, self.textViewFrame)
-        }
-        
+
         UIView.animate(withDuration: animationDuration, animations: {
             self.frame = CGRect(x: 0, y: keyWindowHeight - self.topBarHeight - self.keyboardRect.height, width: keyWindowWidth, height: self.topBarHeight + self.keyboardRect.height)
             

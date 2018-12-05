@@ -131,12 +131,12 @@ class RegisterViewController: BaseViewController {
     override func isCustomNavigationBarUsed() -> Bool {
         return false
     }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
 
     @objc func hideKeyboard() {
-        self.view.endEditing(true)
+//        self.view.endEditing(true)
     }
 
     @IBAction func changePasswordText(_ sender: UIButton) {

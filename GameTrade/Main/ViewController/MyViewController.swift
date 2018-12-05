@@ -46,7 +46,7 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
         self.tableView.frame = CGRect(x: 0, y: kStatusBarHeight, width: kScreenWidth, height: kScreenHeight - kStatusBarHeight - kTabBarHeight)
         self.tableView.register(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier1")
         self.tableView.register(UINib(nibName: "ImageTitleCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier2")
-        self.tableView.estimatedRowHeight = 44
+        self.tableView.estimatedRowHeight = 64
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.isScrollEnabled = false
         self.tableView.separatorStyle = .none
@@ -176,7 +176,11 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
         return UIView()
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 30
+        if section == 0 {
+            return 0
+        } else {
+            return 30
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
@@ -191,9 +195,9 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //return UITableViewAutomaticDimension
         if indexPath.section == 0 {
-            return 124 + 30 + 20
+            return 124 + 30 + 20 + 30
         } else {
-            return 50
+            return 64
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

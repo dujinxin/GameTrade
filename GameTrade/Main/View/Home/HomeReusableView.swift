@@ -69,8 +69,10 @@ class HomeReusableView: UICollectionReusableView {
             quickImageView.layer.cornerRadius = 2
             quickImageView.layer.shadowOpacity = 1
             quickImageView.layer.shadowRadius = 10
-            quickImageView.layer.shadowOffset = CGSize(width: 0, height: 40)
             quickImageView.layer.shadowColor = UIColor.rgbColor(rgbValue: 0x10101a, alpha: 0.5).cgColor
+//            quickImageView.layer.shadowOffset = CGSize(width: 0, height: 40)
+            let path = CGPath(rect: CGRect(x: -24, y: -25, width: kScreenWidth, height: 125), transform: nil)
+            quickImageView.layer.shadowPath = path
         }
     }
     @IBOutlet weak var textField: UITextField!{

@@ -23,7 +23,7 @@ class SecurityCenterController: JXTableViewController {
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight + 48, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - 48)
         self.tableView?.separatorStyle = .none
         self.tableView?.separatorColor = JXSeparatorColor
-        self.tableView?.estimatedRowHeight = 64//UITableViewAutomaticDimension
+        self.tableView?.rowHeight = 64
         //self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
         self.tableView?.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
     }

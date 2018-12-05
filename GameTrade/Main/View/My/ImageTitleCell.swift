@@ -13,6 +13,11 @@ class ImageTitleCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var detailView: UILabel!
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!{
+        didSet{
+            trailingConstraint.constant = -34
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
