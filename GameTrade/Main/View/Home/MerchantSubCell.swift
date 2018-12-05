@@ -48,18 +48,18 @@ class MerchantSubCell: UICollectionViewCell {
         self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
         self.mainContentView.layer.cornerRadius = 4
    
-        self.numberLabel.textColor = JXText50Color
-        self.extraLabel.textColor = JXText50Color
-        self.valueLabel.textColor = JXTextColor
+        self.numberLabel.textColor = JXMainText50Color
+        self.extraLabel.textColor = JXMainText50Color
+        self.valueLabel.textColor = JXMainTextColor
         
-        buyButton.backgroundColor = JXOrangeColor
+        buyButton.backgroundColor = JXMainColor
         buyButton.layer.cornerRadius = 2
         buyButton.layer.shadowOpacity = 1
         buyButton.layer.shadowRadius = 10
         buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         buyButton.layer.shadowColor = JX10101aShadowColor.cgColor
         buyButton.setTitleColor(JXFfffffColor, for: .normal)
-        buyButton.backgroundColor = JXOrangeColor
+        buyButton.backgroundColor = JXMainColor
         
     }
     @IBAction func buy(_ sender: Any) {

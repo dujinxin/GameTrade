@@ -236,7 +236,7 @@ class PayListController: JXTableViewController {
         }
         markAction.backgroundColor = JXGreenColor
         deleteAction.backgroundColor = JXRedColor
-        cancelAction.backgroundColor = JXOrangeColor
+        cancelAction.backgroundColor = JXMainColor
         return [deleteAction,cancelAction,markAction]
     }
     func editActionsForRowAt(indexPath: IndexPath) {
@@ -345,7 +345,7 @@ extension PayListController {
             button1.setTitle("忘记密码？", for: .normal)
             
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.contentVerticalAlignment = .center
             button1.contentHorizontalAlignment = .right
             button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)

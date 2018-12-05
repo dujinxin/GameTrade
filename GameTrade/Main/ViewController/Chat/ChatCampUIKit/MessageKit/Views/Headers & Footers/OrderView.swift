@@ -20,7 +20,7 @@ class OrderView: UIView {
 //        v.layer.cornerRadius = 20
 //        v.layer.masksToBounds = true
 //        v.clipsToBounds = true
-//        v.backgroundColor = JXOrangeColor
+//        v.backgroundColor = JXMainColor
         let v = UILabel()
         v.textColor = UIColor.rgbColor(rgbValue: 0x222133)
         v.font = UIFont.systemFont(ofSize: 20)
@@ -34,28 +34,28 @@ class OrderView: UIView {
     
     lazy var merchatNameLabel: UILabel = {
         let v = UILabel()
-        v.textColor = JXTextColor
+        v.textColor = JXMainTextColor
         v.font = UIFont.systemFont(ofSize: 14)
         v.textAlignment = .left
         return v
     }()
     lazy var timeLabel: UILabel = {
         let v = UILabel()
-        v.textColor = JXTextColor
+        v.textColor = JXMainTextColor
         v.font = UIFont.systemFont(ofSize: 14)
         v.textAlignment = .right
         return v
     }()
     lazy var worthLabel: UILabel = {
         let v = UILabel()
-        v.textColor = JXTextColor
+        v.textColor = JXMainTextColor
         v.font = UIFont.systemFont(ofSize: 14)
         v.textAlignment = .left
         return v
     }()
     lazy var statusLabel: UILabel = {
         let v = UILabel()
-        v.textColor = JXOrangeColor
+        v.textColor = JXMainColor
         v.font = UIFont.systemFont(ofSize: 14)
         v.textAlignment = .right
         return v

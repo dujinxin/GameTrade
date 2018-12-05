@@ -49,8 +49,8 @@ class OrderSellingDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
-        self.orderNumberLabel.textColor = JXText50Color
-        self.orderInfoLabel.textColor = JXText50Color
+        self.orderNumberLabel.textColor = JXMainText50Color
+        self.orderInfoLabel.textColor = JXMainText50Color
         
         self.tradeView.layer.cornerRadius = 4
         self.listView.layer.cornerRadius = 4
@@ -58,13 +58,13 @@ class OrderSellingDetailCell: UITableViewCell {
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         
         self.cancelLabel.backgroundColor = UIColor.clear
-        self.cancelLabel.layer.borderColor = JXOrangeColor.cgColor
+        self.cancelLabel.layer.borderColor = JXMainColor.cgColor
         self.cancelLabel.layer.borderWidth = 1
         self.cancelLabel.layer.cornerRadius = 2
-        self.cancelLabel.textColor = JXOrangeColor
+        self.cancelLabel.textColor = JXMainColor
         
         
-        self.payButton.backgroundColor = JXOrangeColor
+        self.payButton.backgroundColor = JXMainColor
         self.payButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.payButton.layer.shadowOpacity = 1
         self.payButton.layer.shadowRadius = 10
@@ -76,7 +76,7 @@ class OrderSellingDetailCell: UITableViewCell {
         self.payButton.addTarget(self, action: #selector(payTap(tap:)), for: .touchUpInside)
         self.payButton.setTitle("确认已收款", for: .normal)
         
-        self.noticeLabel.textColor = JXText50Color
+        self.noticeLabel.textColor = JXMainText50Color
         
     }
     deinit {

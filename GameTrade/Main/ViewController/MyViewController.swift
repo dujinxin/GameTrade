@@ -329,7 +329,7 @@ extension MyViewController {
             label.text = "提示"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -337,7 +337,7 @@ extension MyViewController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 30)
             nameLabel.text = "您还未设置资金密码"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             
@@ -353,7 +353,7 @@ extension MyViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("稍后再说", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -374,7 +374,7 @@ extension MyViewController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()
@@ -431,7 +431,7 @@ extension MyViewController {
             titleLabel.text = "修改用户名"
             titleLabel.textAlignment = .center
             titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-            titleLabel.textColor = JXTextColor
+            titleLabel.textColor = JXMainTextColor
             backgroundView.addSubview(titleLabel)
             
             
@@ -460,7 +460,7 @@ extension MyViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("点错了", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView1), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -481,7 +481,7 @@ extension MyViewController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()

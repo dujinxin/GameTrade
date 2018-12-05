@@ -35,21 +35,9 @@ let JXEeeeeeColor = UIColor.rgbColor(rgbValue: 0xeeeeee)
 let JXFfffffColor = UIColor.rgbColor(rgbValue: 0xffffff)
 let JXF1f1f1Color = UIColor.rgbColor(rgbValue: 0xf1f1f1)
 
-let JXMainColor = UIColor.rgbColor(rgbValue: 0x0469c8)
+
 let JXGrayColor = UIColor.rgbColor(from: 177, 178, 177)
 
-let JXOrangeColor = UIColor.rgbColor(rgbValue: 0xff9300)
-let JXRedColor = UIColor.rgbColor(rgbValue: 0xEF4262)
-let JXGreenColor = UIColor.rgbColor(rgbValue: 0x30DA51)
-let JXPlaceHolerColor = UIColor.rgbColor(rgbValue: 0x686883)
-let JXTextColor = JXFfffffColor
-let JXText50Color = UIColor.rgbColor(rgbValue: 0xffffff, alpha: 0.5)
-let JXSeparatorColor = UIColor.rgbColor(rgbValue: 0x464855)
-
-let JXBackColor = UIColor.rgbColor(rgbValue: 0x393948)
-
-let JX22222cShadowColor = UIColor.rgbColor(rgbValue: 0x22222c, alpha: 0.25)
-let JX10101aShadowColor = UIColor.rgbColor(rgbValue: 0x10101a, alpha: 0.15)
 
 
 

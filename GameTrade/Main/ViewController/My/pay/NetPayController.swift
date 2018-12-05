@@ -37,7 +37,7 @@ class NetPayController: BaseViewController {
         k.showBlock = { (height, rect) in
             print(height,rect)
         }
-        k.tintColor = JXTextColor
+        k.tintColor = JXMainTextColor
         k.toolBar.barTintColor = JXBackColor
         k.backgroundColor = JXBackColor
         //k.textFieldDelegate = self
@@ -209,8 +209,8 @@ extension NetPayController: UITextFieldDelegate {
             let card = self.accountTextField.text, card.isEmpty == false{
             
             self.submitButton.isEnabled = true
-            self.submitButton.backgroundColor = JXOrangeColor
-            self.submitButton.setTitleColor(JXTextColor, for: .normal)
+            self.submitButton.backgroundColor = JXMainColor
+            self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
         } else {
             
             self.submitButton.isEnabled = false

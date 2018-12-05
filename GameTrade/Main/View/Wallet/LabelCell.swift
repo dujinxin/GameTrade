@@ -17,8 +17,8 @@ class LabelCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.nameLabel.textColor = JXText50Color
-        self.infoLabel.textColor = JXTextColor
+        self.nameLabel.textColor = JXMainText50Color
+        self.infoLabel.textColor = JXMainTextColor
         self.lineView.backgroundColor = JXSeparatorColor
     }
 

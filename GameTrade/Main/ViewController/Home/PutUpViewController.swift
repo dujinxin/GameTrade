@@ -44,7 +44,7 @@ class PutUpViewController: BaseViewController {
         button.setTitle("添加", for: .normal)
         button.setTitleColor(JXFfffffColor, for: .normal)
         button.addTarget(self, action: #selector(addOrder), for: .touchUpInside)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         return button
     }()
     
@@ -61,7 +61,7 @@ class PutUpViewController: BaseViewController {
     //select view
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
+        selectView.backgroundColor = JXMainColor
         selectView.isBackViewUserInteractionEnabled = false
         return selectView
     }()
@@ -80,14 +80,14 @@ class PutUpViewController: BaseViewController {
         
         self.customNavigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Close"), style: .plain, target: self, action: #selector(close))
         
-        self.useLeftLabel.textColor = JXText50Color
-        self.sellLeftLabel.textColor = JXTextColor
-        self.priseLeftLabel.textColor = JXText50Color
-        self.totalLeftLabel.textColor = JXText50Color
-        self.payTotalLeftLabel.textColor = JXText50Color
-        self.serviceLeftLabel.textColor = JXText50Color
-        self.payNameLeftLabel.textColor = JXText50Color
-        self.sellTextField.tintColor = JXOrangeColor
+        self.useLeftLabel.textColor = JXMainText50Color
+        self.sellLeftLabel.textColor = JXMainTextColor
+        self.priseLeftLabel.textColor = JXMainText50Color
+        self.totalLeftLabel.textColor = JXMainText50Color
+        self.payTotalLeftLabel.textColor = JXMainText50Color
+        self.serviceLeftLabel.textColor = JXMainText50Color
+        self.payNameLeftLabel.textColor = JXMainText50Color
+        self.sellTextField.tintColor = JXMainColor
         
         self.payTotalLabel.textColor = JXRedColor
         
@@ -120,7 +120,7 @@ class PutUpViewController: BaseViewController {
             print(view,value)
         }
         
-        bar.tintColor = JXTextColor
+        bar.tintColor = JXMainTextColor
         bar.toolBar.barTintColor = JXBackColor
         bar.backgroundColor = JXBackColor
         self.view.addSubview(bar)
@@ -246,7 +246,7 @@ extension PutUpViewController {
             button1.setTitle("忘记密码？", for: .normal)
             
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.contentVerticalAlignment = .center
             button1.contentHorizontalAlignment = .right
             button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
@@ -299,7 +299,7 @@ extension PutUpViewController {
         let leftLabel1 = UILabel()
         leftLabel1.frame = CGRect(x: 24, y: nameLabel.jxBottom + 31, width: 65, height: 51)
         leftLabel1.text = "出售总额"
-        leftLabel1.textColor = JXText50Color
+        leftLabel1.textColor = JXMainText50Color
         leftLabel1.font = UIFont.systemFont(ofSize: 13)
         leftLabel1.textAlignment = .left
         contentView.addSubview(leftLabel1)
@@ -321,7 +321,7 @@ extension PutUpViewController {
         let leftLabel2 = UILabel()
         leftLabel2.frame = CGRect(x: 24, y: line1.jxBottom, width: 65, height: 51)
         leftLabel2.text = "手续费"
-        leftLabel2.textColor = JXText50Color
+        leftLabel2.textColor = JXMainText50Color
         leftLabel2.font = UIFont.systemFont(ofSize: 13)
         leftLabel2.textAlignment = .left
         contentView.addSubview(leftLabel2)
@@ -329,7 +329,7 @@ extension PutUpViewController {
         let rightLabel2 = UILabel()
         rightLabel2.frame = CGRect(x: leftLabel2.jxRight, y: leftLabel2.jxTop, width: kScreenWidth - 48 - leftLabel2.jxWidth, height: 51)
         rightLabel2.text = String(format:"%.2f",Double(number) * (self.sellInfoEntity?.saleRate ?? 0)) + " \(configuration_coinName)"
-        rightLabel2.textColor = JXTextColor
+        rightLabel2.textColor = JXMainTextColor
         rightLabel2.font = UIFont.systemFont(ofSize: 14)
         rightLabel2.textAlignment = .right
         contentView.addSubview(rightLabel2)
@@ -344,7 +344,7 @@ extension PutUpViewController {
         let leftLabel3 = UILabel()
         leftLabel3.frame = CGRect(x: 24, y: line2.jxBottom , width: 65, height: 51)
         leftLabel3.text = "支付方式"
-        leftLabel3.textColor = JXText50Color
+        leftLabel3.textColor = JXMainText50Color
         leftLabel3.font = UIFont.systemFont(ofSize: 13)
         leftLabel3.textAlignment = .left
         contentView.addSubview(leftLabel3)
@@ -353,13 +353,13 @@ extension PutUpViewController {
         rightButton.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth, height: 51)
         //rightButton.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth - 20, height: 51)
         rightButton.setTitle(self.payName, for: .normal)
-        rightButton.setTitleColor(JXTextColor, for: .normal)
+        rightButton.setTitleColor(JXMainTextColor, for: .normal)
         rightButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         rightButton.contentHorizontalAlignment = .right
         contentView.addSubview(rightButton)
         
         //        let arrow = UIImageView(frame: CGRect(x: rightButton.jxRight, y: leftLabel3.jxTop + 15.5, width: 20, height: 20))
-        //        arrow.backgroundColor = JXTextColor
+        //        arrow.backgroundColor = JXMainTextColor
         //        contentView.addSubview(arrow)
         
         
@@ -385,7 +385,7 @@ extension PutUpViewController {
         button.layer.shadowOffset = CGSize(width: 0, height: 10)
         button.layer.shadowColor = JX10101aShadowColor.cgColor
         button.setTitleColor(JXFfffffColor, for: .normal)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         
         
         //3
@@ -393,7 +393,7 @@ extension PutUpViewController {
         infoLabel.frame = CGRect(x: 24, y: button.jxBottom + 14, width: width, height: 20)
         let percent = String(format: "%.1f%%", Double((self.sellInfoEntity?.saleRate ?? 0)) * 100)
         infoLabel.text = "挂单交易成功将收取\(percent)币手续费"
-        infoLabel.textColor = JXText50Color
+        infoLabel.textColor = JXMainText50Color
         infoLabel.font = UIFont.systemFont(ofSize: 13)
         infoLabel.textAlignment = .center
         contentView.addSubview(infoLabel)
@@ -491,7 +491,7 @@ extension PutUpViewController {
             //button1.setTitle("忘记密码？", for: .normal)
             
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.contentVerticalAlignment = .center
             button1.contentHorizontalAlignment = .right
             //button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
@@ -514,7 +514,7 @@ extension PutUpViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: icon1.jxRight + 5, y: 0, width: width - icon1.jxWidth - 20 - 5, height: view.jxHeight)
             button1.setTitle(self.payName, for: .normal)
-            button1.setTitleColor(JXTextColor, for: .normal)
+            button1.setTitleColor(JXMainTextColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
             
@@ -522,7 +522,7 @@ extension PutUpViewController {
             view.addSubview(button1)
             
             let arrow1 = UIImageView(frame: CGRect(x: button1.jxRight + 11.5, y: 18.5, width: 8.5, height: 14))
-            //arrow1.backgroundColor = JXTextColor
+            //arrow1.backgroundColor = JXMainTextColor
             arrow1.image = UIImage(named: "arrowRight")
             view.addSubview(arrow1)
             

@@ -34,7 +34,7 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
         self.backView.layer.cornerRadius = 4
         
         self.textField.placeHolderText = "填写您的问题"
-        self.textField.textColor = JXTextColor
+        self.textField.textColor = JXMainTextColor
         self.textField.delegate = self
        
         self.uploadImageView.leadingTrailingMargin = 0
@@ -221,8 +221,8 @@ extension FeedBackController : UITextViewDelegate,UITextFieldDelegate{
             self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
         }else{
             self.submitButton.isEnabled = true
-            self.submitButton.setTitleColor(JXTextColor, for: .normal)
-            self.submitButton.backgroundColor = JXOrangeColor
+            self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
+            self.submitButton.backgroundColor = JXMainColor
         }
     }
 }

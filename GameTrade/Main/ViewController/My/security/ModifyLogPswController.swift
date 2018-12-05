@@ -25,7 +25,7 @@ class ModifyLogPswController: BaseViewController {
         k.showBlock = { (height, rect) in
             print(height,rect)
         }
-        k.tintColor = JXTextColor
+        k.tintColor = JXMainTextColor
         k.toolBar.barTintColor = JXBackColor
         k.backgroundColor = JXBackColor
         k.textFieldDelegate = self
@@ -39,18 +39,18 @@ class ModifyLogPswController: BaseViewController {
         
         self.view.addSubview(self.keyboard)
         
-        self.loginTitleLabel.textColor = JXTextColor
-        self.loginLittleLabel.textColor = JXText50Color
+        self.loginTitleLabel.textColor = JXMainTextColor
+        self.loginLittleLabel.textColor = JXMainText50Color
        
         
         self.codeTextField.attributedPlaceholder = NSAttributedString(string: "4位手机验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入8-20位密码，不能全是数字或字母", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         
-        self.codeTextField.textColor = JXTextColor
-        self.passwordTextField.textColor = JXTextColor
+        self.codeTextField.textColor = JXMainTextColor
+        self.passwordTextField.textColor = JXMainTextColor
         
-        self.codeButton.setTitleColor(JXTextColor, for: .normal)
-        self.codeButton.backgroundColor = JXOrangeColor
+        self.codeButton.setTitleColor(JXFfffffColor, for: .normal)
+        self.codeButton.backgroundColor = JXMainColor
         
         self.codeButton.layer.cornerRadius = 2
         self.codeButton.layer.shadowOpacity = 1
@@ -71,8 +71,8 @@ class ModifyLogPswController: BaseViewController {
             return button
         }()
         
-        self.confirmButton.setTitleColor(JXTextColor, for: .normal)
-        self.confirmButton.backgroundColor = JXOrangeColor
+        self.confirmButton.setTitleColor(JXFfffffColor, for: .normal)
+        self.confirmButton.backgroundColor = JXMainColor
         
         self.confirmButton.layer.cornerRadius = 2
         self.confirmButton.layer.shadowOpacity = 1
@@ -102,8 +102,8 @@ class ModifyLogPswController: BaseViewController {
                     self.isCounting = false
                     self.codeButton.setTitle("获取验证码", for: .normal)
                     self.codeButton.isEnabled = true
-                    self.codeButton.backgroundColor = JXOrangeColor
-                    self.codeButton.setTitleColor(JXTextColor, for: .normal)
+                    self.codeButton.backgroundColor = JXMainColor
+                    self.codeButton.setTitleColor(JXFfffffColor, for: .normal)
                 }
             }
         }
@@ -133,8 +133,8 @@ class ModifyLogPswController: BaseViewController {
                     self.isCounting = false
                     self.codeButton.setTitle("获取验证码", for: .normal)
                     self.codeButton.isEnabled = true
-                    self.codeButton.backgroundColor = JXOrangeColor
-                    self.codeButton.setTitleColor(JXTextColor, for: .normal)
+                    self.codeButton.backgroundColor = JXMainColor
+                    self.codeButton.setTitleColor(JXFfffffColor, for: .normal)
                 }
             }
         }
@@ -245,8 +245,8 @@ extension ModifyLogPswController : UITextFieldDelegate,JXKeyboardTextFieldDelega
             let card = self.codeTextField.text, card.isEmpty == false{
             
             self.confirmButton.isEnabled = true
-            self.confirmButton.backgroundColor = JXOrangeColor
-            self.confirmButton.setTitleColor(JXTextColor, for: .normal)
+            self.confirmButton.backgroundColor = JXMainColor
+            self.confirmButton.setTitleColor(JXFfffffColor, for: .normal)
             
         } else {
             

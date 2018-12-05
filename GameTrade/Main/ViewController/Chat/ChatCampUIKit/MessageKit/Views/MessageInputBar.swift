@@ -124,7 +124,7 @@ open class MessageInputBar: UIView {
         textView.messageInputBar = self
         textView.backgroundColor = JXBackColor
         textView.placeholderTextColor = JXPlaceHolerColor
-        textView.textColor = JXTextColor
+        textView.textColor = JXMainTextColor
         return textView
     }()
 

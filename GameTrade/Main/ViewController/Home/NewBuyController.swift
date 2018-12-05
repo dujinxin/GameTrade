@@ -34,7 +34,7 @@ class NewBuyController: JXCollectionViewController {
     
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
+        selectView.backgroundColor = JXMainColor
         selectView.isBackViewUserInteractionEnabled = false
         
         return selectView
@@ -54,7 +54,7 @@ class NewBuyController: JXCollectionViewController {
         bar.closeBlock = {
             //self.textField.text = ""
         }
-        bar.tintColor = JXTextColor
+        bar.tintColor = JXMainTextColor
         bar.toolBar.barTintColor = JXBackColor
         bar.backgroundColor = JXBackColor
         return bar
@@ -109,7 +109,7 @@ class NewBuyController: JXCollectionViewController {
         button.setTitle("快捷购买", for: .normal)
         button.setTitleColor(JXFfffffColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         button.layer.cornerRadius = 2
         button.layer.shadowOpacity = 1
         button.layer.shadowRadius = 10
@@ -127,14 +127,14 @@ class NewBuyController: JXCollectionViewController {
         
         let att = JXAttribute()
         att.normalColor = JX999999Color
-        att.selectedColor = JXOrangeColor
+        att.selectedColor = JXMainColor
         att.normalColor = JX999999Color
         att.font = UIFont.systemFont(ofSize: 14)
         topBar.attribute = att
         
-        //topBar.backgroundColor = JXOrangeColor
+        //topBar.backgroundColor = JXMainColor
         topBar.bottomLineSize = CGSize(width: 45, height: 3)
-        topBar.bottomLineView.backgroundColor = JXOrangeColor
+        topBar.bottomLineView.backgroundColor = JXMainColor
         topBar.isBottomLineEnabled = true
         
         headView.addSubview(topBar!)
@@ -235,7 +235,7 @@ class NewBuyController: JXCollectionViewController {
     
     lazy var statusBottomView1: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
+        selectView.backgroundColor = JXMainColor
         selectView.isBackViewUserInteractionEnabled = false
         
         self.setKeyBoardObserver()
@@ -335,7 +335,7 @@ class NewBuyController: JXCollectionViewController {
         let leftLabel1 = UILabel()
         leftLabel1.frame = CGRect(x: 24, y: self.normalTextField.jxBottom + 16, width: 65, height: 51)
         leftLabel1.text = "交易数量"
-        leftLabel1.textColor = JXText50Color
+        leftLabel1.textColor = JXMainText50Color
         leftLabel1.font = UIFont.systemFont(ofSize: 13)
         leftLabel1.textAlignment = .left
         leftContentView.addSubview(leftLabel1)
@@ -344,7 +344,7 @@ class NewBuyController: JXCollectionViewController {
             let rightLabel1 = UILabel()
             rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 51)
             rightLabel1.text = number + " \(configuration_coinName)"
-            rightLabel1.textColor = JXTextColor
+            rightLabel1.textColor = JXMainTextColor
             rightLabel1.font = UIFont.systemFont(ofSize: 14)
             rightLabel1.textAlignment = .right
             
@@ -362,7 +362,7 @@ class NewBuyController: JXCollectionViewController {
         let leftLabel2 = UILabel()
         leftLabel2.frame = CGRect(x: 24, y: line1.jxBottom, width: 65, height: 51)
         leftLabel2.text = "交易单价"
-        leftLabel2.textColor = JXText50Color
+        leftLabel2.textColor = JXMainText50Color
         leftLabel2.font = UIFont.systemFont(ofSize: 13)
         leftLabel2.textAlignment = .left
         leftContentView.addSubview(leftLabel2)
@@ -370,7 +370,7 @@ class NewBuyController: JXCollectionViewController {
         let rightLabel2 = UILabel()
         rightLabel2.frame = CGRect(x: leftLabel2.jxRight, y: leftLabel2.jxTop, width: kScreenWidth - 48 - leftLabel2.jxWidth, height: 51)
         rightLabel2.text = "\(configuration_coinPrice) \(configuration_valueType)"
-        rightLabel2.textColor = JXTextColor
+        rightLabel2.textColor = JXMainTextColor
         rightLabel2.font = UIFont.systemFont(ofSize: 14)
         rightLabel2.textAlignment = .right
         leftContentView.addSubview(rightLabel2)
@@ -385,7 +385,7 @@ class NewBuyController: JXCollectionViewController {
         let leftLabel3 = UILabel()
         leftLabel3.frame = CGRect(x: 24, y: line2.jxBottom , width: 65, height: 51)
         leftLabel3.text = "交易金额"
-        leftLabel3.textColor = JXText50Color
+        leftLabel3.textColor = JXMainText50Color
         leftLabel3.font = UIFont.systemFont(ofSize: 13)
         leftLabel3.textAlignment = .left
         leftContentView.addSubview(leftLabel3)
@@ -417,7 +417,7 @@ class NewBuyController: JXCollectionViewController {
         let leftLabel4 = UILabel()
         leftLabel4.frame = CGRect(x: 24, y: line3.jxBottom, width: 65, height: 51)
         leftLabel4.text = "支付方式"
-        leftLabel4.textColor = JXText50Color
+        leftLabel4.textColor = JXMainText50Color
         leftLabel4.font = UIFont.systemFont(ofSize: 13)
         leftLabel4.textAlignment = .left
         leftContentView.addSubview(leftLabel4)
@@ -431,7 +431,7 @@ class NewBuyController: JXCollectionViewController {
         } else if self.buyEntity.payType == 3 {
             rightLabel4.text = "银行卡"
         }
-        rightLabel4.textColor = JXTextColor
+        rightLabel4.textColor = JXMainTextColor
         rightLabel4.font = UIFont.systemFont(ofSize: 14)
         rightLabel4.textAlignment = .right
         leftContentView.addSubview(rightLabel4)
@@ -458,7 +458,7 @@ class NewBuyController: JXCollectionViewController {
         button.layer.shadowOffset = CGSize(width: 0, height: 10)
         button.layer.shadowColor = JX10101aShadowColor.cgColor
         button.setTitleColor(JXFfffffColor, for: .normal)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         
         return contentView
     }
@@ -545,7 +545,7 @@ extension NewBuyController {
         if let num = Double(number) {
             nameLabel.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
         }
-        nameLabel.textColor = JXTextColor
+        nameLabel.textColor = JXMainTextColor
         nameLabel.font = UIFont.systemFont(ofSize: 25)
         nameLabel.textAlignment = .center
         
@@ -555,7 +555,7 @@ extension NewBuyController {
         let leftLabel3 = UILabel()
         leftLabel3.frame = CGRect(x: 24, y: nameLabel.jxBottom + 31, width: 65, height: 51)
         leftLabel3.text = "交易数量"
-        leftLabel3.textColor = JXText50Color
+        leftLabel3.textColor = JXMainText50Color
         leftLabel3.font = UIFont.systemFont(ofSize: 13)
         leftLabel3.textAlignment = .left
         leftContentView.addSubview(leftLabel3)
@@ -578,7 +578,7 @@ extension NewBuyController {
         let leftLabel4 = UILabel()
         leftLabel4.frame = CGRect(x: 24, y: line3.jxBottom, width: 65, height: 51)
         leftLabel4.text = "支付方式"
-        leftLabel4.textColor = JXText50Color
+        leftLabel4.textColor = JXMainText50Color
         leftLabel4.font = UIFont.systemFont(ofSize: 13)
         leftLabel4.textAlignment = .left
         leftContentView.addSubview(leftLabel4)
@@ -616,10 +616,10 @@ extension NewBuyController {
                 button.setTitle("银行卡", for: .normal)
             }
             button.setTitleColor(JXPlaceHolerColor, for: .normal)
-            button.setTitleColor(JXOrangeColor, for: .selected)
+            button.setTitleColor(JXMainColor, for: .selected)
             if i == 0 {
                 button.isSelected = true
-                button.layer.borderColor = JXOrangeColor.cgColor
+                button.layer.borderColor = JXMainColor.cgColor
                 
                 self.payName = button.currentTitle ?? ""
                 self.payType = type
@@ -644,7 +644,7 @@ extension NewBuyController {
         button.layer.shadowOffset = CGSize(width: 0, height: 10)
         button.layer.shadowColor = JX10101aShadowColor.cgColor
         button.setTitleColor(JXFfffffColor, for: .normal)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         
         
         
@@ -677,7 +677,7 @@ extension NewBuyController {
         self.buttonArray.forEach { (btn) in
             if button.tag == btn.tag {
                 btn.isSelected = true
-                btn.layer.borderColor = JXOrangeColor.cgColor
+                btn.layer.borderColor = JXMainColor.cgColor
                 self.payName = btn.currentTitle ?? ""
                 self.payType = btn.tag
             } else {

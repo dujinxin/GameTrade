@@ -25,13 +25,13 @@ class BankListController: JXTableViewController {
         vc.searchBar.backgroundImage = UIImage.imageWithColor(JXBackColor)
         vc.searchBar.setSearchFieldBackgroundImage(UIImage.imageWithColor(JXBackColor, size: CGSize(width: kScreenWidth, height: 44)), for: .normal)
         
-        vc.searchBar.tintColor = JXOrangeColor
+        vc.searchBar.tintColor = JXMainColor
         vc.searchBar.placeholder = "开户银行"
         vc.searchBar.showsCancelButton = false
         vc.searchBar.isTranslucent = true
         
         let searchField = vc.searchBar.value(forKey: "searchField") as? UITextField
-        searchField?.textColor = JXTextColor
+        searchField?.textColor = JXMainTextColor
         searchField?.font = UIFont.systemFont(ofSize: 14)
         
         
@@ -85,7 +85,7 @@ class BankListController: JXTableViewController {
             contentView.backgroundColor = UIColor.rgbColor(rgbValue: 0x24242f)
             
             let label = UILabel(frame: CGRect(x: 24, y: 0, width: 100, height: 40))
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             label.text = self.vm.bankIndexList[section]
             label.font = UIFont.systemFont(ofSize: 14)
             label.textAlignment = .left

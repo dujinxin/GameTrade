@@ -62,9 +62,9 @@ class MerchantReusableView: UICollectionReusableView {
         self.merchantLabel.layer.masksToBounds = true
         
         
-        self.percentLabel.textColor = JXOrangeColor
-        self.numberLabel.textColor = JXOrangeColor
-        self.MerchantNameLabel.textColor = JXTextColor
+        self.percentLabel.textColor = JXMainColor
+        self.numberLabel.textColor = JXMainColor
+        self.MerchantNameLabel.textColor = JXMainTextColor
      
         
         self.percentLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3d)

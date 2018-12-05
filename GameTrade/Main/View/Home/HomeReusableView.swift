@@ -84,7 +84,7 @@ class HomeReusableView: UICollectionReusableView {
             textField.placeholder = "输入购买金额"
             textField.keyboardType = .numberPad
             textField.font = UIFont.systemFont(ofSize: 18)
-            textField.textColor = JXTextColor
+            textField.textColor = JXMainTextColor
             textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0xb3b3cb)])
             textField.leftViewMode = .always
             textField.leftView = {
@@ -100,7 +100,7 @@ class HomeReusableView: UICollectionReusableView {
             buyButton.setTitle("快捷购买", for: .normal)
             buyButton.setTitleColor(JXFfffffColor, for: .normal)
             buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-            buyButton.backgroundColor = JXOrangeColor
+            buyButton.backgroundColor = JXMainColor
             buyButton.layer.cornerRadius = 2
             buyButton.layer.shadowOpacity = 1
             buyButton.layer.shadowRadius = 10

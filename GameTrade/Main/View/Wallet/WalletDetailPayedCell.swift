@@ -33,7 +33,7 @@ class WalletDetailPayedCell: UITableViewCell {
                 self.statusLabel.text = "已收币"
                 self.valueLabel.textColor = JXGreenColor
             } else {
-                self.statusLabel.textColor = JXText50Color
+                self.statusLabel.textColor = JXMainText50Color
                 self.statusLabel.text = "已完成"
                 self.valueLabel.textColor = JXRedColor
             }
@@ -62,7 +62,7 @@ class WalletDetailPayedCell: UITableViewCell {
             self.statusLabel.text = "已收币"
             self.valueLabel.textColor = JXGreenColor
         } else {
-            self.statusLabel.textColor = JXText50Color
+            self.statusLabel.textColor = JXMainText50Color
             self.statusLabel.text = "已完成"
             self.valueLabel.textColor = JXRedColor
         }
@@ -87,8 +87,8 @@ class WalletDetailPayedCell: UITableViewCell {
         self.mainContentView.layer.cornerRadius = 4
         
         
-        self.nameLabel.textColor = JXTextColor
-        self.statusLabel.textColor = JXText50Color
+        self.nameLabel.textColor = JXMainTextColor
+        self.statusLabel.textColor = JXMainText50Color
         self.valueLabel.textColor = JXRedColor
     }
 

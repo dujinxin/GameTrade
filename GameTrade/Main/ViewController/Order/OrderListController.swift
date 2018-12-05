@@ -24,8 +24,8 @@ class OrderListController: JXTableViewController {
     }
     @IBOutlet weak var goShopButton: UIButton! {
         didSet{
-            goShopButton.setTitleColor(JXTextColor, for: .normal)
-            goShopButton.backgroundColor = JXOrangeColor
+            goShopButton.setTitleColor(JXFfffffColor, for: .normal)
+            goShopButton.backgroundColor = JXMainColor
             
             goShopButton.layer.cornerRadius = 2
             goShopButton.layer.shadowOpacity = 1

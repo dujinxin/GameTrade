@@ -20,8 +20,8 @@ class WalletAddressCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.clear
-        self.nameLabel.textColor = JXText50Color
-        self.addressLabel.textColor = JXTextColor
+        self.nameLabel.textColor = JXMainText50Color
+        self.addressLabel.textColor = JXMainTextColor
         
         self.codeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCode)))
     }

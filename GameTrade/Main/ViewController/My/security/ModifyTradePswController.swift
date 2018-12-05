@@ -47,20 +47,20 @@ class ModifyTradePswController: BaseViewController {
                 
                 CommonManager.countDown(timeOut: 60, process: { (currentTime) in
                     UIView.beginAnimations(nil, context: nil)
-                    self.fetchButton.setTitleColor(JXTextColor, for: .normal)
+                    self.fetchButton.setTitleColor(JXFfffffColor, for: .normal)
                     self.fetchButton.setTitle(String(format: "%d秒后重发", currentTime), for: .normal)
                     UIView.commitAnimations()
                     self.fetchButton.isEnabled = false
                 }) {
                     self.fetchButton.setTitle("重发验证码", for: .normal)
-                    self.fetchButton.setTitleColor(JXOrangeColor, for: .normal)
+                    self.fetchButton.setTitleColor(JXMainColor, for: .normal)
                     self.fetchButton.isEnabled = true
                 }
             }
         }
         
         
-        self.fetchButton.setTitleColor(JXTextColor, for: .normal)
+        self.fetchButton.setTitleColor(JXFfffffColor, for: .normal)
         //psdTextView.textField.delegate = self
         self.psdView.limit = 4
         self.psdView.bottomLineColor = JXSeparatorColor
@@ -105,13 +105,13 @@ class ModifyTradePswController: BaseViewController {
             
             CommonManager.countDown(timeOut: 60, process: { (currentTime) in
                 UIView.beginAnimations(nil, context: nil)
-                self.fetchButton.setTitleColor(JXTextColor, for: .normal)
+                self.fetchButton.setTitleColor(JXFfffffColor, for: .normal)
                 self.fetchButton.setTitle(String(format: "%d秒后重发", currentTime), for: .normal)
                 UIView.commitAnimations()
                 self.fetchButton.isEnabled = false
             }) {
                 self.fetchButton.setTitle("重发验证码", for: .normal)
-                self.fetchButton.setTitleColor(JXOrangeColor, for: .normal)
+                self.fetchButton.setTitleColor(JXMainColor, for: .normal)
                 self.fetchButton.isEnabled = true
             }
         }

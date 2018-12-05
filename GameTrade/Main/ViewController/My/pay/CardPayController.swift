@@ -39,7 +39,7 @@ class CardPayController: BaseViewController {
         self.cardTextField.attributedPlaceholder = NSAttributedString(string: "请输入银行卡号", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
 
         if isEdit {
-            self.bankNameLabel.textColor = JXTextColor
+            self.bankNameLabel.textColor = JXMainTextColor
             self.bankNameLabel.text = self.entity?.bank
             self.bankName = self.entity?.bank
             
@@ -61,7 +61,7 @@ class CardPayController: BaseViewController {
             print(view,value)
         }
         
-        bar.tintColor = JXTextColor
+        bar.tintColor = JXMainTextColor
         bar.toolBar.barTintColor = JXBackColor
         bar.backgroundColor = JXBackColor
         self.view.addSubview(bar)
@@ -110,7 +110,7 @@ class CardPayController: BaseViewController {
         vc.selectBlock = { (_ entity: BankEntity)->() in
             self.bankName = entity.name
             self.bankNameLabel.text = entity.name
-            self.bankNameLabel.textColor = JXTextColor
+            self.bankNameLabel.textColor = JXMainTextColor
             
             self.updateButtonStatus()
         }
@@ -134,8 +134,8 @@ extension CardPayController: UITextFieldDelegate {
             let bank = self.bankName, bank.isEmpty == false{
            
             self.submitButton.isEnabled = true
-            self.submitButton.backgroundColor = JXOrangeColor
-            self.submitButton.setTitleColor(JXTextColor, for: .normal)
+            self.submitButton.backgroundColor = JXMainColor
+            self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
         } else {
             
             self.submitButton.isEnabled = false

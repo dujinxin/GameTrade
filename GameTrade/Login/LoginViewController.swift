@@ -13,12 +13,12 @@ class LoginViewController: BaseViewController {
 
     @IBOutlet weak var loginTitleLabel: UILabel!{
         didSet{
-            loginTitleLabel.textColor = JXTextColor
+            loginTitleLabel.textColor = JXMainTextColor
         }
     }
     @IBOutlet weak var loginLittleLabel: UILabel!{
         didSet{
-            loginLittleLabel.textColor = JXText50Color
+            loginLittleLabel.textColor = JXMainText50Color
         }
     }
     @IBOutlet weak var mainScrollView: UIScrollView!
@@ -30,14 +30,14 @@ class LoginViewController: BaseViewController {
     }
     @IBOutlet weak var userTextField: UITextField!{
         didSet{
-            userTextField.textColor = JXTextColor
+            userTextField.textColor = JXMainTextColor
             userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         }
     }
     @IBOutlet weak var passwordTextField: UITextField!{
         didSet{
             passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-            passwordTextField.textColor = JXTextColor
+            passwordTextField.textColor = JXMainTextColor
             passwordTextField.rightViewMode = .always
             passwordTextField.rightView = {() -> UIView in
                 let button = UIButton(type: .custom)
@@ -56,8 +56,8 @@ class LoginViewController: BaseViewController {
     
     @IBOutlet weak var loginButton: UIButton! {
         didSet{
-            loginButton.setTitleColor(JXTextColor, for: .normal)
-            loginButton.backgroundColor = JXOrangeColor
+            loginButton.setTitleColor(JXFfffffColor, for: .normal)
+            loginButton.backgroundColor = JXMainColor
             
             loginButton.layer.cornerRadius = 2
             loginButton.layer.shadowOpacity = 1
@@ -68,12 +68,12 @@ class LoginViewController: BaseViewController {
     }
     @IBOutlet weak var forgotButton: UIButton!{
         didSet{
-            forgotButton.setTitleColor(JXOrangeColor, for: .normal)
+            forgotButton.setTitleColor(JXMainColor, for: .normal)
         }
     }
     @IBOutlet weak var registerButton: UIButton!{
         didSet{
-            registerButton.setTitleColor(JXOrangeColor, for: .normal)
+            registerButton.setTitleColor(JXMainColor, for: .normal)
         }
     }
     
@@ -87,7 +87,7 @@ class LoginViewController: BaseViewController {
         k.showBlock = { (height, rect) in
             print(height,rect)
         }
-        k.tintColor = JXTextColor
+        k.tintColor = JXMainTextColor
         k.toolBar.barTintColor = JXBackColor
         k.backgroundColor = JXBackColor
         k.textFieldDelegate = self
@@ -242,8 +242,8 @@ extension LoginViewController: UITextFieldDelegate {
             let password = self.passwordTextField.text, password.isEmpty == false {
             
             self.loginButton.isEnabled = true
-            self.loginButton.backgroundColor = JXOrangeColor
-            self.loginButton.setTitleColor(JXTextColor, for: .normal)
+            self.loginButton.backgroundColor = JXMainColor
+            self.loginButton.setTitleColor(JXFfffffColor, for: .normal)
             
         } else {
             

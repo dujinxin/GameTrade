@@ -67,20 +67,20 @@ class MerchantCell: UICollectionViewCell {
         self.merchantLabel.layer.cornerRadius = 15
         self.merchantLabel.layer.masksToBounds = true
         
-        self.limitLabel.textColor = JXText50Color
-        self.numberLabel.textColor = JXText50Color
-        self.extraLabel.textColor = JXText50Color
-        self.MerchantNameLabel.textColor = JXTextColor
-        self.valueLabel.textColor = JXTextColor
+        self.limitLabel.textColor = JXMainText50Color
+        self.numberLabel.textColor = JXMainText50Color
+        self.extraLabel.textColor = JXMainText50Color
+        self.MerchantNameLabel.textColor = JXMainTextColor
+        self.valueLabel.textColor = JXMainTextColor
         
-        buyButton.backgroundColor = JXOrangeColor
+        buyButton.backgroundColor = JXMainColor
         buyButton.layer.cornerRadius = 2
         buyButton.layer.shadowOpacity = 1
         buyButton.layer.shadowRadius = 10
         buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         buyButton.layer.shadowColor = JX10101aShadowColor.cgColor
         buyButton.setTitleColor(JXFfffffColor, for: .normal)
-        buyButton.backgroundColor = JXOrangeColor
+        buyButton.backgroundColor = JXMainColor
         
         self.MerchantImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
         self.MerchantImageView.isUserInteractionEnabled = true

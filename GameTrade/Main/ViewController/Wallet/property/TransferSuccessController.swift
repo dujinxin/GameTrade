@@ -28,10 +28,10 @@ class TransferSuccessController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        self.numberLabel.textColor = JXTextColor
-        self.successLabel.textColor = JXTextColor
-        self.addressName.textColor = JXText50Color
-        self.addressLabel.textColor = JXTextColor
+        self.numberLabel.textColor = JXMainTextColor
+        self.successLabel.textColor = JXMainTextColor
+        self.addressName.textColor = JXMainText50Color
+        self.addressLabel.textColor = JXMainTextColor
         self.addressLabel.backgroundColor = UIColor.clear
         
         
@@ -57,7 +57,7 @@ class TransferSuccessController: BaseViewController {
         confirmButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         confirmButton.layer.shadowColor = JX10101aShadowColor.cgColor
         confirmButton.setTitleColor(JXFfffffColor, for: .normal)
-        confirmButton.backgroundColor = JXOrangeColor
+        confirmButton.backgroundColor = JXMainColor
         
         
     }

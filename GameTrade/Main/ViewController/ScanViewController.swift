@@ -174,7 +174,7 @@ class ScanViewController: BaseViewController {
     var psdTextView : PasswordTextView!
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
+        selectView.backgroundColor = JXMainColor
         selectView.isBackViewUserInteractionEnabled = false
         //selectView.customView = self.customViewInit(number: self.number, address: "address", gas: "gas", remark: "无备注")
         return selectView
@@ -245,7 +245,7 @@ class ScanViewController: BaseViewController {
         let leftLabel1 = UILabel()
         leftLabel1.frame = CGRect(x: 24, y: nameLabel.jxBottom + 30, width: 65, height: 50)
         leftLabel1.text = "收款商户"
-        leftLabel1.textColor = JXText50Color
+        leftLabel1.textColor = JXMainText50Color
         leftLabel1.font = UIFont.systemFont(ofSize: 13)
         leftLabel1.textAlignment = .left
         leftContentView.addSubview(leftLabel1)
@@ -253,7 +253,7 @@ class ScanViewController: BaseViewController {
         let rightLabel1 = UILabel()
         rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 50)
         rightLabel1.text = self.vm.webName
-        rightLabel1.textColor = JXTextColor
+        rightLabel1.textColor = JXMainTextColor
         rightLabel1.font = UIFont.systemFont(ofSize: 14)
         rightLabel1.textAlignment = .right
         leftContentView.addSubview(rightLabel1)

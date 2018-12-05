@@ -86,7 +86,7 @@ class JXNoticeImageView: UIView {
         self.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.layer.shadowColor = JX10101aShadowColor.cgColor
         
-        self.textLabel?.textColor = JXOrangeColor
+        self.textLabel?.textColor = JXMainColor
         self.textLabel?.font = UIFont.systemFont(ofSize: 14)
         
         //self.layer.cornerRadius = 10.0

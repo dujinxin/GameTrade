@@ -31,13 +31,13 @@ class TabBarViewController: UITabBarController {
         //UITabBar.appearance()
         tabBar.barTintColor = UIColor.rgbColor(rgbValue: 0x31313f)
         tabBar.isTranslucent = false
-        tabBar.tintColor = JXOrangeColor
+        tabBar.tintColor = JXMainColor
         
         let normalImageList = ["tab1_normal","tab2_normal","tab3_normal","tab4_normal"]
         let selectedImageList = ["tab1_selected","tab2_selected","tab3_selected","tab4_selected"]
         
         let normalAttributed = [NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0x8585ae)]
-        let selectedAttributed = [NSAttributedString.Key.foregroundColor:JXOrangeColor]
+        let selectedAttributed = [NSAttributedString.Key.foregroundColor:JXMainColor]
 //        tabBar.items?.forEach({ (item) in
 //            item.setTitleTextAttributes(normalAttributed, for: .normal)
 //            item.setTitleTextAttributes(selectedAttributed, for: .selected)

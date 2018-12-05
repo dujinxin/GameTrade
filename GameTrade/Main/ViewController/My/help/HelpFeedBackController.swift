@@ -42,7 +42,7 @@ class HelpFeedBackController: JXTableViewController {
         cell.backgroundColor = UIColor.clear
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
-        cell.leftLabel.textColor = JXTextColor
+        cell.leftLabel.textColor = JXMainTextColor
         cell.leftLabel.font = UIFont.systemFont(ofSize: 14)
         if indexPath.row == 0 {
             cell.leftLabel.text = "帮助中心"

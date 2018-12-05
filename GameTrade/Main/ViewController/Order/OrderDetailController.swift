@@ -393,7 +393,7 @@ extension OrderDetailController {
             label.text = "注意"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -401,7 +401,7 @@ extension OrderDetailController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
             nameLabel.text = "请确认您已向卖家付款\n「恶意点击将直接冻结账户」"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             nameLabel.numberOfLines = 0
@@ -418,7 +418,7 @@ extension OrderDetailController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("点错了", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -439,7 +439,7 @@ extension OrderDetailController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()
@@ -496,7 +496,7 @@ extension OrderDetailController {
             label.text = "注意"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -504,7 +504,7 @@ extension OrderDetailController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
             nameLabel.text = "如果您已向卖家付款\n请千万不要取消交易"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             nameLabel.numberOfLines = 0
@@ -531,7 +531,7 @@ extension OrderDetailController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("点错了", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -552,7 +552,7 @@ extension OrderDetailController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()
@@ -605,7 +605,7 @@ extension OrderDetailController {
             label.text = "注意"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -613,7 +613,7 @@ extension OrderDetailController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
             nameLabel.text = "购买的资产已到账\n您可以到首页查询"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             nameLabel.numberOfLines = 0
@@ -643,7 +643,7 @@ extension OrderDetailController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()

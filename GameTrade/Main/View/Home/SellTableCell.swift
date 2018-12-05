@@ -51,8 +51,8 @@ class SellTableCell: UITableViewCell {
         self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
         self.mainContentView.layer.cornerRadius = 4
         
-        self.numberLabel.textColor = JXText50Color
-        self.timeLabel.textColor = JXText50Color
+        self.numberLabel.textColor = JXMainText50Color
+        self.timeLabel.textColor = JXMainText50Color
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

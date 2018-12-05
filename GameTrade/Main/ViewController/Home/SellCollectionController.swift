@@ -137,7 +137,7 @@ class SellCollectionController: JXCollectionViewController {
             label.text = "提示"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -145,7 +145,7 @@ class SellCollectionController: JXCollectionViewController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 30)
             nameLabel.text = "您还未添加收款方式"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             
@@ -161,7 +161,7 @@ class SellCollectionController: JXCollectionViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("稍后再说", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -182,7 +182,7 @@ class SellCollectionController: JXCollectionViewController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()

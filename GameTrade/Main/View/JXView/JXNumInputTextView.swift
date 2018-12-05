@@ -313,7 +313,7 @@ class NumInputTopView: UIView {
         button1.setTitle("忘记密码？", for: .normal)
         
         button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-        button1.setTitleColor(JXOrangeColor, for: .normal)
+        button1.setTitleColor(JXMainColor, for: .normal)
         button1.contentVerticalAlignment = .center
         button1.contentHorizontalAlignment = .right
         button1.addTarget(self, action: #selector(confirmClick), for: .touchUpInside)

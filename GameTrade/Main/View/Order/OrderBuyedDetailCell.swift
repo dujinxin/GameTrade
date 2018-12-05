@@ -49,8 +49,8 @@ class OrderBuyedDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
-        self.orderNumberLabel.textColor = JXText50Color
-        self.orderInfoLabel.textColor = JXText50Color
+        self.orderNumberLabel.textColor = JXMainText50Color
+        self.orderInfoLabel.textColor = JXMainText50Color
         
         self.tradeView.layer.cornerRadius = 4
         self.listView.layer.cornerRadius = 4
@@ -61,7 +61,7 @@ class OrderBuyedDetailCell: UITableViewCell {
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         
         
-        self.noticeLabel.textColor = JXText50Color
+        self.noticeLabel.textColor = JXMainText50Color
         
 //        self.tradeView.layer.shadowOffset = CGSize(width: 0, height: 10)
 //        self.tradeView.layer.shadowOpacity = 1

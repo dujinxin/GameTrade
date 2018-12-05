@@ -15,8 +15,8 @@ class SellTextFieldCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.nameLabel.textColor = JXText50Color
-        self.textField.textColor = JXTextColor
+        self.nameLabel.textColor = JXMainText50Color
+        self.textField.textColor = JXMainTextColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -41,8 +41,8 @@ class WalletListPayedCell: UITableViewCell {
         self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
         self.mainContentView.layer.cornerRadius = 4
         
-        self.valueLabel.textColor = JXText50Color
-        self.timeLabel.textColor = JXText50Color
+        self.valueLabel.textColor = JXMainText50Color
+        self.timeLabel.textColor = JXMainText50Color
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

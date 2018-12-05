@@ -66,15 +66,15 @@ class OrderingListCell: UITableViewCell {
         self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
         self.mainContentView.layer.cornerRadius = 4
         
-        self.statusLabel.textColor = JXOrangeColor
-        self.numberLabel.textColor = JXText50Color
-        self.timeLabel.textColor = JXText50Color
+        self.statusLabel.textColor = JXMainColor
+        self.numberLabel.textColor = JXMainText50Color
+        self.timeLabel.textColor = JXMainText50Color
         
         //self.mainContentView.tag = 1314
         self.buyButton.tag = 1314
    
         
-        self.buyButton.backgroundColor = JXOrangeColor
+        self.buyButton.backgroundColor = JXMainColor
         self.buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.buyButton.layer.shadowOpacity = 1
         self.buyButton.layer.shadowRadius = 10

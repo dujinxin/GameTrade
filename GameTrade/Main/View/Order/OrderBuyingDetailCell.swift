@@ -64,8 +64,8 @@ class OrderBuyingDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
-        self.orderNumberLabel.textColor = JXText50Color
-        self.orderInfoLabel.textColor = JXText50Color
+        self.orderNumberLabel.textColor = JXMainText50Color
+        self.orderInfoLabel.textColor = JXMainText50Color
         
         self.tradeView.layer.cornerRadius = 4
         self.listView.layer.cornerRadius = 4
@@ -76,16 +76,16 @@ class OrderBuyingDetailCell: UITableViewCell {
         
         self.cancelLabel.backgroundColor = UIColor.clear
         self.cancelLabel.layer.cornerRadius = 2
-        self.cancelLabel.layer.borderColor = JXOrangeColor.cgColor
+        self.cancelLabel.layer.borderColor = JXMainColor.cgColor
         self.cancelLabel.layer.borderWidth = 1
-        self.cancelLabel.textColor = JXOrangeColor
+        self.cancelLabel.textColor = JXMainColor
         
         self.cancelLabel.isUserInteractionEnabled = true
         self.cancelLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelTap(tap:))))
         self.payContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(payTap(tap:))))
         //self.payButton.addTarget(self, action: #selector(payTap(tap:)), for: .touchUpInside)
         
-        self.payContentView.backgroundColor = JXOrangeColor
+        self.payContentView.backgroundColor = JXMainColor
         self.payContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.payContentView.layer.shadowOpacity = 1
         self.payContentView.layer.shadowRadius = 10
@@ -114,7 +114,7 @@ class OrderBuyingDetailCell: UITableViewCell {
 //
 //        self.shopView.layer.insertSublayer(gradientLayer, at: 0)
         
-        self.noticeLabel.textColor = JXText50Color
+        self.noticeLabel.textColor = JXMainText50Color
         
     }
     

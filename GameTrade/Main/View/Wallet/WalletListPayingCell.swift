@@ -34,14 +34,14 @@ class WalletListPayingCell: UITableViewCell {
         self.valueLabel.alpha = 0.5
         self.timeLabel.alpha = 0.5
         
-        payButton.backgroundColor = JXOrangeColor
+        payButton.backgroundColor = JXMainColor
         payButton.layer.cornerRadius = 2
         payButton.layer.shadowOpacity = 1
         payButton.layer.shadowRadius = 10
         payButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         payButton.layer.shadowColor = JX10101aShadowColor.cgColor
         payButton.setTitleColor(JXFfffffColor, for: .normal)
-        payButton.backgroundColor = JXOrangeColor
+        payButton.backgroundColor = JXMainColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

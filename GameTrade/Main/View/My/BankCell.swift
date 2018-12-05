@@ -17,8 +17,8 @@ class BankCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.nameLabel.textColor = JXTextColor
-        self.infoLabel.textColor = JXTextColor
+        self.nameLabel.textColor = JXMainTextColor
+        self.infoLabel.textColor = JXMainTextColor
         self.lineView.backgroundColor = JXSeparatorColor
         self.lineView.backgroundColor = UIColor.clear
     }

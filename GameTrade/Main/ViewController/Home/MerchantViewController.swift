@@ -21,7 +21,7 @@ class MerchantViewController: JXCollectionViewController {
     var textField1 : UITextField!
     lazy var statusBottomView1: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
+        selectView.backgroundColor = JXMainColor
         selectView.isBackViewUserInteractionEnabled = false
         
         self.setKeyBoardObserver()
@@ -215,7 +215,7 @@ extension MerchantViewController {
         let leftLabel1 = UILabel()
         leftLabel1.frame = CGRect(x: 24, y: textField.jxBottom + 16, width: 65, height: 51)
         leftLabel1.text = "交易金额"
-        leftLabel1.textColor = JXText50Color
+        leftLabel1.textColor = JXMainText50Color
         leftLabel1.font = UIFont.systemFont(ofSize: 13)
         leftLabel1.textAlignment = .left
         leftContentView.addSubview(leftLabel1)
@@ -242,7 +242,7 @@ extension MerchantViewController {
         let leftLabel2 = UILabel()
         leftLabel2.frame = CGRect(x: 24, y: line1.jxBottom, width: 65, height: 51)
         leftLabel2.text = "交易单价"
-        leftLabel2.textColor = JXText50Color
+        leftLabel2.textColor = JXMainText50Color
         leftLabel2.font = UIFont.systemFont(ofSize: 13)
         leftLabel2.textAlignment = .left
         leftContentView.addSubview(leftLabel2)
@@ -250,7 +250,7 @@ extension MerchantViewController {
         let rightLabel2 = UILabel()
         rightLabel2.frame = CGRect(x: leftLabel2.jxRight, y: leftLabel2.jxTop, width: kScreenWidth - 48 - leftLabel2.jxWidth, height: 51)
         rightLabel2.text = "\(configuration_coinPrice) \(configuration_valueType)"
-        rightLabel2.textColor = JXTextColor
+        rightLabel2.textColor = JXMainTextColor
         rightLabel2.font = UIFont.systemFont(ofSize: 14)
         rightLabel2.textAlignment = .right
         leftContentView.addSubview(rightLabel2)
@@ -265,7 +265,7 @@ extension MerchantViewController {
         let leftLabel3 = UILabel()
         leftLabel3.frame = CGRect(x: 24, y: line2.jxBottom , width: 65, height: 51)
         leftLabel3.text = "交易数量"
-        leftLabel3.textColor = JXText50Color
+        leftLabel3.textColor = JXMainText50Color
         leftLabel3.font = UIFont.systemFont(ofSize: 13)
         leftLabel3.textAlignment = .left
         leftContentView.addSubview(leftLabel3)
@@ -273,7 +273,7 @@ extension MerchantViewController {
         let rightLabel3 = UILabel()
         rightLabel3.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth, height: 51)
         rightLabel3.text = number
-        rightLabel3.textColor = JXTextColor
+        rightLabel3.textColor = JXMainTextColor
         rightLabel3.font = UIFont.systemFont(ofSize: 14)
         rightLabel3.textAlignment = .right
         leftContentView.addSubview(rightLabel3)
@@ -299,7 +299,7 @@ extension MerchantViewController {
         button.layer.shadowOffset = CGSize(width: 0, height: 10)
         button.layer.shadowColor = JX10101aShadowColor.cgColor
         button.setTitleColor(JXFfffffColor, for: .normal)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         
         
         return contentView
