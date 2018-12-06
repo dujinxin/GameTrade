@@ -13,6 +13,11 @@ class WalletAddressCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var codeImageView: UIImageView!
+    @IBOutlet weak var separatorView: UIView!{
+        didSet{
+            separatorView.backgroundColor = JXSeparatorColor
+        }
+    }
     
     var showCodeImage : (()->())?
     

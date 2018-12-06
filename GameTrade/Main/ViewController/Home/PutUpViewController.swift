@@ -121,8 +121,8 @@ class PutUpViewController: BaseViewController {
         }
         
         bar.tintColor = JXMainTextColor
-        bar.toolBar.barTintColor = JXBackColor
-        bar.backgroundColor = JXBackColor
+        bar.toolBar.barTintColor = JXViewBgColor
+        bar.backgroundColor = JXViewBgColor
         self.view.addSubview(bar)
         
     }

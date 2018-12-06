@@ -33,7 +33,7 @@ class ModifyImageController: BaseViewController {
         self.userImageView.layer.shadowRadius = 52
         self.userImageView.layer.shadowColor = JX10101aShadowColor.cgColor
         self.userImageView.layer.cornerRadius = 4
-        self.userImageView.backgroundColor = JXBackColor
+        self.userImageView.backgroundColor = JXViewBgColor
         
         
         self.confirmButton.setTitleColor(JXFfffffColor, for: .normal)

@@ -42,7 +42,7 @@ class SellCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.mainContentView.backgroundColor = JXBackColor
+        self.mainContentView.backgroundColor = JXViewBgColor
         self.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.mainContentView.layer.shadowOpacity = 1
         self.mainContentView.layer.shadowRadius = 33

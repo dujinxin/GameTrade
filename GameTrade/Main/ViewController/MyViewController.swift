@@ -42,8 +42,8 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        self.topConstraint.constant = kStatusBarHeight
-        self.tableView.frame = CGRect(x: 0, y: kStatusBarHeight, width: kScreenWidth, height: kScreenHeight - kStatusBarHeight - kTabBarHeight)
+        self.topConstraint.constant = 0
+        self.tableView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kTabBarHeight)
         self.tableView.register(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier1")
         self.tableView.register(UINib(nibName: "ImageTitleCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier2")
         self.tableView.estimatedRowHeight = 64
@@ -195,7 +195,7 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //return UITableViewAutomaticDimension
         if indexPath.section == 0 {
-            return 124 + 30 + 20 + 30
+            return 124 + 30 + 20 + 74
         } else {
             return 64
         }

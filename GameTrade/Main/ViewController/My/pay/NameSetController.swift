@@ -16,6 +16,11 @@ class NameSetController: BaseViewController {
     var noticeView : JXSelectView?
     
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var userContentView: UIView!{
+        didSet{
+            userContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
     @IBOutlet weak var infoLabel: UILabel!
   
     @IBOutlet weak var submitButton: UIButton!

@@ -15,13 +15,35 @@ class OrderBuyedDetailCell: UITableViewCell {
     @IBOutlet weak var orderInfoLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     
-    @IBOutlet weak var tradeView: UIView!
+    @IBOutlet weak var tradeView: UIView!{
+        didSet{
+            tradeView.layer.cornerRadius = 4
+            tradeView.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x131321) : JXFfffffColor
+            
+            tradeView.backgroundColor = JXViewBgColor
+            tradeView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            tradeView.layer.shadowOpacity = 1
+            tradeView.layer.shadowRadius = 33
+            tradeView.layer.shadowColor = JX22222cShadowColor.cgColor
+        }
+    }
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
-    @IBOutlet weak var listView: UIView!
+    @IBOutlet weak var listView: UIView!{
+        didSet{
+            listView.layer.cornerRadius = 4
+            listView.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x131321) : JXFfffffColor
+            
+            listView.backgroundColor = JXViewBgColor
+            listView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            listView.layer.shadowOpacity = 1
+            listView.layer.shadowRadius = 33
+            listView.layer.shadowColor = JX22222cShadowColor.cgColor
+        }
+    }
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
@@ -40,6 +62,12 @@ class OrderBuyedDetailCell: UITableViewCell {
     
     @IBOutlet weak var noticeLabel: UILabel!
     
+    @IBOutlet weak var line1: UIView!
+    @IBOutlet weak var line2: UIView!
+    @IBOutlet weak var line3: UIView!
+    @IBOutlet weak var line4: UIView!
+    @IBOutlet weak var line5: UIView!
+    
     var chatBlock : (()->())?
     var copyBlock : (()->())?
     
@@ -49,11 +77,26 @@ class OrderBuyedDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
+        self.orderStatusLabel.textColor = JXMainTextColor
         self.orderNumberLabel.textColor = JXMainText50Color
         self.orderInfoLabel.textColor = JXMainText50Color
         
-        self.tradeView.layer.cornerRadius = 4
-        self.listView.layer.cornerRadius = 4
+        self.priceLabel.textColor = JXMainTextColor
+        self.totalLabel.textColor = JXMainTextColor
+        self.valueLabel.textColor = JXRedColor
+        
+        self.payNameLabel.textColor = JXMainTextColor
+        self.userNameLabel.textColor = JXMainTextColor
+        self.accoundLabel.textColor = JXMainTextColor
+        self.bankNameLabel.textColor = JXMainTextColor
+        
+        //self.line.tintColor = JXMainTextColor
+        //self.line.image = UIImage(named: "line")?.withRenderingMode(.alwaysTemplate)
+        self.line1.backgroundColor = JXSeparatorColor
+        self.line2.backgroundColor = JXSeparatorColor
+        self.line3.backgroundColor = JXSeparatorColor
+        self.line4.backgroundColor = JXSeparatorColor
+        self.line5.backgroundColor = JXSeparatorColor
         
         self.shopLabel.layer.cornerRadius = 20
         self.shopLabel.layer.masksToBounds = true
@@ -62,29 +105,6 @@ class OrderBuyedDetailCell: UITableViewCell {
         
         
         self.noticeLabel.textColor = JXMainText50Color
-        
-//        self.tradeView.layer.shadowOffset = CGSize(width: 0, height: 10)
-//        self.tradeView.layer.shadowOpacity = 1
-//        self.tradeView.layer.shadowRadius = 40
-//        self.tradeView.layer.shadowColor = JX10101aShadowColor.cgColor
-//        self.tradeView.layer.cornerRadius = 4
-//
-//        self.listView.layer.shadowOffset = CGSize(width: 0, height: 10)
-//        self.listView.layer.shadowOpacity = 1
-//        self.listView.layer.shadowRadius = 40
-//        self.listView.layer.shadowColor = JX10101aShadowColor.cgColor
-//        self.listView.layer.cornerRadius = 4
-        
-        
-//        let gradientLayer = CAGradientLayer.init()
-//        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x2E2F47).cgColor,UIColor.rgbColor(rgbValue: 0x191A2C).cgColor]
-//        gradientLayer.locations = [0]
-//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-//        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-//        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 48 * 2, height: self.shopView.jxHeight)
-//        //gradientLayer.cornerRadius = 5
-//
-//        self.shopView.layer.insertSublayer(gradientLayer, at: 0)
         
     }
     override func updateConstraints() {

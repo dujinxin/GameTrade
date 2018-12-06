@@ -80,6 +80,7 @@
                 <outlet property="addressLabel" destination="Esm-nj-jgb" id="6rC-iI-flA"/>
                 <outlet property="codeImageView" destination="Y6W-Qs-dKR" id="7bj-Yv-tf4"/>
                 <outlet property="nameLabel" destination="G4o-N8-2WI" id="kYo-aw-3QL"/>
+                <outlet property="separatorView" destination="vbK-1z-DRs" id="qIZ-dt-4Pl"/>
             </connections>
             <point key="canvasLocation" x="-206.40000000000001" y="-9.4452773613193415"/>
         </tableViewCell>

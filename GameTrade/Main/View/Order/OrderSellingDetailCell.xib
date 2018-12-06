@@ -409,6 +409,10 @@
                 <outlet property="codeButton" destination="E0y-C8-nSa" id="RVF-Ko-yzH"/>
                 <outlet property="codeLeftLabel" destination="QGk-L1-ldl" id="rkk-Wk-Y7m"/>
                 <outlet property="codeWidthConstraint" destination="qpd-Db-Oqw" id="sO5-yr-O4w"/>
+                <outlet property="line1" destination="WSr-ho-mLx" id="chR-U1-NWb"/>
+                <outlet property="line2" destination="Yd0-iQ-2oD" id="kMv-dw-DaP"/>
+                <outlet property="line3" destination="5tm-Db-umS" id="9xD-7s-0U4"/>
+                <outlet property="line4" destination="b5z-Cu-nKF" id="jg7-qW-Mvu"/>
                 <outlet property="listView" destination="pTj-jp-5AR" id="CSU-Od-Hev"/>
                 <outlet property="noticeLabel" destination="Bc1-5d-cdp" id="W1b-be-C3j"/>
                 <outlet property="orderInfoLabel" destination="5OD-hV-BuN" id="dOJ-WU-Kyn"/>

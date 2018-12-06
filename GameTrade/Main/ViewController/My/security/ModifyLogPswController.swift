@@ -14,6 +14,16 @@ class ModifyLogPswController: BaseViewController {
     @IBOutlet weak var loginLittleLabel: UILabel!
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var codeContentView: UIView!{
+        didSet{
+            codeContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
+    @IBOutlet weak var passwordContentView: UIView!{
+        didSet{
+            passwordContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
     @IBOutlet weak var codeButton: UIButton!
     @IBOutlet weak var confirmButton: UIButton!
     
@@ -26,8 +36,8 @@ class ModifyLogPswController: BaseViewController {
             print(height,rect)
         }
         k.tintColor = JXMainTextColor
-        k.toolBar.barTintColor = JXBackColor
-        k.backgroundColor = JXBackColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
         return k
     }()

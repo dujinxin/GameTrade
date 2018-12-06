@@ -523,6 +523,11 @@
                 <outlet property="codeLeftLabel" destination="wi7-zx-Ewa" id="ele-Mw-ThP"/>
                 <outlet property="codeWidthConstraint" destination="EyW-sS-kPc" id="08j-YL-Ey5"/>
                 <outlet property="discountLabel" destination="SmK-Mx-98P" id="bXG-iJ-c9H"/>
+                <outlet property="line1" destination="T0f-Kc-Q5S" id="PIp-dO-Qwp"/>
+                <outlet property="line2" destination="o1y-0w-lQq" id="C1v-4U-1bg"/>
+                <outlet property="line3" destination="hNA-Cv-yla" id="ZeI-SG-dkN"/>
+                <outlet property="line4" destination="2Ed-Ri-m5X" id="R9L-ag-NiS"/>
+                <outlet property="line5" destination="IQX-Oh-nne" id="d5B-xh-o0V"/>
                 <outlet property="listView" destination="gPg-XA-FGC" id="vXE-gG-czf"/>
                 <outlet property="noticeLabel" destination="PIa-BR-MMo" id="pMx-Zc-VxB"/>
                 <outlet property="orderInfoLabel" destination="mWu-BI-C1u" id="gCU-cU-gnK"/>

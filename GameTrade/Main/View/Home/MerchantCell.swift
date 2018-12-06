@@ -10,17 +10,56 @@ import UIKit
 
 class MerchantCell: UICollectionViewCell {
 
-    @IBOutlet weak var mainContentView: UIView!
+    @IBOutlet weak var mainContentView: UIView!{
+        didSet{
+            mainContentView.backgroundColor = JXViewBgColor
+            //mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            mainContentView.layer.shadowOffset = CGSize(width: 0, height: 0)
+            mainContentView.layer.shadowOpacity = 1
+            mainContentView.layer.shadowRadius = 33
+            mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
+            mainContentView.layer.cornerRadius = 4
+        }
+    }
     
-    @IBOutlet weak var MerchantImageView: UIImageView!
-    @IBOutlet weak var merchantLabel: UILabel!
-    @IBOutlet weak var MerchantNameLabel: UILabel!
+    @IBOutlet weak var MerchantImageView: UIImageView!{
+        didSet{
+        MerchantImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
+            MerchantImageView.isUserInteractionEnabled = true
+            MerchantImageView.backgroundColor = UIColor.red
+        }
+    }
+    
+    @IBOutlet weak var merchantLabel: UILabel!{
+        didSet{
+            merchantLabel.layer.cornerRadius = 15
+            merchantLabel.layer.masksToBounds = true
+        merchantLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
+        }
+    }
+    @IBOutlet weak var MerchantNameLabel: UILabel!{
+        didSet{
+            MerchantImageView.layer.cornerRadius = 15.0
+            MerchantImageView.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var payImageView: UIImageView!
     @IBOutlet weak var limitLabel: UILabel!
     @IBOutlet weak var extraLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var buyButton: UIButton!{
+        didSet{
+            buyButton.backgroundColor = JXMainColor
+            buyButton.layer.cornerRadius = 2
+            buyButton.layer.shadowOpacity = 1
+            buyButton.layer.shadowRadius = 10
+            buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+            buyButton.layer.shadowColor = JX10101aShadowColor.cgColor
+            buyButton.setTitleColor(JXFfffffColor, for: .normal)
+            buyButton.backgroundColor = JXMainColor
+        }
+    }
     
     var buyBlock : (()->())?
     var merchantBlock : (()->())?
@@ -54,39 +93,15 @@ class MerchantCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        self.mainContentView.backgroundColor = JXBackColor
-        self.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.mainContentView.layer.shadowOpacity = 1
-        self.mainContentView.layer.shadowRadius = 33
-        self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
-        self.mainContentView.layer.cornerRadius = 4
-        
-        self.MerchantImageView.layer.cornerRadius = 15.0
-        self.MerchantImageView.layer.masksToBounds = true
-        self.merchantLabel.layer.cornerRadius = 15
-        self.merchantLabel.layer.masksToBounds = true
-        
+        //collecionViewCell默认layer应该是true,即超出的部分被切掉了，所以要设置为false,而tableviewCell的layer默认是false
+        self.layer.masksToBounds = false
+
         self.limitLabel.textColor = JXMainText50Color
         self.numberLabel.textColor = JXMainText50Color
         self.extraLabel.textColor = JXMainText50Color
         self.MerchantNameLabel.textColor = JXMainTextColor
         self.valueLabel.textColor = JXMainTextColor
-        
-        buyButton.backgroundColor = JXMainColor
-        buyButton.layer.cornerRadius = 2
-        buyButton.layer.shadowOpacity = 1
-        buyButton.layer.shadowRadius = 10
-        buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
-        buyButton.layer.shadowColor = JX10101aShadowColor.cgColor
-        buyButton.setTitleColor(JXFfffffColor, for: .normal)
-        buyButton.backgroundColor = JXMainColor
-        
-        self.MerchantImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
-        self.MerchantImageView.isUserInteractionEnabled = true
-        self.MerchantImageView.backgroundColor = UIColor.red
-        
-        self.merchantLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
+  
     }
     @IBAction func buy(_ sender: Any) {
         if let block = buyBlock {

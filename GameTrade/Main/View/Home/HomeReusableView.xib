@@ -420,7 +420,9 @@
             <connections>
                 <outlet property="backgroundImageView" destination="pDn-wu-ROM" id="XOZ-L1-8Fd"/>
                 <outlet property="buyButton" destination="Ftc-Eh-9cV" id="Cog-uf-zyK"/>
+                <outlet property="buyLabel" destination="KI5-Ob-63c" id="2lh-fN-RCN"/>
                 <outlet property="buyView" destination="5hA-Vw-dM0" id="c2t-IP-W1i"/>
+                <outlet property="helpLabel" destination="1ot-s7-USJ" id="uex-Xo-FwD"/>
                 <outlet property="helpView" destination="9v3-W5-X5N" id="m4V-m4-PNZ"/>
                 <outlet property="infoContentView" destination="CNB-gD-wVm" id="OU2-of-B2Q"/>
                 <outlet property="itemContentView" destination="mZz-LP-1rW" id="tIN-nM-Jjn"/>
@@ -435,6 +437,7 @@
                 <outlet property="scanIconBackView" destination="6lS-ZI-mgy" id="FoR-dk-QpB"/>
                 <outlet property="scanIconButton" destination="9IQ-jL-Gif" id="OL8-Hd-IEs"/>
                 <outlet property="scanImageView" destination="LUt-BQ-4gX" id="QTh-Rp-Wtw"/>
+                <outlet property="sellLabel" destination="7Xs-ft-da6" id="RuO-DY-lyI"/>
                 <outlet property="sellView" destination="OPD-I2-dBk" id="u3o-i3-liQ"/>
                 <outlet property="switchContentView" destination="JpK-e3-qZg" id="lwe-Fm-mok"/>
                 <outlet property="textField" destination="T4I-vI-0qg" id="Ex6-BE-T8A"/>

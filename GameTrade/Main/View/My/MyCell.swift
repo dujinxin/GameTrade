@@ -42,7 +42,7 @@ class MyCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        self.topConstraint.constant = 30//kNavStatusHeight
+        self.topConstraint.constant = 30 + kStatusBarHeight//kNavStatusHeight
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

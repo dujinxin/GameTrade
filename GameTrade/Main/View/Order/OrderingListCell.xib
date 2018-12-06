@@ -118,6 +118,7 @@
                 <outlet property="buyButton" destination="F2D-b0-XkR" id="6sh-q9-v45"/>
                 <outlet property="mainContentView" destination="iOQ-M1-kxs" id="YOn-f3-EMC"/>
                 <outlet property="numberLabel" destination="ckb-f2-sQB" id="gub-nP-yab"/>
+                <outlet property="separatorView" destination="PyA-87-yVT" id="Kd3-5P-0jO"/>
                 <outlet property="statusLabel" destination="qgh-wT-hj7" id="Iqk-LN-GGb"/>
                 <outlet property="timeLabel" destination="SvG-Bg-uUg" id="GZ2-mt-vbT"/>
                 <outlet property="valueLabel" destination="6Gp-yk-557" id="p4s-4G-VEa"/>

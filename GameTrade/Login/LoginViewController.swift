@@ -34,6 +34,11 @@ class LoginViewController: BaseViewController {
             userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         }
     }
+    @IBOutlet weak var userContentView: UIView!{
+        didSet{
+            userContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
     @IBOutlet weak var passwordTextField: UITextField!{
         didSet{
             passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
@@ -51,8 +56,11 @@ class LoginViewController: BaseViewController {
             }()
         }
     }
-    
-    
+    @IBOutlet weak var passwordContentView: UIView!{
+        didSet{
+            passwordContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
     
     @IBOutlet weak var loginButton: UIButton! {
         didSet{
@@ -69,6 +77,11 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var forgotButton: UIButton!{
         didSet{
             forgotButton.setTitleColor(JXMainColor, for: .normal)
+        }
+    }
+    @IBOutlet weak var infoLabel: UILabel!{
+        didSet{
+            infoLabel.textColor = JXMainTextColor
         }
     }
     @IBOutlet weak var registerButton: UIButton!{
@@ -88,8 +101,8 @@ class LoginViewController: BaseViewController {
             print(height,rect)
         }
         k.tintColor = JXMainTextColor
-        k.toolBar.barTintColor = JXBackColor
-        k.backgroundColor = JXBackColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
         return k
     }()

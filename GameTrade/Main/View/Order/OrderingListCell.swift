@@ -10,14 +10,40 @@ import UIKit
 
 class OrderingListCell: UITableViewCell {
 
-    @IBOutlet weak var mainContentView: UIView!
+    @IBOutlet weak var mainContentView: UIView!{
+        didSet{
+            mainContentView.backgroundColor = JXViewBgColor
+            mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            mainContentView.layer.shadowOpacity = 1
+            mainContentView.layer.shadowRadius = 33
+            mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
+            mainContentView.layer.cornerRadius = 4
+        }
+    }
     
     @IBOutlet weak var MerchantNameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var separatorView: UIView!{
+        didSet{
+            buyButton.backgroundColor = JXSeparatorColor
+        }
+    }
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var buyButton: UIButton!{
+        didSet{
+            buyButton.tag = 1314
+            
+            
+            buyButton.backgroundColor = JXMainColor
+            buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+            buyButton.layer.shadowOpacity = 1
+            buyButton.layer.shadowRadius = 10
+            buyButton.layer.shadowColor = JX10101aShadowColor.cgColor
+            buyButton.layer.cornerRadius = 2
+        }
+    }
     
     var buyBlock : (()->())?
     
@@ -58,28 +84,12 @@ class OrderingListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        self.mainContentView.backgroundColor = JXBackColor
-        self.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.mainContentView.layer.shadowOpacity = 1
-        self.mainContentView.layer.shadowRadius = 33
-        self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
-        self.mainContentView.layer.cornerRadius = 4
-        
+ 
         self.statusLabel.textColor = JXMainColor
         self.numberLabel.textColor = JXMainText50Color
         self.timeLabel.textColor = JXMainText50Color
+        self.valueLabel.textColor = JXMainTextColor
         
-        //self.mainContentView.tag = 1314
-        self.buyButton.tag = 1314
-   
-        
-        self.buyButton.backgroundColor = JXMainColor
-        self.buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.buyButton.layer.shadowOpacity = 1
-        self.buyButton.layer.shadowRadius = 10
-        self.buyButton.layer.shadowColor = JX10101aShadowColor.cgColor
-        self.buyButton.layer.cornerRadius = 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

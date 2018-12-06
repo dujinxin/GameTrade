@@ -12,7 +12,7 @@ class OrderView: UIView {
     
     lazy var mainView: UIView = {
         let v = UIView()
-        v.backgroundColor = JXBackColor
+        v.backgroundColor = JXViewBgColor
         return v
     }()
     lazy var merchatImageView: UILabel = {
@@ -113,7 +113,7 @@ class OrderView: UIView {
         self.mainView.addSubview(self.statusLabel)
         
         
-        self.mainView.backgroundColor = JXBackColor
+        self.mainView.backgroundColor = JXViewBgColor
         self.mainView.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.mainView.layer.shadowOpacity = 1
         self.mainView.layer.shadowRadius = 33

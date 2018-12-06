@@ -23,6 +23,11 @@ class NetPayController: BaseViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var accountTextField: UITextField!
+    @IBOutlet weak var userContentView: UIView!{
+        didSet{
+            userContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var codeImageView: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
@@ -38,8 +43,8 @@ class NetPayController: BaseViewController {
             print(height,rect)
         }
         k.tintColor = JXMainTextColor
-        k.toolBar.barTintColor = JXBackColor
-        k.backgroundColor = JXBackColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
         //k.textFieldDelegate = self
         return k
     }()

@@ -10,10 +10,25 @@ import UIKit
 
 class OrderedListCell: UITableViewCell {
 
-    @IBOutlet weak var mainContentView: UIView!
+    @IBOutlet weak var mainContentView: UIView!{
+        didSet{
+            mainContentView.backgroundColor = JXViewBgColor
+            
+            mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            mainContentView.layer.shadowOpacity = 1
+            mainContentView.layer.shadowRadius = 33
+            mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
+            mainContentView.layer.cornerRadius = 4
+        }
+    }
     
     @IBOutlet weak var MerchantNameLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var separatorView: UIView!{
+        didSet{
+            separatorView.backgroundColor = JXSeparatorColor
+        }
+    }
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
@@ -54,17 +69,11 @@ class OrderedListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        self.mainContentView.backgroundColor = JXBackColor
-        self.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.mainContentView.layer.shadowOpacity = 1
-        self.mainContentView.layer.shadowRadius = 33
-        self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
-        self.mainContentView.layer.cornerRadius = 4
-        
+
         self.statusLabel.textColor = JXMainColor
         self.numberLabel.textColor = JXMainText50Color
         self.timeLabel.textColor = JXMainText50Color
+        self.valueLabel.textColor = JXMainTextColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

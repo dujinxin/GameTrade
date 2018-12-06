@@ -58,6 +58,7 @@
             <connections>
                 <outlet property="detailView" destination="6fc-ii-14b" id="TZf-Ps-X7j"/>
                 <outlet property="iconView" destination="JBu-iO-SIf" id="DHA-B0-FMv"/>
+                <outlet property="separatorView" destination="RCH-tb-sLw" id="XeR-HE-6CJ"/>
                 <outlet property="titleView" destination="Mvd-YG-mPK" id="ASp-SE-5Fq"/>
                 <outlet property="trailingConstraint" destination="Kzl-ZY-6Za" id="rXp-FE-Mca"/>
             </connections>

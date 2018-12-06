@@ -15,13 +15,35 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var orderInfoLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     
-    @IBOutlet weak var tradeView: UIView!
+    @IBOutlet weak var tradeView: UIView!{
+        didSet{
+            tradeView.layer.cornerRadius = 4
+            tradeView.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x131321) : JXFfffffColor
+            
+            tradeView.backgroundColor = JXViewBgColor
+            tradeView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            tradeView.layer.shadowOpacity = 1
+            tradeView.layer.shadowRadius = 33
+            tradeView.layer.shadowColor = JX22222cShadowColor.cgColor
+        }
+    }
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
-    @IBOutlet weak var listView: UIView!
+    @IBOutlet weak var listView: UIView!{
+        didSet{
+            listView.layer.cornerRadius = 4
+            listView.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x131321) : JXFfffffColor
+            
+            listView.backgroundColor = JXViewBgColor
+            listView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            listView.layer.shadowOpacity = 1
+            listView.layer.shadowRadius = 33
+            listView.layer.shadowColor = JX22222cShadowColor.cgColor
+        }
+    }
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
@@ -35,18 +57,52 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var remarkLabel: UILabel!
     
     
-    @IBOutlet weak var payContentView: UIView!
+    @IBOutlet weak var payContentView: UIView!{
+        didSet{
+            payContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(payTap(tap:))))
+            //self.payButton.addTarget(self, action: #selector(payTap(tap:)), for: .touchUpInside)
+            
+            payContentView.backgroundColor = JXMainColor
+            payContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            payContentView.layer.shadowOpacity = 1
+            payContentView.layer.shadowRadius = 10
+            payContentView.layer.shadowColor = JX10101aShadowColor.cgColor
+            payContentView.layer.cornerRadius = 2
+        }
+    }
     @IBOutlet weak var payLabel: UILabel!
-    @IBOutlet weak var cancelLabel: UILabel!
+    @IBOutlet weak var cancelLabel: UILabel!{
+        didSet{
+            cancelLabel.backgroundColor = UIColor.clear
+            cancelLabel.layer.cornerRadius = 2
+            cancelLabel.layer.borderColor = JXMainColor.cgColor
+            cancelLabel.layer.borderWidth = 1
+            cancelLabel.textColor = JXMainColor
+            
+            cancelLabel.isUserInteractionEnabled = true
+            cancelLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelTap(tap:))))
+        }
+    }
     @IBOutlet weak var payButton: UIButton!
     
     
     @IBOutlet weak var shopView: UIView!
     @IBOutlet weak var shopImageView: UIImageView!
-    @IBOutlet weak var shopLabel: UILabel!
+    @IBOutlet weak var shopLabel: UILabel!{
+        didSet{
+            shopLabel.layer.cornerRadius = 20
+            shopLabel.layer.masksToBounds = true
+        }
+    }
     @IBOutlet weak var shopNameLabel: UILabel!
     
     @IBOutlet weak var noticeLabel: UILabel!
+    
+    @IBOutlet weak var line1: UIView!
+    @IBOutlet weak var line2: UIView!
+    @IBOutlet weak var line3: UIView!
+    @IBOutlet weak var line4: UIView!
+    @IBOutlet weak var line5: UIView!
     
     var chatBlock : (()->())?
     var showCodeBlock : (()->())?
@@ -64,55 +120,28 @@ class OrderBuyingDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
+        self.orderStatusLabel.textColor = JXMainTextColor
         self.orderNumberLabel.textColor = JXMainText50Color
         self.orderInfoLabel.textColor = JXMainText50Color
         
-        self.tradeView.layer.cornerRadius = 4
-        self.listView.layer.cornerRadius = 4
+        self.priceLabel.textColor = JXMainTextColor
+        self.totalLabel.textColor = JXMainTextColor
+        self.valueLabel.textColor = JXRedColor
         
-        //self.infoBackImageView.image = UIImage(named: "Combined Shape")?.resizableImage(withCapInsets: UIEdgeInsetsMake(80, 20, 20, 20), resizingMode: .stretch)
+        self.payNameLabel.textColor = JXMainTextColor
+        self.userNameLabel.textColor = JXMainTextColor
+        self.accoundLabel.textColor = JXMainTextColor
+        self.bankNameLabel.textColor = JXMainTextColor
+        
+        //self.line.tintColor = JXMainTextColor
+        //self.line.image = UIImage(named: "line")?.withRenderingMode(.alwaysTemplate)
+        self.line1.backgroundColor = JXSeparatorColor
+        self.line2.backgroundColor = JXSeparatorColor
+        self.line3.backgroundColor = JXSeparatorColor
+        self.line4.backgroundColor = JXSeparatorColor
+        self.line5.backgroundColor = JXSeparatorColor
         
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
-        
-        self.cancelLabel.backgroundColor = UIColor.clear
-        self.cancelLabel.layer.cornerRadius = 2
-        self.cancelLabel.layer.borderColor = JXMainColor.cgColor
-        self.cancelLabel.layer.borderWidth = 1
-        self.cancelLabel.textColor = JXMainColor
-        
-        self.cancelLabel.isUserInteractionEnabled = true
-        self.cancelLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cancelTap(tap:))))
-        self.payContentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(payTap(tap:))))
-        //self.payButton.addTarget(self, action: #selector(payTap(tap:)), for: .touchUpInside)
-        
-        self.payContentView.backgroundColor = JXMainColor
-        self.payContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.payContentView.layer.shadowOpacity = 1
-        self.payContentView.layer.shadowRadius = 10
-        self.payContentView.layer.shadowColor = JX10101aShadowColor.cgColor
-        self.payContentView.layer.cornerRadius = 2
-        
-        //
-        self.shopLabel.layer.cornerRadius = 20
-        self.shopLabel.layer.masksToBounds = true
-        
-        
-//        self.shopView.layer.shadowOffset = CGSize(width: 0, height: 13)
-//        self.shopView.layer.shadowOpacity = 1
-//        self.shopView.layer.shadowRadius = 52
-//        self.shopView.layer.shadowColor = JX10101aShadowColor.cgColor
-//        self.shopView.layer.cornerRadius = 4
-        
-        
-//        let gradientLayer = CAGradientLayer.init()
-//        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x2E2F47).cgColor,UIColor.rgbColor(rgbValue: 0x191A2C).cgColor]
-//        gradientLayer.locations = [0]
-//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-//        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-//        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 48 * 2, height: self.shopView.jxHeight)
-//        //gradientLayer.cornerRadius = 5
-//
-//        self.shopView.layer.insertSublayer(gradientLayer, at: 0)
         
         self.noticeLabel.textColor = JXMainText50Color
         

@@ -13,6 +13,16 @@ class CardPayController: BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var bankNameLabel: UILabel!
     @IBOutlet weak var cardTextField: UITextField!
+    @IBOutlet weak var userContentView: UIView!{
+        didSet{
+            userContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
+    @IBOutlet weak var imageContentView: UIView!{
+        didSet{
+            imageContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
     @IBOutlet weak var dropButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     
@@ -62,8 +72,8 @@ class CardPayController: BaseViewController {
         }
         
         bar.tintColor = JXMainTextColor
-        bar.toolBar.barTintColor = JXBackColor
-        bar.backgroundColor = JXBackColor
+        bar.toolBar.barTintColor = JXViewBgColor
+        bar.backgroundColor = JXViewBgColor
         self.view.addSubview(bar)
         
     }

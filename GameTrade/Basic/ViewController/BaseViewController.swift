@@ -23,8 +23,8 @@ open class BaseViewController: UIViewController {
         navigationBar.isTranslucent = true
         navigationBar.barStyle = .blackTranslucent
         //navigationBar.barStyle = .default
-        navigationBar.tintColor = UIColor.white //item图片文字颜色
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
+        navigationBar.tintColor = appStyle == 0 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: appStyle == 0 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
         navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
         return navigationBar
     }()
@@ -61,13 +61,17 @@ open class BaseViewController: UIViewController {
         
         self.view.backgroundColor = JXFfffffColor
 
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
+        if appStyle == 0 {
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
+            self.view.layer.insertSublayer(gradientLayer, at: 0)
+        } else {
+            self.view.backgroundColor = JXFfffffColor
+        }
         
         //isLogin ? setUpMainView() : setUpDefaultView()
         

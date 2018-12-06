@@ -52,6 +52,7 @@
             <connections>
                 <outlet property="leftLabel" destination="foa-9w-V3p" id="dmv-QS-99r"/>
                 <outlet property="rightLabel" destination="fRF-VF-esm" id="MBk-JQ-aBN"/>
+                <outlet property="separatorView" destination="HRg-hE-ZU9" id="Czj-Lh-Gr8"/>
                 <outlet property="trailingConstraint" destination="EJ0-oH-1BD" id="eUa-9l-7gz"/>
             </connections>
             <point key="canvasLocation" x="-143" y="93"/>

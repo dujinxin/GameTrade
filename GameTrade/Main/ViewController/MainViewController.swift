@@ -44,8 +44,8 @@ class MainViewController: JXCollectionViewController {
             //self.textField?.text = ""
         }
         bar.tintColor = JXMainTextColor
-        bar.toolBar.barTintColor = JXBackColor
-        bar.backgroundColor = JXBackColor
+        bar.toolBar.barTintColor = JXViewBgColor
+        bar.backgroundColor = JXViewBgColor
         return bar
     }()
 
@@ -551,7 +551,7 @@ extension MainViewController {
 //                sel.backgroundColor = UIColor.rgbColor(rgbValue: 0x323245)
 //
 //                sel.layer.cornerRadius = 2
-//                sel.layer.shadowColor = UIColor.rgbColor(rgbValue: 0x10101a, alpha: 0.5).cgColor
+//                sel.layer.shadowColor = JX10101aShadowColor.cgColor
 //                sel.layer.shadowOffset = CGSize(width: 0, height: 10)
 //                sel.layer.shadowRadius = 10
 //                sel.layer.shadowOpacity = 1

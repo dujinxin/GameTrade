@@ -55,8 +55,8 @@ class NewBuyController: JXCollectionViewController {
             //self.textField.text = ""
         }
         bar.tintColor = JXMainTextColor
-        bar.toolBar.barTintColor = JXBackColor
-        bar.backgroundColor = JXBackColor
+        bar.toolBar.barTintColor = JXViewBgColor
+        bar.backgroundColor = JXViewBgColor
         return bar
     }()
     
@@ -70,7 +70,7 @@ class NewBuyController: JXCollectionViewController {
         self.view.addSubview(self.headView)
         
         let topView = UIView(frame: CGRect(x: 24, y: 8, width: kScreenWidth - 48, height: 67))
-        topView.backgroundColor = JXBackColor
+        topView.backgroundColor = JXViewBgColor
         topView.layer.cornerRadius = 4
         topView.layer.shadowOpacity = 1
         topView.layer.shadowRadius = 33
@@ -79,15 +79,13 @@ class NewBuyController: JXCollectionViewController {
         headView.addSubview(topView)
         
         
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x393948).cgColor,UIColor.rgbColor(rgbValue: 0x3c3c4b).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 48, height: 67)
-        
-        
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
+//        let gradientLayer = CAGradientLayer.init()
+//        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x393948).cgColor,UIColor.rgbColor(rgbValue: 0x3c3c4b).cgColor]
+//        gradientLayer.locations = [0]
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+//        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+//        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth - 48, height: 67)
+//        self.view.layer.insertSublayer(gradientLayer, at: 0)
         
         
         let textFieldBgView = UIView(frame: CGRect(x: 16, y: 18, width: topView.jxWidth - 16 * 2 - 12 - 88, height: 32))

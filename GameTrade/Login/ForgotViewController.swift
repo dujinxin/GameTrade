@@ -19,9 +19,34 @@ class ForgotViewController: BaseViewController {
     @IBOutlet weak var imageTextField: UITextField!
     @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var userContentView: UIView!{
+        didSet{
+            userContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
+    @IBOutlet weak var imageContentView: UIView!{
+        didSet{
+            imageContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
+    @IBOutlet weak var codeContentView: UIView!{
+        didSet{
+            codeContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
+    @IBOutlet weak var passwordContentView: UIView!{
+        didSet{
+            passwordContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
     @IBOutlet weak var fetchButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var lookButton: UIButton!
+    @IBOutlet weak var infoLabel: UILabel!{
+        didSet{
+            infoLabel.textColor = JXMainTextColor
+        }
+    }
     @IBOutlet weak var goLoginButton: UIButton!
     
     
@@ -40,8 +65,8 @@ class ForgotViewController: BaseViewController {
             print(height,rect)
         }
         k.tintColor = JXMainTextColor
-        k.toolBar.barTintColor = JXBackColor
-        k.backgroundColor = JXBackColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
         return k
     }()

@@ -139,10 +139,12 @@
                     </view>
                     <connections>
                         <outlet property="codeButton" destination="LUr-IY-T1P" id="kQO-4m-SDX"/>
+                        <outlet property="codeContentView" destination="Y85-yF-Tee" id="XHi-cS-e8X"/>
                         <outlet property="codeTextField" destination="0Qm-dQ-1OW" id="Zxa-7e-tVi"/>
                         <outlet property="confirmButton" destination="WDz-qV-yZd" id="7FC-rm-9sa"/>
                         <outlet property="loginLittleLabel" destination="eO7-v8-cZn" id="zMd-3L-mfs"/>
                         <outlet property="loginTitleLabel" destination="pzO-oR-CVf" id="qpT-6J-LHx"/>
+                        <outlet property="passwordContentView" destination="X3b-PH-9VQ" id="TIG-br-DCu"/>
                         <outlet property="passwordTextField" destination="fvB-iD-B6P" id="3DV-Lf-laV"/>
                     </connections>
                 </viewController>
@@ -365,9 +367,11 @@
                         <outlet property="bottomConstraint" destination="x2l-dq-o07" id="Pz2-HO-0Wj"/>
                         <outlet property="cardTextField" destination="Ouk-OQ-sJR" id="peD-4Y-HNJ"/>
                         <outlet property="dropButton" destination="jbJ-LA-h7v" id="oUR-dZ-WrR"/>
+                        <outlet property="imageContentView" destination="rUf-8J-K6T" id="zDj-Nx-f5h"/>
                         <outlet property="nameLabel" destination="ovh-Sv-IR3" id="zIL-h6-Z9I"/>
                         <outlet property="submitButton" destination="8WR-7f-HcI" id="YQ6-Mc-0rj"/>
                         <outlet property="topConstraint" destination="xTs-r6-4Ux" id="1r1-h3-k3W"/>
+                        <outlet property="userContentView" destination="3Rt-Fc-aqU" id="Jsk-4b-QHD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PvW-bQ-IWJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -497,6 +501,7 @@
                         <outlet property="nameLabel" destination="hAT-AG-fMC" id="Nbx-GC-7kE"/>
                         <outlet property="submitButton" destination="uoy-jX-V2P" id="sl1-4h-NeG"/>
                         <outlet property="topConstraint" destination="tjf-9s-iFy" id="sK6-0g-pm8"/>
+                        <outlet property="userContentView" destination="6nM-Eo-cWJ" id="GiS-zH-N6t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Npq-L2-Kmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -858,6 +863,7 @@
                         <outlet property="nameTextField" destination="bla-k0-Qsa" id="MC7-Ar-CoZ"/>
                         <outlet property="submitButton" destination="5DJ-5K-gCt" id="4sV-an-Jj8"/>
                         <outlet property="topConstraint" destination="gqn-cW-hN4" id="mIn-Mn-5fn"/>
+                        <outlet property="userContentView" destination="bNV-4F-Eam" id="bKR-UE-0pf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lMi-fd-Ike" userLabel="First Responder" sceneMemberID="firstResponder"/>

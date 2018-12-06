@@ -13,11 +13,43 @@ class MerchantReusableView: UICollectionReusableView {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var mainContentView: UIView!
     
-    @IBOutlet weak var MerchantImageView: UIImageView!
-    @IBOutlet weak var merchantLabel: UILabel!
-    @IBOutlet weak var MerchantNameLabel: UILabel!
-    @IBOutlet weak var numberLabel: UILabel!
-    @IBOutlet weak var percentLabel: UILabel!
+    @IBOutlet weak var MerchantImageView: UIImageView!{
+        didSet{
+        MerchantImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
+            MerchantImageView.isUserInteractionEnabled = true
+            MerchantImageView.backgroundColor = UIColor.red
+            MerchantImageView.layer.cornerRadius = 34
+            MerchantImageView.layer.masksToBounds = true
+            MerchantImageView.clipsToBounds = true
+        }
+    }
+    @IBOutlet weak var merchantLabel: UILabel!{
+        didSet{
+            merchantLabel.layer.cornerRadius = 34
+            merchantLabel.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var MerchantNameLabel: UILabel!{
+        didSet{
+            MerchantNameLabel.textColor = JXFfffffColor
+        }
+    }
+    @IBOutlet weak var numberLabel: UILabel!{
+        didSet{
+            numberLabel.textColor = JXMainColor
+            numberLabel.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x2f2f3d) : JXFfffffColor
+            numberLabel.layer.cornerRadius = 8.5
+            numberLabel.layer.masksToBounds = true
+        }
+    }
+    @IBOutlet weak var percentLabel: UILabel!{
+        didSet{
+            percentLabel.textColor = JXMainColor
+            percentLabel.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x2f2f3d) : JXFfffffColor
+            percentLabel.layer.cornerRadius = 8.5
+            percentLabel.layer.masksToBounds = true
+        }
+    }
     
     @IBOutlet weak var numberWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var percentWidthConstraint: NSLayoutConstraint!
@@ -50,37 +82,19 @@ class MerchantReusableView: UICollectionReusableView {
         
         self.topConstraint.constant = 13 + kNavStatusHeight
         
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 231 + kNavStatusHeight)
-        self.layer.insertSublayer(gradientLayer, at: 0)
+        if appStyle == 0 {
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 231 + kNavStatusHeight)
+            self.layer.insertSublayer(gradientLayer, at: 0)
+        } else {
+            self.mainContentView.backgroundColor = JXMainColor
+        }
         
-        self.merchantLabel.layer.cornerRadius = 34
-        self.merchantLabel.layer.masksToBounds = true
-        
-        
-        self.percentLabel.textColor = JXMainColor
-        self.numberLabel.textColor = JXMainColor
-        self.MerchantNameLabel.textColor = JXMainTextColor
-     
-        
-        self.percentLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3d)
-        self.percentLabel.layer.cornerRadius = 8.5
-        self.percentLabel.layer.masksToBounds = true
-        
-        self.numberLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3d)
-        self.numberLabel.layer.cornerRadius = 8.5
-        self.numberLabel.layer.masksToBounds = true
-        
-        self.MerchantImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
-        self.MerchantImageView.isUserInteractionEnabled = true
-        self.MerchantImageView.backgroundColor = UIColor.red
-        self.MerchantImageView.layer.cornerRadius = 34
-        self.MerchantImageView.layer.masksToBounds = true
-        self.MerchantImageView.clipsToBounds = true
+ 
     }
     @objc func merchant(_ sender: Any) {
         if let block = merchantBlock {

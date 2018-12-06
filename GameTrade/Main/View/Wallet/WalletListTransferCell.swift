@@ -10,7 +10,16 @@ import UIKit
 
 class WalletListTransferCell: UITableViewCell {
 
-    @IBOutlet weak var mainContentView: UIView!
+    @IBOutlet weak var mainContentView: UIView!{
+        didSet{
+            mainContentView.backgroundColor = JXViewBgColor
+            mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            mainContentView.layer.shadowOpacity = 1
+            mainContentView.layer.shadowRadius = 33
+            mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
+            mainContentView.layer.cornerRadius = 4
+        }
+    }
     
     @IBOutlet weak var methodLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -39,13 +48,8 @@ class WalletListTransferCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.mainContentView.backgroundColor = JXBackColor
-        self.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.mainContentView.layer.shadowOpacity = 1
-        self.mainContentView.layer.shadowRadius = 33
-        self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
-        self.mainContentView.layer.cornerRadius = 4
-        
+        self.methodLabel.textColor = JXMainTextColor
+        self.numberLabel.textColor = JXMainTextColor
         self.valueLabel.textColor = JXMainText50Color
         self.timeLabel.textColor = JXMainText50Color
     }

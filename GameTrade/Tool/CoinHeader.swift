@@ -56,23 +56,20 @@ let kHelpUrl = "http://apps.coinepay.io/static/help.html?name=" + configuration_
 
 
 
-let appStyle = 0   //0黑色系，1蓝色系
+let appStyle = 1   //0黑色系，1蓝色系
 
-
+//0黑色系
 let JXOrangeColor = UIColor.rgbColor(rgbValue: 0xff9300)
 let JXRedColor = UIColor.rgbColor(rgbValue: 0xEF4262)
 let JXGreenColor = UIColor.rgbColor(rgbValue: 0x30DA51)
-let JXPlaceHolerColor = UIColor.rgbColor(rgbValue: 0x686883)
 
 //let JXMainText50Color = UIColor.rgbColor(rgbValue: 0xffffff, alpha: 0.5)
-let JXSeparatorColor = UIColor.rgbColor(rgbValue: 0x464855)
 
-let JXBackColor = UIColor.rgbColor(rgbValue: 0x393948)
 
 let JX22222cShadowColor = UIColor.rgbColor(rgbValue: 0x22222c, alpha: 0.25)
 let JX10101aShadowColor = UIColor.rgbColor(rgbValue: 0x10101a, alpha: 0.15)
 
-
+//1蓝色系
 let JXBlueColor = UIColor.rgbColor(rgbValue: 0x0089f9)
 
 
@@ -80,3 +77,8 @@ let JXBlueColor = UIColor.rgbColor(rgbValue: 0x0089f9)
 let JXMainColor = appStyle == 0 ? JXOrangeColor : JXBlueColor
 let JXMainTextColor = appStyle == 0 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x383838)
 let JXMainText50Color = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0xffffff, alpha: 0.5) : UIColor.rgbColor(rgbValue: 0x383838, alpha: 0.5)
+
+let JXViewBgColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x393948) : JXFfffffColor
+let JXSeparatorColor = appStyle == 0 ?  UIColor.rgbColor(rgbValue: 0x464855) :  UIColor.rgbColor(rgbValue: 0xd3dfef)
+let JXPlaceHolerColor = UIColor.rgbColor(rgbValue: 0x686883)
+let JXTextViewBgColor = UIColor.rgbColor(rgbValue: 0xe8e8e8)

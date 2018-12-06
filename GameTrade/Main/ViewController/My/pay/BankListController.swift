@@ -21,9 +21,9 @@ class BankListController: JXTableViewController {
 //        vc.hidesNavigationBarDuringPresentation = true
         vc.dimsBackgroundDuringPresentation = false
         
-        vc.searchBar.backgroundColor = JXBackColor
-        vc.searchBar.backgroundImage = UIImage.imageWithColor(JXBackColor)
-        vc.searchBar.setSearchFieldBackgroundImage(UIImage.imageWithColor(JXBackColor, size: CGSize(width: kScreenWidth, height: 44)), for: .normal)
+        vc.searchBar.backgroundColor = JXViewBgColor
+        vc.searchBar.backgroundImage = UIImage.imageWithColor(JXViewBgColor)
+        vc.searchBar.setSearchFieldBackgroundImage(UIImage.imageWithColor(JXViewBgColor, size: CGSize(width: kScreenWidth, height: 44)), for: .normal)
         
         vc.searchBar.tintColor = JXMainColor
         vc.searchBar.placeholder = "开户银行"
