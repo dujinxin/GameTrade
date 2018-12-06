@@ -23,8 +23,8 @@ open class BaseViewController: UIViewController {
         navigationBar.isTranslucent = true
         navigationBar.barStyle = .blackTranslucent
         //navigationBar.barStyle = .default
-        navigationBar.tintColor = appStyle == 0 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: appStyle == 0 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
+        navigationBar.tintColor = app_style <= 1 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: app_style <= 1 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
         navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
         return navigationBar
     }()
@@ -61,7 +61,7 @@ open class BaseViewController: UIViewController {
         
         self.view.backgroundColor = JXFfffffColor
 
-        if appStyle == 0 {
+        if app_style <= 1 {
             let gradientLayer = CAGradientLayer.init()
             gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
             gradientLayer.locations = [0]

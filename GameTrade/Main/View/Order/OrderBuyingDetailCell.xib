@@ -90,7 +90,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Afd-dE-20e">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Afd-dE-20e">
                                         <rect key="frame" x="0.0" y="82.5" width="327" height="0.5"/>
                                         <color key="backgroundColor" red="0.27450980390000002" green="0.28235294119999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -458,7 +458,7 @@
                                     <constraint firstItem="Mer-80-Ovc" firstAttribute="top" secondItem="vcY-wF-5cu" secondAttribute="bottom" id="wTW-wb-hc3"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="Xlq-qT-sLb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xlq-qT-sLb" customClass="OrderLineView" customModule="GameTrade" customModuleProvider="target">
                                 <rect key="frame" x="24" y="188" width="327" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="WWJ-Wg-v8q"/>
@@ -523,6 +523,7 @@
                 <outlet property="codeLeftLabel" destination="wi7-zx-Ewa" id="ele-Mw-ThP"/>
                 <outlet property="codeWidthConstraint" destination="EyW-sS-kPc" id="08j-YL-Ey5"/>
                 <outlet property="discountLabel" destination="SmK-Mx-98P" id="bXG-iJ-c9H"/>
+                <outlet property="line" destination="Xlq-qT-sLb" id="gik-uT-p3D"/>
                 <outlet property="line1" destination="T0f-Kc-Q5S" id="PIp-dO-Qwp"/>
                 <outlet property="line2" destination="o1y-0w-lQq" id="C1v-4U-1bg"/>
                 <outlet property="line3" destination="hNA-Cv-yla" id="ZeI-SG-dkN"/>
@@ -557,7 +558,6 @@
         <image name="icon-qc" width="24" height="24"/>
         <image name="icon-talktalk" width="26" height="26"/>
         <image name="identify" width="22" height="9"/>
-        <image name="line" width="327" height="20"/>
         <image name="merchantBG" width="327" height="78"/>
         <image name="time" width="9" height="9"/>
     </resources>

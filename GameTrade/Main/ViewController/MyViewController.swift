@@ -176,11 +176,7 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
         return UIView()
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 0
-        } else {
-            return 30
-        }
+        return 30
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
@@ -195,7 +191,7 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //return UITableViewAutomaticDimension
         if indexPath.section == 0 {
-            return 124 + 30 + 20 + 74
+            return 124 + 20 + 74
         } else {
             return 64
         }

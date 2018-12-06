@@ -37,7 +37,7 @@ class MerchantReusableView: UICollectionReusableView {
     @IBOutlet weak var numberLabel: UILabel!{
         didSet{
             numberLabel.textColor = JXMainColor
-            numberLabel.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x2f2f3d) : JXFfffffColor
+            numberLabel.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x2f2f3d) : JXFfffffColor
             numberLabel.layer.cornerRadius = 8.5
             numberLabel.layer.masksToBounds = true
         }
@@ -45,7 +45,7 @@ class MerchantReusableView: UICollectionReusableView {
     @IBOutlet weak var percentLabel: UILabel!{
         didSet{
             percentLabel.textColor = JXMainColor
-            percentLabel.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x2f2f3d) : JXFfffffColor
+            percentLabel.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x2f2f3d) : JXFfffffColor
             percentLabel.layer.cornerRadius = 8.5
             percentLabel.layer.masksToBounds = true
         }
@@ -82,7 +82,7 @@ class MerchantReusableView: UICollectionReusableView {
         
         self.topConstraint.constant = 13 + kNavStatusHeight
         
-        if appStyle == 0 {
+        if app_style <= 1 {
             let gradientLayer = CAGradientLayer.init()
             gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
             gradientLayer.locations = [0]

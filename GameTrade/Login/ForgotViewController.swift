@@ -13,8 +13,16 @@ class ForgotViewController: BaseViewController {
     
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var loginTitleLabel: UILabel!
-    @IBOutlet weak var loginLittleLabel: UILabel!
+    @IBOutlet weak var loginTitleLabel: UILabel!{
+        didSet{
+            loginTitleLabel.textColor = JXLargeTitleColor
+        }
+    }
+    @IBOutlet weak var loginLittleLabel: UILabel!{
+        didSet{
+            loginLittleLabel.textColor = JXLittleTitleColor
+        }
+    }
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var imageTextField: UITextField!
     @IBOutlet weak var codeTextField: UITextField!

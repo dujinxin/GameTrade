@@ -57,7 +57,6 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Qm-dQ-1OW">
                                         <rect key="frame" x="25" y="0.0" width="182" height="44"/>
-                                        <color key="backgroundColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="4YO-l2-Eeh"/>
                                         </constraints>
@@ -100,7 +99,6 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入8-20位密码，不能全是数字或字母" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fvB-iD-B6P">
                                         <rect key="frame" x="25" y="0.0" width="302" height="44"/>
-                                        <color key="backgroundColor" red="0.22352941176470587" green="0.22352941176470587" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>

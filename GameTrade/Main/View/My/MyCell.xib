@@ -24,7 +24,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cB-qo-oiR">
                         <rect key="frame" x="24" y="74" width="327" height="124"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group" translatesAutoresizingMaskIntoConstraints="NO" id="ofv-Ui-rpx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ofv-Ui-rpx">
                                 <rect key="frame" x="0.0" y="0.0" width="327" height="124"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="cVP-lv-LSR">
@@ -85,18 +85,19 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="backImageView" destination="nBD-Ij-382" id="eeC-Y1-zV3"/>
                 <outlet property="backView" destination="5cB-qo-oiR" id="3kd-xf-gLG"/>
                 <outlet property="editButton" destination="oVM-TN-knj" id="fRM-WT-dta"/>
                 <outlet property="nickNameLabel" destination="cl1-MF-E33" id="WJi-OG-l20"/>
                 <outlet property="rankLabel" destination="2dj-Fr-GCf" id="wHA-JM-mwW"/>
                 <outlet property="topConstraint" destination="YiL-Bw-A0G" id="Jn7-WM-qWv"/>
+                <outlet property="userBackImageView" destination="ofv-Ui-rpx" id="isj-dw-LGs"/>
                 <outlet property="userImageView" destination="cVP-lv-LSR" id="M0a-1y-Q2X"/>
             </connections>
             <point key="canvasLocation" x="-105.59999999999999" y="-635.09852216748766"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Group" width="327" height="124"/>
         <image name="defaultImage" width="68" height="68"/>
         <image name="iconPencel" width="19" height="19"/>
     </resources>

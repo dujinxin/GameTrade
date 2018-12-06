@@ -90,7 +90,7 @@
                                         <color key="textColor" red="0.93725490199999995" green="0.25882352939999997" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4i-Sb-Li1">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4i-Sb-Li1">
                                         <rect key="frame" x="0.0" y="65.5" width="327" height="0.5"/>
                                         <color key="backgroundColor" red="0.27450980390000002" green="0.28235294119999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -342,7 +342,7 @@
                                     <constraint firstItem="reK-5f-WtK" firstAttribute="leading" secondItem="AeS-AH-L8U" secondAttribute="leading" id="vDf-6T-oWD"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="e24-du-P7F">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e24-du-P7F" customClass="OrderLineView" customModule="GameTrade" customModuleProvider="target">
                                 <rect key="frame" x="24" y="171" width="327" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="28T-Mu-jKD"/>
@@ -409,6 +409,7 @@
                 <outlet property="codeButton" destination="E0y-C8-nSa" id="RVF-Ko-yzH"/>
                 <outlet property="codeLeftLabel" destination="QGk-L1-ldl" id="rkk-Wk-Y7m"/>
                 <outlet property="codeWidthConstraint" destination="qpd-Db-Oqw" id="sO5-yr-O4w"/>
+                <outlet property="line" destination="e24-du-P7F" id="bw1-l5-hJd"/>
                 <outlet property="line1" destination="WSr-ho-mLx" id="chR-U1-NWb"/>
                 <outlet property="line2" destination="Yd0-iQ-2oD" id="kMv-dw-DaP"/>
                 <outlet property="line3" destination="5tm-Db-umS" id="9xD-7s-0U4"/>
@@ -433,6 +434,5 @@
         <image name="icon-copy" width="24" height="24"/>
         <image name="icon-qc" width="24" height="24"/>
         <image name="icon-talktalk" width="26" height="26"/>
-        <image name="line" width="327" height="20"/>
     </resources>
 </document>

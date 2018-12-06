@@ -352,7 +352,9 @@ class JXSelectView: UIView {
                     self.center = superView.center
                 }
             }, completion: { (finished) in
-                self.clearInfo()
+                if finished {
+                    self.clearInfo()
+                }
             })
         }else{
             self.clearInfo()
@@ -363,6 +365,7 @@ class JXSelectView: UIView {
         self.isShowed = false
         tapControl.removeFromSuperview()
         bgView.removeFromSuperview()
+        self.removeAllSubView()
         self.removeFromSuperview()
         bgWindow.isHidden = true
     }

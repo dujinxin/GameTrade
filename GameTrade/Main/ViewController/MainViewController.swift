@@ -22,7 +22,7 @@ class MainViewController: JXCollectionViewController {
     
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXMainColor
+        selectView.backgroundColor = JXFfffffColor
         selectView.isBackViewUserInteractionEnabled = false
         
         return selectView
@@ -257,15 +257,17 @@ extension MainViewController {
         let width : CGFloat = kScreenWidth - 48
         
         let contentView = UIView()
-        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362)
+        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362)
         
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362 + kBottomMaginHeight)
-        contentView.layer.insertSublayer(gradientLayer, at: 0)
+        if app_style <= 1 {
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362 + kBottomMaginHeight)
+            contentView.layer.insertSublayer(gradientLayer, at: 0)
+        }
         
         let leftContentView = UIView()
         leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362 + kBottomMaginHeight)
@@ -282,7 +284,7 @@ extension MainViewController {
             label.text = "确认购买"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
-            label.textColor = JXFfffffColor
+            label.textColor = JXMainTextColor
             view.addSubview(label)
             //label.sizeToFit()
             
@@ -290,10 +292,10 @@ extension MainViewController {
             button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
             //button.center = CGPoint(x: 30, y: view.jxCenterY)
             //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
+            button.tintColor = JXMainTextColor
             button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
+            button.setTitleColor(JXMainTextColor, for: .normal)
             button.contentVerticalAlignment = .center
             button.contentHorizontalAlignment = .center
             button.addTarget(self, action: #selector(closeStatus), for: .touchUpInside)

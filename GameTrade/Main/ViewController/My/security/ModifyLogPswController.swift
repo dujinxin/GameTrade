@@ -10,10 +10,39 @@ import UIKit
 
 class ModifyLogPswController: BaseViewController {
 
-    @IBOutlet weak var loginTitleLabel: UILabel!
-    @IBOutlet weak var loginLittleLabel: UILabel!
-    @IBOutlet weak var codeTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginTitleLabel: UILabel!{
+        didSet{
+            loginTitleLabel.textColor = JXLargeTitleColor
+        }
+    }
+    @IBOutlet weak var loginLittleLabel: UILabel!{
+        didSet{
+            loginLittleLabel.textColor = JXLittleTitleColor
+        }
+    }
+    @IBOutlet weak var codeTextField: UITextField!{
+        didSet{
+            codeTextField.textColor = JXMainTextColor
+            codeTextField.attributedPlaceholder = NSAttributedString(string: "4位手机验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        }
+    }
+    @IBOutlet weak var passwordTextField: UITextField!{
+        didSet{
+            passwordTextField.textColor = JXMainTextColor
+            passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入8-20位密码，不能全是数字或字母", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+            passwordTextField.rightViewMode = .always
+            passwordTextField.rightView = {() -> UIView in
+                let button = UIButton(type: .custom)
+                button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+                button.setImage(UIImage(named: "icon_eye closed"), for: .normal)
+                button.setImage(UIImage(named: "icon_eye open"), for: .selected)
+                button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
+                button.isSelected = false
+                button.tag = 1
+                return button
+            }()
+        }
+    }
     @IBOutlet weak var codeContentView: UIView!{
         didSet{
             codeContentView.backgroundColor = JXTextViewBgColor
@@ -24,8 +53,30 @@ class ModifyLogPswController: BaseViewController {
             passwordContentView.backgroundColor = JXTextViewBgColor
         }
     }
-    @IBOutlet weak var codeButton: UIButton!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var codeButton: UIButton!{
+        didSet{
+            codeButton.setTitleColor(JXFfffffColor, for: .normal)
+            codeButton.backgroundColor = JXMainColor
+            
+            codeButton.layer.cornerRadius = 2
+            codeButton.layer.shadowOpacity = 1
+            codeButton.layer.shadowRadius = 10
+            codeButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+            codeButton.layer.shadowColor = JX10101aShadowColor.cgColor
+        }
+    }
+    @IBOutlet weak var confirmButton: UIButton!{
+        didSet{
+            confirmButton.setTitleColor(JXFfffffColor, for: .normal)
+            confirmButton.backgroundColor = JXMainColor
+            
+            confirmButton.layer.cornerRadius = 2
+            confirmButton.layer.shadowOpacity = 1
+            confirmButton.layer.shadowRadius = 10
+            confirmButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+            confirmButton.layer.shadowColor = JX10101aShadowColor.cgColor
+        }
+    }
     
     var vm = MyVM()
     var isCounting: Bool = false
@@ -52,44 +103,6 @@ class ModifyLogPswController: BaseViewController {
         self.loginTitleLabel.textColor = JXMainTextColor
         self.loginLittleLabel.textColor = JXMainText50Color
        
-        
-        self.codeTextField.attributedPlaceholder = NSAttributedString(string: "4位手机验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入8-20位密码，不能全是数字或字母", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        
-        self.codeTextField.textColor = JXMainTextColor
-        self.passwordTextField.textColor = JXMainTextColor
-        
-        self.codeButton.setTitleColor(JXFfffffColor, for: .normal)
-        self.codeButton.backgroundColor = JXMainColor
-        
-        self.codeButton.layer.cornerRadius = 2
-        self.codeButton.layer.shadowOpacity = 1
-        self.codeButton.layer.shadowRadius = 10
-        self.codeButton.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.codeButton.layer.shadowColor = JX10101aShadowColor.cgColor
-        
-        
-        self.passwordTextField.rightViewMode = .always
-        self.passwordTextField.rightView = {() -> UIView in
-            let button = UIButton(type: .custom)
-            button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            button.setImage(UIImage(named: "icon_eye closed"), for: .normal)
-            button.setImage(UIImage(named: "icon_eye open"), for: .selected)
-            button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
-            button.isSelected = false
-            button.tag = 1
-            return button
-        }()
-        
-        self.confirmButton.setTitleColor(JXFfffffColor, for: .normal)
-        self.confirmButton.backgroundColor = JXMainColor
-        
-        self.confirmButton.layer.cornerRadius = 2
-        self.confirmButton.layer.shadowOpacity = 1
-        self.confirmButton.layer.shadowRadius = 10
-        self.confirmButton.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.confirmButton.layer.shadowColor = JX10101aShadowColor.cgColor
-        
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
         

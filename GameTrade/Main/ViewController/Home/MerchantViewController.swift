@@ -32,7 +32,7 @@ class MerchantViewController: JXCollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "商家"
+        //self.title = "商家"
         
         self.collectionView?.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
         // Register cell classes

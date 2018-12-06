@@ -34,7 +34,7 @@ class NewBuyController: JXCollectionViewController {
     
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXMainColor
+        selectView.backgroundColor = JXFfffffColor
         selectView.isBackViewUserInteractionEnabled = false
         
         return selectView
@@ -89,16 +89,15 @@ class NewBuyController: JXCollectionViewController {
         
         
         let textFieldBgView = UIView(frame: CGRect(x: 16, y: 18, width: topView.jxWidth - 16 * 2 - 12 - 88, height: 32))
-        textFieldBgView.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
+        textFieldBgView.backgroundColor = JXTextViewBgColor
         topView.addSubview(textFieldBgView)
         
         self.textField = UITextField(frame: CGRect(x: 16, y: 0, width: textFieldBgView.jxWidth - 16 * 2 , height: 32))
-        textField.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
         textField.delegate = self
         textField.placeholder = "输入购买金额"
         textField.keyboardType = .numberPad
         textField.font = UIFont.systemFont(ofSize: 13)
-        textField.textColor = JXFfffffColor
+        textField.textColor = JXMainTextColor
         textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
         textFieldBgView.addSubview(textField)
         
@@ -233,7 +232,7 @@ class NewBuyController: JXCollectionViewController {
     
     lazy var statusBottomView1: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXMainColor
+        selectView.backgroundColor = JXFfffffColor
         selectView.isBackViewUserInteractionEnabled = false
         
         self.setKeyBoardObserver()
@@ -249,14 +248,15 @@ class NewBuyController: JXCollectionViewController {
         
         let contentView = UIView()
         contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 442)
-        
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 442 + kBottomMaginHeight)
-        contentView.layer.insertSublayer(gradientLayer, at: 0)
+        if app_style <= 1 {
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 442 + kBottomMaginHeight)
+            contentView.layer.insertSublayer(gradientLayer, at: 0)
+        }
         
         let leftContentView = UIView()
         leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 442 + kBottomMaginHeight)
@@ -273,7 +273,7 @@ class NewBuyController: JXCollectionViewController {
             label.text = "确认购买"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
-            label.textColor = JXFfffffColor
+            label.textColor = JXMainTextColor
             view.addSubview(label)
             //label.sizeToFit()
             
@@ -281,10 +281,10 @@ class NewBuyController: JXCollectionViewController {
             button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
             //button.center = CGPoint(x: 30, y: view.jxCenterY)
             //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
+            button.tintColor = JXMainTextColor
             button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
+            button.setTitleColor(JXMainTextColor, for: .normal)
             button.contentVerticalAlignment = .center
             button.contentHorizontalAlignment = .center
             button.addTarget(self, action: #selector(closeStatus1), for: .touchUpInside)
@@ -296,14 +296,14 @@ class NewBuyController: JXCollectionViewController {
         
         self.normalTextField = {
             let textField = UITextField(frame: CGRect(x: 24, y: topBarView.jxBottom + 20, width: width , height: 48))
-            textField.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
+            textField.backgroundColor = JXTextViewBgColor
             textField.layer.cornerRadius = 2
             textField.delegate = self
             textField.placeholder = "输入购买金额"
             textField.text = number
             textField.keyboardType = .numberPad
             textField.font = UIFont.systemFont(ofSize: 14)
-            textField.textColor = JXFfffffColor
+            textField.textColor = JXMainTextColor
             textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
             
             
@@ -319,7 +319,7 @@ class NewBuyController: JXCollectionViewController {
                 let nameLabel = UILabel()
                 nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: 60, height: 30)
                 nameLabel.text = "\(configuration_coinName)"
-                nameLabel.textColor = JXFfffffColor
+                nameLabel.textColor = JXMainTextColor
                 nameLabel.font = UIFont.systemFont(ofSize: 13)
                 nameLabel.textAlignment = .center
                 
@@ -490,16 +490,17 @@ extension NewBuyController {
         let width : CGFloat = kScreenWidth - 48
         
         let contentView = UIView()
-        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362)
-        
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362 + kBottomMaginHeight)
-        contentView.layer.insertSublayer(gradientLayer, at: 0)
-        
+        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362)
+        if app_style <= 1 {
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362 + kBottomMaginHeight)
+            contentView.layer.insertSublayer(gradientLayer, at: 0)
+        }
+    
         let leftContentView = UIView()
         leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362 + kBottomMaginHeight)
         contentView.addSubview(leftContentView)
@@ -515,7 +516,7 @@ extension NewBuyController {
             label.text = "确认购买"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
-            label.textColor = JXFfffffColor
+            label.textColor = JXMainTextColor
             view.addSubview(label)
             //label.sizeToFit()
             
@@ -523,10 +524,10 @@ extension NewBuyController {
             button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
             //button.center = CGPoint(x: 30, y: view.jxCenterY)
             //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
+            button.tintColor = JXMainTextColor
             button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
+            button.setTitleColor(JXMainTextColor, for: .normal)
             button.contentVerticalAlignment = .center
             button.contentHorizontalAlignment = .center
             button.addTarget(self, action: #selector(closeStatus), for: .touchUpInside)

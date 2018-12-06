@@ -25,7 +25,7 @@ class OrderingListCell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var separatorView: UIView!{
         didSet{
-            buyButton.backgroundColor = JXSeparatorColor
+            separatorView.backgroundColor = JXSeparatorColor
         }
     }
     @IBOutlet weak var numberLabel: UILabel!
@@ -34,7 +34,6 @@ class OrderingListCell: UITableViewCell {
     @IBOutlet weak var buyButton: UIButton!{
         didSet{
             buyButton.tag = 1314
-            
             
             buyButton.backgroundColor = JXMainColor
             buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)

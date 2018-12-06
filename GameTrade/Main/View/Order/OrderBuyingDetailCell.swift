@@ -18,7 +18,7 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var tradeView: UIView!{
         didSet{
             tradeView.layer.cornerRadius = 4
-            tradeView.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x131321) : JXFfffffColor
+            tradeView.backgroundColor = JXOrderDetailBgColor
             
             tradeView.backgroundColor = JXViewBgColor
             tradeView.layer.shadowOffset = CGSize(width: 0, height: 10)
@@ -35,7 +35,7 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var listView: UIView!{
         didSet{
             listView.layer.cornerRadius = 4
-            listView.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x131321) : JXFfffffColor
+            listView.backgroundColor = JXOrderDetailBgColor
             
             listView.backgroundColor = JXViewBgColor
             listView.layer.shadowOffset = CGSize(width: 0, height: 10)
@@ -97,6 +97,12 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var shopNameLabel: UILabel!
     
     @IBOutlet weak var noticeLabel: UILabel!
+    
+    @IBOutlet weak var line: OrderLineView!{
+        didSet{
+            line.lineColor = JXMainTextColor
+        }
+    }
     
     @IBOutlet weak var line1: UIView!
     @IBOutlet weak var line2: UIView!

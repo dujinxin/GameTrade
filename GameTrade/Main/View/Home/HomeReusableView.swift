@@ -13,7 +13,7 @@ class HomeReusableView: UICollectionReusableView {
 
     @IBOutlet weak var backgroundImageView: UIImageView!{
         didSet{
-            backgroundImageView.backgroundColor = appStyle == 0 ? UIColor.clear : JXMainColor
+            backgroundImageView.backgroundColor = app_style <= 1 ? UIColor.clear : JXMainColor
         }
     }
     
@@ -33,8 +33,8 @@ class HomeReusableView: UICollectionReusableView {
     }
     @IBOutlet weak var totalPriceLabel: UILabel!{
         didSet{
-            totalPriceLabel.textColor = appStyle == 0 ? JXMainColor : JXFfffffColor
-            totalPriceLabel.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x272732, alpha: 1) : UIColor.rgbColor(rgbValue: 0x272732, alpha: 0.5)
+            totalPriceLabel.textColor = app_style <= 1 ? JXMainColor : JXFfffffColor
+            totalPriceLabel.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x272732, alpha: 1) : UIColor.rgbColor(rgbValue: 0x272732, alpha: 0.5)
             totalPriceLabel.layer.cornerRadius = 11.5
             totalPriceLabel.layer.masksToBounds = true
         }
@@ -54,8 +54,8 @@ class HomeReusableView: UICollectionReusableView {
     }
     @IBOutlet weak var usePriceLabel: UILabel!{
         didSet{
-            usePriceLabel.textColor = appStyle == 0 ? JXMainColor : JXFfffffColor
-            usePriceLabel.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x272732, alpha: 1) : UIColor.rgbColor(rgbValue: 0x272732, alpha: 0.5)
+            usePriceLabel.textColor = app_style <= 1 ? JXMainColor : JXFfffffColor
+            usePriceLabel.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x272732, alpha: 1) : UIColor.rgbColor(rgbValue: 0x272732, alpha: 0.5)
             usePriceLabel.layer.cornerRadius = 8.5
             usePriceLabel.layer.masksToBounds = true
         }
@@ -75,8 +75,8 @@ class HomeReusableView: UICollectionReusableView {
     }
     @IBOutlet weak var limitPriceLabel: UILabel!{
         didSet{
-            limitPriceLabel.textColor = appStyle == 0 ? JXMainColor : JXFfffffColor
-            limitPriceLabel.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x272732, alpha: 1) : UIColor.rgbColor(rgbValue: 0x272732, alpha: 0.5)
+            limitPriceLabel.textColor = app_style <= 1 ? JXMainColor : JXFfffffColor
+            limitPriceLabel.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x272732, alpha: 1) : UIColor.rgbColor(rgbValue: 0x272732, alpha: 0.5)
             limitPriceLabel.layer.cornerRadius = 8.5
             limitPriceLabel.layer.masksToBounds = true
         }
@@ -92,7 +92,7 @@ class HomeReusableView: UICollectionReusableView {
     
     @IBOutlet weak var quickImageView: UIImageView!{
         didSet{
-            quickImageView.tintColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x272732) : JXFfffffColor
+            quickImageView.tintColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x272732) : JXFfffffColor
             quickImageView.image = UIImage(named: "quickBG")?.withRenderingMode(.alwaysTemplate)
             
             quickImageView.layer.cornerRadius = 2
@@ -106,7 +106,7 @@ class HomeReusableView: UICollectionReusableView {
     }
     @IBOutlet weak var textField: UITextField!{
         didSet{
-            textField.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.44) : UIColor.rgbColor(rgbValue: 0xb7b7b7)
+            textField.backgroundColor = JXTextViewBg2Color
             //textField.delegate = self
             textField.layer.cornerRadius = 2
             
@@ -114,7 +114,7 @@ class HomeReusableView: UICollectionReusableView {
             textField.keyboardType = .numberPad
             textField.font = UIFont.systemFont(ofSize: 18)
             textField.textColor = JXMainTextColor
-            let placeholderColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0xb3b3cb) : UIColor.rgbColor(rgbValue: 0x2d2e44)
+            let placeholderColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0xb3b3cb) : UIColor.rgbColor(rgbValue: 0x2d2e44)
             textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor:placeholderColor])
             textField.leftViewMode = .always
             textField.leftView = {
@@ -151,7 +151,7 @@ class HomeReusableView: UICollectionReusableView {
     
     @IBOutlet weak var switchContentView: UIView!{
         didSet{
-            switchContentView.backgroundColor = appStyle == 0 ? UIColor.rgbColor(rgbValue: 0x21202c) : UIColor.rgbColor(rgbValue: 0xd4d4d4)
+            switchContentView.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x21202c) : UIColor.rgbColor(rgbValue: 0xd4d4d4)
         }
     }
 
@@ -181,6 +181,23 @@ class HomeReusableView: UICollectionReusableView {
     @IBOutlet weak var helpLabel: UILabel!{
         didSet{
             helpLabel.textColor = JXMainTextColor
+        }
+    }
+
+    @IBOutlet weak var leftLine: UIView!{
+        didSet{
+            leftLine.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x32333E) : JXSeparatorColor
+            
+        }
+    }
+    @IBOutlet weak var rightLine: UIView!{
+        didSet{
+            rightLine.backgroundColor =  app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x32333E) : JXSeparatorColor
+        }
+    }
+    @IBOutlet weak var bottomLine: UIView!{
+        didSet{
+            bottomLine.backgroundColor =  app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x32333E) : JXSeparatorColor
         }
     }
     

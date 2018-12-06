@@ -13,12 +13,12 @@ class LoginViewController: BaseViewController {
 
     @IBOutlet weak var loginTitleLabel: UILabel!{
         didSet{
-            loginTitleLabel.textColor = JXMainTextColor
+            loginTitleLabel.textColor = JXLargeTitleColor
         }
     }
     @IBOutlet weak var loginLittleLabel: UILabel!{
         didSet{
-            loginLittleLabel.textColor = JXMainText50Color
+            loginLittleLabel.textColor = JXLittleTitleColor
         }
     }
     @IBOutlet weak var mainScrollView: UIScrollView!

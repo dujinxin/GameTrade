@@ -770,7 +770,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="Haz-QW-TJk"/>
                     <connections>
+                        <outlet property="arrowImageView" destination="67O-uV-DRv" id="WRa-Wd-YjS"/>
                         <outlet property="contentView" destination="RIJ-yf-S3A" id="Scd-L4-xui"/>
+                        <outlet property="line1" destination="yLB-8A-DRB" id="SmJ-Xe-XKf"/>
+                        <outlet property="line2" destination="uKz-LE-mMw" id="4Oc-et-kWz"/>
+                        <outlet property="line3" destination="H4y-ig-tCT" id="Dr8-oV-D6w"/>
+                        <outlet property="line4" destination="Fyv-rL-6Hh" id="8A9-z4-HMS"/>
+                        <outlet property="line5" destination="knY-D6-jOt" id="Bdn-ug-uOF"/>
+                        <outlet property="line6" destination="hIL-hi-EDJ" id="th3-ZE-CSP"/>
+                        <outlet property="line7" destination="hhV-cj-z24" id="8Eh-Nf-JIs"/>
                         <outlet property="mainScrollView" destination="IyN-UY-kE5" id="jh4-qt-dq6"/>
                         <outlet property="payNameLabel" destination="ZX1-ff-S0t" id="5iv-mE-nTv"/>
                         <outlet property="payNameLeftLabel" destination="wiJ-qk-q55" id="d60-11-EJ0"/>
