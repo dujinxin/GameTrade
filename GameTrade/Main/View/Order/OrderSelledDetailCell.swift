@@ -57,7 +57,12 @@ class OrderSelledDetailCell: UITableViewCell {
     
     @IBOutlet weak var line: OrderLineView!{
         didSet{
-            line.lineColor = JXMainTextColor
+            
+            if app_style <= 1 {
+                line.lineColor = JXMainText50Color
+            } else {
+                line.lineColor = UIColor.rgbColor(rgbValue: 0x3f415d)
+            }
         }
     }
     @IBOutlet weak var line1: UIView!
@@ -171,7 +176,12 @@ class OrderLineView: UIImageView {
         let v = UIView()
         
         let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(from: 224, 224, 224).cgColor,UIColor.rgbColor(from: 235, 235, 235).cgColor]
+        if app_style <= 1 {
+            gradientLayer.colors = [UIColor.rgbColor(from: 43, 39, 50).cgColor,UIColor.rgbColor(from: 53, 49, 60).cgColor]
+        } else {
+            gradientLayer.colors = [UIColor.rgbColor(from: 224, 224, 224).cgColor,UIColor.rgbColor(from: 235, 235, 235).cgColor]
+        }
+        
         gradientLayer.locations = [0]
         gradientLayer.startPoint = CGPoint(x: 1, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0, y: 0)
@@ -187,7 +197,12 @@ class OrderLineView: UIImageView {
         //v.backgroundColor = UIColor.rgbColor(from: 223, 223, 224)
         
         let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(from: 224, 224, 224).cgColor,UIColor.rgbColor(from: 235, 235, 235).cgColor]
+        if app_style <= 1 {
+            gradientLayer.colors = [UIColor.rgbColor(from: 43, 39, 50).cgColor,UIColor.rgbColor(from: 53, 49, 60).cgColor]
+        } else {
+            gradientLayer.colors = [UIColor.rgbColor(from: 224, 224, 224).cgColor,UIColor.rgbColor(from: 235, 235, 235).cgColor]
+        }
+        
         gradientLayer.locations = [0]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 1, y: 0)

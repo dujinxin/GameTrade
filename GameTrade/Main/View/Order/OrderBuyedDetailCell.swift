@@ -64,7 +64,11 @@ class OrderBuyedDetailCell: UITableViewCell {
     
     @IBOutlet weak var line: OrderLineView!{
         didSet{
-            line.lineColor = JXMainTextColor
+            if app_style <= 1 {
+                line.lineColor = JXMainText50Color
+            } else {
+                line.lineColor = UIColor.rgbColor(rgbValue: 0x3f415d)
+            }
         }
     }
     @IBOutlet weak var line1: UIView!
@@ -94,6 +98,7 @@ class OrderBuyedDetailCell: UITableViewCell {
         self.userNameLabel.textColor = JXMainTextColor
         self.accoundLabel.textColor = JXMainTextColor
         self.bankNameLabel.textColor = JXMainTextColor
+        self.remarkLabel.textColor = JXMainTextColor
         
         //self.line.tintColor = JXMainTextColor
         //self.line.image = UIImage(named: "line")?.withRenderingMode(.alwaysTemplate)
