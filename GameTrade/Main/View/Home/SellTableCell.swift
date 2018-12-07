@@ -10,7 +10,16 @@ import UIKit
 
 class SellTableCell: UITableViewCell {
 
-    @IBOutlet weak var mainContentView: UIView!
+    @IBOutlet weak var mainContentView: UIView!{
+        didSet{
+            mainContentView.backgroundColor = JXViewBgColor
+            mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            mainContentView.layer.shadowOpacity = 1
+            mainContentView.layer.shadowRadius = 33
+            mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
+            mainContentView.layer.cornerRadius = 4
+        }
+    }
     
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var payImageView: UIImageView!
@@ -43,16 +52,10 @@ class SellTableCell: UITableViewCell {
         // Initialization code
         
         self.backgroundColor = UIColor.clear
-        
-        self.mainContentView.backgroundColor = JXBackColor
-        self.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.mainContentView.layer.shadowOpacity = 1
-        self.mainContentView.layer.shadowRadius = 33
-        self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
-        self.mainContentView.layer.cornerRadius = 4
-        
-        self.numberLabel.textColor = JXText50Color
-        self.timeLabel.textColor = JXText50Color
+ 
+        self.numberLabel.textColor = JXMainText50Color
+        self.timeLabel.textColor = JXMainText50Color
+        self.valueLabel.textColor = JXMainColor
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

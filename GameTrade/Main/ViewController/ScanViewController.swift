@@ -38,15 +38,18 @@ class ScanViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.session.startRunning()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.session.stopRunning()
     }
     override func viewDidLoad() {
         //super.viewDidLoad()
         
         self.navigationController?.navigationBar.isHidden = true
 
+        self.backButton.setImage(UIImage(named: "icon-back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.backButton.tintColor = UIColor.white
         self.scanImageView.tintColor = UIColor.blue
         self.topView.alpha = 0.5
@@ -57,9 +60,6 @@ class ScanViewController: BaseViewController {
         self.controlButton.setImage(#imageLiteral(resourceName: "off"), for: .normal)
         self.controlButton.setImage(#imageLiteral(resourceName: "on"), for: .selected)
         
-//        self.statusBottomView.customView = self.customViewInit(number: "text", address: "address", gas: "gas", remark: "无")
-//        self.statusBottomView.show(inView: self.view)
-//        self.psdTextView.textField.becomeFirstResponder()
         
         guard
             let device = AVCaptureDevice.default(for: .video),   //创建摄像设备
@@ -147,13 +147,21 @@ class ScanViewController: BaseViewController {
         }
         sender.isSelected = !sender.isSelected
         if  device.torchMode == .on{
-            try? device.lockForConfiguration()
-            device.torchMode = .off
-            try? device.unlockForConfiguration()
+            do {
+                try device.lockForConfiguration()
+                device.torchMode = .off
+                device.unlockForConfiguration()
+            } catch let error{
+                print(error.localizedDescription)
+            }
         } else {
-            try? device.lockForConfiguration()
-            device.torchMode = .on
-            try? device.unlockForConfiguration()
+            do {
+                try device.lockForConfiguration()
+                device.torchMode = .on
+                device.unlockForConfiguration()
+            } catch let error{
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -174,7 +182,7 @@ class ScanViewController: BaseViewController {
     var psdTextView : PasswordTextView!
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
+        selectView.backgroundColor = JXFfffffColor
         selectView.isBackViewUserInteractionEnabled = false
         //selectView.customView = self.customViewInit(number: self.number, address: "address", gas: "gas", remark: "无备注")
         return selectView
@@ -187,13 +195,15 @@ class ScanViewController: BaseViewController {
         let contentView = UIView()
         contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 562)
         
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 562 + kBottomMaginHeight)
-        contentView.layer.insertSublayer(gradientLayer, at: 0)
+        if app_style <= 1 {
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 562 + kBottomMaginHeight)
+            contentView.layer.insertSublayer(gradientLayer, at: 0)
+        }
         
         let leftContentView = UIView()
         leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 562 + kBottomMaginHeight)
@@ -210,7 +220,7 @@ class ScanViewController: BaseViewController {
             label.text = "请输入资金密码"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
-            label.textColor = JXFfffffColor
+            label.textColor = JXMainTextColor
             view.addSubview(label)
             //label.sizeToFit()
             
@@ -218,10 +228,10 @@ class ScanViewController: BaseViewController {
             button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
             //button.center = CGPoint(x: 30, y: view.jxCenterY)
             //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
+            button.tintColor = JXMainTextColor
             button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
+            button.setTitleColor(JXMainTextColor, for: .normal)
             button.contentVerticalAlignment = .center
             button.contentHorizontalAlignment = .center
             button.addTarget(self, action: #selector(closeStatus), for: .touchUpInside)
@@ -235,7 +245,7 @@ class ScanViewController: BaseViewController {
         let nameLabel = UILabel()
         nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: width, height: 30)
         nameLabel.text = "\(self.vm.amount) \(configuration_coinName)"
-        nameLabel.textColor = JXFfffffColor
+        nameLabel.textColor = JXMainTextColor
         nameLabel.font = UIFont.systemFont(ofSize: 25)
         nameLabel.textAlignment = .center
         
@@ -245,7 +255,7 @@ class ScanViewController: BaseViewController {
         let leftLabel1 = UILabel()
         leftLabel1.frame = CGRect(x: 24, y: nameLabel.jxBottom + 30, width: 65, height: 50)
         leftLabel1.text = "收款商户"
-        leftLabel1.textColor = JXText50Color
+        leftLabel1.textColor = JXMainText50Color
         leftLabel1.font = UIFont.systemFont(ofSize: 13)
         leftLabel1.textAlignment = .left
         leftContentView.addSubview(leftLabel1)
@@ -253,7 +263,7 @@ class ScanViewController: BaseViewController {
         let rightLabel1 = UILabel()
         rightLabel1.frame = CGRect(x: leftLabel1.jxRight, y: leftLabel1.jxTop, width: kScreenWidth - 48 - leftLabel1.jxWidth, height: 50)
         rightLabel1.text = self.vm.webName
-        rightLabel1.textColor = JXTextColor
+        rightLabel1.textColor = JXMainTextColor
         rightLabel1.font = UIFont.systemFont(ofSize: 14)
         rightLabel1.textAlignment = .right
         leftContentView.addSubview(rightLabel1)
@@ -272,7 +282,7 @@ class ScanViewController: BaseViewController {
         psdTextView.backgroundColor = UIColor.clear
         psdTextView.limit = 4
         psdTextView.bottomLineColor = JXSeparatorColor
-        psdTextView.textColor = JXFfffffColor
+        psdTextView.textColor = JXMainTextColor
         psdTextView.font = UIFont.systemFont(ofSize: 21)
         psdTextView.completionBlock = { (text,isFinish) -> () in
             
@@ -406,8 +416,10 @@ extension ScanViewController : AVCaptureMetadataOutputObjectsDelegate {
                     }
                 }
             } else {
-                ViewManager.showNotice(str)
-                self.session.startRunning()
+                //ViewManager.showNotice("不支持该二维码")
+                //self.session.startRunning()
+                //self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "scanResult", sender: nil)
             }
         }
     }

@@ -17,12 +17,12 @@ open class ChatTableViewCell: UITableViewCell {
     }
     @IBOutlet weak open var nameLabel: UILabel!{
         didSet {
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
         }
     }
     @IBOutlet weak open var messageLabel: UILabel!{
         didSet {
-            messageLabel.textColor = JXText50Color
+            messageLabel.textColor = JXMainText50Color
         }
     }
     @IBOutlet weak open var accessoryLabel: UILabel!
@@ -35,6 +35,11 @@ open class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak open var lastMessageLabel: UILabel! {
         didSet {
             lastMessageLabel.text = ""
+        }
+    }
+    @IBOutlet weak var separatorView: UIView!{
+        didSet{
+            separatorView.backgroundColor = JXSeparatorColor
         }
     }
     

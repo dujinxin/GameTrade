@@ -553,11 +553,11 @@ extension ChatViewController {
     fileprivate func setupMessageInputBar() {
         messageInputBar.sendButton.setTitle(nil, for: .normal)
         messageInputBar.sendButton.setImage(UIImage(named: "chat_send_button", in: Bundle(for: ChatViewController.self), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        messageInputBar.sendButton.tintColor = JXOrangeColor
+        messageInputBar.sendButton.tintColor = JXMainColor
         
         let attachmentButton = InputBarButtonItem(frame: CGRect(x: 40, y: 0, width: 30, height: 30))
         attachmentButton.setImage(UIImage(named: "attachment", in: Bundle(for: ChatViewController.self), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        attachmentButton.tintColor = JXOrangeColor
+        attachmentButton.tintColor = JXMainColor
         
         attachmentButton.onTouchUpInside { [unowned self] attachmentButton in
             if self.channel.getParticipantsCount() == 2 && self.participant?.isParticipantBlockedByMe() ?? false {
@@ -569,7 +569,7 @@ extension ChatViewController {
         
         let audioButton = InputBarButtonItem(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         audioButton.setImage(UIImage(named: "microphone", in: Bundle(for: ChatViewController.self), compatibleWith: nil)?.withRenderingMode(.alwaysTemplate), for: .normal)
-        audioButton.tintColor = JXOrangeColor
+        audioButton.tintColor = JXMainColor
 
         
         audioButton.onTouchUpInside { [unowned self] audioButton in
@@ -1199,7 +1199,7 @@ extension ChatViewController: MessagesDisplayDelegate {
             return .clear
         default:
             guard let dataSource = messagesCollectionView.messagesDataSource else { return .white }
-            return dataSource.isFromCurrentSender(message: message) ? JXOrangeColor : UIColor.rgbColor(rgbValue: 0xefefef)
+            return dataSource.isFromCurrentSender(message: message) ? JXMainColor : UIColor.rgbColor(rgbValue: 0xefefef)
         }
     }
     public func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
@@ -1210,7 +1210,7 @@ extension ChatViewController: MessagesDisplayDelegate {
             return .clear
         default:
             guard let dataSource = messagesCollectionView.messagesDataSource else { return .white }
-            return dataSource.isFromCurrentSender(message: message) ? JXTextColor : UIColor.rgbColor(rgbValue: 0x4a4a4a)
+            return dataSource.isFromCurrentSender(message: message) ? JXMainTextColor : UIColor.rgbColor(rgbValue: 0x4a4a4a)
         }
     }
  

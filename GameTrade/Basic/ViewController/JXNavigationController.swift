@@ -13,7 +13,8 @@ class JXNavigationController: UINavigationController {
     lazy var backItem: UIBarButtonItem = {
         let leftButton = UIButton()
         leftButton.frame = CGRect(x: 10, y: 7, width: 30, height: 30)
-        leftButton.setImage(UIImage(named: "icon-back"), for: .normal)
+        leftButton.setImage(UIImage(named: "icon-back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        leftButton.tintColor = JXMainTextColor
         //leftButton.imageEdgeInsets = UIEdgeInsetsMake(12, 0, 12, 24)
         //leftButton.setTitle("up", for: .normal)
         leftButton.addTarget(self, action: #selector(pop), for: .touchUpInside)

@@ -149,7 +149,7 @@ class TransferViewController: BaseViewController {
             label.text = "提示"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -157,7 +157,7 @@ class TransferViewController: BaseViewController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 30)
             nameLabel.text = "您还未设置资金密码"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             
@@ -173,7 +173,7 @@ class TransferViewController: BaseViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("稍后再说", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -194,7 +194,7 @@ class TransferViewController: BaseViewController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()
@@ -256,7 +256,7 @@ class TransferViewController: BaseViewController {
     
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
+        selectView.backgroundColor = JXMainColor
         selectView.isBackViewUserInteractionEnabled = false
 //        selectView.topBarView = {
 //            let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 260))
@@ -377,7 +377,7 @@ class TransferViewController: BaseViewController {
             button1.setTitle("忘记密码？", for: .normal)
             
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.contentVerticalAlignment = .center
             button1.contentHorizontalAlignment = .right
             button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
@@ -421,7 +421,7 @@ class TransferViewController: BaseViewController {
         let nameLabel = UILabel()
         nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: width, height: 30)
         nameLabel.text = "\(number) \(configuration_coinName)"
-        nameLabel.textColor = JXTextColor
+        nameLabel.textColor = JXMainTextColor
         nameLabel.font = UIFont.systemFont(ofSize: 25)
         nameLabel.textAlignment = .center
         
@@ -431,7 +431,7 @@ class TransferViewController: BaseViewController {
         let topLabel = UILabel()
         topLabel.frame = CGRect(x: nameLabel.jxLeft, y: nameLabel.jxBottom + 31 , width: width, height: 18)
         topLabel.text = "对方账户地址"
-        topLabel.textColor = JXText50Color
+        topLabel.textColor = JXMainText50Color
         topLabel.font = UIFont.systemFont(ofSize: 13)
         topLabel.textAlignment = .left
         
@@ -440,7 +440,7 @@ class TransferViewController: BaseViewController {
         let addressLabel = UILabel()
         addressLabel.frame = CGRect(x: nameLabel.jxLeft, y: topLabel.jxBottom + 8, width: width, height: 40)
         addressLabel.text = "\(address)"
-        addressLabel.textColor = JXTextColor
+        addressLabel.textColor = JXMainTextColor
         addressLabel.font = UIFont.systemFont(ofSize: 16)
         addressLabel.textAlignment = .left
         addressLabel.numberOfLines = 0
@@ -461,7 +461,7 @@ class TransferViewController: BaseViewController {
         let leftLabel = UILabel()
         leftLabel.frame = CGRect(x: 24, y: line1.jxBottom, width: 32, height: 51)
         leftLabel.text = "备注"
-        leftLabel.textColor = JXText50Color
+        leftLabel.textColor = JXMainText50Color
         leftLabel.font = UIFont.systemFont(ofSize: 13)
         leftLabel.textAlignment = .left
         contentView.addSubview(leftLabel)
@@ -469,7 +469,7 @@ class TransferViewController: BaseViewController {
         let remarkLabel = UILabel()
         remarkLabel.frame = CGRect(x: leftLabel.jxRight, y: line1.jxBottom, width: kScreenWidth - 48 - leftLabel.jxWidth, height: 51)
         remarkLabel.text = remark
-        remarkLabel.textColor = JXTextColor
+        remarkLabel.textColor = JXMainTextColor
         remarkLabel.font = UIFont.systemFont(ofSize: 14)
         remarkLabel.textAlignment = .right
         contentView.addSubview(remarkLabel)
@@ -496,7 +496,7 @@ class TransferViewController: BaseViewController {
         button.layer.shadowOffset = CGSize(width: 0, height: 10)
         button.layer.shadowColor = JX10101aShadowColor.cgColor
         button.setTitleColor(JXFfffffColor, for: .normal)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         
         return contentView
     }
@@ -584,7 +584,7 @@ class TransferViewController: BaseViewController {
             button1.setTitle("忘记密码？", for: .normal)
             
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.contentVerticalAlignment = .center
             button1.contentHorizontalAlignment = .right
             button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
@@ -628,7 +628,7 @@ class TransferViewController: BaseViewController {
         let nameLabel = UILabel()
         nameLabel.frame = CGRect(x: 24, y: topBarView.jxBottom + 20, width: width, height: 30)
         nameLabel.text = "\(number) \(configuration_coinName)"
-        nameLabel.textColor = JXTextColor
+        nameLabel.textColor = JXMainTextColor
         nameLabel.font = UIFont.systemFont(ofSize: 25)
         nameLabel.textAlignment = .center
         
@@ -638,7 +638,7 @@ class TransferViewController: BaseViewController {
         let topLabel = UILabel()
         topLabel.frame = CGRect(x: nameLabel.jxLeft, y: nameLabel.jxBottom + 31 , width: width, height: 18)
         topLabel.text = "对方账户地址"
-        topLabel.textColor = JXText50Color
+        topLabel.textColor = JXMainText50Color
         topLabel.font = UIFont.systemFont(ofSize: 13)
         topLabel.textAlignment = .left
         
@@ -647,7 +647,7 @@ class TransferViewController: BaseViewController {
         let addressLabel = UILabel()
         addressLabel.frame = CGRect(x: nameLabel.jxLeft, y: topLabel.jxBottom + 8, width: width, height: 40)
         addressLabel.text = "\(address)"
-        addressLabel.textColor = JXTextColor
+        addressLabel.textColor = JXMainTextColor
         addressLabel.font = UIFont.systemFont(ofSize: 16)
         addressLabel.textAlignment = .left
         addressLabel.numberOfLines = 0
@@ -668,7 +668,7 @@ class TransferViewController: BaseViewController {
         let leftLabel = UILabel()
         leftLabel.frame = CGRect(x: 24, y: line1.jxBottom, width: 32, height: 51)
         leftLabel.text = "备注"
-        leftLabel.textColor = JXText50Color
+        leftLabel.textColor = JXMainText50Color
         leftLabel.font = UIFont.systemFont(ofSize: 13)
         leftLabel.textAlignment = .left
         contentView.addSubview(leftLabel)
@@ -676,7 +676,7 @@ class TransferViewController: BaseViewController {
         let remarkLabel = UILabel()
         remarkLabel.frame = CGRect(x: leftLabel.jxRight, y: line1.jxBottom, width: kScreenWidth - 48 - leftLabel.jxWidth, height: 51)
         remarkLabel.text = remark
-        remarkLabel.textColor = JXTextColor
+        remarkLabel.textColor = JXMainTextColor
         remarkLabel.font = UIFont.systemFont(ofSize: 14)
         remarkLabel.textAlignment = .right
         contentView.addSubview(remarkLabel)
@@ -703,7 +703,7 @@ class TransferViewController: BaseViewController {
         button.layer.shadowOffset = CGSize(width: 0, height: 10)
         button.layer.shadowColor = JX10101aShadowColor.cgColor
         button.setTitleColor(JXFfffffColor, for: .normal)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         
         return contentView
     }
@@ -811,8 +811,8 @@ extension TransferViewController: UITextFieldDelegate {
             let card = self.numberTextField.text, card.isEmpty == false{
             
             self.tradeButton.isEnabled = true
-            self.tradeButton.backgroundColor = JXOrangeColor
-            self.tradeButton.setTitleColor(JXTextColor, for: .normal)
+            self.tradeButton.backgroundColor = JXMainColor
+            self.tradeButton.setTitleColor(JXFfffffColor, for: .normal)
 
         } else {
             

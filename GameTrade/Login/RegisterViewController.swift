@@ -13,16 +13,103 @@ class RegisterViewController: BaseViewController {
 
     @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var loginTitleLabel: UILabel!
-    @IBOutlet weak var loginLittleLabel: UILabel!
-    @IBOutlet weak var userTextField: UITextField!
-    @IBOutlet weak var imageTextField: UITextField!
-    @IBOutlet weak var codeTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var fetchButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var lookButton: UIButton!
-    @IBOutlet weak var goLoginButton: UIButton!
+    @IBOutlet weak var loginTitleLabel: UILabel!{
+        didSet{
+            loginTitleLabel.textColor = JXLargeTitleColor
+        }
+    }
+    @IBOutlet weak var loginLittleLabel: UILabel!{
+        didSet{
+            loginLittleLabel.textColor = JXLittleTitleColor
+        }
+    }
+    @IBOutlet weak var userTextField: UITextField!{
+        didSet{
+            userTextField.textColor = JXMainTextColor
+            userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        }
+    }
+    @IBOutlet weak var imageTextField: UITextField!{
+        didSet{
+            imageTextField.textColor = JXMainTextColor
+            imageTextField.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        }
+    }
+    @IBOutlet weak var codeTextField: UITextField!{
+        didSet{
+            codeTextField.textColor = JXMainTextColor
+            codeTextField.attributedPlaceholder = NSAttributedString(string: "4位手机验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        }
+    }
+    @IBOutlet weak var passwordTextField: UITextField!{
+        didSet{
+            passwordTextField.textColor = JXMainTextColor
+            passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入8-20位密码，不能全是数字或字母", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+            passwordTextField.rightViewMode = .always
+            passwordTextField.rightView = {() -> UIView in
+                let button = UIButton(type: .custom)
+                button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+                button.setImage(UIImage(named: "icon_eye closed"), for: .normal)
+                button.setImage(UIImage(named: "icon_eye open"), for: .selected)
+                button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
+                button.isSelected = false
+                button.tag = 1
+                return button
+            }()
+        }
+    }
+    @IBOutlet weak var userContentView: UIView!{
+        didSet{
+            userContentView.backgroundColor = JXTextViewBg1Color
+        }
+    }
+    @IBOutlet weak var imageContentView: UIView!{
+        didSet{
+            imageContentView.backgroundColor = JXTextViewBg1Color
+        }
+    }
+    @IBOutlet weak var codeContentView: UIView!{
+        didSet{
+            codeContentView.backgroundColor = JXTextViewBg1Color
+        }
+    }
+    @IBOutlet weak var passwordContentView: UIView!{
+        didSet{
+            passwordContentView.backgroundColor = JXTextViewBg1Color
+        }
+    }
+    @IBOutlet weak var fetchButton: UIButton!{
+        didSet{
+            fetchButton.setTitleColor(JXFfffffColor, for: .normal)
+            fetchButton.backgroundColor = JXMainColor
+        }
+    }
+    @IBOutlet weak var loginButton: UIButton!{
+        didSet{
+            loginButton.backgroundColor = JXMainColor
+            loginButton.setTitleColor(JXFfffffColor, for: .normal)
+            loginButton.layer.cornerRadius = 3
+        }
+    }
+    @IBOutlet weak var lookButton: UIButton!{
+        didSet{
+            lookButton.backgroundColor = JXFfffffColor
+            
+            let url = URL.init(string: String(format: "%@%@?deviceId=%@&method=register&random=%d", kBaseUrl,ApiString.getImageCode.rawValue,UIDevice.current.uuid,arc4random_uniform(100000)))
+            
+            lookButton.sd_setImage(with: url, for: .normal, completed: nil)
+        }
+    }
+    @IBOutlet weak var infoLabel: UILabel!{
+        didSet{
+            infoLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var goLoginButton: UIButton!{
+        didSet{
+            goLoginButton.setTitleColor(JXMainColor, for: .normal)
+        }
+    }
     
     @IBOutlet weak var topConstraints: NSLayoutConstraint!
     @IBOutlet weak var leadingConstraints: NSLayoutConstraint!
@@ -39,9 +126,9 @@ class RegisterViewController: BaseViewController {
         k.showBlock = { (height, rect) in
             print(height,rect)
         }
-        k.tintColor = JXTextColor
-        k.toolBar.barTintColor = JXBackColor
-        k.backgroundColor = JXBackColor
+        k.tintColor = JXMainTextColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
         return k
     }()
@@ -57,46 +144,9 @@ class RegisterViewController: BaseViewController {
         
         self.view.addSubview(self.keyboard)
         
-        self.loginTitleLabel.textColor = JXTextColor
-        self.loginLittleLabel.textColor = JXText50Color
-        self.loginButton.backgroundColor = JXOrangeColor
-        self.loginButton.setTitleColor(JXTextColor, for: .normal)
-        self.loginButton.layer.cornerRadius = 3
-        self.goLoginButton.setTitleColor(JXOrangeColor, for: .normal)
-        
-        self.lookButton.backgroundColor = JXFfffffColor
-        self.fetchButton.setTitleColor(JXTextColor, for: .normal)
-        self.fetchButton.backgroundColor = JXOrangeColor
-        
-        self.userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        self.imageTextField.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        self.codeTextField.attributedPlaceholder = NSAttributedString(string: "4位手机验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入8-20位密码，不能全是数字或字母", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        
-        self.userTextField.textColor = JXTextColor
-        self.imageTextField.textColor = JXTextColor
-        self.codeTextField.textColor = JXTextColor
-        self.passwordTextField.textColor = JXTextColor
-  
-        self.passwordTextField.rightViewMode = .always
-        self.passwordTextField.rightView = {() -> UIView in
-            let button = UIButton(type: .custom)
-            button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            button.setImage(UIImage(named: "icon_eye closed"), for: .normal)
-            button.setImage(UIImage(named: "icon_eye open"), for: .selected)
-            button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
-            button.isSelected = false
-            button.tag = 1
-            return button
-        }()
-        
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
-        
-        
-        let url = URL.init(string: String(format: "%@%@?deviceId=%@&method=register&random=%d", kBaseUrl,ApiString.getImageCode.rawValue,UIDevice.current.uuid,arc4random_uniform(100000)))
-        
-        self.lookButton.sd_setImage(with: url, for: .normal, completed: nil)
+   
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -131,12 +181,12 @@ class RegisterViewController: BaseViewController {
     override func isCustomNavigationBarUsed() -> Bool {
         return false
     }
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
 
     @objc func hideKeyboard() {
-        self.view.endEditing(true)
+//        self.view.endEditing(true)
     }
 
     @IBAction func changePasswordText(_ sender: UIButton) {
@@ -178,8 +228,8 @@ class RegisterViewController: BaseViewController {
                     self.isCounting = false
                     self.fetchButton.setTitle("获取验证码", for: .normal)
                     self.fetchButton.isEnabled = true
-                    self.fetchButton.backgroundColor = JXOrangeColor
-                    self.fetchButton.setTitleColor(JXTextColor, for: .normal)
+                    self.fetchButton.backgroundColor = JXMainColor
+                    self.fetchButton.setTitleColor(JXMainTextColor, for: .normal)
                 }
             }
         }
@@ -288,8 +338,8 @@ extension RegisterViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegat
             let card = self.codeTextField.text, card.isEmpty == false{
             
             self.loginButton.isEnabled = true
-            self.loginButton.backgroundColor = JXOrangeColor
-            self.loginButton.setTitleColor(JXTextColor, for: .normal)
+            self.loginButton.backgroundColor = JXMainColor
+            self.loginButton.setTitleColor(JXMainTextColor, for: .normal)
             
         } else {
             
@@ -304,8 +354,8 @@ extension RegisterViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegat
             let imageCode = self.imageTextField.text, imageCode.isEmpty == false, self.isCounting == false{
             
             self.fetchButton.isEnabled = true
-            self.fetchButton.backgroundColor = JXOrangeColor
-            self.fetchButton.setTitleColor(JXTextColor, for: .normal)
+            self.fetchButton.backgroundColor = JXMainColor
+            self.fetchButton.setTitleColor(JXMainTextColor, for: .normal)
             
         } else {
             

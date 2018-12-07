@@ -23,7 +23,7 @@ extension  UIBarButtonItem {
         let btn = UIButton()
         btn.frame = CGRect.init(x: 0, y: 0, width: 30, height: 30)
         btn.setTitle(title, for: UIControl.State.normal)
-        btn.setTitleColor(JXOrangeColor, for: .normal)
+        btn.setTitleColor(JXMainColor, for: .normal)
         btn.setImage(UIImage.init(named: imageName), for: UIControl.State.normal)
         btn.addTarget(target, action: action, for: UIControl.Event.touchUpInside)
         

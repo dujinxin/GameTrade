@@ -22,7 +22,7 @@ class MainViewController: JXCollectionViewController {
     
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
+        selectView.backgroundColor = JXFfffffColor
         selectView.isBackViewUserInteractionEnabled = false
         
         return selectView
@@ -43,9 +43,9 @@ class MainViewController: JXCollectionViewController {
         bar.closeBlock = {
             //self.textField?.text = ""
         }
-        bar.tintColor = JXTextColor
-        bar.toolBar.barTintColor = JXBackColor
-        bar.backgroundColor = JXBackColor
+        bar.tintColor = JXMainTextColor
+        bar.toolBar.barTintColor = JXViewBgColor
+        bar.backgroundColor = JXViewBgColor
         return bar
     }()
 
@@ -103,7 +103,9 @@ class MainViewController: JXCollectionViewController {
     deinit {
         
     }
-    
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        switch segue.identifier {
 //        case "invite":
@@ -183,7 +185,7 @@ extension MainViewController {
             label.text = "提示"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -191,7 +193,7 @@ extension MainViewController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 30)
             nameLabel.text = "您还未设置资金密码"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             
@@ -207,7 +209,7 @@ extension MainViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("稍后再说", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -228,7 +230,7 @@ extension MainViewController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()
@@ -257,15 +259,17 @@ extension MainViewController {
         let width : CGFloat = kScreenWidth - 48
         
         let contentView = UIView()
-        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362)
+        contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362)
         
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth * 2, height: 362 + kBottomMaginHeight)
-        contentView.layer.insertSublayer(gradientLayer, at: 0)
+        if app_style <= 1 {
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362 + kBottomMaginHeight)
+            contentView.layer.insertSublayer(gradientLayer, at: 0)
+        }
         
         let leftContentView = UIView()
         leftContentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 362 + kBottomMaginHeight)
@@ -282,7 +286,7 @@ extension MainViewController {
             label.text = "确认购买"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
-            label.textColor = JXFfffffColor
+            label.textColor = JXMainTextColor
             view.addSubview(label)
             //label.sizeToFit()
             
@@ -290,10 +294,10 @@ extension MainViewController {
             button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
             //button.center = CGPoint(x: 30, y: view.jxCenterY)
             //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
+            button.tintColor = JXMainTextColor
             button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
-            button.setTitleColor(JX333333Color, for: .normal)
+            button.setTitleColor(JXMainTextColor, for: .normal)
             button.contentVerticalAlignment = .center
             button.contentHorizontalAlignment = .center
             button.addTarget(self, action: #selector(closeStatus), for: .touchUpInside)
@@ -310,7 +314,7 @@ extension MainViewController {
         if let num = Double(number) {
             nameLabel.text = "\(num * configuration_coinPrice) \(configuration_valueType)"
         }
-        nameLabel.textColor = JXTextColor
+        nameLabel.textColor = JXMainTextColor
         nameLabel.font = UIFont.systemFont(ofSize: 25)
         nameLabel.textAlignment = .center
         
@@ -320,7 +324,7 @@ extension MainViewController {
         let leftLabel3 = UILabel()
         leftLabel3.frame = CGRect(x: 24, y: nameLabel.jxBottom + 31, width: 65, height: 51)
         leftLabel3.text = "交易数量"
-        leftLabel3.textColor = JXText50Color
+        leftLabel3.textColor = JXMainText50Color
         leftLabel3.font = UIFont.systemFont(ofSize: 13)
         leftLabel3.textAlignment = .left
         leftContentView.addSubview(leftLabel3)
@@ -343,7 +347,7 @@ extension MainViewController {
         let leftLabel4 = UILabel()
         leftLabel4.frame = CGRect(x: 24, y: line3.jxBottom, width: 65, height: 51)
         leftLabel4.text = "支付方式"
-        leftLabel4.textColor = JXText50Color
+        leftLabel4.textColor = JXMainText50Color
         leftLabel4.font = UIFont.systemFont(ofSize: 13)
         leftLabel4.textAlignment = .left
         leftContentView.addSubview(leftLabel4)
@@ -381,10 +385,10 @@ extension MainViewController {
                 button.setTitle("银行卡", for: .normal)
             }
             button.setTitleColor(JXPlaceHolerColor, for: .normal)
-            button.setTitleColor(JXOrangeColor, for: .selected)
+            button.setTitleColor(JXMainColor, for: .selected)
             if i == 0 {
                 button.isSelected = true
-                button.layer.borderColor = JXOrangeColor.cgColor
+                button.layer.borderColor = JXMainColor.cgColor
                 
                 self.payName = button.currentTitle ?? ""
                 self.payType = type
@@ -411,7 +415,7 @@ extension MainViewController {
         button.layer.shadowOffset = CGSize(width: 0, height: 10)
         button.layer.shadowColor = JX10101aShadowColor.cgColor
         button.setTitleColor(JXFfffffColor, for: .normal)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         
         
         
@@ -444,7 +448,7 @@ extension MainViewController {
         self.buttonArray.forEach { (btn) in
             if button.tag == btn.tag {
                 btn.isSelected = true
-                btn.layer.borderColor = JXOrangeColor.cgColor
+                btn.layer.borderColor = JXMainColor.cgColor
                 self.payName = btn.currentTitle ?? ""
                 self.payType = btn.tag
             } else {
@@ -551,7 +555,7 @@ extension MainViewController {
 //                sel.backgroundColor = UIColor.rgbColor(rgbValue: 0x323245)
 //
 //                sel.layer.cornerRadius = 2
-//                sel.layer.shadowColor = UIColor.rgbColor(rgbValue: 0x10101a, alpha: 0.5).cgColor
+//                sel.layer.shadowColor = JX10101aShadowColor.cgColor
 //                sel.layer.shadowOffset = CGSize(width: 0, height: 10)
 //                sel.layer.shadowRadius = 10
 //                sel.layer.shadowOpacity = 1
@@ -569,7 +573,7 @@ extension MainViewController {
             reusableView.helpBlock = {
                 let vc = MyWebViewController()
                 vc.title = "帮助信息"//self.homeVM.homeEntity.notice.title
-                vc.urlStr = "https://supremexxx.s3-ap-northeast-1.amazonaws.com/html/static/help.html"
+                vc.urlStr = kHelpUrl
                 vc.hidesBottomBarWhenPushed = true
                 self.navigationController?.pushViewController(vc, animated: true)
                 

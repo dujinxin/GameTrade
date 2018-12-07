@@ -69,7 +69,7 @@ class JXSecretTextView: UIView {
     }
     deinit {
         //NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UITextViewTextDidChange, object: nil)
-        self.removeObserver(self, forKeyPath: "text")
+        //self.removeObserver(self, forKeyPath: "text")
     }
     func setSubView() {
         addSubview(self.textField)

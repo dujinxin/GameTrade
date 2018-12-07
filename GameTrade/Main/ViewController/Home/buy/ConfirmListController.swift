@@ -20,7 +20,7 @@ class ConfirmListController: JXTableViewController {
         button.setTitle("添加", for: .normal)
         button.setTitleColor(JXFfffffColor, for: .normal)
         button.addTarget(self, action: #selector(addOrder), for: .touchUpInside)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         return button
     }()
     

@@ -102,7 +102,7 @@ class SellVM: BaseViewModel {
     //挂卖单 商家
     func sellCreate(payType: Int, amount: Int, safePassword: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
-        JXRequest.request(url: ApiString.sellCreate.rawValue, param: ["payType": payType, "amount": amount, "safePassword": safePassword], success: { (data, msg) in
+        JXRequest.request(url: ApiString.sellCreate.rawValue, param: ["payType": payType, "amount": amount, "safePassword": MD5.encode(safePassword)], success: { (data, msg) in
             
             completion(data, msg, true)
         }) { (msg, code) in
@@ -122,7 +122,7 @@ class SellVM: BaseViewModel {
     //发币  用户
     func transfer(address: String, amount: Int, safePassword: String, remarks: String, completion: @escaping ((_ data:Any?, _ msg:String,_ isSuccess:Bool)->())) -> Void{
         
-        JXRequest.request(url: ApiString.transferCoin.rawValue, param: ["address": address, "amount": amount,"safePassword": safePassword, "remarks": remarks], success: { (data, msg) in
+        JXRequest.request(url: ApiString.transferCoin.rawValue, param: ["address": address, "amount": amount,"safePassword": MD5.encode(safePassword), "remarks": remarks], success: { (data, msg) in
             
             completion(data, msg, true)
         }) { (msg, code) in

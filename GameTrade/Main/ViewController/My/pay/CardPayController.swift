@@ -10,9 +10,31 @@ import UIKit
 
 class CardPayController: BaseViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var bankNameLabel: UILabel!
-    @IBOutlet weak var cardTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!{
+        didSet{
+            nameLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var bankNameLabel: UILabel!{
+        didSet{
+            bankNameLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var cardTextField: UITextField!{
+        didSet{
+            cardTextField.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var userContentView: UIView!{
+        didSet{
+            userContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
+    @IBOutlet weak var imageContentView: UIView!{
+        didSet{
+            imageContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
     @IBOutlet weak var dropButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     
@@ -39,7 +61,7 @@ class CardPayController: BaseViewController {
         self.cardTextField.attributedPlaceholder = NSAttributedString(string: "请输入银行卡号", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
 
         if isEdit {
-            self.bankNameLabel.textColor = JXTextColor
+            self.bankNameLabel.textColor = JXMainTextColor
             self.bankNameLabel.text = self.entity?.bank
             self.bankName = self.entity?.bank
             
@@ -61,9 +83,9 @@ class CardPayController: BaseViewController {
             print(view,value)
         }
         
-        bar.tintColor = JXTextColor
-        bar.toolBar.barTintColor = JXBackColor
-        bar.backgroundColor = JXBackColor
+        bar.tintColor = JXMainTextColor
+        bar.toolBar.barTintColor = JXViewBgColor
+        bar.backgroundColor = JXViewBgColor
         self.view.addSubview(bar)
         
     }
@@ -110,7 +132,7 @@ class CardPayController: BaseViewController {
         vc.selectBlock = { (_ entity: BankEntity)->() in
             self.bankName = entity.name
             self.bankNameLabel.text = entity.name
-            self.bankNameLabel.textColor = JXTextColor
+            self.bankNameLabel.textColor = JXMainTextColor
             
             self.updateButtonStatus()
         }
@@ -134,8 +156,8 @@ extension CardPayController: UITextFieldDelegate {
             let bank = self.bankName, bank.isEmpty == false{
            
             self.submitButton.isEnabled = true
-            self.submitButton.backgroundColor = JXOrangeColor
-            self.submitButton.setTitleColor(JXTextColor, for: .normal)
+            self.submitButton.backgroundColor = JXMainColor
+            self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
         } else {
             
             self.submitButton.isEnabled = false

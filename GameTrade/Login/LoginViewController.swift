@@ -13,12 +13,12 @@ class LoginViewController: BaseViewController {
 
     @IBOutlet weak var loginTitleLabel: UILabel!{
         didSet{
-            loginTitleLabel.textColor = JXTextColor
+            loginTitleLabel.textColor = JXLargeTitleColor
         }
     }
     @IBOutlet weak var loginLittleLabel: UILabel!{
         didSet{
-            loginLittleLabel.textColor = JXText50Color
+            loginLittleLabel.textColor = JXLittleTitleColor
         }
     }
     @IBOutlet weak var mainScrollView: UIScrollView!
@@ -30,14 +30,19 @@ class LoginViewController: BaseViewController {
     }
     @IBOutlet weak var userTextField: UITextField!{
         didSet{
-            userTextField.textColor = JXTextColor
+            userTextField.textColor = JXMainTextColor
             userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        }
+    }
+    @IBOutlet weak var userContentView: UIView!{
+        didSet{
+            userContentView.backgroundColor = JXTextViewBg1Color
         }
     }
     @IBOutlet weak var passwordTextField: UITextField!{
         didSet{
             passwordTextField.attributedPlaceholder = NSAttributedString(string: "密码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-            passwordTextField.textColor = JXTextColor
+            passwordTextField.textColor = JXMainTextColor
             passwordTextField.rightViewMode = .always
             passwordTextField.rightView = {() -> UIView in
                 let button = UIButton(type: .custom)
@@ -51,13 +56,16 @@ class LoginViewController: BaseViewController {
             }()
         }
     }
-    
-    
+    @IBOutlet weak var passwordContentView: UIView!{
+        didSet{
+            passwordContentView.backgroundColor = JXTextViewBg1Color
+        }
+    }
     
     @IBOutlet weak var loginButton: UIButton! {
         didSet{
-            loginButton.setTitleColor(JXTextColor, for: .normal)
-            loginButton.backgroundColor = JXOrangeColor
+            loginButton.setTitleColor(JXFfffffColor, for: .normal)
+            loginButton.backgroundColor = JXMainColor
             
             loginButton.layer.cornerRadius = 2
             loginButton.layer.shadowOpacity = 1
@@ -68,12 +76,17 @@ class LoginViewController: BaseViewController {
     }
     @IBOutlet weak var forgotButton: UIButton!{
         didSet{
-            forgotButton.setTitleColor(JXOrangeColor, for: .normal)
+            forgotButton.setTitleColor(JXMainColor, for: .normal)
+        }
+    }
+    @IBOutlet weak var infoLabel: UILabel!{
+        didSet{
+            infoLabel.textColor = JXMainTextColor
         }
     }
     @IBOutlet weak var registerButton: UIButton!{
         didSet{
-            registerButton.setTitleColor(JXOrangeColor, for: .normal)
+            registerButton.setTitleColor(JXMainColor, for: .normal)
         }
     }
     
@@ -87,9 +100,9 @@ class LoginViewController: BaseViewController {
         k.showBlock = { (height, rect) in
             print(height,rect)
         }
-        k.tintColor = JXTextColor
-        k.toolBar.barTintColor = JXBackColor
-        k.backgroundColor = JXBackColor
+        k.tintColor = JXMainTextColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
         k.textFieldDelegate = self
         return k
     }()
@@ -242,8 +255,8 @@ extension LoginViewController: UITextFieldDelegate {
             let password = self.passwordTextField.text, password.isEmpty == false {
             
             self.loginButton.isEnabled = true
-            self.loginButton.backgroundColor = JXOrangeColor
-            self.loginButton.setTitleColor(JXTextColor, for: .normal)
+            self.loginButton.backgroundColor = JXMainColor
+            self.loginButton.setTitleColor(JXFfffffColor, for: .normal)
             
         } else {
             

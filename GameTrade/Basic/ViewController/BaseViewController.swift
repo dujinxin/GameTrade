@@ -21,10 +21,10 @@ open class BaseViewController: UIViewController {
         let navigationBar = JXNavigationBar(frame:CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kNavStatusHeight))
         navigationBar.barTintColor = UIColor.clear//导航条颜色,透明色不起作用
         navigationBar.isTranslucent = true
-        navigationBar.barStyle = .blackTranslucent
+        navigationBar.barStyle = app_style <= 1 ? .blackTranslucent : .default
         //navigationBar.barStyle = .default
-        navigationBar.tintColor = UIColor.white //item图片文字颜色
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white,NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
+        navigationBar.tintColor = app_style <= 1 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: app_style <= 1 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
         navigationBar.setBackgroundImage(navigationBar.imageWithColor(UIColor.clear), for: UIBarMetrics.default)
         return navigationBar
     }()
@@ -61,13 +61,17 @@ open class BaseViewController: UIViewController {
         
         self.view.backgroundColor = JXFfffffColor
 
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
+        if app_style <= 1 {
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
+            self.view.layer.insertSublayer(gradientLayer, at: 0)
+        } else {
+            self.view.backgroundColor = JXFfffffColor
+        }
         
         //isLogin ? setUpMainView() : setUpDefaultView()
         
@@ -82,7 +86,11 @@ open class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     override open var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        if app_style <= 1 {
+            return .lightContent
+        } else {
+            return .default
+        }
     }
     open func isCustomNavigationBarUsed() -> Bool{
         return true

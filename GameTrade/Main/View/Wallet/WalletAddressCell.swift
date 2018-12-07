@@ -13,6 +13,11 @@ class WalletAddressCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var codeImageView: UIImageView!
+    @IBOutlet weak var separatorView: UIView!{
+        didSet{
+            separatorView.backgroundColor = JXSeparatorColor
+        }
+    }
     
     var showCodeImage : (()->())?
     
@@ -20,8 +25,8 @@ class WalletAddressCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.backgroundColor = UIColor.clear
-        self.nameLabel.textColor = JXText50Color
-        self.addressLabel.textColor = JXTextColor
+        self.nameLabel.textColor = JXMainText50Color
+        self.addressLabel.textColor = JXMainTextColor
         
         self.codeImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showCode)))
     }

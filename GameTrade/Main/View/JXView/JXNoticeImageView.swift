@@ -56,10 +56,10 @@ class JXNoticeImageView: UIView {
         label.numberOfLines = 0
         label.textColor = UIColor.white
         label.textAlignment = .center
-        label.layer.shadowColor = UIColor.black.cgColor
-        label.layer.shadowOpacity = 0.8
-        label.layer.shadowRadius = 6
-        label.layer.shadowOffset = CGSize.init(width: 4, height: 4)
+//        label.layer.shadowColor = UIColor.black.cgColor
+//        label.layer.shadowOpacity = 0.8
+//        label.layer.shadowRadius = 6
+//        label.layer.shadowOffset = CGSize.init(width: 4, height: 4)
         
         return label
     }()
@@ -78,7 +78,7 @@ class JXNoticeImageView: UIView {
         
         self.textLabel?.text = text
         
-        self.backgroundColor = UIColor.rgbColor(rgbValue: 0x22222C, alpha: 0.6)
+        self.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x22222C, alpha: 0.6) : JXFfffffColor
         
         self.layer.cornerRadius = 2
         self.layer.shadowOpacity = 1
@@ -86,7 +86,7 @@ class JXNoticeImageView: UIView {
         self.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.layer.shadowColor = JX10101aShadowColor.cgColor
         
-        self.textLabel?.textColor = JXOrangeColor
+        self.textLabel?.textColor = JXMainColor
         self.textLabel?.font = UIFont.systemFont(ofSize: 14)
         
         //self.layer.cornerRadius = 10.0

@@ -29,8 +29,8 @@ class ReceiptViewController: BaseViewController {
         self.view.backgroundColor = UIColor.white
         self.title = "收币"
         
-        self.addressName.textColor = JXText50Color
-        self.addressLabel.textColor = JXTextColor
+        self.addressName.textColor = JXMainText50Color
+        self.addressLabel.textColor = JXMainTextColor
         self.addressLabel.backgroundColor = UIColor.clear
         
         self.addressLabel.text = self.address
@@ -43,7 +43,7 @@ class ReceiptViewController: BaseViewController {
 //        addressContentView.layer.shadowOffset = CGSize.init(width: 3, height: 3)
         
         
-        confirmButton.setTitleColor(JXTextColor, for: .normal)
+        confirmButton.setTitleColor(JXFfffffColor, for: .normal)
         confirmButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         
         confirmButton.layer.cornerRadius = 2
@@ -52,7 +52,7 @@ class ReceiptViewController: BaseViewController {
         confirmButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         confirmButton.layer.shadowColor = JX10101aShadowColor.cgColor
         confirmButton.setTitleColor(JXFfffffColor, for: .normal)
-        confirmButton.backgroundColor = JXOrangeColor
+        confirmButton.backgroundColor = JXMainColor
         //self.codeImageView.image = self.code(UserManager.manager.userEntity.property.address ?? "")
         
         if let str = UserManager.manager.userEntity.property.addressImg, let url = URL(string: str) {

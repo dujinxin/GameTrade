@@ -16,7 +16,7 @@ class HelpFeedBackController: JXTableViewController {
         
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight  + 48, width: kScreenWidth, height: kScreenHeight - kNavStatusHeight - 48)
         self.tableView?.separatorStyle = .none
-        self.tableView?.estimatedRowHeight = 64
+        self.tableView?.rowHeight = 64
         //self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
         self.tableView?.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
     }
@@ -42,7 +42,7 @@ class HelpFeedBackController: JXTableViewController {
         cell.backgroundColor = UIColor.clear
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
-        cell.leftLabel.textColor = JXTextColor
+        cell.leftLabel.textColor = JXMainTextColor
         cell.leftLabel.font = UIFont.systemFont(ofSize: 14)
         if indexPath.row == 0 {
             cell.leftLabel.text = "帮助中心"
@@ -64,7 +64,7 @@ class HelpFeedBackController: JXTableViewController {
             
             let vc = MyWebViewController()
             vc.title = "帮助信息"//self.homeVM.homeEntity.notice.title
-            vc.urlStr = "https://supremexxx.s3-ap-northeast-1.amazonaws.com/html/static/help.html"
+            vc.urlStr = kHelpUrl
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
             

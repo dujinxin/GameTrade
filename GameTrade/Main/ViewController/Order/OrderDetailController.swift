@@ -274,8 +274,11 @@ extension OrderDetailController {
     @objc func showNoticeView2() {
         let width : CGFloat = kScreenWidth - 24 * 2
         let imageWidth = width - 28 * 2
+        if self.vm.codeImageSize.width <= 0 {
+            return
+        }
         let imageHeight = imageWidth * (self.vm.codeImageSize.height / self.vm.codeImageSize.width)
-        
+   
         let height : CGFloat = imageHeight + 24 + 90
         
         self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
@@ -287,18 +290,28 @@ extension OrderDetailController {
             let contentView = UIView()
             contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
             
+            
+            
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 24, y: 0, width: width, height: height)
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: imageHeight + 24 + 60)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height - 30)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            } else {
+                let gradientLayer = CALayer()
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height - 30)
+                gradientLayer.cornerRadius = 5
+                gradientLayer.backgroundColor = JXFfffffColor.cgColor
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             let imageView = UIImageView(frame: CGRect(x: 28, y: 24, width: imageWidth, height: imageHeight))
@@ -311,9 +324,9 @@ extension OrderDetailController {
             
             let button = UIButton()
             button.frame = CGRect(x: 0, y: imageView.jxBottom + 30, width: 60, height: 60)
-            button.backgroundColor = UIColor.rgbColor(rgbValue: 0x22222c)
+            button.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x22222c) : JXFfffffColor
             //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
+            button.tintColor = JXMainTextColor
             button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
             //button.setBackgroundImage(UIImage(named: "close-big"), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
@@ -324,7 +337,7 @@ extension OrderDetailController {
             backgroundView.addSubview(button)
             button.center.x = imageView.center.x
             button.layer.cornerRadius = 30
-            button.layer.borderColor = UIColor.rgbColor(rgbValue: 0x0A0A0E).cgColor
+            button.layer.borderColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x0A0A0E).cgColor : JXSeparatorColor.cgColor
             button.layer.borderWidth = 2.5
             
             
@@ -374,16 +387,20 @@ extension OrderDetailController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.backgroundColor = JXFfffffColor
+            backgroundView.layer.cornerRadius = 5
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             
@@ -393,7 +410,7 @@ extension OrderDetailController {
             label.text = "注意"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -401,7 +418,7 @@ extension OrderDetailController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
             nameLabel.text = "请确认您已向卖家付款\n「恶意点击将直接冻结账户」"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             nameLabel.numberOfLines = 0
@@ -418,7 +435,7 @@ extension OrderDetailController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("点错了", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -439,7 +456,7 @@ extension OrderDetailController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()
@@ -477,16 +494,20 @@ extension OrderDetailController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.backgroundColor = JXFfffffColor
+            backgroundView.layer.cornerRadius = 5
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             
@@ -496,7 +517,7 @@ extension OrderDetailController {
             label.text = "注意"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -504,7 +525,7 @@ extension OrderDetailController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
             nameLabel.text = "如果您已向卖家付款\n请千万不要取消交易"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             nameLabel.numberOfLines = 0
@@ -531,7 +552,7 @@ extension OrderDetailController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("点错了", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -552,7 +573,7 @@ extension OrderDetailController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()
@@ -586,16 +607,20 @@ extension OrderDetailController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.backgroundColor = JXFfffffColor
+            backgroundView.layer.cornerRadius = 5
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             
@@ -605,7 +630,7 @@ extension OrderDetailController {
             label.text = "注意"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -613,7 +638,7 @@ extension OrderDetailController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 45)
             nameLabel.text = "购买的资产已到账\n您可以到首页查询"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             nameLabel.numberOfLines = 0
@@ -643,7 +668,7 @@ extension OrderDetailController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()

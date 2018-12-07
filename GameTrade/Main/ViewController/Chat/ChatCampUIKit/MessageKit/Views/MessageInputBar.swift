@@ -38,7 +38,7 @@ open class MessageInputBar: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         //view.backgroundColor = .inputBarGray
-        view.backgroundColor = UIColor.rgbColor(rgbValue: 0x31313f)
+        view.backgroundColor = JXUIBarBgColor
         return view
     }()
     
@@ -122,9 +122,9 @@ open class MessageInputBar: UIView {
         let textView = InputTextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.messageInputBar = self
-        textView.backgroundColor = JXBackColor
+        textView.backgroundColor = JXTextViewBgColor
         textView.placeholderTextColor = JXPlaceHolerColor
-        textView.textColor = JXTextColor
+        textView.textColor = JXMainTextColor
         return textView
     }()
 
@@ -340,7 +340,7 @@ open class MessageInputBar: UIView {
     private func setupConstraints() {
         
         // The constraints within the MessageInputBar
-        separatorLine.addConstraints(topAnchor, left: leftAnchor, right: rightAnchor, heightConstant: 0.01)
+        separatorLine.addConstraints(topAnchor, left: leftAnchor, right: rightAnchor, heightConstant: 1)
         backgroundViewBottomAnchor = backgroundView.bottomAnchor.constraint(equalTo: bottomAnchor)
         backgroundViewBottomAnchor?.isActive = true
         backgroundView.addConstraints(topStackView.bottomAnchor, left: leftAnchor, right: rightAnchor)

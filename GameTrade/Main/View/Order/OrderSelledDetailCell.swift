@@ -15,12 +15,35 @@ class OrderSelledDetailCell: UITableViewCell {
     @IBOutlet weak var orderInfoLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
     
-    @IBOutlet weak var tradeView: UIView!
+    @IBOutlet weak var tradeView: UIView!{
+        didSet{
+            tradeView.layer.cornerRadius = 4
+            tradeView.backgroundColor = JXOrderDetailBgColor
+            
+            tradeView.backgroundColor = JXViewBgColor
+            tradeView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            tradeView.layer.shadowOpacity = 1
+            tradeView.layer.shadowRadius = 33
+            tradeView.layer.shadowColor = JX22222cShadowColor.cgColor
+        }
+    }
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
-    @IBOutlet weak var listView: UIView!
+    @IBOutlet weak var listView: UIView!{
+        didSet{
+            listView.layer.cornerRadius = 4
+            listView.backgroundColor = JXOrderDetailBgColor
+            
+            listView.backgroundColor = JXViewBgColor
+            listView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            listView.layer.shadowOpacity = 1
+            listView.layer.shadowRadius = 33
+            listView.layer.shadowColor = JX22222cShadowColor.cgColor
+        }
+    }
+    
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accoundLabel: UILabel!
@@ -32,6 +55,22 @@ class OrderSelledDetailCell: UITableViewCell {
   
     @IBOutlet weak var noticeLabel: UILabel!
     
+    @IBOutlet weak var line: OrderLineView!{
+        didSet{
+            
+            if app_style <= 1 {
+                line.lineColor = JXMainText50Color
+            } else {
+                line.lineColor = UIColor.rgbColor(rgbValue: 0x3f415d)
+            }
+        }
+    }
+    @IBOutlet weak var line1: UIView!
+    @IBOutlet weak var line2: UIView!
+    @IBOutlet weak var line3: UIView!
+    @IBOutlet weak var line4: UIView!
+    @IBOutlet weak var line5: UIView!
+    
     var chatBlock : (()->())?
     var copyBlock : (()->())?
     
@@ -41,15 +80,30 @@ class OrderSelledDetailCell: UITableViewCell {
         
         self.backgroundColor = UIColor.clear
         
-        self.orderNumberLabel.textColor = JXText50Color
-        self.orderInfoLabel.textColor = JXText50Color
+        self.orderStatusLabel.textColor = JXMainTextColor
+        self.orderNumberLabel.textColor = JXMainText50Color
+        self.orderInfoLabel.textColor = JXMainText50Color
         
-        self.tradeView.layer.cornerRadius = 4
-        self.listView.layer.cornerRadius = 4
+        self.priceLabel.textColor = JXMainTextColor
+        self.totalLabel.textColor = JXMainTextColor
+        self.valueLabel.textColor = JXRedColor
+        
+        self.payNameLabel.textColor = JXMainTextColor
+        self.userNameLabel.textColor = JXMainTextColor
+        self.accoundLabel.textColor = JXMainTextColor
+        self.bankNameLabel.textColor = JXMainTextColor
+        
+        //self.line.tintColor = JXMainTextColor
+        //self.line.image = UIImage(named: "line")?.withRenderingMode(.alwaysTemplate)
+        //self.line1.backgroundColor = JXSeparatorColor
+        self.line2.backgroundColor = JXSeparatorColor
+        self.line3.backgroundColor = JXSeparatorColor
+        self.line4.backgroundColor = JXSeparatorColor
+        self.line5.backgroundColor = JXSeparatorColor
 
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         
-        self.noticeLabel.textColor = JXText50Color
+        self.noticeLabel.textColor = JXMainText50Color
     }
     var entity: OrderDetailEntity? {
         
@@ -107,5 +161,103 @@ class OrderSelledDetailCell: UITableViewCell {
         if let block = self.copyBlock {
             block()
         }
+    }
+}
+
+class OrderLineView: UIImageView {
+    
+    var lineColor: UIColor?{
+        didSet{
+            //frame 直接获取到的不随设备改变而改变，只能当前布局的设备相同，所以这里写死了
+            layer.addSublayer(self.drawDashLine(rect: CGRect(0, 0, kScreenWidth - 48, 20), lineWidth: 1, lineLength: 3, lineSpace: 3, lineColor: lineColor!))
+            
+        }
+    }
+    lazy var leftView: UIView = {
+        let v = UIView()
+        
+        let gradientLayer = CAGradientLayer.init()
+        if app_style <= 1 {
+            gradientLayer.colors = [UIColor.rgbColor(from: 43, 39, 50).cgColor,UIColor.rgbColor(from: 53, 49, 60).cgColor]
+        } else {
+            gradientLayer.colors = [UIColor.rgbColor(from: 224, 224, 224).cgColor,UIColor.rgbColor(from: 235, 235, 235).cgColor]
+        }
+        
+        gradientLayer.locations = [0]
+        gradientLayer.startPoint = CGPoint(x: 1, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: frame.size.height, height: frame.size.height)
+        gradientLayer.cornerRadius = frame.size.height / 2
+        v.layer.insertSublayer(gradientLayer, at: 0)
+        
+        return v
+    }()
+    lazy var rightView: UIView = {
+        let v = UIView()
+
+        //v.backgroundColor = UIColor.rgbColor(from: 223, 223, 224)
+        
+        let gradientLayer = CAGradientLayer.init()
+        if app_style <= 1 {
+            gradientLayer.colors = [UIColor.rgbColor(from: 43, 39, 50).cgColor,UIColor.rgbColor(from: 53, 49, 60).cgColor]
+        } else {
+            gradientLayer.colors = [UIColor.rgbColor(from: 224, 224, 224).cgColor,UIColor.rgbColor(from: 235, 235, 235).cgColor]
+        }
+        
+        gradientLayer.locations = [0]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: frame.size.height, height: frame.size.height)
+        gradientLayer.cornerRadius = frame.size.height / 2
+        v.layer.insertSublayer(gradientLayer, at: 0)
+        
+        return v
+    }()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupView()
+    }
+    func setupView() {
+        self.clipsToBounds = true
+        addSubview(self.leftView)
+        addSubview(self.rightView)
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.leftView.frame = CGRect(-frame.size.height / 2, 0, frame.size.height, frame.size.height)
+        self.rightView.frame = CGRect(frame.size.width - frame.size.height / 2, 0, frame.size.height, frame.size.height)
+        
+        self.leftView.layer.cornerRadius = frame.size.height / 2
+        self.rightView.layer.cornerRadius = frame.size.height / 2
+    }
+    func drawDashLine(rect: CGRect, lineWidth: CGFloat, lineLength: Float, lineSpace: Float, lineColor :UIColor) -> CAShapeLayer{
+        let shapeLayer = CAShapeLayer()
+        
+        var rect1 = rect
+        rect1.size.width -= 20
+        
+        shapeLayer.frame = rect1
+        shapeLayer.position = CGPoint(x: 10, y: frame.size.height / 2 + lineWidth / 2)
+        //只要是CALayer这种类型,他的anchorPoint默认都是(0.5,0.5)
+        shapeLayer.anchorPoint = CGPoint(x: 0, y: 0)
+        
+        shapeLayer.strokeColor = lineColor.cgColor
+        shapeLayer.lineWidth = lineWidth
+        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+        
+        shapeLayer.lineDashPattern = [NSNumber(value: lineLength),NSNumber(value: lineSpace)]
+        
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: CGFloat(lineSpace / 2), y: lineWidth / 2))
+        path.addLine(to: CGPoint(x: rect1.size.width, y: lineWidth / 2))
+        shapeLayer.path = path
+        
+        return shapeLayer
     }
 }

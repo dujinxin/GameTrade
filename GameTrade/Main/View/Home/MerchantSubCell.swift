@@ -10,13 +10,33 @@ import UIKit
 
 class MerchantSubCell: UICollectionViewCell {
 
-    @IBOutlet weak var mainContentView: UIView!
+    @IBOutlet weak var mainContentView: UIView!{
+        didSet{
+            mainContentView.backgroundColor = JXViewBgColor
+            mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
+            mainContentView.layer.shadowOpacity = 1
+            mainContentView.layer.shadowRadius = 33
+            mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
+            mainContentView.layer.cornerRadius = 4
+        }
+    }
     
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var payImageView: UIImageView!
     @IBOutlet weak var extraLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var buyButton: UIButton!{
+        didSet{
+            buyButton.backgroundColor = JXMainColor
+            buyButton.layer.cornerRadius = 2
+            buyButton.layer.shadowOpacity = 1
+            buyButton.layer.shadowRadius = 10
+            buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+            buyButton.layer.shadowColor = JX10101aShadowColor.cgColor
+            buyButton.setTitleColor(JXFfffffColor, for: .normal)
+            buyButton.backgroundColor = JXMainColor
+        }
+    }
     
     var buyBlock : (()->())?
     
@@ -40,26 +60,13 @@ class MerchantSubCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.backgroundColor = UIColor.clear
+        //collecionViewCell默认layer应该是true,即超出的部分被切掉了，所以要设置为false,而tableviewCell的layer默认是false
+        self.layer.masksToBounds = false
         
-        self.mainContentView.backgroundColor = JXBackColor
-        self.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.mainContentView.layer.shadowOpacity = 1
-        self.mainContentView.layer.shadowRadius = 33
-        self.mainContentView.layer.shadowColor = JX22222cShadowColor.cgColor
-        self.mainContentView.layer.cornerRadius = 4
-   
-        self.numberLabel.textColor = JXText50Color
-        self.extraLabel.textColor = JXText50Color
-        self.valueLabel.textColor = JXTextColor
-        
-        buyButton.backgroundColor = JXOrangeColor
-        buyButton.layer.cornerRadius = 2
-        buyButton.layer.shadowOpacity = 1
-        buyButton.layer.shadowRadius = 10
-        buyButton.layer.shadowOffset = CGSize(width: 0, height: 10)
-        buyButton.layer.shadowColor = JX10101aShadowColor.cgColor
-        buyButton.setTitleColor(JXFfffffColor, for: .normal)
-        buyButton.backgroundColor = JXOrangeColor
+        self.numberLabel.textColor = JXMainText50Color
+        self.extraLabel.textColor = JXMainText50Color
+        self.valueLabel.textColor = JXMainTextColor
         
     }
     @IBAction func buy(_ sender: Any) {

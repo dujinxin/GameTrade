@@ -14,8 +14,16 @@ class PayNormalCell: UITableViewCell {
     @IBOutlet weak var payNameLabel: UILabel!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var accountLabel: UILabel!
-    @IBOutlet weak var editButton: UIButton!
-    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var editButton: UIButton!{
+        didSet{
+            editButton.setTitleColor(JXMainColor, for: .normal)
+        }
+    }
+    @IBOutlet weak var lineView: UIView!{
+        didSet{
+            lineView.backgroundColor = JXSeparatorColor
+        }
+    }
     
     var editBlock : (()->())?
     
@@ -29,12 +37,10 @@ class PayNormalCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.payNameLabel.textColor = JXFfffffColor
-        self.userNameLabel.textColor = JXFfffffColor
-        self.accountLabel.textColor = JXFfffffColor
-        //self.editButton.setTitle(<#T##title: String?##String?#>, for: <#T##UIControlState#>)
+        self.payNameLabel.textColor = JXMainTextColor
+        self.userNameLabel.textColor = JXMainTextColor
+        self.accountLabel.textColor = JXMainTextColor
         
-        self.lineView.backgroundColor = JXSeparatorColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

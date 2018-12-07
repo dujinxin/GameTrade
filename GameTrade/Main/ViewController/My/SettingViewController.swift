@@ -23,14 +23,14 @@ class SettingViewController: JXTableViewController {
         
         self.tableView?.frame = CGRect(x: 0, y: kNavStatusHeight + 48, width: kScreenWidth, height: 200)
         self.tableView?.separatorStyle = .none
-        self.tableView?.estimatedRowHeight = 64//UITableViewAutomaticDimension
+        self.tableView?.rowHeight = 64
         //self.tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
         self.tableView?.register(UINib(nibName: "PersonCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier")
         self.tableView?.bounces = false
         self.tableView?.isScrollEnabled = false
         
-        self.logoutButton.setTitleColor(JXTextColor, for: .normal)
-        self.logoutButton.backgroundColor = JXOrangeColor
+        self.logoutButton.setTitleColor(JXFfffffColor, for: .normal)
+        self.logoutButton.backgroundColor = JXMainColor
         self.logoutButton.layer.cornerRadius = 2
         self.logoutButton.layer.shadowOpacity = 1
         self.logoutButton.layer.shadowRadius = 10
@@ -79,7 +79,7 @@ class SettingViewController: JXTableViewController {
         cell.backgroundColor = UIColor.clear
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
-        cell.leftLabel.textColor = JXTextColor
+        cell.leftLabel.textColor = JXMainTextColor
         cell.leftLabel.font = UIFont.systemFont(ofSize: 14)
         if indexPath.row == 0 {
             cell.leftLabel.text = "清理缓存"
@@ -117,16 +117,20 @@ extension SettingViewController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.backgroundColor = JXFfffffColor
+            backgroundView.layer.cornerRadius = 5
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             
@@ -136,7 +140,7 @@ extension SettingViewController {
             titleLabel.text = "新版本！\(self.settingVM.versionEntity.versionName ?? "")"
             titleLabel.textAlignment = .left
             titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-            titleLabel.textColor = JXTextColor
+            titleLabel.textColor = JXMainTextColor
             backgroundView.addSubview(titleLabel)
             
             let label = UILabel()
@@ -145,7 +149,7 @@ extension SettingViewController {
             label.text = "更新内容："
             label.textAlignment = .left
             label.font = UIFont.systemFont(ofSize: 12)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -158,7 +162,7 @@ extension SettingViewController {
             let textView = UITextView(frame: CGRect(x: 24, y: label.jxBottom + 10, width: width - 24 * 2, height: height - label.jxBottom - buttonHeight - 24 - 20))
             textView.backgroundColor = UIColor.clear
             textView.text = self.settingVM.versionEntity.content
-            textView.textColor = JXTextColor
+            textView.textColor = JXMainTextColor
             textView.font = UIFont.systemFont(ofSize: 12)
             textView.textAlignment = .left
             textView.isEditable = false
@@ -170,7 +174,7 @@ extension SettingViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("稍后再说", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -191,7 +195,7 @@ extension SettingViewController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()

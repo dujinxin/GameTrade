@@ -186,11 +186,84 @@
                         <outlet property="scanImageView" destination="wQh-w4-KIX" id="lmE-QP-Gy6"/>
                         <outlet property="topConstraint" destination="AF2-Yy-MZW" id="0C6-k8-vcd"/>
                         <outlet property="topView" destination="lMF-9U-MmC" id="E2s-vs-O13"/>
+                        <segue destination="A11-tZ-lhf" kind="show" identifier="scanResult" id="ghg-eL-CeX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifd-lj-hyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3825" y="-1255"/>
+        </scene>
+        <!--Scan Result Controller-->
+        <scene sceneID="FYU-hh-D2s">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="A11-tZ-lhf" customClass="ScanResultController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UdH-k4-3nb"/>
+                        <viewControllerLayoutGuide type="bottom" id="pZ9-KD-aiJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="q6n-zN-MWj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请认准本钱包二维码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLS-9P-m8q">
+                                <rect key="frame" x="132.33333333333334" y="326" width="110.33333333333334" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="JyO-Gp-T7a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出错啦!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfo-Mg-siv">
+                                <rect key="frame" x="151" y="278" width="73.333333333333314" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YvQ-ZC-Kgw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="1" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Md5-Bd-bCk">
+                                <rect key="frame" x="24" y="413" width="327" height="44"/>
+                                <color key="backgroundColor" red="1" green="0.57647058819999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zwq-o1-QOW"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backScan:" destination="A11-tZ-lhf" eventType="touchUpInside" id="vmB-5U-RF0"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="LiV-ys-A2p">
+                                <rect key="frame" x="117.66666666666669" y="144" width="140" height="92"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Md5-Bd-bCk" firstAttribute="top" secondItem="kLS-9P-m8q" secondAttribute="bottom" constant="70" id="Ecr-M2-pCZ"/>
+                            <constraint firstItem="LiV-ys-A2p" firstAttribute="top" secondItem="q6n-zN-MWj" secondAttribute="top" constant="144" id="L7Y-qK-iuC"/>
+                            <constraint firstItem="Kfo-Mg-siv" firstAttribute="centerX" secondItem="q6n-zN-MWj" secondAttribute="centerX" id="LuG-Zy-rId"/>
+                            <constraint firstItem="Md5-Bd-bCk" firstAttribute="leading" secondItem="q6n-zN-MWj" secondAttribute="leading" constant="24" id="RcM-WD-AuE"/>
+                            <constraint firstItem="LiV-ys-A2p" firstAttribute="centerX" secondItem="q6n-zN-MWj" secondAttribute="centerX" id="WdV-2g-Hdi"/>
+                            <constraint firstAttribute="trailing" secondItem="Md5-Bd-bCk" secondAttribute="trailing" constant="24" id="nXz-OO-ogd"/>
+                            <constraint firstItem="kLS-9P-m8q" firstAttribute="top" secondItem="Kfo-Mg-siv" secondAttribute="bottom" constant="18" id="nia-6B-FGv"/>
+                            <constraint firstItem="Kfo-Mg-siv" firstAttribute="top" secondItem="LiV-ys-A2p" secondAttribute="bottom" constant="42" id="uwM-81-Vmp"/>
+                            <constraint firstItem="kLS-9P-m8q" firstAttribute="centerX" secondItem="q6n-zN-MWj" secondAttribute="centerX" id="ww6-LZ-hOb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="errorButton" destination="Md5-Bd-bCk" id="wkl-w9-mrq"/>
+                        <outlet property="errorImageView" destination="LiV-ys-A2p" id="Po5-oq-Nbh"/>
+                        <outlet property="errorInfoLabel" destination="kLS-9P-m8q" id="MMh-9R-idY"/>
+                        <outlet property="errorTitleLabel" destination="Kfo-Mg-siv" id="QZg-MR-89W"/>
+                        <outlet property="topConstraint" destination="L7Y-qK-iuC" id="gg1-cK-NEk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ksf-ly-pbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4621.6000000000004" y="-1255.4187192118227"/>
         </scene>
         <!--Order List Controller-->
         <scene sceneID="xO3-NK-PXK">
@@ -385,11 +458,10 @@
         <!--订单-->
         <scene sceneID="VRf-D0-xoC">
             <objects>
-                <navigationController storyboardIdentifier=" SmartNvc" automaticallyAdjustsScrollViewInsets="NO" id="904-1A-mGE" customClass="JXNavigationController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier=" SmartNvc" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="904-1A-mGE" customClass="JXNavigationController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" tag="1" title="订单" image="tab2_normal" selectedImage="tab2_selected" id="bSS-M6-Pw7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LAp-Qi-0Kv">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -404,11 +476,10 @@
         <!--聊聊-->
         <scene sceneID="mIs-iW-Fqn">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZJZ-V0-hdx" customClass="JXNavigationController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ZJZ-V0-hdx" customClass="JXNavigationController" customModule="GameTrade" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="聊聊" image="tab3_normal" selectedImage="tab3_selected" id="uC9-Rg-Vd3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dgR-a6-q7o">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -770,7 +841,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="Haz-QW-TJk"/>
                     <connections>
+                        <outlet property="arrowImageView" destination="67O-uV-DRv" id="WRa-Wd-YjS"/>
                         <outlet property="contentView" destination="RIJ-yf-S3A" id="Scd-L4-xui"/>
+                        <outlet property="line1" destination="yLB-8A-DRB" id="SmJ-Xe-XKf"/>
+                        <outlet property="line2" destination="uKz-LE-mMw" id="4Oc-et-kWz"/>
+                        <outlet property="line3" destination="H4y-ig-tCT" id="Dr8-oV-D6w"/>
+                        <outlet property="line4" destination="Fyv-rL-6Hh" id="8A9-z4-HMS"/>
+                        <outlet property="line5" destination="knY-D6-jOt" id="Bdn-ug-uOF"/>
+                        <outlet property="line6" destination="hIL-hi-EDJ" id="th3-ZE-CSP"/>
+                        <outlet property="line7" destination="hhV-cj-z24" id="8Eh-Nf-JIs"/>
                         <outlet property="mainScrollView" destination="IyN-UY-kE5" id="jh4-qt-dq6"/>
                         <outlet property="payNameLabel" destination="ZX1-ff-S0t" id="5iv-mE-nTv"/>
                         <outlet property="payNameLeftLabel" destination="wiJ-qk-q55" id="d60-11-EJ0"/>
@@ -793,11 +872,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SkI-UY-f2M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4622" y="-1255"/>
+            <point key="canvasLocation" x="4622" y="132"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrowRight" width="14" height="23"/>
+        <image name="error" width="140" height="92"/>
         <image name="icon-back" width="24" height="24"/>
         <image name="off" width="28" height="27"/>
         <image name="tab1_normal" width="24" height="24"/>

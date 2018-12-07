@@ -419,11 +419,15 @@
             </constraints>
             <connections>
                 <outlet property="backgroundImageView" destination="pDn-wu-ROM" id="XOZ-L1-8Fd"/>
+                <outlet property="bottomLine" destination="dnn-xB-YHh" id="Fhf-dO-0H7"/>
                 <outlet property="buyButton" destination="Ftc-Eh-9cV" id="Cog-uf-zyK"/>
+                <outlet property="buyLabel" destination="KI5-Ob-63c" id="2lh-fN-RCN"/>
                 <outlet property="buyView" destination="5hA-Vw-dM0" id="c2t-IP-W1i"/>
+                <outlet property="helpLabel" destination="1ot-s7-USJ" id="uex-Xo-FwD"/>
                 <outlet property="helpView" destination="9v3-W5-X5N" id="m4V-m4-PNZ"/>
                 <outlet property="infoContentView" destination="CNB-gD-wVm" id="OU2-of-B2Q"/>
                 <outlet property="itemContentView" destination="mZz-LP-1rW" id="tIN-nM-Jjn"/>
+                <outlet property="leftLine" destination="c8b-MD-im4" id="GXI-4b-gg8"/>
                 <outlet property="limitInfoLabel" destination="6v3-bF-soX" id="nnm-gH-KUu"/>
                 <outlet property="limitNumLabel" destination="2Ik-bZ-3Vs" id="k0Z-qS-yTN"/>
                 <outlet property="limitPriceLabel" destination="Apm-vF-Iuw" id="tXV-0K-sph"/>
@@ -431,10 +435,12 @@
                 <outlet property="noticeLabel" destination="BM2-JO-c92" id="ke6-IH-0ru"/>
                 <outlet property="quickImageView" destination="cpy-pp-ju4" id="klh-EQ-MDr"/>
                 <outlet property="rightButton" destination="XaC-XX-1vB" id="MY4-aR-qSl"/>
+                <outlet property="rightLine" destination="fCu-lU-Mek" id="AT6-lQ-TlD"/>
                 <outlet property="scanArrow" destination="ajO-0L-ean" id="dJ4-o9-fhR"/>
                 <outlet property="scanIconBackView" destination="6lS-ZI-mgy" id="FoR-dk-QpB"/>
                 <outlet property="scanIconButton" destination="9IQ-jL-Gif" id="OL8-Hd-IEs"/>
                 <outlet property="scanImageView" destination="LUt-BQ-4gX" id="QTh-Rp-Wtw"/>
+                <outlet property="sellLabel" destination="7Xs-ft-da6" id="RuO-DY-lyI"/>
                 <outlet property="sellView" destination="OPD-I2-dBk" id="u3o-i3-liQ"/>
                 <outlet property="switchContentView" destination="JpK-e3-qZg" id="lwe-Fm-mok"/>
                 <outlet property="textField" destination="T4I-vI-0qg" id="Ex6-BE-T8A"/>

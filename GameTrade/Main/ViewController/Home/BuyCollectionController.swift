@@ -74,7 +74,7 @@ class BuyCollectionController: BaseViewController {
         button.setTitle("快捷购买", for: .normal)
         button.setTitleColor(JXFfffffColor, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         button.layer.cornerRadius = 2
         button.layer.shadowOpacity = 1
         button.layer.shadowRadius = 10
@@ -89,14 +89,14 @@ class BuyCollectionController: BaseViewController {
     
         let att = JXAttribute()
         att.normalColor = JX999999Color
-        att.selectedColor = JXOrangeColor
+        att.selectedColor = JXMainColor
         att.normalColor = JX999999Color
         att.font = UIFont.systemFont(ofSize: 14)
         topBar.attribute = att
         
-        //topBar.backgroundColor = JXOrangeColor
+        //topBar.backgroundColor = JXMainColor
         topBar.bottomLineSize = CGSize(width: 45, height: 3)
-        topBar.bottomLineView.backgroundColor = JXOrangeColor
+        topBar.bottomLineView.backgroundColor = JXMainColor
         topBar.isBottomLineEnabled = true
         
         headView.addSubview(topBar!)
@@ -189,7 +189,7 @@ class BuyCollectionController: BaseViewController {
     
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
-        selectView.backgroundColor = JXOrangeColor
+        selectView.backgroundColor = JXMainColor
         selectView.isBackViewUserInteractionEnabled = false
         //selectView.customView = self.customViewInit(number: self.number, address: "address", gas: "gas", remark: "无备注")
         return selectView
@@ -260,7 +260,7 @@ class BuyCollectionController: BaseViewController {
         let leftLabel1 = UILabel()
         leftLabel1.frame = CGRect(x: 24, y: nameLabel.jxBottom + 31, width: 65, height: 51)
         leftLabel1.text = "交易金额"
-        leftLabel1.textColor = JXText50Color
+        leftLabel1.textColor = JXMainText50Color
         leftLabel1.font = UIFont.systemFont(ofSize: 13)
         leftLabel1.textAlignment = .left
         leftContentView.addSubview(leftLabel1)
@@ -287,7 +287,7 @@ class BuyCollectionController: BaseViewController {
         let leftLabel2 = UILabel()
         leftLabel2.frame = CGRect(x: 24, y: line1.jxBottom, width: 65, height: 51)
         leftLabel2.text = "交易单价"
-        leftLabel2.textColor = JXText50Color
+        leftLabel2.textColor = JXMainText50Color
         leftLabel2.font = UIFont.systemFont(ofSize: 13)
         leftLabel2.textAlignment = .left
         leftContentView.addSubview(leftLabel2)
@@ -295,7 +295,7 @@ class BuyCollectionController: BaseViewController {
         let rightLabel2 = UILabel()
         rightLabel2.frame = CGRect(x: leftLabel2.jxRight, y: leftLabel2.jxTop, width: kScreenWidth - 48 - leftLabel2.jxWidth, height: 51)
         rightLabel2.text = "\(configuration_coinPrice) \(configuration_valueType)"
-        rightLabel2.textColor = JXTextColor
+        rightLabel2.textColor = JXMainTextColor
         rightLabel2.font = UIFont.systemFont(ofSize: 14)
         rightLabel2.textAlignment = .right
         leftContentView.addSubview(rightLabel2)
@@ -310,7 +310,7 @@ class BuyCollectionController: BaseViewController {
         let leftLabel3 = UILabel()
         leftLabel3.frame = CGRect(x: 24, y: line2.jxBottom , width: 65, height: 51)
         leftLabel3.text = "交易数量"
-        leftLabel3.textColor = JXText50Color
+        leftLabel3.textColor = JXMainText50Color
         leftLabel3.font = UIFont.systemFont(ofSize: 13)
         leftLabel3.textAlignment = .left
         leftContentView.addSubview(leftLabel3)
@@ -318,7 +318,7 @@ class BuyCollectionController: BaseViewController {
         let rightLabel3 = UILabel()
         rightLabel3.frame = CGRect(x: leftLabel3.jxRight, y: leftLabel3.jxTop, width: kScreenWidth - 48 - leftLabel3.jxWidth, height: 51)
         rightLabel3.text = number
-        rightLabel3.textColor = JXTextColor
+        rightLabel3.textColor = JXMainTextColor
         rightLabel3.font = UIFont.systemFont(ofSize: 14)
         rightLabel3.textAlignment = .right
         leftContentView.addSubview(rightLabel3)
@@ -333,7 +333,7 @@ class BuyCollectionController: BaseViewController {
         let leftLabel4 = UILabel()
         leftLabel4.frame = CGRect(x: 24, y: line3.jxBottom, width: 65, height: 51)
         leftLabel4.text = "支付方式"
-        leftLabel4.textColor = JXText50Color
+        leftLabel4.textColor = JXMainText50Color
         leftLabel4.font = UIFont.systemFont(ofSize: 13)
         leftLabel4.textAlignment = .left
         leftContentView.addSubview(leftLabel4)
@@ -341,7 +341,7 @@ class BuyCollectionController: BaseViewController {
         //        let rightLabel4 = UILabel()
         //        rightLabel4.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth, height: 51)
         //        rightLabel4.text = remark
-        //        rightLabel4.textColor = JXTextColor
+        //        rightLabel4.textColor = JXMainTextColor
         //        rightLabel4.font = UIFont.systemFont(ofSize: 14)
         //        rightLabel4.textAlignment = .right
         //        leftContentView.addSubview(rightLabel4)
@@ -351,7 +351,7 @@ class BuyCollectionController: BaseViewController {
         self.rightButton = UIButton()
         rightButton.frame = CGRect(x: leftLabel4.jxRight, y: leftLabel4.jxTop, width: kScreenWidth - 48 - leftLabel4.jxWidth - 20, height: 51)
         rightButton.setTitle(self.payName, for: .normal)
-        rightButton.setTitleColor(JXTextColor, for: .normal)
+        rightButton.setTitleColor(JXMainTextColor, for: .normal)
         rightButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         rightButton.addTarget(self, action: #selector(selectPay), for: .touchUpInside)
         rightButton.contentHorizontalAlignment = .right
@@ -386,7 +386,7 @@ class BuyCollectionController: BaseViewController {
         button.layer.shadowOffset = CGSize(width: 0, height: 10)
         button.layer.shadowColor = JX10101aShadowColor.cgColor
         button.setTitleColor(JXFfffffColor, for: .normal)
-        button.backgroundColor = JXOrangeColor
+        button.backgroundColor = JXMainColor
         
         
         
@@ -435,7 +435,7 @@ class BuyCollectionController: BaseViewController {
         let button1 = UIButton()
         button1.frame = CGRect(x: icon1.jxRight + 5, y: topBarView.jxBottom + 20, width: kScreenWidth - 48 - icon1.jxWidth - 20 - 5, height: 51)
         button1.setTitle(self.payName, for: .normal)
-        button1.setTitleColor(JXTextColor, for: .normal)
+        button1.setTitleColor(JXMainTextColor, for: .normal)
         button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button1.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
         button1.tag = 1
@@ -443,7 +443,7 @@ class BuyCollectionController: BaseViewController {
         rightContentView.addSubview(button1)
         
         let arrow1 = UIImageView(frame: CGRect(x: button1.jxRight, y: button1.jxTop + 8.5, width: 20, height: 34))
-        //arrow1.backgroundColor = JXTextColor
+        //arrow1.backgroundColor = JXMainTextColor
         arrow1.image = UIImage(named: "arrowRight")
         rightContentView.addSubview(arrow1)
         
@@ -460,7 +460,7 @@ class BuyCollectionController: BaseViewController {
         let button2 = UIButton()
         button2.frame = CGRect(x: button1.jxLeft, y: rightLine1.jxBottom, width: button1.jxWidth, height: 51)
         button2.setTitle("微信", for: .normal)
-        button2.setTitleColor(JXTextColor, for: .normal)
+        button2.setTitleColor(JXMainTextColor, for: .normal)
         button2.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button2.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
         button2.tag = 2
@@ -468,7 +468,7 @@ class BuyCollectionController: BaseViewController {
         rightContentView.addSubview(button2)
         
         let arrow2 = UIImageView(frame: CGRect(x: button1.jxRight, y: button2.jxTop + 8.5, width: 20, height: 34))
-        //arrow2.backgroundColor = JXTextColor
+        //arrow2.backgroundColor = JXMainTextColor
         arrow2.image = UIImage(named: "arrowRight")
         rightContentView.addSubview(arrow2)
         
@@ -485,7 +485,7 @@ class BuyCollectionController: BaseViewController {
         let button3 = UIButton()
         button3.frame = CGRect(x: button1.jxLeft, y: rightLine2.jxBottom, width: button1.jxWidth, height: 51)
         button3.setTitle("银行卡", for: .normal)
-        button3.setTitleColor(JXTextColor, for: .normal)
+        button3.setTitleColor(JXMainTextColor, for: .normal)
         button3.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         button3.addTarget(self, action: #selector(payClick(button:)), for: .touchUpInside)
         button3.tag = 3
@@ -493,7 +493,7 @@ class BuyCollectionController: BaseViewController {
         rightContentView.addSubview(button3)
         
         let arrow3 = UIImageView(frame: CGRect(x: button1.jxRight, y: button3.jxTop + 8.5, width: 20, height: 34))
-        //arrow3.backgroundColor = JXTextColor
+        //arrow3.backgroundColor = JXMainTextColor
         arrow3.image = UIImage(named: "arrowRight")
         rightContentView.addSubview(arrow3)
         

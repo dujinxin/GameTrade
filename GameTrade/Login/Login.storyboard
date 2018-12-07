@@ -280,20 +280,25 @@
                     <navigationItem key="navigationItem" id="Nzp-9a-SJk"/>
                     <connections>
                         <outlet property="bottomConstraints" destination="tWQ-dG-DnK" id="etj-o9-2mA"/>
+                        <outlet property="codeContentView" destination="UEA-Xa-axr" id="gdI-Ra-47x"/>
                         <outlet property="codeTextField" destination="IbB-E5-k93" id="E3l-hB-pBp"/>
                         <outlet property="contentView" destination="trx-Nh-43n" id="omT-NA-2zA"/>
                         <outlet property="fetchButton" destination="kid-EQ-4OT" id="Ekv-Bo-TdJ"/>
                         <outlet property="goLoginButton" destination="q5h-e1-Wib" id="QEt-q2-UZD"/>
+                        <outlet property="imageContentView" destination="hLk-pc-jvJ" id="Mab-x7-cMl"/>
                         <outlet property="imageTextField" destination="DGc-FA-Wpo" id="rIa-DL-uV2"/>
+                        <outlet property="infoLabel" destination="ArT-Gs-h76" id="ln6-6M-phG"/>
                         <outlet property="leadingConstraints" destination="VyZ-fG-VGE" id="wzn-2E-uJt"/>
                         <outlet property="loginButton" destination="Tvb-El-1Yy" id="WF7-pq-ya9"/>
                         <outlet property="loginLittleLabel" destination="L2p-Q7-iIC" id="l4O-tf-Kh3"/>
                         <outlet property="loginTitleLabel" destination="FbG-AE-6aI" id="3bj-wP-AZe"/>
                         <outlet property="lookButton" destination="gal-sE-mpj" id="cBd-KT-ZWZ"/>
                         <outlet property="mainScrollView" destination="83N-uR-cnf" id="Rp4-FC-X6N"/>
+                        <outlet property="passwordContentView" destination="PX4-RV-dum" id="1Y2-Du-iFp"/>
                         <outlet property="passwordTextField" destination="iSQ-HM-j7f" id="gfu-Sf-7JF"/>
                         <outlet property="topConstraints" destination="GuN-zs-UfB" id="l94-WW-X6U"/>
                         <outlet property="trailingConstraints" destination="TUO-Me-vgv" id="jL0-wV-UoI"/>
+                        <outlet property="userContentView" destination="kf5-M4-zGS" id="cZw-Sf-oKx"/>
                         <outlet property="userTextField" destination="ItL-Xw-75S" id="lhh-ig-heM"/>
                         <segue destination="ybu-1Y-KhR" kind="show" identifier="auth" id="TpD-qi-rMa"/>
                     </connections>
@@ -779,15 +784,18 @@
                         <outlet property="contentSize_heightConstraint" destination="Lut-jf-ykm" id="Jws-Qb-PzI"/>
                         <outlet property="contentView" destination="UDs-y6-Qhc" id="wUS-1f-JVa"/>
                         <outlet property="forgotButton" destination="13y-Fm-U1m" id="l5d-OA-gz1"/>
+                        <outlet property="infoLabel" destination="f8f-jU-mhE" id="tZQ-e8-DgG"/>
                         <outlet property="leadingConstraints" destination="Kd4-MF-e3Z" id="Ygj-uz-lo7"/>
                         <outlet property="loginButton" destination="Vp2-cT-ZBi" id="2lH-oX-x0C"/>
                         <outlet property="loginLittleLabel" destination="mdk-Su-6bG" id="bbd-HS-ANo"/>
                         <outlet property="loginTitleLabel" destination="g3x-yK-MnT" id="FLg-aO-RUx"/>
                         <outlet property="mainScrollView" destination="PYt-AH-JLd" id="tNz-bj-jae"/>
+                        <outlet property="passwordContentView" destination="DdS-xo-N8d" id="6Ls-U5-z60"/>
                         <outlet property="passwordTextField" destination="Q5u-dz-Bum" id="Jyy-mM-5Mp"/>
                         <outlet property="registerButton" destination="lqh-pA-XSN" id="9tc-qD-AIe"/>
                         <outlet property="tonConstraints" destination="Wtd-RJ-fEN" id="clC-rv-W0k"/>
                         <outlet property="trailingConstraints" destination="TVb-PU-qpc" id="WZt-Dn-e55"/>
+                        <outlet property="userContentView" destination="QPs-mb-p5Q" id="zdp-QH-ieX"/>
                         <outlet property="userTextField" destination="l7p-oS-G1B" id="Luf-gk-gnO"/>
                         <segue destination="ybu-1Y-KhR" kind="show" identifier="auth" id="OzC-hK-Uzh"/>
                     </connections>
@@ -1485,20 +1493,25 @@
                     <navigationItem key="navigationItem" id="be0-2V-HqH"/>
                     <connections>
                         <outlet property="bottomConstraints" destination="JaP-hm-eAY" id="Zum-Nu-oMc"/>
+                        <outlet property="codeContentView" destination="tGT-Ij-ftw" id="vB9-xZ-afj"/>
                         <outlet property="codeTextField" destination="s47-7n-Kxd" id="H3a-1h-qYm"/>
                         <outlet property="contentView" destination="c3t-ui-Wug" id="hLz-u3-Pdw"/>
                         <outlet property="fetchButton" destination="CYo-4L-g6x" id="3Gc-Yr-01D"/>
                         <outlet property="goLoginButton" destination="W30-ID-krg" id="cTm-hm-vFO"/>
+                        <outlet property="imageContentView" destination="4zH-sB-SVh" id="bDi-Gi-FEo"/>
                         <outlet property="imageTextField" destination="bdU-jh-Ylq" id="Per-Gd-1Dg"/>
+                        <outlet property="infoLabel" destination="dqS-dw-rAe" id="Nxq-Sd-H6n"/>
                         <outlet property="leadingConstraints" destination="Bpa-19-3Bg" id="fqK-8f-g3A"/>
                         <outlet property="loginButton" destination="Iap-39-XH2" id="nJT-hG-MC2"/>
                         <outlet property="loginLittleLabel" destination="T6x-wN-7dH" id="QYy-eG-GV6"/>
                         <outlet property="loginTitleLabel" destination="uYh-4T-g3y" id="nSo-tP-nLQ"/>
                         <outlet property="lookButton" destination="TPC-M5-J5h" id="F73-WK-shr"/>
                         <outlet property="mainScrollView" destination="CHW-nO-kPN" id="eM0-YC-ZUw"/>
+                        <outlet property="passwordContentView" destination="iqf-db-QGG" id="1xO-rG-Jc9"/>
                         <outlet property="passwordTextField" destination="PvM-cA-HDa" id="f3q-QB-Ykk"/>
                         <outlet property="topConstraints" destination="HL0-09-YVj" id="gJC-KM-tNq"/>
                         <outlet property="trailingConstraints" destination="2qC-j4-tO1" id="YpZ-oe-yur"/>
+                        <outlet property="userContentView" destination="69i-Ma-dPq" id="6Ur-Af-4ta"/>
                         <outlet property="userTextField" destination="QWl-wX-R7k" id="dSf-FJ-hmD"/>
                     </connections>
                 </viewController>
@@ -1514,6 +1527,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="TpD-qi-rMa"/>
-        <segue reference="VNB-SE-KwI"/>
+        <segue reference="ang-eR-V2L"/>
     </inferredMetricsTieBreakers>
 </document>

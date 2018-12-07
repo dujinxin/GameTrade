@@ -136,9 +136,9 @@ extension ConversationListController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ChatTableViewCell.string(), for: indexPath) as! ChatTableViewCell
 //        cell.backgroundColor = UIColor.clear
 //        cell.contentView.backgroundColor = UIColor.clear
-//        cell.nameLabel.textColor = JXTextColor
-//        cell.messageLabel.textColor = JXText50Color
-        cell.unreadCountLabel.backgroundColor = JXOrangeColor
+//        cell.nameLabel.textColor = JXMainTextColor
+//        cell.messageLabel.textColor = JXMainText50Color
+        cell.unreadCountLabel.backgroundColor = JXMainColor
         
         let channel = channels[indexPath.row]
         

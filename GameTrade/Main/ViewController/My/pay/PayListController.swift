@@ -21,7 +21,7 @@ class PayListController: JXTableViewController {
     lazy var statusBottomView: JXSelectView = {
         let selectView = JXSelectView.init(frame: CGRect.init(x: 0, y: 0, width: 300, height: 200), style: JXSelectViewStyle.custom)
         selectView.isBackViewUserInteractionEnabled = false
-       
+        selectView.backgroundColor = JXFfffffColor
         return selectView
     }()
     
@@ -236,7 +236,7 @@ class PayListController: JXTableViewController {
         }
         markAction.backgroundColor = JXGreenColor
         deleteAction.backgroundColor = JXRedColor
-        cancelAction.backgroundColor = JXOrangeColor
+        cancelAction.backgroundColor = JXMainColor
         return [deleteAction,cancelAction,markAction]
     }
     func editActionsForRowAt(indexPath: IndexPath) {
@@ -302,13 +302,15 @@ extension PayListController {
         let contentView = UIView()
         contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 402)
         
-        let gradientLayer = CAGradientLayer.init()
-        gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-        gradientLayer.locations = [0]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-        gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-        gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 402 + kBottomMaginHeight)
-        contentView.layer.insertSublayer(gradientLayer, at: 0)
+        if app_style <= 1 {
+            let gradientLayer = CAGradientLayer.init()
+            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+            gradientLayer.locations = [0]
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: 402 + kBottomMaginHeight)
+            contentView.layer.insertSublayer(gradientLayer, at: 0)
+        }
  
         
         
@@ -321,7 +323,7 @@ extension PayListController {
             label.text = "输入资金密码"
             label.textAlignment = .center
             label.font = UIFont.systemFont(ofSize: 18)
-            label.textColor = JXFfffffColor
+            label.textColor = JXMainTextColor
             view.addSubview(label)
             //label.sizeToFit()
             
@@ -329,7 +331,7 @@ extension PayListController {
             button.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
             //button.center = CGPoint(x: 30, y: view.jxCenterY)
             //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
+            button.tintColor = JXMainTextColor
             button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
             button.setTitleColor(JX333333Color, for: .normal)
@@ -345,7 +347,7 @@ extension PayListController {
             button1.setTitle("忘记密码？", for: .normal)
             
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.contentVerticalAlignment = .center
             button1.contentHorizontalAlignment = .right
             button1.addTarget(self, action: #selector(forgotPsd), for: .touchUpInside)
@@ -364,7 +366,7 @@ extension PayListController {
         psdTextView.backgroundColor = UIColor.clear
         psdTextView.limit = 4
         psdTextView.bottomLineColor = JXSeparatorColor
-        psdTextView.textColor = JXFfffffColor
+        psdTextView.textColor = JXMainTextColor
         psdTextView.font = UIFont.systemFont(ofSize: 21)
         psdTextView.completionBlock = { (text,isFinish) -> () in
             

@@ -11,10 +11,71 @@ import TZImagePickerController
 
 class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
 
-    @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var textField: JXPlaceHolderTextView!
-    @IBOutlet weak var uploadImageView: JXUploadImageView!
-    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var backView: UIView!{
+        didSet{
+            backView.backgroundColor = JXTextViewBgColor
+            backView.layer.cornerRadius = 4
+        }
+    }
+    
+    @IBOutlet weak var textField: JXPlaceHolderTextView!{
+        didSet{
+            textField.placeHolderText = "填写您的问题"
+            textField.textColor = JXMainTextColor
+            textField.delegate = self
+        }
+    }
+    @IBOutlet weak var uploadImageView: JXUploadImageView!{
+        didSet{
+            uploadImageView.leadingTrailingMargin = 0
+            uploadImageView.topMargin = 0
+            uploadImageView.bottomMargin = 15
+            uploadImageView.imageEdgeInsets = UIEdgeInsets.init(top: 15, left: 0, bottom: 0, right: 15)
+            
+            uploadImageView.updateConstraintsIfNeeded()
+            
+            //self.uploadImageView.leftImageView.backgroundColor = UIColor.red
+            //self.uploadImageView.leftImageView.image = UIImage(named: "img-upload")
+            uploadImageView.imageTitle = "img-upload"
+            uploadImageView.deleteImage = "icon-delete"
+            uploadImageView.style = .edit
+            uploadImageView.backgroundColor = UIColor.clear
+            
+            uploadImageView.selectImagesBlock = { index in
+                
+                let alert = UIAlertController(title: "图片选择", message: nil, preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "从相册中选择（最多三张）", style: .destructive, handler: { (alertAction) in
+                    self.selectAlbumImage()
+                }))
+                alert.addAction(UIAlertAction(title: "拍照", style: .destructive, handler: { (alertAction) in
+                    self.takePhotoImage()
+                }))
+                alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (alertAction) in
+                    //
+                }))
+                self.present(alert, animated: true, completion: {
+                    //
+                })
+            }
+            uploadImageView.deleteImagesBlock = { index in
+                //
+                self.imageDataArray.remove(at: index)
+            }
+        }
+    }
+    @IBOutlet weak var submitButton: UIButton!{
+        didSet{
+            submitButton.isEnabled = false
+            submitButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
+            submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            
+            submitButton.layer.cornerRadius = 2
+            submitButton.layer.shadowOpacity = 1
+            submitButton.layer.shadowRadius = 10
+            submitButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+            submitButton.layer.shadowColor = JX10101aShadowColor.cgColor
+        }
+    }
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
@@ -27,61 +88,7 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
         super.viewDidLoad()
 
         self.title = "提交反馈"
-        
-        //self.textField.backgroundColor = UIColor.clear
-        
-        self.backView.backgroundColor = JXBackColor
-        self.backView.layer.cornerRadius = 4
-        
-        self.textField.placeHolderText = "填写您的问题"
-        self.textField.textColor = JXTextColor
-        self.textField.delegate = self
        
-        self.uploadImageView.leadingTrailingMargin = 0
-        self.uploadImageView.topMargin = 0
-        self.uploadImageView.bottomMargin = 15
-        self.uploadImageView.imageEdgeInsets = UIEdgeInsets.init(top: 15, left: 0, bottom: 0, right: 15)
-        
-        self.uploadImageView.updateConstraintsIfNeeded()
-        
-        
-        //self.uploadImageView.leftImageView.backgroundColor = UIColor.red
-        //self.uploadImageView.leftImageView.image = UIImage(named: "img-upload")
-        self.uploadImageView.imageTitle = "img-upload"
-        self.uploadImageView.deleteImage = "icon-delete"
-        self.uploadImageView.style = .edit
-        self.uploadImageView.backgroundColor = UIColor.clear
-        
-        self.uploadImageView.selectImagesBlock = { index in
-            
-            let alert = UIAlertController(title: "图片选择", message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "从相册中选择（最多三张）", style: .destructive, handler: { (alertAction) in
-                self.selectAlbumImage()
-            }))
-            alert.addAction(UIAlertAction(title: "拍照", style: .destructive, handler: { (alertAction) in
-                self.takePhotoImage()
-            }))
-            alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (alertAction) in
-                //
-            }))
-            self.present(alert, animated: true, completion: {
-                //
-            })
-        }
-        self.uploadImageView.deleteImagesBlock = { index in
-            //
-            self.imageDataArray.remove(at: index)
-        }
-        
-        self.submitButton.isEnabled = false
-        self.submitButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
-        self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
-        
-        self.submitButton.layer.cornerRadius = 2
-        self.submitButton.layer.shadowOpacity = 1
-        self.submitButton.layer.shadowRadius = 10
-        self.submitButton.layer.shadowOffset = CGSize(width: 0, height: 10)
-        self.submitButton.layer.shadowColor = JX10101aShadowColor.cgColor
         
         NotificationCenter.default.addObserver(self, selector: #selector(placeHolderTextChange(nofiy:)), name: UITextView.textDidChangeNotification, object: nil)
     }
@@ -221,8 +228,8 @@ extension FeedBackController : UITextViewDelegate,UITextFieldDelegate{
             self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
         }else{
             self.submitButton.isEnabled = true
-            self.submitButton.setTitleColor(JXTextColor, for: .normal)
-            self.submitButton.backgroundColor = JXOrangeColor
+            self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
+            self.submitButton.backgroundColor = JXMainColor
         }
     }
 }

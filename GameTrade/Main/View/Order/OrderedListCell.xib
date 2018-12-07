@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -100,6 +100,7 @@
                 <outlet property="MerchantNameLabel" destination="Uil-hf-yBY" id="n8E-Ru-DaK"/>
                 <outlet property="mainContentView" destination="kb6-rF-SfR" id="SII-la-vwJ"/>
                 <outlet property="numberLabel" destination="Ks6-dv-fFf" id="hMf-9u-Hel"/>
+                <outlet property="separatorView" destination="3YY-WV-MTj" id="JSU-56-Q9Z"/>
                 <outlet property="statusLabel" destination="Nnq-Ol-tpE" id="2gs-ab-IJ7"/>
                 <outlet property="timeLabel" destination="d5H-Rf-xGE" id="rP1-oC-aGD"/>
                 <outlet property="valueLabel" destination="W2R-4t-3OF" id="OcJ-lB-1nq"/>

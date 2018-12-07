@@ -64,7 +64,7 @@ extension MessagesViewController: UICollectionViewDataSource {
             } else {
                 let cell = messagesCollectionView.dequeueReusableCell(TextMessageCell.self, for: indexPath)
                 cell.configure(with: message, at: indexPath, and: messagesCollectionView)
-                //            cell.messageLabel.textColor = JXTextColor
+                //            cell.messageLabel.textColor = JXMainTextColor
                 //            cell.messageLabel.backgroundColor = UIColor.red
                 //            cell.messageContainerView.backgroundColor = UIColor.yellow
                 

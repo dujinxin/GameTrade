@@ -24,7 +24,7 @@ class WalletListPayingCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.mainContentView.backgroundColor = JXBackColor
+        self.mainContentView.backgroundColor = JXViewBgColor
         self.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.mainContentView.layer.shadowOpacity = 1
         self.mainContentView.layer.shadowRadius = 33
@@ -34,14 +34,14 @@ class WalletListPayingCell: UITableViewCell {
         self.valueLabel.alpha = 0.5
         self.timeLabel.alpha = 0.5
         
-        payButton.backgroundColor = JXOrangeColor
+        payButton.backgroundColor = JXMainColor
         payButton.layer.cornerRadius = 2
         payButton.layer.shadowOpacity = 1
         payButton.layer.shadowRadius = 10
         payButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         payButton.layer.shadowColor = JX10101aShadowColor.cgColor
         payButton.setTitleColor(JXFfffffColor, for: .normal)
-        payButton.backgroundColor = JXOrangeColor
+        payButton.backgroundColor = JXMainColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

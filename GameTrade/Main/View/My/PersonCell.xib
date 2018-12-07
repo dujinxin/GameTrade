@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRg-hE-ZU9">
-                        <rect key="frame" x="24" y="42.5" width="296" height="1"/>
+                        <rect key="frame" x="24" y="42.5" width="330" height="1"/>
                         <color key="backgroundColor" red="0.27450980392156865" green="0.28235294117647058" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="ZZw-nv-3Le"/>
@@ -42,7 +42,7 @@
                     <constraint firstItem="foa-9w-V3p" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="26H-EN-geg"/>
                     <constraint firstItem="fRF-VF-esm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="foa-9w-V3p" secondAttribute="trailing" constant="10" id="6Qc-8P-tbK"/>
                     <constraint firstItem="fRF-VF-esm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="6aL-eZ-qin"/>
-                    <constraint firstAttribute="trailing" secondItem="HRg-hE-ZU9" secondAttribute="trailing" id="EJ0-oH-1BD"/>
+                    <constraint firstAttribute="trailing" secondItem="HRg-hE-ZU9" secondAttribute="trailing" constant="-34" id="EJ0-oH-1BD"/>
                     <constraint firstAttribute="bottom" secondItem="HRg-hE-ZU9" secondAttribute="bottom" id="Ept-OH-ZPr"/>
                     <constraint firstAttribute="trailing" secondItem="fRF-VF-esm" secondAttribute="trailing" constant="20" id="Jup-Y2-jc4"/>
                     <constraint firstItem="HRg-hE-ZU9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="f3T-3b-Tls"/>
@@ -52,6 +52,8 @@
             <connections>
                 <outlet property="leftLabel" destination="foa-9w-V3p" id="dmv-QS-99r"/>
                 <outlet property="rightLabel" destination="fRF-VF-esm" id="MBk-JQ-aBN"/>
+                <outlet property="separatorView" destination="HRg-hE-ZU9" id="Czj-Lh-Gr8"/>
+                <outlet property="trailingConstraint" destination="EJ0-oH-1BD" id="eUa-9l-7gz"/>
             </connections>
             <point key="canvasLocation" x="-143" y="93"/>
         </tableViewCell>

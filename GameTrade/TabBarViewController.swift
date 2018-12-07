@@ -29,15 +29,30 @@ class TabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
 
         //UITabBar.appearance()
-        tabBar.barTintColor = UIColor.rgbColor(rgbValue: 0x31313f)
+        tabBar.barTintColor = JXUIBarBgColor
         tabBar.isTranslucent = false
-        tabBar.tintColor = JXOrangeColor
+        tabBar.tintColor = JXMainColor
+        
+        let normalImageList = ["tab1_normal","tab2_normal","tab3_normal","tab4_normal"]
+        let selectedImageList = ["tab1_selected","tab2_selected","tab3_selected","tab4_selected"]
+        
         let normalAttributed = [NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0x8585ae)]
-        let selectedAttributed = [NSAttributedString.Key.foregroundColor:JXOrangeColor]
-        tabBar.items?.forEach({ (item) in
-            item.setTitleTextAttributes(normalAttributed, for: .normal)
-            item.setTitleTextAttributes(selectedAttributed, for: .selected)
-        })
+        let selectedAttributed = [NSAttributedString.Key.foregroundColor:JXMainColor]
+//        tabBar.items?.forEach({ (item) in
+//            item.setTitleTextAttributes(normalAttributed, for: .normal)
+//            item.setTitleTextAttributes(selectedAttributed, for: .selected)
+//            item.image?.renderingMode = .alwaysOriginal
+//        })
+        if let items = tabBar.items {
+            for i in 0..<items.count {
+                let item = items[i]
+                item.setTitleTextAttributes(normalAttributed, for: .normal)
+                item.setTitleTextAttributes(selectedAttributed, for: .selected)
+                item.image = UIImage(named: normalImageList[i])?.withRenderingMode(.alwaysOriginal)
+                item.selectedImage = UIImage(named: selectedImageList[i])?.withRenderingMode(.alwaysOriginal)
+            }
+        }
+        
         
         tabBar.layer.shadowOffset = CGSize(width: 0, height: 1)
         tabBar.layer.shadowColor = UIColor.rgbColor(rgbValue: 0x5c6677, alpha: 0.2).cgColor

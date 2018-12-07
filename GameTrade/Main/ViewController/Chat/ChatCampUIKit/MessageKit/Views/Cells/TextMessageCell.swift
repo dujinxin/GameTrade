@@ -59,7 +59,7 @@ open class TextMessageCell: MessageCollectionViewCell {
         super.setupSubviews()
         messageContainerView.addSubview(messageLabel)
         
-//        messageLabel.textColor = JXTextColor
+//        messageLabel.textColor = JXMainTextColor
 //        messageLabel.font = UIFont.systemFont(ofSize: 16)
     }
 

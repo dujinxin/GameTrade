@@ -11,79 +11,116 @@ import AVFoundation
 
 class HomeReusableView: UICollectionReusableView {
 
-    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!{
+        didSet{
+            backgroundImageView.backgroundColor = app_style <= 1 ? UIColor.clear : JXMainColor
+        }
+    }
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightButton: UIButton!
     
-    @IBOutlet weak var totalNumLabel: UILabel!
+    @IBOutlet weak var totalNumLabel: UILabel!{
+        didSet{
+            totalNumLabel.textColor = JXFfffffColor
+        }
+    }
     @IBOutlet weak var totalInfoLabel: UILabel!{
         didSet{
+            totalInfoLabel.textColor = JXFfffffColor
             totalInfoLabel.text = "总\(configuration_coinName)资产"
         }
     }
     @IBOutlet weak var totalPriceLabel: UILabel!{
         didSet{
-            totalPriceLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x272732)
+            totalPriceLabel.textColor = app_style <= 1 ? JXMainColor : JXFfffffColor
+            totalPriceLabel.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x272732, alpha: 1) : UIColor.rgbColor(rgbValue: 0x272732, alpha: 0.5)
             totalPriceLabel.layer.cornerRadius = 11.5
             totalPriceLabel.layer.masksToBounds = true
         }
     }
     @IBOutlet weak var totalWidthConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var useNumLabel: UILabel!
+    @IBOutlet weak var useNumLabel: UILabel!{
+        didSet{
+            useNumLabel.textColor = JXFfffffColor
+        }
+    }
     @IBOutlet weak var useInfoLabel: UILabel!{
         didSet{
+            useInfoLabel.textColor = JXFfffffColor
             useInfoLabel.text = "可用\(configuration_coinName)资产"
         }
     }
     @IBOutlet weak var usePriceLabel: UILabel!{
         didSet{
-            usePriceLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x272732)
+            usePriceLabel.textColor = app_style <= 1 ? JXMainColor : JXFfffffColor
+            usePriceLabel.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x272732, alpha: 1) : UIColor.rgbColor(rgbValue: 0x272732, alpha: 0.5)
             usePriceLabel.layer.cornerRadius = 8.5
             usePriceLabel.layer.masksToBounds = true
         }
     }
     @IBOutlet weak var useWidthConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var limitNumLabel: UILabel!
+    @IBOutlet weak var limitNumLabel: UILabel!{
+        didSet{
+            limitNumLabel.textColor = JXFfffffColor
+        }
+    }
     @IBOutlet weak var limitInfoLabel: UILabel!{
         didSet{
+            limitInfoLabel.textColor = JXFfffffColor
             limitInfoLabel.text = "冻结\(configuration_coinName)资产"
         }
     }
     @IBOutlet weak var limitPriceLabel: UILabel!{
         didSet{
-            limitPriceLabel.backgroundColor = UIColor.rgbColor(rgbValue: 0x272732)
+            limitPriceLabel.textColor = app_style <= 1 ? JXMainColor : JXFfffffColor
+            limitPriceLabel.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x272732, alpha: 1) : UIColor.rgbColor(rgbValue: 0x272732, alpha: 0.5)
             limitPriceLabel.layer.cornerRadius = 8.5
             limitPriceLabel.layer.masksToBounds = true
         }
     }
     @IBOutlet weak var limitWidthConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var noticeLabel: UILabel!
+    @IBOutlet weak var noticeLabel: UILabel!{
+        didSet{
+            noticeLabel.textColor = JXMainTextColor
+        }
+    }
     
     
     @IBOutlet weak var quickImageView: UIImageView!{
         didSet{
+
+            if app_style <= 1 {
+                quickImageView.image = UIImage(named: "quickBG")
+            } else {
+                quickImageView.tintColor = JXFfffffColor
+                quickImageView.image = UIImage(named: "quickBG")?.withRenderingMode(.alwaysTemplate)
+            }
+            
             quickImageView.layer.cornerRadius = 2
             quickImageView.layer.shadowOpacity = 1
             quickImageView.layer.shadowRadius = 10
-            quickImageView.layer.shadowOffset = CGSize(width: 0, height: 40)
-            quickImageView.layer.shadowColor = UIColor.rgbColor(rgbValue: 0x10101a, alpha: 0.5).cgColor
+            quickImageView.layer.shadowColor = JX10101aShadowColor.cgColor
+//            quickImageView.layer.shadowOffset = CGSize(width: 0, height: 40)
+            let path = CGPath(rect: CGRect(x: -24, y: -25, width: kScreenWidth, height: 125), transform: nil)
+            quickImageView.layer.shadowPath = path
         }
     }
     @IBOutlet weak var textField: UITextField!{
         didSet{
-            textField.backgroundColor = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.44)
+            textField.backgroundColor = JXTextViewBg2Color
             //textField.delegate = self
             textField.layer.cornerRadius = 2
             
             textField.placeholder = "输入购买金额"
             textField.keyboardType = .numberPad
             textField.font = UIFont.systemFont(ofSize: 18)
-            textField.textColor = JXTextColor
-            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor:UIColor.rgbColor(rgbValue: 0xb3b3cb)])
+            textField.textColor = JXMainTextColor
+            let placeholderColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0xb3b3cb) : UIColor.rgbColor(rgbValue: 0x2d2e44)
+            textField.attributedPlaceholder = NSAttributedString(string: "输入购买金额", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18),NSAttributedString.Key.foregroundColor:placeholderColor])
             textField.leftViewMode = .always
             textField.leftView = {
                 let v = UIView(frame: CGRect(0, 0, 10, 10))
@@ -98,7 +135,7 @@ class HomeReusableView: UICollectionReusableView {
             buyButton.setTitle("快捷购买", for: .normal)
             buyButton.setTitleColor(JXFfffffColor, for: .normal)
             buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 18)
-            buyButton.backgroundColor = JXOrangeColor
+            buyButton.backgroundColor = JXMainColor
             buyButton.layer.cornerRadius = 2
             buyButton.layer.shadowOpacity = 1
             buyButton.layer.shadowRadius = 10
@@ -117,16 +154,58 @@ class HomeReusableView: UICollectionReusableView {
     @IBOutlet weak var scanArrow: UIButton!
     
     
-    @IBOutlet weak var switchContentView: UIView!
+    @IBOutlet weak var switchContentView: UIView!{
+        didSet{
+            switchContentView.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x21202c) : UIColor.rgbColor(rgbValue: 0xd4d4d4)
+        }
+    }
 
     @IBOutlet weak var infoContentView: UIView!
     
     
-    @IBOutlet weak var scanImageView: UIImageView!
+    @IBOutlet weak var scanImageView: UIImageView!{
+        didSet{
+            
+        }
+    }
     
     @IBOutlet weak var buyView: UIView!
     @IBOutlet weak var sellView: UIView!
     @IBOutlet weak var helpView: UIView!
+    
+    @IBOutlet weak var buyLabel: UILabel!{
+        didSet{
+            buyLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var sellLabel: UILabel!{
+        didSet{
+            sellLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var helpLabel: UILabel!{
+        didSet{
+            helpLabel.textColor = JXMainTextColor
+        }
+    }
+
+    @IBOutlet weak var leftLine: UIView!{
+        didSet{
+            leftLine.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x32333E) : JXSeparatorColor
+            
+        }
+    }
+    @IBOutlet weak var rightLine: UIView!{
+        didSet{
+            rightLine.backgroundColor =  app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x32333E) : JXSeparatorColor
+        }
+    }
+    @IBOutlet weak var bottomLine: UIView!{
+        didSet{
+            bottomLine.backgroundColor =  app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x32333E) : JXSeparatorColor
+        }
+    }
+    
     
     
     var additionBlock : (()->())?
@@ -174,7 +253,7 @@ class HomeReusableView: UICollectionReusableView {
         self.infoContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.infoContentView.layer.shadowOpacity = 1
         self.infoContentView.layer.shadowRadius = 40
-        self.infoContentView.layer.shadowColor = UIColor.rgbColor(rgbValue: 0x10101a, alpha: 0.5).cgColor
+        self.infoContentView.layer.shadowColor = JX10101aShadowColor.cgColor
         self.infoContentView.layer.cornerRadius = 4
         
         

@@ -42,11 +42,11 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
-        self.topConstraint.constant = kStatusBarHeight
-        self.tableView.frame = CGRect(x: 0, y: kStatusBarHeight, width: kScreenWidth, height: kScreenHeight - kStatusBarHeight - kTabBarHeight)
+        self.topConstraint.constant = 0
+        self.tableView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight - kTabBarHeight)
         self.tableView.register(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier1")
         self.tableView.register(UINib(nibName: "ImageTitleCell", bundle: nil), forCellReuseIdentifier: "reuseIdentifier2")
-        self.tableView.estimatedRowHeight = 44
+        self.tableView.estimatedRowHeight = 64
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.isScrollEnabled = false
         self.tableView.separatorStyle = .none
@@ -71,7 +71,9 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "accound" {
             if let vc = segue.destination as? AccountViewController,let mobile = sender as? String {
@@ -191,9 +193,9 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //return UITableViewAutomaticDimension
         if indexPath.section == 0 {
-            return 124 + 30 + 20
+            return 124 + 20 + 74
         } else {
-            return 50
+            return 64
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -306,16 +308,20 @@ extension MyViewController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.backgroundColor = JXFfffffColor
+            backgroundView.layer.cornerRadius = 5
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             
@@ -325,7 +331,7 @@ extension MyViewController {
             label.text = "提示"
             label.textAlignment = .center
             label.font = UIFont.boldSystemFont(ofSize: 16)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -333,7 +339,7 @@ extension MyViewController {
             let nameLabel = UILabel()
             nameLabel.frame = CGRect(x: 24, y: label.jxBottom + 20, width: width - 24 * 2, height: 30)
             nameLabel.text = "您还未设置资金密码"
-            nameLabel.textColor = JXTextColor
+            nameLabel.textColor = JXMainTextColor
             nameLabel.font = UIFont.systemFont(ofSize: 16)
             nameLabel.textAlignment = .center
             
@@ -349,7 +355,7 @@ extension MyViewController {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("稍后再说", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -370,7 +376,7 @@ extension MyViewController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()
@@ -408,16 +414,20 @@ extension MyViewController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.layer.cornerRadius = 5
+            backgroundView.backgroundColor = JXFfffffColor
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             
@@ -427,7 +437,7 @@ extension MyViewController {
             titleLabel.text = "修改用户名"
             titleLabel.textAlignment = .center
             titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-            titleLabel.textColor = JXTextColor
+            titleLabel.textColor = JXMainTextColor
             backgroundView.addSubview(titleLabel)
             
             
@@ -437,16 +447,15 @@ extension MyViewController {
             let buttonHeight : CGFloat = 44
             
             let textFieldBgView = UIView(frame: CGRect(x: 16, y: titleLabel.jxBottom, width: backgroundView.jxWidth - 16 * 2, height: 36))
-            textFieldBgView.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
+            textFieldBgView.backgroundColor = JXTextViewBgColor//UIColor.rgbColor(rgbValue: 0x2f2f3c)
             backgroundView.addSubview(textFieldBgView)
             
             self.textField = UITextField(frame: CGRect(x: 16, y: 0, width: textFieldBgView.jxWidth - 16 * 2 , height: 36))
-            textField.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
             textField.delegate = self
             textField.placeholder = "请输入新的用户名"
             //textField.keyboardType = .numberPad
             textField.font = UIFont.systemFont(ofSize: 12)
-            textField.textColor = JXFfffffColor
+            textField.textColor = JXMainTextColor
             textField.attributedPlaceholder = NSAttributedString(string: "请输入新的用户名", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
             textFieldBgView.addSubview(textField)
             
@@ -454,9 +463,9 @@ extension MyViewController {
             
             
             let button1 = UIButton()
-            button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
+            button1.frame = CGRect(x: margin, y: height - margin - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("点错了", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView1), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -477,7 +486,7 @@ extension MyViewController {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()

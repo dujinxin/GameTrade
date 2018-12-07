@@ -10,8 +10,22 @@ import UIKit
 
 class PersonCell: UITableViewCell {
 
-    @IBOutlet weak var leftLabel: UILabel!
+    @IBOutlet weak var leftLabel: UILabel!{
+        didSet{
+            leftLabel.textColor = JXMainTextColor
+        }
+    }
     @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var separatorView: UIView!{
+        didSet{
+            separatorView.backgroundColor = JXSeparatorColor
+        }
+    }
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!{
+        didSet{
+            trailingConstraint.constant = -34
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

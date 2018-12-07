@@ -129,7 +129,7 @@ extension AppDelegate {
     fileprivate func setupChatCampSDK() {
         //CCPClient.initApp(appId: "6346990561630613504")
         
-        CCPClient.initApp(appId: "6456046490195324928")
+        CCPClient.initApp(appId: kIM_AppID)
     }
     fileprivate func routeUser() {
         if let userID = UserManager.manager.userEntity.id {
@@ -311,7 +311,7 @@ extension AppDelegate {
             titleLabel.text = "新版本！\(self.settingVM.versionEntity.versionName ?? "")"
             titleLabel.textAlignment = .left
             titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-            titleLabel.textColor = JXTextColor
+            titleLabel.textColor = JXMainTextColor
             backgroundView.addSubview(titleLabel)
             
             let label = UILabel()
@@ -320,7 +320,7 @@ extension AppDelegate {
             label.text = "更新内容："
             label.textAlignment = .left
             label.font = UIFont.systemFont(ofSize: 12)
-            label.textColor = JXTextColor
+            label.textColor = JXMainTextColor
             backgroundView.addSubview(label)
             
             
@@ -333,7 +333,7 @@ extension AppDelegate {
             let textView = UITextView(frame: CGRect(x: 24, y: label.jxBottom + 10, width: width - 24 * 2, height: height - label.jxBottom - buttonHeight - 24 - 20))
             textView.backgroundColor = UIColor.clear
             textView.text = self.settingVM.versionEntity.content
-            textView.textColor = JXTextColor
+            textView.textColor = JXMainTextColor
             textView.font = UIFont.systemFont(ofSize: 12)
             textView.textAlignment = .left
             textView.isEditable = false
@@ -345,7 +345,7 @@ extension AppDelegate {
             let button1 = UIButton()
             button1.frame = CGRect(x: margin, y: height - space - buttonHeight, width: buttonWidth, height: buttonHeight)
             button1.setTitle("稍后再说", for: .normal)
-            button1.setTitleColor(JXOrangeColor, for: .normal)
+            button1.setTitleColor(JXMainColor, for: .normal)
             button1.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             button1.addTarget(self, action: #selector(hideNoticeView), for: .touchUpInside)
             backgroundView.addSubview(button1)
@@ -366,7 +366,7 @@ extension AppDelegate {
             button.layer.shadowOffset = CGSize(width: 0, height: 10)
             button.layer.shadowColor = JX10101aShadowColor.cgColor
             button.setTitleColor(JXFfffffColor, for: .normal)
-            button.backgroundColor = JXOrangeColor
+            button.backgroundColor = JXMainColor
             
             return contentView
         }()

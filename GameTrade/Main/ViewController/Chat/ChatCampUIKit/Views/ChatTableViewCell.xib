@@ -110,6 +110,7 @@
                 <outlet property="lastMessageLabel" destination="sr1-3T-Yiz" id="mDw-Em-FoJ"/>
                 <outlet property="messageLabel" destination="glb-Ey-0hk" id="u3n-KQ-BuI"/>
                 <outlet property="nameLabel" destination="9ct-Fm-7G0" id="SLK-on-zuw"/>
+                <outlet property="separatorView" destination="mb0-xW-lgi" id="JUk-PN-kUS"/>
                 <outlet property="unreadCountLabel" destination="lSC-5a-MWR" id="oeo-Ha-hRa"/>
             </connections>
             <point key="canvasLocation" x="48" y="-438.0809595202399"/>

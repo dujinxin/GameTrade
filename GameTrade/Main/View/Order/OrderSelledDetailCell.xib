@@ -90,7 +90,7 @@
                                         <color key="textColor" red="0.93725490199999995" green="0.25882352939999997" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWc-Df-3Lf">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RWc-Df-3Lf">
                                         <rect key="frame" x="0.0" y="65.5" width="328" height="0.5"/>
                                         <color key="backgroundColor" red="0.27450980390000002" green="0.28235294119999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -293,7 +293,7 @@
                                     <constraint firstItem="C1S-Vc-PVn" firstAttribute="width" secondItem="lW2-VO-xpX" secondAttribute="width" id="x1G-dc-8dW"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="line" translatesAutoresizingMaskIntoConstraints="NO" id="14P-Aw-dgh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="14P-Aw-dgh" customClass="OrderLineView" customModule="GameTrade" customModuleProvider="target">
                                 <rect key="frame" x="24" y="171" width="328" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="ay0-7U-PKx"/>
@@ -359,6 +359,12 @@
                 <outlet property="codeButton" destination="5Dg-5N-ks2" id="UXr-Q2-BZB"/>
                 <outlet property="codeLeftLabel" destination="mTw-r2-eRD" id="t3H-Be-d9T"/>
                 <outlet property="codeWidthConstraint" destination="ZgN-P5-DHF" id="Ku6-fS-Zwf"/>
+                <outlet property="line" destination="14P-Aw-dgh" id="UWo-lt-n0u"/>
+                <outlet property="line1" destination="RWc-Df-3Lf" id="PFO-S3-Iu3"/>
+                <outlet property="line2" destination="Aqu-WP-SjH" id="3uz-rK-kN0"/>
+                <outlet property="line3" destination="QN7-jp-eJZ" id="yfU-Pg-z75"/>
+                <outlet property="line4" destination="wDx-AH-OLv" id="axH-DF-To8"/>
+                <outlet property="line5" destination="Z9e-Gw-uJQ" id="6KK-9R-1tj"/>
                 <outlet property="listView" destination="MhM-An-LZv" id="pae-JB-2ZZ"/>
                 <outlet property="noticeLabel" destination="BWZ-2A-ibT" id="jAl-GE-pjb"/>
                 <outlet property="orderInfoLabel" destination="UVd-u3-pU4" id="88z-Qv-mL6"/>
@@ -378,6 +384,5 @@
         <image name="icon-copy" width="24" height="24"/>
         <image name="icon-qc" width="24" height="24"/>
         <image name="icon-talktalk" width="26" height="26"/>
-        <image name="line" width="327" height="20"/>
     </resources>
 </document>

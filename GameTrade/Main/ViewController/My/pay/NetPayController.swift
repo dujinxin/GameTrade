@@ -21,8 +21,21 @@ class NetPayController: BaseViewController {
     
     var vm = WeChatOrAliVM()
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var accountTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!{
+        didSet{
+            nameLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var accountTextField: UITextField!{
+        didSet{
+            accountTextField.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var userContentView: UIView!{
+        didSet{
+            userContentView.backgroundColor = JXTextViewBgColor
+        }
+    }
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var codeImageView: UIImageView!
     @IBOutlet weak var submitButton: UIButton!
@@ -37,9 +50,9 @@ class NetPayController: BaseViewController {
         k.showBlock = { (height, rect) in
             print(height,rect)
         }
-        k.tintColor = JXTextColor
-        k.toolBar.barTintColor = JXBackColor
-        k.backgroundColor = JXBackColor
+        k.tintColor = JXMainTextColor
+        k.toolBar.barTintColor = JXViewBgColor
+        k.backgroundColor = JXViewBgColor
         //k.textFieldDelegate = self
         return k
     }()
@@ -209,8 +222,8 @@ extension NetPayController: UITextFieldDelegate {
             let card = self.accountTextField.text, card.isEmpty == false{
             
             self.submitButton.isEnabled = true
-            self.submitButton.backgroundColor = JXOrangeColor
-            self.submitButton.setTitleColor(JXTextColor, for: .normal)
+            self.submitButton.backgroundColor = JXMainColor
+            self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
         } else {
             
             self.submitButton.isEnabled = false

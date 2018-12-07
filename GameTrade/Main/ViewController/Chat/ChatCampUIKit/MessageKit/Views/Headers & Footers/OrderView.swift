@@ -12,7 +12,7 @@ class OrderView: UIView {
     
     lazy var mainView: UIView = {
         let v = UIView()
-        v.backgroundColor = JXBackColor
+        v.backgroundColor = JXViewBgColor
         return v
     }()
     lazy var merchatImageView: UILabel = {
@@ -20,12 +20,12 @@ class OrderView: UIView {
 //        v.layer.cornerRadius = 20
 //        v.layer.masksToBounds = true
 //        v.clipsToBounds = true
-//        v.backgroundColor = JXOrangeColor
+//        v.backgroundColor = JXMainColor
         let v = UILabel()
-        v.textColor = UIColor.rgbColor(rgbValue: 0x222133)
+        v.textColor = JXMerchantIconTextColor
+        v.backgroundColor = JXMerchantIconBgColor
         v.font = UIFont.systemFont(ofSize: 20)
         v.textAlignment = .center
-        v.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3d)
         v.layer.cornerRadius = 20
         v.layer.masksToBounds = true
         return v
@@ -34,28 +34,28 @@ class OrderView: UIView {
     
     lazy var merchatNameLabel: UILabel = {
         let v = UILabel()
-        v.textColor = JXTextColor
+        v.textColor = JXMainTextColor
         v.font = UIFont.systemFont(ofSize: 14)
         v.textAlignment = .left
         return v
     }()
     lazy var timeLabel: UILabel = {
         let v = UILabel()
-        v.textColor = JXTextColor
+        v.textColor = JXMainTextColor
         v.font = UIFont.systemFont(ofSize: 14)
         v.textAlignment = .right
         return v
     }()
     lazy var worthLabel: UILabel = {
         let v = UILabel()
-        v.textColor = JXTextColor
+        v.textColor = JXMainTextColor
         v.font = UIFont.systemFont(ofSize: 14)
         v.textAlignment = .left
         return v
     }()
     lazy var statusLabel: UILabel = {
         let v = UILabel()
-        v.textColor = JXOrangeColor
+        v.textColor = JXMainColor
         v.font = UIFont.systemFont(ofSize: 14)
         v.textAlignment = .right
         return v
@@ -113,7 +113,7 @@ class OrderView: UIView {
         self.mainView.addSubview(self.statusLabel)
         
         
-        self.mainView.backgroundColor = JXBackColor
+        self.mainView.backgroundColor = JXViewBgColor
         self.mainView.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.mainView.layer.shadowOpacity = 1
         self.mainView.layer.shadowRadius = 33

@@ -10,11 +10,41 @@ import UIKit
 
 class ModifyTradePswController: BaseViewController {
 
-    @IBOutlet weak var noticeLargeLabel: UILabel!
-    @IBOutlet weak var noticeEnglishLabel: UILabel!
-    @IBOutlet weak var noticeLabel: UILabel!
-    @IBOutlet weak var fetchButton: UIButton!
-    @IBOutlet weak var psdView: PasswordTextView!
+    @IBOutlet weak var noticeLargeLabel: UILabel!{
+        didSet{
+            noticeLargeLabel.textColor = JXLargeTitleColor
+        }
+    }
+    @IBOutlet weak var noticeEnglishLabel: UILabel!{
+        didSet{
+            noticeEnglishLabel.textColor = JXLittleTitleColor
+        }
+    }
+    @IBOutlet weak var noticeLabel: UILabel!{
+        didSet{
+            noticeLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var fetchButton: UIButton!{
+        didSet{
+            fetchButton.setTitleColor(JXMainTextColor, for: .normal)
+        }
+    }
+    @IBOutlet weak var psdView: PasswordTextView!{
+        didSet{
+            
+            psdView.limit = 4
+            psdView.bottomLineColor = JXSeparatorColor
+            psdView.textColor = JXMainTextColor
+            psdView.font = UIFont.systemFont(ofSize: 21)
+            psdView.backgroundColor = UIColor.clear
+            psdView.completionBlock = {(psd, isFinish) in
+                if isFinish {
+                    self.submit(psd)
+                }
+            }
+        }
+    }
     
     let vm = MyVM()
     
@@ -44,34 +74,22 @@ class ModifyTradePswController: BaseViewController {
             
             self.vm.sendMobileCode(type: 2) { (_, msg, isSuc) in
                 self.hideMBProgressHUD()
-                
+
                 CommonManager.countDown(timeOut: 60, process: { (currentTime) in
                     UIView.beginAnimations(nil, context: nil)
-                    self.fetchButton.setTitleColor(JXTextColor, for: .normal)
+                    self.fetchButton.setTitleColor(JXMainTextColor, for: .normal)
                     self.fetchButton.setTitle(String(format: "%d秒后重发", currentTime), for: .normal)
                     UIView.commitAnimations()
                     self.fetchButton.isEnabled = false
                 }) {
                     self.fetchButton.setTitle("重发验证码", for: .normal)
-                    self.fetchButton.setTitleColor(JXOrangeColor, for: .normal)
+                    self.fetchButton.setTitleColor(JXMainColor, for: .normal)
                     self.fetchButton.isEnabled = true
                 }
             }
         }
         
         
-        self.fetchButton.setTitleColor(JXTextColor, for: .normal)
-        //psdTextView.textField.delegate = self
-        self.psdView.limit = 4
-        self.psdView.bottomLineColor = JXSeparatorColor
-        self.psdView.textColor = JXFfffffColor
-        self.psdView.font = UIFont.systemFont(ofSize: 21)
-        self.psdView.backgroundColor = UIColor.clear
-        self.psdView.completionBlock = {(psd, isFinish) in
-            if isFinish {
-                self.submit(psd)
-            }
-        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -105,13 +123,13 @@ class ModifyTradePswController: BaseViewController {
             
             CommonManager.countDown(timeOut: 60, process: { (currentTime) in
                 UIView.beginAnimations(nil, context: nil)
-                self.fetchButton.setTitleColor(JXTextColor, for: .normal)
+                self.fetchButton.setTitleColor(JXMainTextColor, for: .normal)
                 self.fetchButton.setTitle(String(format: "%d秒后重发", currentTime), for: .normal)
                 UIView.commitAnimations()
                 self.fetchButton.isEnabled = false
             }) {
                 self.fetchButton.setTitle("重发验证码", for: .normal)
-                self.fetchButton.setTitleColor(JXOrangeColor, for: .normal)
+                self.fetchButton.setTitleColor(JXMainColor, for: .normal)
                 self.fetchButton.isEnabled = true
             }
         }

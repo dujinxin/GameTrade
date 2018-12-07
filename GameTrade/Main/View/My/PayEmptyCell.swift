@@ -18,7 +18,7 @@ class PayEmptyCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.payNameLabel.textColor = JXFfffffColor
-        self.setLabel.textColor = JXOrangeColor
+        self.setLabel.textColor = JXMainColor
         
         self.lineView.backgroundColor = JXSeparatorColor
     }

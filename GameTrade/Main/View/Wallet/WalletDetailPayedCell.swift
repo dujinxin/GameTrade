@@ -33,7 +33,7 @@ class WalletDetailPayedCell: UITableViewCell {
                 self.statusLabel.text = "已收币"
                 self.valueLabel.textColor = JXGreenColor
             } else {
-                self.statusLabel.textColor = JXText50Color
+                self.statusLabel.textColor = JXMainText50Color
                 self.statusLabel.text = "已完成"
                 self.valueLabel.textColor = JXRedColor
             }
@@ -62,7 +62,7 @@ class WalletDetailPayedCell: UITableViewCell {
             self.statusLabel.text = "已收币"
             self.valueLabel.textColor = JXGreenColor
         } else {
-            self.statusLabel.textColor = JXText50Color
+            self.statusLabel.textColor = JXMainText50Color
             self.statusLabel.text = "已完成"
             self.valueLabel.textColor = JXRedColor
         }
@@ -79,7 +79,7 @@ class WalletDetailPayedCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.mainContentView.backgroundColor = JXBackColor
+        self.mainContentView.backgroundColor = JXViewBgColor
         self.mainContentView.layer.shadowOffset = CGSize(width: 0, height: 10)
         self.mainContentView.layer.shadowOpacity = 1
         self.mainContentView.layer.shadowRadius = 33
@@ -87,8 +87,8 @@ class WalletDetailPayedCell: UITableViewCell {
         self.mainContentView.layer.cornerRadius = 4
         
         
-        self.nameLabel.textColor = JXTextColor
-        self.statusLabel.textColor = JXText50Color
+        self.nameLabel.textColor = JXMainTextColor
+        self.statusLabel.textColor = JXMainText50Color
         self.valueLabel.textColor = JXRedColor
     }
 

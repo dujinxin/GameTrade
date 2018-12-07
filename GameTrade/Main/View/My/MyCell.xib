@@ -11,17 +11,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="181" id="UQv-bg-djL" customClass="MyCell" customModule="GameTrade" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="174"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="225" id="UQv-bg-djL" customClass="MyCell" customModule="GameTrade" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UQv-bg-djL" id="VzP-XV-l84">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="173.66666666666666"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="217.66666666666666"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nBD-Ij-382">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="217.66666666666666"/>
+                    </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5cB-qo-oiR">
-                        <rect key="frame" x="24" y="30" width="327" height="124"/>
+                        <rect key="frame" x="24" y="74" width="327" height="124"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group" translatesAutoresizingMaskIntoConstraints="NO" id="ofv-Ui-rpx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ofv-Ui-rpx">
                                 <rect key="frame" x="0.0" y="0.0" width="327" height="124"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="cVP-lv-LSR">
@@ -46,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dj-Fr-GCf">
-                                <rect key="frame" x="118.99999999999999" y="69.666666666666671" width="35.333333333333329" height="17"/>
+                                <rect key="frame" x="118.99999999999999" y="69.666666666666657" width="35.333333333333329" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -71,25 +74,30 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="nBD-Ij-382" secondAttribute="bottom" id="5DY-gn-f8i"/>
+                    <constraint firstAttribute="trailing" secondItem="nBD-Ij-382" secondAttribute="trailing" id="FC3-gE-RQl"/>
+                    <constraint firstItem="nBD-Ij-382" firstAttribute="leading" secondItem="VzP-XV-l84" secondAttribute="leading" id="H7Z-G9-714"/>
                     <constraint firstItem="5cB-qo-oiR" firstAttribute="leading" secondItem="VzP-XV-l84" secondAttribute="leading" constant="24" id="Pnn-Zz-AUZ"/>
-                    <constraint firstItem="5cB-qo-oiR" firstAttribute="top" secondItem="VzP-XV-l84" secondAttribute="top" constant="30" id="YiL-Bw-A0G"/>
+                    <constraint firstItem="5cB-qo-oiR" firstAttribute="top" secondItem="VzP-XV-l84" secondAttribute="top" constant="74" id="YiL-Bw-A0G"/>
+                    <constraint firstItem="nBD-Ij-382" firstAttribute="top" secondItem="VzP-XV-l84" secondAttribute="top" id="bBn-od-JeN"/>
                     <constraint firstAttribute="trailing" secondItem="5cB-qo-oiR" secondAttribute="trailing" constant="24" id="yqR-RI-ck1"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="backImageView" destination="nBD-Ij-382" id="eeC-Y1-zV3"/>
                 <outlet property="backView" destination="5cB-qo-oiR" id="3kd-xf-gLG"/>
                 <outlet property="editButton" destination="oVM-TN-knj" id="fRM-WT-dta"/>
                 <outlet property="nickNameLabel" destination="cl1-MF-E33" id="WJi-OG-l20"/>
                 <outlet property="rankLabel" destination="2dj-Fr-GCf" id="wHA-JM-mwW"/>
                 <outlet property="topConstraint" destination="YiL-Bw-A0G" id="Jn7-WM-qWv"/>
+                <outlet property="userBackImageView" destination="ofv-Ui-rpx" id="isj-dw-LGs"/>
                 <outlet property="userImageView" destination="cVP-lv-LSR" id="M0a-1y-Q2X"/>
             </connections>
             <point key="canvasLocation" x="-105.59999999999999" y="-635.09852216748766"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Group" width="327" height="124"/>
         <image name="defaultImage" width="68" height="68"/>
         <image name="iconPencel" width="19" height="19"/>
     </resources>
