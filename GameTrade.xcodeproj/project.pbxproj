@@ -1314,6 +1314,9 @@
 		3561BCFF21BA3F14004A6775 /* ScanResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561BCFD21BA3F14004A6775 /* ScanResultController.swift */; };
 		3561BD0021BA3F14004A6775 /* ScanResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561BCFD21BA3F14004A6775 /* ScanResultController.swift */; };
 		3561BD0121BA3F14004A6775 /* ScanResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561BCFD21BA3F14004A6775 /* ScanResultController.swift */; };
+		3561BD0321BA6B71004A6775 /* GameTrade_blue-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3561BD0221BA6B71004A6775 /* GameTrade_blue-Info.plist */; };
+		3561BD0521BA6B82004A6775 /* GameTrade_orange-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3561BD0421BA6B82004A6775 /* GameTrade_orange-Info.plist */; };
+		3561BD0721BA6B90004A6775 /* GameTrade_black-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3561BD0621BA6B8F004A6775 /* GameTrade_black-Info.plist */; };
 		3595B298218F0C3100494929 /* NewBuyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B297218F0C3100494929 /* NewBuyController.swift */; };
 		3595B29A218FE30500494929 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B299218FE30500494929 /* ForgotViewController.swift */; };
 		3595B2A42190224F00494929 /* CountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2A32190224F00494929 /* CountDown.swift */; };
@@ -1697,13 +1700,13 @@
 		352D11CD215E159C0053AD70 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		352D12A0215E35210053AD70 /* GameTrade-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GameTrade-Bridging-Header.h"; sourceTree = "<group>"; };
 		3561B9F221B8FC81004A6775 /* GameTrade_blue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade_blue.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3561B9F321B8FC81004A6775 /* GameTrade_blue-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GameTrade_blue-Info.plist"; path = "/Users/dujinxin/github/project/GameTrade/GameTrade_blue-Info.plist"; sourceTree = "<absolute>"; };
 		3561BB7521B8FEE5004A6775 /* GameTrade_orange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade_orange.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3561BB7621B8FEE6004A6775 /* GameTrade_orange-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GameTrade_orange-Info.plist"; path = "/Users/dujinxin/github/project/GameTrade/GameTrade_orange-Info.plist"; sourceTree = "<absolute>"; };
 		3561BCF821B8FF8E004A6775 /* GameTrade_black.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade_black.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3561BCF921B8FF8E004A6775 /* GameTrade_black-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GameTrade_black-Info.plist"; path = "/Users/dujinxin/github/project/GameTrade/GameTrade_black-Info.plist"; sourceTree = "<absolute>"; };
 		3561BCFB21B9156C004A6775 /* blue.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = blue.xcassets; sourceTree = "<group>"; };
 		3561BCFD21BA3F14004A6775 /* ScanResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultController.swift; sourceTree = "<group>"; };
+		3561BD0221BA6B71004A6775 /* GameTrade_blue-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GameTrade_blue-Info.plist"; sourceTree = "<group>"; };
+		3561BD0421BA6B82004A6775 /* GameTrade_orange-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GameTrade_orange-Info.plist"; sourceTree = "<group>"; };
+		3561BD0621BA6B8F004A6775 /* GameTrade_black-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GameTrade_black-Info.plist"; sourceTree = "<group>"; };
 		3595B297218F0C3100494929 /* NewBuyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBuyController.swift; sourceTree = "<group>"; };
 		3595B299218FE30500494929 /* ForgotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
 		3595B2A32190224F00494929 /* CountDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDown.swift; sourceTree = "<group>"; };
@@ -2467,7 +2470,7 @@
 		3561B9F421B8FD07004A6775 /* GameTrade_blue */ = {
 			isa = PBXGroup;
 			children = (
-				3561B9F321B8FC81004A6775 /* GameTrade_blue-Info.plist */,
+				3561BD0221BA6B71004A6775 /* GameTrade_blue-Info.plist */,
 				3561BCFB21B9156C004A6775 /* blue.xcassets */,
 			);
 			path = GameTrade_blue;
@@ -2476,7 +2479,7 @@
 		3561BB7721B8FEFF004A6775 /* GameTrade_orange */ = {
 			isa = PBXGroup;
 			children = (
-				3561BB7621B8FEE6004A6775 /* GameTrade_orange-Info.plist */,
+				3561BD0421BA6B82004A6775 /* GameTrade_orange-Info.plist */,
 			);
 			path = GameTrade_orange;
 			sourceTree = "<group>";
@@ -2484,7 +2487,7 @@
 		3561BCFA21B8FF9D004A6775 /* GameTrade_black */ = {
 			isa = PBXGroup;
 			children = (
-				3561BCF921B8FF8E004A6775 /* GameTrade_black-Info.plist */,
+				3561BD0621BA6B8F004A6775 /* GameTrade_black-Info.plist */,
 			);
 			path = GameTrade_black;
 			sourceTree = "<group>";
@@ -3181,6 +3184,7 @@
 				3561B99121B8FC81004A6775 /* JXActionCell.xib in Resources */,
 				3561B99221B8FC81004A6775 /* Task.storyboard in Resources */,
 				3561B99321B8FC81004A6775 /* CommentCell.xib in Resources */,
+				3561BD0321BA6B71004A6775 /* GameTrade_blue-Info.plist in Resources */,
 				3561B99421B8FC81004A6775 /* bubble_full@3x.png in Resources */,
 				3561B99521B8FC81004A6775 /* MerchantReusableView.xib in Resources */,
 				3561B99621B8FC81004A6775 /* bubble_full_tail_v2@3x.png in Resources */,
@@ -3373,6 +3377,7 @@
 				3561BB5C21B8FEE5004A6775 /* OrderCell.xib in Resources */,
 				3561BB5D21B8FEE5004A6775 /* sliderthumb.png in Resources */,
 				3561BB5E21B8FEE5004A6775 /* WalletHeadCell.xib in Resources */,
+				3561BD0521BA6B82004A6775 /* GameTrade_orange-Info.plist in Resources */,
 				3561BB5F21B8FEE5004A6775 /* MerchantCell.xib in Resources */,
 				3561BB6021B8FEE5004A6775 /* play.png in Resources */,
 				3561BB6121B8FEE5004A6775 /* Dot50%.png in Resources */,
@@ -3418,6 +3423,7 @@
 				3561BC9321B8FF8E004A6775 /* WalletListPayingCell.xib in Resources */,
 				3561BC9421B8FF8E004A6775 /* PayNormalCell.xib in Resources */,
 				3561BC9521B8FF8E004A6775 /* Login.storyboard in Resources */,
+				3561BD0721BA6B90004A6775 /* GameTrade_black-Info.plist in Resources */,
 				3561BC9621B8FF8E004A6775 /* pause.png in Resources */,
 				3561BC9721B8FF8E004A6775 /* JXActionCell.xib in Resources */,
 				3561BC9821B8FF8E004A6775 /* Task.storyboard in Resources */,
@@ -5021,9 +5027,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"app_normal\"";
-
 				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = GameTradeDisHoc;
@@ -5054,10 +5058,6 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-
-				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"app_normal\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -5081,7 +5081,7 @@
 					"$(PROJECT_DIR)/GameTrade/Third",
 					"$(PROJECT_DIR)/GameTrade/Third/lib",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_blue-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_blue/GameTrade_blue-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5110,7 +5110,7 @@
 					"$(PROJECT_DIR)/GameTrade/Third",
 					"$(PROJECT_DIR)/GameTrade/Third/lib",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_blue-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_blue/GameTrade_blue-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5139,7 +5139,7 @@
 					"$(PROJECT_DIR)/GameTrade/Third",
 					"$(PROJECT_DIR)/GameTrade/Third/lib",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_orange-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_orange/GameTrade_orange-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5168,7 +5168,7 @@
 					"$(PROJECT_DIR)/GameTrade/Third",
 					"$(PROJECT_DIR)/GameTrade/Third/lib",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_orange-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_orange/GameTrade_orange-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5197,7 +5197,7 @@
 					"$(PROJECT_DIR)/GameTrade/Third",
 					"$(PROJECT_DIR)/GameTrade/Third/lib",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_black-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_black/GameTrade_black-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5226,7 +5226,7 @@
 					"$(PROJECT_DIR)/GameTrade/Third",
 					"$(PROJECT_DIR)/GameTrade/Third/lib",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_black-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GameTrade_black/GameTrade_black-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5235,7 +5235,6 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"app_black\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-
 				PROVISIONING_PROFILE_SPECIFIER = GameTradeDisHoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
