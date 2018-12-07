@@ -61,7 +61,8 @@ open class SeparatorLine: UIView {
     
     /// Sets up the default properties
     open func setup() {
-        backgroundColor = .lightGray
+//        backgroundColor = .lightGray
+        backgroundColor = JXSeparatorColor
         translatesAutoresizingMaskIntoConstraints = false
         setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .vertical) //Todo: check
 //        setContentHuggingPriority(.defaultHigh, for: .vertical)

@@ -36,7 +36,7 @@ class LoginViewController: BaseViewController {
     }
     @IBOutlet weak var userContentView: UIView!{
         didSet{
-            userContentView.backgroundColor = JXTextViewBgColor
+            userContentView.backgroundColor = JXTextViewBg1Color
         }
     }
     @IBOutlet weak var passwordTextField: UITextField!{
@@ -58,7 +58,7 @@ class LoginViewController: BaseViewController {
     }
     @IBOutlet weak var passwordContentView: UIView!{
         didSet{
-            passwordContentView.backgroundColor = JXTextViewBgColor
+            passwordContentView.backgroundColor = JXTextViewBg1Color
         }
     }
     

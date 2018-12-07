@@ -1310,6 +1310,10 @@
 		3561BCF221B8FF8E004A6775 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27B82199A0FB00CAFB27 /* pause@2x.png */; };
 		3561BCF321B8FF8E004A6775 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1177215E159C0053AD70 /* PersonCell.xib */; };
 		3561BCFC21B9156C004A6775 /* blue.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3561BCFB21B9156C004A6775 /* blue.xcassets */; };
+		3561BCFE21BA3F14004A6775 /* ScanResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561BCFD21BA3F14004A6775 /* ScanResultController.swift */; };
+		3561BCFF21BA3F14004A6775 /* ScanResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561BCFD21BA3F14004A6775 /* ScanResultController.swift */; };
+		3561BD0021BA3F14004A6775 /* ScanResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561BCFD21BA3F14004A6775 /* ScanResultController.swift */; };
+		3561BD0121BA3F14004A6775 /* ScanResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3561BCFD21BA3F14004A6775 /* ScanResultController.swift */; };
 		3595B298218F0C3100494929 /* NewBuyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B297218F0C3100494929 /* NewBuyController.swift */; };
 		3595B29A218FE30500494929 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B299218FE30500494929 /* ForgotViewController.swift */; };
 		3595B2A42190224F00494929 /* CountDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2A32190224F00494929 /* CountDown.swift */; };
@@ -1699,6 +1703,7 @@
 		3561BCF821B8FF8E004A6775 /* GameTrade_black.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade_black.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3561BCF921B8FF8E004A6775 /* GameTrade_black-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GameTrade_black-Info.plist"; path = "/Users/dujinxin/github/project/GameTrade/GameTrade_black-Info.plist"; sourceTree = "<absolute>"; };
 		3561BCFB21B9156C004A6775 /* blue.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = blue.xcassets; sourceTree = "<group>"; };
+		3561BCFD21BA3F14004A6775 /* ScanResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultController.swift; sourceTree = "<group>"; };
 		3595B297218F0C3100494929 /* NewBuyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewBuyController.swift; sourceTree = "<group>"; };
 		3595B299218FE30500494929 /* ForgotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
 		3595B2A32190224F00494929 /* CountDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountDown.swift; sourceTree = "<group>"; };
@@ -2370,6 +2375,7 @@
 				352D1195215E159C0053AD70 /* MainViewController.swift */,
 				352D1196215E159C0053AD70 /* MyViewController.swift */,
 				352D1197215E159C0053AD70 /* ScanViewController.swift */,
+				3561BCFD21BA3F14004A6775 /* ScanResultController.swift */,
 				35FE27832199851800CAFB27 /* ConversationListController.swift */,
 				352D1198215E159C0053AD70 /* My */,
 				352D11A2215E159C0053AD70 /* Order */,
@@ -4013,6 +4019,7 @@
 				352D1217215E159D0053AD70 /* JXBaseRequest.swift in Sources */,
 				35FE28C62199A0FC00CAFB27 /* GroupChannelsViewController.swift in Sources */,
 				35FE28D92199A0FC00CAFB27 /* UserDefaults+ChatCamp.swift in Sources */,
+				3561BCFE21BA3F14004A6775 /* ScanResultController.swift in Sources */,
 				351275AC218AECA90057C927 /* BankCell.swift in Sources */,
 				352D126C215E159D0053AD70 /* MyWalletViewController.swift in Sources */,
 				35018B472179EC56009F061C /* CardPayController.swift in Sources */,
@@ -4280,6 +4287,7 @@
 				3561B95021B8FC81004A6775 /* JXBaseRequest.swift in Sources */,
 				3561B95121B8FC81004A6775 /* GroupChannelsViewController.swift in Sources */,
 				3561B95221B8FC81004A6775 /* UserDefaults+ChatCamp.swift in Sources */,
+				3561BD0021BA3F14004A6775 /* ScanResultController.swift in Sources */,
 				3561B95321B8FC81004A6775 /* BankCell.swift in Sources */,
 				3561B95421B8FC81004A6775 /* MyWalletViewController.swift in Sources */,
 				3561B95521B8FC81004A6775 /* CardPayController.swift in Sources */,
@@ -4547,6 +4555,7 @@
 				3561BAD321B8FEE5004A6775 /* JXBaseRequest.swift in Sources */,
 				3561BAD421B8FEE5004A6775 /* GroupChannelsViewController.swift in Sources */,
 				3561BAD521B8FEE5004A6775 /* UserDefaults+ChatCamp.swift in Sources */,
+				3561BD0121BA3F14004A6775 /* ScanResultController.swift in Sources */,
 				3561BAD621B8FEE5004A6775 /* BankCell.swift in Sources */,
 				3561BAD721B8FEE5004A6775 /* MyWalletViewController.swift in Sources */,
 				3561BAD821B8FEE5004A6775 /* CardPayController.swift in Sources */,
@@ -4814,6 +4823,7 @@
 				3561BC5621B8FF8E004A6775 /* JXBaseRequest.swift in Sources */,
 				3561BC5721B8FF8E004A6775 /* GroupChannelsViewController.swift in Sources */,
 				3561BC5821B8FF8E004A6775 /* UserDefaults+ChatCamp.swift in Sources */,
+				3561BCFF21BA3F14004A6775 /* ScanResultController.swift in Sources */,
 				3561BC5921B8FF8E004A6775 /* BankCell.swift in Sources */,
 				3561BC5A21B8FF8E004A6775 /* MyWalletViewController.swift in Sources */,
 				3561BC5B21B8FF8E004A6775 /* CardPayController.swift in Sources */,

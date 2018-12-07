@@ -117,16 +117,20 @@ extension SettingViewController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.backgroundColor = JXFfffffColor
+            backgroundView.layer.cornerRadius = 5
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             

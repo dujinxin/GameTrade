@@ -92,8 +92,13 @@ class HomeReusableView: UICollectionReusableView {
     
     @IBOutlet weak var quickImageView: UIImageView!{
         didSet{
-            quickImageView.tintColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x272732) : JXFfffffColor
-            quickImageView.image = UIImage(named: "quickBG")?.withRenderingMode(.alwaysTemplate)
+
+            if app_style <= 1 {
+                quickImageView.image = UIImage(named: "quickBG")
+            } else {
+                quickImageView.tintColor = JXFfffffColor
+                quickImageView.image = UIImage(named: "quickBG")?.withRenderingMode(.alwaysTemplate)
+            }
             
             quickImageView.layer.cornerRadius = 2
             quickImageView.layer.shadowOpacity = 1

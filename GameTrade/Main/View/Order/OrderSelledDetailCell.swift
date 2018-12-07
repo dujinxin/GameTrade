@@ -168,7 +168,8 @@ class OrderLineView: UIImageView {
     
     var lineColor: UIColor?{
         didSet{
-            layer.addSublayer(self.drawDashLine(rect: frame, lineWidth: 1, lineLength: 3, lineSpace: 3, lineColor: lineColor!))
+            //frame 直接获取到的不随设备改变而改变，只能当前布局的设备相同，所以这里写死了
+            layer.addSublayer(self.drawDashLine(rect: CGRect(0, 0, kScreenWidth - 48, 20), lineWidth: 1, lineLength: 3, lineSpace: 3, lineColor: lineColor!))
             
         }
     }

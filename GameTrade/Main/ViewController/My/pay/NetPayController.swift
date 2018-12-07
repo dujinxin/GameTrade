@@ -21,8 +21,16 @@ class NetPayController: BaseViewController {
     
     var vm = WeChatOrAliVM()
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var accountTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!{
+        didSet{
+            nameLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var accountTextField: UITextField!{
+        didSet{
+            accountTextField.textColor = JXMainTextColor
+        }
+    }
     @IBOutlet weak var userContentView: UIView!{
         didSet{
             userContentView.backgroundColor = JXTextViewBgColor

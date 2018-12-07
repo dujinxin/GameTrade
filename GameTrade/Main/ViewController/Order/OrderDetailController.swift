@@ -274,8 +274,11 @@ extension OrderDetailController {
     @objc func showNoticeView2() {
         let width : CGFloat = kScreenWidth - 24 * 2
         let imageWidth = width - 28 * 2
+        if self.vm.codeImageSize.width <= 0 {
+            return
+        }
         let imageHeight = imageWidth * (self.vm.codeImageSize.height / self.vm.codeImageSize.width)
-        
+   
         let height : CGFloat = imageHeight + 24 + 90
         
         self.noticeView = JXSelectView(frame: CGRect(x: 0, y: 0, width: width, height: height), style: .custom)
@@ -287,18 +290,28 @@ extension OrderDetailController {
             let contentView = UIView()
             contentView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: height)
             
+            
+            
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 24, y: 0, width: width, height: height)
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: imageHeight + 24 + 60)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height - 30)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            } else {
+                let gradientLayer = CALayer()
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height - 30)
+                gradientLayer.cornerRadius = 5
+                gradientLayer.backgroundColor = JXFfffffColor.cgColor
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             let imageView = UIImageView(frame: CGRect(x: 28, y: 24, width: imageWidth, height: imageHeight))
@@ -311,9 +324,9 @@ extension OrderDetailController {
             
             let button = UIButton()
             button.frame = CGRect(x: 0, y: imageView.jxBottom + 30, width: 60, height: 60)
-            button.backgroundColor = UIColor.rgbColor(rgbValue: 0x22222c)
+            button.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x22222c) : JXFfffffColor
             //button.setTitle("×", for: .normal)
-            button.tintColor = JXFfffffColor
+            button.tintColor = JXMainTextColor
             button.setImage(UIImage(named: "Close")?.withRenderingMode(.alwaysTemplate), for: .normal)
             //button.setBackgroundImage(UIImage(named: "close-big"), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
@@ -324,7 +337,7 @@ extension OrderDetailController {
             backgroundView.addSubview(button)
             button.center.x = imageView.center.x
             button.layer.cornerRadius = 30
-            button.layer.borderColor = UIColor.rgbColor(rgbValue: 0x0A0A0E).cgColor
+            button.layer.borderColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x0A0A0E).cgColor : JXSeparatorColor.cgColor
             button.layer.borderWidth = 2.5
             
             
@@ -374,16 +387,20 @@ extension OrderDetailController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.backgroundColor = JXFfffffColor
+            backgroundView.layer.cornerRadius = 5
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             
@@ -477,16 +494,20 @@ extension OrderDetailController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.backgroundColor = JXFfffffColor
+            backgroundView.layer.cornerRadius = 5
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             
@@ -586,16 +607,20 @@ extension OrderDetailController {
             
             let backgroundView = UIView()
             backgroundView.frame = CGRect(x: 40, y: 0, width: width, height: height)
+            backgroundView.backgroundColor = JXFfffffColor
+            backgroundView.layer.cornerRadius = 5
             contentView.addSubview(backgroundView)
             
-            let gradientLayer = CAGradientLayer.init()
-            gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
-            gradientLayer.locations = [0]
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-            gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
-            gradientLayer.cornerRadius = 5
-            backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            if app_style <= 1 {
+                let gradientLayer = CAGradientLayer.init()
+                gradientLayer.colors = [UIColor.rgbColor(rgbValue: 0x383848).cgColor,UIColor.rgbColor(rgbValue: 0x22222c).cgColor]
+                gradientLayer.locations = [0]
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+                gradientLayer.endPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.frame = CGRect(x: 0, y: 0, width: width, height: height)
+                gradientLayer.cornerRadius = 5
+                backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+            }
             
             
             

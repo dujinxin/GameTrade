@@ -10,9 +10,21 @@ import UIKit
 
 class CardPayController: BaseViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var bankNameLabel: UILabel!
-    @IBOutlet weak var cardTextField: UITextField!
+    @IBOutlet weak var nameLabel: UILabel!{
+        didSet{
+            nameLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var bankNameLabel: UILabel!{
+        didSet{
+            bankNameLabel.textColor = JXMainTextColor
+        }
+    }
+    @IBOutlet weak var cardTextField: UITextField!{
+        didSet{
+            cardTextField.textColor = JXMainTextColor
+        }
+    }
     @IBOutlet weak var userContentView: UIView!{
         didSet{
             userContentView.backgroundColor = JXTextViewBgColor

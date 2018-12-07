@@ -23,39 +23,93 @@ class ForgotViewController: BaseViewController {
             loginLittleLabel.textColor = JXLittleTitleColor
         }
     }
-    @IBOutlet weak var userTextField: UITextField!
-    @IBOutlet weak var imageTextField: UITextField!
-    @IBOutlet weak var codeTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var userTextField: UITextField!{
+        didSet{
+            userTextField.textColor = JXMainTextColor
+            userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        }
+    }
+    @IBOutlet weak var imageTextField: UITextField!{
+        didSet{
+            imageTextField.textColor = JXMainTextColor
+            imageTextField.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        }
+    }
+    @IBOutlet weak var codeTextField: UITextField!{
+        didSet{
+            codeTextField.textColor = JXMainTextColor
+            codeTextField.attributedPlaceholder = NSAttributedString(string: "4位手机验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+        }
+    }
+    @IBOutlet weak var passwordTextField: UITextField!{
+        didSet{
+            passwordTextField.textColor = JXMainTextColor
+            passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入8-20位密码，不能全是数字或字母", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
+            passwordTextField.rightViewMode = .always
+            passwordTextField.rightView = {() -> UIView in
+                let button = UIButton(type: .custom)
+                button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+                button.setImage(UIImage(named: "icon_eye closed"), for: .normal)
+                button.setImage(UIImage(named: "icon_eye open"), for: .selected)
+                button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
+                button.isSelected = false
+                button.tag = 1
+                return button
+            }()
+        }
+    }
     @IBOutlet weak var userContentView: UIView!{
         didSet{
-            userContentView.backgroundColor = JXTextViewBgColor
+            userContentView.backgroundColor = JXTextViewBg1Color
         }
     }
     @IBOutlet weak var imageContentView: UIView!{
         didSet{
-            imageContentView.backgroundColor = JXTextViewBgColor
+            imageContentView.backgroundColor = JXTextViewBg1Color
         }
     }
     @IBOutlet weak var codeContentView: UIView!{
         didSet{
-            codeContentView.backgroundColor = JXTextViewBgColor
+            codeContentView.backgroundColor = JXTextViewBg1Color
         }
     }
     @IBOutlet weak var passwordContentView: UIView!{
         didSet{
-            passwordContentView.backgroundColor = JXTextViewBgColor
+            passwordContentView.backgroundColor = JXTextViewBg1Color
         }
     }
-    @IBOutlet weak var fetchButton: UIButton!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var lookButton: UIButton!
+    @IBOutlet weak var fetchButton: UIButton!{
+        didSet{
+            fetchButton.setTitleColor(JXFfffffColor, for: .normal)
+            fetchButton.backgroundColor = JXMainColor
+        }
+    }
+    @IBOutlet weak var loginButton: UIButton!{
+        didSet{
+            loginButton.backgroundColor = JXMainColor
+            loginButton.setTitleColor(JXFfffffColor, for: .normal)
+            loginButton.layer.cornerRadius = 3
+        }
+    }
+    @IBOutlet weak var lookButton: UIButton!{
+        didSet{
+            lookButton.backgroundColor = JXFfffffColor
+            
+            let url = URL.init(string: String(format: "%@%@?deviceId=%@&method=resetPwd&random=%d", kBaseUrl,ApiString.getImageCode.rawValue,UIDevice.current.uuid,arc4random_uniform(100000)))
+            
+            lookButton.sd_setImage(with: url, for: .normal, completed: nil)
+        }
+    }
     @IBOutlet weak var infoLabel: UILabel!{
         didSet{
             infoLabel.textColor = JXMainTextColor
         }
     }
-    @IBOutlet weak var goLoginButton: UIButton!
+    @IBOutlet weak var goLoginButton: UIButton!{
+        didSet{
+            goLoginButton.setTitleColor(JXMainColor, for: .normal)
+        }
+    }
     
     
     @IBOutlet weak var topConstraints: NSLayoutConstraint!
@@ -89,47 +143,10 @@ class ForgotViewController: BaseViewController {
         }
         self.view.addSubview(self.keyboard)
         
-        self.loginTitleLabel.textColor = JXMainTextColor
-        self.loginLittleLabel.textColor = JXMainText50Color
-        self.loginButton.backgroundColor = JXMainColor
-        self.loginButton.setTitleColor(JXFfffffColor, for: .normal)
-        self.loginButton.layer.cornerRadius = 3
-      
-        self.goLoginButton.setTitleColor(JXMainColor, for: .normal)
         
-        self.lookButton.backgroundColor = JXFfffffColor
-        self.fetchButton.setTitleColor(JXFfffffColor, for: .normal)
-        self.fetchButton.backgroundColor = JXMainColor
-        
-        self.userTextField.attributedPlaceholder = NSAttributedString(string: "手机号码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        self.imageTextField.attributedPlaceholder = NSAttributedString(string: "图片验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        self.codeTextField.attributedPlaceholder = NSAttributedString(string: "4位手机验证码", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "输入8-20位密码，不能全是数字或字母", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14),NSAttributedString.Key.foregroundColor:JXPlaceHolerColor])
-        
-        self.userTextField.textColor = JXMainTextColor
-        self.imageTextField.textColor = JXMainTextColor
-        self.codeTextField.textColor = JXMainTextColor
-        self.passwordTextField.textColor = JXMainTextColor
-        
-        self.passwordTextField.rightViewMode = .always
-        self.passwordTextField.rightView = {() -> UIView in
-            let button = UIButton(type: .custom)
-            button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            button.setImage(UIImage(named: "icon_eye closed"), for: .normal)
-            button.setImage(UIImage(named: "icon_eye open"), for: .selected)
-            button.addTarget(self, action: #selector(switchPsd), for: .touchUpInside)
-            button.isSelected = false
-            button.tag = 1
-            return button
-        }()
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
-        
-        
-        let url = URL.init(string: String(format: "%@%@?deviceId=%@&method=resetPwd&random=%d", kBaseUrl,ApiString.getImageCode.rawValue,UIDevice.current.uuid,arc4random_uniform(100000)))
-        
-        self.lookButton.sd_setImage(with: url, for: .normal, completed: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notify:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notify:)), name: UIResponder.keyboardWillHideNotification, object: nil)

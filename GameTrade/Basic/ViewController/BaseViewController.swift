@@ -21,7 +21,7 @@ open class BaseViewController: UIViewController {
         let navigationBar = JXNavigationBar(frame:CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: kNavStatusHeight))
         navigationBar.barTintColor = UIColor.clear//导航条颜色,透明色不起作用
         navigationBar.isTranslucent = true
-        navigationBar.barStyle = .blackTranslucent
+        navigationBar.barStyle = app_style <= 1 ? .blackTranslucent : .default
         //navigationBar.barStyle = .default
         navigationBar.tintColor = app_style <= 1 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000) //item图片文字颜色
         navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: app_style <= 1 ? JXFfffffColor : UIColor.rgbColor(rgbValue: 0x000000),NSAttributedString.Key.font:UIFont.systemFont(ofSize: 17)]//标题设置
@@ -86,7 +86,11 @@ open class BaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     override open var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        if app_style <= 1 {
+            return .lightContent
+        } else {
+            return .default
+        }
     }
     open func isCustomNavigationBarUsed() -> Bool{
         return true

@@ -37,6 +37,11 @@ open class ChatTableViewCell: UITableViewCell {
             lastMessageLabel.text = ""
         }
     }
+    @IBOutlet weak var separatorView: UIView!{
+        didSet{
+            separatorView.backgroundColor = JXSeparatorColor
+        }
+    }
     
     var user: ParticipantViewModelItem? {
         didSet {

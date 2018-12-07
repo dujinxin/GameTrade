@@ -29,7 +29,7 @@ class TabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
 
         //UITabBar.appearance()
-        tabBar.barTintColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x31313f) : JXFfffffColor
+        tabBar.barTintColor = JXUIBarBgColor
         tabBar.isTranslucent = false
         tabBar.tintColor = JXMainColor
         

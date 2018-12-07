@@ -34,6 +34,10 @@ class MerchantViewController: JXCollectionViewController {
         
         //self.title = "商家"
         
+        let item = UIBarButtonItem(image: UIImage(named: "icon-back"), style: .plain, target: self, action: #selector(backTo))
+        item.tintColor = JXFfffffColor
+        self.customNavigationItem.leftBarButtonItem = item
+        
         self.collectionView?.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
         // Register cell classes
         self.collectionView?.register(UINib.init(nibName: "MerchantSubCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
@@ -67,6 +71,9 @@ class MerchantViewController: JXCollectionViewController {
     deinit {
         
     }
+    override open var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        switch segue.identifier {
 //        case "invite":
@@ -87,7 +94,9 @@ class MerchantViewController: JXCollectionViewController {
             }
             self.collectionView?.reloadData()
         }
-        
+    }
+    @objc func backTo() {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 extension MerchantViewController {

@@ -29,6 +29,7 @@ class BankListController: JXTableViewController {
         vc.searchBar.placeholder = "开户银行"
         vc.searchBar.showsCancelButton = false
         vc.searchBar.isTranslucent = true
+        vc.searchBar.keyboardType = .namePhonePad
         
         let searchField = vc.searchBar.value(forKey: "searchField") as? UITextField
         searchField?.textColor = JXMainTextColor
@@ -82,7 +83,7 @@ class BankListController: JXTableViewController {
             return UIView()
         } else {
             let contentView = UIView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 40))
-            contentView.backgroundColor = UIColor.rgbColor(rgbValue: 0x24242f)
+            contentView.backgroundColor = app_style <= 1 ? UIColor.rgbColor(rgbValue: 0x24242f) : UIColor.groupTableViewBackground
             
             let label = UILabel(frame: CGRect(x: 24, y: 0, width: 100, height: 40))
             label.textColor = JXMainTextColor
