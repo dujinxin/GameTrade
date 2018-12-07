@@ -85,7 +85,10 @@ let JXTextViewBgColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
 let JXTextViewBg1Color = JXViewBgColor
 let JXTextViewBg2Color = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.4)
 let JXUIBarBgColor = UIColor.rgbColor(rgbValue: 0x31313f)
+let JXMerchantIconBgColor = UIColor.rgbColor(rgbValue: 0x555470)
+let JXMerchantIconTextColor = UIColor.rgbColor(rgbValue: 0x222133)
 let JXSeparatorColor = UIColor.rgbColor(rgbValue: 0x464855)
+
 
 let JXLargeTitleColor = JXMainTextColor
 let JXLittleTitleColor = JXMainText50Color
@@ -105,6 +108,8 @@ let JXTextViewBgColor = UIColor.rgbColor(rgbValue: 0xe8e8e8)
 let JXTextViewBg1Color = JXTextViewBgColor
 let JXTextViewBg2Color = UIColor.rgbColor(rgbValue: 0xb7b7b7, alpha: 0.44)
 let JXUIBarBgColor = JXFfffffColor
+let JXMerchantIconBgColor = JXMainColor
+let JXMerchantIconTextColor = JXFfffffColor
 
 let JXLargeTitleColor = JXBlueColor
 let JXLittleTitleColor = JXBlue60Color
@@ -124,6 +129,8 @@ let JXTextViewBgColor = UIColor.rgbColor(rgbValue: 0xe8e8e8)
 let JXTextViewBg1Color = JXTextViewBgColor
 let JXTextViewBg2Color = UIColor.rgbColor(rgbValue: 0xb7b7b7, alpha: 0.44)
 let JXUIBarBgColor = JXFfffffColor
+let JXMerchantIconBgColor = JXMainColor
+let JXMerchantIconTextColor = JXFfffffColor
 
 let JXLargeTitleColor = JXOrangeColor
 let JXLittleTitleColor = JXOrange60Color
@@ -143,6 +150,8 @@ let JXTextViewBgColor = UIColor.rgbColor(rgbValue: 0x2f2f3c)
 let JXTextViewBg1Color = JXViewBgColor
 let JXTextViewBg2Color = UIColor.rgbColor(rgbValue: 0x000000, alpha: 0.4)
 let JXUIBarBgColor = UIColor.rgbColor(rgbValue: 0x31313f)
+let JXMerchantIconBgColor = UIColor.rgbColor(rgbValue: 0x555470)
+let JXMerchantIconTextColor = UIColor.rgbColor(rgbValue: 0x222133)
 let JXSeparatorColor = UIColor.rgbColor(rgbValue: 0x464855)
 
 let JXLargeTitleColor = JXMainTextColor

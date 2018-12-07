@@ -15,7 +15,7 @@ class MerchantReusableView: UICollectionReusableView {
     
     @IBOutlet weak var MerchantImageView: UIImageView!{
         didSet{
-        MerchantImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
+            MerchantImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
             MerchantImageView.isUserInteractionEnabled = true
             MerchantImageView.backgroundColor = UIColor.red
             MerchantImageView.layer.cornerRadius = 34
@@ -25,8 +25,16 @@ class MerchantReusableView: UICollectionReusableView {
     }
     @IBOutlet weak var merchantLabel: UILabel!{
         didSet{
+            merchantLabel.textColor = JXMerchantIconTextColor
+            merchantLabel.backgroundColor = JXMerchantIconBgColor
             merchantLabel.layer.cornerRadius = 34
             merchantLabel.layer.masksToBounds = true
+            if app_style <= 1 {
+                
+            } else {
+                merchantLabel.layer.borderColor = JXFfffffColor.cgColor
+                merchantLabel.layer.borderWidth = 2
+            }
         }
     }
     @IBOutlet weak var MerchantNameLabel: UILabel!{

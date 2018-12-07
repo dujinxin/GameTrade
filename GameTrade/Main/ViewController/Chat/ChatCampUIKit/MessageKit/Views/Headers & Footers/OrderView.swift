@@ -22,10 +22,10 @@ class OrderView: UIView {
 //        v.clipsToBounds = true
 //        v.backgroundColor = JXMainColor
         let v = UILabel()
-        v.textColor = UIColor.rgbColor(rgbValue: 0x222133)
+        v.textColor = JXMerchantIconTextColor
+        v.backgroundColor = JXMerchantIconBgColor
         v.font = UIFont.systemFont(ofSize: 20)
         v.textAlignment = .center
-        v.backgroundColor = UIColor.rgbColor(rgbValue: 0x2f2f3d)
         v.layer.cornerRadius = 20
         v.layer.masksToBounds = true
         return v

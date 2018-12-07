@@ -90,8 +90,18 @@ class OrderBuyingDetailCell: UITableViewCell {
     @IBOutlet weak var shopImageView: UIImageView!
     @IBOutlet weak var shopLabel: UILabel!{
         didSet{
+            shopLabel.textColor = JXMerchantIconTextColor
+            shopLabel.backgroundColor = JXMerchantIconBgColor
+            
             shopLabel.layer.cornerRadius = 20
             shopLabel.layer.masksToBounds = true
+            
+            if app_style <= 1 {
+                
+            } else {
+                shopLabel.layer.borderColor = JXFfffffColor.cgColor
+                shopLabel.layer.borderWidth = 2
+            }
         }
     }
     @IBOutlet weak var shopNameLabel: UILabel!

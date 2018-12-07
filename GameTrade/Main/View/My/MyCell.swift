@@ -41,7 +41,7 @@ class MyCell: UITableViewCell {
     }
     @IBOutlet weak var userImageView: UIImageView!{
         didSet{
-            userImageView.backgroundColor = JXMainColor
+            userImageView.backgroundColor = app_style <= 1 ? UIColor.clear : JXFfffffColor
             userImageView.layer.cornerRadius = 34
             userImageView.layer.masksToBounds = true
             userImageView.clipsToBounds = true

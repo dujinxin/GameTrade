@@ -57,7 +57,22 @@ class OrderBuyedDetailCell: UITableViewCell {
     
     @IBOutlet weak var shopView: UIView!
     @IBOutlet weak var shopImageView: UIImageView!
-    @IBOutlet weak var shopLabel: UILabel!
+    @IBOutlet weak var shopLabel: UILabel!{
+        didSet{
+            shopLabel.textColor = JXMerchantIconTextColor
+            shopLabel.backgroundColor = JXMerchantIconBgColor
+            
+            shopLabel.layer.cornerRadius = 20
+            shopLabel.layer.masksToBounds = true
+            
+            if app_style <= 1 {
+                
+            } else {
+                shopLabel.layer.borderColor = JXFfffffColor.cgColor
+                shopLabel.layer.borderWidth = 2
+            }
+        }
+    }
     @IBOutlet weak var shopNameLabel: UILabel!
     
     @IBOutlet weak var noticeLabel: UILabel!
@@ -108,8 +123,7 @@ class OrderBuyedDetailCell: UITableViewCell {
         self.line4.backgroundColor = JXSeparatorColor
         self.line5.backgroundColor = JXSeparatorColor
         
-        self.shopLabel.layer.cornerRadius = 20
-        self.shopLabel.layer.masksToBounds = true
+        
         
         self.chatButton.addTarget(self, action: #selector(chat), for: .touchUpInside)
         

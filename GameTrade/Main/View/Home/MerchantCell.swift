@@ -32,9 +32,11 @@ class MerchantCell: UICollectionViewCell {
     
     @IBOutlet weak var merchantLabel: UILabel!{
         didSet{
+            merchantLabel.textColor = JXMerchantIconTextColor
+            merchantLabel.backgroundColor = JXMerchantIconBgColor
             merchantLabel.layer.cornerRadius = 15
             merchantLabel.layer.masksToBounds = true
-        merchantLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
+            merchantLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(merchant)))
         }
     }
     @IBOutlet weak var MerchantNameLabel: UILabel!{

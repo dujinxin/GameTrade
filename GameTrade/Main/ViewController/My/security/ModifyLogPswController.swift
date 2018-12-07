@@ -100,9 +100,6 @@ class ModifyLogPswController: BaseViewController {
         
         self.view.addSubview(self.keyboard)
         
-        self.loginTitleLabel.textColor = JXMainTextColor
-        self.loginLittleLabel.textColor = JXMainText50Color
-       
         
         NotificationCenter.default.addObserver(self, selector: #selector(textChange(notify:)), name: UITextField.textDidChangeNotification, object: nil)
         
