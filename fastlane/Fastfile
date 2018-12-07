@@ -27,19 +27,35 @@ platform :ios do
 
 #debug包
   lane :debug_package do
-    k_env_prefix ="debug_"
+    k_env_prefix = "debug_"
     k_export_method = "development"
     package(configuration: "Debug")
   end
 
 #release包
   lane :release_package do
-    k_env_prefix ="adhoc_"
+    k_env_prefix = "adhoc_"
     k_export_method = "ad-hoc"
     package(configuration: "Release")
 
     pgyer(api_key: "2455364b6a08c261b84cfbe7fff55fba", user_key: "ad18b738e7854bf3c689ecfe71f1b7a5", update_description: "update by fastlane")#蒲公英设置查看key
   end
+
+
+
+#release包 蓝色风格
+  lane :release_blue_package do
+    k_env_prefix = "adhoc_"
+    k_export_method = "ad-hoc"
+    k_scheme_name = "GameTrade_blue"
+    k_app_info_plist_path = "./GameTrade_blue/GameTrade_blue-Info.plist"
+
+    package(configuration: "Release")
+
+    pgyer(api_key: "2455364b6a08c261b84cfbe7fff55fba", user_key: "ad18b738e7854bf3c689ecfe71f1b7a5", update_description: "update by fastlane")#蒲公英设置查看key
+  end
+
+
 
 #发布包 "Push a new release build to the App Store"
   lane :appstore_package do
@@ -58,10 +74,16 @@ platform :ios do
     increment_build_number
 
     #获取version和build版本号
-    k_version = get_info_plist_value(path: "./#{k_scheme_name}/Info.plist", key: "CFBundleShortVersionString")
-    k_build = get_info_plist_value(path: "./#{k_scheme_name}/Info.plist", key: "CFBundleVersion")
-    k_ipa_name = "#{k_env_prefix}" + "#{k_app_name}_"  +  "#{k_ipa_time}_" + "#{k_version}" +"_#{k_build}"+ ".ipa"
+    #k_version = get_info_plist_value(path: "./#{k_scheme_name}/Info.plist", key: "CFBundleShortVersionString")
+    #k_build = get_info_plist_value(path: "./#{k_scheme_name}/Info.plist", key: "CFBundleVersion")
 
+    k_version = get_info_plist_value(path: "./#{k_app_info_plist_path}", key: "CFBundleShortVersionString")
+    k_build = get_info_plist_value(path: "./#{k_app_info_plist_path}", key: "CFBundleVersion")
+
+
+
+    k_ipa_name = "#{k_env_prefix}" + "#{k_app_name}_"  +  "#{k_ipa_time}_" + "#{k_version}" +"_#{k_build}"+ ".ipa"
+    
 
     gym(
 

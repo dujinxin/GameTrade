@@ -76,9 +76,7 @@ class MyViewController: BaseViewController,UITableViewDelegate,UITableViewDataSo
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "accound" {
-            if let vc = segue.destination as? AccountViewController,let mobile = sender as? String {
-                vc.mobile = mobile
-            }
+            
         }
     }
     override func isCustomNavigationBarUsed() -> Bool {

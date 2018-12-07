@@ -15,8 +15,6 @@
 		35018B1F2175CCA5009F061C /* SellCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B1D2175CCA5009F061C /* SellCell.xib */; };
 		35018B212175DCF5009F061C /* PutUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B202175DCF5009F061C /* PutUpViewController.swift */; };
 		35018B2321771B3E009F061C /* OrderListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B2221771B3E009F061C /* OrderListController.swift */; };
-		35018B2A21771BD2009F061C /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B2821771BD2009F061C /* OrderCell.swift */; };
-		35018B2B21771BD2009F061C /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B2921771BD2009F061C /* OrderCell.xib */; };
 		35018B302177303B009F061C /* MerchantReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B2E2177303B009F061C /* MerchantReusableView.swift */; };
 		35018B312177303B009F061C /* MerchantReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B2F2177303B009F061C /* MerchantReusableView.xib */; };
 		35018B3321773BA1009F061C /* MerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B3221773BA1009F061C /* MerchantViewController.swift */; };
@@ -33,8 +31,6 @@
 		35018B4D217B1EB6009F061C /* HelpFeedBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B4C217B1EB6009F061C /* HelpFeedBackController.swift */; };
 		35018B4F217B20F5009F061C /* FeedBackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B4E217B20F5009F061C /* FeedBackController.swift */; };
 		351275792186C0EC0057C927 /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275782186C0EC0057C927 /* UIImage+Ex.swift */; };
-		3512757C2186FBFC0057C927 /* WalletListPayingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512757A2186FBFC0057C927 /* WalletListPayingCell.swift */; };
-		3512757D2186FBFC0057C927 /* WalletListPayingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512757B2186FBFC0057C927 /* WalletListPayingCell.xib */; };
 		351275802186FC200057C927 /* WalletListPayedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512757E2186FC200057C927 /* WalletListPayedCell.swift */; };
 		351275812186FC200057C927 /* WalletListPayedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512757F2186FC200057C927 /* WalletListPayedCell.xib */; };
 		351275842186FC370057C927 /* WalletListTransferCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275822186FC370057C927 /* WalletListTransferCell.swift */; };
@@ -105,29 +101,16 @@
 		352D121E215E159D0053AD70 /* CommonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1138215E159C0053AD70 /* CommonManager.swift */; };
 		352D1220215E159D0053AD70 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D113B215E159C0053AD70 /* UserManager.swift */; };
 		352D1221215E159D0053AD70 /* HomeReusableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1142215E159C0053AD70 /* HomeReusableVM.swift */; };
-		352D1222215E159D0053AD70 /* ArticleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1143215E159C0053AD70 /* ArticleVM.swift */; };
 		352D1223215E159D0053AD70 /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1144215E159C0053AD70 /* HomeVM.swift */; };
 		352D1224215E159D0053AD70 /* PayVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1145215E159C0053AD70 /* PayVM.swift */; };
 		352D1225215E159D0053AD70 /* MyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1146215E159C0053AD70 /* MyVM.swift */; };
 		352D1227215E159D0053AD70 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1148215E159C0053AD70 /* LoginVM.swift */; };
-		352D1228215E159D0053AD70 /* PaperVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1149215E159C0053AD70 /* PaperVM.swift */; };
-		352D122A215E159D0053AD70 /* CommentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114B215E159C0053AD70 /* CommentVM.swift */; };
-		352D122B215E159D0053AD70 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114D215E159C0053AD70 /* CommentModel.swift */; };
 		352D122C215E159D0053AD70 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114E215E159C0053AD70 /* WalletModel.swift */; };
-		352D122D215E159D0053AD70 /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114F215E159C0053AD70 /* CommenModel.swift */; };
 		352D122E215E159D0053AD70 /* BuyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1150215E159C0053AD70 /* BuyModel.swift */; };
-		352D122F215E159D0053AD70 /* PaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1151215E159C0053AD70 /* PaperModel.swift */; };
 		352D1230215E159D0053AD70 /* PayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1152215E159C0053AD70 /* PayModel.swift */; };
-		352D1231215E159D0053AD70 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1153215E159C0053AD70 /* ArticleModel.swift */; };
 		352D1232215E159D0053AD70 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1154215E159C0053AD70 /* UserModel.swift */; };
 		352D1233215E159D0053AD70 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1155215E159C0053AD70 /* HomeModel.swift */; };
 		352D1234215E159D0053AD70 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1156215E159C0053AD70 /* MyModel.swift */; };
-		352D1235215E159D0053AD70 /* PaperDetailTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1159215E159C0053AD70 /* PaperDetailTopCell.swift */; };
-		352D1236215E159D0053AD70 /* PaperListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115A215E159C0053AD70 /* PaperListCell.xib */; };
-		352D1237215E159D0053AD70 /* PaperDetailCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115B215E159C0053AD70 /* PaperDetailCommonCell.xib */; };
-		352D1238215E159D0053AD70 /* PaperDetailCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D115C215E159C0053AD70 /* PaperDetailCommonCell.swift */; };
-		352D1239215E159D0053AD70 /* PaperListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D115D215E159C0053AD70 /* PaperListCell.swift */; };
-		352D123A215E159D0053AD70 /* PaperDetailTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115E215E159C0053AD70 /* PaperDetailTopCell.xib */; };
 		352D123C215E159D0053AD70 /* HomeReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1161215E159C0053AD70 /* HomeReusableView.xib */; };
 		352D123E215E159D0053AD70 /* HomeReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1163215E159C0053AD70 /* HomeReusableView.swift */; };
 		352D123F215E159D0053AD70 /* JXPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1165215E159C0053AD70 /* JXPlaceHolderTextView.swift */; };
@@ -139,8 +122,6 @@
 		352D1245215E159D0053AD70 /* JXHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116B215E159C0053AD70 /* JXHorizontalView.swift */; };
 		352D1246215E159D0053AD70 /* JXInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116C215E159C0053AD70 /* JXInputTextView.swift */; };
 		352D1247215E159D0053AD70 /* JXAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116D215E159C0053AD70 /* JXAlertView.swift */; };
-		352D1248215E159D0053AD70 /* SmartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116F215E159C0053AD70 /* SmartCell.swift */; };
-		352D1249215E159D0053AD70 /* SmartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1170215E159C0053AD70 /* SmartCell.xib */; };
 		352D124B215E159D0053AD70 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1173215E159C0053AD70 /* MyCell.swift */; };
 		352D124C215E159D0053AD70 /* MyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1174215E159C0053AD70 /* MyCell.xib */; };
 		352D124D215E159D0053AD70 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1175215E159C0053AD70 /* PersonCell.swift */; };
@@ -149,28 +130,16 @@
 		352D1251215E159D0053AD70 /* PropertyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1179215E159C0053AD70 /* PropertyCell.swift */; };
 		352D1252215E159D0053AD70 /* ImageTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D117A215E159C0053AD70 /* ImageTitleCell.swift */; };
 		352D1253215E159D0053AD70 /* PropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D117B215E159C0053AD70 /* PropertyCell.xib */; };
-		352D1258215E159D0053AD70 /* WalletHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1182215E159C0053AD70 /* WalletHeadCell.swift */; };
 		352D1259215E159D0053AD70 /* PropertyViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1183215E159C0053AD70 /* PropertyViewCell.xib */; };
 		352D125A215E159D0053AD70 /* JXActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1184215E159C0053AD70 /* JXActionCell.swift */; };
 		352D125B215E159D0053AD70 /* JXActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1185215E159C0053AD70 /* JXActionCell.xib */; };
-		352D125C215E159D0053AD70 /* WalletHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1186215E159C0053AD70 /* WalletHeadCell.xib */; };
 		352D125D215E159D0053AD70 /* PropertyViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1187215E159C0053AD70 /* PropertyViewCell.swift */; };
-		352D125E215E159D0053AD70 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1189215E159C0053AD70 /* ArticleCell.swift */; };
-		352D125F215E159D0053AD70 /* BottomInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118A215E159C0053AD70 /* BottomInputView.xib */; };
-		352D1260215E159D0053AD70 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118B215E159C0053AD70 /* CommentCell.xib */; };
-		352D1261215E159D0053AD70 /* BottomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D118C215E159C0053AD70 /* BottomInputView.swift */; };
-		352D1262215E159D0053AD70 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D118D215E159C0053AD70 /* CommentCell.swift */; };
-		352D1263215E159D0053AD70 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118E215E159C0053AD70 /* ArticleCell.xib */; };
 		352D1264215E159D0053AD70 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1191215E159C0053AD70 /* HelpViewController.swift */; };
-		352D1267215E159D0053AD70 /* SmartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1194215E159C0053AD70 /* SmartViewController.swift */; };
 		352D1268215E159D0053AD70 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1195215E159C0053AD70 /* MainViewController.swift */; };
 		352D1269215E159D0053AD70 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1196215E159C0053AD70 /* MyViewController.swift */; };
 		352D126A215E159D0053AD70 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1197215E159C0053AD70 /* ScanViewController.swift */; };
 		352D126B215E159D0053AD70 /* PropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1199215E159C0053AD70 /* PropertyViewController.swift */; };
 		352D126C215E159D0053AD70 /* MyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D119A215E159C0053AD70 /* MyWalletViewController.swift */; };
-		352D126F215E159D0053AD70 /* PersonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D119D215E159C0053AD70 /* PersonInfoViewController.swift */; };
-		352D1272215E159D0053AD70 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A0215E159C0053AD70 /* AccountViewController.swift */; };
-		352D1273215E159D0053AD70 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A1215E159C0053AD70 /* AboutUsViewController.swift */; };
 		352D1274215E159D0053AD70 /* ModifyImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A3215E159C0053AD70 /* ModifyImageController.swift */; };
 		352D1278215E159D0053AD70 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11A7215E159C0053AD70 /* Task.storyboard */; };
 		352D1279215E159D0053AD70 /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11AA215E159C0053AD70 /* TransferViewController.swift */; };
@@ -179,34 +148,23 @@
 		352D1281215E159D0053AD70 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11B2215E159C0053AD70 /* String+Extension.swift */; };
 		352D1282215E159D0053AD70 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11B3215E159C0053AD70 /* Wallet.storyboard */; };
 		352D128E215E159D0053AD70 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C2215E159C0053AD70 /* SettingViewController.swift */; };
-		352D1291215E159D0053AD70 /* ArticleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C7215E159C0053AD70 /* ArticleListController.swift */; };
-		352D1292215E159D0053AD70 /* ArticleDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C8215E159C0053AD70 /* ArticleDetailsController.swift */; };
-		352D1293215E159D0053AD70 /* ChainInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C9215E159C0053AD70 /* ChainInfoController.swift */; };
-		352D1294215E159D0053AD70 /* PaperDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CA215E159C0053AD70 /* PaperDetailController.swift */; };
-		352D1295215E159D0053AD70 /* Smart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11CB215E159C0053AD70 /* Smart.storyboard */; };
-		352D1296215E159D0053AD70 /* PaperListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CC215E159C0053AD70 /* PaperListController.swift */; };
 		352D1297215E159D0053AD70 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CD215E159C0053AD70 /* TabBarViewController.swift */; };
 		3561B87521B8FC81004A6775 /* BuyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1150215E159C0053AD70 /* BuyModel.swift */; };
 		3561B87621B8FC81004A6775 /* MessagesViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28072199A0FB00CAFB27 /* MessagesViewController+Menu.swift */; };
-		3561B87721B8FC81004A6775 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A1215E159C0053AD70 /* AboutUsViewController.swift */; };
 		3561B87821B8FC81004A6775 /* OrderSellingDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2AF21906C6C00494929 /* OrderSellingDetailCell.swift */; };
 		3561B87921B8FC81004A6775 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1126215E159C0053AD70 /* UIViewController+Extension.swift */; };
-		3561B87A21B8FC81004A6775 /* PaperListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D115D215E159C0053AD70 /* PaperListCell.swift */; };
 		3561B87B21B8FC81004A6775 /* MessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE283E2199A0FB00CAFB27 /* MessageContent.swift */; };
 		3561B87C21B8FC81004A6775 /* JSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10CB215E159C0053AD70 /* JSTableViewController.swift */; };
 		3561B87D21B8FC81004A6775 /* UIView+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28432199A0FB00CAFB27 /* UIView+ChatCamp.swift */; };
 		3561B87E21B8FC81004A6775 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F82199A0FB00CAFB27 /* UIView+Extensions.swift */; };
 		3561B87F21B8FC81004A6775 /* ApiEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1133215E159C0053AD70 /* ApiEnum.swift */; };
 		3561B88021B8FC81004A6775 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28192199A0FB00CAFB27 /* MessageLabel.swift */; };
-		3561B88121B8FC81004A6775 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B2821771BD2009F061C /* OrderCell.swift */; };
 		3561B88221B8FC81004A6775 /* MessageIntermediateLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27E82199A0FB00CAFB27 /* MessageIntermediateLayoutAttributes.swift */; };
 		3561B88321B8FC81004A6775 /* JXSecretTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8541C218305AC0036AD6A /* JXSecretTextView.swift */; };
-		3561B88421B8FC81004A6775 /* SmartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1194215E159C0053AD70 /* SmartViewController.swift */; };
 		3561B88521B8FC81004A6775 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D521A2EDC700F9725C /* SettingVM.swift */; };
 		3561B88621B8FC81004A6775 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE284D2199A0FB00CAFB27 /* ChatTableViewCell.swift */; };
 		3561B88721B8FC81004A6775 /* JXNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1131215E159C0053AD70 /* JXNetworkManager.swift */; };
 		3561B88821B8FC81004A6775 /* OrderedListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8542E21843DB40036AD6A /* OrderedListCell.swift */; };
-		3561B88921B8FC81004A6775 /* CommentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114B215E159C0053AD70 /* CommentVM.swift */; };
 		3561B88A21B8FC81004A6775 /* JXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10C6215E159C0053AD70 /* JXCollectionViewController.swift */; };
 		3561B88B21B8FC81004A6775 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1134215E159C0053AD70 /* Encryption.swift */; };
 		3561B88C21B8FC81004A6775 /* SellCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B1A2175CC8A009F061C /* SellCollectionController.swift */; };
@@ -221,7 +179,6 @@
 		3561B89521B8FC81004A6775 /* NewSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2BB21957FDC00494929 /* NewSellController.swift */; };
 		3561B89621B8FC81004A6775 /* OpenChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28352199A0FB00CAFB27 /* OpenChannelsViewController.swift */; };
 		3561B89721B8FC81004A6775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28312199A0FB00CAFB27 /* ViewController.swift */; };
-		3561B89821B8FC81004A6775 /* ChainInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C9215E159C0053AD70 /* ChainInfoController.swift */; };
 		3561B89921B8FC81004A6775 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28522199A0FB00CAFB27 /* RecordButton.swift */; };
 		3561B89A21B8FC81004A6775 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F92199A0FB00CAFB27 /* String+Extensions.swift */; };
 		3561B89B21B8FC81004A6775 /* ConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E1218C2AFB00ECD3C9 /* ConfirmController.swift */; };
@@ -253,7 +210,6 @@
 		3561B8B521B8FC81004A6775 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D112D215E159C0053AD70 /* ViewManager.swift */; };
 		3561B8B621B8FC81004A6775 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1122215E159C0053AD70 /* UIDevice+Extension.swift */; };
 		3561B8B721B8FC81004A6775 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27FE2199A0FB00CAFB27 /* UICollectionView+Extensions.swift */; };
-		3561B8B821B8FC81004A6775 /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114F215E159C0053AD70 /* CommenModel.swift */; };
 		3561B8B921B8FC81004A6775 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27E42199A0FB00CAFB27 /* DBManager.swift */; };
 		3561B8BA21B8FC81004A6775 /* NameSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE2938219D814900CAFB27 /* NameSetController.swift */; };
 		3561B8BB21B8FC81004A6775 /* MerchantSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512759A2188763D0057C927 /* MerchantSubCell.swift */; };
@@ -280,9 +236,7 @@
 		3561B8D021B8FC81004A6775 /* JXDropListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8541621806C240036AD6A /* JXDropListView.swift */; };
 		3561B8D121B8FC81004A6775 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27EF2199A0FB00CAFB27 /* Sender.swift */; };
 		3561B8D221B8FC81004A6775 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28302199A0FB00CAFB27 /* ChatViewController.swift */; };
-		3561B8D321B8FC81004A6775 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1189215E159C0053AD70 /* ArticleCell.swift */; };
 		3561B8D421B8FC81004A6775 /* MessagesLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28292199A0FB00CAFB27 /* MessagesLayoutDelegate.swift */; };
-		3561B8D521B8FC81004A6775 /* PaperDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CA215E159C0053AD70 /* PaperDetailController.swift */; };
 		3561B8D621B8FC81004A6775 /* JXActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1184215E159C0053AD70 /* JXActionCell.swift */; };
 		3561B8D721B8FC81004A6775 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28052199A0FB00CAFB27 /* MessagesViewController.swift */; };
 		3561B8D821B8FC81004A6775 /* PayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1152215E159C0053AD70 /* PayModel.swift */; };
@@ -290,7 +244,6 @@
 		3561B8DA21B8FC81004A6775 /* ImageTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D117A215E159C0053AD70 /* ImageTitleCell.swift */; };
 		3561B8DB21B8FC81004A6775 /* MessageDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE281F2199A0FB00CAFB27 /* MessageDateHeaderView.swift */; };
 		3561B8DC21B8FC81004A6775 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28102199A0FB00CAFB27 /* DocumentView.swift */; };
-		3561B8DD21B8FC81004A6775 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1153215E159C0053AD70 /* ArticleModel.swift */; };
 		3561B8DE21B8FC81004A6775 /* ProjectHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1135215E159C0053AD70 /* ProjectHeader.swift */; };
 		3561B8DF21B8FC81004A6775 /* JXWkWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10CA215E159C0053AD70 /* JXWkWebViewController.swift */; };
 		3561B8E021B8FC81004A6775 /* LocationMessageSnapshotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27EE2199A0FB00CAFB27 /* LocationMessageSnapshotOptions.swift */; };
@@ -300,8 +253,6 @@
 		3561B8E421B8FC81004A6775 /* OrderBuyingDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2A5219066FF00494929 /* OrderBuyingDetailCell.swift */; };
 		3561B8E521B8FC81004A6775 /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27ED2199A0FB00CAFB27 /* LabelAlignment.swift */; };
 		3561B8E621B8FC81004A6775 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28232199A0FB00CAFB27 /* AvatarView.swift */; };
-		3561B8E721B8FC81004A6775 /* PaperListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CC215E159C0053AD70 /* PaperListController.swift */; };
-		3561B8E821B8FC81004A6775 /* WalletHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1182215E159C0053AD70 /* WalletHeadCell.swift */; };
 		3561B8E921B8FC81004A6775 /* ModifyImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A3215E159C0053AD70 /* ModifyImageController.swift */; };
 		3561B8EA21B8FC81004A6775 /* JXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1166215E159C0053AD70 /* JXView.swift */; };
 		3561B8EB21B8FC81004A6775 /* MessagesViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28062199A0FB00CAFB27 /* MessagesViewController+DataSource.swift */; };
@@ -336,20 +287,16 @@
 		3561B90821B8FC81004A6775 /* WritingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE280B2199A0FB00CAFB27 /* WritingMessageCell.swift */; };
 		3561B90921B8FC81004A6775 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1137215E159C0053AD70 /* LanguageManager.swift */; };
 		3561B90A21B8FC81004A6775 /* InputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28212199A0FB00CAFB27 /* InputStackView.swift */; };
-		3561B90B21B8FC81004A6775 /* PaperVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1149215E159C0053AD70 /* PaperVM.swift */; };
 		3561B90C21B8FC81004A6775 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1127215E159C0053AD70 /* UIScreen+Extension.swift */; };
 		3561B90D21B8FC81004A6775 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1173215E159C0053AD70 /* MyCell.swift */; };
 		3561B90E21B8FC81004A6775 /* MerchantReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B2E2177303B009F061C /* MerchantReusableView.swift */; };
 		3561B90F21B8FC81004A6775 /* MessageInputBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28282199A0FB00CAFB27 /* MessageInputBarDelegate.swift */; };
-		3561B91021B8FC81004A6775 /* PaperDetailTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1159215E159C0053AD70 /* PaperDetailTopCell.swift */; };
 		3561B91121B8FC81004A6775 /* MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE282E2199A0FB00CAFB27 /* MessagesDataSource.swift */; };
 		3561B91221B8FC81004A6775 /* JXNoticeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2B921918CAA00494929 /* JXNoticeImageView.swift */; };
-		3561B91321B8FC81004A6775 /* PersonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D119D215E159C0053AD70 /* PersonInfoViewController.swift */; };
 		3561B91421B8FC81004A6775 /* OrderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E3218C480300ECD3C9 /* OrderVM.swift */; };
 		3561B91521B8FC81004A6775 /* MessagesDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE282D2199A0FB00CAFB27 /* MessagesDisplayDelegate.swift */; };
 		3561B91621B8FC81004A6775 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1125215E159C0053AD70 /* UIImage+Extension.swift */; };
 		3561B91721B8FC81004A6775 /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275782186C0EC0057C927 /* UIImage+Ex.swift */; };
-		3561B91821B8FC81004A6775 /* PaperDetailCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D115C215E159C0053AD70 /* PaperDetailCommonCell.swift */; };
 		3561B91921B8FC81004A6775 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27FB2199A0FB00CAFB27 /* NSAttributedString+Extensions.swift */; };
 		3561B91A21B8FC81004A6775 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28262199A0FB00CAFB27 /* SeparatorLine.swift */; };
 		3561B91B21B8FC81004A6775 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E5218C483F00ECD3C9 /* OrderModel.swift */; };
@@ -366,9 +313,7 @@
 		3561B92621B8FC81004A6775 /* WalletListPayedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512757E2186FC200057C927 /* WalletListPayedCell.swift */; };
 		3561B92721B8FC81004A6775 /* SellTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8541F218426A30036AD6A /* SellTextFieldCell.swift */; };
 		3561B92821B8FC81004A6775 /* PayEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B3C21783735009F061C /* PayEmptyCell.swift */; };
-		3561B92921B8FC81004A6775 /* ArticleDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C8215E159C0053AD70 /* ArticleDetailsController.swift */; };
 		3561B92A21B8FC81004A6775 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1124215E159C0053AD70 /* UIView+Extension.swift */; };
-		3561B92B21B8FC81004A6775 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A0215E159C0053AD70 /* AccountViewController.swift */; };
 		3561B92C21B8FC81004A6775 /* OrderBuyedDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2AB21906C5300494929 /* OrderBuyedDetailCell.swift */; };
 		3561B92D21B8FC81004A6775 /* ZPCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10C9215E159C0053AD70 /* ZPCollectionViewController.swift */; };
 		3561B92E21B8FC81004A6775 /* HomeReusableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1142215E159C0053AD70 /* HomeReusableVM.swift */; };
@@ -383,7 +328,6 @@
 		3561B93721B8FC81004A6775 /* TextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28112199A0FB00CAFB27 /* TextMessageCell.swift */; };
 		3561B93821B8FC81004A6775 /* CustomMessageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28132199A0FB00CAFB27 /* CustomMessageContentView.swift */; };
 		3561B93921B8FC81004A6775 /* ChatReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D921A4030B00F9725C /* ChatReusableView.swift */; };
-		3561B93A21B8FC81004A6775 /* PaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1151215E159C0053AD70 /* PaperModel.swift */; };
 		3561B93B21B8FC81004A6775 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28252199A0FB00CAFB27 /* PlayButtonView.swift */; };
 		3561B93C21B8FC81004A6775 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1156215E159C0053AD70 /* MyModel.swift */; };
 		3561B93D21B8FC81004A6775 /* BuySubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275962188053B0057C927 /* BuySubController.swift */; };
@@ -401,8 +345,6 @@
 		3561B94921B8FC81004A6775 /* NSConstraintLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F62199A0FB00CAFB27 /* NSConstraintLayoutSet.swift */; };
 		3561B94A21B8FC81004A6775 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE283C2199A0FB00CAFB27 /* ProfileViewController.swift */; };
 		3561B94B21B8FC81004A6775 /* UIImageView+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28412199A0FB00CAFB27 /* UIImageView+ChatCamp.swift */; };
-		3561B94C21B8FC81004A6775 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114D215E159C0053AD70 /* CommentModel.swift */; };
-		3561B94D21B8FC81004A6775 /* ArticleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1143215E159C0053AD70 /* ArticleVM.swift */; };
 		3561B94E21B8FC81004A6775 /* JXRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1132215E159C0053AD70 /* JXRequest.swift */; };
 		3561B94F21B8FC81004A6775 /* Data+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28462199A0FB00CAFB27 /* Data+ChatCamp.swift */; };
 		3561B95021B8FC81004A6775 /* JXBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1130215E159C0053AD70 /* JXBaseRequest.swift */; };
@@ -413,7 +355,6 @@
 		3561B95521B8FC81004A6775 /* CardPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B462179EC56009F061C /* CardPayController.swift */; };
 		3561B95621B8FC81004A6775 /* InputBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE281A2199A0FB00CAFB27 /* InputBarItem.swift */; };
 		3561B95721B8FC81004A6775 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CD215E159C0053AD70 /* TabBarViewController.swift */; };
-		3561B95821B8FC81004A6775 /* BottomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D118C215E159C0053AD70 /* BottomInputView.swift */; };
 		3561B95921B8FC81004A6775 /* PutUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B202175DCF5009F061C /* PutUpViewController.swift */; };
 		3561B95A21B8FC81004A6775 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1128215E159C0053AD70 /* UIBarButtonItem+Extension.swift */; };
 		3561B95B21B8FC81004A6775 /* MediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE280E2199A0FB00CAFB27 /* MediaMessageCell.swift */; };
@@ -430,19 +371,15 @@
 		3561B96621B8FC81004A6775 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27FC2199A0FB00CAFB27 /* Bundle+Extensions.swift */; };
 		3561B96721B8FC81004A6775 /* MessagesViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28082199A0FB00CAFB27 /* MessagesViewController+Delegate.swift */; };
 		3561B96821B8FC81004A6775 /* String+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28472199A0FB00CAFB27 /* String+ChatCamp.swift */; };
-		3561B96921B8FC81004A6775 /* SmartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116F215E159C0053AD70 /* SmartCell.swift */; };
 		3561B96A21B8FC81004A6775 /* JXTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116A215E159C0053AD70 /* JXTopBarView.swift */; };
-		3561B96B21B8FC81004A6775 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D118D215E159C0053AD70 /* CommentCell.swift */; };
 		3561B96C21B8FC81004A6775 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1195215E159C0053AD70 /* MainViewController.swift */; };
 		3561B96D21B8FC81004A6775 /* PayListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B402178393D009F061C /* PayListController.swift */; };
 		3561B96E21B8FC81004A6775 /* MessagesViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28042199A0FB00CAFB27 /* MessagesViewController+Keyboard.swift */; };
-		3561B96F21B8FC81004A6775 /* WalletListPayingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512757A2186FBFC0057C927 /* WalletListPayingCell.swift */; };
 		3561B97021B8FC81004A6775 /* MerchantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B142175BB9C009F061C /* MerchantCell.swift */; };
 		3561B97121B8FC81004A6775 /* JXKeyboardToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE2933219C00A000CAFB27 /* JXKeyboardToolBar.swift */; };
 		3561B97221B8FC81004A6775 /* MessageLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE282C2199A0FB00CAFB27 /* MessageLabelDelegate.swift */; };
 		3561B97321B8FC81004A6775 /* SellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9F9218DB2BF00ECD3C9 /* SellVM.swift */; };
 		3561B97421B8FC81004A6775 /* JXTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10CC215E159C0053AD70 /* JXTableViewController.swift */; };
-		3561B97521B8FC81004A6775 /* ArticleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C7215E159C0053AD70 /* ArticleListController.swift */; };
 		3561B97621B8FC81004A6775 /* JXPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1165215E159C0053AD70 /* JXPlaceHolderTextView.swift */; };
 		3561B97721B8FC81004A6775 /* AvatarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F52199A0FB00CAFB27 /* AvatarPosition.swift */; };
 		3561B97821B8FC81004A6775 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1197215E159C0053AD70 /* ScanViewController.swift */; };
@@ -459,18 +396,15 @@
 		3561B98521B8FC81004A6775 /* chat_send_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27C82199A0FB00CAFB27 /* chat_send_button.png */; };
 		3561B98621B8FC81004A6775 /* attachment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27BC2199A0FB00CAFB27 /* attachment@2x.png */; };
 		3561B98721B8FC81004A6775 /* ChatReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351B53DA21A4030B00F9725C /* ChatReusableView.xib */; };
-		3561B98821B8FC81004A6775 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118E215E159C0053AD70 /* ArticleCell.xib */; };
 		3561B98921B8FC81004A6775 /* chat_send_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D52199A0FB00CAFB27 /* chat_send_button@2x.png */; };
 		3561B98A21B8FC81004A6775 /* stop_recording.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27BD2199A0FB00CAFB27 /* stop_recording.png */; };
 		3561B98B21B8FC81004A6775 /* WalletDetailPayedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512758F21871E050057C927 /* WalletDetailPayedCell.xib */; };
 		3561B98C21B8FC81004A6775 /* PayEmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B3D21783735009F061C /* PayEmptyCell.xib */; };
-		3561B98D21B8FC81004A6775 /* WalletListPayingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512757B2186FBFC0057C927 /* WalletListPayingCell.xib */; };
 		3561B98E21B8FC81004A6775 /* PayNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B3921783720009F061C /* PayNormalCell.xib */; };
 		3561B98F21B8FC81004A6775 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D10E4215E159C0053AD70 /* Login.storyboard */; };
 		3561B99021B8FC81004A6775 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D32199A0FB00CAFB27 /* pause.png */; };
 		3561B99121B8FC81004A6775 /* JXActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1185215E159C0053AD70 /* JXActionCell.xib */; };
 		3561B99221B8FC81004A6775 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11A7215E159C0053AD70 /* Task.storyboard */; };
-		3561B99321B8FC81004A6775 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118B215E159C0053AD70 /* CommentCell.xib */; };
 		3561B99421B8FC81004A6775 /* bubble_full@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2919219AECE100CAFB27 /* bubble_full@3x.png */; };
 		3561B99521B8FC81004A6775 /* MerchantReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B2F2177303B009F061C /* MerchantReusableView.xib */; };
 		3561B99621B8FC81004A6775 /* bubble_full_tail_v2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2910219AECE100CAFB27 /* bubble_full_tail_v2@3x.png */; };
@@ -492,18 +426,15 @@
 		3561B9A621B8FC81004A6775 /* tick-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27CA2199A0FB00CAFB27 /* tick-black.png */; };
 		3561B9A721B8FC81004A6775 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35018B48217AFFB6009F061C /* My.storyboard */; };
 		3561B9A821B8FC81004A6775 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275A121899B860057C927 /* HomeCell.xib */; };
-		3561B9A921B8FC81004A6775 /* PaperDetailCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115B215E159C0053AD70 /* PaperDetailCommonCell.xib */; };
 		3561B9AA21B8FC81004A6775 /* bubble_full_tail_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2918219AECE100CAFB27 /* bubble_full_tail_v1.png */; };
 		3561B9AB21B8FC81004A6775 /* PropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D117B215E159C0053AD70 /* PropertyCell.xib */; };
 		3561B9AC21B8FC81004A6775 /* OrderSelledDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3595B2B421906C7B00494929 /* OrderSelledDetailCell.xib */; };
 		3561B9AD21B8FC81004A6775 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27CF2199A0FB00CAFB27 /* block.png */; };
 		3561B9AE21B8FC81004A6775 /* WalletAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512759321871F7B0057C927 /* WalletAddressCell.xib */; };
-		3561B9AF21B8FC81004A6775 /* SmartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1170215E159C0053AD70 /* SmartCell.xib */; };
 		3561B9B021B8FC81004A6775 /* AudioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE28162199A0FB00CAFB27 /* AudioView.xib */; };
 		3561B9B121B8FC81004A6775 /* flipCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D12199A0FB00CAFB27 /* flipCamera@2x.png */; };
 		3561B9B221B8FC81004A6775 /* Dot100%.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27C62199A0FB00CAFB27 /* Dot100%.png */; };
 		3561B9B321B8FC81004A6775 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27C42199A0FB00CAFB27 /* microphone.png */; };
-		3561B9B421B8FC81004A6775 /* PaperDetailTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115E215E159C0053AD70 /* PaperDetailTopCell.xib */; };
 		3561B9B521B8FC81004A6775 /* bubble_outlined_tail_v2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2913219AECE100CAFB27 /* bubble_outlined_tail_v2@3x.png */; };
 		3561B9B621B8FC81004A6775 /* focus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27E02199A0FB00CAFB27 /* focus@2x.png */; };
 		3561B9B721B8FC81004A6775 /* BankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275AB218AECA90057C927 /* BankCell.xib */; };
@@ -523,7 +454,6 @@
 		3561B9C521B8FC81004A6775 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE284F2199A0FB00CAFB27 /* ChatTableViewCell.xib */; };
 		3561B9C621B8FC81004A6775 /* user_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D42199A0FB00CAFB27 /* user_placeholder.png */; };
 		3561B9C721B8FC81004A6775 /* bubble_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2911219AECE100CAFB27 /* bubble_full.png */; };
-		3561B9C821B8FC81004A6775 /* PaperListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115A215E159C0053AD70 /* PaperListCell.xib */; };
 		3561B9C921B8FC81004A6775 /* DocumentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE280D2199A0FB00CAFB27 /* DocumentView.xib */; };
 		3561B9CA21B8FC81004A6775 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11B3215E159C0053AD70 /* Wallet.storyboard */; };
 		3561B9CB21B8FC81004A6775 /* bubble_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE291D219AECE100CAFB27 /* bubble_full@2x.png */; };
@@ -533,15 +463,12 @@
 		3561B9D021B8FC81004A6775 /* bubble_full_tail_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE290F219AECE100CAFB27 /* bubble_full_tail_v2@2x.png */; };
 		3561B9D121B8FC81004A6775 /* flashOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D82199A0FB00CAFB27 /* flashOutline@2x.png */; };
 		3561B9D221B8FC81004A6775 /* flash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27CE2199A0FB00CAFB27 /* flash@2x.png */; };
-		3561B9D321B8FC81004A6775 /* BottomInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118A215E159C0053AD70 /* BottomInputView.xib */; };
 		3561B9D421B8FC81004A6775 /* file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D22199A0FB00CAFB27 /* file@2x.png */; };
 		3561B9D521B8FC81004A6775 /* online.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D92199A0FB00CAFB27 /* online.png */; };
 		3561B9D621B8FC81004A6775 /* tick-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D72199A0FB00CAFB27 /* tick-grey.png */; };
 		3561B9D721B8FC81004A6775 /* OrderSellingDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3595B2B021906C6C00494929 /* OrderSellingDetailCell.xib */; };
 		3561B9D821B8FC81004A6775 /* SellTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B85420218426A30036AD6A /* SellTextFieldCell.xib */; };
-		3561B9D921B8FC81004A6775 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B2921771BD2009F061C /* OrderCell.xib */; };
 		3561B9DA21B8FC81004A6775 /* sliderthumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27BE2199A0FB00CAFB27 /* sliderthumb.png */; };
-		3561B9DB21B8FC81004A6775 /* WalletHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1186215E159C0053AD70 /* WalletHeadCell.xib */; };
 		3561B9DC21B8FC81004A6775 /* MerchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B152175BB9C009F061C /* MerchantCell.xib */; };
 		3561B9DD21B8FC81004A6775 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27DD2199A0FB00CAFB27 /* play.png */; };
 		3561B9DE21B8FC81004A6775 /* Dot50%.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27B72199A0FB00CAFB27 /* Dot50%.png */; };
@@ -557,30 +484,24 @@
 		3561B9E821B8FC81004A6775 /* bubble_outlined_tail_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2915219AECE100CAFB27 /* bubble_outlined_tail_v2@2x.png */; };
 		3561B9E921B8FC81004A6775 /* WalletListTransferCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275832186FC370057C927 /* WalletListTransferCell.xib */; };
 		3561B9EA21B8FC81004A6775 /* LoadingDots.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE284E2199A0FB00CAFB27 /* LoadingDots.xib */; };
-		3561B9EB21B8FC81004A6775 /* Smart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11CB215E159C0053AD70 /* Smart.storyboard */; };
 		3561B9EC21B8FC81004A6775 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27B82199A0FB00CAFB27 /* pause@2x.png */; };
 		3561B9ED21B8FC81004A6775 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1177215E159C0053AD70 /* PersonCell.xib */; };
 		3561B9F821B8FEE5004A6775 /* BuyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1150215E159C0053AD70 /* BuyModel.swift */; };
 		3561B9F921B8FEE5004A6775 /* MessagesViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28072199A0FB00CAFB27 /* MessagesViewController+Menu.swift */; };
-		3561B9FA21B8FEE5004A6775 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A1215E159C0053AD70 /* AboutUsViewController.swift */; };
 		3561B9FB21B8FEE5004A6775 /* OrderSellingDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2AF21906C6C00494929 /* OrderSellingDetailCell.swift */; };
 		3561B9FC21B8FEE5004A6775 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1126215E159C0053AD70 /* UIViewController+Extension.swift */; };
-		3561B9FD21B8FEE5004A6775 /* PaperListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D115D215E159C0053AD70 /* PaperListCell.swift */; };
 		3561B9FE21B8FEE5004A6775 /* MessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE283E2199A0FB00CAFB27 /* MessageContent.swift */; };
 		3561B9FF21B8FEE5004A6775 /* JSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10CB215E159C0053AD70 /* JSTableViewController.swift */; };
 		3561BA0021B8FEE5004A6775 /* UIView+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28432199A0FB00CAFB27 /* UIView+ChatCamp.swift */; };
 		3561BA0121B8FEE5004A6775 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F82199A0FB00CAFB27 /* UIView+Extensions.swift */; };
 		3561BA0221B8FEE5004A6775 /* ApiEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1133215E159C0053AD70 /* ApiEnum.swift */; };
 		3561BA0321B8FEE5004A6775 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28192199A0FB00CAFB27 /* MessageLabel.swift */; };
-		3561BA0421B8FEE5004A6775 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B2821771BD2009F061C /* OrderCell.swift */; };
 		3561BA0521B8FEE5004A6775 /* MessageIntermediateLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27E82199A0FB00CAFB27 /* MessageIntermediateLayoutAttributes.swift */; };
 		3561BA0621B8FEE5004A6775 /* JXSecretTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8541C218305AC0036AD6A /* JXSecretTextView.swift */; };
-		3561BA0721B8FEE5004A6775 /* SmartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1194215E159C0053AD70 /* SmartViewController.swift */; };
 		3561BA0821B8FEE5004A6775 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D521A2EDC700F9725C /* SettingVM.swift */; };
 		3561BA0921B8FEE5004A6775 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE284D2199A0FB00CAFB27 /* ChatTableViewCell.swift */; };
 		3561BA0A21B8FEE5004A6775 /* JXNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1131215E159C0053AD70 /* JXNetworkManager.swift */; };
 		3561BA0B21B8FEE5004A6775 /* OrderedListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8542E21843DB40036AD6A /* OrderedListCell.swift */; };
-		3561BA0C21B8FEE5004A6775 /* CommentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114B215E159C0053AD70 /* CommentVM.swift */; };
 		3561BA0D21B8FEE5004A6775 /* JXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10C6215E159C0053AD70 /* JXCollectionViewController.swift */; };
 		3561BA0E21B8FEE5004A6775 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1134215E159C0053AD70 /* Encryption.swift */; };
 		3561BA0F21B8FEE5004A6775 /* SellCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B1A2175CC8A009F061C /* SellCollectionController.swift */; };
@@ -595,7 +516,6 @@
 		3561BA1821B8FEE5004A6775 /* NewSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2BB21957FDC00494929 /* NewSellController.swift */; };
 		3561BA1921B8FEE5004A6775 /* OpenChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28352199A0FB00CAFB27 /* OpenChannelsViewController.swift */; };
 		3561BA1A21B8FEE5004A6775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28312199A0FB00CAFB27 /* ViewController.swift */; };
-		3561BA1B21B8FEE5004A6775 /* ChainInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C9215E159C0053AD70 /* ChainInfoController.swift */; };
 		3561BA1C21B8FEE5004A6775 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28522199A0FB00CAFB27 /* RecordButton.swift */; };
 		3561BA1D21B8FEE5004A6775 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F92199A0FB00CAFB27 /* String+Extensions.swift */; };
 		3561BA1E21B8FEE5004A6775 /* ConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E1218C2AFB00ECD3C9 /* ConfirmController.swift */; };
@@ -627,7 +547,6 @@
 		3561BA3821B8FEE5004A6775 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D112D215E159C0053AD70 /* ViewManager.swift */; };
 		3561BA3921B8FEE5004A6775 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1122215E159C0053AD70 /* UIDevice+Extension.swift */; };
 		3561BA3A21B8FEE5004A6775 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27FE2199A0FB00CAFB27 /* UICollectionView+Extensions.swift */; };
-		3561BA3B21B8FEE5004A6775 /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114F215E159C0053AD70 /* CommenModel.swift */; };
 		3561BA3C21B8FEE5004A6775 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27E42199A0FB00CAFB27 /* DBManager.swift */; };
 		3561BA3D21B8FEE5004A6775 /* NameSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE2938219D814900CAFB27 /* NameSetController.swift */; };
 		3561BA3E21B8FEE5004A6775 /* MerchantSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512759A2188763D0057C927 /* MerchantSubCell.swift */; };
@@ -654,9 +573,7 @@
 		3561BA5321B8FEE5004A6775 /* JXDropListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8541621806C240036AD6A /* JXDropListView.swift */; };
 		3561BA5421B8FEE5004A6775 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27EF2199A0FB00CAFB27 /* Sender.swift */; };
 		3561BA5521B8FEE5004A6775 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28302199A0FB00CAFB27 /* ChatViewController.swift */; };
-		3561BA5621B8FEE5004A6775 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1189215E159C0053AD70 /* ArticleCell.swift */; };
 		3561BA5721B8FEE5004A6775 /* MessagesLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28292199A0FB00CAFB27 /* MessagesLayoutDelegate.swift */; };
-		3561BA5821B8FEE5004A6775 /* PaperDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CA215E159C0053AD70 /* PaperDetailController.swift */; };
 		3561BA5921B8FEE5004A6775 /* JXActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1184215E159C0053AD70 /* JXActionCell.swift */; };
 		3561BA5A21B8FEE5004A6775 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28052199A0FB00CAFB27 /* MessagesViewController.swift */; };
 		3561BA5B21B8FEE5004A6775 /* PayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1152215E159C0053AD70 /* PayModel.swift */; };
@@ -664,7 +581,6 @@
 		3561BA5D21B8FEE5004A6775 /* ImageTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D117A215E159C0053AD70 /* ImageTitleCell.swift */; };
 		3561BA5E21B8FEE5004A6775 /* MessageDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE281F2199A0FB00CAFB27 /* MessageDateHeaderView.swift */; };
 		3561BA5F21B8FEE5004A6775 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28102199A0FB00CAFB27 /* DocumentView.swift */; };
-		3561BA6021B8FEE5004A6775 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1153215E159C0053AD70 /* ArticleModel.swift */; };
 		3561BA6121B8FEE5004A6775 /* ProjectHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1135215E159C0053AD70 /* ProjectHeader.swift */; };
 		3561BA6221B8FEE5004A6775 /* JXWkWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10CA215E159C0053AD70 /* JXWkWebViewController.swift */; };
 		3561BA6321B8FEE5004A6775 /* LocationMessageSnapshotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27EE2199A0FB00CAFB27 /* LocationMessageSnapshotOptions.swift */; };
@@ -674,8 +590,6 @@
 		3561BA6721B8FEE5004A6775 /* OrderBuyingDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2A5219066FF00494929 /* OrderBuyingDetailCell.swift */; };
 		3561BA6821B8FEE5004A6775 /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27ED2199A0FB00CAFB27 /* LabelAlignment.swift */; };
 		3561BA6921B8FEE5004A6775 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28232199A0FB00CAFB27 /* AvatarView.swift */; };
-		3561BA6A21B8FEE5004A6775 /* PaperListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CC215E159C0053AD70 /* PaperListController.swift */; };
-		3561BA6B21B8FEE5004A6775 /* WalletHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1182215E159C0053AD70 /* WalletHeadCell.swift */; };
 		3561BA6C21B8FEE5004A6775 /* ModifyImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A3215E159C0053AD70 /* ModifyImageController.swift */; };
 		3561BA6D21B8FEE5004A6775 /* JXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1166215E159C0053AD70 /* JXView.swift */; };
 		3561BA6E21B8FEE5004A6775 /* MessagesViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28062199A0FB00CAFB27 /* MessagesViewController+DataSource.swift */; };
@@ -710,20 +624,16 @@
 		3561BA8B21B8FEE5004A6775 /* WritingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE280B2199A0FB00CAFB27 /* WritingMessageCell.swift */; };
 		3561BA8C21B8FEE5004A6775 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1137215E159C0053AD70 /* LanguageManager.swift */; };
 		3561BA8D21B8FEE5004A6775 /* InputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28212199A0FB00CAFB27 /* InputStackView.swift */; };
-		3561BA8E21B8FEE5004A6775 /* PaperVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1149215E159C0053AD70 /* PaperVM.swift */; };
 		3561BA8F21B8FEE5004A6775 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1127215E159C0053AD70 /* UIScreen+Extension.swift */; };
 		3561BA9021B8FEE5004A6775 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1173215E159C0053AD70 /* MyCell.swift */; };
 		3561BA9121B8FEE5004A6775 /* MerchantReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B2E2177303B009F061C /* MerchantReusableView.swift */; };
 		3561BA9221B8FEE5004A6775 /* MessageInputBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28282199A0FB00CAFB27 /* MessageInputBarDelegate.swift */; };
-		3561BA9321B8FEE5004A6775 /* PaperDetailTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1159215E159C0053AD70 /* PaperDetailTopCell.swift */; };
 		3561BA9421B8FEE5004A6775 /* MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE282E2199A0FB00CAFB27 /* MessagesDataSource.swift */; };
 		3561BA9521B8FEE5004A6775 /* JXNoticeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2B921918CAA00494929 /* JXNoticeImageView.swift */; };
-		3561BA9621B8FEE5004A6775 /* PersonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D119D215E159C0053AD70 /* PersonInfoViewController.swift */; };
 		3561BA9721B8FEE5004A6775 /* OrderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E3218C480300ECD3C9 /* OrderVM.swift */; };
 		3561BA9821B8FEE5004A6775 /* MessagesDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE282D2199A0FB00CAFB27 /* MessagesDisplayDelegate.swift */; };
 		3561BA9921B8FEE5004A6775 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1125215E159C0053AD70 /* UIImage+Extension.swift */; };
 		3561BA9A21B8FEE5004A6775 /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275782186C0EC0057C927 /* UIImage+Ex.swift */; };
-		3561BA9B21B8FEE5004A6775 /* PaperDetailCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D115C215E159C0053AD70 /* PaperDetailCommonCell.swift */; };
 		3561BA9C21B8FEE5004A6775 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27FB2199A0FB00CAFB27 /* NSAttributedString+Extensions.swift */; };
 		3561BA9D21B8FEE5004A6775 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28262199A0FB00CAFB27 /* SeparatorLine.swift */; };
 		3561BA9E21B8FEE5004A6775 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E5218C483F00ECD3C9 /* OrderModel.swift */; };
@@ -740,9 +650,7 @@
 		3561BAA921B8FEE5004A6775 /* WalletListPayedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512757E2186FC200057C927 /* WalletListPayedCell.swift */; };
 		3561BAAA21B8FEE5004A6775 /* SellTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8541F218426A30036AD6A /* SellTextFieldCell.swift */; };
 		3561BAAB21B8FEE5004A6775 /* PayEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B3C21783735009F061C /* PayEmptyCell.swift */; };
-		3561BAAC21B8FEE5004A6775 /* ArticleDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C8215E159C0053AD70 /* ArticleDetailsController.swift */; };
 		3561BAAD21B8FEE5004A6775 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1124215E159C0053AD70 /* UIView+Extension.swift */; };
-		3561BAAE21B8FEE5004A6775 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A0215E159C0053AD70 /* AccountViewController.swift */; };
 		3561BAAF21B8FEE5004A6775 /* OrderBuyedDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2AB21906C5300494929 /* OrderBuyedDetailCell.swift */; };
 		3561BAB021B8FEE5004A6775 /* ZPCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10C9215E159C0053AD70 /* ZPCollectionViewController.swift */; };
 		3561BAB121B8FEE5004A6775 /* HomeReusableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1142215E159C0053AD70 /* HomeReusableVM.swift */; };
@@ -757,7 +665,6 @@
 		3561BABA21B8FEE5004A6775 /* TextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28112199A0FB00CAFB27 /* TextMessageCell.swift */; };
 		3561BABB21B8FEE5004A6775 /* CustomMessageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28132199A0FB00CAFB27 /* CustomMessageContentView.swift */; };
 		3561BABC21B8FEE5004A6775 /* ChatReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D921A4030B00F9725C /* ChatReusableView.swift */; };
-		3561BABD21B8FEE5004A6775 /* PaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1151215E159C0053AD70 /* PaperModel.swift */; };
 		3561BABE21B8FEE5004A6775 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28252199A0FB00CAFB27 /* PlayButtonView.swift */; };
 		3561BABF21B8FEE5004A6775 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1156215E159C0053AD70 /* MyModel.swift */; };
 		3561BAC021B8FEE5004A6775 /* BuySubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275962188053B0057C927 /* BuySubController.swift */; };
@@ -775,8 +682,6 @@
 		3561BACC21B8FEE5004A6775 /* NSConstraintLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F62199A0FB00CAFB27 /* NSConstraintLayoutSet.swift */; };
 		3561BACD21B8FEE5004A6775 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE283C2199A0FB00CAFB27 /* ProfileViewController.swift */; };
 		3561BACE21B8FEE5004A6775 /* UIImageView+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28412199A0FB00CAFB27 /* UIImageView+ChatCamp.swift */; };
-		3561BACF21B8FEE5004A6775 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114D215E159C0053AD70 /* CommentModel.swift */; };
-		3561BAD021B8FEE5004A6775 /* ArticleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1143215E159C0053AD70 /* ArticleVM.swift */; };
 		3561BAD121B8FEE5004A6775 /* JXRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1132215E159C0053AD70 /* JXRequest.swift */; };
 		3561BAD221B8FEE5004A6775 /* Data+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28462199A0FB00CAFB27 /* Data+ChatCamp.swift */; };
 		3561BAD321B8FEE5004A6775 /* JXBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1130215E159C0053AD70 /* JXBaseRequest.swift */; };
@@ -787,7 +692,6 @@
 		3561BAD821B8FEE5004A6775 /* CardPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B462179EC56009F061C /* CardPayController.swift */; };
 		3561BAD921B8FEE5004A6775 /* InputBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE281A2199A0FB00CAFB27 /* InputBarItem.swift */; };
 		3561BADA21B8FEE5004A6775 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CD215E159C0053AD70 /* TabBarViewController.swift */; };
-		3561BADB21B8FEE5004A6775 /* BottomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D118C215E159C0053AD70 /* BottomInputView.swift */; };
 		3561BADC21B8FEE5004A6775 /* PutUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B202175DCF5009F061C /* PutUpViewController.swift */; };
 		3561BADD21B8FEE5004A6775 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1128215E159C0053AD70 /* UIBarButtonItem+Extension.swift */; };
 		3561BADE21B8FEE5004A6775 /* MediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE280E2199A0FB00CAFB27 /* MediaMessageCell.swift */; };
@@ -804,19 +708,15 @@
 		3561BAE921B8FEE5004A6775 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27FC2199A0FB00CAFB27 /* Bundle+Extensions.swift */; };
 		3561BAEA21B8FEE5004A6775 /* MessagesViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28082199A0FB00CAFB27 /* MessagesViewController+Delegate.swift */; };
 		3561BAEB21B8FEE5004A6775 /* String+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28472199A0FB00CAFB27 /* String+ChatCamp.swift */; };
-		3561BAEC21B8FEE5004A6775 /* SmartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116F215E159C0053AD70 /* SmartCell.swift */; };
 		3561BAED21B8FEE5004A6775 /* JXTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116A215E159C0053AD70 /* JXTopBarView.swift */; };
-		3561BAEE21B8FEE5004A6775 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D118D215E159C0053AD70 /* CommentCell.swift */; };
 		3561BAEF21B8FEE5004A6775 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1195215E159C0053AD70 /* MainViewController.swift */; };
 		3561BAF021B8FEE5004A6775 /* PayListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B402178393D009F061C /* PayListController.swift */; };
 		3561BAF121B8FEE5004A6775 /* MessagesViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28042199A0FB00CAFB27 /* MessagesViewController+Keyboard.swift */; };
-		3561BAF221B8FEE5004A6775 /* WalletListPayingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512757A2186FBFC0057C927 /* WalletListPayingCell.swift */; };
 		3561BAF321B8FEE5004A6775 /* MerchantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B142175BB9C009F061C /* MerchantCell.swift */; };
 		3561BAF421B8FEE5004A6775 /* JXKeyboardToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE2933219C00A000CAFB27 /* JXKeyboardToolBar.swift */; };
 		3561BAF521B8FEE5004A6775 /* MessageLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE282C2199A0FB00CAFB27 /* MessageLabelDelegate.swift */; };
 		3561BAF621B8FEE5004A6775 /* SellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9F9218DB2BF00ECD3C9 /* SellVM.swift */; };
 		3561BAF721B8FEE5004A6775 /* JXTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10CC215E159C0053AD70 /* JXTableViewController.swift */; };
-		3561BAF821B8FEE5004A6775 /* ArticleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C7215E159C0053AD70 /* ArticleListController.swift */; };
 		3561BAF921B8FEE5004A6775 /* JXPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1165215E159C0053AD70 /* JXPlaceHolderTextView.swift */; };
 		3561BAFA21B8FEE5004A6775 /* AvatarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F52199A0FB00CAFB27 /* AvatarPosition.swift */; };
 		3561BAFB21B8FEE5004A6775 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1197215E159C0053AD70 /* ScanViewController.swift */; };
@@ -833,18 +733,15 @@
 		3561BB0821B8FEE5004A6775 /* chat_send_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27C82199A0FB00CAFB27 /* chat_send_button.png */; };
 		3561BB0921B8FEE5004A6775 /* attachment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27BC2199A0FB00CAFB27 /* attachment@2x.png */; };
 		3561BB0A21B8FEE5004A6775 /* ChatReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351B53DA21A4030B00F9725C /* ChatReusableView.xib */; };
-		3561BB0B21B8FEE5004A6775 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118E215E159C0053AD70 /* ArticleCell.xib */; };
 		3561BB0C21B8FEE5004A6775 /* chat_send_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D52199A0FB00CAFB27 /* chat_send_button@2x.png */; };
 		3561BB0D21B8FEE5004A6775 /* stop_recording.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27BD2199A0FB00CAFB27 /* stop_recording.png */; };
 		3561BB0E21B8FEE5004A6775 /* WalletDetailPayedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512758F21871E050057C927 /* WalletDetailPayedCell.xib */; };
 		3561BB0F21B8FEE5004A6775 /* PayEmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B3D21783735009F061C /* PayEmptyCell.xib */; };
-		3561BB1021B8FEE5004A6775 /* WalletListPayingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512757B2186FBFC0057C927 /* WalletListPayingCell.xib */; };
 		3561BB1121B8FEE5004A6775 /* PayNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B3921783720009F061C /* PayNormalCell.xib */; };
 		3561BB1221B8FEE5004A6775 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D10E4215E159C0053AD70 /* Login.storyboard */; };
 		3561BB1321B8FEE5004A6775 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D32199A0FB00CAFB27 /* pause.png */; };
 		3561BB1421B8FEE5004A6775 /* JXActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1185215E159C0053AD70 /* JXActionCell.xib */; };
 		3561BB1521B8FEE5004A6775 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11A7215E159C0053AD70 /* Task.storyboard */; };
-		3561BB1621B8FEE5004A6775 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118B215E159C0053AD70 /* CommentCell.xib */; };
 		3561BB1721B8FEE5004A6775 /* bubble_full@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2919219AECE100CAFB27 /* bubble_full@3x.png */; };
 		3561BB1821B8FEE5004A6775 /* MerchantReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B2F2177303B009F061C /* MerchantReusableView.xib */; };
 		3561BB1921B8FEE5004A6775 /* bubble_full_tail_v2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2910219AECE100CAFB27 /* bubble_full_tail_v2@3x.png */; };
@@ -866,18 +763,15 @@
 		3561BB2921B8FEE5004A6775 /* tick-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27CA2199A0FB00CAFB27 /* tick-black.png */; };
 		3561BB2A21B8FEE5004A6775 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35018B48217AFFB6009F061C /* My.storyboard */; };
 		3561BB2B21B8FEE5004A6775 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275A121899B860057C927 /* HomeCell.xib */; };
-		3561BB2C21B8FEE5004A6775 /* PaperDetailCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115B215E159C0053AD70 /* PaperDetailCommonCell.xib */; };
 		3561BB2D21B8FEE5004A6775 /* bubble_full_tail_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2918219AECE100CAFB27 /* bubble_full_tail_v1.png */; };
 		3561BB2E21B8FEE5004A6775 /* PropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D117B215E159C0053AD70 /* PropertyCell.xib */; };
 		3561BB2F21B8FEE5004A6775 /* OrderSelledDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3595B2B421906C7B00494929 /* OrderSelledDetailCell.xib */; };
 		3561BB3021B8FEE5004A6775 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27CF2199A0FB00CAFB27 /* block.png */; };
 		3561BB3121B8FEE5004A6775 /* WalletAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512759321871F7B0057C927 /* WalletAddressCell.xib */; };
-		3561BB3221B8FEE5004A6775 /* SmartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1170215E159C0053AD70 /* SmartCell.xib */; };
 		3561BB3321B8FEE5004A6775 /* AudioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE28162199A0FB00CAFB27 /* AudioView.xib */; };
 		3561BB3421B8FEE5004A6775 /* flipCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D12199A0FB00CAFB27 /* flipCamera@2x.png */; };
 		3561BB3521B8FEE5004A6775 /* Dot100%.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27C62199A0FB00CAFB27 /* Dot100%.png */; };
 		3561BB3621B8FEE5004A6775 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27C42199A0FB00CAFB27 /* microphone.png */; };
-		3561BB3721B8FEE5004A6775 /* PaperDetailTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115E215E159C0053AD70 /* PaperDetailTopCell.xib */; };
 		3561BB3821B8FEE5004A6775 /* bubble_outlined_tail_v2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2913219AECE100CAFB27 /* bubble_outlined_tail_v2@3x.png */; };
 		3561BB3921B8FEE5004A6775 /* focus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27E02199A0FB00CAFB27 /* focus@2x.png */; };
 		3561BB3A21B8FEE5004A6775 /* BankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275AB218AECA90057C927 /* BankCell.xib */; };
@@ -897,7 +791,6 @@
 		3561BB4821B8FEE5004A6775 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE284F2199A0FB00CAFB27 /* ChatTableViewCell.xib */; };
 		3561BB4921B8FEE5004A6775 /* user_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D42199A0FB00CAFB27 /* user_placeholder.png */; };
 		3561BB4A21B8FEE5004A6775 /* bubble_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2911219AECE100CAFB27 /* bubble_full.png */; };
-		3561BB4B21B8FEE5004A6775 /* PaperListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115A215E159C0053AD70 /* PaperListCell.xib */; };
 		3561BB4C21B8FEE5004A6775 /* DocumentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE280D2199A0FB00CAFB27 /* DocumentView.xib */; };
 		3561BB4D21B8FEE5004A6775 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11B3215E159C0053AD70 /* Wallet.storyboard */; };
 		3561BB4E21B8FEE5004A6775 /* bubble_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE291D219AECE100CAFB27 /* bubble_full@2x.png */; };
@@ -907,15 +800,12 @@
 		3561BB5321B8FEE5004A6775 /* bubble_full_tail_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE290F219AECE100CAFB27 /* bubble_full_tail_v2@2x.png */; };
 		3561BB5421B8FEE5004A6775 /* flashOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D82199A0FB00CAFB27 /* flashOutline@2x.png */; };
 		3561BB5521B8FEE5004A6775 /* flash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27CE2199A0FB00CAFB27 /* flash@2x.png */; };
-		3561BB5621B8FEE5004A6775 /* BottomInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118A215E159C0053AD70 /* BottomInputView.xib */; };
 		3561BB5721B8FEE5004A6775 /* file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D22199A0FB00CAFB27 /* file@2x.png */; };
 		3561BB5821B8FEE5004A6775 /* online.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D92199A0FB00CAFB27 /* online.png */; };
 		3561BB5921B8FEE5004A6775 /* tick-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D72199A0FB00CAFB27 /* tick-grey.png */; };
 		3561BB5A21B8FEE5004A6775 /* OrderSellingDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3595B2B021906C6C00494929 /* OrderSellingDetailCell.xib */; };
 		3561BB5B21B8FEE5004A6775 /* SellTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B85420218426A30036AD6A /* SellTextFieldCell.xib */; };
-		3561BB5C21B8FEE5004A6775 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B2921771BD2009F061C /* OrderCell.xib */; };
 		3561BB5D21B8FEE5004A6775 /* sliderthumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27BE2199A0FB00CAFB27 /* sliderthumb.png */; };
-		3561BB5E21B8FEE5004A6775 /* WalletHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1186215E159C0053AD70 /* WalletHeadCell.xib */; };
 		3561BB5F21B8FEE5004A6775 /* MerchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B152175BB9C009F061C /* MerchantCell.xib */; };
 		3561BB6021B8FEE5004A6775 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27DD2199A0FB00CAFB27 /* play.png */; };
 		3561BB6121B8FEE5004A6775 /* Dot50%.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27B72199A0FB00CAFB27 /* Dot50%.png */; };
@@ -931,30 +821,24 @@
 		3561BB6B21B8FEE5004A6775 /* bubble_outlined_tail_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2915219AECE100CAFB27 /* bubble_outlined_tail_v2@2x.png */; };
 		3561BB6C21B8FEE5004A6775 /* WalletListTransferCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275832186FC370057C927 /* WalletListTransferCell.xib */; };
 		3561BB6D21B8FEE5004A6775 /* LoadingDots.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE284E2199A0FB00CAFB27 /* LoadingDots.xib */; };
-		3561BB6E21B8FEE5004A6775 /* Smart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11CB215E159C0053AD70 /* Smart.storyboard */; };
 		3561BB6F21B8FEE5004A6775 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27B82199A0FB00CAFB27 /* pause@2x.png */; };
 		3561BB7021B8FEE5004A6775 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1177215E159C0053AD70 /* PersonCell.xib */; };
 		3561BB7B21B8FF8E004A6775 /* BuyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1150215E159C0053AD70 /* BuyModel.swift */; };
 		3561BB7C21B8FF8E004A6775 /* MessagesViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28072199A0FB00CAFB27 /* MessagesViewController+Menu.swift */; };
-		3561BB7D21B8FF8E004A6775 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A1215E159C0053AD70 /* AboutUsViewController.swift */; };
 		3561BB7E21B8FF8E004A6775 /* OrderSellingDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2AF21906C6C00494929 /* OrderSellingDetailCell.swift */; };
 		3561BB7F21B8FF8E004A6775 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1126215E159C0053AD70 /* UIViewController+Extension.swift */; };
-		3561BB8021B8FF8E004A6775 /* PaperListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D115D215E159C0053AD70 /* PaperListCell.swift */; };
 		3561BB8121B8FF8E004A6775 /* MessageContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE283E2199A0FB00CAFB27 /* MessageContent.swift */; };
 		3561BB8221B8FF8E004A6775 /* JSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10CB215E159C0053AD70 /* JSTableViewController.swift */; };
 		3561BB8321B8FF8E004A6775 /* UIView+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28432199A0FB00CAFB27 /* UIView+ChatCamp.swift */; };
 		3561BB8421B8FF8E004A6775 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F82199A0FB00CAFB27 /* UIView+Extensions.swift */; };
 		3561BB8521B8FF8E004A6775 /* ApiEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1133215E159C0053AD70 /* ApiEnum.swift */; };
 		3561BB8621B8FF8E004A6775 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28192199A0FB00CAFB27 /* MessageLabel.swift */; };
-		3561BB8721B8FF8E004A6775 /* OrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B2821771BD2009F061C /* OrderCell.swift */; };
 		3561BB8821B8FF8E004A6775 /* MessageIntermediateLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27E82199A0FB00CAFB27 /* MessageIntermediateLayoutAttributes.swift */; };
 		3561BB8921B8FF8E004A6775 /* JXSecretTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8541C218305AC0036AD6A /* JXSecretTextView.swift */; };
-		3561BB8A21B8FF8E004A6775 /* SmartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1194215E159C0053AD70 /* SmartViewController.swift */; };
 		3561BB8B21B8FF8E004A6775 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D521A2EDC700F9725C /* SettingVM.swift */; };
 		3561BB8C21B8FF8E004A6775 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE284D2199A0FB00CAFB27 /* ChatTableViewCell.swift */; };
 		3561BB8D21B8FF8E004A6775 /* JXNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1131215E159C0053AD70 /* JXNetworkManager.swift */; };
 		3561BB8E21B8FF8E004A6775 /* OrderedListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8542E21843DB40036AD6A /* OrderedListCell.swift */; };
-		3561BB8F21B8FF8E004A6775 /* CommentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114B215E159C0053AD70 /* CommentVM.swift */; };
 		3561BB9021B8FF8E004A6775 /* JXCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10C6215E159C0053AD70 /* JXCollectionViewController.swift */; };
 		3561BB9121B8FF8E004A6775 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1134215E159C0053AD70 /* Encryption.swift */; };
 		3561BB9221B8FF8E004A6775 /* SellCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B1A2175CC8A009F061C /* SellCollectionController.swift */; };
@@ -969,7 +853,6 @@
 		3561BB9B21B8FF8E004A6775 /* NewSellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2BB21957FDC00494929 /* NewSellController.swift */; };
 		3561BB9C21B8FF8E004A6775 /* OpenChannelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28352199A0FB00CAFB27 /* OpenChannelsViewController.swift */; };
 		3561BB9D21B8FF8E004A6775 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28312199A0FB00CAFB27 /* ViewController.swift */; };
-		3561BB9E21B8FF8E004A6775 /* ChainInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C9215E159C0053AD70 /* ChainInfoController.swift */; };
 		3561BB9F21B8FF8E004A6775 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28522199A0FB00CAFB27 /* RecordButton.swift */; };
 		3561BBA021B8FF8E004A6775 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F92199A0FB00CAFB27 /* String+Extensions.swift */; };
 		3561BBA121B8FF8E004A6775 /* ConfirmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E1218C2AFB00ECD3C9 /* ConfirmController.swift */; };
@@ -1001,7 +884,6 @@
 		3561BBBB21B8FF8E004A6775 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D112D215E159C0053AD70 /* ViewManager.swift */; };
 		3561BBBC21B8FF8E004A6775 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1122215E159C0053AD70 /* UIDevice+Extension.swift */; };
 		3561BBBD21B8FF8E004A6775 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27FE2199A0FB00CAFB27 /* UICollectionView+Extensions.swift */; };
-		3561BBBE21B8FF8E004A6775 /* CommenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114F215E159C0053AD70 /* CommenModel.swift */; };
 		3561BBBF21B8FF8E004A6775 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27E42199A0FB00CAFB27 /* DBManager.swift */; };
 		3561BBC021B8FF8E004A6775 /* NameSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE2938219D814900CAFB27 /* NameSetController.swift */; };
 		3561BBC121B8FF8E004A6775 /* MerchantSubCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512759A2188763D0057C927 /* MerchantSubCell.swift */; };
@@ -1028,9 +910,7 @@
 		3561BBD621B8FF8E004A6775 /* JXDropListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8541621806C240036AD6A /* JXDropListView.swift */; };
 		3561BBD721B8FF8E004A6775 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27EF2199A0FB00CAFB27 /* Sender.swift */; };
 		3561BBD821B8FF8E004A6775 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28302199A0FB00CAFB27 /* ChatViewController.swift */; };
-		3561BBD921B8FF8E004A6775 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1189215E159C0053AD70 /* ArticleCell.swift */; };
 		3561BBDA21B8FF8E004A6775 /* MessagesLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28292199A0FB00CAFB27 /* MessagesLayoutDelegate.swift */; };
-		3561BBDB21B8FF8E004A6775 /* PaperDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CA215E159C0053AD70 /* PaperDetailController.swift */; };
 		3561BBDC21B8FF8E004A6775 /* JXActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1184215E159C0053AD70 /* JXActionCell.swift */; };
 		3561BBDD21B8FF8E004A6775 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28052199A0FB00CAFB27 /* MessagesViewController.swift */; };
 		3561BBDE21B8FF8E004A6775 /* PayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1152215E159C0053AD70 /* PayModel.swift */; };
@@ -1038,7 +918,6 @@
 		3561BBE021B8FF8E004A6775 /* ImageTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D117A215E159C0053AD70 /* ImageTitleCell.swift */; };
 		3561BBE121B8FF8E004A6775 /* MessageDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE281F2199A0FB00CAFB27 /* MessageDateHeaderView.swift */; };
 		3561BBE221B8FF8E004A6775 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28102199A0FB00CAFB27 /* DocumentView.swift */; };
-		3561BBE321B8FF8E004A6775 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1153215E159C0053AD70 /* ArticleModel.swift */; };
 		3561BBE421B8FF8E004A6775 /* ProjectHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1135215E159C0053AD70 /* ProjectHeader.swift */; };
 		3561BBE521B8FF8E004A6775 /* JXWkWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10CA215E159C0053AD70 /* JXWkWebViewController.swift */; };
 		3561BBE621B8FF8E004A6775 /* LocationMessageSnapshotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27EE2199A0FB00CAFB27 /* LocationMessageSnapshotOptions.swift */; };
@@ -1048,8 +927,6 @@
 		3561BBEA21B8FF8E004A6775 /* OrderBuyingDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2A5219066FF00494929 /* OrderBuyingDetailCell.swift */; };
 		3561BBEB21B8FF8E004A6775 /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27ED2199A0FB00CAFB27 /* LabelAlignment.swift */; };
 		3561BBEC21B8FF8E004A6775 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28232199A0FB00CAFB27 /* AvatarView.swift */; };
-		3561BBED21B8FF8E004A6775 /* PaperListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CC215E159C0053AD70 /* PaperListController.swift */; };
-		3561BBEE21B8FF8E004A6775 /* WalletHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1182215E159C0053AD70 /* WalletHeadCell.swift */; };
 		3561BBEF21B8FF8E004A6775 /* ModifyImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A3215E159C0053AD70 /* ModifyImageController.swift */; };
 		3561BBF021B8FF8E004A6775 /* JXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1166215E159C0053AD70 /* JXView.swift */; };
 		3561BBF121B8FF8E004A6775 /* MessagesViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28062199A0FB00CAFB27 /* MessagesViewController+DataSource.swift */; };
@@ -1084,20 +961,16 @@
 		3561BC0E21B8FF8E004A6775 /* WritingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE280B2199A0FB00CAFB27 /* WritingMessageCell.swift */; };
 		3561BC0F21B8FF8E004A6775 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1137215E159C0053AD70 /* LanguageManager.swift */; };
 		3561BC1021B8FF8E004A6775 /* InputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28212199A0FB00CAFB27 /* InputStackView.swift */; };
-		3561BC1121B8FF8E004A6775 /* PaperVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1149215E159C0053AD70 /* PaperVM.swift */; };
 		3561BC1221B8FF8E004A6775 /* UIScreen+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1127215E159C0053AD70 /* UIScreen+Extension.swift */; };
 		3561BC1321B8FF8E004A6775 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1173215E159C0053AD70 /* MyCell.swift */; };
 		3561BC1421B8FF8E004A6775 /* MerchantReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B2E2177303B009F061C /* MerchantReusableView.swift */; };
 		3561BC1521B8FF8E004A6775 /* MessageInputBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28282199A0FB00CAFB27 /* MessageInputBarDelegate.swift */; };
-		3561BC1621B8FF8E004A6775 /* PaperDetailTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1159215E159C0053AD70 /* PaperDetailTopCell.swift */; };
 		3561BC1721B8FF8E004A6775 /* MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE282E2199A0FB00CAFB27 /* MessagesDataSource.swift */; };
 		3561BC1821B8FF8E004A6775 /* JXNoticeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2B921918CAA00494929 /* JXNoticeImageView.swift */; };
-		3561BC1921B8FF8E004A6775 /* PersonInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D119D215E159C0053AD70 /* PersonInfoViewController.swift */; };
 		3561BC1A21B8FF8E004A6775 /* OrderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E3218C480300ECD3C9 /* OrderVM.swift */; };
 		3561BC1B21B8FF8E004A6775 /* MessagesDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE282D2199A0FB00CAFB27 /* MessagesDisplayDelegate.swift */; };
 		3561BC1C21B8FF8E004A6775 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1125215E159C0053AD70 /* UIImage+Extension.swift */; };
 		3561BC1D21B8FF8E004A6775 /* UIImage+Ex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275782186C0EC0057C927 /* UIImage+Ex.swift */; };
-		3561BC1E21B8FF8E004A6775 /* PaperDetailCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D115C215E159C0053AD70 /* PaperDetailCommonCell.swift */; };
 		3561BC1F21B8FF8E004A6775 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27FB2199A0FB00CAFB27 /* NSAttributedString+Extensions.swift */; };
 		3561BC2021B8FF8E004A6775 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28262199A0FB00CAFB27 /* SeparatorLine.swift */; };
 		3561BC2121B8FF8E004A6775 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9E5218C483F00ECD3C9 /* OrderModel.swift */; };
@@ -1114,9 +987,7 @@
 		3561BC2C21B8FF8E004A6775 /* WalletListPayedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512757E2186FC200057C927 /* WalletListPayedCell.swift */; };
 		3561BC2D21B8FF8E004A6775 /* SellTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B8541F218426A30036AD6A /* SellTextFieldCell.swift */; };
 		3561BC2E21B8FF8E004A6775 /* PayEmptyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B3C21783735009F061C /* PayEmptyCell.swift */; };
-		3561BC2F21B8FF8E004A6775 /* ArticleDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C8215E159C0053AD70 /* ArticleDetailsController.swift */; };
 		3561BC3021B8FF8E004A6775 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1124215E159C0053AD70 /* UIView+Extension.swift */; };
-		3561BC3121B8FF8E004A6775 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11A0215E159C0053AD70 /* AccountViewController.swift */; };
 		3561BC3221B8FF8E004A6775 /* OrderBuyedDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2AB21906C5300494929 /* OrderBuyedDetailCell.swift */; };
 		3561BC3321B8FF8E004A6775 /* ZPCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10C9215E159C0053AD70 /* ZPCollectionViewController.swift */; };
 		3561BC3421B8FF8E004A6775 /* HomeReusableVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1142215E159C0053AD70 /* HomeReusableVM.swift */; };
@@ -1131,7 +1002,6 @@
 		3561BC3D21B8FF8E004A6775 /* TextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28112199A0FB00CAFB27 /* TextMessageCell.swift */; };
 		3561BC3E21B8FF8E004A6775 /* CustomMessageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28132199A0FB00CAFB27 /* CustomMessageContentView.swift */; };
 		3561BC3F21B8FF8E004A6775 /* ChatReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D921A4030B00F9725C /* ChatReusableView.swift */; };
-		3561BC4021B8FF8E004A6775 /* PaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1151215E159C0053AD70 /* PaperModel.swift */; };
 		3561BC4121B8FF8E004A6775 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28252199A0FB00CAFB27 /* PlayButtonView.swift */; };
 		3561BC4221B8FF8E004A6775 /* MyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1156215E159C0053AD70 /* MyModel.swift */; };
 		3561BC4321B8FF8E004A6775 /* BuySubController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351275962188053B0057C927 /* BuySubController.swift */; };
@@ -1149,8 +1019,6 @@
 		3561BC4F21B8FF8E004A6775 /* NSConstraintLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F62199A0FB00CAFB27 /* NSConstraintLayoutSet.swift */; };
 		3561BC5021B8FF8E004A6775 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE283C2199A0FB00CAFB27 /* ProfileViewController.swift */; };
 		3561BC5121B8FF8E004A6775 /* UIImageView+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28412199A0FB00CAFB27 /* UIImageView+ChatCamp.swift */; };
-		3561BC5221B8FF8E004A6775 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D114D215E159C0053AD70 /* CommentModel.swift */; };
-		3561BC5321B8FF8E004A6775 /* ArticleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1143215E159C0053AD70 /* ArticleVM.swift */; };
 		3561BC5421B8FF8E004A6775 /* JXRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1132215E159C0053AD70 /* JXRequest.swift */; };
 		3561BC5521B8FF8E004A6775 /* Data+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28462199A0FB00CAFB27 /* Data+ChatCamp.swift */; };
 		3561BC5621B8FF8E004A6775 /* JXBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1130215E159C0053AD70 /* JXBaseRequest.swift */; };
@@ -1161,7 +1029,6 @@
 		3561BC5B21B8FF8E004A6775 /* CardPayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B462179EC56009F061C /* CardPayController.swift */; };
 		3561BC5C21B8FF8E004A6775 /* InputBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE281A2199A0FB00CAFB27 /* InputBarItem.swift */; };
 		3561BC5D21B8FF8E004A6775 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CD215E159C0053AD70 /* TabBarViewController.swift */; };
-		3561BC5E21B8FF8E004A6775 /* BottomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D118C215E159C0053AD70 /* BottomInputView.swift */; };
 		3561BC5F21B8FF8E004A6775 /* PutUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B202175DCF5009F061C /* PutUpViewController.swift */; };
 		3561BC6021B8FF8E004A6775 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1128215E159C0053AD70 /* UIBarButtonItem+Extension.swift */; };
 		3561BC6121B8FF8E004A6775 /* MediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE280E2199A0FB00CAFB27 /* MediaMessageCell.swift */; };
@@ -1178,19 +1045,15 @@
 		3561BC6C21B8FF8E004A6775 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27FC2199A0FB00CAFB27 /* Bundle+Extensions.swift */; };
 		3561BC6D21B8FF8E004A6775 /* MessagesViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28082199A0FB00CAFB27 /* MessagesViewController+Delegate.swift */; };
 		3561BC6E21B8FF8E004A6775 /* String+ChatCamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28472199A0FB00CAFB27 /* String+ChatCamp.swift */; };
-		3561BC6F21B8FF8E004A6775 /* SmartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116F215E159C0053AD70 /* SmartCell.swift */; };
 		3561BC7021B8FF8E004A6775 /* JXTopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D116A215E159C0053AD70 /* JXTopBarView.swift */; };
-		3561BC7121B8FF8E004A6775 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D118D215E159C0053AD70 /* CommentCell.swift */; };
 		3561BC7221B8FF8E004A6775 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1195215E159C0053AD70 /* MainViewController.swift */; };
 		3561BC7321B8FF8E004A6775 /* PayListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B402178393D009F061C /* PayListController.swift */; };
 		3561BC7421B8FF8E004A6775 /* MessagesViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28042199A0FB00CAFB27 /* MessagesViewController+Keyboard.swift */; };
-		3561BC7521B8FF8E004A6775 /* WalletListPayingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3512757A2186FBFC0057C927 /* WalletListPayingCell.swift */; };
 		3561BC7621B8FF8E004A6775 /* MerchantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35018B142175BB9C009F061C /* MerchantCell.swift */; };
 		3561BC7721B8FF8E004A6775 /* JXKeyboardToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE2933219C00A000CAFB27 /* JXKeyboardToolBar.swift */; };
 		3561BC7821B8FF8E004A6775 /* MessageLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE282C2199A0FB00CAFB27 /* MessageLabelDelegate.swift */; };
 		3561BC7921B8FF8E004A6775 /* SellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35ABF9F9218DB2BF00ECD3C9 /* SellVM.swift */; };
 		3561BC7A21B8FF8E004A6775 /* JXTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10CC215E159C0053AD70 /* JXTableViewController.swift */; };
-		3561BC7B21B8FF8E004A6775 /* ArticleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C7215E159C0053AD70 /* ArticleListController.swift */; };
 		3561BC7C21B8FF8E004A6775 /* JXPlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1165215E159C0053AD70 /* JXPlaceHolderTextView.swift */; };
 		3561BC7D21B8FF8E004A6775 /* AvatarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE27F52199A0FB00CAFB27 /* AvatarPosition.swift */; };
 		3561BC7E21B8FF8E004A6775 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1197215E159C0053AD70 /* ScanViewController.swift */; };
@@ -1207,18 +1070,15 @@
 		3561BC8B21B8FF8E004A6775 /* chat_send_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27C82199A0FB00CAFB27 /* chat_send_button.png */; };
 		3561BC8C21B8FF8E004A6775 /* attachment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27BC2199A0FB00CAFB27 /* attachment@2x.png */; };
 		3561BC8D21B8FF8E004A6775 /* ChatReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351B53DA21A4030B00F9725C /* ChatReusableView.xib */; };
-		3561BC8E21B8FF8E004A6775 /* ArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118E215E159C0053AD70 /* ArticleCell.xib */; };
 		3561BC8F21B8FF8E004A6775 /* chat_send_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D52199A0FB00CAFB27 /* chat_send_button@2x.png */; };
 		3561BC9021B8FF8E004A6775 /* stop_recording.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27BD2199A0FB00CAFB27 /* stop_recording.png */; };
 		3561BC9121B8FF8E004A6775 /* WalletDetailPayedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512758F21871E050057C927 /* WalletDetailPayedCell.xib */; };
 		3561BC9221B8FF8E004A6775 /* PayEmptyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B3D21783735009F061C /* PayEmptyCell.xib */; };
-		3561BC9321B8FF8E004A6775 /* WalletListPayingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512757B2186FBFC0057C927 /* WalletListPayingCell.xib */; };
 		3561BC9421B8FF8E004A6775 /* PayNormalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B3921783720009F061C /* PayNormalCell.xib */; };
 		3561BC9521B8FF8E004A6775 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D10E4215E159C0053AD70 /* Login.storyboard */; };
 		3561BC9621B8FF8E004A6775 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D32199A0FB00CAFB27 /* pause.png */; };
 		3561BC9721B8FF8E004A6775 /* JXActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1185215E159C0053AD70 /* JXActionCell.xib */; };
 		3561BC9821B8FF8E004A6775 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11A7215E159C0053AD70 /* Task.storyboard */; };
-		3561BC9921B8FF8E004A6775 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118B215E159C0053AD70 /* CommentCell.xib */; };
 		3561BC9A21B8FF8E004A6775 /* bubble_full@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2919219AECE100CAFB27 /* bubble_full@3x.png */; };
 		3561BC9B21B8FF8E004A6775 /* MerchantReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B2F2177303B009F061C /* MerchantReusableView.xib */; };
 		3561BC9C21B8FF8E004A6775 /* bubble_full_tail_v2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2910219AECE100CAFB27 /* bubble_full_tail_v2@3x.png */; };
@@ -1240,18 +1100,15 @@
 		3561BCAC21B8FF8E004A6775 /* tick-black.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27CA2199A0FB00CAFB27 /* tick-black.png */; };
 		3561BCAD21B8FF8E004A6775 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35018B48217AFFB6009F061C /* My.storyboard */; };
 		3561BCAE21B8FF8E004A6775 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275A121899B860057C927 /* HomeCell.xib */; };
-		3561BCAF21B8FF8E004A6775 /* PaperDetailCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115B215E159C0053AD70 /* PaperDetailCommonCell.xib */; };
 		3561BCB021B8FF8E004A6775 /* bubble_full_tail_v1.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2918219AECE100CAFB27 /* bubble_full_tail_v1.png */; };
 		3561BCB121B8FF8E004A6775 /* PropertyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D117B215E159C0053AD70 /* PropertyCell.xib */; };
 		3561BCB221B8FF8E004A6775 /* OrderSelledDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3595B2B421906C7B00494929 /* OrderSelledDetailCell.xib */; };
 		3561BCB321B8FF8E004A6775 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27CF2199A0FB00CAFB27 /* block.png */; };
 		3561BCB421B8FF8E004A6775 /* WalletAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3512759321871F7B0057C927 /* WalletAddressCell.xib */; };
-		3561BCB521B8FF8E004A6775 /* SmartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1170215E159C0053AD70 /* SmartCell.xib */; };
 		3561BCB621B8FF8E004A6775 /* AudioView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE28162199A0FB00CAFB27 /* AudioView.xib */; };
 		3561BCB721B8FF8E004A6775 /* flipCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D12199A0FB00CAFB27 /* flipCamera@2x.png */; };
 		3561BCB821B8FF8E004A6775 /* Dot100%.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27C62199A0FB00CAFB27 /* Dot100%.png */; };
 		3561BCB921B8FF8E004A6775 /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27C42199A0FB00CAFB27 /* microphone.png */; };
-		3561BCBA21B8FF8E004A6775 /* PaperDetailTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115E215E159C0053AD70 /* PaperDetailTopCell.xib */; };
 		3561BCBB21B8FF8E004A6775 /* bubble_outlined_tail_v2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2913219AECE100CAFB27 /* bubble_outlined_tail_v2@3x.png */; };
 		3561BCBC21B8FF8E004A6775 /* focus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27E02199A0FB00CAFB27 /* focus@2x.png */; };
 		3561BCBD21B8FF8E004A6775 /* BankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275AB218AECA90057C927 /* BankCell.xib */; };
@@ -1271,7 +1128,6 @@
 		3561BCCB21B8FF8E004A6775 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE284F2199A0FB00CAFB27 /* ChatTableViewCell.xib */; };
 		3561BCCC21B8FF8E004A6775 /* user_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D42199A0FB00CAFB27 /* user_placeholder.png */; };
 		3561BCCD21B8FF8E004A6775 /* bubble_full.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2911219AECE100CAFB27 /* bubble_full.png */; };
-		3561BCCE21B8FF8E004A6775 /* PaperListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D115A215E159C0053AD70 /* PaperListCell.xib */; };
 		3561BCCF21B8FF8E004A6775 /* DocumentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE280D2199A0FB00CAFB27 /* DocumentView.xib */; };
 		3561BCD021B8FF8E004A6775 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11B3215E159C0053AD70 /* Wallet.storyboard */; };
 		3561BCD121B8FF8E004A6775 /* bubble_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE291D219AECE100CAFB27 /* bubble_full@2x.png */; };
@@ -1282,15 +1138,12 @@
 		3561BCD621B8FF8E004A6775 /* bubble_full_tail_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE290F219AECE100CAFB27 /* bubble_full_tail_v2@2x.png */; };
 		3561BCD721B8FF8E004A6775 /* flashOutline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D82199A0FB00CAFB27 /* flashOutline@2x.png */; };
 		3561BCD821B8FF8E004A6775 /* flash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27CE2199A0FB00CAFB27 /* flash@2x.png */; };
-		3561BCD921B8FF8E004A6775 /* BottomInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D118A215E159C0053AD70 /* BottomInputView.xib */; };
 		3561BCDA21B8FF8E004A6775 /* file@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D22199A0FB00CAFB27 /* file@2x.png */; };
 		3561BCDB21B8FF8E004A6775 /* online.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D92199A0FB00CAFB27 /* online.png */; };
 		3561BCDC21B8FF8E004A6775 /* tick-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27D72199A0FB00CAFB27 /* tick-grey.png */; };
 		3561BCDD21B8FF8E004A6775 /* OrderSellingDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3595B2B021906C6C00494929 /* OrderSellingDetailCell.xib */; };
 		3561BCDE21B8FF8E004A6775 /* SellTextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B85420218426A30036AD6A /* SellTextFieldCell.xib */; };
-		3561BCDF21B8FF8E004A6775 /* OrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B2921771BD2009F061C /* OrderCell.xib */; };
 		3561BCE021B8FF8E004A6775 /* sliderthumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27BE2199A0FB00CAFB27 /* sliderthumb.png */; };
-		3561BCE121B8FF8E004A6775 /* WalletHeadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1186215E159C0053AD70 /* WalletHeadCell.xib */; };
 		3561BCE221B8FF8E004A6775 /* MerchantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35018B152175BB9C009F061C /* MerchantCell.xib */; };
 		3561BCE321B8FF8E004A6775 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27DD2199A0FB00CAFB27 /* play.png */; };
 		3561BCE421B8FF8E004A6775 /* Dot50%.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27B72199A0FB00CAFB27 /* Dot50%.png */; };
@@ -1306,7 +1159,6 @@
 		3561BCEE21B8FF8E004A6775 /* bubble_outlined_tail_v2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE2915219AECE100CAFB27 /* bubble_outlined_tail_v2@2x.png */; };
 		3561BCEF21B8FF8E004A6775 /* WalletListTransferCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351275832186FC370057C927 /* WalletListTransferCell.xib */; };
 		3561BCF021B8FF8E004A6775 /* LoadingDots.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE284E2199A0FB00CAFB27 /* LoadingDots.xib */; };
-		3561BCF121B8FF8E004A6775 /* Smart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11CB215E159C0053AD70 /* Smart.storyboard */; };
 		3561BCF221B8FF8E004A6775 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27B82199A0FB00CAFB27 /* pause@2x.png */; };
 		3561BCF321B8FF8E004A6775 /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1177215E159C0053AD70 /* PersonCell.xib */; };
 		3561BCFC21B9156C004A6775 /* blue.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3561BCFB21B9156C004A6775 /* blue.xcassets */; };
@@ -1524,8 +1376,6 @@
 		35018B1D2175CCA5009F061C /* SellCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellCell.xib; sourceTree = "<group>"; };
 		35018B202175DCF5009F061C /* PutUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PutUpViewController.swift; sourceTree = "<group>"; };
 		35018B2221771B3E009F061C /* OrderListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListController.swift; sourceTree = "<group>"; };
-		35018B2821771BD2009F061C /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
-		35018B2921771BD2009F061C /* OrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderCell.xib; sourceTree = "<group>"; };
 		35018B2E2177303B009F061C /* MerchantReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantReusableView.swift; sourceTree = "<group>"; };
 		35018B2F2177303B009F061C /* MerchantReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerchantReusableView.xib; sourceTree = "<group>"; };
 		35018B3221773BA1009F061C /* MerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantViewController.swift; sourceTree = "<group>"; };
@@ -1542,8 +1392,6 @@
 		35018B4C217B1EB6009F061C /* HelpFeedBackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpFeedBackController.swift; sourceTree = "<group>"; };
 		35018B4E217B20F5009F061C /* FeedBackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackController.swift; sourceTree = "<group>"; };
 		351275782186C0EC0057C927 /* UIImage+Ex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ex.swift"; sourceTree = "<group>"; };
-		3512757A2186FBFC0057C927 /* WalletListPayingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListPayingCell.swift; sourceTree = "<group>"; };
-		3512757B2186FBFC0057C927 /* WalletListPayingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletListPayingCell.xib; sourceTree = "<group>"; };
 		3512757E2186FC200057C927 /* WalletListPayedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListPayedCell.swift; sourceTree = "<group>"; };
 		3512757F2186FC200057C927 /* WalletListPayedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletListPayedCell.xib; sourceTree = "<group>"; };
 		351275822186FC370057C927 /* WalletListTransferCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletListTransferCell.swift; sourceTree = "<group>"; };
@@ -1617,29 +1465,16 @@
 		352D1138215E159C0053AD70 /* CommonManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonManager.swift; sourceTree = "<group>"; };
 		352D113B215E159C0053AD70 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		352D1142215E159C0053AD70 /* HomeReusableVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeReusableVM.swift; sourceTree = "<group>"; };
-		352D1143215E159C0053AD70 /* ArticleVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleVM.swift; sourceTree = "<group>"; };
 		352D1144215E159C0053AD70 /* HomeVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		352D1145215E159C0053AD70 /* PayVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayVM.swift; sourceTree = "<group>"; };
 		352D1146215E159C0053AD70 /* MyVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyVM.swift; sourceTree = "<group>"; };
 		352D1148215E159C0053AD70 /* LoginVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
-		352D1149215E159C0053AD70 /* PaperVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperVM.swift; sourceTree = "<group>"; };
-		352D114B215E159C0053AD70 /* CommentVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentVM.swift; sourceTree = "<group>"; };
-		352D114D215E159C0053AD70 /* CommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		352D114E215E159C0053AD70 /* WalletModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
-		352D114F215E159C0053AD70 /* CommenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommenModel.swift; sourceTree = "<group>"; };
 		352D1150215E159C0053AD70 /* BuyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyModel.swift; sourceTree = "<group>"; };
-		352D1151215E159C0053AD70 /* PaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperModel.swift; sourceTree = "<group>"; };
 		352D1152215E159C0053AD70 /* PayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayModel.swift; sourceTree = "<group>"; };
-		352D1153215E159C0053AD70 /* ArticleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		352D1154215E159C0053AD70 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		352D1155215E159C0053AD70 /* HomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		352D1156215E159C0053AD70 /* MyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyModel.swift; sourceTree = "<group>"; };
-		352D1159215E159C0053AD70 /* PaperDetailTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperDetailTopCell.swift; sourceTree = "<group>"; };
-		352D115A215E159C0053AD70 /* PaperListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaperListCell.xib; sourceTree = "<group>"; };
-		352D115B215E159C0053AD70 /* PaperDetailCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaperDetailCommonCell.xib; sourceTree = "<group>"; };
-		352D115C215E159C0053AD70 /* PaperDetailCommonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperDetailCommonCell.swift; sourceTree = "<group>"; };
-		352D115D215E159C0053AD70 /* PaperListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperListCell.swift; sourceTree = "<group>"; };
-		352D115E215E159C0053AD70 /* PaperDetailTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaperDetailTopCell.xib; sourceTree = "<group>"; };
 		352D1161215E159C0053AD70 /* HomeReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeReusableView.xib; sourceTree = "<group>"; };
 		352D1163215E159C0053AD70 /* HomeReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeReusableView.swift; sourceTree = "<group>"; };
 		352D1165215E159C0053AD70 /* JXPlaceHolderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXPlaceHolderTextView.swift; sourceTree = "<group>"; };
@@ -1651,8 +1486,6 @@
 		352D116B215E159C0053AD70 /* JXHorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXHorizontalView.swift; sourceTree = "<group>"; };
 		352D116C215E159C0053AD70 /* JXInputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXInputTextView.swift; sourceTree = "<group>"; };
 		352D116D215E159C0053AD70 /* JXAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXAlertView.swift; sourceTree = "<group>"; };
-		352D116F215E159C0053AD70 /* SmartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartCell.swift; sourceTree = "<group>"; };
-		352D1170215E159C0053AD70 /* SmartCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartCell.xib; sourceTree = "<group>"; };
 		352D1173215E159C0053AD70 /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		352D1174215E159C0053AD70 /* MyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCell.xib; sourceTree = "<group>"; };
 		352D1175215E159C0053AD70 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
@@ -1661,28 +1494,16 @@
 		352D1179215E159C0053AD70 /* PropertyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyCell.swift; sourceTree = "<group>"; };
 		352D117A215E159C0053AD70 /* ImageTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTitleCell.swift; sourceTree = "<group>"; };
 		352D117B215E159C0053AD70 /* PropertyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyCell.xib; sourceTree = "<group>"; };
-		352D1182215E159C0053AD70 /* WalletHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletHeadCell.swift; sourceTree = "<group>"; };
 		352D1183215E159C0053AD70 /* PropertyViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyViewCell.xib; sourceTree = "<group>"; };
 		352D1184215E159C0053AD70 /* JXActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXActionCell.swift; sourceTree = "<group>"; };
 		352D1185215E159C0053AD70 /* JXActionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JXActionCell.xib; sourceTree = "<group>"; };
-		352D1186215E159C0053AD70 /* WalletHeadCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WalletHeadCell.xib; sourceTree = "<group>"; };
 		352D1187215E159C0053AD70 /* PropertyViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyViewCell.swift; sourceTree = "<group>"; };
-		352D1189215E159C0053AD70 /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
-		352D118A215E159C0053AD70 /* BottomInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomInputView.xib; sourceTree = "<group>"; };
-		352D118B215E159C0053AD70 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
-		352D118C215E159C0053AD70 /* BottomInputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView.swift; sourceTree = "<group>"; };
-		352D118D215E159C0053AD70 /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
-		352D118E215E159C0053AD70 /* ArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleCell.xib; sourceTree = "<group>"; };
 		352D1191215E159C0053AD70 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
-		352D1194215E159C0053AD70 /* SmartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartViewController.swift; sourceTree = "<group>"; };
 		352D1195215E159C0053AD70 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		352D1196215E159C0053AD70 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		352D1197215E159C0053AD70 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		352D1199215E159C0053AD70 /* PropertyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyViewController.swift; sourceTree = "<group>"; };
 		352D119A215E159C0053AD70 /* MyWalletViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletViewController.swift; sourceTree = "<group>"; };
-		352D119D215E159C0053AD70 /* PersonInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonInfoViewController.swift; sourceTree = "<group>"; };
-		352D11A0215E159C0053AD70 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		352D11A1215E159C0053AD70 /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		352D11A3215E159C0053AD70 /* ModifyImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModifyImageController.swift; sourceTree = "<group>"; };
 		352D11A7215E159C0053AD70 /* Task.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
 		352D11AA215E159C0053AD70 /* TransferViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
@@ -1691,12 +1512,6 @@
 		352D11B2215E159C0053AD70 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		352D11B3215E159C0053AD70 /* Wallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		352D11C2215E159C0053AD70 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		352D11C7215E159C0053AD70 /* ArticleListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleListController.swift; sourceTree = "<group>"; };
-		352D11C8215E159C0053AD70 /* ArticleDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDetailsController.swift; sourceTree = "<group>"; };
-		352D11C9215E159C0053AD70 /* ChainInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChainInfoController.swift; sourceTree = "<group>"; };
-		352D11CA215E159C0053AD70 /* PaperDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperDetailController.swift; sourceTree = "<group>"; };
-		352D11CB215E159C0053AD70 /* Smart.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Smart.storyboard; sourceTree = "<group>"; };
-		352D11CC215E159C0053AD70 /* PaperListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaperListController.swift; sourceTree = "<group>"; };
 		352D11CD215E159C0053AD70 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		352D12A0215E35210053AD70 /* GameTrade-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GameTrade-Bridging-Header.h"; sourceTree = "<group>"; };
 		3561B9F221B8FC81004A6775 /* GameTrade_blue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade_blue.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2192,7 +2007,6 @@
 			isa = PBXGroup;
 			children = (
 				352D1142215E159C0053AD70 /* HomeReusableVM.swift */,
-				352D1143215E159C0053AD70 /* ArticleVM.swift */,
 				352D1144215E159C0053AD70 /* HomeVM.swift */,
 				351275B0218C0A5E0057C927 /* BuyVM.swift */,
 				35ABF9F9218DB2BF00ECD3C9 /* SellVM.swift */,
@@ -2201,9 +2015,7 @@
 				352D1146215E159C0053AD70 /* MyVM.swift */,
 				351B53D521A2EDC700F9725C /* SettingVM.swift */,
 				352D1148215E159C0053AD70 /* LoginVM.swift */,
-				352D1149215E159C0053AD70 /* PaperVM.swift */,
 				35ABF9E3218C480300ECD3C9 /* OrderVM.swift */,
-				352D114B215E159C0053AD70 /* CommentVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2211,15 +2023,11 @@
 		352D114C215E159C0053AD70 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				352D114D215E159C0053AD70 /* CommentModel.swift */,
 				352D114E215E159C0053AD70 /* WalletModel.swift */,
-				352D114F215E159C0053AD70 /* CommenModel.swift */,
 				352D1150215E159C0053AD70 /* BuyModel.swift */,
 				35ABF9FB218DC10900ECD3C9 /* SellModel.swift */,
 				35ABF9E5218C483F00ECD3C9 /* OrderModel.swift */,
-				352D1151215E159C0053AD70 /* PaperModel.swift */,
 				352D1152215E159C0053AD70 /* PayModel.swift */,
-				352D1153215E159C0053AD70 /* ArticleModel.swift */,
 				352D1154215E159C0053AD70 /* UserModel.swift */,
 				352D1155215E159C0053AD70 /* HomeModel.swift */,
 				352D1156215E159C0053AD70 /* MyModel.swift */,
@@ -2232,28 +2040,12 @@
 			isa = PBXGroup;
 			children = (
 				35B85429218439850036AD6A /* Order */,
-				352D1158215E159C0053AD70 /* Paper */,
 				352D115F215E159C0053AD70 /* Home */,
 				352D1164215E159C0053AD70 /* JXView */,
-				352D116E215E159C0053AD70 /* Smart */,
 				352D1171215E159C0053AD70 /* My */,
 				352D1181215E159C0053AD70 /* Wallet */,
-				352D1188215E159C0053AD70 /* Article */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		352D1158215E159C0053AD70 /* Paper */ = {
-			isa = PBXGroup;
-			children = (
-				352D1159215E159C0053AD70 /* PaperDetailTopCell.swift */,
-				352D115A215E159C0053AD70 /* PaperListCell.xib */,
-				352D115B215E159C0053AD70 /* PaperDetailCommonCell.xib */,
-				352D115C215E159C0053AD70 /* PaperDetailCommonCell.swift */,
-				352D115D215E159C0053AD70 /* PaperListCell.swift */,
-				352D115E215E159C0053AD70 /* PaperDetailTopCell.xib */,
-			);
-			path = Paper;
 			sourceTree = "<group>";
 		};
 		352D115F215E159C0053AD70 /* Home */ = {
@@ -2301,15 +2093,6 @@
 			path = JXView;
 			sourceTree = "<group>";
 		};
-		352D116E215E159C0053AD70 /* Smart */ = {
-			isa = PBXGroup;
-			children = (
-				352D116F215E159C0053AD70 /* SmartCell.swift */,
-				352D1170215E159C0053AD70 /* SmartCell.xib */,
-			);
-			path = Smart;
-			sourceTree = "<group>";
-		};
 		352D1171215E159C0053AD70 /* My */ = {
 			isa = PBXGroup;
 			children = (
@@ -2334,14 +2117,10 @@
 		352D1181215E159C0053AD70 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
-				352D1182215E159C0053AD70 /* WalletHeadCell.swift */,
-				352D1186215E159C0053AD70 /* WalletHeadCell.xib */,
 				352D1187215E159C0053AD70 /* PropertyViewCell.swift */,
 				352D1183215E159C0053AD70 /* PropertyViewCell.xib */,
 				352D1184215E159C0053AD70 /* JXActionCell.swift */,
 				352D1185215E159C0053AD70 /* JXActionCell.xib */,
-				3512757A2186FBFC0057C927 /* WalletListPayingCell.swift */,
-				3512757B2186FBFC0057C927 /* WalletListPayingCell.xib */,
 				3512757E2186FC200057C927 /* WalletListPayedCell.swift */,
 				3512757F2186FC200057C927 /* WalletListPayedCell.xib */,
 				351275822186FC370057C927 /* WalletListTransferCell.swift */,
@@ -2356,25 +2135,11 @@
 			path = Wallet;
 			sourceTree = "<group>";
 		};
-		352D1188215E159C0053AD70 /* Article */ = {
-			isa = PBXGroup;
-			children = (
-				352D1189215E159C0053AD70 /* ArticleCell.swift */,
-				352D118A215E159C0053AD70 /* BottomInputView.xib */,
-				352D118B215E159C0053AD70 /* CommentCell.xib */,
-				352D118C215E159C0053AD70 /* BottomInputView.swift */,
-				352D118D215E159C0053AD70 /* CommentCell.swift */,
-				352D118E215E159C0053AD70 /* ArticleCell.xib */,
-			);
-			path = Article;
-			sourceTree = "<group>";
-		};
 		352D118F215E159C0053AD70 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				3595B2C32196B94000494929 /* Chat */,
 				352D1190215E159C0053AD70 /* Home */,
-				352D1194215E159C0053AD70 /* SmartViewController.swift */,
 				352D1195215E159C0053AD70 /* MainViewController.swift */,
 				352D1196215E159C0053AD70 /* MyViewController.swift */,
 				352D1197215E159C0053AD70 /* ScanViewController.swift */,
@@ -2383,7 +2148,6 @@
 				352D1198215E159C0053AD70 /* My */,
 				352D11A2215E159C0053AD70 /* Order */,
 				352D11A8215E159C0053AD70 /* Wallet */,
-				352D11C6215E159C0053AD70 /* Article */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -2413,9 +2177,6 @@
 				352D1199215E159C0053AD70 /* PropertyViewController.swift */,
 				352D119A215E159C0053AD70 /* MyWalletViewController.swift */,
 				352D11A3215E159C0053AD70 /* ModifyImageController.swift */,
-				352D119D215E159C0053AD70 /* PersonInfoViewController.swift */,
-				352D11A0215E159C0053AD70 /* AccountViewController.swift */,
-				352D11A1215E159C0053AD70 /* AboutUsViewController.swift */,
 				352D11C2215E159C0053AD70 /* SettingViewController.swift */,
 				35018B48217AFFB6009F061C /* My.storyboard */,
 			);
@@ -2452,19 +2213,6 @@
 				352D11AE215E159C0053AD70 /* ReceiptViewController.swift */,
 			);
 			path = property;
-			sourceTree = "<group>";
-		};
-		352D11C6215E159C0053AD70 /* Article */ = {
-			isa = PBXGroup;
-			children = (
-				352D11C7215E159C0053AD70 /* ArticleListController.swift */,
-				352D11C8215E159C0053AD70 /* ArticleDetailsController.swift */,
-				352D11C9215E159C0053AD70 /* ChainInfoController.swift */,
-				352D11CA215E159C0053AD70 /* PaperDetailController.swift */,
-				352D11CB215E159C0053AD70 /* Smart.storyboard */,
-				352D11CC215E159C0053AD70 /* PaperListController.swift */,
-			);
-			path = Article;
 			sourceTree = "<group>";
 		};
 		3561B9F421B8FD07004A6775 /* GameTrade_blue */ = {
@@ -2521,8 +2269,6 @@
 		35B85429218439850036AD6A /* Order */ = {
 			isa = PBXGroup;
 			children = (
-				35018B2821771BD2009F061C /* OrderCell.swift */,
-				35018B2921771BD2009F061C /* OrderCell.xib */,
 				35B8542A21843D920036AD6A /* OrderingListCell.swift */,
 				35B8542B21843D920036AD6A /* OrderingListCell.xib */,
 				35B8542E21843DB40036AD6A /* OrderedListCell.swift */,
@@ -3051,18 +2797,15 @@
 				35FE28682199A0FC00CAFB27 /* chat_send_button.png in Resources */,
 				35FE285C2199A0FB00CAFB27 /* attachment@2x.png in Resources */,
 				351B53DC21A4030B00F9725C /* ChatReusableView.xib in Resources */,
-				352D1263215E159D0053AD70 /* ArticleCell.xib in Resources */,
 				35FE28752199A0FC00CAFB27 /* chat_send_button@2x.png in Resources */,
 				35FE285D2199A0FB00CAFB27 /* stop_recording.png in Resources */,
 				3512759121871E050057C927 /* WalletDetailPayedCell.xib in Resources */,
 				35018B3F21783735009F061C /* PayEmptyCell.xib in Resources */,
-				3512757D2186FBFC0057C927 /* WalletListPayingCell.xib in Resources */,
 				35018B3B21783720009F061C /* PayNormalCell.xib in Resources */,
 				352D11E1215E159C0053AD70 /* Login.storyboard in Resources */,
 				35FE28732199A0FC00CAFB27 /* pause.png in Resources */,
 				352D125B215E159D0053AD70 /* JXActionCell.xib in Resources */,
 				352D1278215E159D0053AD70 /* Task.storyboard in Resources */,
-				352D1260215E159D0053AD70 /* CommentCell.xib in Resources */,
 				35FE292B219AECE100CAFB27 /* bubble_full@3x.png in Resources */,
 				35018B312177303B009F061C /* MerchantReusableView.xib in Resources */,
 				35FE2922219AECE100CAFB27 /* bubble_full_tail_v2@3x.png in Resources */,
@@ -3084,18 +2827,15 @@
 				35FE286A2199A0FC00CAFB27 /* tick-black.png in Resources */,
 				35018B49217AFFB6009F061C /* My.storyboard in Resources */,
 				351275A321899B860057C927 /* HomeCell.xib in Resources */,
-				352D1237215E159D0053AD70 /* PaperDetailCommonCell.xib in Resources */,
 				35FE292A219AECE100CAFB27 /* bubble_full_tail_v1.png in Resources */,
 				352D1253215E159D0053AD70 /* PropertyCell.xib in Resources */,
 				3595B2B621906C7B00494929 /* OrderSelledDetailCell.xib in Resources */,
 				35FE286F2199A0FC00CAFB27 /* block.png in Resources */,
 				3512759521871F7B0057C927 /* WalletAddressCell.xib in Resources */,
-				352D1249215E159D0053AD70 /* SmartCell.xib in Resources */,
 				35FE28AC2199A0FC00CAFB27 /* AudioView.xib in Resources */,
 				35FE28712199A0FC00CAFB27 /* flipCamera@2x.png in Resources */,
 				35FE28662199A0FB00CAFB27 /* Dot100%.png in Resources */,
 				35FE28642199A0FB00CAFB27 /* microphone.png in Resources */,
-				352D123A215E159D0053AD70 /* PaperDetailTopCell.xib in Resources */,
 				35FE2925219AECE100CAFB27 /* bubble_outlined_tail_v2@3x.png in Resources */,
 				35FE28802199A0FC00CAFB27 /* focus@2x.png in Resources */,
 				351275AD218AECA90057C927 /* BankCell.xib in Resources */,
@@ -3115,7 +2855,6 @@
 				35FE28DE2199A0FC00CAFB27 /* ChatTableViewCell.xib in Resources */,
 				35FE28742199A0FC00CAFB27 /* user_placeholder.png in Resources */,
 				35FE2923219AECE100CAFB27 /* bubble_full.png in Resources */,
-				352D1236215E159D0053AD70 /* PaperListCell.xib in Resources */,
 				35FE28A32199A0FC00CAFB27 /* DocumentView.xib in Resources */,
 				352D1282215E159D0053AD70 /* Wallet.storyboard in Resources */,
 				35FE292F219AECE100CAFB27 /* bubble_full@2x.png in Resources */,
@@ -3126,15 +2865,12 @@
 				35FE2921219AECE100CAFB27 /* bubble_full_tail_v2@2x.png in Resources */,
 				35FE28782199A0FC00CAFB27 /* flashOutline@2x.png in Resources */,
 				35FE286E2199A0FC00CAFB27 /* flash@2x.png in Resources */,
-				352D125F215E159D0053AD70 /* BottomInputView.xib in Resources */,
 				35FE28722199A0FC00CAFB27 /* file@2x.png in Resources */,
 				35FE28792199A0FC00CAFB27 /* online.png in Resources */,
 				35FE28772199A0FC00CAFB27 /* tick-grey.png in Resources */,
 				3595B2B221906C6C00494929 /* OrderSellingDetailCell.xib in Resources */,
 				35B85422218426A30036AD6A /* SellTextFieldCell.xib in Resources */,
-				35018B2B21771BD2009F061C /* OrderCell.xib in Resources */,
 				35FE285E2199A0FB00CAFB27 /* sliderthumb.png in Resources */,
-				352D125C215E159D0053AD70 /* WalletHeadCell.xib in Resources */,
 				35018B172175BB9C009F061C /* MerchantCell.xib in Resources */,
 				35FE287D2199A0FC00CAFB27 /* play.png in Resources */,
 				35FE28572199A0FB00CAFB27 /* Dot50%.png in Resources */,
@@ -3150,7 +2886,6 @@
 				35FE2927219AECE100CAFB27 /* bubble_outlined_tail_v2@2x.png in Resources */,
 				351275852186FC370057C927 /* WalletListTransferCell.xib in Resources */,
 				35FE28DD2199A0FC00CAFB27 /* LoadingDots.xib in Resources */,
-				352D1295215E159D0053AD70 /* Smart.storyboard in Resources */,
 				35FE28582199A0FB00CAFB27 /* pause@2x.png in Resources */,
 				352D124F215E159D0053AD70 /* PersonCell.xib in Resources */,
 			);
@@ -3172,18 +2907,15 @@
 				3561B98521B8FC81004A6775 /* chat_send_button.png in Resources */,
 				3561B98621B8FC81004A6775 /* attachment@2x.png in Resources */,
 				3561B98721B8FC81004A6775 /* ChatReusableView.xib in Resources */,
-				3561B98821B8FC81004A6775 /* ArticleCell.xib in Resources */,
 				3561B98921B8FC81004A6775 /* chat_send_button@2x.png in Resources */,
 				3561B98A21B8FC81004A6775 /* stop_recording.png in Resources */,
 				3561B98B21B8FC81004A6775 /* WalletDetailPayedCell.xib in Resources */,
 				3561B98C21B8FC81004A6775 /* PayEmptyCell.xib in Resources */,
-				3561B98D21B8FC81004A6775 /* WalletListPayingCell.xib in Resources */,
 				3561B98E21B8FC81004A6775 /* PayNormalCell.xib in Resources */,
 				3561B98F21B8FC81004A6775 /* Login.storyboard in Resources */,
 				3561B99021B8FC81004A6775 /* pause.png in Resources */,
 				3561B99121B8FC81004A6775 /* JXActionCell.xib in Resources */,
 				3561B99221B8FC81004A6775 /* Task.storyboard in Resources */,
-				3561B99321B8FC81004A6775 /* CommentCell.xib in Resources */,
 				3561BD0321BA6B71004A6775 /* GameTrade_blue-Info.plist in Resources */,
 				3561B99421B8FC81004A6775 /* bubble_full@3x.png in Resources */,
 				3561B99521B8FC81004A6775 /* MerchantReusableView.xib in Resources */,
@@ -3207,18 +2939,15 @@
 				3561B9A621B8FC81004A6775 /* tick-black.png in Resources */,
 				3561B9A721B8FC81004A6775 /* My.storyboard in Resources */,
 				3561B9A821B8FC81004A6775 /* HomeCell.xib in Resources */,
-				3561B9A921B8FC81004A6775 /* PaperDetailCommonCell.xib in Resources */,
 				3561B9AA21B8FC81004A6775 /* bubble_full_tail_v1.png in Resources */,
 				3561B9AB21B8FC81004A6775 /* PropertyCell.xib in Resources */,
 				3561B9AC21B8FC81004A6775 /* OrderSelledDetailCell.xib in Resources */,
 				3561B9AD21B8FC81004A6775 /* block.png in Resources */,
 				3561B9AE21B8FC81004A6775 /* WalletAddressCell.xib in Resources */,
-				3561B9AF21B8FC81004A6775 /* SmartCell.xib in Resources */,
 				3561B9B021B8FC81004A6775 /* AudioView.xib in Resources */,
 				3561B9B121B8FC81004A6775 /* flipCamera@2x.png in Resources */,
 				3561B9B221B8FC81004A6775 /* Dot100%.png in Resources */,
 				3561B9B321B8FC81004A6775 /* microphone.png in Resources */,
-				3561B9B421B8FC81004A6775 /* PaperDetailTopCell.xib in Resources */,
 				3561B9B521B8FC81004A6775 /* bubble_outlined_tail_v2@3x.png in Resources */,
 				3561B9B621B8FC81004A6775 /* focus@2x.png in Resources */,
 				3561B9B721B8FC81004A6775 /* BankCell.xib in Resources */,
@@ -3238,7 +2967,6 @@
 				3561B9C521B8FC81004A6775 /* ChatTableViewCell.xib in Resources */,
 				3561B9C621B8FC81004A6775 /* user_placeholder.png in Resources */,
 				3561B9C721B8FC81004A6775 /* bubble_full.png in Resources */,
-				3561B9C821B8FC81004A6775 /* PaperListCell.xib in Resources */,
 				3561B9C921B8FC81004A6775 /* DocumentView.xib in Resources */,
 				3561B9CA21B8FC81004A6775 /* Wallet.storyboard in Resources */,
 				3561B9CB21B8FC81004A6775 /* bubble_full@2x.png in Resources */,
@@ -3248,15 +2976,12 @@
 				3561B9D021B8FC81004A6775 /* bubble_full_tail_v2@2x.png in Resources */,
 				3561B9D121B8FC81004A6775 /* flashOutline@2x.png in Resources */,
 				3561B9D221B8FC81004A6775 /* flash@2x.png in Resources */,
-				3561B9D321B8FC81004A6775 /* BottomInputView.xib in Resources */,
 				3561B9D421B8FC81004A6775 /* file@2x.png in Resources */,
 				3561B9D521B8FC81004A6775 /* online.png in Resources */,
 				3561B9D621B8FC81004A6775 /* tick-grey.png in Resources */,
 				3561B9D721B8FC81004A6775 /* OrderSellingDetailCell.xib in Resources */,
 				3561B9D821B8FC81004A6775 /* SellTextFieldCell.xib in Resources */,
-				3561B9D921B8FC81004A6775 /* OrderCell.xib in Resources */,
 				3561B9DA21B8FC81004A6775 /* sliderthumb.png in Resources */,
-				3561B9DB21B8FC81004A6775 /* WalletHeadCell.xib in Resources */,
 				3561B9DC21B8FC81004A6775 /* MerchantCell.xib in Resources */,
 				3561B9DD21B8FC81004A6775 /* play.png in Resources */,
 				3561B9DE21B8FC81004A6775 /* Dot50%.png in Resources */,
@@ -3272,7 +2997,6 @@
 				3561B9E821B8FC81004A6775 /* bubble_outlined_tail_v2@2x.png in Resources */,
 				3561B9E921B8FC81004A6775 /* WalletListTransferCell.xib in Resources */,
 				3561B9EA21B8FC81004A6775 /* LoadingDots.xib in Resources */,
-				3561B9EB21B8FC81004A6775 /* Smart.storyboard in Resources */,
 				3561B9EC21B8FC81004A6775 /* pause@2x.png in Resources */,
 				3561B9ED21B8FC81004A6775 /* PersonCell.xib in Resources */,
 			);
@@ -3294,18 +3018,15 @@
 				3561BB0821B8FEE5004A6775 /* chat_send_button.png in Resources */,
 				3561BB0921B8FEE5004A6775 /* attachment@2x.png in Resources */,
 				3561BB0A21B8FEE5004A6775 /* ChatReusableView.xib in Resources */,
-				3561BB0B21B8FEE5004A6775 /* ArticleCell.xib in Resources */,
 				3561BB0C21B8FEE5004A6775 /* chat_send_button@2x.png in Resources */,
 				3561BB0D21B8FEE5004A6775 /* stop_recording.png in Resources */,
 				3561BB0E21B8FEE5004A6775 /* WalletDetailPayedCell.xib in Resources */,
 				3561BB0F21B8FEE5004A6775 /* PayEmptyCell.xib in Resources */,
-				3561BB1021B8FEE5004A6775 /* WalletListPayingCell.xib in Resources */,
 				3561BB1121B8FEE5004A6775 /* PayNormalCell.xib in Resources */,
 				3561BB1221B8FEE5004A6775 /* Login.storyboard in Resources */,
 				3561BB1321B8FEE5004A6775 /* pause.png in Resources */,
 				3561BB1421B8FEE5004A6775 /* JXActionCell.xib in Resources */,
 				3561BB1521B8FEE5004A6775 /* Task.storyboard in Resources */,
-				3561BB1621B8FEE5004A6775 /* CommentCell.xib in Resources */,
 				3561BB1721B8FEE5004A6775 /* bubble_full@3x.png in Resources */,
 				3561BB1821B8FEE5004A6775 /* MerchantReusableView.xib in Resources */,
 				3561BB1921B8FEE5004A6775 /* bubble_full_tail_v2@3x.png in Resources */,
@@ -3327,18 +3048,15 @@
 				3561BB2921B8FEE5004A6775 /* tick-black.png in Resources */,
 				3561BB2A21B8FEE5004A6775 /* My.storyboard in Resources */,
 				3561BB2B21B8FEE5004A6775 /* HomeCell.xib in Resources */,
-				3561BB2C21B8FEE5004A6775 /* PaperDetailCommonCell.xib in Resources */,
 				3561BB2D21B8FEE5004A6775 /* bubble_full_tail_v1.png in Resources */,
 				3561BB2E21B8FEE5004A6775 /* PropertyCell.xib in Resources */,
 				3561BB2F21B8FEE5004A6775 /* OrderSelledDetailCell.xib in Resources */,
 				3561BB3021B8FEE5004A6775 /* block.png in Resources */,
 				3561BB3121B8FEE5004A6775 /* WalletAddressCell.xib in Resources */,
-				3561BB3221B8FEE5004A6775 /* SmartCell.xib in Resources */,
 				3561BB3321B8FEE5004A6775 /* AudioView.xib in Resources */,
 				3561BB3421B8FEE5004A6775 /* flipCamera@2x.png in Resources */,
 				3561BB3521B8FEE5004A6775 /* Dot100%.png in Resources */,
 				3561BB3621B8FEE5004A6775 /* microphone.png in Resources */,
-				3561BB3721B8FEE5004A6775 /* PaperDetailTopCell.xib in Resources */,
 				3561BB3821B8FEE5004A6775 /* bubble_outlined_tail_v2@3x.png in Resources */,
 				3561BB3921B8FEE5004A6775 /* focus@2x.png in Resources */,
 				3561BB3A21B8FEE5004A6775 /* BankCell.xib in Resources */,
@@ -3358,7 +3076,6 @@
 				3561BB4821B8FEE5004A6775 /* ChatTableViewCell.xib in Resources */,
 				3561BB4921B8FEE5004A6775 /* user_placeholder.png in Resources */,
 				3561BB4A21B8FEE5004A6775 /* bubble_full.png in Resources */,
-				3561BB4B21B8FEE5004A6775 /* PaperListCell.xib in Resources */,
 				3561BB4C21B8FEE5004A6775 /* DocumentView.xib in Resources */,
 				3561BB4D21B8FEE5004A6775 /* Wallet.storyboard in Resources */,
 				3561BB4E21B8FEE5004A6775 /* bubble_full@2x.png in Resources */,
@@ -3368,15 +3085,12 @@
 				3561BB5321B8FEE5004A6775 /* bubble_full_tail_v2@2x.png in Resources */,
 				3561BB5421B8FEE5004A6775 /* flashOutline@2x.png in Resources */,
 				3561BB5521B8FEE5004A6775 /* flash@2x.png in Resources */,
-				3561BB5621B8FEE5004A6775 /* BottomInputView.xib in Resources */,
 				3561BB5721B8FEE5004A6775 /* file@2x.png in Resources */,
 				3561BB5821B8FEE5004A6775 /* online.png in Resources */,
 				3561BB5921B8FEE5004A6775 /* tick-grey.png in Resources */,
 				3561BB5A21B8FEE5004A6775 /* OrderSellingDetailCell.xib in Resources */,
 				3561BB5B21B8FEE5004A6775 /* SellTextFieldCell.xib in Resources */,
-				3561BB5C21B8FEE5004A6775 /* OrderCell.xib in Resources */,
 				3561BB5D21B8FEE5004A6775 /* sliderthumb.png in Resources */,
-				3561BB5E21B8FEE5004A6775 /* WalletHeadCell.xib in Resources */,
 				3561BD0521BA6B82004A6775 /* GameTrade_orange-Info.plist in Resources */,
 				3561BB5F21B8FEE5004A6775 /* MerchantCell.xib in Resources */,
 				3561BB6021B8FEE5004A6775 /* play.png in Resources */,
@@ -3393,7 +3107,6 @@
 				3561BB6B21B8FEE5004A6775 /* bubble_outlined_tail_v2@2x.png in Resources */,
 				3561BB6C21B8FEE5004A6775 /* WalletListTransferCell.xib in Resources */,
 				3561BB6D21B8FEE5004A6775 /* LoadingDots.xib in Resources */,
-				3561BB6E21B8FEE5004A6775 /* Smart.storyboard in Resources */,
 				3561BB6F21B8FEE5004A6775 /* pause@2x.png in Resources */,
 				3561BB7021B8FEE5004A6775 /* PersonCell.xib in Resources */,
 			);
@@ -3415,19 +3128,16 @@
 				3561BC8B21B8FF8E004A6775 /* chat_send_button.png in Resources */,
 				3561BC8C21B8FF8E004A6775 /* attachment@2x.png in Resources */,
 				3561BC8D21B8FF8E004A6775 /* ChatReusableView.xib in Resources */,
-				3561BC8E21B8FF8E004A6775 /* ArticleCell.xib in Resources */,
 				3561BC8F21B8FF8E004A6775 /* chat_send_button@2x.png in Resources */,
 				3561BC9021B8FF8E004A6775 /* stop_recording.png in Resources */,
 				3561BC9121B8FF8E004A6775 /* WalletDetailPayedCell.xib in Resources */,
 				3561BC9221B8FF8E004A6775 /* PayEmptyCell.xib in Resources */,
-				3561BC9321B8FF8E004A6775 /* WalletListPayingCell.xib in Resources */,
 				3561BC9421B8FF8E004A6775 /* PayNormalCell.xib in Resources */,
 				3561BC9521B8FF8E004A6775 /* Login.storyboard in Resources */,
 				3561BD0721BA6B90004A6775 /* GameTrade_black-Info.plist in Resources */,
 				3561BC9621B8FF8E004A6775 /* pause.png in Resources */,
 				3561BC9721B8FF8E004A6775 /* JXActionCell.xib in Resources */,
 				3561BC9821B8FF8E004A6775 /* Task.storyboard in Resources */,
-				3561BC9921B8FF8E004A6775 /* CommentCell.xib in Resources */,
 				3561BC9A21B8FF8E004A6775 /* bubble_full@3x.png in Resources */,
 				3561BC9B21B8FF8E004A6775 /* MerchantReusableView.xib in Resources */,
 				3561BC9C21B8FF8E004A6775 /* bubble_full_tail_v2@3x.png in Resources */,
@@ -3449,18 +3159,15 @@
 				3561BCAC21B8FF8E004A6775 /* tick-black.png in Resources */,
 				3561BCAD21B8FF8E004A6775 /* My.storyboard in Resources */,
 				3561BCAE21B8FF8E004A6775 /* HomeCell.xib in Resources */,
-				3561BCAF21B8FF8E004A6775 /* PaperDetailCommonCell.xib in Resources */,
 				3561BCB021B8FF8E004A6775 /* bubble_full_tail_v1.png in Resources */,
 				3561BCB121B8FF8E004A6775 /* PropertyCell.xib in Resources */,
 				3561BCB221B8FF8E004A6775 /* OrderSelledDetailCell.xib in Resources */,
 				3561BCB321B8FF8E004A6775 /* block.png in Resources */,
 				3561BCB421B8FF8E004A6775 /* WalletAddressCell.xib in Resources */,
-				3561BCB521B8FF8E004A6775 /* SmartCell.xib in Resources */,
 				3561BCB621B8FF8E004A6775 /* AudioView.xib in Resources */,
 				3561BCB721B8FF8E004A6775 /* flipCamera@2x.png in Resources */,
 				3561BCB821B8FF8E004A6775 /* Dot100%.png in Resources */,
 				3561BCB921B8FF8E004A6775 /* microphone.png in Resources */,
-				3561BCBA21B8FF8E004A6775 /* PaperDetailTopCell.xib in Resources */,
 				3561BCBB21B8FF8E004A6775 /* bubble_outlined_tail_v2@3x.png in Resources */,
 				3561BCBC21B8FF8E004A6775 /* focus@2x.png in Resources */,
 				3561BCBD21B8FF8E004A6775 /* BankCell.xib in Resources */,
@@ -3480,7 +3187,6 @@
 				3561BCCB21B8FF8E004A6775 /* ChatTableViewCell.xib in Resources */,
 				3561BCCC21B8FF8E004A6775 /* user_placeholder.png in Resources */,
 				3561BCCD21B8FF8E004A6775 /* bubble_full.png in Resources */,
-				3561BCCE21B8FF8E004A6775 /* PaperListCell.xib in Resources */,
 				3561BCCF21B8FF8E004A6775 /* DocumentView.xib in Resources */,
 				3561BCD021B8FF8E004A6775 /* Wallet.storyboard in Resources */,
 				3561BCD121B8FF8E004A6775 /* bubble_full@2x.png in Resources */,
@@ -3491,15 +3197,12 @@
 				3561BCD621B8FF8E004A6775 /* bubble_full_tail_v2@2x.png in Resources */,
 				3561BCD721B8FF8E004A6775 /* flashOutline@2x.png in Resources */,
 				3561BCD821B8FF8E004A6775 /* flash@2x.png in Resources */,
-				3561BCD921B8FF8E004A6775 /* BottomInputView.xib in Resources */,
 				3561BCDA21B8FF8E004A6775 /* file@2x.png in Resources */,
 				3561BCDB21B8FF8E004A6775 /* online.png in Resources */,
 				3561BCDC21B8FF8E004A6775 /* tick-grey.png in Resources */,
 				3561BCDD21B8FF8E004A6775 /* OrderSellingDetailCell.xib in Resources */,
 				3561BCDE21B8FF8E004A6775 /* SellTextFieldCell.xib in Resources */,
-				3561BCDF21B8FF8E004A6775 /* OrderCell.xib in Resources */,
 				3561BCE021B8FF8E004A6775 /* sliderthumb.png in Resources */,
-				3561BCE121B8FF8E004A6775 /* WalletHeadCell.xib in Resources */,
 				3561BCE221B8FF8E004A6775 /* MerchantCell.xib in Resources */,
 				3561BCE321B8FF8E004A6775 /* play.png in Resources */,
 				3561BCE421B8FF8E004A6775 /* Dot50%.png in Resources */,
@@ -3515,7 +3218,6 @@
 				3561BCEE21B8FF8E004A6775 /* bubble_outlined_tail_v2@2x.png in Resources */,
 				3561BCEF21B8FF8E004A6775 /* WalletListTransferCell.xib in Resources */,
 				3561BCF021B8FF8E004A6775 /* LoadingDots.xib in Resources */,
-				3561BCF121B8FF8E004A6775 /* Smart.storyboard in Resources */,
 				3561BCF221B8FF8E004A6775 /* pause@2x.png in Resources */,
 				3561BCF321B8FF8E004A6775 /* PersonCell.xib in Resources */,
 			);
@@ -3805,25 +3507,20 @@
 			files = (
 				352D122E215E159D0053AD70 /* BuyModel.swift in Sources */,
 				35FE289F2199A0FC00CAFB27 /* MessagesViewController+Menu.swift in Sources */,
-				352D1273215E159D0053AD70 /* AboutUsViewController.swift in Sources */,
 				3595B2B121906C6C00494929 /* OrderSellingDetailCell.swift in Sources */,
 				352D120F215E159D0053AD70 /* UIViewController+Extension.swift in Sources */,
-				352D1239215E159D0053AD70 /* PaperListCell.swift in Sources */,
 				35FE28D02199A0FC00CAFB27 /* MessageContent.swift in Sources */,
 				352D11D6215E159C0053AD70 /* JSTableViewController.swift in Sources */,
 				35FE28D42199A0FC00CAFB27 /* UIView+ChatCamp.swift in Sources */,
 				35FE28932199A0FC00CAFB27 /* UIView+Extensions.swift in Sources */,
 				352D121A215E159D0053AD70 /* ApiEnum.swift in Sources */,
 				35FE28AF2199A0FC00CAFB27 /* MessageLabel.swift in Sources */,
-				35018B2A21771BD2009F061C /* OrderCell.swift in Sources */,
 				35FE28852199A0FC00CAFB27 /* MessageIntermediateLayoutAttributes.swift in Sources */,
 				35B8541D218305AC0036AD6A /* JXSecretTextView.swift in Sources */,
-				352D1267215E159D0053AD70 /* SmartViewController.swift in Sources */,
 				351B53D621A2EDC700F9725C /* SettingVM.swift in Sources */,
 				35FE28DC2199A0FC00CAFB27 /* ChatTableViewCell.swift in Sources */,
 				352D1218215E159D0053AD70 /* JXNetworkManager.swift in Sources */,
 				35B8543021843DB40036AD6A /* OrderedListCell.swift in Sources */,
-				352D122A215E159D0053AD70 /* CommentVM.swift in Sources */,
 				352D11D1215E159C0053AD70 /* JXCollectionViewController.swift in Sources */,
 				352D121B215E159D0053AD70 /* Encryption.swift in Sources */,
 				35018B1B2175CC8A009F061C /* SellCollectionController.swift in Sources */,
@@ -3838,7 +3535,6 @@
 				3595B2BC21957FDC00494929 /* NewSellController.swift in Sources */,
 				35FE28C82199A0FC00CAFB27 /* OpenChannelsViewController.swift in Sources */,
 				35FE28C42199A0FC00CAFB27 /* ViewController.swift in Sources */,
-				352D1293215E159D0053AD70 /* ChainInfoController.swift in Sources */,
 				35FE28E12199A0FC00CAFB27 /* RecordButton.swift in Sources */,
 				35FE28942199A0FC00CAFB27 /* String+Extensions.swift in Sources */,
 				35ABF9E2218C2AFB00ECD3C9 /* ConfirmController.swift in Sources */,
@@ -3870,7 +3566,6 @@
 				352D1215215E159D0053AD70 /* ViewManager.swift in Sources */,
 				352D120B215E159D0053AD70 /* UIDevice+Extension.swift in Sources */,
 				35FE28992199A0FC00CAFB27 /* UICollectionView+Extensions.swift in Sources */,
-				352D122D215E159D0053AD70 /* CommenModel.swift in Sources */,
 				35FE28832199A0FC00CAFB27 /* DBManager.swift in Sources */,
 				35FE2939219D814900CAFB27 /* NameSetController.swift in Sources */,
 				3512759C2188763D0057C927 /* MerchantSubCell.swift in Sources */,
@@ -3897,9 +3592,7 @@
 				35B8541721806C240036AD6A /* JXDropListView.swift in Sources */,
 				35FE288B2199A0FC00CAFB27 /* Sender.swift in Sources */,
 				35FE28C32199A0FC00CAFB27 /* ChatViewController.swift in Sources */,
-				352D125E215E159D0053AD70 /* ArticleCell.swift in Sources */,
 				35FE28BD2199A0FC00CAFB27 /* MessagesLayoutDelegate.swift in Sources */,
-				352D1294215E159D0053AD70 /* PaperDetailController.swift in Sources */,
 				352D125A215E159D0053AD70 /* JXActionCell.swift in Sources */,
 				35FE289D2199A0FC00CAFB27 /* MessagesViewController.swift in Sources */,
 				352D1230215E159D0053AD70 /* PayModel.swift in Sources */,
@@ -3907,7 +3600,6 @@
 				352D1252215E159D0053AD70 /* ImageTitleCell.swift in Sources */,
 				35FE28B42199A0FC00CAFB27 /* MessageDateHeaderView.swift in Sources */,
 				35FE28A62199A0FC00CAFB27 /* DocumentView.swift in Sources */,
-				352D1231215E159D0053AD70 /* ArticleModel.swift in Sources */,
 				352D121C215E159D0053AD70 /* ProjectHeader.swift in Sources */,
 				352D11D5215E159C0053AD70 /* JXWkWebViewController.swift in Sources */,
 				35FE288A2199A0FC00CAFB27 /* LocationMessageSnapshotOptions.swift in Sources */,
@@ -3917,8 +3609,6 @@
 				3595B2A7219066FF00494929 /* OrderBuyingDetailCell.swift in Sources */,
 				35FE28892199A0FC00CAFB27 /* LabelAlignment.swift in Sources */,
 				35FE28B82199A0FC00CAFB27 /* AvatarView.swift in Sources */,
-				352D1296215E159D0053AD70 /* PaperListController.swift in Sources */,
-				352D1258215E159D0053AD70 /* WalletHeadCell.swift in Sources */,
 				352D1274215E159D0053AD70 /* ModifyImageController.swift in Sources */,
 				352D1240215E159D0053AD70 /* JXView.swift in Sources */,
 				35FE289E2199A0FC00CAFB27 /* MessagesViewController+DataSource.swift in Sources */,
@@ -3953,20 +3643,16 @@
 				35FE28A12199A0FC00CAFB27 /* WritingMessageCell.swift in Sources */,
 				352D121D215E159D0053AD70 /* LanguageManager.swift in Sources */,
 				35FE28B62199A0FC00CAFB27 /* InputStackView.swift in Sources */,
-				352D1228215E159D0053AD70 /* PaperVM.swift in Sources */,
 				352D1210215E159D0053AD70 /* UIScreen+Extension.swift in Sources */,
 				352D124B215E159D0053AD70 /* MyCell.swift in Sources */,
 				35018B302177303B009F061C /* MerchantReusableView.swift in Sources */,
 				35FE28BC2199A0FC00CAFB27 /* MessageInputBarDelegate.swift in Sources */,
-				352D1235215E159D0053AD70 /* PaperDetailTopCell.swift in Sources */,
 				35FE28C22199A0FC00CAFB27 /* MessagesDataSource.swift in Sources */,
 				3595B2BA21918CAA00494929 /* JXNoticeImageView.swift in Sources */,
-				352D126F215E159D0053AD70 /* PersonInfoViewController.swift in Sources */,
 				35ABF9E4218C480300ECD3C9 /* OrderVM.swift in Sources */,
 				35FE28C12199A0FC00CAFB27 /* MessagesDisplayDelegate.swift in Sources */,
 				352D120E215E159D0053AD70 /* UIImage+Extension.swift in Sources */,
 				351275792186C0EC0057C927 /* UIImage+Ex.swift in Sources */,
-				352D1238215E159D0053AD70 /* PaperDetailCommonCell.swift in Sources */,
 				35FE28962199A0FC00CAFB27 /* NSAttributedString+Extensions.swift in Sources */,
 				35FE28BB2199A0FC00CAFB27 /* SeparatorLine.swift in Sources */,
 				35ABF9E6218C483F00ECD3C9 /* OrderModel.swift in Sources */,
@@ -3983,9 +3669,7 @@
 				351275802186FC200057C927 /* WalletListPayedCell.swift in Sources */,
 				35B85421218426A30036AD6A /* SellTextFieldCell.swift in Sources */,
 				35018B3E21783735009F061C /* PayEmptyCell.swift in Sources */,
-				352D1292215E159D0053AD70 /* ArticleDetailsController.swift in Sources */,
 				352D120D215E159D0053AD70 /* UIView+Extension.swift in Sources */,
-				352D1272215E159D0053AD70 /* AccountViewController.swift in Sources */,
 				3595B2AD21906C5300494929 /* OrderBuyedDetailCell.swift in Sources */,
 				352D11D4215E159C0053AD70 /* ZPCollectionViewController.swift in Sources */,
 				352D1221215E159D0053AD70 /* HomeReusableVM.swift in Sources */,
@@ -4000,7 +3684,6 @@
 				35FE28A72199A0FC00CAFB27 /* TextMessageCell.swift in Sources */,
 				35FE28A92199A0FC00CAFB27 /* CustomMessageContentView.swift in Sources */,
 				351B53DB21A4030B00F9725C /* ChatReusableView.swift in Sources */,
-				352D122F215E159D0053AD70 /* PaperModel.swift in Sources */,
 				35FE28BA2199A0FC00CAFB27 /* PlayButtonView.swift in Sources */,
 				352D1234215E159D0053AD70 /* MyModel.swift in Sources */,
 				351275972188053B0057C927 /* BuySubController.swift in Sources */,
@@ -4018,8 +3701,6 @@
 				35FE28922199A0FC00CAFB27 /* NSConstraintLayoutSet.swift in Sources */,
 				35FE28CF2199A0FC00CAFB27 /* ProfileViewController.swift in Sources */,
 				35FE28D22199A0FC00CAFB27 /* UIImageView+ChatCamp.swift in Sources */,
-				352D122B215E159D0053AD70 /* CommentModel.swift in Sources */,
-				352D1222215E159D0053AD70 /* ArticleVM.swift in Sources */,
 				352D1219215E159D0053AD70 /* JXRequest.swift in Sources */,
 				35FE28D72199A0FC00CAFB27 /* Data+ChatCamp.swift in Sources */,
 				352D1217215E159D0053AD70 /* JXBaseRequest.swift in Sources */,
@@ -4031,7 +3712,6 @@
 				35018B472179EC56009F061C /* CardPayController.swift in Sources */,
 				35FE28B02199A0FC00CAFB27 /* InputBarItem.swift in Sources */,
 				352D1297215E159D0053AD70 /* TabBarViewController.swift in Sources */,
-				352D1261215E159D0053AD70 /* BottomInputView.swift in Sources */,
 				35018B212175DCF5009F061C /* PutUpViewController.swift in Sources */,
 				352D1211215E159D0053AD70 /* UIBarButtonItem+Extension.swift in Sources */,
 				35FE28A42199A0FC00CAFB27 /* MediaMessageCell.swift in Sources */,
@@ -4048,19 +3728,15 @@
 				35FE28972199A0FC00CAFB27 /* Bundle+Extensions.swift in Sources */,
 				35FE28A02199A0FC00CAFB27 /* MessagesViewController+Delegate.swift in Sources */,
 				35FE28D82199A0FC00CAFB27 /* String+ChatCamp.swift in Sources */,
-				352D1248215E159D0053AD70 /* SmartCell.swift in Sources */,
 				352D1244215E159D0053AD70 /* JXTopBarView.swift in Sources */,
-				352D1262215E159D0053AD70 /* CommentCell.swift in Sources */,
 				352D1268215E159D0053AD70 /* MainViewController.swift in Sources */,
 				35018B412178393D009F061C /* PayListController.swift in Sources */,
 				35FE289C2199A0FC00CAFB27 /* MessagesViewController+Keyboard.swift in Sources */,
-				3512757C2186FBFC0057C927 /* WalletListPayingCell.swift in Sources */,
 				35018B162175BB9C009F061C /* MerchantCell.swift in Sources */,
 				35FE2934219C00A100CAFB27 /* JXKeyboardToolBar.swift in Sources */,
 				35FE28C02199A0FC00CAFB27 /* MessageLabelDelegate.swift in Sources */,
 				35ABF9FA218DB2BF00ECD3C9 /* SellVM.swift in Sources */,
 				352D11D7215E159C0053AD70 /* JXTableViewController.swift in Sources */,
-				352D1291215E159D0053AD70 /* ArticleListController.swift in Sources */,
 				352D123F215E159D0053AD70 /* JXPlaceHolderTextView.swift in Sources */,
 				35FE28912199A0FC00CAFB27 /* AvatarPosition.swift in Sources */,
 				352D126A215E159D0053AD70 /* ScanViewController.swift in Sources */,
@@ -4073,25 +3749,20 @@
 			files = (
 				3561B87521B8FC81004A6775 /* BuyModel.swift in Sources */,
 				3561B87621B8FC81004A6775 /* MessagesViewController+Menu.swift in Sources */,
-				3561B87721B8FC81004A6775 /* AboutUsViewController.swift in Sources */,
 				3561B87821B8FC81004A6775 /* OrderSellingDetailCell.swift in Sources */,
 				3561B87921B8FC81004A6775 /* UIViewController+Extension.swift in Sources */,
-				3561B87A21B8FC81004A6775 /* PaperListCell.swift in Sources */,
 				3561B87B21B8FC81004A6775 /* MessageContent.swift in Sources */,
 				3561B87C21B8FC81004A6775 /* JSTableViewController.swift in Sources */,
 				3561B87D21B8FC81004A6775 /* UIView+ChatCamp.swift in Sources */,
 				3561B87E21B8FC81004A6775 /* UIView+Extensions.swift in Sources */,
 				3561B87F21B8FC81004A6775 /* ApiEnum.swift in Sources */,
 				3561B88021B8FC81004A6775 /* MessageLabel.swift in Sources */,
-				3561B88121B8FC81004A6775 /* OrderCell.swift in Sources */,
 				3561B88221B8FC81004A6775 /* MessageIntermediateLayoutAttributes.swift in Sources */,
 				3561B88321B8FC81004A6775 /* JXSecretTextView.swift in Sources */,
-				3561B88421B8FC81004A6775 /* SmartViewController.swift in Sources */,
 				3561B88521B8FC81004A6775 /* SettingVM.swift in Sources */,
 				3561B88621B8FC81004A6775 /* ChatTableViewCell.swift in Sources */,
 				3561B88721B8FC81004A6775 /* JXNetworkManager.swift in Sources */,
 				3561B88821B8FC81004A6775 /* OrderedListCell.swift in Sources */,
-				3561B88921B8FC81004A6775 /* CommentVM.swift in Sources */,
 				3561B88A21B8FC81004A6775 /* JXCollectionViewController.swift in Sources */,
 				3561B88B21B8FC81004A6775 /* Encryption.swift in Sources */,
 				3561B88C21B8FC81004A6775 /* SellCollectionController.swift in Sources */,
@@ -4106,7 +3777,6 @@
 				3561B89521B8FC81004A6775 /* NewSellController.swift in Sources */,
 				3561B89621B8FC81004A6775 /* OpenChannelsViewController.swift in Sources */,
 				3561B89721B8FC81004A6775 /* ViewController.swift in Sources */,
-				3561B89821B8FC81004A6775 /* ChainInfoController.swift in Sources */,
 				3561B89921B8FC81004A6775 /* RecordButton.swift in Sources */,
 				3561B89A21B8FC81004A6775 /* String+Extensions.swift in Sources */,
 				3561B89B21B8FC81004A6775 /* ConfirmController.swift in Sources */,
@@ -4138,7 +3808,6 @@
 				3561B8B521B8FC81004A6775 /* ViewManager.swift in Sources */,
 				3561B8B621B8FC81004A6775 /* UIDevice+Extension.swift in Sources */,
 				3561B8B721B8FC81004A6775 /* UICollectionView+Extensions.swift in Sources */,
-				3561B8B821B8FC81004A6775 /* CommenModel.swift in Sources */,
 				3561B8B921B8FC81004A6775 /* DBManager.swift in Sources */,
 				3561B8BA21B8FC81004A6775 /* NameSetController.swift in Sources */,
 				3561B8BB21B8FC81004A6775 /* MerchantSubCell.swift in Sources */,
@@ -4165,9 +3834,7 @@
 				3561B8D021B8FC81004A6775 /* JXDropListView.swift in Sources */,
 				3561B8D121B8FC81004A6775 /* Sender.swift in Sources */,
 				3561B8D221B8FC81004A6775 /* ChatViewController.swift in Sources */,
-				3561B8D321B8FC81004A6775 /* ArticleCell.swift in Sources */,
 				3561B8D421B8FC81004A6775 /* MessagesLayoutDelegate.swift in Sources */,
-				3561B8D521B8FC81004A6775 /* PaperDetailController.swift in Sources */,
 				3561B8D621B8FC81004A6775 /* JXActionCell.swift in Sources */,
 				3561B8D721B8FC81004A6775 /* MessagesViewController.swift in Sources */,
 				3561B8D821B8FC81004A6775 /* PayModel.swift in Sources */,
@@ -4175,7 +3842,6 @@
 				3561B8DA21B8FC81004A6775 /* ImageTitleCell.swift in Sources */,
 				3561B8DB21B8FC81004A6775 /* MessageDateHeaderView.swift in Sources */,
 				3561B8DC21B8FC81004A6775 /* DocumentView.swift in Sources */,
-				3561B8DD21B8FC81004A6775 /* ArticleModel.swift in Sources */,
 				3561B8DE21B8FC81004A6775 /* ProjectHeader.swift in Sources */,
 				3561B8DF21B8FC81004A6775 /* JXWkWebViewController.swift in Sources */,
 				3561B8E021B8FC81004A6775 /* LocationMessageSnapshotOptions.swift in Sources */,
@@ -4185,8 +3851,6 @@
 				3561B8E421B8FC81004A6775 /* OrderBuyingDetailCell.swift in Sources */,
 				3561B8E521B8FC81004A6775 /* LabelAlignment.swift in Sources */,
 				3561B8E621B8FC81004A6775 /* AvatarView.swift in Sources */,
-				3561B8E721B8FC81004A6775 /* PaperListController.swift in Sources */,
-				3561B8E821B8FC81004A6775 /* WalletHeadCell.swift in Sources */,
 				3561B8E921B8FC81004A6775 /* ModifyImageController.swift in Sources */,
 				3561B8EA21B8FC81004A6775 /* JXView.swift in Sources */,
 				3561B8EB21B8FC81004A6775 /* MessagesViewController+DataSource.swift in Sources */,
@@ -4221,20 +3885,16 @@
 				3561B90821B8FC81004A6775 /* WritingMessageCell.swift in Sources */,
 				3561B90921B8FC81004A6775 /* LanguageManager.swift in Sources */,
 				3561B90A21B8FC81004A6775 /* InputStackView.swift in Sources */,
-				3561B90B21B8FC81004A6775 /* PaperVM.swift in Sources */,
 				3561B90C21B8FC81004A6775 /* UIScreen+Extension.swift in Sources */,
 				3561B90D21B8FC81004A6775 /* MyCell.swift in Sources */,
 				3561B90E21B8FC81004A6775 /* MerchantReusableView.swift in Sources */,
 				3561B90F21B8FC81004A6775 /* MessageInputBarDelegate.swift in Sources */,
-				3561B91021B8FC81004A6775 /* PaperDetailTopCell.swift in Sources */,
 				3561B91121B8FC81004A6775 /* MessagesDataSource.swift in Sources */,
 				3561B91221B8FC81004A6775 /* JXNoticeImageView.swift in Sources */,
-				3561B91321B8FC81004A6775 /* PersonInfoViewController.swift in Sources */,
 				3561B91421B8FC81004A6775 /* OrderVM.swift in Sources */,
 				3561B91521B8FC81004A6775 /* MessagesDisplayDelegate.swift in Sources */,
 				3561B91621B8FC81004A6775 /* UIImage+Extension.swift in Sources */,
 				3561B91721B8FC81004A6775 /* UIImage+Ex.swift in Sources */,
-				3561B91821B8FC81004A6775 /* PaperDetailCommonCell.swift in Sources */,
 				3561B91921B8FC81004A6775 /* NSAttributedString+Extensions.swift in Sources */,
 				3561B91A21B8FC81004A6775 /* SeparatorLine.swift in Sources */,
 				3561B91B21B8FC81004A6775 /* OrderModel.swift in Sources */,
@@ -4251,9 +3911,7 @@
 				3561B92621B8FC81004A6775 /* WalletListPayedCell.swift in Sources */,
 				3561B92721B8FC81004A6775 /* SellTextFieldCell.swift in Sources */,
 				3561B92821B8FC81004A6775 /* PayEmptyCell.swift in Sources */,
-				3561B92921B8FC81004A6775 /* ArticleDetailsController.swift in Sources */,
 				3561B92A21B8FC81004A6775 /* UIView+Extension.swift in Sources */,
-				3561B92B21B8FC81004A6775 /* AccountViewController.swift in Sources */,
 				3561B92C21B8FC81004A6775 /* OrderBuyedDetailCell.swift in Sources */,
 				3561B92D21B8FC81004A6775 /* ZPCollectionViewController.swift in Sources */,
 				3561B92E21B8FC81004A6775 /* HomeReusableVM.swift in Sources */,
@@ -4268,7 +3926,6 @@
 				3561B93721B8FC81004A6775 /* TextMessageCell.swift in Sources */,
 				3561B93821B8FC81004A6775 /* CustomMessageContentView.swift in Sources */,
 				3561B93921B8FC81004A6775 /* ChatReusableView.swift in Sources */,
-				3561B93A21B8FC81004A6775 /* PaperModel.swift in Sources */,
 				3561B93B21B8FC81004A6775 /* PlayButtonView.swift in Sources */,
 				3561B93C21B8FC81004A6775 /* MyModel.swift in Sources */,
 				3561B93D21B8FC81004A6775 /* BuySubController.swift in Sources */,
@@ -4286,8 +3943,6 @@
 				3561B94921B8FC81004A6775 /* NSConstraintLayoutSet.swift in Sources */,
 				3561B94A21B8FC81004A6775 /* ProfileViewController.swift in Sources */,
 				3561B94B21B8FC81004A6775 /* UIImageView+ChatCamp.swift in Sources */,
-				3561B94C21B8FC81004A6775 /* CommentModel.swift in Sources */,
-				3561B94D21B8FC81004A6775 /* ArticleVM.swift in Sources */,
 				3561B94E21B8FC81004A6775 /* JXRequest.swift in Sources */,
 				3561B94F21B8FC81004A6775 /* Data+ChatCamp.swift in Sources */,
 				3561B95021B8FC81004A6775 /* JXBaseRequest.swift in Sources */,
@@ -4299,7 +3954,6 @@
 				3561B95521B8FC81004A6775 /* CardPayController.swift in Sources */,
 				3561B95621B8FC81004A6775 /* InputBarItem.swift in Sources */,
 				3561B95721B8FC81004A6775 /* TabBarViewController.swift in Sources */,
-				3561B95821B8FC81004A6775 /* BottomInputView.swift in Sources */,
 				3561B95921B8FC81004A6775 /* PutUpViewController.swift in Sources */,
 				3561B95A21B8FC81004A6775 /* UIBarButtonItem+Extension.swift in Sources */,
 				3561B95B21B8FC81004A6775 /* MediaMessageCell.swift in Sources */,
@@ -4316,19 +3970,15 @@
 				3561B96621B8FC81004A6775 /* Bundle+Extensions.swift in Sources */,
 				3561B96721B8FC81004A6775 /* MessagesViewController+Delegate.swift in Sources */,
 				3561B96821B8FC81004A6775 /* String+ChatCamp.swift in Sources */,
-				3561B96921B8FC81004A6775 /* SmartCell.swift in Sources */,
 				3561B96A21B8FC81004A6775 /* JXTopBarView.swift in Sources */,
-				3561B96B21B8FC81004A6775 /* CommentCell.swift in Sources */,
 				3561B96C21B8FC81004A6775 /* MainViewController.swift in Sources */,
 				3561B96D21B8FC81004A6775 /* PayListController.swift in Sources */,
 				3561B96E21B8FC81004A6775 /* MessagesViewController+Keyboard.swift in Sources */,
-				3561B96F21B8FC81004A6775 /* WalletListPayingCell.swift in Sources */,
 				3561B97021B8FC81004A6775 /* MerchantCell.swift in Sources */,
 				3561B97121B8FC81004A6775 /* JXKeyboardToolBar.swift in Sources */,
 				3561B97221B8FC81004A6775 /* MessageLabelDelegate.swift in Sources */,
 				3561B97321B8FC81004A6775 /* SellVM.swift in Sources */,
 				3561B97421B8FC81004A6775 /* JXTableViewController.swift in Sources */,
-				3561B97521B8FC81004A6775 /* ArticleListController.swift in Sources */,
 				3561B97621B8FC81004A6775 /* JXPlaceHolderTextView.swift in Sources */,
 				3561B97721B8FC81004A6775 /* AvatarPosition.swift in Sources */,
 				3561B97821B8FC81004A6775 /* ScanViewController.swift in Sources */,
@@ -4341,25 +3991,20 @@
 			files = (
 				3561B9F821B8FEE5004A6775 /* BuyModel.swift in Sources */,
 				3561B9F921B8FEE5004A6775 /* MessagesViewController+Menu.swift in Sources */,
-				3561B9FA21B8FEE5004A6775 /* AboutUsViewController.swift in Sources */,
 				3561B9FB21B8FEE5004A6775 /* OrderSellingDetailCell.swift in Sources */,
 				3561B9FC21B8FEE5004A6775 /* UIViewController+Extension.swift in Sources */,
-				3561B9FD21B8FEE5004A6775 /* PaperListCell.swift in Sources */,
 				3561B9FE21B8FEE5004A6775 /* MessageContent.swift in Sources */,
 				3561B9FF21B8FEE5004A6775 /* JSTableViewController.swift in Sources */,
 				3561BA0021B8FEE5004A6775 /* UIView+ChatCamp.swift in Sources */,
 				3561BA0121B8FEE5004A6775 /* UIView+Extensions.swift in Sources */,
 				3561BA0221B8FEE5004A6775 /* ApiEnum.swift in Sources */,
 				3561BA0321B8FEE5004A6775 /* MessageLabel.swift in Sources */,
-				3561BA0421B8FEE5004A6775 /* OrderCell.swift in Sources */,
 				3561BA0521B8FEE5004A6775 /* MessageIntermediateLayoutAttributes.swift in Sources */,
 				3561BA0621B8FEE5004A6775 /* JXSecretTextView.swift in Sources */,
-				3561BA0721B8FEE5004A6775 /* SmartViewController.swift in Sources */,
 				3561BA0821B8FEE5004A6775 /* SettingVM.swift in Sources */,
 				3561BA0921B8FEE5004A6775 /* ChatTableViewCell.swift in Sources */,
 				3561BA0A21B8FEE5004A6775 /* JXNetworkManager.swift in Sources */,
 				3561BA0B21B8FEE5004A6775 /* OrderedListCell.swift in Sources */,
-				3561BA0C21B8FEE5004A6775 /* CommentVM.swift in Sources */,
 				3561BA0D21B8FEE5004A6775 /* JXCollectionViewController.swift in Sources */,
 				3561BA0E21B8FEE5004A6775 /* Encryption.swift in Sources */,
 				3561BA0F21B8FEE5004A6775 /* SellCollectionController.swift in Sources */,
@@ -4374,7 +4019,6 @@
 				3561BA1821B8FEE5004A6775 /* NewSellController.swift in Sources */,
 				3561BA1921B8FEE5004A6775 /* OpenChannelsViewController.swift in Sources */,
 				3561BA1A21B8FEE5004A6775 /* ViewController.swift in Sources */,
-				3561BA1B21B8FEE5004A6775 /* ChainInfoController.swift in Sources */,
 				3561BA1C21B8FEE5004A6775 /* RecordButton.swift in Sources */,
 				3561BA1D21B8FEE5004A6775 /* String+Extensions.swift in Sources */,
 				3561BA1E21B8FEE5004A6775 /* ConfirmController.swift in Sources */,
@@ -4406,7 +4050,6 @@
 				3561BA3821B8FEE5004A6775 /* ViewManager.swift in Sources */,
 				3561BA3921B8FEE5004A6775 /* UIDevice+Extension.swift in Sources */,
 				3561BA3A21B8FEE5004A6775 /* UICollectionView+Extensions.swift in Sources */,
-				3561BA3B21B8FEE5004A6775 /* CommenModel.swift in Sources */,
 				3561BA3C21B8FEE5004A6775 /* DBManager.swift in Sources */,
 				3561BA3D21B8FEE5004A6775 /* NameSetController.swift in Sources */,
 				3561BA3E21B8FEE5004A6775 /* MerchantSubCell.swift in Sources */,
@@ -4433,9 +4076,7 @@
 				3561BA5321B8FEE5004A6775 /* JXDropListView.swift in Sources */,
 				3561BA5421B8FEE5004A6775 /* Sender.swift in Sources */,
 				3561BA5521B8FEE5004A6775 /* ChatViewController.swift in Sources */,
-				3561BA5621B8FEE5004A6775 /* ArticleCell.swift in Sources */,
 				3561BA5721B8FEE5004A6775 /* MessagesLayoutDelegate.swift in Sources */,
-				3561BA5821B8FEE5004A6775 /* PaperDetailController.swift in Sources */,
 				3561BA5921B8FEE5004A6775 /* JXActionCell.swift in Sources */,
 				3561BA5A21B8FEE5004A6775 /* MessagesViewController.swift in Sources */,
 				3561BA5B21B8FEE5004A6775 /* PayModel.swift in Sources */,
@@ -4443,7 +4084,6 @@
 				3561BA5D21B8FEE5004A6775 /* ImageTitleCell.swift in Sources */,
 				3561BA5E21B8FEE5004A6775 /* MessageDateHeaderView.swift in Sources */,
 				3561BA5F21B8FEE5004A6775 /* DocumentView.swift in Sources */,
-				3561BA6021B8FEE5004A6775 /* ArticleModel.swift in Sources */,
 				3561BA6121B8FEE5004A6775 /* ProjectHeader.swift in Sources */,
 				3561BA6221B8FEE5004A6775 /* JXWkWebViewController.swift in Sources */,
 				3561BA6321B8FEE5004A6775 /* LocationMessageSnapshotOptions.swift in Sources */,
@@ -4453,8 +4093,6 @@
 				3561BA6721B8FEE5004A6775 /* OrderBuyingDetailCell.swift in Sources */,
 				3561BA6821B8FEE5004A6775 /* LabelAlignment.swift in Sources */,
 				3561BA6921B8FEE5004A6775 /* AvatarView.swift in Sources */,
-				3561BA6A21B8FEE5004A6775 /* PaperListController.swift in Sources */,
-				3561BA6B21B8FEE5004A6775 /* WalletHeadCell.swift in Sources */,
 				3561BA6C21B8FEE5004A6775 /* ModifyImageController.swift in Sources */,
 				3561BA6D21B8FEE5004A6775 /* JXView.swift in Sources */,
 				3561BA6E21B8FEE5004A6775 /* MessagesViewController+DataSource.swift in Sources */,
@@ -4489,20 +4127,16 @@
 				3561BA8B21B8FEE5004A6775 /* WritingMessageCell.swift in Sources */,
 				3561BA8C21B8FEE5004A6775 /* LanguageManager.swift in Sources */,
 				3561BA8D21B8FEE5004A6775 /* InputStackView.swift in Sources */,
-				3561BA8E21B8FEE5004A6775 /* PaperVM.swift in Sources */,
 				3561BA8F21B8FEE5004A6775 /* UIScreen+Extension.swift in Sources */,
 				3561BA9021B8FEE5004A6775 /* MyCell.swift in Sources */,
 				3561BA9121B8FEE5004A6775 /* MerchantReusableView.swift in Sources */,
 				3561BA9221B8FEE5004A6775 /* MessageInputBarDelegate.swift in Sources */,
-				3561BA9321B8FEE5004A6775 /* PaperDetailTopCell.swift in Sources */,
 				3561BA9421B8FEE5004A6775 /* MessagesDataSource.swift in Sources */,
 				3561BA9521B8FEE5004A6775 /* JXNoticeImageView.swift in Sources */,
-				3561BA9621B8FEE5004A6775 /* PersonInfoViewController.swift in Sources */,
 				3561BA9721B8FEE5004A6775 /* OrderVM.swift in Sources */,
 				3561BA9821B8FEE5004A6775 /* MessagesDisplayDelegate.swift in Sources */,
 				3561BA9921B8FEE5004A6775 /* UIImage+Extension.swift in Sources */,
 				3561BA9A21B8FEE5004A6775 /* UIImage+Ex.swift in Sources */,
-				3561BA9B21B8FEE5004A6775 /* PaperDetailCommonCell.swift in Sources */,
 				3561BA9C21B8FEE5004A6775 /* NSAttributedString+Extensions.swift in Sources */,
 				3561BA9D21B8FEE5004A6775 /* SeparatorLine.swift in Sources */,
 				3561BA9E21B8FEE5004A6775 /* OrderModel.swift in Sources */,
@@ -4519,9 +4153,7 @@
 				3561BAA921B8FEE5004A6775 /* WalletListPayedCell.swift in Sources */,
 				3561BAAA21B8FEE5004A6775 /* SellTextFieldCell.swift in Sources */,
 				3561BAAB21B8FEE5004A6775 /* PayEmptyCell.swift in Sources */,
-				3561BAAC21B8FEE5004A6775 /* ArticleDetailsController.swift in Sources */,
 				3561BAAD21B8FEE5004A6775 /* UIView+Extension.swift in Sources */,
-				3561BAAE21B8FEE5004A6775 /* AccountViewController.swift in Sources */,
 				3561BAAF21B8FEE5004A6775 /* OrderBuyedDetailCell.swift in Sources */,
 				3561BAB021B8FEE5004A6775 /* ZPCollectionViewController.swift in Sources */,
 				3561BAB121B8FEE5004A6775 /* HomeReusableVM.swift in Sources */,
@@ -4536,7 +4168,6 @@
 				3561BABA21B8FEE5004A6775 /* TextMessageCell.swift in Sources */,
 				3561BABB21B8FEE5004A6775 /* CustomMessageContentView.swift in Sources */,
 				3561BABC21B8FEE5004A6775 /* ChatReusableView.swift in Sources */,
-				3561BABD21B8FEE5004A6775 /* PaperModel.swift in Sources */,
 				3561BABE21B8FEE5004A6775 /* PlayButtonView.swift in Sources */,
 				3561BABF21B8FEE5004A6775 /* MyModel.swift in Sources */,
 				3561BAC021B8FEE5004A6775 /* BuySubController.swift in Sources */,
@@ -4554,8 +4185,6 @@
 				3561BACC21B8FEE5004A6775 /* NSConstraintLayoutSet.swift in Sources */,
 				3561BACD21B8FEE5004A6775 /* ProfileViewController.swift in Sources */,
 				3561BACE21B8FEE5004A6775 /* UIImageView+ChatCamp.swift in Sources */,
-				3561BACF21B8FEE5004A6775 /* CommentModel.swift in Sources */,
-				3561BAD021B8FEE5004A6775 /* ArticleVM.swift in Sources */,
 				3561BAD121B8FEE5004A6775 /* JXRequest.swift in Sources */,
 				3561BAD221B8FEE5004A6775 /* Data+ChatCamp.swift in Sources */,
 				3561BAD321B8FEE5004A6775 /* JXBaseRequest.swift in Sources */,
@@ -4567,7 +4196,6 @@
 				3561BAD821B8FEE5004A6775 /* CardPayController.swift in Sources */,
 				3561BAD921B8FEE5004A6775 /* InputBarItem.swift in Sources */,
 				3561BADA21B8FEE5004A6775 /* TabBarViewController.swift in Sources */,
-				3561BADB21B8FEE5004A6775 /* BottomInputView.swift in Sources */,
 				3561BADC21B8FEE5004A6775 /* PutUpViewController.swift in Sources */,
 				3561BADD21B8FEE5004A6775 /* UIBarButtonItem+Extension.swift in Sources */,
 				3561BADE21B8FEE5004A6775 /* MediaMessageCell.swift in Sources */,
@@ -4584,19 +4212,15 @@
 				3561BAE921B8FEE5004A6775 /* Bundle+Extensions.swift in Sources */,
 				3561BAEA21B8FEE5004A6775 /* MessagesViewController+Delegate.swift in Sources */,
 				3561BAEB21B8FEE5004A6775 /* String+ChatCamp.swift in Sources */,
-				3561BAEC21B8FEE5004A6775 /* SmartCell.swift in Sources */,
 				3561BAED21B8FEE5004A6775 /* JXTopBarView.swift in Sources */,
-				3561BAEE21B8FEE5004A6775 /* CommentCell.swift in Sources */,
 				3561BAEF21B8FEE5004A6775 /* MainViewController.swift in Sources */,
 				3561BAF021B8FEE5004A6775 /* PayListController.swift in Sources */,
 				3561BAF121B8FEE5004A6775 /* MessagesViewController+Keyboard.swift in Sources */,
-				3561BAF221B8FEE5004A6775 /* WalletListPayingCell.swift in Sources */,
 				3561BAF321B8FEE5004A6775 /* MerchantCell.swift in Sources */,
 				3561BAF421B8FEE5004A6775 /* JXKeyboardToolBar.swift in Sources */,
 				3561BAF521B8FEE5004A6775 /* MessageLabelDelegate.swift in Sources */,
 				3561BAF621B8FEE5004A6775 /* SellVM.swift in Sources */,
 				3561BAF721B8FEE5004A6775 /* JXTableViewController.swift in Sources */,
-				3561BAF821B8FEE5004A6775 /* ArticleListController.swift in Sources */,
 				3561BAF921B8FEE5004A6775 /* JXPlaceHolderTextView.swift in Sources */,
 				3561BAFA21B8FEE5004A6775 /* AvatarPosition.swift in Sources */,
 				3561BAFB21B8FEE5004A6775 /* ScanViewController.swift in Sources */,
@@ -4609,25 +4233,20 @@
 			files = (
 				3561BB7B21B8FF8E004A6775 /* BuyModel.swift in Sources */,
 				3561BB7C21B8FF8E004A6775 /* MessagesViewController+Menu.swift in Sources */,
-				3561BB7D21B8FF8E004A6775 /* AboutUsViewController.swift in Sources */,
 				3561BB7E21B8FF8E004A6775 /* OrderSellingDetailCell.swift in Sources */,
 				3561BB7F21B8FF8E004A6775 /* UIViewController+Extension.swift in Sources */,
-				3561BB8021B8FF8E004A6775 /* PaperListCell.swift in Sources */,
 				3561BB8121B8FF8E004A6775 /* MessageContent.swift in Sources */,
 				3561BB8221B8FF8E004A6775 /* JSTableViewController.swift in Sources */,
 				3561BB8321B8FF8E004A6775 /* UIView+ChatCamp.swift in Sources */,
 				3561BB8421B8FF8E004A6775 /* UIView+Extensions.swift in Sources */,
 				3561BB8521B8FF8E004A6775 /* ApiEnum.swift in Sources */,
 				3561BB8621B8FF8E004A6775 /* MessageLabel.swift in Sources */,
-				3561BB8721B8FF8E004A6775 /* OrderCell.swift in Sources */,
 				3561BB8821B8FF8E004A6775 /* MessageIntermediateLayoutAttributes.swift in Sources */,
 				3561BB8921B8FF8E004A6775 /* JXSecretTextView.swift in Sources */,
-				3561BB8A21B8FF8E004A6775 /* SmartViewController.swift in Sources */,
 				3561BB8B21B8FF8E004A6775 /* SettingVM.swift in Sources */,
 				3561BB8C21B8FF8E004A6775 /* ChatTableViewCell.swift in Sources */,
 				3561BB8D21B8FF8E004A6775 /* JXNetworkManager.swift in Sources */,
 				3561BB8E21B8FF8E004A6775 /* OrderedListCell.swift in Sources */,
-				3561BB8F21B8FF8E004A6775 /* CommentVM.swift in Sources */,
 				3561BB9021B8FF8E004A6775 /* JXCollectionViewController.swift in Sources */,
 				3561BB9121B8FF8E004A6775 /* Encryption.swift in Sources */,
 				3561BB9221B8FF8E004A6775 /* SellCollectionController.swift in Sources */,
@@ -4642,7 +4261,6 @@
 				3561BB9B21B8FF8E004A6775 /* NewSellController.swift in Sources */,
 				3561BB9C21B8FF8E004A6775 /* OpenChannelsViewController.swift in Sources */,
 				3561BB9D21B8FF8E004A6775 /* ViewController.swift in Sources */,
-				3561BB9E21B8FF8E004A6775 /* ChainInfoController.swift in Sources */,
 				3561BB9F21B8FF8E004A6775 /* RecordButton.swift in Sources */,
 				3561BBA021B8FF8E004A6775 /* String+Extensions.swift in Sources */,
 				3561BBA121B8FF8E004A6775 /* ConfirmController.swift in Sources */,
@@ -4674,7 +4292,6 @@
 				3561BBBB21B8FF8E004A6775 /* ViewManager.swift in Sources */,
 				3561BBBC21B8FF8E004A6775 /* UIDevice+Extension.swift in Sources */,
 				3561BBBD21B8FF8E004A6775 /* UICollectionView+Extensions.swift in Sources */,
-				3561BBBE21B8FF8E004A6775 /* CommenModel.swift in Sources */,
 				3561BBBF21B8FF8E004A6775 /* DBManager.swift in Sources */,
 				3561BBC021B8FF8E004A6775 /* NameSetController.swift in Sources */,
 				3561BBC121B8FF8E004A6775 /* MerchantSubCell.swift in Sources */,
@@ -4701,9 +4318,7 @@
 				3561BBD621B8FF8E004A6775 /* JXDropListView.swift in Sources */,
 				3561BBD721B8FF8E004A6775 /* Sender.swift in Sources */,
 				3561BBD821B8FF8E004A6775 /* ChatViewController.swift in Sources */,
-				3561BBD921B8FF8E004A6775 /* ArticleCell.swift in Sources */,
 				3561BBDA21B8FF8E004A6775 /* MessagesLayoutDelegate.swift in Sources */,
-				3561BBDB21B8FF8E004A6775 /* PaperDetailController.swift in Sources */,
 				3561BBDC21B8FF8E004A6775 /* JXActionCell.swift in Sources */,
 				3561BBDD21B8FF8E004A6775 /* MessagesViewController.swift in Sources */,
 				3561BBDE21B8FF8E004A6775 /* PayModel.swift in Sources */,
@@ -4711,7 +4326,6 @@
 				3561BBE021B8FF8E004A6775 /* ImageTitleCell.swift in Sources */,
 				3561BBE121B8FF8E004A6775 /* MessageDateHeaderView.swift in Sources */,
 				3561BBE221B8FF8E004A6775 /* DocumentView.swift in Sources */,
-				3561BBE321B8FF8E004A6775 /* ArticleModel.swift in Sources */,
 				3561BBE421B8FF8E004A6775 /* ProjectHeader.swift in Sources */,
 				3561BBE521B8FF8E004A6775 /* JXWkWebViewController.swift in Sources */,
 				3561BBE621B8FF8E004A6775 /* LocationMessageSnapshotOptions.swift in Sources */,
@@ -4721,8 +4335,6 @@
 				3561BBEA21B8FF8E004A6775 /* OrderBuyingDetailCell.swift in Sources */,
 				3561BBEB21B8FF8E004A6775 /* LabelAlignment.swift in Sources */,
 				3561BBEC21B8FF8E004A6775 /* AvatarView.swift in Sources */,
-				3561BBED21B8FF8E004A6775 /* PaperListController.swift in Sources */,
-				3561BBEE21B8FF8E004A6775 /* WalletHeadCell.swift in Sources */,
 				3561BBEF21B8FF8E004A6775 /* ModifyImageController.swift in Sources */,
 				3561BBF021B8FF8E004A6775 /* JXView.swift in Sources */,
 				3561BBF121B8FF8E004A6775 /* MessagesViewController+DataSource.swift in Sources */,
@@ -4757,20 +4369,16 @@
 				3561BC0E21B8FF8E004A6775 /* WritingMessageCell.swift in Sources */,
 				3561BC0F21B8FF8E004A6775 /* LanguageManager.swift in Sources */,
 				3561BC1021B8FF8E004A6775 /* InputStackView.swift in Sources */,
-				3561BC1121B8FF8E004A6775 /* PaperVM.swift in Sources */,
 				3561BC1221B8FF8E004A6775 /* UIScreen+Extension.swift in Sources */,
 				3561BC1321B8FF8E004A6775 /* MyCell.swift in Sources */,
 				3561BC1421B8FF8E004A6775 /* MerchantReusableView.swift in Sources */,
 				3561BC1521B8FF8E004A6775 /* MessageInputBarDelegate.swift in Sources */,
-				3561BC1621B8FF8E004A6775 /* PaperDetailTopCell.swift in Sources */,
 				3561BC1721B8FF8E004A6775 /* MessagesDataSource.swift in Sources */,
 				3561BC1821B8FF8E004A6775 /* JXNoticeImageView.swift in Sources */,
-				3561BC1921B8FF8E004A6775 /* PersonInfoViewController.swift in Sources */,
 				3561BC1A21B8FF8E004A6775 /* OrderVM.swift in Sources */,
 				3561BC1B21B8FF8E004A6775 /* MessagesDisplayDelegate.swift in Sources */,
 				3561BC1C21B8FF8E004A6775 /* UIImage+Extension.swift in Sources */,
 				3561BC1D21B8FF8E004A6775 /* UIImage+Ex.swift in Sources */,
-				3561BC1E21B8FF8E004A6775 /* PaperDetailCommonCell.swift in Sources */,
 				3561BC1F21B8FF8E004A6775 /* NSAttributedString+Extensions.swift in Sources */,
 				3561BC2021B8FF8E004A6775 /* SeparatorLine.swift in Sources */,
 				3561BC2121B8FF8E004A6775 /* OrderModel.swift in Sources */,
@@ -4787,9 +4395,7 @@
 				3561BC2C21B8FF8E004A6775 /* WalletListPayedCell.swift in Sources */,
 				3561BC2D21B8FF8E004A6775 /* SellTextFieldCell.swift in Sources */,
 				3561BC2E21B8FF8E004A6775 /* PayEmptyCell.swift in Sources */,
-				3561BC2F21B8FF8E004A6775 /* ArticleDetailsController.swift in Sources */,
 				3561BC3021B8FF8E004A6775 /* UIView+Extension.swift in Sources */,
-				3561BC3121B8FF8E004A6775 /* AccountViewController.swift in Sources */,
 				3561BC3221B8FF8E004A6775 /* OrderBuyedDetailCell.swift in Sources */,
 				3561BC3321B8FF8E004A6775 /* ZPCollectionViewController.swift in Sources */,
 				3561BC3421B8FF8E004A6775 /* HomeReusableVM.swift in Sources */,
@@ -4804,7 +4410,6 @@
 				3561BC3D21B8FF8E004A6775 /* TextMessageCell.swift in Sources */,
 				3561BC3E21B8FF8E004A6775 /* CustomMessageContentView.swift in Sources */,
 				3561BC3F21B8FF8E004A6775 /* ChatReusableView.swift in Sources */,
-				3561BC4021B8FF8E004A6775 /* PaperModel.swift in Sources */,
 				3561BC4121B8FF8E004A6775 /* PlayButtonView.swift in Sources */,
 				3561BC4221B8FF8E004A6775 /* MyModel.swift in Sources */,
 				3561BC4321B8FF8E004A6775 /* BuySubController.swift in Sources */,
@@ -4822,8 +4427,6 @@
 				3561BC4F21B8FF8E004A6775 /* NSConstraintLayoutSet.swift in Sources */,
 				3561BC5021B8FF8E004A6775 /* ProfileViewController.swift in Sources */,
 				3561BC5121B8FF8E004A6775 /* UIImageView+ChatCamp.swift in Sources */,
-				3561BC5221B8FF8E004A6775 /* CommentModel.swift in Sources */,
-				3561BC5321B8FF8E004A6775 /* ArticleVM.swift in Sources */,
 				3561BC5421B8FF8E004A6775 /* JXRequest.swift in Sources */,
 				3561BC5521B8FF8E004A6775 /* Data+ChatCamp.swift in Sources */,
 				3561BC5621B8FF8E004A6775 /* JXBaseRequest.swift in Sources */,
@@ -4835,7 +4438,6 @@
 				3561BC5B21B8FF8E004A6775 /* CardPayController.swift in Sources */,
 				3561BC5C21B8FF8E004A6775 /* InputBarItem.swift in Sources */,
 				3561BC5D21B8FF8E004A6775 /* TabBarViewController.swift in Sources */,
-				3561BC5E21B8FF8E004A6775 /* BottomInputView.swift in Sources */,
 				3561BC5F21B8FF8E004A6775 /* PutUpViewController.swift in Sources */,
 				3561BC6021B8FF8E004A6775 /* UIBarButtonItem+Extension.swift in Sources */,
 				3561BC6121B8FF8E004A6775 /* MediaMessageCell.swift in Sources */,
@@ -4852,19 +4454,15 @@
 				3561BC6C21B8FF8E004A6775 /* Bundle+Extensions.swift in Sources */,
 				3561BC6D21B8FF8E004A6775 /* MessagesViewController+Delegate.swift in Sources */,
 				3561BC6E21B8FF8E004A6775 /* String+ChatCamp.swift in Sources */,
-				3561BC6F21B8FF8E004A6775 /* SmartCell.swift in Sources */,
 				3561BC7021B8FF8E004A6775 /* JXTopBarView.swift in Sources */,
-				3561BC7121B8FF8E004A6775 /* CommentCell.swift in Sources */,
 				3561BC7221B8FF8E004A6775 /* MainViewController.swift in Sources */,
 				3561BC7321B8FF8E004A6775 /* PayListController.swift in Sources */,
 				3561BC7421B8FF8E004A6775 /* MessagesViewController+Keyboard.swift in Sources */,
-				3561BC7521B8FF8E004A6775 /* WalletListPayingCell.swift in Sources */,
 				3561BC7621B8FF8E004A6775 /* MerchantCell.swift in Sources */,
 				3561BC7721B8FF8E004A6775 /* JXKeyboardToolBar.swift in Sources */,
 				3561BC7821B8FF8E004A6775 /* MessageLabelDelegate.swift in Sources */,
 				3561BC7921B8FF8E004A6775 /* SellVM.swift in Sources */,
 				3561BC7A21B8FF8E004A6775 /* JXTableViewController.swift in Sources */,
-				3561BC7B21B8FF8E004A6775 /* ArticleListController.swift in Sources */,
 				3561BC7C21B8FF8E004A6775 /* JXPlaceHolderTextView.swift in Sources */,
 				3561BC7D21B8FF8E004A6775 /* AvatarPosition.swift in Sources */,
 				3561BC7E21B8FF8E004A6775 /* ScanViewController.swift in Sources */,
@@ -5014,7 +4612,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = Y9MA8YW5MV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -5045,7 +4643,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = Y9MA8YW5MV;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
