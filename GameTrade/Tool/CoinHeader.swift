@@ -25,43 +25,38 @@ let configuration_valueType = "RMB"
 ////let kHtmlUrl = "http://192.168.0.171:8080" + "/#/"
 
 //MARK: 线上
-let configuration_coinName = "PTB"
-
-let configuration_coinPrice : Double = 1.0
-let configuration_service : Double = 0.02
-let configuration_realPrice : Double = configuration_coinPrice - configuration_service
-let configuration_merchantName = "王涛-测试商户"
-//let configuration_merchantID = "0fe7136968fe44a7929391b695d4de0b" //线上
-let configuration_merchantID = "bd343bf51ae3449ea33a3c5c78c0b752" //测试
-
-let kIM_AppID = "6473367894330699776"
-
-
-
-////MARK: 线上
-//let configuration_coinName = "CSB"
+//let configuration_coinName = "PTB"
+//
 //let configuration_coinPrice : Double = 1.0
 //let configuration_service : Double = 0.02
 //let configuration_realPrice : Double = configuration_coinPrice - configuration_service
 //let configuration_merchantName = "王涛-测试商户"
-
-//let configuration_merchantID = "0fe7136968fe44a7929391b695d4de0b"
-
-//let configuration_merchantID = "8413102ec09749b9b743f2e58e2082a2" //线上
+////let configuration_merchantID = "0fe7136968fe44a7929391b695d4de0b" //线上
+//let configuration_merchantID = "bd343bf51ae3449ea33a3c5c78c0b752" //测试
 //
 //let kIM_AppID = "6473367894330699776"
 
 
+
+////MARK: 线上
+let configuration_coinName = "CSB"
+let configuration_coinPrice : Double = 1.0
+let configuration_service : Double = 0.02
+let configuration_realPrice : Double = configuration_coinPrice - configuration_service
+let configuration_merchantName = "王涛-测试商户"
+let configuration_merchantID = "8413102ec09749b9b743f2e58e2082a2" //线上，老沈
+
+let kIM_AppID = "6473367894330699776"
+
+
 let kBaseUrl = "https://apps.coinepay.io"
-let kHelpUrl = "http://apps.coinepay.io/static/help.html?name=" + configuration_coinName
+let kHelpUrl = "https://apps.coinepay.io/static/help.html?name=" + configuration_coinName
 
 
 //1黑色系
 let JXOrangeColor = UIColor.rgbColor(rgbValue: 0xff9300)
 let JXRedColor = UIColor.rgbColor(rgbValue: 0xEF4262)
 let JXGreenColor = UIColor.rgbColor(rgbValue: 0x30DA51)
-
-//let JXMainText50Color = UIColor.rgbColor(rgbValue: 0xffffff, alpha: 0.5)
 
 let JXPlaceHolerColor = UIColor.rgbColor(rgbValue: 0x686883)
 
@@ -124,10 +119,10 @@ let JXSeparatorColor = UIColor.rgbColor(rgbValue: 0xd3dfef)
 let app_style = 3
 
 let JXMainColor = JXOrangeColor
-let JXMainTextColor = JXFfffffColor
-let JXMainText50Color = UIColor.rgbColor(rgbValue: 0xffffff, alpha: 0.5)
+let JXMainTextColor = UIColor.rgbColor(rgbValue: 0x383838)
+let JXMainText50Color = UIColor.rgbColor(rgbValue: 0x383838, alpha: 0.5)
 
-let JXViewBgColor = UIColor.rgbColor(rgbValue: 0x393948)
+let JXViewBgColor = JXFfffffColor
 let JXTextViewBgColor = UIColor.rgbColor(rgbValue: 0xe8e8e8)
 let JXTextViewBg1Color = JXTextViewBgColor
 let JXTextViewBg2Color = UIColor.rgbColor(rgbValue: 0xb7b7b7, alpha: 0.44)
@@ -163,4 +158,45 @@ let JXOrderDetailBgColor = UIColor.rgbColor(rgbValue: 0x131321)
 
 #endif
 
+
+class ConfigurationEntity: BaseModel {
+    
+    @objc var appStyle : Int = 0 //app风格，1黑金版，2海军版，3金桔版，0默认，黑金）
+    
+    @objc var coinName : String = ""
+    @objc var coinPrice : Double = 0
+    @objc var merchantId : String = ""
+    @objc var imAppID : String = ""
+    @objc var baseUrl : String = ""
+    
+}
+
+class ConfigurationManager : NSObject{
+    
+    static let manager = ConfigurationManager()
+    
+    //登录接口获取
+    var userEntity = ConfigurationEntity()
+    //
+    var userDict = Dictionary<String, Any>()
+    
+    
+    override init() {
+        super.init()
+        
+        if
+            let path = Bundle.main.path(forResource: "Configuration", ofType: "plist"),
+            let dict = NSDictionary(contentsOfFile: path) as? Dictionary<String, Any> {
+            print(dict)
+            
+            self.userDict = dict
+            self.userEntity.setValuesForKeys(dict )
+           
+            print("用户地址：\(path)")
+        }
+        
+    }
+    
+    
+}
 

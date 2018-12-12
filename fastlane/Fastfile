@@ -73,6 +73,18 @@ platform :ios do
     #自动增加build
     increment_build_number
 
+    #设置app的info.plist文件项
+    #set_info_plist_value(path: "./xxx/Info.plist",  #info.plist文件目录
+                        key: "UIFileSharingEnabled",  # key，将plist文件以Source Code形式打开可查询对应的key
+                        value: false)  # value
+
+    #设置自定义plist文件项，用于给app配置不同的服务器URL
+    #set_info_plist_value(path: "./xxx/hostAddress.plist",
+                        key: "host",
+                        value: "https:/zhengshiServer:xx/xxx/xxx")
+
+
+
     #获取version和build版本号
     #k_version = get_info_plist_value(path: "./#{k_scheme_name}/Info.plist", key: "CFBundleShortVersionString")
     #k_build = get_info_plist_value(path: "./#{k_scheme_name}/Info.plist", key: "CFBundleVersion")
@@ -87,7 +99,7 @@ platform :ios do
 
     gym(
 
-      clean:true, #打包前clean项目
+      clean: true, #打包前clean项目
       workspace: "#{k_workspace}",
       scheme: "#{k_scheme_name}", #scheme
       configuration: options[:configuration],#环境 Debug，Release

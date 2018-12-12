@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -60,6 +60,7 @@
 		351B53DB21A4030B00F9725C /* ChatReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53D921A4030B00F9725C /* ChatReusableView.swift */; };
 		351B53DC21A4030B00F9725C /* ChatReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 351B53DA21A4030B00F9725C /* ChatReusableView.xib */; };
 		351B53DE21A40FC300F9725C /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B53DD21A40FC300F9725C /* OrderView.swift */; };
+		351DD00321C1009F007E94FA /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 351DD00221C1009F007E94FA /* Info.plist */; };
 		352D10AD215E14FA0053AD70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D10AC215E14FA0053AD70 /* AppDelegate.swift */; };
 		352D10B2215E14FA0053AD70 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D10B0215E14FA0053AD70 /* Main.storyboard */; };
 		352D10B4215E14FD0053AD70 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 352D10B3215E14FD0053AD70 /* Assets.xcassets */; };
@@ -149,6 +150,10 @@
 		352D1282215E159D0053AD70 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352D11B3215E159C0053AD70 /* Wallet.storyboard */; };
 		352D128E215E159D0053AD70 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11C2215E159C0053AD70 /* SettingViewController.swift */; };
 		352D1297215E159D0053AD70 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D11CD215E159C0053AD70 /* TabBarViewController.swift */; };
+		352EA02621BE184C00A062A3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 352EA02521BE184C00A062A3 /* Configuration.plist */; };
+		352EA02821BE49F900A062A3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 352EA02721BE49F900A062A3 /* Configuration.plist */; };
+		352EA02A21BE4A0400A062A3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 352EA02921BE4A0400A062A3 /* Configuration.plist */; };
+		352EA02C21BE4A0F00A062A3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 352EA02B21BE4A0F00A062A3 /* Configuration.plist */; };
 		3561B87521B8FC81004A6775 /* BuyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352D1150215E159C0053AD70 /* BuyModel.swift */; };
 		3561B87621B8FC81004A6775 /* MessagesViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35FE28072199A0FB00CAFB27 /* MessagesViewController+Menu.swift */; };
 		3561B87821B8FC81004A6775 /* OrderSellingDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3595B2AF21906C6C00494929 /* OrderSellingDetailCell.swift */; };
@@ -1421,12 +1426,13 @@
 		351B53D921A4030B00F9725C /* ChatReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatReusableView.swift; sourceTree = "<group>"; };
 		351B53DA21A4030B00F9725C /* ChatReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatReusableView.xib; sourceTree = "<group>"; };
 		351B53DD21A40FC300F9725C /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		351DD00221C1009F007E94FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		351DD16321C106C8007E94FA /* GameTrade copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GameTrade copy-Info.plist"; path = "/Users/dujinxin/github/project/GameTrade/GameTrade copy-Info.plist"; sourceTree = "<absolute>"; };
 		352D10A9215E14FA0053AD70 /* GameTrade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		352D10AC215E14FA0053AD70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		352D10B1215E14FA0053AD70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		352D10B3215E14FD0053AD70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		352D10B6215E14FD0053AD70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		352D10B8215E14FD0053AD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		352D10C0215E159C0053AD70 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		352D10C2215E159C0053AD70 /* BaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		352D10C4215E159C0053AD70 /* JXDefaultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JXDefaultView.swift; sourceTree = "<group>"; };
@@ -1514,6 +1520,10 @@
 		352D11C2215E159C0053AD70 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		352D11CD215E159C0053AD70 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		352D12A0215E35210053AD70 /* GameTrade-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GameTrade-Bridging-Header.h"; sourceTree = "<group>"; };
+		352EA02521BE184C00A062A3 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		352EA02721BE49F900A062A3 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		352EA02921BE4A0400A062A3 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		352EA02B21BE4A0F00A062A3 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		3561B9F221B8FC81004A6775 /* GameTrade_blue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade_blue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3561BB7521B8FEE5004A6775 /* GameTrade_orange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade_orange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3561BCF821B8FF8E004A6775 /* GameTrade_black.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade_black.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1770,6 +1780,7 @@
 				3561B9F421B8FD07004A6775 /* GameTrade_blue */,
 				3561BB7721B8FEFF004A6775 /* GameTrade_orange */,
 				3561BCFA21B8FF9D004A6775 /* GameTrade_black */,
+				351DD16321C106C8007E94FA /* GameTrade copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1798,7 +1809,8 @@
 				352D10B0215E14FA0053AD70 /* Main.storyboard */,
 				352D10B3215E14FD0053AD70 /* Assets.xcassets */,
 				352D10B5215E14FD0053AD70 /* LaunchScreen.storyboard */,
-				352D10B8215E14FD0053AD70 /* Info.plist */,
+				352EA02521BE184C00A062A3 /* Configuration.plist */,
+				351DD00221C1009F007E94FA /* Info.plist */,
 			);
 			path = GameTrade;
 			sourceTree = "<group>";
@@ -2218,6 +2230,7 @@
 		3561B9F421B8FD07004A6775 /* GameTrade_blue */ = {
 			isa = PBXGroup;
 			children = (
+				352EA02721BE49F900A062A3 /* Configuration.plist */,
 				3561BD0221BA6B71004A6775 /* GameTrade_blue-Info.plist */,
 				3561BCFB21B9156C004A6775 /* blue.xcassets */,
 			);
@@ -2227,6 +2240,7 @@
 		3561BB7721B8FEFF004A6775 /* GameTrade_orange */ = {
 			isa = PBXGroup;
 			children = (
+				352EA02921BE4A0400A062A3 /* Configuration.plist */,
 				3561BD0421BA6B82004A6775 /* GameTrade_orange-Info.plist */,
 			);
 			path = GameTrade_orange;
@@ -2235,6 +2249,7 @@
 		3561BCFA21B8FF9D004A6775 /* GameTrade_black */ = {
 			isa = PBXGroup;
 			children = (
+				352EA02B21BE4A0F00A062A3 /* Configuration.plist */,
 				3561BD0621BA6B8F004A6775 /* GameTrade_black-Info.plist */,
 			);
 			path = GameTrade_black;
@@ -2760,7 +2775,7 @@
 				};
 			};
 			buildConfigurationList = 352D10A4215E14FA0053AD70 /* Build configuration list for PBXProject "GameTrade" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -2790,6 +2805,7 @@
 				35FE287E2199A0FC00CAFB27 /* user_placeholder@2x.png in Resources */,
 				35FE285A2199A0FB00CAFB27 /* avatar_placeholder.png in Resources */,
 				35FE28AA2199A0FC00CAFB27 /* CustomMessageContentView.xib in Resources */,
+				352EA02621BE184C00A062A3 /* Configuration.plist in Resources */,
 				3595B2C0219580DC00494929 /* SellTableCell.xib in Resources */,
 				35FE292C219AECE100CAFB27 /* bubble_outlined@3x.png in Resources */,
 				352D123C215E159D0053AD70 /* HomeReusableView.xib in Resources */,
@@ -2867,6 +2883,7 @@
 				35FE286E2199A0FC00CAFB27 /* flash@2x.png in Resources */,
 				35FE28722199A0FC00CAFB27 /* file@2x.png in Resources */,
 				35FE28792199A0FC00CAFB27 /* online.png in Resources */,
+				351DD00321C1009F007E94FA /* Info.plist in Resources */,
 				35FE28772199A0FC00CAFB27 /* tick-grey.png in Resources */,
 				3595B2B221906C6C00494929 /* OrderSellingDetailCell.xib in Resources */,
 				35B85422218426A30036AD6A /* SellTextFieldCell.xib in Resources */,
@@ -2946,6 +2963,7 @@
 				3561B9AE21B8FC81004A6775 /* WalletAddressCell.xib in Resources */,
 				3561B9B021B8FC81004A6775 /* AudioView.xib in Resources */,
 				3561B9B121B8FC81004A6775 /* flipCamera@2x.png in Resources */,
+				352EA02821BE49F900A062A3 /* Configuration.plist in Resources */,
 				3561B9B221B8FC81004A6775 /* Dot100%.png in Resources */,
 				3561B9B321B8FC81004A6775 /* microphone.png in Resources */,
 				3561B9B521B8FC81004A6775 /* bubble_outlined_tail_v2@3x.png in Resources */,
@@ -3011,6 +3029,7 @@
 				3561BB0121B8FEE5004A6775 /* user_placeholder@2x.png in Resources */,
 				3561BB0221B8FEE5004A6775 /* avatar_placeholder.png in Resources */,
 				3561BB0321B8FEE5004A6775 /* CustomMessageContentView.xib in Resources */,
+				352EA02A21BE4A0400A062A3 /* Configuration.plist in Resources */,
 				3561BB0421B8FEE5004A6775 /* SellTableCell.xib in Resources */,
 				3561BB0521B8FEE5004A6775 /* bubble_outlined@3x.png in Resources */,
 				3561BB0621B8FEE5004A6775 /* HomeReusableView.xib in Resources */,
@@ -3167,6 +3186,7 @@
 				3561BCB621B8FF8E004A6775 /* AudioView.xib in Resources */,
 				3561BCB721B8FF8E004A6775 /* flipCamera@2x.png in Resources */,
 				3561BCB821B8FF8E004A6775 /* Dot100%.png in Resources */,
+				352EA02C21BE4A0F00A062A3 /* Configuration.plist in Resources */,
 				3561BCB921B8FF8E004A6775 /* microphone.png in Resources */,
 				3561BCBB21B8FF8E004A6775 /* bubble_outlined_tail_v2@3x.png in Resources */,
 				3561BCBC21B8FF8E004A6775 /* focus@2x.png in Resources */,
@@ -4610,7 +4630,7 @@
 			baseConfigurationReference = 67EEEA838231B60CC6202CFC /* Pods-GameTrade.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = Y9MA8YW5MV;
@@ -4619,7 +4639,7 @@
 					"$(PROJECT_DIR)/GameTrade/Third",
 					"$(PROJECT_DIR)/GameTrade/Third/lib",
 				);
-				INFOPLIST_FILE = GameTrade/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GameTrade/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4628,7 +4648,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" \"-D\" \"app_normal\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RichChain.GameTrade;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = GameTradeDisHoc;
+				PROVISIONING_PROFILE_SPECIFIER = GameTradeDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/dujinxin/Desktop/GameTrade/GameTrade/GameTrade-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -4650,7 +4670,7 @@
 					"$(PROJECT_DIR)/GameTrade/Third",
 					"$(PROJECT_DIR)/GameTrade/Third/lib",
 				);
-				INFOPLIST_FILE = GameTrade/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/GameTrade/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

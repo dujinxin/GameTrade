@@ -201,7 +201,7 @@ class NewBuyController: JXCollectionViewController {
             return
         }
         guard let num = Int(text), num > 10 else{
-            ViewManager.showNotice("暂无该挂单金额，请重新输入")
+            ViewManager.showNotice("暂不支持此购买金额")
             return
         }
         self.textField.resignFirstResponder()
@@ -214,7 +214,7 @@ class NewBuyController: JXCollectionViewController {
                 self.statusBottomView.customView = self.customViewInit(number: text)
                 self.statusBottomView.show()
             } else {
-                ViewManager.showNotice("暂无该挂单金额，请重新输入")
+                ViewManager.showNotice("暂不支持此购买金额")
             }
         })
         

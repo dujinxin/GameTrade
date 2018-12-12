@@ -503,7 +503,7 @@ extension MainViewController {
                     return
                 }
                 guard let num = Int(text), num > 10 else{
-                    ViewManager.showNotice("暂无该挂单金额，请重新输入")
+                    ViewManager.showNotice("暂不支持此购买金额")
                     return
                 }
                 reusableView.textField.resignFirstResponder()
@@ -518,7 +518,7 @@ extension MainViewController {
                         self.statusBottomView.show()
                     } else {
                         reusableView.textField.text = ""
-                        ViewManager.showNotice("暂无该挂单金额，请重新输入")
+                        ViewManager.showNotice("暂不支持此购买金额")
                     }
                 })
             }

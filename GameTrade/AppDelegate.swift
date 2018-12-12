@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //Fabric.with([Crashlytics.self])
+
+        print(ConfigurationManager.manager.userEntity.baseUrl)
         
         setupChatCampSDK()
         

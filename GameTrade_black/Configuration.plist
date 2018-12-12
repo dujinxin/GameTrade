@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>appStyle</key>
+	<integer>1</integer>
+	<key>merchantId</key>
+	<string>9e8bd0113c444529845813138ff74ab0</string>
+	<key>baseUrl</key>
+	<string>https://apps.coinepay.io</string>
+	<key>coinPrice</key>
+	<real>1</real>
+	<key>imAppID</key>
+	<string>6456046490195324928</string>
+	<key>coinName</key>
+	<string>QQP</string>
+</dict>
+</plist>
