@@ -106,7 +106,7 @@ class JXBaseRequest: NSObject {
         super.init()
     }
     
-    required init(tag: Int, url: String, method: JXRequestMethod, param: Dictionary<String, Any>?, success: SuccessCompletion?, failure: FailureCompletion?, progress: DownloadProgress?, download: DownloadCompletion?, destination: Destination?) {
+    required init(tag: Int = 0, url: String, method: JXRequestMethod = .post, param: Dictionary<String, Any>?, success: SuccessCompletion?, failure: FailureCompletion?, progress: DownloadProgress?, download: DownloadCompletion?, destination: Destination?) {
         
         self.tag = tag
         self.requestUrl = url
