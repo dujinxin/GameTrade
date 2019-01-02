@@ -116,13 +116,13 @@ class ModifyLogPswController: BaseViewController {
                     UIView.commitAnimations()
                     self.isCounting = true
                     self.codeButton.isEnabled = false
-                    self.codeButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+                    self.codeButton.backgroundColor = JXUnableColor
                     self.codeButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
                 }) {
                     self.isCounting = false
                     self.codeButton.setTitle("获取验证码", for: .normal)
                     self.codeButton.isEnabled = true
-                    self.codeButton.backgroundColor = JXMainColor
+                    self.codeButton.backgroundColor = JXAbleColor
                     self.codeButton.setTitleColor(JXFfffffColor, for: .normal)
                 }
             }
@@ -147,13 +147,13 @@ class ModifyLogPswController: BaseViewController {
                     UIView.commitAnimations()
                     self.isCounting = true
                     self.codeButton.isEnabled = false
-                    self.codeButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+                    self.codeButton.backgroundColor = JXUnableColor
                     self.codeButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
                 }) {
                     self.isCounting = false
                     self.codeButton.setTitle("获取验证码", for: .normal)
                     self.codeButton.isEnabled = true
-                    self.codeButton.backgroundColor = JXMainColor
+                    self.codeButton.backgroundColor = JXAbleColor
                     self.codeButton.setTitleColor(JXFfffffColor, for: .normal)
                 }
             }
@@ -265,13 +265,13 @@ extension ModifyLogPswController : UITextFieldDelegate,JXKeyboardTextFieldDelega
             let card = self.codeTextField.text, card.isEmpty == false{
             
             self.confirmButton.isEnabled = true
-            self.confirmButton.backgroundColor = JXMainColor
+            self.confirmButton.backgroundColor = JXAbleColor
             self.confirmButton.setTitleColor(JXFfffffColor, for: .normal)
             
         } else {
             
             self.confirmButton.isEnabled = false
-            self.confirmButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.confirmButton.backgroundColor = JXUnableColor
             self.confirmButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
             
         }

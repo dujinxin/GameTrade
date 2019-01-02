@@ -24,7 +24,7 @@ extension String {
 }
 //MAKE:MD5加密
 class MD5 {
-    static func encode(_ string:String) -> String {
+    static func encode(_ string: String) -> String {
         
         let str = string.cString(using: String.Encoding.utf8)
         let strLen = CUnsignedInt(string.lengthOfBytes(using: String.Encoding.utf8))

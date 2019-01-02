@@ -63,7 +63,7 @@ class NetPayController: BaseViewController {
         self.view.addSubview(self.keyboard)
         
         self.infoLabel.textColor = JXFfffffColor
-        self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+        self.submitButton.backgroundColor = JXUnableColor
         self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
 
         self.codeImageView.isUserInteractionEnabled = true
@@ -222,12 +222,12 @@ extension NetPayController: UITextFieldDelegate {
             let card = self.accountTextField.text, card.isEmpty == false{
             
             self.submitButton.isEnabled = true
-            self.submitButton.backgroundColor = JXMainColor
+            self.submitButton.backgroundColor = JXAbleColor
             self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
         } else {
             
             self.submitButton.isEnabled = false
-            self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.submitButton.backgroundColor = JXUnableColor
             self.submitButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
         }
     }

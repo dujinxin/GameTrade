@@ -38,7 +38,7 @@ class NameSetController: BaseViewController {
         super.viewDidLoad()
         
         self.infoLabel.textColor = JXRedColor
-        self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+        self.submitButton.backgroundColor = JXUnableColor
         self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
         
         self.title = "添加实名"
@@ -79,11 +79,11 @@ extension NameSetController: UITextFieldDelegate {
         if
             let name = self.nameTextField.text, name.isEmpty == false {
             self.submitButton.isEnabled = true
-            self.submitButton.backgroundColor = JXMainColor
+            self.submitButton.backgroundColor = JXAbleColor
             self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
         } else {
             self.submitButton.isEnabled = false
-            self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.submitButton.backgroundColor = JXUnableColor
             self.submitButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
         }
     }

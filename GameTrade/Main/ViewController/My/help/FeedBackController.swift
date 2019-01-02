@@ -67,7 +67,7 @@ class FeedBackController: BaseViewController, TZImagePickerControllerDelegate,UI
         didSet{
             submitButton.isEnabled = false
             submitButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
-            submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            submitButton.backgroundColor = JXUnableColor
             
             submitButton.layer.cornerRadius = 2
             submitButton.layer.shadowOpacity = 1
@@ -225,11 +225,11 @@ extension FeedBackController : UITextViewDelegate,UITextFieldDelegate{
         if self.textField.text.isEmpty == true {
             self.submitButton.isEnabled = false
             self.submitButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
-            self.submitButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.submitButton.backgroundColor = JXUnableColor
         }else{
             self.submitButton.isEnabled = true
             self.submitButton.setTitleColor(JXFfffffColor, for: .normal)
-            self.submitButton.backgroundColor = JXMainColor
+            self.submitButton.backgroundColor = JXAbleColor
         }
     }
 }

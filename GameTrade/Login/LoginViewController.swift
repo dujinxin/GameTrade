@@ -255,13 +255,13 @@ extension LoginViewController: UITextFieldDelegate {
             let password = self.passwordTextField.text, password.isEmpty == false {
             
             self.loginButton.isEnabled = true
-            self.loginButton.backgroundColor = JXMainColor
+            self.loginButton.backgroundColor = JXAbleColor
             self.loginButton.setTitleColor(JXFfffffColor, for: .normal)
             
         } else {
             
             self.loginButton.isEnabled = false
-            self.loginButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.loginButton.backgroundColor = JXUnableColor
             self.loginButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
             
         }

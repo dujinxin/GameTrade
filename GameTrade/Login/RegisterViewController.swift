@@ -222,13 +222,13 @@ class RegisterViewController: BaseViewController {
                     UIView.commitAnimations()
                     self.isCounting = true
                     self.fetchButton.isEnabled = false
-                    self.fetchButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+                    self.fetchButton.backgroundColor = JXUnableColor
                     self.fetchButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
                 }) {
                     self.isCounting = false
                     self.fetchButton.setTitle("获取验证码", for: .normal)
                     self.fetchButton.isEnabled = true
-                    self.fetchButton.backgroundColor = JXMainColor
+                    self.fetchButton.backgroundColor = JXAbleColor
                     self.fetchButton.setTitleColor(JXMainTextColor, for: .normal)
                 }
             }
@@ -338,13 +338,13 @@ extension RegisterViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegat
             let card = self.codeTextField.text, card.isEmpty == false{
             
             self.loginButton.isEnabled = true
-            self.loginButton.backgroundColor = JXMainColor
+            self.loginButton.backgroundColor = JXAbleColor
             self.loginButton.setTitleColor(JXMainTextColor, for: .normal)
             
         } else {
             
             self.loginButton.isEnabled = false
-            self.loginButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.loginButton.backgroundColor = JXUnableColor
             self.loginButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
             
         }
@@ -354,13 +354,13 @@ extension RegisterViewController: UITextFieldDelegate,JXKeyboardTextFieldDelegat
             let imageCode = self.imageTextField.text, imageCode.isEmpty == false, self.isCounting == false{
             
             self.fetchButton.isEnabled = true
-            self.fetchButton.backgroundColor = JXMainColor
+            self.fetchButton.backgroundColor = JXAbleColor
             self.fetchButton.setTitleColor(JXMainTextColor, for: .normal)
             
         } else {
             
             self.fetchButton.isEnabled = false
-            self.fetchButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.fetchButton.backgroundColor = JXUnableColor
             self.fetchButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
             
         }

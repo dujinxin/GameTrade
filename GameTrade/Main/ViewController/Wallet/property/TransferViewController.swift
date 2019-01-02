@@ -811,13 +811,13 @@ extension TransferViewController: UITextFieldDelegate {
             let card = self.numberTextField.text, card.isEmpty == false{
             
             self.tradeButton.isEnabled = true
-            self.tradeButton.backgroundColor = JXMainColor
+            self.tradeButton.backgroundColor = JXAbleColor
             self.tradeButton.setTitleColor(JXFfffffColor, for: .normal)
 
         } else {
             
             self.tradeButton.isEnabled = false
-            self.tradeButton.backgroundColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+            self.tradeButton.backgroundColor = JXUnableColor
             self.tradeButton.setTitleColor(UIColor.rgbColor(rgbValue: 0xb5b5b5), for: .normal)
             
         }

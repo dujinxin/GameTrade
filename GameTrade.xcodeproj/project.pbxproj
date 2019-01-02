@@ -348,6 +348,10 @@
 		351DD2BB21C1070D007E94FA /* LoadingDots.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35FE284E2199A0FB00CAFB27 /* LoadingDots.xib */; };
 		351DD2BC21C1070D007E94FA /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 35FE27B82199A0FB00CAFB27 /* pause@2x.png */; };
 		351DD2BD21C1070D007E94FA /* PersonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 352D1177215E159C0053AD70 /* PersonCell.xib */; };
+		3524FCEC21D1E19E005813A3 /* AlamofireVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524FCEB21D1E19E005813A3 /* AlamofireVM.swift */; };
+		3524FCED21D1E26F005813A3 /* AlamofireVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524FCEB21D1E19E005813A3 /* AlamofireVM.swift */; };
+		3524FCEE21D1E26F005813A3 /* AlamofireVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524FCEB21D1E19E005813A3 /* AlamofireVM.swift */; };
+		3524FCEF21D1E270005813A3 /* AlamofireVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3524FCEB21D1E19E005813A3 /* AlamofireVM.swift */; };
 		352EA02821BE49F900A062A3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 352EA02721BE49F900A062A3 /* Configuration.plist */; };
 		352EA02A21BE4A0400A062A3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 352EA02921BE4A0400A062A3 /* Configuration.plist */; };
 		352EA02C21BE4A0F00A062A3 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 352EA02B21BE4A0F00A062A3 /* Configuration.plist */; };
@@ -1428,6 +1432,7 @@
 		351B53DD21A40FC300F9725C /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		351DD00221C1009F007E94FA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		351DD2C221C1070D007E94FA /* GameTrade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameTrade.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3524FCEB21D1E19E005813A3 /* AlamofireVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireVM.swift; sourceTree = "<group>"; };
 		352D10AC215E14FA0053AD70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		352D10B1215E14FA0053AD70 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		352D10B3215E14FD0053AD70 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1769,6 +1774,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3524FCEA21D1DF22005813A3 /* JXAlamofire */ = {
+			isa = PBXGroup;
+			children = (
+				3524FCEB21D1E19E005813A3 /* AlamofireVM.swift */,
+			);
+			path = JXAlamofire;
+			sourceTree = "<group>";
+		};
 		352D10A0215E14FA0053AD70 = {
 			isa = PBXGroup;
 			children = (
@@ -1876,6 +1889,7 @@
 		352D1115215E159C0053AD70 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				3524FCEA21D1DF22005813A3 /* JXAlamofire */,
 				352D1136215E159C0053AD70 /* CommonManager */,
 				352D112E215E159C0053AD70 /* JXNetwork */,
 				352D1116215E159C0053AD70 /* UIView+Inherit */,
@@ -3708,6 +3722,7 @@
 				351DD22321C1070D007E94FA /* UIColor+Extensions.swift in Sources */,
 				351DD22421C1070D007E94FA /* LoadingDots.swift in Sources */,
 				351DD22521C1070D007E94FA /* OrderView.swift in Sources */,
+				3524FCEC21D1E19E005813A3 /* AlamofireVM.swift in Sources */,
 				351DD22621C1070D007E94FA /* HelpViewController.swift in Sources */,
 				351DD22721C1070D007E94FA /* UIStoryboard+ChatCamp.swift in Sources */,
 				351DD22821C1070D007E94FA /* NSConstraintLayoutSet.swift in Sources */,
@@ -3950,6 +3965,7 @@
 				3561B94421B8FC81004A6775 /* UIColor+Extensions.swift in Sources */,
 				3561B94521B8FC81004A6775 /* LoadingDots.swift in Sources */,
 				3561B94621B8FC81004A6775 /* OrderView.swift in Sources */,
+				3524FCEE21D1E26F005813A3 /* AlamofireVM.swift in Sources */,
 				3561B94721B8FC81004A6775 /* HelpViewController.swift in Sources */,
 				3561B94821B8FC81004A6775 /* UIStoryboard+ChatCamp.swift in Sources */,
 				3561B94921B8FC81004A6775 /* NSConstraintLayoutSet.swift in Sources */,
@@ -4192,6 +4208,7 @@
 				3561BAC721B8FEE5004A6775 /* UIColor+Extensions.swift in Sources */,
 				3561BAC821B8FEE5004A6775 /* LoadingDots.swift in Sources */,
 				3561BAC921B8FEE5004A6775 /* OrderView.swift in Sources */,
+				3524FCEF21D1E270005813A3 /* AlamofireVM.swift in Sources */,
 				3561BACA21B8FEE5004A6775 /* HelpViewController.swift in Sources */,
 				3561BACB21B8FEE5004A6775 /* UIStoryboard+ChatCamp.swift in Sources */,
 				3561BACC21B8FEE5004A6775 /* NSConstraintLayoutSet.swift in Sources */,
@@ -4434,6 +4451,7 @@
 				3561BC4A21B8FF8E004A6775 /* UIColor+Extensions.swift in Sources */,
 				3561BC4B21B8FF8E004A6775 /* LoadingDots.swift in Sources */,
 				3561BC4C21B8FF8E004A6775 /* OrderView.swift in Sources */,
+				3524FCED21D1E26F005813A3 /* AlamofireVM.swift in Sources */,
 				3561BC4D21B8FF8E004A6775 /* HelpViewController.swift in Sources */,
 				3561BC4E21B8FF8E004A6775 /* UIStoryboard+ChatCamp.swift in Sources */,
 				3561BC4F21B8FF8E004A6775 /* NSConstraintLayoutSet.swift in Sources */,

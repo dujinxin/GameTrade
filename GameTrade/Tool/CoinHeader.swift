@@ -92,6 +92,9 @@ let JXLargeTitleColor = JXMainTextColor
 let JXLittleTitleColor = JXMainText50Color
 let JXOrderDetailBgColor = UIColor.rgbColor(rgbValue: 0x131321)
 
+let JXAbleColor = JXMainColor
+let JXUnableColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
+
 
 
 #elseif app_blue
@@ -112,6 +115,9 @@ let JXMerchantIconTextColor = JXFfffffColor
 let JXLargeTitleColor = JXBlueColor
 let JXLittleTitleColor = JXBlue60Color
 let JXOrderDetailBgColor = JXFfffffColor
+
+let JXAbleColor = JXMainColor
+let JXUnableColor = UIColor.rgbColor(rgbValue: 0xd3d3d3)
 
 let JXSeparatorColor = UIColor.rgbColor(rgbValue: 0xd3dfef)
 
@@ -134,6 +140,9 @@ let JXLargeTitleColor = JXOrangeColor
 let JXLittleTitleColor = JXOrange60Color
 let JXOrderDetailBgColor = JXFfffffColor
 
+let JXAbleColor = JXMainColor
+let JXUnableColor = UIColor.rgbColor(rgbValue: 0xd3d3d3)
+
 let JXSeparatorColor = UIColor.rgbColor(rgbValue: 0xd3dfef)
 
 #else
@@ -155,6 +164,9 @@ let JXSeparatorColor = UIColor.rgbColor(rgbValue: 0x464855)
 let JXLargeTitleColor = JXMainTextColor
 let JXLittleTitleColor = JXMainText50Color
 let JXOrderDetailBgColor = UIColor.rgbColor(rgbValue: 0x131321)
+
+let JXAbleColor = JXMainColor
+let JXUnableColor = UIColor.rgbColor(rgbValue: 0x9b9b9b)
 
 #endif
 
